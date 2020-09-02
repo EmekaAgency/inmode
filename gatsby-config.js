@@ -27,6 +27,55 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-mysql`,
+      options: {
+        connectionDetails: {
+          host: 'localhost',
+          user: 'root',
+          password: '',
+          database: 'inmode'
+        },
+        queries: [
+          {
+            statement: 'SELECT * FROM menus WHERE container = \'header-top\'',
+            idFieldName: 'id',
+            nameFieldName: 'name',
+            urlFieldName: 'url',
+            underFieldName: 'under',
+            typeFieldName: 'type',
+            containerFieldName: 'container',
+            positionFieldName: 'position',
+            variantFieldName: 'variant',
+            name: 'header-top'
+          },
+          {
+            statement: 'SELECT * FROM menus WHERE container = \'header-bottom\'',
+            idFieldName: 'id',
+            nameFieldName: 'name',
+            urlFieldName: 'url',
+            underFieldName: 'under',
+            typeFieldName: 'type',
+            containerFieldName: 'container',
+            positionFieldName: 'position',
+            variantFieldName: 'variant',
+            name: 'header-bottom'
+          },
+          {
+            statement: 'SELECT * FROM menus WHERE container = \'footer\'',
+            idFieldName: 'id',
+            nameFieldName: 'name',
+            urlFieldName: 'url',
+            underFieldName: 'under',
+            typeFieldName: 'type',
+            containerFieldName: 'container',
+            positionFieldName: 'position',
+            variantFieldName: 'variant',
+            name: 'footer'
+          }
+        ]
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
