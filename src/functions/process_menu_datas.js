@@ -6,7 +6,7 @@ export const process_menu_datas = (datas) => {
     let keys = Object.keys(temp);
     var single_image_pos = -1;
     for(let i = 0; i < keys.length; i++) {
-        if(temp[keys[i]].under == 0) {
+        if(temp[keys[i]].under == 0 || (['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' && ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE')) {
             if(
                 ['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' &&
                 ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE'
@@ -16,7 +16,7 @@ export const process_menu_datas = (datas) => {
                     retour[single_image_pos] = {
                         'type': temp[keys[i]].type,
                         'variant': temp[keys[i]].variant,
-                        'name': 'single-image',
+                        'name': 'single-image-inline',
                         'content': []
                     };
                     retour[single_image_pos].content[temp[keys[i]].position - 1] = {
@@ -62,8 +62,6 @@ export const process_menu_datas = (datas) => {
                 'variant': temp[keys[i]].variant
             };
         }
-        console.log(retour);
     }
-    console.log(retour);
     return retour;
 }

@@ -20,13 +20,17 @@ const BUTTON = 3;
 
 const Menu = ({menu, prop_key, openOnClick, parent}) => {
 
-    console.log(menu);
-
     if(menu.variant == SINGLE && menu.type == TEXT) {
         return (<MenuSingleText key={prop_key} prop_key={prop_key} menu={menu}/>);
     }
     else if(menu.variant == SINGLE && menu.type == IMAGE) {
-        return (<MenuSingleImage key={prop_key} prop_key={prop_key} menu={menu}/>);
+        return (
+            <div key={prop_key} className={menu.name}>
+                {menu.content.map((menu, key) => {
+                    return (<MenuSingleImage key={key} prop_key={key} menu={menu}/>);
+                })}
+            </div>
+        )
     }
     else if(menu.variant == SINGLE && menu.type == BUTTON) {
         return (<MenuSingleButton key={prop_key} prop_key={prop_key} menu={menu}/>);

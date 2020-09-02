@@ -30,10 +30,43 @@ const Footer = () => {
 
     return (
         <footer>
-        ©2020, Made by
-        {` `}
-        <a href="https://www.gatsbyjs.org">Emeka</a> with <span style={{'color': 'red'}}>♥</span>
-      </footer>
+            <div className="footer-content">
+                <div className="footer-logo-infos-part">
+                    <div className="footer-infos logo">
+                        <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')}/>
+                    </div>
+                    <div className="footer-infos location">
+                        <div className="footer-location-ico background-image"></div>
+                        <div className="footer-infos-text">Localisation</div>
+                    </div>
+                    <div className="footer-infos phone">
+                        <div className="footer-phone-ico background-image"></div>
+                        <div className="footer-infos-text">Téléphone</div>
+                    </div>
+                    <div className="footer-infos mail">
+                        <div className="footer-mail-ico background-image"></div>
+                        <div className="footer-infos-text">Mail</div>
+                    </div>
+                </div>
+                <div className="footer-social-part">
+                    {[1, 2, 3, 4].map((bla, key) => {
+                        return (
+                            <div key={key} className="footer-social-ico" style={{backgroundImage: 'url('+get_img_path('/icons/footer-logo.png')+')'}}>
+                                <a className="absolute-link" href="#"></a>
+                            </div>
+                        );
+                    })}
+                </div>
+                <div className="footer-bottom-navigation">
+                    <div className="footer-trademark">© 2020 INMODE</div>
+                    <div className="footer-navigation">
+                        {['Sitemap', 'Contact', 'Police de confidentialité', 'Inmodemd'].map((name, key) => {
+                            return (<div key={key} className="footer-navigation-part">name</div>);
+                        })}
+                    </div>
+                </div>
+            </div>
+        </footer>
     );
 }
 

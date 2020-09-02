@@ -62,7 +62,7 @@ module.exports = {
             name: 'header-bottom'
           },
           {
-            statement: 'SELECT * FROM menus WHERE container = \'footer\'',
+            statement: 'SELECT * FROM menus WHERE container LIKE \'footer%\'',
             idFieldName: 'id',
             nameFieldName: 'name',
             urlFieldName: 'url',
