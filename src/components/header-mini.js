@@ -46,8 +46,8 @@ const HeaderMini = () => {
         document.getElementById('header-mini').classList.remove('opened');
     }
 
-    const menus_top = process_menu_datas(datas.allMysqlHeaderTop.edges);
-    const menus_bottom = process_menu_datas(datas.allMysqlHeaderBottom.edges);
+    const menus_top = process_menu_datas(datas.allMysqlHeaderTop.edges, 'mini-header-top');
+    const menus_bottom = process_menu_datas(datas.allMysqlHeaderBottom.edges, 'mini-header-bottom');
 
     return (
         <div id="header-mini" className="header-mini">

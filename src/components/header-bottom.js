@@ -26,7 +26,7 @@ const HeaderBottom = () => {
         }
     `).allMysqlHeaderBottom.edges;
 
-    const menus = process_menu_datas(datas);
+    const menus = process_menu_datas(datas, 'header-bottom');
 
     return (
         <div id="header-bottom" className="header-bottom">

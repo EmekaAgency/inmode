@@ -26,7 +26,7 @@ const HeaderTop = () => {
         }
     `).allMysqlHeaderTop.edges;
 
-    const menus = process_menu_datas(datas);
+    const menus = process_menu_datas(datas, 'header-top');
 
     return (
         <div id="header-top" className="header-top">

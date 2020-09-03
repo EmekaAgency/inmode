@@ -1,12 +1,37 @@
-export const process_menu_datas = (datas) => {
-    let retour = [], temp = {};
+export const process_menu_datas = (datas = [], from = "") => {
+    let retour = from == 'footer' ? {} : [], temp = {};
     for(let i = 0; i < datas.length; i++) {
         temp[datas[i].node.mysqlId] = datas[i].node;
     }
     let keys = Object.keys(temp);
     var single_image_pos = -1;
     for(let i = 0; i < keys.length; i++) {
-        if(temp[keys[i]].under == 0 || (['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' && ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE')) {
+        if(from == 'footer') {
+            let position = temp[keys[i]].position - 1;
+            if(
+                temp[keys[i]].container == 'footer-location' ||
+                temp[keys[i]].container == 'footer-phone' ||
+                temp[keys[i]].container == 'footer-mail'
+            ) {
+                if(retour['infos'] == undefined) {
+                    retour['infos'] = [];
+                }
+                    retour['infos'][position] = {
+                        'name': temp[keys[i]].name.replace('\\n', '\n'),
+                        'type': temp[keys[i]].container
+                    };
+            }
+            else {
+                if(retour[temp[keys[i]].container] == undefined) {
+                    retour[temp[keys[i]].container] = [];
+                }
+                    retour[temp[keys[i]].container][position] = {
+                        'name': temp[keys[i]].name,
+                        'url': temp[keys[i]].url
+                    };
+            }
+        }
+        else if(temp[keys[i]].under == 0 || (['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' && ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE')) {
             if(
                 ['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' &&
                 ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE'
