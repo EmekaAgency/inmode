@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from "gatsby";
 import { get_img_path } from '../../functions/get_images';
+import Image from '../image';
 
 const MenuSingleImage = ({menu, prop_key}) => {
 
