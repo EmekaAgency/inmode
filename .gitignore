@@ -59,6 +59,15 @@ typings/
 public/page-data
 public/static
 public/*.*
+public/404/*
+public/404/
+public/404
+public/page-2/*
+public/page-2/
+public/page-2
+public/using-typescript/*
+public/using-typescript/
+public/using-typescript
 
 # Mac files
 .DS_Store
@@ -77,3 +86,9 @@ yarn-error.log
 *.7z
 *.gz
 *.zipx
+
+# Persos
+
+TODO
+
+/*.sql

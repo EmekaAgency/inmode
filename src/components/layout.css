@@ -181,6 +181,7 @@ header {
     position: relative;
     background-size: 250px;
     background-position: center;
+    padding-top: 5px;
 }
 
 .header-parts {
@@ -197,6 +198,7 @@ header {
     .header-logo {
         width: 160px;
         background-size: 100%;
+        bottom: 5px;
     }
 }
 
@@ -228,9 +230,8 @@ header {
 
 @media (max-width: 999px) {
     .header-content .header-parts .header-mini-menu {
-        background-color: rgb(85, 85, 86);
-        border: 1px solid rgb(255, 255, 255);
-        border-radius: 22px;
+        background-color: rgba(85, 85, 86, 0);
+        border: 1px solid #ffffff59;
         box-sizing: border-box;
         color: rgb(255, 255, 255);
         cursor: pointer;
@@ -281,15 +282,13 @@ header {
     }
 }
 
-.header-parts > .header-top * {
-    vertical-align: middle;
-}
-
 .header-parts > .header-top a.menu-text,
 .header-parts > .header-top a.menu-title {
     margin-right: 17px;
     margin-bottom: 12px;
     font-size: 12px;
+    top: 7px;
+    position: relative;
 }
 
 .header-parts > .header-top .menu-text,

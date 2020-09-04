@@ -44,7 +44,6 @@ const Footer = () => {
                         <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')}/>
                     </div>
                     {menus.infos.map((menu, key) => {
-                        
                         return (
                             <div key={key} className={`footer-infos ${menu.type.replace('footer-', '')}`}>
                                 <img
@@ -70,13 +69,12 @@ const Footer = () => {
                     <div className="footer-navigation">
                         {menus['footer-navigation'].map((menu, key) => {
                             return (
-                                <>
+                                <span key={key}>
                                     <span className="footer-navigation-separator"></span>
-                                    <a key={key} href={menu.url} className="footer-navigation-part">
+                                    <a href={menu.url} className="footer-navigation-part">
                                         {menu.name}
-
                                     </a>
-                                </>
+                                </span>
                             );
                         })}
                     </div>
