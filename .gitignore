@@ -59,15 +59,9 @@ typings/
 public/page-data
 public/static
 public/*.*
-public/404/*
-public/404/
-public/404
-public/page-2/*
-public/page-2/
-public/page-2
-public/using-typescript/*
-public/using-typescript/
-public/using-typescript
+public/404/index.html
+public/page-2/index.html
+public/using-typescript/index.html
 
 # Mac files
 .DS_Store
