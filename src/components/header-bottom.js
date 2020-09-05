@@ -31,7 +31,7 @@ const HeaderBottom = () => {
     return (
         <div id="header-bottom" className="header-bottom">
             {menus.map((menu, key) => {
-                return (<Menu key={key} menu={menu}/>);
+                return (<Menu key={key} prop_key={key} menu={menu}/>);
             })}
         </div>
     );

@@ -5,6 +5,7 @@ import MenuSingleText from './menu/single-text';
 import MenuSingleImage from './menu/single-image';
 import MenuSingleButton from './menu/single-button';
 import MenuTitleText from './menu/title-text';
+import MenuDKTitleText from './menu/dk-title-text';
 import MenuTitleImage from './menu/title-image';
 import MenuTitleButton from './menu/title-button';
 
@@ -12,11 +13,13 @@ import MenuTitleButton from './menu/title-button';
 const SINGLE = 1;
 const TITLE = 2;
 const CONTENT = 3;
+const DK_TITLE = 4;
 
 // TYPE
 const TEXT = 1;
 const IMAGE = 2;
 const BUTTON = 3;
+const CARD = 4;
 
 const Menu = ({menu, prop_key, openOnClick, parent}) => {
 
@@ -44,6 +47,13 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     else if(menu.variant == TITLE && menu.type == BUTTON) {
         return (<MenuTitleButton key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
     }
+    else if(menu.variant == DK_TITLE && menu.type == TEXT) {
+        return (<MenuDKTitleText key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    }
+    else {
+        return null;
+    }
+    return null;
 }
 
 Menu.propTypes = {

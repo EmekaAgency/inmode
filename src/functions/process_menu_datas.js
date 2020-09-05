@@ -1,3 +1,6 @@
+const _TYPES = ['TEXT', 'IMAGE', 'BUTTON', 'CARD'];
+const _VARIANTS = ['SINGLE', 'TITLE', 'CONTENT', 'DK-TITLE'];
+
 export const process_menu_datas = (datas = [], from = "") => {
     let retour = from == 'footer' ? {} : [], temp = {};
     for(let i = 0; i < datas.length; i++) {
@@ -6,7 +9,7 @@ export const process_menu_datas = (datas = [], from = "") => {
     let keys = Object.keys(temp);
     var single_image_pos = -1;
     for(let i = 0; i < keys.length; i++) {
-        if(from == 'footer') {
+        if(from == 'footer') { // FOOTER
             let position = temp[keys[i]].position - 1;
             if(
                 temp[keys[i]].container == 'footer-location' ||
@@ -31,11 +34,17 @@ export const process_menu_datas = (datas = [], from = "") => {
                     };
             }
         }
-        else if(temp[keys[i]].under == 0 || (['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' && ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE')) {
+        else if( // MENUS AND SINGLE
+            temp[keys[i]].under == 0 ||
+            (
+                _TYPES[temp[keys[i]].type - 1] == 'IMAGE'&&
+                _VARIANTS[temp[keys[i]].variant - 1] == 'SINGLE'
+            )
+        ) {
             if(
-                ['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' &&
-                ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE'
-            ) {
+                _TYPES[temp[keys[i]].type - 1] == 'IMAGE' &&
+                _VARIANTS[temp[keys[i]].variant - 1] == 'SINGLE'
+            ) { // GROUP ICONS IN 'single-image-inline'
                 single_image_pos = single_image_pos != -1 ? single_image_pos : temp[keys[i]].under - 1;
                 if(retour[single_image_pos] == undefined) {
                     retour[single_image_pos] = {
@@ -56,7 +65,7 @@ export const process_menu_datas = (datas = [], from = "") => {
                     };
                 }
             }
-            else {
+            else { // REGULAR MENUS
                 if(retour[temp[keys[i]].position - 1] == undefined) {
                     retour[temp[keys[i]].position - 1] = {
                         'name' :temp[keys[i]].name,
@@ -73,7 +82,7 @@ export const process_menu_datas = (datas = [], from = "") => {
                 }
             }
         }
-        else {
+        else { // CONTENT
             if(retour[temp[temp[keys[i]].under].position - 1] == undefined) {
                 retour[temp[temp[keys[i]].under].position - 1] = new Object();
             }
