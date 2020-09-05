@@ -4,6 +4,7 @@ import { get_img_path } from "../functions/get_images";
 import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
+import Image from './image';
 
 const Footer = () => {
 
@@ -38,7 +39,7 @@ const Footer = () => {
 
     return (
         <footer>
-            <div className="footer-content">
+            <div className="footer-content container">
                 <div className="footer-logo-infos-part">
                     <div className="footer-infos logo">
                         <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')} alt="footer-logo"/>
@@ -83,12 +84,12 @@ const Footer = () => {
             </div>
         </footer>
     );
-}
+};
 
 Footer.propTypes = {
-}
+};
 
 Footer.defaultProps = {
-}
+};
   
 export default Footer;

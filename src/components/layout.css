@@ -69,6 +69,12 @@ li, ul, ol {
     transition: display 0.3s ease-in;
 }
 
+.container {
+    max-width: 1660px;
+    width: 90%;
+    margin: 0 auto;
+}
+
 @font-face {
     font-family: 'raleway';
     src: url("/fonts/raleway/raleway.woff2")
@@ -277,6 +283,25 @@ header {
     .header-parts > .header-top,
     .header-parts > .header-bottom {
         display: none;
+    }
+}
+
+@media (max-width: 329px) {
+    header .container .header-parts {
+        max-width: 100%;
+    }
+
+    .header-logo {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .header-content .header-parts .header-mini-menu {
+        display: block;
+        position: relative;
+        margin: 0 auto 20px;
+        right: 0;
+        top: 0;
     }
 }
 
@@ -671,7 +696,7 @@ header {
 /* MAIN */
 
 main {
-    height: 100vh;
+    font-size: initial;
 }
 
 /* FOOTER */
@@ -681,12 +706,6 @@ footer {
     background-color: #0d1f2c;
     background-image: url('/icons/footer-bg-pattern.png');
     background-repeat: repeat;
-}
-
-footer .footer-content {
-    max-width: 1660px;
-    width: 90%;
-    margin: 0 auto;
 }
 
 footer .footer-logo-infos-part {
@@ -827,5 +846,266 @@ footer .footer-navigation-part {
 @media all and  (max-width: 99px) {
     .footer-social-ico {
         margin: 5px;
+    }
+}
+
+/* CLINICAL STUDIES */
+
+.clinical-studies {
+    padding: 50px 0;
+    background-image: url('/icons/home/media-bg.jpg');
+}
+
+.clinical-studies .studies {
+    width: 100%;
+    max-width: 430px;
+    margin: 0;
+    text-align: center;
+}
+
+.clinical-studies .studies .title {
+    padding: 0 0 30px;
+    font-size: 35px;
+    color: #313131;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 0 50px;
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 40px;
+    letter-spacing: 2px;
+    transition: all .5s ease;
+}
+
+.clinical-studies .studies .content {
+    width: 100%;
+    max-width: 300px;
+}
+
+.clinical-studies .studies .content img {
+    width: 100%;
+    display: block;
+    padding-bottom: 10px;
+    transition: all .5s ease;
+}
+
+.clinical-studies .studies .content a {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: top;
+    background-image: url('/icons/home/back-button.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 15px 25px;
+    border-radius: 0;
+    width: auto;
+}
+
+@media screen and (max-width: 900px) {
+    .clinical-studies .studies .title {
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: normal;
+        padding-bottom: 30px;
+    }
+}
+
+/* FOLLOW INSTAGRAM */
+
+.follow-instagram {
+    padding: 80px 0;
+    background-color: #0b1a25;
+}
+
+.follow-instagram h2 {
+    font-size: 35px;
+    color: #59b7b3;
+    font-weight: 600;
+    margin: 0;
+    padding: 0 0 50px;
+    text-transform: uppercase;
+    text-align: left;
+    line-height: 40px;
+    letter-spacing: 2px;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+.follow-instagram h2 a {
+    background-color:rgba(0, 0, 0, 0);
+    border-color:rgb(49, 49, 49);
+    border-bottom:none;
+    border-width:0px;
+    border-image-outset:0;
+    border-image-repeat:stretch;
+    border-image-slice:100%;
+    border-image-source:none;
+    border-image-width:1;
+    box-sizing:border-box;
+    color: #59b7b3;
+    cursor:pointer;
+    display:inline;
+    font-size:35px;
+    font-style:normal;
+    font-weight:600;
+    letter-spacing:2px;
+    line-height:40px;
+    text-align:left;
+    text-decoration-color:rgb(49, 49, 49);
+    text-decoration-line:none;
+    text-decoration-style:solid;
+    text-size-adjust:100%;
+    text-transform:uppercase;
+    touch-action:manipulation;
+    vertical-align:baseline;
+    width:auto;
+}
+
+.follow-instagram .wrapper {
+    margin: 0;
+    padding: 0 15px 10px;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    height: 100%;
+    max-height: calc((90vw - 30px) / 4);
+    overflow: hidden;
+}
+
+.follow-instagram .wrapper .elem {
+    width: 25%;
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+    zoom: 1;
+    max-height: 1000px;
+    margin: 0!important;
+    text-decoration: none;
+    opacity: 1;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: all .5s ease;
+}
+
+.follow-instagram .wrapper .elem img {
+    width: 100%;
+    height: calc((90vw - 30px) / 4);
+    display: block;
+    padding: 0!important;
+    margin: 0!important;
+    max-width: 100%!important;
+    opacity: 1!important;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 900px) {
+    .follow-instagram h2 a {
+        font-size: 24px;
+    }
+
+    .follow-instagram .wrapper {
+        max-height: calc(90vw - 30px);
+    }
+
+    .follow-instagram .wrapper .elem {
+        width: 50% !important;
+    }
+
+    .follow-instagram .wrapper .elem img {
+        height: calc((90vw - 30px) / 2);
+    }
+}
+
+/* GET STARTED */
+
+.get-started {
+    background-color: #0d1f2c;
+    padding: 23px;
+}
+
+.get-started p {
+    color: #59b7b3;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    letter-spacing: 0.02em;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+.get-started h2 {
+    color: #fff;
+    font-size: 35px;
+    line-height: 35px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+.get-started a {
+    background-image: url('/icons/home/button_white.svg');
+    background-color:rgba(0, 0, 0, 0);
+    background-size: 95%;
+    background-position: 50%;
+    border-image-outset:0;
+    border-image-repeat:stretch;
+    border-image-slice:100%;
+    border-image-source:none;
+    border-image-width:1;
+    border-color:rgb(89, 183, 179);
+    border-style:none;
+    border-width:0px;
+    box-sizing:border-box;
+    color:rgb(89, 183, 179);
+    cursor:pointer;
+    display:block;
+    font-size:12px;
+    font-weight:400;
+    height:29px;
+    letter-spacing:1.5px;
+    line-height:17px;
+    margin:10px auto;
+    max-width:200px;
+    min-width:148px;
+    padding:6px 8px;
+    text-align:center;
+    text-decoration-color:rgb(89, 183, 179);
+    text-decoration-line:none;
+    text-decoration-style:solid;
+    text-size-adjust:100%;
+    text-transform:uppercase;
+    touch-action:manipulation;
+    vertical-align:baseline;
+    width:200px;
+    transition: all .5s ease;
+}
+
+.get-started a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 900px) {
+    .get-started h2 {
+        font-size: 20px;
     }
 }
