@@ -5,7 +5,7 @@ const GetStarted = () => {
         <div className="get-started">
             <div className="container">
                 <p>Lancez-vous</p>
-                <h2>En quoi la technologie pourrait vous être utile ?</h2>
+                <h2>Laquelle de nos technologies pourrait vous être utile ?</h2>
                 <a>Contactez nous</a>
             </div>
         </div>

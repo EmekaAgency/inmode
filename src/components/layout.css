@@ -177,7 +177,7 @@ header {
     margin: 0 auto;
     width: calc(100% - 30px);
     padding: 25px 15px 0;
-    background-color: #0d1f2c;
+    background-color: #0b1a25;
     /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
 }
 
@@ -421,11 +421,16 @@ header {
     text-transform: capitalize;
 }
 
-.header-parts > .header-bottom .dropdown-menu,
-.header-parts > .header-bottom .dk-dropdown-menu {
+.header-parts > .header-bottom .dropdown-menu {
     top: 50px;
     display: none;
     background-color: rgba(0,0,0,.5);
+}
+
+.header-parts > .header-bottom .dk-dropdown-menu {
+    top: 50px;
+    display: none;
+    background-color: #0d1f2c;
 }
 
 .header-parts > .header-bottom .menu-dk-title:hover .dk-dropdown-menu {
