@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from "gatsby";
 import MenuContent from '../menu-content';
 import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_opened';
+import { get_img_path } from '../../functions/get_images';
 
 // VARIANT
 const SINGLE = 1;
@@ -29,8 +30,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
         }
     }
 
-    console.log(menu);
-    console.log(prop_key);
+    let item_max_width = window == undefined ? 0 : window.innerWidth / menu.under.length;
 
     return (
         <ul key={prop_key} className="menu-dk-title menu-text">
@@ -42,13 +42,16 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                 {menu.name}
             </Link>
             <ul className="dk-dropdown-menu">
-                {/* {menu.under.map((content, key) => {
-                    return (
-                        <li key={key}>
-                            <MenuContent content={content}/>
-                        </li>
-                    );
-                })} */}
+                <div className="dk-sub-container">
+                    {menu.under.map((content, key) => {
+                        return (
+                            <div className="dk-item" style={{maxWidth: item_max_width}}>
+                                <img className="dk-picture transition" src={get_img_path(`/icons/header-products/${content.name}.png`)} alt={content.name}/>
+                                <div className="dk-title">{content.name}</div>
+                            </div>
+                        );
+                    })}
+                </div>
             </ul>
         </ul>
     );

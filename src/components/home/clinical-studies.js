@@ -8,7 +8,7 @@ const ClinicalStudies = () => {
                 <div className="studies">
                     <h2 className="title">Études cliniques</h2>
                     <div className="content">
-                        <img src={get_img_path('/icons/home/studies-img.png')}/>
+                        <img src={get_img_path('/icons/home/studies-img.png')} alt="studies-img"/>
                         <a href="#">Voir les études</a>
                     </div>
                 </div>

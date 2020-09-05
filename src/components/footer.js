@@ -41,7 +41,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-logo-infos-part">
                     <div className="footer-infos logo">
-                        <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')}/>
+                        <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')} alt="footer-logo"/>
                     </div>
                     {menus.infos.map((menu, key) => {
                         return (
@@ -49,6 +49,7 @@ const Footer = () => {
                                 <img
                                     className={`${menu.type}-ico background-image`}
                                     src={get_img_path(`/icons/icomoon/${isSvg? 'svg' : 'png'}/${icos[menu.type.replace('footer-', '')]}.${isSvg ? 'svg' : 'png'}`)}
+                                    alt={menu.type.replace('footer-', '')}
                                 />
                                 <div className="footer-infos-text">{menu.name}</div>
                             </div>
