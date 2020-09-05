@@ -68,7 +68,8 @@ li, ul, ol {
 }
 
 .transition {
-    transition: all 0.3s ease-in-out;
+    /* transition: all 0.3s ease-in-out; */
+    transition: all 0.3s ease;
 }
 
 .transition-display {
@@ -908,7 +909,7 @@ footer .footer-navigation-part {
     text-align: left;
     line-height: 40px;
     letter-spacing: 2px;
-    transition: all .5s ease;
+    transition: all .3s ease;
 }
 
 .clinical-studies .studies .content {
@@ -920,7 +921,7 @@ footer .footer-navigation-part {
     width: 100%;
     display: block;
     padding-bottom: 10px;
-    transition: all .5s ease;
+    transition: all .3s ease;
 }
 
 .clinical-studies .studies .content a {
@@ -1023,7 +1024,7 @@ footer .footer-navigation-part {
     opacity: 1;
     overflow: hidden;
     box-sizing: border-box;
-    transition: all .5s ease;
+    transition: all .3s ease;
 }
 
 .follow-instagram .wrapper .elem img {
@@ -1131,7 +1132,7 @@ footer .footer-navigation-part {
     touch-action:manipulation;
     vertical-align:baseline;
     width:200px;
-    transition: all .5s ease;
+    transition: all .3s ease;
 }
 
 .get-started a:hover {
