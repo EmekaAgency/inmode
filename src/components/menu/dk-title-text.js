@@ -30,8 +30,6 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
         }
     }
 
-    let item_max_width = window == undefined ? 0 : (window.innerWidth - 60) / menu.under.length;
-
     return (
         <ul key={prop_key} className="menu-dk-title menu-text">
             <Link
@@ -45,7 +43,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                 <div className="dk-sub-container">
                     {menu.under.map((content, key) => {
                         return (
-                            <a className="dk-item" href={content.url || '#'} style={{maxWidth: item_max_width}}>
+                            <a className="dk-item" href={content.url || '#'}>
                                 <img className="dk-picture transition" src={get_img_path(`/icons/header-products/${content.name}.png`)} alt={content.name}/>
                                 <div className="dk-title">{content.name}</div>
                             </a>
