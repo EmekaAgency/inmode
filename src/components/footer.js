@@ -61,7 +61,7 @@ const Footer = () => {
                     {menus['footer-social'].map((menu, key) => {
                         return (
                             <div key={key} className="footer-social-ico background-image" style={{backgroundImage: 'url('+get_img_path(`/icons/icomoon/${isSvg ? 'svg' : 'png'}/social-${menu.name}.${isSvg ? 'svg' : 'png'}`)+')'}}>
-                                <a className="zone-link" href={menu.url}></a>
+                                <a className="zone-link" href={menu.url || '#'}></a>
                             </div>
                         );
                     })}
@@ -73,7 +73,7 @@ const Footer = () => {
                             return (
                                 <span key={key}>
                                     <span className="footer-navigation-separator"></span>
-                                    <a href={menu.url} className="footer-navigation-part">
+                                    <a href={menu.url || '#'} className="footer-navigation-part">
                                         {menu.name}
                                     </a>
                                 </span>

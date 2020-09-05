@@ -13,6 +13,12 @@ body {
     background-repeat: no-repeat;
 }
 
+body::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    background-color: #0d1f2c;
+}
+
 body::-webkit-scrollbar-button {
     background-color: #0d1f2c;
     width: 5px;
@@ -435,13 +441,13 @@ header {
     width: 100%;
     padding: 25px 30px 20px;
     text-align: center;
+    display: inline-flex;
 }
 
 .header-parts > .header-bottom .dk-dropdown-menu .dk-sub-container .dk-item {
     text-align: center;
     display: inline-block;
-    width: 100%;
-    min-width: max-content;
+    flex-grow: 1;
 }
 
 .header-parts > .header-bottom .dk-dropdown-menu .dk-sub-container .dk-item .dk-picture {
@@ -451,7 +457,7 @@ header {
 }
 
 .header-parts > .header-bottom .dk-dropdown-menu .dk-sub-container .dk-item .dk-picture:hover {
-    transform: scale(0.95);
+    transform: scale(0.9);
 }
 
 .header-parts > .header-bottom .dk-dropdown-menu .dk-sub-container .dk-item .dk-title {
