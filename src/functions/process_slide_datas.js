@@ -1,14 +1,32 @@
 const _TYPES = ['PRODUCT', 'ADDON'];
 
-export const process_slide_datas = (products = [], addons = [], from = "") => {
-    let retour = [], temp = {};
-    for(let i = 0; i < datas.length; i++) {
-        temp[datas[i].node.mysqlId] = datas[i].node;
+export const process_slide_datas = (products = [], from = "") => {
+    let retour = [], slides = {}, addons = {};
+    for(let i = 0; i < products.length; i++) {
+        if(_TYPES[products[i].node.type] == 'PRODUCT') {
+            slides[products[i].node.mysqlId] = products[i].node;
+        }
+        else if(_TYPES[products[i].node.type] == 'ADDON') {
+            addons[products[i].node.mysqlId] = products[i].node;
+        }
     }
-    let keys = Object.keys(temp);
-    console.log(temp);
-    console.log(products);
+    let keys_slides = Object.keys(slides);
+    let keys_addons = Object.keys(addons);
+    for(let i = 0; i < keys_slides.length; i++) {
+        retour[i] = {
+            'name': slides[keys_slides[i]].name,
+            'short_descr': slides[keys_slides[i]].short_descr,
+            'descr': slides[keys_slides[i]].descr,
+            'img_path': slides[keys_slides[i]].img_path,
+            'price': slides[keys_slides[i]].price
+        }
+    }
     console.log(addons);
+    for(let i = 0; i < keys_addons.length; i++) {
+        let parents = addons[keys_addons[i]].parents.replace('[', '').replace(']', '').split(',');
+        
+    }
+    return false;
 }
 
 // ALTER TABLE `product` ADD column `type` INT NOT NULL;
@@ -44,3 +62,16 @@ export const process_slide_datas = (products = [], addons = [], from = "") => {
 // INSERT INTO `product_matching` (`product_id`, `addon_id`) VALUES (3, 15);
 // INSERT INTO `product_matching` (`product_id`, `addon_id`) VALUES (4, 15);
 // INSERT INTO `product_matching` (`product_id`, `addon_id`) VALUES (7, 15);
+
+// const products = {
+//     '3': {
+//         name
+//         img_url
+//         add: [
+//             {name, price}
+//             {name, price}
+//         ]
+//     }
+// }
+
+// "[1,2,3]".replace('[', '').replace(']', '').join(',') => [1, 2, 3]

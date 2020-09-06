@@ -43,8 +43,8 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                 <div className="dk-sub-container">
                     {menu.under.map((content, key) => {
                         return (
-                            <a className="dk-item" href={content.url || '#'}>
-                                <img className="dk-picture transition" src={get_img_path(`/icons/header-products/${content.name}.png`)} alt={content.name}/>
+                            <a key={key} className="dk-item" href={content.url || '#'}>
+                                <img className="dk-picture transition" src={get_img_path(`/icons/products/${content.name}.png`)} alt={content.name}/>
                                 <div className="dk-title">{content.name}</div>
                             </a>
                         );

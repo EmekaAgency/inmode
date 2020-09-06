@@ -634,8 +634,13 @@ header {
         height: 45px;
     }
 
+    .header-mini.opened .header-bottom ul.menu-dk-title.opened .dk-dropdown-menu .dk-item .dk-picture:hover {
+        transform: scale(0.9);
+    }
+
     .header-mini.opened .header-bottom ul.menu-dk-title.opened .dk-dropdown-menu .dk-item .dk-title {
         color: #ffffff;
+        margin-top: 5px;
     }
 
     /* HEADER-MINI-TOP */

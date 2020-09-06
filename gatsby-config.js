@@ -87,7 +87,35 @@ module.exports = {
             positionFieldName: 'position',
             variantFieldName: 'variant',
             name: 'footer'
-          }
+          },
+          {
+            statement: 'SELECT * FROM product WHERE type IN (0, 1)',
+            idFieldName: 'id',
+            nameFieldName: 'name',
+            shortDescrFieldName: 'short_descr',
+            descrFieldName: 'descr',
+            imgPathFieldName: 'img_path',
+            priceFieldName: 'price',
+            typeFieldName: 'type',
+            parentsFieldName: 'parents',
+            name: 'slides-products'
+          },
+          // {
+          //   statement: 'SELECT * FROM product_matching INNER JOIN product WHERE product_matching.addon_id = product.id',
+          //   productIdFieldName: 'product_id',
+          //   addonIdFieldName: 'addon_id',
+          //   idFieldName: 'id',
+          //   nameFieldName: 'name',
+          //   shortDescrFieldName: 'short_descr',
+          //   descrFieldName: 'descr',
+          //   imgPathFieldName: 'img_path',
+          //   priceFieldName: 'price',
+          //   typeFieldName: 'type',
+          //   parentName: 'product',
+          //   foreignKey: 'ProductId',
+          //   cardinality: 'OneToMany',
+          //   name: 'slides-addons'
+          // }
         ]
       }
     }

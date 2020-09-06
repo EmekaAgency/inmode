@@ -6,37 +6,24 @@ const Slides = ({from}) => {
 
     const datas = useStaticQuery(graphql`
         {
-          allMysqlSlidesProducts {
-            edges {
-              node {
-                name
-                type
-                short_descr
-                price
-                mysqlId
-                descr
-                img_path
-              }
+            allMysqlSlidesProducts {
+                edges {
+                    node {
+                        type
+                        short_descr
+                        price
+                        parents
+                        name
+                        mysqlId
+                        img_path
+                        descr
+                    }
+                }
             }
-          }
-          allMysqlSlidesAddons {
-            edges {
-              node {
-                name
-                type
-                short_descr
-                product_id
-                price
-                mysqlId
-                descr
-                addon_id
-              }
-            }
-          }
         }
     `);
 
-    const slides = process_slide_datas(datas.allMysqlSlidesProducts.edges, datas.allMysqlSlidesAddons.edges, from);
+    const slides = process_slide_datas(datas.allMysqlSlidesProducts.edges, from);
 
     return (
         <div className={`slides-${from}`}>
