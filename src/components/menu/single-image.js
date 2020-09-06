@@ -9,7 +9,7 @@ const MenuSingleImage = ({menu, prop_key}) => {
     return (
         <>
             <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"}>
-                <img src={get_img_path(menu.name)} alt={menu.name}/>
+                <img src={get_img_path(`/icons${menu.name}`)} alt={menu.name}/>
             </Link>
         </>
     );

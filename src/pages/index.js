@@ -13,6 +13,8 @@ import Slides from "../components/home/slides"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home"/>
+    {/* <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css"></link> */}
+    {/* <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script> */}
     <Slides from='home'/>
     <ClinicalStudies/>
     <FollowInstagram/>

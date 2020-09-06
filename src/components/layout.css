@@ -178,6 +178,9 @@ header {
     padding: 25px 15px 0;
     background-color: #0b1a25;
     /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
+    box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px;
+    position: relative;
+    z-index: 1;
 }
 
 @media (max-width: 999px) {
@@ -335,7 +338,7 @@ header {
 .header-parts > .header-top a.menu-text,
 .header-parts > .header-top a.menu-title {
     margin-right: 17px;
-    margin-bottom: 12px;
+    padding-bottom: 12px;
     font-size: 12px;
     top: 7px;
     position: relative;
@@ -439,6 +442,7 @@ header {
     left: calc((100% - 100vw) / 2);
     width: 100vw;
     top: 122px;
+    z-index: 3;
 }
 
 .header-parts > .header-bottom .dk-dropdown-menu .dk-sub-container {
@@ -447,6 +451,7 @@ header {
     padding: 25px 30px 20px;
     text-align: center;
     display: inline-flex;
+    box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px;
 }
 
 .header-parts > .header-bottom .dk-dropdown-menu .dk-sub-container .dk-item {
@@ -891,6 +896,210 @@ footer .footer-navigation-part {
     .footer-social-ico {
         margin: 5px;
     }
+}
+
+/* SLIDES */
+
+/* slides-home */
+
+.slides-home {
+    overflow-x: hidden;
+    width: 100vw;
+    padding: 50px 50px 75px;
+    /* background-color: #0d1f2c; */
+    background-color: #0b1a25;
+    position: relative;
+    max-width: calc(100vw - 100px);
+    height: 520px;
+    /* height: 560px; */
+}
+
+.slides-home .slide {
+    display: inline-block;
+    margin-right: 60px;
+    position: relative!important;
+    transition: all 0.8s ease-in-out;
+    transform-style: preserve-3d;
+    left: 0%!important;
+}
+
+.slides-home .slides-clones {
+    position: absolute;
+    top: -147px;
+    left: calc(50vw - 350px);
+    right: 0;
+    bottom: 0;
+    width: max-content;
+}
+
+.slides-home .slides-clones .slide {
+    width: 700px;
+    height: 450px;
+    margin: 0 auto;
+    top: 197px;
+    display: none;
+    position: absolute;
+    left: 0;
+    transition: all .8s;
+    right: 0;
+    background-color: orange;
+    z-index: 1;
+}
+
+.slides-home .slides-main {
+    position: relative;
+    width: 100%;
+    outline: #0d1f2c;
+}
+
+.slides-home .slides-main .flickity-viewport {
+    outline: #0d1f2c;
+    overflow-x: hidden;
+    max-width: calc(100vw - 104px);
+    white-space: nowrap;
+    height: max-content!important;
+}
+
+.slides-home .slides-main .flickity-viewport .flickity-slider {
+    padding-bottom: 20px;
+}
+
+.slides-main .flickity-button.flickity-prev-next-button.previous,
+.slides-main .flickity-button.flickity-prev-next-button.next {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    height: 380px;
+    width: 25px;
+    top: 72px;
+    border: none;
+    outline: transparent;
+}
+
+.slides-main .flickity-button.flickity-prev-next-button.previous {
+    left: -40px;
+}
+
+.slides-main .flickity-button.flickity-prev-next-button.next {
+    left: calc(100vw - 84px);
+}
+
+.slides-main .flickity-button.flickity-prev-next-button.previous:disabled,
+.slides-main .flickity-button.flickity-prev-next-button.next:disabled {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.flickity-page-dots {
+    max-width: calc(100vw - 100px);
+    width: 100%;
+    padding: 0;
+    margin: 15px 0;
+    display: none;
+}
+
+.flickity-page-dots .dot {
+    list-style: none;
+    color: #ffffff;
+    display: inline-flex;
+    flex-grow: 1;
+}
+
+.slides-home .slide:last-child {
+    margin-right: 0;
+}
+
+.slides-home .slide .slide-title {
+    font-weight: 800;
+    color: #ffffff;
+    position: relative;
+    font-size: 22px;
+    text-transform: capitalize;
+}
+
+.slides-home .slide .slide-content {
+    margin-top: 10px;
+    padding: 94px;
+    width: 700px;
+    height: 380px;
+    background-color: #0d1f2c;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, .7) 7px 7px 10px;
+}
+
+.slides-home .slide .slide-content.current {
+
+}
+
+.slides-home .slide .slide-content .slide-background-ico,
+.slides-home .slide .slide-content .slide-background-product {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.slides-home .slide .slide-content .slide-background-ico .slide-bg-img {
+    width: 80px;
+    height: 80px;
+    top: 16px;
+    position: absolute;
+    left: 86px;
+}
+
+.slides-home .slide .slide-content .slide-background-product .slide-bg-img {
+    height: 320px;
+    top: 30px;
+    position: absolute;
+    right: 15%;
+}
+
+.slides-home .slide .slide-content .slide-short-descr {
+    font-weight: 800;
+    color: #ffffff;
+    width: 350px;
+    font-size: 28px;
+    margin-top: 10px;
+    line-height: 34px;
+    transform-style: preserve-3d;
+    position: relative;
+    transition: all 0.5s .2s;
+    margin: 22px 0 16px 0;
+}
+
+.slides-home .slide .slide-content .slide-view-product {
+    color: #07101d;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 14px;
+    background: #59b7b3;
+    float: left;
+    padding: 12px 40px 14px 20px;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.slides-home .slide .slide-content .slide-view-product .slide-view-product-arrow {
+    width: 14px;
+    height: auto;
+    position: absolute;
+    right: 17px;
+    left: auto;
+    top: 14px;
+}
+
+.slides-navigation {
+    outline: transparent;
+}
+
+.slides-navigation .nav-slide-img {
+
+}
+
+.slides-navigation .flickity-prev-next-button {
+    display: none;
 }
 
 /* CLINICAL STUDIES */

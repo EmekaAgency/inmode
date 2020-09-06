@@ -1,8 +1,9 @@
 const _TYPES = ['PRODUCT', 'ADDON'];
 
 export const process_slide_datas = (products = [], from = "") => {
-    let retour = [], slides = {}, addons = {};
-    for(let i = 0; i < products.length; i++) {
+    console.log(`from ${from}`);
+    let retour = [], slides = {}, addons = {}, i, j;
+    for(i = 0; i < products.length; i++) {
         if(_TYPES[products[i].node.type] == 'PRODUCT') {
             slides[products[i].node.mysqlId] = products[i].node;
         }
@@ -10,9 +11,8 @@ export const process_slide_datas = (products = [], from = "") => {
             addons[products[i].node.mysqlId] = products[i].node;
         }
     }
-    let keys_slides = Object.keys(slides);
-    let keys_addons = Object.keys(addons);
-    for(let i = 0; i < keys_slides.length; i++) {
+    let keys_slides = Object.keys(slides).map((nb)=>{return parseInt(nb);});
+    for(i = 0; i < keys_slides.length; i++) {
         retour[i] = {
             'name': slides[keys_slides[i]].name,
             'short_descr': slides[keys_slides[i]].short_descr,
@@ -21,12 +21,24 @@ export const process_slide_datas = (products = [], from = "") => {
             'price': slides[keys_slides[i]].price
         }
     }
-    console.log(addons);
-    for(let i = 0; i < keys_addons.length; i++) {
-        let parents = addons[keys_addons[i]].parents.replace('[', '').replace(']', '').split(',');
-        
+    let keys_addons = Object.keys(addons).map((nb)=>{return parseInt(nb);});
+    for(i = 0; i < keys_addons.length; i++) {
+        let parents = addons[keys_addons[i]].parents.replace('[', '').replace(']', '').split(',').sort().map((nb)=>{return parseInt(nb);});
+        for(j = 0; j < parents.length; j++) {
+            if(retour[parents[j] - 1].under == undefined) {
+                retour[parents[j] - 1].under = []; 
+            }
+            retour[parents[j] - 1].under.push({
+                'name': addons[keys_addons[i]].name,
+                'short_descr': addons[keys_addons[i]].short_descr,
+                'descr': addons[keys_addons[i]].descr,
+                'img_path': addons[keys_addons[i]].img_path,
+                'price': addons[keys_addons[i]].price,
+                'parents': parents
+            });
+        }
     }
-    return false;
+    return retour;
 }
 
 // ALTER TABLE `product` ADD column `type` INT NOT NULL;
