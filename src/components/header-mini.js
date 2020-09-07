@@ -53,7 +53,7 @@ const HeaderMini = () => {
         <div id="header-mini" className="header-mini">
             <div className="menu-close transition" onClick={(e) => {closeMenu(e);}}>
                 <span>FERMER</span>
-                <div className="close-mini-menu-icon"></div>
+                <img className="close-mini-menu-icon" src={get_img_path('/icons/icons/close-white.webp')}/>
             </div>
             <div id="header-mini-bottom" className="header-bottom">
                 {menus_bottom.map((menu, key) => {

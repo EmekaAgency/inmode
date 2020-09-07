@@ -51,7 +51,7 @@ const Slides = ({from}) => {
     const view_product = (e, pos) => {
         e.preventDefault();
         
-        // setCurrent(pos);
+        setCurrent(pos);
     }
 
     const process_drag = (e) => {
@@ -62,12 +62,12 @@ const Slides = ({from}) => {
     
     const close_view = (e) => {
         e.preventDefault();
-        // if(
-        //     e.target.classList.contains('product-view') ||
-        //     e.target.classList.contains('close')
-        // ) {
-        //     setCurrent(-1);
-        // }
+        if(
+            e.target.classList.contains('product-view') ||
+            e.target.classList.contains('close')
+        ) {
+            setCurrent(-1);
+        }
     }
 
     return (
@@ -123,23 +123,11 @@ const Slides = ({from}) => {
                 onClick={(e) => {close_view(e);}}
             >
                 <ProductView datas={current > -1 ? slides[current] : null}>
-                    <div className="close">Close</div>
+                    <div className="close">
+                        <img src={get_img_path('/icons/icons/close-white.webp')} alt="close-product-view"/>
+                    </div>
                 </ProductView>
             </div>
-            {/* <Flickity
-                elementType={'div'} // default 'div'
-                options={navFlickityOptions} // takes flickity options {}
-                disableImagesLoaded={false} // default false
-                reloadOnUpdate // default false
-                static // default false
-                className="slides-navigation carousel js-flickity transition"
-            >
-                {slides.map((slide, key) => {
-                    return (
-                        <img key={key} className="nav-slide-img" src={get_img_path(slide.img_path)} alt={slide.name}/>
-                    );
-                })}
-            </Flickity> */}
         </div>
     );
 }
