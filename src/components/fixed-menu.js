@@ -9,7 +9,7 @@ class FixedMenu extends React.Component {
         super(props)
         this.state = {
             menus: process_menu_datas(props.datas, 'fixed-menu'),
-            visible: false
+            visible: window ? window.scroll > 200 ? true : false : false
         }
         this.handleScroll = this.handleScroll.bind(this);
     }
