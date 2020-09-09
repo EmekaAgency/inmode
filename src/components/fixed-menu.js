@@ -3,19 +3,22 @@ import { get_img_path } from "../functions/get_images";
 import Menu from "./menu";
 import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from "../functions/process_menu_datas";
+import { is_visible } from "../functions/is_visible";
 
 class FixedMenu extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             menus: process_menu_datas(props.datas, 'fixed-menu'),
-            visible: window ? window.scroll > 200 ? true : false : false
+            visible: false
         }
         this.handleScroll = this.handleScroll.bind(this);
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
+        this.setState({visible: is_visible()});
+
     }
 
     componentWillUnmount() {

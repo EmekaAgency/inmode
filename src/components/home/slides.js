@@ -62,9 +62,11 @@ const Slides = ({from}) => {
     
     const close_view = (e) => {
         e.preventDefault();
+        console.log(e.target);
         if(
             e.target.classList.contains('product-view') ||
-            e.target.classList.contains('close')
+            e.target.classList.contains('close') ||
+            e.target.classList.contains('close-product-view')
         ) {
             setCurrent(-1);
         }
@@ -124,7 +126,7 @@ const Slides = ({from}) => {
             >
                 <ProductView datas={current > -1 ? slides[current] : null}>
                     <div className="close">
-                        <img src={get_img_path('/icons/icons/close-white.webp')} alt="close-product-view"/>
+                        <img className="close-product-view" src={get_img_path('/icons/icons/close-white.webp')} alt="close-product-view"/>
                     </div>
                 </ProductView>
             </div>
