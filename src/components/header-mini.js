@@ -56,13 +56,13 @@ const HeaderMini = () => {
                 <img className="close-mini-menu-icon" src={get_img_path('/icons/icons/close-white.webp')}/>
             </div>
             <div id="header-mini-bottom" className="header-bottom">
-                {menus_bottom.map((menu, key) => {
+                {menus_bottom && menus_bottom.map((menu, key) => {
                     return (<Menu key={key} prop_key={key} menu={menu} openOnClick={true}/>);
                 })}
             </div>
             <div className="header-mini-divider"></div>
             <div id="header-mini-top" className="header-top">
-                {menus_top.map((menu, key) => {
+                {menus_top && menus_top.map((menu, key) => {
                     return (<Menu key={key} prop_key={key} menu={menu} openOnClick={true}/>);
                 })}
             </div>

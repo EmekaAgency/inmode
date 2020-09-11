@@ -10,9 +10,9 @@ export const create_react_element = (elem) => {
         typeof elem.children == "string" ?
             elem.children :
             typeof elem.children == "null" ?
-                null : elem.children.map((sub_elem, key)=>{
+                null : elem.children ? elem.children.map((sub_elem, key)=>{
                     sub_elem.props.key = key;
                     return create_react_element(sub_elem);
-                })
+                }) : null
     );
 };

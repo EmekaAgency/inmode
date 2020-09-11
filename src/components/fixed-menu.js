@@ -39,7 +39,7 @@ class FixedMenu extends React.Component {
                         <img src={get_img_path('/icons/header-logo.png')} alt="header-logo"/>
                     </div>
                     <div className="fixed-menus">
-                        {this.state.menus.map((menu, key) => {
+                        {this.state.menus && this.state.menus.map((menu, key) => {
                             return (
                                 <Menu key={key} prop_key={key} menu={menu} />
                             );

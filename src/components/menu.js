@@ -29,7 +29,7 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     else if(menu.variant == SINGLE && menu.type == IMAGE) {
         return (
             <div key={prop_key} className={menu.name}>
-                {menu.content.map((menu, key) => {
+                {menu.content && menu.content.map((menu, key) => {
                     return (<MenuSingleImage key={key} prop_key={key} menu={menu}/>);
                 })}
             </div>
@@ -38,6 +38,9 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     else if(menu.variant == SINGLE && menu.type == BUTTON) {
         return (<MenuSingleButton key={prop_key} prop_key={prop_key} menu={menu}/>);
     }
+    // else if(menu.variant == SINGLE && menu.type == CARD) {
+    //     return (<MenuSingleCard key={prop_key} prop_key={prop_key} menu={menu}/>);
+    // }
     else if(menu.variant == TITLE && menu.type == TEXT) {
         return (<MenuTitleText key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
     }
@@ -47,9 +50,33 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     else if(menu.variant == TITLE && menu.type == BUTTON) {
         return (<MenuTitleButton key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
     }
+    // else if(menu.variant == TITLE && menu.type == CARD) {
+    //     return (<MenuTitleCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    // else if(menu.variant == CONTENT && menu.type == TEXT) {
+    //     return (<MenuContentText key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    // else if(menu.variant == CONTENT && menu.type == IMAGE) {
+    //     return (<MenuContentImage key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    // else if(menu.variant == CONTENT && menu.type == BUTTON) {
+    //     return (<MenuContentButton key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    // else if(menu.variant == CONTENT && menu.type == CARD) {
+    //     return (<MenuContentCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
     else if(menu.variant == DK_TITLE && menu.type == TEXT) {
         return (<MenuDKTitleText key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
     }
+    // else if(menu.variant == DK_TITLE && menu.type == IMAGE) {
+    //     return (<MenuDKTitleImage key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    // else if(menu.variant == DK_TITLE && menu.type == BUTTON) {
+    //     return (<MenuDKTitleButton key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    // else if(menu.variant == DK_TITLE && menu.type == CARD) {
+    //     return (<MenuDKTitleCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
     else {
         return null;
     }

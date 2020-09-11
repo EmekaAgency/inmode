@@ -22,15 +22,15 @@ const ProductView = ({children, datas}) => {
                     BodyTite est un dispositif mini-invasif pour le remodelage corporel, offrant des résultats auparavant uniquement obtenus par des procédures d'excision. BodyTite est alimenté par RF directionnel, ce qui entraîne un remodelage tissulaire en trois dimensions grâce à la coagulation des graisses et au chauffage volumétrique. La coagulation des graisses à l'aide de la chaleur induite par RF entraîne une lipolyse assistée par radiofréquence (RFAL).
                 </div>
                 <div className="addons-view-cards">
-                    {datas.under.map((card, key) => {
+                    {datas.under && datas.under.map((card, key) => {
                         return (
                             <div key={key} className="addon transition">
-                                <img className="addon-title" src={get_img_path(`/icons/products/addons/title-0${key + 1}.png`)}/>
-                                <div className="primary transition">
+                                <div className="addon-general transition">
+                                    <img className="addon-title" src={get_img_path(`/icons/products/addons/title-0${key + 1}.png`)}/>
                                     <a className="addon-description">{(Math.random() * 2) == 0 ? 'Minimally invasive Body & Face contouring for small areas' : 'Minimally invasice Body contouring '}</a>
                                     <img className="addon-picture" src={get_img_path(`/icons/products/addons/product-0${key + 1}.png`)}/>
                                 </div>
-                                <div className="secondary">
+                                <div className="addon-details transition">
                                     <p className="description">
                                         {card.descr}
                                         {'Quis enim eiusmod in tempor Lorem proident sunt reprehenderit culpa laboris pariatur id exercitation duis. Ad non culpa nulla voluptate velit qui nisi elit adipisicing officia sit. Eiusmod proident fugiat elit excepteur eu ex excepteur amet anim labore ad veniam nisi minim.'}
@@ -42,6 +42,7 @@ const ProductView = ({children, datas}) => {
                                         <div className="add-to-cart">Ajouter</div>
                                     </div>
                                 </div>
+                                <img src={get_img_path('/icons/icons/add.svg')} className="show-more"/>
                             </div>
                         );
                     })}

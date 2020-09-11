@@ -28,9 +28,11 @@ const HeaderBottom = () => {
 
     const menus = process_menu_datas(datas, 'header-bottom');
 
+    console.log(menus);
+
     return (
         <div id="header-bottom" className="header-bottom">
-            {menus.map((menu, key) => {
+            {menus && menus.map((menu, key) => {
                 return (<Menu key={key} prop_key={key} menu={menu}/>);
             })}
         </div>

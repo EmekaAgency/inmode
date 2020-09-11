@@ -1,11 +1,14 @@
 // TODO Améliorer méthode
 // TODO Ajouter une default picture selon le type d'image demandée
 // TODO Ajouter unr résolution dynamique des path
+
+import { format_string } from "./format_string";
+
 // TODO Refaire en Gatsby pour le rendu non client
 export const get_img_path = (path = "") => {
     var source_path = typeof window !== 'undefined' ? window.location.origin : '';
     if(typeof path == "string"){
-        return source_path + path;
+        return source_path + format_string(path, true, false);
     }
     return "";
 };

@@ -41,7 +41,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
             </Link>
             <ul className="dk-dropdown-menu">
                 <div className="dk-sub-container">
-                    {menu.under.map((content, key) => {
+                    {menu.under && menu.under.map((content, key) => {
                         return (
                             <a key={key} className="dk-item" href={content.url || '#'}>
                                 <img className="dk-picture transition" src={get_img_path(`/icons/products/${content.name}.png`)} alt={content.name}/>

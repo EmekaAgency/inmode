@@ -7,6 +7,8 @@ export const process_menu_datas = (datas = [], from = "") => {
         temp[datas[i].node.mysqlId] = datas[i].node;
     }
     let keys = Object.keys(temp);
+    from == 'header-bottom' && console.log(keys);
+    from == 'header-bottom' && console.log(temp);
     var single_image_pos = -1;
     for(let i = 0; i < keys.length; i++) {
         if(from == 'footer') { // FOOTER
@@ -98,4 +100,9 @@ export const process_menu_datas = (datas = [], from = "") => {
         }
     }
     return retour;
+    return from == 'footer' ? {} : []
+}
+
+function add_deep() {
+
 }

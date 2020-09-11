@@ -83,7 +83,7 @@ const Slides = ({from}) => {
                 static // default false
                 className="slides-main transition"
             >
-                {slides.map((slide, key) => {
+                {slides && slides.map((slide, key) => {
                     return (
                         <div
                             key={key}

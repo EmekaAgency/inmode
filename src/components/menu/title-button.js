@@ -39,7 +39,7 @@ const MenuTitleButton = ({menu, prop_key, openOnClick}) => {
                 {menu.name}
             </Link>
             <ul className="dropdown-menu">
-                {menu.under.map((content, key) => {
+                {menu.under && menu.under.map((content, key) => {
                     return (
                         <li key={key}>
                             <MenuContent content={content}/>

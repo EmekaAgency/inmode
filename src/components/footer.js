@@ -44,7 +44,7 @@ const Footer = () => {
                     <div className="footer-infos logo">
                         <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')} alt="footer-logo"/>
                     </div>
-                    {menus.infos.map((menu, key) => {
+                    {menus.infos && menus.infos.map((menu, key) => {
                         return (
                             <div key={key} className={`footer-infos ${menu.type.replace('footer-', '')}`}>
                                 <img
@@ -58,7 +58,7 @@ const Footer = () => {
                     })}
                 </div>
                 <div className="footer-social-part">
-                    {menus['footer-social'].map((menu, key) => {
+                    {menus['footer-social'] && menus['footer-social'].map((menu, key) => {
                         return (
                             <div key={key} className="footer-social-ico background-image" style={{backgroundImage: 'url('+get_img_path(`/icons/icons/icomoon/${isSvg ? 'svg' : 'png'}/social-${menu.name}.${isSvg ? 'svg' : 'png'}`)+')'}}>
                                 <a className="zone-link" href={menu.url || '#'}></a>
@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="footer-bottom-navigation">
                     <div className="footer-trademark">© 2020 INMODE</div>
                     <div className="footer-navigation">
-                        {menus['footer-navigation'].map((menu, key) => {
+                        {menus['footer-navigation'] && menus['footer-navigation'].map((menu, key) => {
                             return (
                                 <span key={key}>
                                     <span className="footer-navigation-separator"></span>

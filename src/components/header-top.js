@@ -47,7 +47,7 @@ const HeaderTop = () => {
 
     return (
         <div id="header-top" className="header-top">
-            {menus.map((menu, key) => {
+            {menus && menus.map((menu, key) => {
                 return (<Menu key={key} prop_key={key} menu={menu}/>);
             })}
         </div>
