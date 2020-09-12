@@ -6,6 +6,7 @@ export const process_menu_datas = (datas = [], from = "") => {
     for(let i = 0; i < datas.length; i++) {
         temp[datas[i].node.mysqlId] = datas[i].node;
     }
+    from == 'header-bottom' && create_json(temp, 0);
     let keys = Object.keys(temp);
     from == 'header-bottom' && console.log(keys);
     from == 'header-bottom' && console.log(temp);
@@ -100,9 +101,45 @@ export const process_menu_datas = (datas = [], from = "") => {
         }
     }
     return retour;
-    return from == 'footer' ? {} : []
 }
 
-function add_deep() {
+function create_json(datas, under = 0) {
+    let temp = {}, keys = Object.keys(datas), main = {};
+    while(keys.length) {
+        if(datas[keys[0]].under == 0) {
+            main[datas[keys[0]].mysqlId] = datas[keys[0]];
+        }
+        else {
+            if(temp[datas[keys[0]].under] == undefined) {
+                temp[datas[keys[0]].under] = {};
+            }
+            temp[datas[keys[0]].under][datas[keys[0]].mysqlId] = datas[keys[0]];
+        }
+        keys.shift();
+    }
+    console.log(main);
+    console.log(temp);
+    keys = Object.keys(main);
+    for(let i = 0; i < keys.length; i++) {
+        recursive_add(main[keys[i]], keys[i], temp);
+        console.log(main);
+    }
+    console.log(main);
+    return main;
+}
 
+function recursive_add(main, key, temp) {
+    // console.log("\n //////////////////////////////////// \n");
+    // console.log("main : ");console.log(main);
+    // console.log(`key : ${key}`);
+    // console.log('temp : ');console.log(temp);
+    if(temp[key]) {
+        main.under = temp[key]
+        delete temp[key];
+        let keys = Object.keys(main.under);
+        for(let i = 0; i < keys.length; i++) {
+            recursive_add(main.under[keys[i]], keys[i], temp);
+        }
+    }
+    return false;
 }

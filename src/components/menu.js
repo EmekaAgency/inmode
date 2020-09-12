@@ -8,6 +8,7 @@ import MenuTitleText from './menu/title-text';
 import MenuDKTitleText from './menu/dk-title-text';
 import MenuTitleImage from './menu/title-image';
 import MenuTitleButton from './menu/title-button';
+import { format_string } from '../functions/format_string';
 
 // VARIANT
 const SINGLE = 1;
@@ -28,7 +29,7 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     }
     else if(menu.variant == SINGLE && menu.type == IMAGE) {
         return (
-            <div key={prop_key} className={menu.name}>
+            <div key={prop_key} className={format_string(menu.name)}>
                 {menu.content && menu.content.map((menu, key) => {
                     return (<MenuSingleImage key={key} prop_key={key} menu={menu}/>);
                 })}

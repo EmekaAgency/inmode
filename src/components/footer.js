@@ -5,6 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
 import Image from './image';
+import { format_string } from '../functions/format_string';
 
 const Footer = () => {
 
@@ -52,7 +53,7 @@ const Footer = () => {
                                     src={get_img_path(`/icons/icons/icomoon/${isSvg? 'svg' : 'png'}/${icos[menu.type.replace('footer-', '')]}.${isSvg ? 'svg' : 'png'}`)}
                                     alt={menu.type.replace('footer-', '')}
                                 />
-                                <div className="footer-infos-text">{menu.name}</div>
+                                <div className="footer-infos-text">{format_string(menu.name)}</div>
                             </div>
                         )
                     })}
@@ -74,7 +75,7 @@ const Footer = () => {
                                 <span key={key}>
                                     <span className="footer-navigation-separator"></span>
                                     <a href={menu.url || '#'} className="footer-navigation-part">
-                                        {menu.name}
+                                        {format_string(menu.name)}
                                     </a>
                                 </span>
                             );

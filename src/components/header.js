@@ -9,7 +9,7 @@ import { get_img_path } from "../functions/get_images";
 const Header = ({ siteTitle }) => {
 
   const openMenu = (e) => {
-    console.log("openMenu()");
+    // console.log("openMenu()");
     e.preventDefault();
     document.getElementById('header-mini').classList.add('opened');
   }

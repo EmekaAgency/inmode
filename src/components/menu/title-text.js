@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Link } from "gatsby";
 import MenuContent from '../menu-content';
 import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_opened';
+import { format_string } from '../../functions/format_string';
 
 // VARIANT
 const SINGLE = 1;
@@ -36,7 +37,7 @@ const MenuTitleText = ({menu, prop_key, openOnClick}) => {
                 to={menu.url || "#"}
                 onClick={(e) => {resolveOnClick(e);}}
             >
-                {menu.name}
+                {format_string(menu.name)}
             </Link>
             <ul className="dropdown-menu">
                 {menu.under && menu.under.map((content, key) => {

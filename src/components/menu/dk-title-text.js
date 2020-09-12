@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import MenuContent from '../menu-content';
 import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_opened';
 import { get_img_path } from '../../functions/get_images';
+import { format_string } from '../../functions/format_string';
 
 // VARIANT
 const SINGLE = 1;
@@ -37,15 +38,15 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                 to={menu.url || "#"}
                 onClick={(e) => {resolveOnClick(e);}}
             >
-                {menu.name}
+                {format_string(menu.name)}
             </Link>
             <ul className="dk-dropdown-menu">
                 <div className="dk-sub-container">
                     {menu.under && menu.under.map((content, key) => {
                         return (
                             <a key={key} className="dk-item" href={content.url || '#'}>
-                                <img className="dk-picture transition" src={get_img_path(`/icons/products/${content.name}.png`)} alt={content.name}/>
-                                <div className="dk-title">{content.name}</div>
+                                <img className="dk-picture transition" src={get_img_path(`/icons/products/${content.name}.png`)} alt={format_string(content.name)}/>
+                                <div className="dk-title">{format_string(content.name)}</div>
                             </a>
                         );
                     })}

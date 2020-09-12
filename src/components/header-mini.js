@@ -41,7 +41,7 @@ const HeaderMini = () => {
     `);
 
     const closeMenu = (e) => {
-        console.log("closeMenu()");
+        // console.log("closeMenu()");
         e.preventDefault();
         document.getElementById('header-mini').classList.remove('opened');
     }

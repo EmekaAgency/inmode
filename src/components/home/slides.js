@@ -4,6 +4,7 @@ import { process_slide_datas } from "../../functions/process_slide_datas";
 import { get_img_path } from '../../functions/get_images';
 import Flickity from "react-flickity-component";
 import ProductView from "./product-view";
+import { format_string } from "../../functions/format_string";
 
 const Slides = ({from}) => {
 
@@ -56,13 +57,13 @@ const Slides = ({from}) => {
 
     const process_drag = (e) => {
         e.preventDefault();
-        console.log(e);
+        // console.log(e);
     }
 
     
     const close_view = (e) => {
         e.preventDefault();
-        console.log(e.target);
+        // console.log(e.target);
         if(
             e.target.classList.contains('product-view') ||
             e.target.classList.contains('close') ||
@@ -94,11 +95,11 @@ const Slides = ({from}) => {
                             <div className="slide-title">
                                 {`.${(key + 1) < 10 ? '0' + (key + 1) : (key + 1)}`}
                                 <br/>
-                                {slide.name}
+                                {format_string(slide.name)}
                             </div>
                             <div className="slide-content">
                                 <div className="slide-background-ico">
-                                    <img className="slide-bg-img" src={get_img_path(slide.img_path)} alt={slide.name}/>
+                                    <img className="slide-bg-img" src={get_img_path(slide.img_path)} alt={format_string(slide.name)}/>
                                 </div>
                                 <div className="slide-background-product">
                                     {/* <img className="slide-bg-img" src={get_img_path('/icons/products/votiva-right.png')} alt='product'/> */}
