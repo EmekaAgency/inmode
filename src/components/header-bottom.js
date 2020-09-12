@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
 
-const HeaderBottom = () => {
+const HeaderBottom = ({ process = false, process_function = {} }) => {
 
     const datas = useStaticQuery(graphql`
         {
@@ -25,10 +25,8 @@ const HeaderBottom = () => {
             }
         }
     `).allMysqlHeaderBottom.edges;
-
-    const menus = process_menu_datas(datas, 'header-bottom');
-
-    console.log(menus);
+    
+    const menus = process && process_function ? process_function(process_menu_datas(datas, 'header-bottom')) : process_menu_datas(datas, 'header-bottom');
 
     return (
         <div id="header-bottom" className="header-bottom">

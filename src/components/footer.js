@@ -7,7 +7,7 @@ import Menu from './menu';
 import Image from './image';
 import { format_string } from '../functions/format_string';
 
-const Footer = () => {
+const Footer = ({process = false, process_functions = {}}) => {
 
     const datas = useStaticQuery(graphql`
         {
@@ -28,7 +28,7 @@ const Footer = () => {
         }
     `).allMysqlFooter.edges;
 
-    const menus = process_menu_datas(datas, 'footer');
+    const menus = process.footer && process_functions ? process_functions.footer(process_menu_datas(datas, 'footer')) : process_menu_datas(datas, 'footer');
 
     const icos = {
         'location': '073-location2',

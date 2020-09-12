@@ -6,7 +6,7 @@ import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
 import { require_menu } from '../functions/require_data';
 
-const HeaderTop = () => {
+const HeaderTop = ({ process = false, process_function = null }) => {
 
     const datas = useStaticQuery(graphql`
         {
@@ -43,7 +43,8 @@ const HeaderTop = () => {
     //     })
     // }, [])
 
-    const menus = process_menu_datas(datas, 'header-top');
+    
+    const menus = process && process_function ? process_function(process_menu_datas(datas, 'header-top')) : process_menu_datas(datas, 'header-top');
 
     return (
         <div id="header-top" className="header-top">

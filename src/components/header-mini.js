@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
 
-const HeaderMini = () => {
+const HeaderMini = ({ process = false, process_functions = {} }) => {
 
     const datas = useStaticQuery(graphql`
         {
@@ -46,8 +46,8 @@ const HeaderMini = () => {
         document.getElementById('header-mini').classList.remove('opened');
     }
 
-    const menus_top = process_menu_datas(datas.allMysqlHeaderTop.edges, 'mini-header-top');
-    const menus_bottom = process_menu_datas(datas.allMysqlHeaderBottom.edges, 'mini-header-bottom');
+    const menus_top = process['header-top'] && process_functions['header-top'] ? process_functions['header-top'](process_menu_datas(datas.allMysqlHeaderTop.edges, 'mini-header-top')) : process_menu_datas(datas.allMysqlHeaderTop.edges, 'mini-header-top');
+    const menus_bottom = process['header-bottom'] && process_functions['header-bottom'] ? process_functions['header-bottom'](process_menu_datas(datas.allMysqlHeaderBottom.edges, 'mini-header-bottom')) : process_menu_datas(datas.allMysqlHeaderBottom.edges, 'mini-header-bottom');
 
     return (
         <div id="header-mini" className="header-mini">

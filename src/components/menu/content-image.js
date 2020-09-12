@@ -1,23 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from "gatsby";
-import MenuContent from '../menu-content';
-import { get_img_path } from '../../functions/get_images';
 import { format_string } from '../../functions/format_string';
+import PropTypes from 'prop-types';
 
-const ContentImage = ({content}) => {
+const MenuContentImage = ({menu, prop_key}) => {
 
     return (
-        <Link className="menu-content menu-image" to={content.url || "#"}>
-            {format_string(content.name)}
+        <Link key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
+            {format_string(menu.name)}
         </Link>
     );
 }
 
-ContentImage.propTypes = {
+MenuContentImage.propTypes = {
+    menu: PropTypes.object.isRequired,
+    prop_key: PropTypes.number.isRequired
 }
 
-ContentImage.defaultProps = {
+MenuContentImage.defaultProps = {
+    menu: {},
+    prop_key: null
 }
   
-export default ContentImage;
+export default MenuContentImage;

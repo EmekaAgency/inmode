@@ -1,21 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
+import PropTypes from 'prop-types';
 
-const ContentText = ({content}) => {
+const MenuContentText = ({menu, prop_key}) => {
 
     return (
-        <Link className="menu-content menu-text" to={content.url || "#"}>
-            {format_string(content.name)}
+        <Link key={prop_key} className="menu-content menu-text" to={menu.url || "#"}>
+            {format_string(menu.name)}
         </Link>
     );
 }
 
-ContentText.propTypes = {
+MenuContentText.propTypes = {
+    menu: PropTypes.object.isRequired,
+    prop_key: PropTypes.number.isRequired
 }
 
-ContentText.defaultProps = {
+MenuContentText.defaultProps = {
+    menu: {},
+    prop_key: null
 }
   
-export default ContentText;
+export default MenuContentText;

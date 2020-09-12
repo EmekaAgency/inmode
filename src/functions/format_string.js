@@ -6,11 +6,11 @@ export const format_string = function (str, has_to_be_lower = false, italic = fa
     let retour = undefined;
     if(has_to_be_lower && italic) {
         retour = [].push(a.toLowerCase());
-        if(b){retour.push(b.toLowerCase());}
+        if(b){retour.push(b.replace('#', '').toLowerCase());}
     }
     else if (has_to_be_lower) {
         retour = a.toLowerCase();
-        if(b){retour = retour + b.toLowerCase();}
+        if(b){retour = retour + b.replace('#', '').toLowerCase();}
     }
     else if (italic) {
         retour = new Array(capitalize(a));

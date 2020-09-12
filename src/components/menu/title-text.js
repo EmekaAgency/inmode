@@ -1,19 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from "gatsby";
 import MenuContent from '../menu-content';
 import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_opened';
 import { format_string } from '../../functions/format_string';
-
-// VARIANT
-const SINGLE = 1;
-const TITLE = 2;
-const CONTENT = 3;
-
-// TYPE
-const TEXT = 1;
-const IMAGE = 2;
-const BUTTON = 3;
+import PropTypes from 'prop-types';
+import Menu from '../menu';
 
 const MenuTitleText = ({menu, prop_key, openOnClick}) => {
 
@@ -42,9 +33,7 @@ const MenuTitleText = ({menu, prop_key, openOnClick}) => {
             <ul className="dropdown-menu">
                 {menu.under && menu.under.map((content, key) => {
                     return (
-                        <li key={key}>
-                            <MenuContent content={content}/>
-                        </li>
+                        <Menu key={key} prop_key={key} menu={content}/>
                     );
                 })}
             </ul>
@@ -53,9 +42,15 @@ const MenuTitleText = ({menu, prop_key, openOnClick}) => {
 }
 
 MenuTitleText.propTypes = {
+    menu: PropTypes.object.isRequired,
+    prop_key: PropTypes.number.isRequired,
+    openOnClick: PropTypes.bool.isRequired
 }
 
 MenuTitleText.defaultProps = {
+    menu: {},
+    prop_key: null,
+    openOnClick: false
 }
   
 export default MenuTitleText;

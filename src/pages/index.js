@@ -10,6 +10,8 @@ import FollowInstagram from "../components/home/follow-instagram"
 import GetStarted from "../components/home/get-started"
 import Slides from "../components/home/slides"
 import FixedMenu from "../components/fixed-menu"
+import { footer_process } from "../functions/footer_process"
+import { header_process } from "../functions/header_process"
 
 const IndexPage = () => {
   const datas = useStaticQuery(graphql`
@@ -32,7 +34,12 @@ const IndexPage = () => {
   `).allMysqlHeaderBottom.edges;
 
   return (
-    <Layout>
+    <Layout
+      process_header={{'header-top': true, 'header-bottom': true}}
+      header_process_functions={{'header-top': header_process, 'header-bottom': header_process}}
+      process_footer={{'footer': true}}
+      footer_process_functions={{'footer': footer_process}}
+    >
       <FixedMenu datas={datas}/>
       <SEO title="Home"/>
       {/* <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css"></link> */}
