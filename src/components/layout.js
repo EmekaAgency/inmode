@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import Footer from "./footer"
+import ContactUs from "./contact-us"
 
 const Layout = ({
   children,
@@ -37,7 +38,10 @@ const Layout = ({
         process_functions={header_process_functions}
         siteTitle={data.site.siteMetadata.title}
       />
-      <main>{children}</main>
+      <main>
+        {children}
+        <ContactUs/>
+      </main>
       <Footer
         process={process_footer}
         process_functions={footer_process_functions}

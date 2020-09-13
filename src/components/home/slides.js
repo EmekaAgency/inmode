@@ -122,7 +122,7 @@ const Slides = ({from}) => {
                 })}
             </Flickity>
             <div
-                className={"product-view transition" + (current > -1 ? " show" : '')}
+                className={"product-view" + (current > -1 ? " show" : '')}
                 onClick={(e) => {close_view(e);}}
             >
                 <ProductView datas={current > -1 ? slides[current] : null}>

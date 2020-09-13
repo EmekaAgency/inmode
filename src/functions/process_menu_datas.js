@@ -53,7 +53,6 @@ export const process_menu_datas = (datas = [], from = "") => {
     for(let i = 0; i < datas.length; i++) {
         temp[datas[i].node.mysqlId] = datas[i].node;
     }
-    
     return create_json(temp, 0);
 
     // from == 'header-bottom' && create_json(temp, 0);

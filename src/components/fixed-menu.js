@@ -9,7 +9,8 @@ class FixedMenu extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            menus: process_menu_datas(props.datas, 'fixed-menu'),
+            // menus: process_menu_datas(props.datas, 'fixed-menu'),
+            menus: [],
             visible: false
         }
         this.handleScroll = this.handleScroll.bind(this);
@@ -17,8 +18,10 @@ class FixedMenu extends React.Component {
 
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
-        this.setState({visible: is_visible()});
-
+        this.setState({
+            visible: is_visible(),
+            menus: this.props.process && this.props.process_function ? this.props.process_function(process_menu_datas(this.props.datas, 'fixed-menu')) : process_menu_datas(this.props.datas, 'fixed-menu')
+        });
     }
 
     componentWillUnmount() {
@@ -26,12 +29,12 @@ class FixedMenu extends React.Component {
     }
 
     handleScroll = ev => {
-        this.setState({
-            visible: window.scrollY > 200
-        });
+        window.scrollY > 200 && !this.state.visible && this.setState({visible: true});
+        window.scrollY <= 200 && this.state.visible && this.setState({visible: false});
     };
 
     render () {
+        console.log(this.state.menus);
         return (
             <div id="fixed-menu" className="transition" style={{top: this.state.visible ? 0 : -50, boxShadow: this.state.visible ? null : 'unset'}}>
                 <div className="fixed-menu-container">
@@ -52,7 +55,7 @@ class FixedMenu extends React.Component {
 }
 
 FixedMenu.propTypes = {
-
+    
 };
 
 FixedMenu.defaultProps = {

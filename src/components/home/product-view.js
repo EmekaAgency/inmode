@@ -22,7 +22,7 @@ const ProductView = ({children, datas}) => {
                 <div className="product-view-descr">
                     BodyTite est un dispositif mini-invasif pour le remodelage corporel, offrant des résultats auparavant uniquement obtenus par des procédures d'excision. BodyTite est alimenté par RF directionnel, ce qui entraîne un remodelage tissulaire en trois dimensions grâce à la coagulation des graisses et au chauffage volumétrique. La coagulation des graisses à l'aide de la chaleur induite par RF entraîne une lipolyse assistée par radiofréquence (RFAL).
                 </div>
-                <div className="addons-view-cards">
+                <div className="addons-view-cards transition">
                     {datas.under && datas.under.map((card, key) => {
                         return (
                             <div key={key} className="addon transition">
@@ -40,7 +40,7 @@ const ProductView = ({children, datas}) => {
                                     </p>
                                     <div className="purchase-infos">
                                         <div className={`price ${currency}`}>{card.price}</div>
-                                        <div className="add-to-cart">Ajouter</div>
+                                        <div className="add-to-cart"><button>Ajouter</button></div>
                                     </div>
                                 </div>
                                 <img src={get_img_path('/icons/icons/add.svg')} className="show-more"/>
