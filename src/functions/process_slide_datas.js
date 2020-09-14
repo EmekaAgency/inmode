@@ -1,7 +1,6 @@
 const _TYPES = ['PRODUCT', 'ADDON'];
 
 export const process_slide_datas = (products = [], from = "") => {
-    console.log(`from ${from}`);
     let retour = [], slides = {}, addons = {}, i, j;
     for(i = 0; i < products.length; i++) {
         if(_TYPES[products[i].node.type] == 'PRODUCT') {

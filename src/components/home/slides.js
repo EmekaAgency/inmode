@@ -28,6 +28,7 @@ const Slides = ({from}) => {
     `);
 
     const [current, setCurrent] = React.useState(-1);
+    const [clicked, setClicked] = React.useState(false);
 
     const auto_play_speed = 1000;
 
@@ -57,7 +58,9 @@ const Slides = ({from}) => {
 
     const process_drag = (e) => {
         e.preventDefault();
-        // console.log(e);
+        // console.log(clicked);
+        // e.movementX < 0 && console.log('gauche');
+        // e.movementX > 0 && console.log('droite');
     }
 
     
@@ -89,8 +92,9 @@ const Slides = ({from}) => {
                         <div
                             key={key}
                             className={"slide transition gallery-cell" + (current == key ? ' show' : '')}
-                            onDrag={(e) => {process_drag(e);}}
-                            onScroll={(e) => {console.log("scroll");e.preventDefault();}}
+                            onMouseUp={(e) => {setClicked(false);}}
+                            onMouseDown={(e) => {setClicked(true);}}
+                            onMouseMove={(e) => {process_drag(e);}}
                         >
                             <div className="slide-title">
                                 {`.${(key + 1) < 10 ? '0' + (key + 1) : (key + 1)}`}

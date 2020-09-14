@@ -2,11 +2,16 @@ const _TYPES = ['TEXT', 'IMAGE', 'BUTTON', 'CARD'];
 const _VARIANTS = ['SINGLE', 'TITLE', 'CONTENT', 'DK-TITLE'];
 
 export const header_process = (datas) => {
+    console.log(datas);
     let retour = new Array();
     let single_image_pos = -1;
+    let temp = {};
+    for(let i = 0; i < datas.length; i++) {
+        temp[datas[i].mysqlId] = datas[i];
+    }
     datas.map((data, i) => {
         if ( // MENUS AND SINGLE
-            data.under == 0 ||
+            data.temp_under == 0 ||
             (
                 _TYPES[data.type - 1] == 'IMAGE' &&
                 _VARIANTS[data.variant - 1] == 'SINGLE'
@@ -16,7 +21,7 @@ export const header_process = (datas) => {
                 _TYPES[data.type - 1] == 'IMAGE' &&
                 _VARIANTS[data.variant - 1] == 'SINGLE'
             ) { // GROUP ICONS IN 'single-image-inline'
-                single_image_pos = single_image_pos != -1 ? single_image_pos : data.under - 1;
+                single_image_pos = single_image_pos != -1 ? single_image_pos : data.temp_under - 1;
                 if (retour[single_image_pos] == undefined) {
                     retour[single_image_pos] = {
                         'type': data.type,
@@ -50,13 +55,16 @@ export const header_process = (datas) => {
                 }
             }
         } else { // CONTENT
-            if (retour[datas[data.under].position - 1] == undefined) {
-                retour[datas[data.under].position - 1] = new Object();
+            console.log(data);
+            console.log(data.temp_under);
+            console.log(temp);
+            if (retour[temp[data.temp_under].position - 1] == undefined) {
+                retour[temp[data.temp_under].position - 1] = new Object();
             }
-            if (retour[datas[data.under].position - 1].under == undefined) {
-                retour[datas[data.under].position - 1].under = new Array();
+            if (retour[temp[data.temp_under].position - 1].under == undefined) {
+                retour[temp[data.temp_under].position - 1].under = new Array();
             }
-            retour[datas[data.under].position - 1].under[data.position - 1] = {
+            retour[temp[data.temp_under].position - 1].under[data.position - 1] = {
                 'name': data.name,
                 'url': data.url,
                 'type': data.type,

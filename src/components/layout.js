@@ -13,6 +13,7 @@ import Header from "./header"
 import "./layout.css"
 import Footer from "./footer"
 import ContactUs from "./contact-us"
+import PrivacyPolicy from "./privacy-policy"
 
 const Layout = ({
   children,
@@ -40,6 +41,7 @@ const Layout = ({
       />
       <main>
         {children}
+        <PrivacyPolicy />
         <ContactUs/>
       </main>
       <Footer

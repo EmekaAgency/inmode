@@ -9,8 +9,8 @@ class FixedMenu extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // menus: process_menu_datas(props.datas, 'fixed-menu'),
-            menus: [],
+            menus: props.process && props.process_function && false ? props.process_function(process_menu_datas(props.datas)) : process_menu_datas(props.datas),
+            // menus: process_menu_datas(props.datas),
             visible: false
         }
         this.handleScroll = this.handleScroll.bind(this);
@@ -19,8 +19,7 @@ class FixedMenu extends React.Component {
     componentDidMount() {
         window.addEventListener('scroll', this.handleScroll);
         this.setState({
-            visible: is_visible(),
-            menus: this.props.process && this.props.process_function ? this.props.process_function(process_menu_datas(this.props.datas, 'fixed-menu')) : process_menu_datas(this.props.datas, 'fixed-menu')
+            visible: is_visible()
         });
     }
 
@@ -34,7 +33,6 @@ class FixedMenu extends React.Component {
     };
 
     render () {
-        console.log(this.state.menus);
         return (
             <div id="fixed-menu" className="transition" style={{top: this.state.visible ? 0 : -50, boxShadow: this.state.visible ? null : 'unset'}}>
                 <div className="fixed-menu-container">

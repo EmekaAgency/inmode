@@ -12,6 +12,7 @@ import Slides from "../components/home/slides"
 import FixedMenu from "../components/fixed-menu"
 import { footer_process } from "../functions/footer_process"
 import { header_process } from "../functions/header_process"
+import Alveoles from "../components/home/alveoles"
 
 const IndexPage = () => {
   const datas = useStaticQuery(graphql`
@@ -42,13 +43,14 @@ const IndexPage = () => {
     >
       <FixedMenu
         datas={datas}
-        // process_fixed_menu={true}
-        // fixed_menu_process_function={header_process}
+        process={true}
+        process_function={header_process}
       />
       <SEO title="Home"/>
       {/* <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css"></link> */}
       {/* <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script> */}
       <Slides from='home'/>
+      <Alveoles />
       <ClinicalStudies/>
       <FollowInstagram/>
       <GetStarted/>

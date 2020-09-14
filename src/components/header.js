@@ -23,12 +23,12 @@ const Header = ({ siteTitle, process_header = false, process_functions = {} }) =
         </div>
         <div className="header-parts">
           <HeaderTop
-            process={process['header-']}
-            process_function={process_functions['header-']}
+            process={process['header-top']}
+            process_function={process_functions['header-top']}
           />
           <HeaderBottom
-            process={process['header-']}
-            process_function={process_functions['header-']}
+            process={process['header-bottom']}
+            process_function={process_functions['header-bottom']}
           />
           <HeaderMini
             process={process}

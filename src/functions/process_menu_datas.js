@@ -1,29 +1,33 @@
-function create_json(datas, under = 0) {
+function create_json(datas, under = 0, from = "") {
     let temp = {}, keys = Object.keys(datas), main = {}, retour = new Array();
     while(keys.length) {
-        if(datas[keys[0]].under == 0 || datas[keys[0]].temp_under == 0) {
-            main[datas[keys[0]].mysqlId] = datas[keys[0]];
-        }
-        else {
-            if(temp[datas[keys[0]].under] == undefined) {
-                temp[datas[keys[0]].under] = {};
+        let under = typeof datas[keys[0]].under == "number" ? datas[keys[0]].under : typeof datas[keys[0]].temp_under == 'number' ? datas[keys[0]].temp_under : -1;
+        // let under = datas[keys[0]].under;
+        if(under == 0) {
+            main[datas[keys[0]].mysqlId] = datas[keys[0]];        }
+        else if(under >= 0) {
+            if(temp[under] == undefined) {
+                temp[under] = {};
             }
-            temp[datas[keys[0]].under][datas[keys[0]].mysqlId] = datas[keys[0]];
+            temp[under][datas[keys[0]].mysqlId] = datas[keys[0]];
         }
+        delete datas[keys[0]];
         keys.shift();
     }
     keys = Object.keys(main);
     for(let i = 0; i < keys.length; i++) {
-        recursive_add(main[keys[i]], keys[i], temp);
+        recursive_add(main[keys[i]], keys[i], temp, from);
         to_arrays(main[keys[i]])
         retour.push(main[keys[i]]);
     }
     return retour;
 }
 
-function recursive_add(main, key, temp) {
+function recursive_add(main, key, temp, from = "") {
     if(temp[key]) {
-        main.temp_under = temp[key]
+        main.temp_under = temp[key];
+        main.under = main.under;
+        // main.under = temp[key].under;
         delete temp[key];
         let keys = Object.keys(main.temp_under);
         for(let i = 0; i < keys.length; i++) {
@@ -35,7 +39,7 @@ function recursive_add(main, key, temp) {
 }
 
 function to_arrays(main) {
-    if(main.temp_under) {
+    if (main.temp_under) {
         let save = main.under;
         main.under = new Array();
         for(let i = 0; i < Object.keys(main.temp_under).length; i++) {
@@ -53,7 +57,14 @@ export const process_menu_datas = (datas = [], from = "") => {
     for(let i = 0; i < datas.length; i++) {
         temp[datas[i].node.mysqlId] = datas[i].node;
     }
-    return create_json(temp, 0);
+
+    // if(from != "") {
+    //     console.log(`from ${from}`)
+    //     console.log(temp);
+    //     console.log(create_json(temp, 0));
+    // }
+
+    return create_json(temp, 0, from);
 
     // from == 'header-bottom' && create_json(temp, 0);
     // let keys = Object.keys(temp);
