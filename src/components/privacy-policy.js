@@ -4,7 +4,7 @@ import { get_img_path } from "../functions/get_images";
 const PrivacyPolicy = ({  }) => {
 
     const [open, setOpen] = React.useState(false);
-    const [acceptAnalytics, setAcceptAnalytics] = React.useState
+    const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
 
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>

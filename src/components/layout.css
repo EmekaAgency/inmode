@@ -2441,6 +2441,13 @@ input[type="submit"].neumorphic:hover,
     }
 }
 
+@media (max-width: 1170px) {
+    .alveoles-container {
+        padding-right: calc(100vw - 1170px);
+        padding-left: calc(100vw - 1170px);
+    }
+}
+
 @media (max-width: 600px) {
 
     /* <- 2-1  hexagons per row */
