@@ -28,13 +28,13 @@ const Footer = ({process = false, process_functions = {}}) => {
         }
     `).allMysqlFooter.edges;
 
-    const menus = process.footer && process_functions ? process_functions.footer(process_menu_datas(datas)) : process_menu_datas(datas);
+    const [menus, setMenus] = React.useState(process.footer && process_functions ? process_functions.footer(process_menu_datas(datas)) : process_menu_datas(datas));
 
-    const icos = {
+    const [icos, setIcos] = React.useState({
         'location': '073-location2',
         'phone': '067-phone',
         'mail': '391-mail5'
-    }
+    });
 
     const [isSvg, setIsSvg] = React.useState(true);
 

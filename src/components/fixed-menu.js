@@ -34,7 +34,7 @@ class FixedMenu extends React.Component {
 
     render () {
         return (
-            <div id="fixed-menu" className="transition" style={{top: this.state.visible ? 0 : -50, boxShadow: this.state.visible ? null : 'unset'}}>
+            <div id="fixed-menu" className="transition" style={{top: this.state.visible ? 0 : -55, boxShadow: this.state.visible ? null : 'unset'}}>
                 <div className="fixed-menu-container">
                     <div className="fixed-menu-logo">
                         <img src={get_img_path('/icons/header-logo.png')} alt="header-logo"/>

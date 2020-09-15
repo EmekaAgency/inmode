@@ -26,7 +26,9 @@ const HeaderBottom = ({ process = false, process_function = {} }) => {
         }
     `).allMysqlHeaderBottom.edges;
     
-    const menus = process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas);
+    const [menus, setMenus] = React.useState(process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas));
+
+    console.log(menus);
 
     return (
         <div id="header-bottom" className="header-bottom">

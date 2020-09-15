@@ -46,8 +46,8 @@ const HeaderMini = ({ process = false, process_functions = {} }) => {
         document.getElementById('header-mini').classList.remove('opened');
     }
 
-    const menus_top = process['header-top'] && process_functions['header-top'] ? process_functions['header-top'](process_menu_datas(datas.allMysqlHeaderTop.edges)) : process_menu_datas(datas.allMysqlHeaderTop.edges);
-    const menus_bottom = process['header-bottom'] && process_functions['header-bottom'] ? process_functions['header-bottom'](process_menu_datas(datas.allMysqlHeaderBottom.edges)) : process_menu_datas(datas.allMysqlHeaderBottom.edges);
+    const [menus_top, setMenusTop] = React.useState(process['header-top'] && process_functions['header-top'] ? process_functions['header-top'](process_menu_datas(datas.allMysqlHeaderTop.edges)) : process_menu_datas(datas.allMysqlHeaderTop.edges));
+    const [menus_bottom, setMenusBottom] = React.useState(process['header-bottom'] && process_functions['header-bottom'] ? process_functions['header-bottom'](process_menu_datas(datas.allMysqlHeaderBottom.edges)) : process_menu_datas(datas.allMysqlHeaderBottom.edges));
 
     return (
         <div id="header-mini" className="header-mini">

@@ -107,7 +107,8 @@ const Slides = ({from}) => {
                                 </div>
                                 <div className="slide-background-product">
                                     {/* <img className="slide-bg-img" src={get_img_path('/icons/products/votiva-right.png')} alt='product'/> */}
-                                    <img className="slide-bg-img" src ={get_img_path('/icons/products/votiva-courshadow.png')} alt='product'/>
+                                    {/* <img className="slide-bg-img" src ={get_img_path('/icons/products/votiva-courshadow.png')} alt='product'/> */}
+                                    <img className="slide-bg-img" src ={get_img_path(`/icons/products/${format_string(slide.name)}-p.${'png' || 'jpg'}`)} alt='product'/>
                                 </div>
                                 <div className="slide-short-descr">
                                     {slide.short_descr}

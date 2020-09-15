@@ -3,6 +3,8 @@ import { get_img_path } from "../functions/get_images";
 
 const ContactUs = () => {
 
+    // TODO enlever bottom 70px et mettre toute la height, puis overflow scroll
+
     const [open, setOpen] = React.useState(false);
     const [formOpen, setFormOpen] = React.useState(false);
     const [msgLength, setMsgLength] = React.useState(0);

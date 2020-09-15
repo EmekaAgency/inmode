@@ -44,7 +44,7 @@ const HeaderTop = ({ process = false, process_function = null }) => {
     // }, [])
 
     
-    const menus = process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas);
+    const [menus, setMenus] = React.useState(process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas));
 
     return (
         <div id="header-top" className="header-top">

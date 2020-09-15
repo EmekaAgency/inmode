@@ -151,6 +151,7 @@ ol {
     left: 50%;
     transform: translateX(-50%);
     min-width: 150px;
+    box-shadow: rgba(0, 0, 0, .5) 4px 12px 12px; /* TODO confirmation Kévin */
 }
 
 .header-parts .dk-item:hover .dk-item-sub {
@@ -195,6 +196,71 @@ ol {
     color: #fff;
 }
 
+/* MENU SIDE_MENU DROPSIDE */
+
+.menu-side-menu {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    min-width: 150px;
+}
+
+/* .header-parts ul.menu-side-menu.menu-text a.menu-side-menu.menu-text {
+    padding: 0;
+    border-top: 10px solid  #0d1f2c;
+    border-bottom: 10px solid  #0d1f2c;
+    border-left: 25px solid  #0d1f2c;
+    border-right: 25px solid  #0d1f2c;
+} */
+
+.menu-side-menu a.menu-side-menu {
+    letter-spacing: 0;
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 10px 25px;
+    margin: 0;
+}
+
+ul.menu-side-menu ul.dropside-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: max-content;
+    display: none;
+    left: 100%;
+    padding-left: 0;
+}
+
+.menu-side-menu .dropside-menu .menu-content.menu-text {
+    color: #fff;
+    background-color: #0d1f2c;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#fixed-menu .menu-side-menu .dropside-menu .menu-content.menu-text {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.menu-side-menu .dropside-menu .menu-content.menu-text:hover {
+    color: #59b7b3;
+}
+
+ul.menu-side-menu:hover .dropside-menu {
+    display: block;
+}
+
+.header-parts ul.menu-side-menu .dropside-menu {
+    box-shadow: rgba(0, 0, 0, .5) 6px 6px 6px; /* TODO confirmation Kévin */
+}
+
 /* HEADER */
 
 header {
@@ -232,6 +298,9 @@ header {
 @media all and (max-width: 999px) {
     .header-content {
         max-width: 100%;
+        height: 40px;
+        padding: 0 5px;
+        box-sizing: border-box;
     }
 }
 
@@ -257,14 +326,18 @@ header {
 
 @media all and (max-width: 999px) {
     .header-logo {
-        width: 160px;
+        height: 40px;
+        width: 250px;
         background-size: 100%;
-        bottom: 5px;
+        top: -3px;
     }
 }
 
 @media all and (max-width: 279px) {
-    .header-logo {
+    .header-logo {height: 40px;
+    width: 250px;
+    background-size: 100%;
+    top: -3px;
         width: 100%;
         background-size: 100%;
     }
@@ -290,6 +363,16 @@ header {
 }
 
 @media all and (max-width: 999px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 5px 0;
+        width: 100vw;
+        height: 40px;
+        box-shadow: #000000 1px 1px 10px;
+    }
+
     .header-content .header-parts .header-mini-menu {
         background-color: rgba(85, 85, 86, 0);
         border: 1px solid #ffffff59;
@@ -300,13 +383,13 @@ header {
         font-family: raleway, sans-serif;
         font-weight: 700;
         letter-spacing: 2px;
-        line-height: 11px;
+        line-height: 8px;
         padding: 15px 25px;
         position: absolute;
         right: 25px;
         text-align: center;
         text-transform: uppercase;
-        top: 7px;
+        top: 0px;
         vertical-align: middle;
         white-space: nowrap;
         width: max-content;
@@ -821,13 +904,14 @@ header {
         z-index: 1;
         background-color: #0b1a25;
         box-shadow: #000000 1px 1px 10px;
-        padding: 0;
+        padding: 5px;
         box-sizing: border-box;
     }
 
     #fixed-menu .fixed-menu-container {
         max-width: 1170px;
         width: 100%;
+        height: 40px;
         margin: 0 auto;
         position: relative;
         text-align: right;
@@ -836,12 +920,12 @@ header {
 
     #fixed-menu .fixed-menu-logo {
         position: absolute;
-        top: 5px;
         left: 0;
     }
 
     #fixed-menu .fixed-menu-logo img {
         height: 40px;
+        width: 250px;
     }
 
     #fixed-menu .fixed-menus {
@@ -866,7 +950,7 @@ header {
         font-size: 11px;
         line-height: 40px;
         letter-spacing: 1px;
-        padding: 5px 10px;
+        padding: 5px 10px 0;
         margin: 0;
     }
 
@@ -931,7 +1015,7 @@ header {
         width: max-content;
         background-color: rgba(0, 0, 0, .5);
         padding: 15px 0;
-        top: 50px;
+        top: 45px;
     }
 
     #fixed-menu ul.menu-title:hover ul.dropdown-menu li {
@@ -1290,6 +1374,7 @@ footer .footer-navigation-part {
     top: 30px;
     position: absolute;
     right: 15%;
+    margin-right: -40px;
 }
 
 .slides-home .slide .slide-content .slide-short-descr {
@@ -2257,7 +2342,7 @@ select.neumorphic,
 .neumorphic select {
     color: #59b7b2;
     /* box-shadow: inset 2px 2px 5px #59b7b21e, inset -5px -5px 10px #59b7b20e; */
-    box-shadow: inset 2px 2px 5px #0b0d25, inset -5px -5px 10px #0b1a25;
+    box-shadow: inset 2px 2px 5px #080808b0, inset -5px -5px 10px #0b1a25;
 }
 
 select.neumorphic:hover,
@@ -2287,7 +2372,7 @@ select.neumorphic,
     /* color: #59b7b3; */
     caret-color: #59b7b3;
     margin-right: 8px;
-    box-shadow: inset 2px 2px 5px #0b0d25, inset -5px -5px 10px #0b1a25;
+    box-shadow: inset 2px 2px 5px #080808b0, inset -5px -5px 10px #0b1a25;
     /* box-shadow: inset 2px 2px 5px #59b7b21e, inset -5px -5px 10px #59b7b20e; */
     width: 90%;
     margin-left: 5%;
@@ -2312,7 +2397,7 @@ input[type="submit"].neumorphic,
 .neumorphic input[type="submit"] {
     color: #59b7b3;
     font-weight: bold;
-    box-shadow: -5px -5px 20px #0b0d25, 5px 5px 20px #0b1a25;
+    box-shadow: -5px -5px 20px #080808b0, 5px 5px 20px #0b1a25;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     font-weight: 600;
@@ -2322,7 +2407,7 @@ button.neumorphic:hover,
 .neumorphic button:hover,
 input[type="submit"].neumorphic:hover,
 .neumorphic input[type="submit"]:hover {
-    box-shadow: -2px -2px 5px #0b0d25, 2px 2px 5px #0b1a25;
+    box-shadow: -2px -2px 5px #080808b0, 2px 2px 5px #0b1a25;
 }
 
 /* ALVEOLES */
@@ -2347,12 +2432,20 @@ input[type="submit"].neumorphic:hover,
 
 .alveole {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background-color: orange;
     position: relative;
     outline: 1px solid transparent;
     backface-visibility: hidden;
     will-change: transform;
-    /* transition: all 0.5s linear; */
+    transition: all 0.3s linear;
+    /* transition-delay: 0.1s; */
+}
+
+.alveole img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .alveole-text {
@@ -2367,6 +2460,7 @@ input[type="submit"].neumorphic:hover,
     background: rgba(0, 0, 0, .5);
     line-height: 1;
     padding: calc(100% / 14) 0;
+    text-transform: uppercase;
 }
 
 /* @media (min-width:1201px) { */
@@ -2385,7 +2479,7 @@ input[type="submit"].neumorphic:hover,
 
     /* .alveole:nth-child(9n+6) { */
         /* first hexagon of even rows */
-        /* margin-left: calc(10% + 5px)!important; */
+        /* margin-left: calc(10% + 10px)!important; */
         /* = width of .hex / 2  to indent even rows */
     /* } */
 /* } */
@@ -2407,7 +2501,7 @@ input[type="submit"].neumorphic:hover,
 
     /* .alveole:nth-child(7n+5) { */
         /* first hexagon of even rows */
-        /* margin-left: calc(12.5% + 5px)!important; */
+        /* margin-left: calc(12.5% + 10px)!important; */
         /* = width of .hex / 2  to indent even rows */
     /* } */
 /* } */
@@ -2419,32 +2513,54 @@ input[type="submit"].neumorphic:hover,
     .alveoles-container {
         font-size: 14px;
         max-width: 1170px;
-        padding: 0 0 7.4%;
+        padding: 0px 0 7.4%;
         box-sizing: border-box;
-        padding-right: calc((100vw - 1170px) / 4);
-        padding-left: calc((100vw - 1170px) / 4);
+        padding-right: calc((100vw - 1170px) / 8);
+        padding-left: calc((100vw - 1170px) / 8);
     }
 
     .alveole {
-        width: calc((1140px - ((100vw - 1170px) / 2)) / 3);
-        /* = 100 / 3 */
+        /* width: calc((1140px - ((100vw - 1170px) / 2)) / 3); */
         height: calc((1140px - ((100vw - 1170px) / 2)) / 3);
-        margin: 0 5px -7.5% 5px;
-        max-width: calc((100% - 30px) / 3);
-        max-height: calc((100vw - 100px) / 3);
+        width: 100%;
+        margin: 0 10px -4.8% 10px;
+        max-width: calc((100% - 60px) / 3);
+        max-height: calc((100vw - 120px) / 3);
     }
 
     .alveole:nth-child(5n+4) {
         /* first hexagon of even rows */
-        margin-left: calc(16.666% + 5px)!important;
+        margin-left: calc(16.666% + 10px)!important;
         /* = width of .hex / 2  to indent even rows */
     }
 }
 
 @media (max-width: 1170px) {
+    .alveole {
+        margin: 0 10px -5.8% 10px;
+    }
+
     .alveoles-container {
         padding-right: calc(100vw - 1170px);
         padding-left: calc(100vw - 1170px);
+    }
+}
+
+@media (min-width: 1170px) {
+    .alveole {
+        margin: 0 10px -6.2% 10px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .alveole {
+        margin: 0 10px -5.8% 10px;
+    }
+}
+
+@media (min-width: 1770px) {
+    .alveole {
+        margin: 0 10px -4.8% 10px;
     }
 }
 
@@ -2465,7 +2581,7 @@ input[type="submit"].neumorphic:hover,
 
     .alveole:nth-child(3n+3) {
         /* first hexagon of even rows */
-        margin-left: calc(25% + 5px)!important;
+        margin-left: calc(25% + 10px)!important;
         /* = width of .hex / 2  to indent even rows */
     }
 }

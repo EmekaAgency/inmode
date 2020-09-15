@@ -40,10 +40,11 @@ function recursive_add(main, key, temp, from = "") {
 
 function to_arrays(main) {
     if (main.temp_under) {
-        let save = main.under;
-        main.under = new Array();
+        let save = main.under, elem;
+        main.under = new Array(Object.keys(main.temp_under).length);
         for(let i = 0; i < Object.keys(main.temp_under).length; i++) {
-            main.under.push(main.temp_under[Object.keys(main.temp_under)[i]]);
+            elem = main.temp_under[Object.keys(main.temp_under)[i]];
+            main.under[elem.position - 1] = elem;
         }
         main.temp_under = save;
         main.under.map((elem) => {

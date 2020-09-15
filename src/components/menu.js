@@ -12,6 +12,7 @@ import { format_string } from '../functions/format_string';
 import MenuContentText from './menu/content-text';
 import MenuContentImage from './menu/content-image';
 import MenuContentButton from './menu/content-button';
+import MenuSideMenuText from './menu/side_menu-text';
 import PropTypes from 'prop-types';
 
 // VARIANT
@@ -19,6 +20,7 @@ const SINGLE = 1;
 const TITLE = 2;
 const CONTENT = 3;
 const DK_TITLE = 4;
+const SIDE_MENU = 5;
 
 // TYPE
 const TEXT = 1;
@@ -113,6 +115,22 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     // else if(menu.variant == DK_TITLE && menu.type == CARD) {
     //     console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type dk-title-card`);
     //     return (<MenuDKTitleCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    // }
+    else if(menu.variant == SIDE_MENU && menu.type == TEXT) {
+        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type side-menu`);
+        return (<MenuSideMenuText key={prop_key} prop_key={prop_key} menu={menu}/>);
+    }
+    // else if(menu.variant == SIDE_MENU && menu.type == IMAGE) {
+    //     console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type dk-title-card`);
+    //     return (<MenuSideMenuImage key={prop_key} prop_key={prop_key} menu={menu}/>);
+    // }
+    // else if(menu.variant == SIDE_MENU && menu.type == BUTTON) {
+    //     console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type dk-title-card`);
+    //     return (<MenuSideMenuButton key={prop_key} prop_key={prop_key} menu={menu}/>);
+    // }
+    // else if(menu.variant == SIDE_MENU && menu.type == CARD) {
+    //     console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type dk-title-card`);
+    //     return (<MenuSideMenuCard key={prop_key} prop_key={prop_key} menu={menu}/>);
     // }
     else {
         return null;

@@ -26,11 +26,11 @@ const PrivacyPolicy = ({  }) => {
                 <div className="cookies-analytics">
                     <div className="cookies-title">Analytics cookies</div>
                     {/* TODO faire un component SWITCH */}
-                    <div class="switch-component">
-                        <input type="checkbox" name="onoffswitch" class="switch-checkbox" id="onoffswitch"/>
-                        <label class="switch" for="onoffswitch">
-                            <span class="switch-inner"></span>
-                            <span class="switch-switch"></span>
+                    <div className="switch-component">
+                        <input type="checkbox" name="onoffswitch" className="switch-checkbox" id="onoffswitch"/>
+                        <label className="switch" htmlFor="onoffswitch">
+                            <span className="switch-inner"></span>
+                            <span className="switch-switch"></span>
                         </label>
                     </div>
                     <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <a href="#">'Cookies page'</a>. The cookies collect information in an anonymous form.</div>

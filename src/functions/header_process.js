@@ -1,5 +1,5 @@
 const _TYPES = ['TEXT', 'IMAGE', 'BUTTON', 'CARD'];
-const _VARIANTS = ['SINGLE', 'TITLE', 'CONTENT', 'DK-TITLE'];
+const _VARIANTS = ['SINGLE', 'TITLE', 'CONTENT', 'DK-TITLE', 'SIDE-MENU'];
 
 export const header_process = (datas) => {
     console.log(datas);
