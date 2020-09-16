@@ -22,7 +22,7 @@ const MenuSideMenuText = ({menu, prop_key, openOnClick}) => {
     }
 
     return (
-        <ul key={prop_key} className="menu-side-menu menu-text">
+        <ul key={prop_key} className="menu-side-menu menu-text transition">
             <Link
                 className="menu-side-menu menu-text"
                 to={menu.url || "#"}

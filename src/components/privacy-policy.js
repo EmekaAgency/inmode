@@ -5,10 +5,24 @@ const PrivacyPolicy = ({  }) => {
 
     const [open, setOpen] = React.useState(false);
     const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
+    const [acceptCookies, setAcceptCookies] = React.useState(false);
+
+    
+    const process_cookies = (e) => {
+        if(open) {
+            setOpen(false);
+            setAcceptCookies(true)
+        }
+        else if(!open) {
+            setOpen(true);
+        }
+    }
+    
+    (!acceptCookies && !open) && setTimeout(() => {setOpen(true);}, 1000);
 
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
-            <button className="open-button" onClick={(e) => {setOpen(!open);}}>
+            <button className="open-button" onClick={(e) => {process_cookies(e);}}>
                 <img className="main" src={get_img_path('/icons/privacy-icon.svg')}/>
                 <img className="content" src={get_img_path('/icons/privacy-c.png')}/>
             </button>
@@ -35,7 +49,7 @@ const PrivacyPolicy = ({  }) => {
                     </div>
                     <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <a href="#">'Cookies page'</a>. The cookies collect information in an anonymous form.</div>
                 </div>
-                <div className="accept-close" onClick={(e) => {setOpen(!open);}}>
+                <div className="accept-close" onClick={(e) => {process_cookies(e);}}>
                     Accept and close
                 </div>
             </div>

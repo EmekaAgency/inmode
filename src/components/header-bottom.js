@@ -28,8 +28,6 @@ const HeaderBottom = ({ process = false, process_function = {} }) => {
     
     const [menus, setMenus] = React.useState(process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas));
 
-    console.log(menus);
-
     return (
         <div id="header-bottom" className="header-bottom">
             {menus && menus.map((menu, key) => {

@@ -65,7 +65,7 @@ const ContactUs = () => {
         });
         // setTimeout(function () {document.getElementById('contact-form').style.display = 'inline-block';}, 300);
         document.getElementById('contact-form').style.width = '500px';
-        document.getElementById('contact-form').style.height = '470px';
+        document.getElementById('contact-form').style.height = window.innerHeight > 480 ? '470px' : window.innerHeight - 130 + 'px';
         document.getElementById('contact-form').style.transitionDelay = '0.4s';
         // document.getElementById('contact-form').style.transform = 'scale(1, 1)';
         setFormOpen(true);

@@ -28,7 +28,9 @@ const Slides = ({from}) => {
     `);
 
     const [current, setCurrent] = React.useState(-1);
+    const [open, setOpen] = React.useState(false);
     const [clicked, setClicked] = React.useState(false);
+    const [flickity, setFlickity] = React.useState(null);
 
     const auto_play_speed = 1000;
 
@@ -45,6 +47,10 @@ const Slides = ({from}) => {
 
     const slides = process_slide_datas(datas.allMysqlSlidesProducts.edges, from);
 
+    const set_current = (e) => {
+        setFlickity(e);
+    }
+
     const view_detail = (e) => {
         e.preventDefault();
         window.alert("Pas encore de fonctionnalité");
@@ -52,8 +58,18 @@ const Slides = ({from}) => {
 
     const view_product = (e, pos) => {
         e.preventDefault();
-        
+        setFlickityOptions({
+            initialIndex: pos,
+            cellAlign: 'left',
+            pageDots: false,
+            accessibility: true,
+            selectedAttraction: 0.01,
+            friction: 0.15,
+            percentPosition: false,
+            autoPlay: false
+        });
         setCurrent(pos);
+        setOpen(true);
     }
 
     const process_drag = (e) => {
@@ -72,26 +88,27 @@ const Slides = ({from}) => {
             e.target.classList.contains('close') ||
             e.target.classList.contains('close-product-view')
         ) {
-            setCurrent(-1);
+            setOpen(false);
         }
     }
 
     return (
-        <div className={`slides-${from} ${current > -1 ? 'show' : ''}`}>
+        <div className={`slides-${from} ${current > -1 && open ? 'show' : ''}`}>
             <Flickity
                 id={`carousel-${from}`}
                 elementType={'div'} // default 'div'
                 options={flickityOptions} // takes flickity options {}
                 disableImagesLoaded={false} // default false
-                reloadOnUpdate // default false
+                reloadOnUpdate={true} // default false
                 static // default false
                 className="slides-main transition"
+                flickityRef={(e) => {set_current(e);}}
             >
                 {slides && slides.map((slide, key) => {
                     return (
                         <div
                             key={key}
-                            className={"slide transition gallery-cell" + (current == key ? ' show' : '')}
+                            className={"slide transition gallery-cell" + (current == key && open ? ' show' : '')}
                             onMouseUp={(e) => {setClicked(false);}}
                             onMouseDown={(e) => {setClicked(true);}}
                             onMouseMove={(e) => {process_drag(e);}}
@@ -127,10 +144,10 @@ const Slides = ({from}) => {
                 })}
             </Flickity>
             <div
-                className={"product-view" + (current > -1 ? " show" : '')}
+                className={"product-view" + (current > -1 && open ? " show" : '')}
                 onClick={(e) => {close_view(e);}}
             >
-                <ProductView datas={current > -1 ? slides[current] : null}>
+                <ProductView datas={current > -1 && open ? slides[current] : null}>
                     <div className="close">
                         <img className="close-product-view" src={get_img_path('/icons/icons/close-white.webp')} alt="close-product-view"/>
                     </div>
