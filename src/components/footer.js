@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link } from "gatsby";
 import { get_img_path } from "../functions/get_images";
 import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
-import Menu from './menu';
-import Image from './image';
 import { format_string } from '../functions/format_string';
 
 const Footer = ({process = false, process_functions = {}}) => {
@@ -28,15 +25,15 @@ const Footer = ({process = false, process_functions = {}}) => {
         }
     `).allMysqlFooter.edges;
 
-    const [menus, setMenus] = React.useState(process.footer && process_functions ? process_functions.footer(process_menu_datas(datas)) : process_menu_datas(datas));
+    const [menus] = React.useState(process.footer && process_functions ? process_functions.footer(process_menu_datas(datas)) : process_menu_datas(datas));
 
-    const [icos, setIcos] = React.useState({
+    const icos = {
         'location': '073-location2',
         'phone': '067-phone',
         'mail': '391-mail5'
-    });
+    };
 
-    const [isSvg, setIsSvg] = React.useState(true);
+    const isSvg = true;
 
     return (
         <footer>

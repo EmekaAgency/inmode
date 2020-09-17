@@ -29,13 +29,13 @@ const Slides = ({from}) => {
 
     const [current, setCurrent] = React.useState(-1);
     const [open, setOpen] = React.useState(false);
-    const [clicked, setClicked] = React.useState(false);
-    const [flickity, setFlickity] = React.useState(null);
+    // const [clicked, setClicked] = React.useState(false);
+    // const [flickity, setFlickity] = React.useState(null);
 
-    const auto_play_speed = 1000;
+    // const auto_play_speed = 1000;
 
     const [flickityOptions, setFlickityOptions] = React.useState({
-        initialIndex: current == -1 ? 0 : current,
+        initialIndex: current === -1 ? 0 : current,
         cellAlign: 'left',
         pageDots: false,
         accessibility: true,
@@ -45,11 +45,11 @@ const Slides = ({from}) => {
         autoPlay: false
     });
 
-    const slides = process_slide_datas(datas.allMysqlSlidesProducts.edges, from);
+    const [slides] = React.useState(process_slide_datas(datas.allMysqlSlidesProducts.edges, from));
 
-    const set_current = (e) => {
-        setFlickity(e);
-    }
+    // const set_current = (e) => {
+        // setFlickity(e);
+    // }
 
     const view_detail = (e) => {
         e.preventDefault();
@@ -72,12 +72,12 @@ const Slides = ({from}) => {
         setOpen(true);
     }
 
-    const process_drag = (e) => {
-        e.preventDefault();
+    // const process_drag = (e) => {
+        // e.preventDefault();
         // console.log(clicked);
         // e.movementX < 0 && console.log('gauche');
         // e.movementX > 0 && console.log('droite');
-    }
+    // }
 
     
     const close_view = (e) => {
@@ -102,16 +102,16 @@ const Slides = ({from}) => {
                 reloadOnUpdate={true} // default false
                 static // default false
                 className="slides-main transition"
-                flickityRef={(e) => {set_current(e);}}
+                // flickityRef={(e) => {set_current(e);}}
             >
                 {slides && slides.map((slide, key) => {
                     return (
                         <div
                             key={key}
-                            className={"slide transition gallery-cell" + (current == key && open ? ' show' : '')}
-                            onMouseUp={(e) => {setClicked(false);}}
-                            onMouseDown={(e) => {setClicked(true);}}
-                            onMouseMove={(e) => {process_drag(e);}}
+                            className={"slide transition gallery-cell" + (current === key && open ? ' show' : '')}
+                            // onMouseUp={(e) => {setClicked(false);}}
+                            // onMouseDown={(e) => {setClicked(true);}}
+                            // onMouseMove={(e) => {process_drag(e);}}
                         >
                             <div className="slide-title">
                                 {`.${(key + 1) < 10 ? '0' + (key + 1) : (key + 1)}`}
@@ -132,11 +132,11 @@ const Slides = ({from}) => {
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
                                     Voir le détail
-                                    <img className="slide-view-detail-arrow transition" src={get_img_path('/icons/icons/arrow-right.png')} />
+                                    <img className="slide-view-detail-arrow transition" src={get_img_path('/icons/icons/arrow-right.png')} alt="arrow-right"/>
                                 </div>
                                 {slide.under ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
                                     Voir les produits
-                                    <img className="slide-view-product-arrow transition" src={get_img_path('/icons/icons/arrow-right.png')} />
+                                    <img className="slide-view-product-arrow transition" src={get_img_path('/icons/icons/arrow-right.png')} alt="arrow-left"/>
                                 </div> : null}
                             </div>
                         </div>

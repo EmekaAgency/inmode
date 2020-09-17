@@ -41,9 +41,9 @@ const Layout = ({
       />
       <main>
         {children}
-        <PrivacyPolicy />
-        <ContactUs/>
       </main>
+      <PrivacyPolicy />
+      <ContactUs/>
       <Footer
         process={process_footer}
         process_functions={footer_process_functions}

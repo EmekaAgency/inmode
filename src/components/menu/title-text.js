@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "gatsby";
-import MenuContent from '../menu-content';
 import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_opened';
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
@@ -9,7 +8,7 @@ import Menu from '../menu';
 const MenuTitleText = ({menu, prop_key, openOnClick}) => {
 
     const resolveOnClick = (e) => {
-        if(openOnClick == true) {
+        if(openOnClick === true) {
             e.preventDefault();
             if(e.target.parentNode.classList.contains('opened')) {
                 e.target.parentNode.classList.remove('opened');

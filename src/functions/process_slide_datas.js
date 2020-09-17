@@ -3,10 +3,10 @@ const _TYPES = ['PRODUCT', 'ADDON'];
 export const process_slide_datas = (products = [], from = "") => {
     let retour = [], slides = {}, addons = {}, i, j;
     for(i = 0; i < products.length; i++) {
-        if(_TYPES[products[i].node.type] == 'PRODUCT') {
+        if(_TYPES[products[i].node.type] === 'PRODUCT') {
             slides[products[i].node.mysqlId] = products[i].node;
         }
-        else if(_TYPES[products[i].node.type] == 'ADDON') {
+        else if(_TYPES[products[i].node.type] === 'ADDON') {
             addons[products[i].node.mysqlId] = products[i].node;
         }
     }
@@ -24,7 +24,7 @@ export const process_slide_datas = (products = [], from = "") => {
     for(i = 0; i < keys_addons.length; i++) {
         let parents = addons[keys_addons[i]].parents.replace('[', '').replace(']', '').split(',').sort().map((nb)=>{return parseInt(nb);});
         for(j = 0; j < parents.length; j++) {
-            if(retour[parents[j] - 1].under == undefined) {
+            if(retour[parents[j] - 1].under === undefined) {
                 retour[parents[j] - 1].under = []; 
             }
             retour[parents[j] - 1].under.push({

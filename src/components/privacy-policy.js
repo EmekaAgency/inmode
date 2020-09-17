@@ -1,11 +1,13 @@
 import React from "react"
 import { get_img_path } from "../functions/get_images";
 
-const PrivacyPolicy = ({  }) => {
+const PrivacyPolicy = () => {
 
     const [open, setOpen] = React.useState(false);
-    const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
-    const [acceptCookies, setAcceptCookies] = React.useState(false);
+    // const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
+    // const [acceptAnalytics] = React.useState(true);
+    // const [acceptCookies, setAcceptCookies] = React.useState(false);
+    const [acceptCookies, setAcceptCookies] = React.useState(true);
 
     
     const process_cookies = (e) => {
@@ -23,8 +25,8 @@ const PrivacyPolicy = ({  }) => {
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
             <button className="open-button" onClick={(e) => {process_cookies(e);}}>
-                <img className="main" src={get_img_path('/icons/privacy-icon.svg')}/>
-                <img className="content" src={get_img_path('/icons/privacy-c.png')}/>
+                <img className="main" src={get_img_path('/icons/privacy-icon.svg')} alt="privacy-triangle"/>
+                <img className="content" src={get_img_path('/icons/privacy-c.png')} alt="privacy-icon"/>
             </button>
             <div className="panel cookies transition">
                 <div className="cookies-our-use">

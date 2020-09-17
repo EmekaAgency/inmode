@@ -14,11 +14,11 @@ export const format_string = function (str, has_to_be_lower = false, italic = fa
     }
     else if (italic) {
         retour = new Array(capitalize(a));
-        if(b){retour.push(b.indexOf('#') == - 1 ? capitalize(b) : b.toUpperCase());}
+        if(b){retour.push(b.indexOf('#') === - 1 ? capitalize(b) : b.toUpperCase());}
     }
     else {
         retour = capitalize(a);
-        if(b){retour = retour + (b.indexOf('#') == - 1 ? capitalize(b) : b.toUpperCase());}
+        if(b){retour = retour + (b.indexOf('#') === - 1 ? capitalize(b) : b.toUpperCase());}
     }
     return retour;
 }

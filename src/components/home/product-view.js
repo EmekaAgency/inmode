@@ -4,7 +4,7 @@ import { get_img_path } from "../../functions/get_images";
 
 const ProductView = ({children, datas}) => {
 
-    const [currency, setCurrency] = React.useState('euro');
+    const [currency] = React.useState('euro');
 
     if(datas == null) {
         return (<></>);
@@ -28,9 +28,9 @@ const ProductView = ({children, datas}) => {
                         return (
                             <div key={key} className="addon transition">
                                 <div className="addon-general transition">
-                                    <img className="addon-title" src={get_img_path(`/icons/products/addons/title-0${key + 1}.png`)}/>
-                                    <a className="addon-description">{(Math.random() * 2) == 0 ? 'Minimally invasive Body & Face contouring for small areas' : 'Minimally invasice Body contouring '}</a>
-                                    <img className="addon-picture" src={get_img_path(`/icons/products/addons/product-0${key + 1}.png`)}/>
+                                    <img className="addon-title" src={get_img_path(`/icons/products/addons/title-0${key + 1}.png`)} alt={`title-0${key + 1}.png`}/>
+                                    <a className="addon-description">{(Math.random() * 2) === 0 ? 'Minimally invasive Body & Face contouring for small areas' : 'Minimally invasice Body contouring '}</a>
+                                    <img className="addon-picture" src={get_img_path(`/icons/products/addons/product-0${key + 1}.png`)} alt ={`product-0${key + 1}.png`}/>
                                 </div>
                                 <div className="addon-details transition">
                                     <p className="description">
@@ -44,7 +44,7 @@ const ProductView = ({children, datas}) => {
                                         <div className="add-to-cart"><button>Ajouter</button></div>
                                     </div>
                                 </div>
-                                <img src={get_img_path('/icons/icons/add.svg')} className="show-more"/>
+                                <img src={get_img_path('/icons/icons/add.svg')} className="show-more" alt="add"/>
                             </div>
                         );
                     })}

@@ -1,7 +1,7 @@
 import React from "react";
 import { get_img_path } from "../../functions/get_images";
 
-const Alveoles = ({  }) => {
+const Alveoles = () => {
 
     const alveoles = (size) => {
         let temp = [];

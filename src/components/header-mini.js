@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "gatsby";
 import { get_img_path } from "../functions/get_images";
 import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
@@ -46,14 +45,14 @@ const HeaderMini = ({ process = false, process_functions = {} }) => {
         document.getElementById('header-mini').classList.remove('opened');
     }
 
-    const [menus_top, setMenusTop] = React.useState(process['header-top'] && process_functions['header-top'] ? process_functions['header-top'](process_menu_datas(datas.allMysqlHeaderTop.edges)) : process_menu_datas(datas.allMysqlHeaderTop.edges));
-    const [menus_bottom, setMenusBottom] = React.useState(process['header-bottom'] && process_functions['header-bottom'] ? process_functions['header-bottom'](process_menu_datas(datas.allMysqlHeaderBottom.edges)) : process_menu_datas(datas.allMysqlHeaderBottom.edges));
+    const [menus_top] = React.useState(process['header-top'] && process_functions['header-top'] ? process_functions['header-top'](process_menu_datas(datas.allMysqlHeaderTop.edges)) : process_menu_datas(datas.allMysqlHeaderTop.edges));
+    const [menus_bottom] = React.useState(process['header-bottom'] && process_functions['header-bottom'] ? process_functions['header-bottom'](process_menu_datas(datas.allMysqlHeaderBottom.edges)) : process_menu_datas(datas.allMysqlHeaderBottom.edges));
 
     return (
         <div id="header-mini" className="header-mini">
             <div className="menu-close transition" onClick={(e) => {closeMenu(e);}}>
                 <span>FERMER</span>
-                <img className="close-mini-menu-icon" src={get_img_path('/icons/icons/close-white.webp')}/>
+                <img className="close-mini-menu-icon" src={get_img_path('/icons/icons/close-white.webp')} alt="close-white"/>
             </div>
             <div id="header-mini-bottom" className="header-bottom">
                 {menus_bottom && menus_bottom.map((menu, key) => {

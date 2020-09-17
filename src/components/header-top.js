@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from "gatsby";
-import { get_img_path } from "../functions/get_images";
+import React from 'react';
 import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
-import { require_menu } from '../functions/require_data';
 
 const HeaderTop = ({ process = false, process_function = null }) => {
 
@@ -44,7 +41,7 @@ const HeaderTop = ({ process = false, process_function = null }) => {
     // }, [])
 
     
-    const [menus, setMenus] = React.useState(process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas));
+    const [menus] = React.useState(process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas));
 
     return (
         <div id="header-top" className="header-top">

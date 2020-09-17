@@ -1,8 +1,38 @@
+/* TODO utiliser le resolve path pour améliorer
+   et passer un tableau de propriétés, comme ça
+   on peut créer une fonction return_img qui retourne
+   un Img Gatsby en faisant appel à resolve_path
+   qui fait appel à get_img_path
+*/
+
 // TODO Améliorer méthode
 // TODO Ajouter une default picture selon le type d'image demandée
 // TODO Ajouter unr résolution dynamique des path
 
 import { format_string } from "./format_string";
+
+const img_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'svg'];
+
+export const resolve_image = (name, index = 0) => {
+    // console.log(`name : ${name}\nindex : ${index}`);
+    if(index > 0) {
+        console.log(`${get_img_path(`/icons/${name}.${img_extensions[index - 1]}`)} was not a valid path`);
+    }
+    console.log(`let's try with ${get_img_path(`/icons/${name}.${img_extensions[index]}`)}\n\n`);
+    if(index === img_extensions.length) {
+        return get_img_path(`/icons/icons/no_img_available.svg`);
+    }
+    let img = new Image();
+    img.src = get_img_path(`/icons/${name}.${img_extensions[index]}`);
+    img.onload = function() {
+        return get_img_path(`/icons/${name}.${img_extensions[index]}`);
+    }
+    img.onerror = function() {
+        return resolve_image(name, index + 1);
+    };
+
+    return get_img_path(`/icons/${name}.${img_extensions[index]}`);
+};
 
 // TODO Refaire en Gatsby pour le rendu non client
 export const get_img_path = (path = "") => {

@@ -8,7 +8,11 @@ const ClinicalStudies = () => {
                 <div className="studies">
                     <h2 className="title">Études cliniques</h2>
                     <div className="content">
+<<<<<<< Updated upstream
                         <img src={get_img_path('/icons/home/studies-img.png')} alt="studies-img"/>
+=======
+                        <img src={get_img_path('/icons/home/studies-img.png')}/>
+>>>>>>> Stashed changes
                         <a href="#">Voir les études</a>
                     </div>
                 </div>

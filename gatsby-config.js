@@ -20,11 +20,13 @@ module.exports = {
       options: {
         name: `gatsby-starter-default`,
         short_name: `starter`,
-        start_url: `/`,
+        start_url: `/src/images/`,
         background_color: `#663399`,
         theme_color: `#663399`,
+<<<<<<< Updated upstream
+        display: `minimal-ui`
+=======
         display: `minimal-ui`,
-        icon: 'src/images/favicon.png',
         header_icons: [
           'public/icons/social-network/facebook.jpg',
           'public/icons/social-network/twitter.jpg',
@@ -41,6 +43,7 @@ module.exports = {
           'public/icons/icomoon/svg/social-linkedin.jpg',
           'public/icons/icomoon/svg/social-youtube.jpg'
         ]
+>>>>>>> Stashed changes
       },
     },
     {

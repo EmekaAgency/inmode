@@ -1,9 +1,9 @@
 import React from "react"
 import { get_img_path } from "../functions/get_images";
 import Menu from "./menu";
-import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from "../functions/process_menu_datas";
 import { is_visible } from "../functions/is_visible";
+import { Link } from "gatsby";
 
 class FixedMenu extends React.Component {
     constructor(props) {
@@ -34,10 +34,11 @@ class FixedMenu extends React.Component {
 
     render () {
         return (
-            <div id="fixed-menu" className="transition" style={{top: this.state.visible ? 0 : -55, boxShadow: this.state.visible ? null : 'unset'}}>
+            <div id="fixed-menu" className={`transition${' ' + this.props.customClass || ''}`} style={{top: this.state.visible ? 0 : -55, boxShadow: this.state.visible ? null : 'unset'}}>
                 <div className="fixed-menu-container">
                     <div className="fixed-menu-logo">
                         <img src={get_img_path('/icons/header-logo.png')} alt="header-logo"/>
+                        <Link to="/" className="zone-link"></Link>
                     </div>
                     <div className="fixed-menus">
                         {this.state.menus && this.state.menus.map((menu, key) => {

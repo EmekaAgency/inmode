@@ -38,12 +38,12 @@ const ContactUs = () => {
         console.log('open : ', open);
         console.log('formOpen : ', formOpen);
         if(open) {
-            if(e.currentTarget.id == 'close') {
+            if(e.currentTarget.id === 'close') {
                 !formOpen && close_contact();
                 formOpen && close_form();
                 return false;
             }
-            if(e.currentTarget.id == 'piece') {
+            if(e.currentTarget.id === 'piece') {
                 formOpen && close_form();
                 close_contact();
                 return false;
@@ -107,7 +107,7 @@ const ContactUs = () => {
                                 spellCheck={false}
                                 required={true}
                             ></textarea>
-                            <div className="current-length" style={{color: msgLength == max_length ? '#f00' : '#fff'}}>{`${msgLength} / ${max_length}`}</div>
+                            <div className="current-length" style={{color: msgLength === max_length ? '#f00' : '#fff'}}>{`${msgLength} / ${max_length}`}</div>
                             <input type="submit" placeholder="Envoyer"/>
                         </form>
                     </div>

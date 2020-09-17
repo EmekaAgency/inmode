@@ -7,21 +7,21 @@ import PropTypes from 'prop-types';
 import Menu from '../menu';
 
 // VARIANT
-const SINGLE = 1;
+// const SINGLE = 1;
 const TITLE = 2;
-const CONTENT = 3;
-const DK_TITLE = 4;
+// const CONTENT = 3;
+// const DK_TITLE = 4;
 
 // TYPE
-const TEXT = 1;
-const IMAGE = 2;
-const BUTTON = 3;
-const CARD = 4;
+// const TEXT = 1;
+// const IMAGE = 2;
+// const BUTTON = 3;
+// const CARD = 4;
 
 const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
 
     const resolveOnClick = (e) => {
-        if(openOnClick == true) {
+        if(openOnClick === true) {
             e.preventDefault();
             if(e.target.parentNode.classList.contains('opened')) {
                 e.target.parentNode.classList.remove('opened');
@@ -52,7 +52,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                                     <div className="dk-title">{format_string(content.name)}</div>
                                 </a>
                                 {Array.isArray(content.under) ?
-                                    <div className={`dk-item-sub ${content.variant == TITLE ? 'dropdown-menu' : 'dk-dropdown-menu'}`}>
+                                    <div className={`dk-item-sub ${content.variant === TITLE ? 'dropdown-menu' : 'dk-dropdown-menu'}`}>
                                         {
                                             content.under.map((sub, key) => {
                                                 return (

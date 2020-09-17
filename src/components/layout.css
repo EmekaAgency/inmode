@@ -133,11 +133,19 @@ ol {
 
 .header-parts>.header-top .menu-title .dropdown-menu,
 .header-parts>.header-bottom .menu-title .dropdown-menu,
-.header-parts .dk-item .dk-item-sub,
 #fixed-menu .dk-item .dk-item-sub {
     padding: 25px 0;
     display: none;
     background-color: #0d1f2c;
+}
+
+.header-parts .dk-item .dk-item-sub {
+    display: none;
+    background-color: #0d1f2c;
+}
+
+.header-parts .dk-item:hover .dk-item-sub {
+    padding: 25px 0;
 }
 
 .header-parts>.header-top .menu-title:hover .dropdown-menu,
@@ -161,10 +169,17 @@ ol {
     transform: translateX(-50%);
 }
 
+<<<<<<< Updated upstream
 .header-parts>.header-top .menu-title .dropdown-menu li,
 .header-parts>.header-top .menu-dk-title .dk-dropdown-menu li,
 .header-parts>.header-bottom .menu-title .dropdown-menu li,
 .header-parts>.header-bottom .menu-dk-title .dk-dropdown-menu li {
+=======
+.header-parts > .header-top .menu-title .dropdown-menu li,
+.header-parts > .header-top .menu-dk-title .dk-dropdown-menu li,
+.header-parts > .header-bottom .menu-title .dropdown-menu li,
+.header-parts > .header-bottom .menu-dk-title .dk-dropdown-menu li {
+>>>>>>> Stashed changes
     display: block;
     padding: 0;
     margin: 0;
@@ -271,11 +286,16 @@ header {
     margin: 0 auto;
     width: calc(100% - 30px);
     padding: 25px 15px 0;
+<<<<<<< Updated upstream
     background-color: #0b1a25;
     /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
     box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px;
     position: relative;
     z-index: 1;
+=======
+    background-color: #0d1f2c;
+    /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
+>>>>>>> Stashed changes
 }
 
 @media all and (max-width: 999px) {
@@ -478,6 +498,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
+    margin-left: 5px;
 }
 
 .header-parts>.header-top .menu-image.social-btn img.blue,
@@ -525,6 +546,7 @@ header {
     padding-bottom: 21px;
 }
 
+<<<<<<< Updated upstream
 .header-parts>.header-bottom ul.menu-dk-title {
     position: unset;
 }
@@ -534,6 +556,18 @@ header {
 .header-parts>.header-bottom ul a.menu-text.menu-single,
 .header-parts>.header-bottom ul a.menu-text.menu-title,
 .header-parts>.header-bottom ul a.menu-text.menu-dk-title {
+=======
+.header-parts > .header-bottom ul.menu-title,
+.header-parts > .header-bottom ul.menu-dk-title {
+    padding-bottom: 22px;
+}
+
+.header-parts > .header-bottom a.menu-text.menu-single,
+.header-parts > .header-bottom a.menu-text.menu-title,
+.header-parts > .header-bottom ul a.menu-text.menu-single,
+.header-parts > .header-bottom ul a.menu-text.menu-title,
+.header-parts > .header-bottom ul a.menu-text.menu-dk-title {
+>>>>>>> Stashed changes
     text-transform: uppercase;
     color: #fff;
     font-weight: 600;
@@ -905,7 +939,7 @@ header {
         left: 0;
         width: 100vw;
         height: 50px;
-        z-index: 1;
+        z-index: 3;
         background-color: #0b1a25;
         box-shadow: #000000 1px 1px 10px;
         padding: 5px;
@@ -979,7 +1013,7 @@ header {
         left: 0;
         text-align: center;
         top: 50px;
-        z-index: 1;
+        z-index: 4;
         box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px;
         display: inline-flex;
     }
@@ -1055,6 +1089,9 @@ header {
 
 main {
     font-size: initial;
+    background-color: #0b1a25;
+    z-index: 0;
+    position: relative;
 }
 
 /* FOOTER */
@@ -2661,16 +2698,20 @@ input[type="submit"].neumorphic:hover,
     background: #59b7b3;
     box-sizing: border-box;
     padding: 40px 30px;
-    left: -450px;
+    left: -500px;
     height: 100%;
     overflow: auto;
     z-index: 2;
     box-shadow: #0007 3px 3px 12px;
+    z-index: 1;
+    transition-duration: 0.6s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .privacy-policy.opened .panel {
     display: block;
     left: 0px;
+    z-index: 1;
 }
 
 .privacy-policy .cookies-our-use,
@@ -2839,4 +2880,682 @@ input[type="submit"].neumorphic:hover,
     background-color: #59b7b388;
     width: 5px;
     height: 5px;
+}
+
+/* 404 PAGE */
+
+._404-zone {
+
+}
+._404-zone ._404-message {
+
+}
+
+._404-zone ._404-suggestions {
+
+}
+
+._404-zone ._404-suggestions a {
+
+}
+
+/* PRODUCT PAGE */
+
+/* product banner */
+
+.product-banner {
+    height: 380px;
+    box-sizing: border-box;
+    background-color: #000;
+    position: relative;
+    background-image: linear-gradient(90deg, transparent, black, transparent, black);
+    top: 0px;
+}
+
+.product-banner .top-transition {
+    width: 100vw;
+    height: 100px;
+    background-color: #000;
+    position: absolute;
+    z-index: 4;
+    top: -100px;
+    left: 0;
+}
+
+.product-banner .product-banner-media,
+.product-banner .product-banner-details {
+    display: inline-block;
+    vertical-align: middle;
+    width: 45vw;
+    margin: 0 2.5%;
+    position: relative;
+}
+
+.product-banner .product-banner-media {
+    height: 100%; 
+    position: relative;
+    z-index: 0;
+    height: 380px;
+}
+
+.product-banner .product-banner-details {
+    height: max-content;
+    position: relative;
+    z-index: 2;
+}
+
+.product-banner .product-banner-media video {
+    display: block;
+    margin: 0 auto;
+}
+
+.product-banner .product-banner-media img {
+    display: none;
+}
+
+.product-banner .product-banner-media video {
+    position: absolute;
+    height: 380px;
+    top: 0;
+    left: 0;
+}
+
+.product-banner .product-banner-details {
+
+}
+
+.product-banner .product-banner-details .product-banner-logo {
+    width: 100%;
+}
+
+.product-banner .product-banner-details .product-banner-short-descr {
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-size: 2vw;
+    font-weight: 400;
+    height: 45px;
+    letter-spacing: 10px;
+    line-height: 45px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.product-banner .product-banner-mini {
+    display: none;
+}
+
+.product-banner .product-banner-mask {
+    width: 100vw;
+    height: 380px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-image: linear-gradient(90deg, transparent, #000);
+}
+
+@media (max-width: 999px) {
+
+    .product-banner {
+        margin-top: 50px;
+        height: max-content;
+    }
+}
+
+@media (max-width: 959px) {
+    .product-banner .product-banner-media,
+    .product-banner .product-banner-details,
+    .product-banner .product-banner-mask {
+        display: none;
+    }
+
+    .product-banner .product-banner-mini {
+        display: block;
+        width: 100vw;
+        position: relative;
+        font-size: 0;
+    }
+
+    .product-banner .product-banner-mini img {
+        width: 100%;
+        max-height: 380px;
+    }
+}
+
+/* product navigation */
+
+.product-navigation {
+    width: 100%;
+    background: #0b1a25;
+    padding: 50px 0;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, .5) 2px 2px 5px;
+    position: relative;
+    z-index: 3;
+}
+
+.product-navigation div.product-nav {
+    display: inline-block;
+}
+
+.product-navigation a.product-nav {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.product-navigation div.product-nav::after {
+    content: "|";
+    font-size: 18px;
+    font-weight: bold;
+    color: #7cb5b2;
+    padding: 0px 10px;
+    top: -2px;
+    position: relative;
+}
+
+.product-navigation .product-nav:last-child::after {
+    content: "";
+}
+
+/* product details */
+
+.product-details {
+    background-color: #0b1a25;
+    position: relative;
+    max-width: 1170px;
+    margin: 50px auto;
+    width: calc(100% - 100px);
+}
+
+.product-details .title {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    line-height: 38px;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.product-details .text {
+    color:rgb(99, 100, 102);
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    vertical-align: baseline;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.product-details div.product-details-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 33%;
+    background: #59b7b3;
+    width: 100%;
+    height: 100%;
+}
+
+.product-details div.product-details-img img {
+    max-width: 100%;
+}
+
+.product-details .what-is,
+.product-details .key-benefits {
+    margin-top: 20px;
+    width: 67%;
+    display: block;
+    margin-left: 33%;
+}
+
+.product-details .what-is {
+    
+}
+
+.product-details .key-benefits {
+
+}
+
+.product-details .key-benefits .key {
+    padding-left: 85px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+}
+
+.product-details .key-benefits .key img {
+    width: 42px;
+    height: 46px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.product-details .key-benefits .key .text {
+
+}
+
+.product-details .request-informations {
+    background-color: #59b7b3;
+    box-sizing: border-box;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 220px;
+    margin-left: calc(33% + 85px);
+}
+
+@media (max-width: 999px) {
+    .product-details div.product-details-img {
+        left: calc(0px - (100vw - 100px) * 0.33);
+        max-width: calc((100vw - 100px) * 0.3);
+    }
+
+    .product-details .what-is {
+        position: relative;
+        min-height: 270px;
+    }
+
+    .product-details .key-benefits {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .product-details .request-informations {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 729px) {
+    .product-details div.product-details-img {
+        display: none;
+    }
+
+    .product-details .what-is {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .product-details .key-benefits {
+
+    }
+}
+
+/* product addons */
+
+.product-addons {
+    background-color: #0b1a25;
+    position: relative;
+    max-width: 1170px;
+    margin: 50px auto;
+    width: calc(100% - 100px);
+}
+
+.product-addons .section-title {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 38px;
+    text-transform: uppercase;
+}
+
+.product-addons .product-addon {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.product-addons .product-addon .addon-details {
+    display: inline-block;
+    vertical-align: top;
+    width: 55%;
+}
+
+.product-addons .product-addon .addon-details .addon-description {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-img {
+    position: absolute;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100vw / 8);
+    max-width: 100px;
+    max-height: 400px;
+    height: 100%;
+    background: orange;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-img img {
+    max-width: 100px;
+    width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    background: orange;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-title {
+    box-sizing: border-box;
+    color: rgb(124, 181, 178);
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 30px;
+    padding-bottom: 30px;
+    margin-left: calc(100vw / 8);
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-description {
+    box-sizing: border-box;
+    color: rgb(99, 100, 102);
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    padding-bottom: 30px;
+    margin-left: calc(100vw / 8);
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat {
+    box-sizing: border-box;
+    color: rgb(124, 181, 178);
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 32px;
+    padding-bottom: 20px;
+    margin-left: calc(100vw / 8);
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat ul {
+    box-sizing: border-box;
+    color: rgb(99, 100, 102);
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    margin-block-end: 30px;
+    margin-bottom: 30px;
+    padding-inline-start: 40px;
+    padding-left: 40px;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat ul li {
+    box-sizing: border-box;
+    color: rgb(99, 100, 102);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat ul li::before {
+    content: "•";
+    vertical-align: middle;
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    left: -10px;
+    text-align: center;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat .title {
+    box-sizing: border-box;
+    color: rgb(124, 181, 178);
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 32px;
+    padding-bottom: 20px;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat ul li::before {
+    
+}
+
+.product-addons .product-addon .addon-carousel {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    margin-left: 5%;
+    overflow-x: hidden;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons {
+    outline: transparent;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .addon{
+    width: 100%;
+    background-color: yellow;
+    max-width: 100%;
+    text-align: center;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .flickity-prev-next-button {
+    display: none;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .flickity-page-dots {
+    display: block;
+    text-align: center;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .flickity-page-dots .dot {
+    display: inline-block;
+    margin: 5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 4.5px;
+    background-color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .flickity-page-dots .dot.is-selected {
+    opacity: 1;
+}
+
+@media (max-width: 729px) {
+    .product-addons {
+        width: unset;
+    }
+
+    .product-addons .product-addon .addon-details,
+    .product-addons .product-addon .addon-carousel {
+        display: block;
+        width: 90vw;
+        margin: 50px auto;
+    }
+
+    .product-addons .product-addon .addon-details .addon-description .addon-img {
+        max-height: calc(100vw / 2);
+    }
+}
+
+/* product clinical studies */
+
+.product-clinical-studies {
+    background-color: #0b1a25;
+    position: relative;
+    max-width: 1170px;
+    margin: 50px auto 0;
+    width: calc(100% - 100px);
+    padding-bottom: 50px;
+}
+
+.product-clinical-studies .title {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 38px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.product-clinical-studies .clinical-studies-slider {
+
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies {
+    text-align: center;
+    position: relative;
+    outline: transparent;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .flickity-viewport {
+    overflow: hidden;
+    border: 1px solid #59b7b3;
+    box-sizing: border-box;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide {
+    width: calc(100vw - 100px);
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: left;
+    max-width: 1170px;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img {
+    width: 20%;
+    height: calc((100vw - 142px) * 0.2);
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 230px;
+    max-height: 200px;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 75%;
+    margin-left: 5%;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-name {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    padding-bottom: 10px;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-details {
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px;
+    padding-bottom: 20px;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-download {
+    background-color: #59b7b3;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 220px;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.previous {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: -25px;
+}
+
+.product-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.next {
+    position: absolute;
+    top: 50%;
+    transform: translate(50%,-50%);
+    right: -25px;
+}
+@media (max-width: 729px) {
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-name {
+        text-align: center;
+    }
+
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-details {
+        text-align: left;
+    }
+
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-download {
+        margin: 0 auto;
+    }
+
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img,
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-text {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
+        width: calc(100% - 40px);
+    }
 }
