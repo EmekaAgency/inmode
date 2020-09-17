@@ -23,27 +23,7 @@ module.exports = {
         start_url: `/src/images/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-<<<<<<< Updated upstream
         display: `minimal-ui`
-=======
-        display: `minimal-ui`,
-        header_icons: [
-          'public/icons/social-network/facebook.jpg',
-          'public/icons/social-network/twitter.jpg',
-          'public/icons/social-network/instagram.jpg',
-          'public/icons/social-network/linkedin.jpg',
-          'public/icons/social-network/youtube.jpg'
-        ],
-        footer_icons: [
-          'public/icons/icomoon/svg/073-location2.jpg',
-          'public/icons/icomoon/svg/067-phone.jpg',
-          'public/icons/icomoon/svg/391-mail5.jpg',
-          'public/icons/icomoon/svg/social-facebook.jpg',
-          'public/icons/icomoon/svg/social-instagram.jpg',
-          'public/icons/icomoon/svg/social-linkedin.jpg',
-          'public/icons/icomoon/svg/social-youtube.jpg'
-        ]
->>>>>>> Stashed changes
       },
     },
     {
