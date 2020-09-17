@@ -4,7 +4,7 @@ import { get_img_path } from "../../functions/get_images";
 
 const ProductView = ({children, datas}) => {
 
-    const [currency] = React.useState('euro');
+    const [currency, setCurrency] = React.useState('euro');
 
     if(datas == null) {
         return (<></>);

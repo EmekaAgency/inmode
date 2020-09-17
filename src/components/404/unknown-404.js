@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react"
 
-const _404 = () => {
+const Unknown404 = () => {
 
     return (
         <div className="_404-zone">
@@ -17,12 +17,12 @@ const _404 = () => {
     );
 }
 
-_404.defaultProps = {
+Unknown404.defaultProps = {
 
 }
 
-_404.propTypes = {
+Unknown404.propTypes = {
 
 }
 
-export default _404;
+export default Unknown404;

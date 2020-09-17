@@ -2,6 +2,7 @@ import React from 'react';
 import { useStaticQuery, graphql } from "gatsby";
 import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
+import MenusProvider from './contexts/menus-datas';
 
 const HeaderTop = ({ process = false, process_function = null }) => {
 

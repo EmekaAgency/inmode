@@ -169,17 +169,10 @@ ol {
     transform: translateX(-50%);
 }
 
-<<<<<<< Updated upstream
 .header-parts>.header-top .menu-title .dropdown-menu li,
 .header-parts>.header-top .menu-dk-title .dk-dropdown-menu li,
 .header-parts>.header-bottom .menu-title .dropdown-menu li,
 .header-parts>.header-bottom .menu-dk-title .dk-dropdown-menu li {
-=======
-.header-parts > .header-top .menu-title .dropdown-menu li,
-.header-parts > .header-top .menu-dk-title .dk-dropdown-menu li,
-.header-parts > .header-bottom .menu-title .dropdown-menu li,
-.header-parts > .header-bottom .menu-dk-title .dk-dropdown-menu li {
->>>>>>> Stashed changes
     display: block;
     padding: 0;
     margin: 0;
@@ -286,16 +279,11 @@ header {
     margin: 0 auto;
     width: calc(100% - 30px);
     padding: 25px 15px 0;
-<<<<<<< Updated upstream
     background-color: #0b1a25;
     /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
     box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px;
     position: relative;
     z-index: 1;
-=======
-    background-color: #0d1f2c;
-    /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
->>>>>>> Stashed changes
 }
 
 @media all and (max-width: 999px) {
@@ -546,7 +534,7 @@ header {
     padding-bottom: 21px;
 }
 
-<<<<<<< Updated upstream
+
 .header-parts>.header-bottom ul.menu-dk-title {
     position: unset;
 }
@@ -556,18 +544,6 @@ header {
 .header-parts>.header-bottom ul a.menu-text.menu-single,
 .header-parts>.header-bottom ul a.menu-text.menu-title,
 .header-parts>.header-bottom ul a.menu-text.menu-dk-title {
-=======
-.header-parts > .header-bottom ul.menu-title,
-.header-parts > .header-bottom ul.menu-dk-title {
-    padding-bottom: 22px;
-}
-
-.header-parts > .header-bottom a.menu-text.menu-single,
-.header-parts > .header-bottom a.menu-text.menu-title,
-.header-parts > .header-bottom ul a.menu-text.menu-single,
-.header-parts > .header-bottom ul a.menu-text.menu-title,
-.header-parts > .header-bottom ul a.menu-text.menu-dk-title {
->>>>>>> Stashed changes
     text-transform: uppercase;
     color: #fff;
     font-weight: 600;
@@ -3556,6 +3532,463 @@ input[type="submit"].neumorphic:hover,
     }
 
     .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
+        width: calc(100% - 40px);
+    }
+}
+
+/* ADDON PAGE */
+
+/* addon banner */
+
+.addon-banner {
+    height: 380px;
+    box-sizing: border-box;
+    background-color: #000;
+    position: relative;
+    background-image: linear-gradient(90deg, transparent, black, transparent, black);
+    top: 0px;
+}
+
+.addon-banner .top-transition {
+    width: 100vw;
+    height: 100px;
+    background-color: #000;
+    position: absolute;
+    z-index: 4;
+    top: -100px;
+    left: 0;
+}
+
+.addon-banner .addon-banner-media,
+.addon-banner .addon-banner-details {
+    display: inline-block;
+    vertical-align: middle;
+    width: 45vw;
+    margin: 0 2.5%;
+    position: relative;
+}
+
+.addon-banner .addon-banner-media {
+    height: 100%; 
+    position: relative;
+    z-index: 0;
+    height: 380px;
+}
+
+.addon-banner .addon-banner-details {
+    height: max-content;
+    position: relative;
+    z-index: 2;
+}
+
+.addon-banner .addon-banner-media video {
+    display: block;
+    margin: 0 auto;
+}
+
+.addon-banner .addon-banner-media img {
+    display: none;
+}
+
+.addon-banner .addon-banner-media video {
+    position: absolute;
+    height: 380px;
+    top: 0;
+    left: 0;
+}
+
+.addon-banner .addon-banner-details {
+
+}
+
+.addon-banner .addon-banner-details .addon-banner-logo {
+    width: 100%;
+}
+
+.addon-banner .addon-banner-details .addon-banner-short-descr {
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    display: block;
+    font-size: 2vw;
+    font-weight: 400;
+    height: 45px;
+    letter-spacing: 10px;
+    line-height: 45px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.addon-banner .addon-banner-mini {
+    display: none;
+}
+
+.addon-banner .addon-banner-mask {
+    width: 100vw;
+    height: 380px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-image: linear-gradient(90deg, transparent, #000);
+}
+
+@media (max-width: 999px) {
+
+    .addon-banner {
+        margin-top: 50px;
+        height: max-content;
+    }
+}
+
+@media (max-width: 959px) {
+    .addon-banner .addon-banner-media,
+    .addon-banner .addon-banner-details,
+    .addon-banner .addon-banner-mask {
+        display: none;
+    }
+
+    .addon-banner .addon-banner-mini {
+        display: block;
+        width: 100vw;
+        position: relative;
+        font-size: 0;
+    }
+
+    .addon-banner .addon-banner-mini img {
+        width: 100%;
+        max-height: 380px;
+    }
+}
+
+/* addon navigation */
+
+.addon-navigation {
+    width: 100%;
+    background: #0b1a25;
+    padding: 50px 0;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, .5) 2px 2px 5px;
+    position: relative;
+    z-index: 3;
+}
+
+.addon-navigation div.addon-nav {
+    display: inline-block;
+}
+
+.addon-navigation a.addon-nav {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.addon-navigation div.addon-nav::after {
+    content: "|";
+    font-size: 18px;
+    font-weight: bold;
+    color: #7cb5b2;
+    padding: 0px 10px;
+    top: -2px;
+    position: relative;
+}
+
+.addon-navigation .addon-nav:last-child::after {
+    content: "";
+}
+
+/* addon details */
+
+.addon-details {
+    background-color: #0b1a25;
+    position: relative;
+    max-width: 1170px;
+    margin: 50px auto;
+    width: calc(100% - 100px);
+}
+
+.addon-details .title {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    line-height: 38px;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.addon-details .text {
+    color:rgb(99, 100, 102);
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    vertical-align: baseline;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+.addon-details div.addon-details-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 33%;
+    background: #59b7b3;
+    width: 100%;
+    height: 100%;
+}
+
+.addon-details div.addon-details-img img {
+    max-width: 100%;
+}
+
+.addon-details .what-is,
+.addon-details .key-benefits {
+    margin-top: 20px;
+    width: 67%;
+    display: block;
+    margin-left: 33%;
+}
+
+.addon-details .what-is {
+    
+}
+
+.addon-details .key-benefits {
+
+}
+
+.addon-details .key-benefits .key {
+    padding-left: 85px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+}
+
+.addon-details .key-benefits .key img {
+    width: 42px;
+    height: 46px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.addon-details .key-benefits .key .text {
+
+}
+
+.addon-details .request-informations {
+    background-color: #59b7b3;
+    box-sizing: border-box;
+    color:#fff;
+    cursor:pointer;
+    font-size:14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 220px;
+    margin-left: calc(33% + 85px);
+}
+
+@media (max-width: 999px) {
+    .addon-details div.addon-details-img {
+        left: calc(0px - (100vw - 100px) * 0.33);
+        max-width: calc((100vw - 100px) * 0.3);
+    }
+
+    .addon-details .what-is {
+        position: relative;
+        min-height: 270px;
+    }
+
+    .addon-details .key-benefits {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .addon-details .request-informations {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 729px) {
+    .addon-details div.addon-details-img {
+        display: none;
+    }
+
+    .addon-details .what-is {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .addon-details .key-benefits {
+
+    }
+}
+
+
+/* addon clinical studies */
+
+.addon-clinical-studies {
+    background-color: #0b1a25;
+    position: relative;
+    max-width: 1170px;
+    margin: 50px auto 0;
+    width: calc(100% - 100px);
+    padding-bottom: 50px;
+}
+
+.addon-clinical-studies .title {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 38px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+
+.addon-clinical-studies .clinical-studies-slider {
+
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies {
+    text-align: center;
+    position: relative;
+    outline: transparent;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .flickity-viewport {
+    overflow: hidden;
+    border: 1px solid #59b7b3;
+    box-sizing: border-box;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide {
+    width: calc(100vw - 100px);
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: left;
+    max-width: 1170px;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img {
+    width: 20%;
+    height: calc((100vw - 142px) * 0.2);
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 230px;
+    max-height: 200px;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: red;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 75%;
+    margin-left: 5%;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-name {
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 28px;
+    padding-bottom: 10px;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-details {
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 20px;
+    padding-bottom: 20px;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-download {
+    background-color: #59b7b3;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 220px;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.previous {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: -25px;
+}
+
+.addon-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.next {
+    position: absolute;
+    top: 50%;
+    transform: translate(50%,-50%);
+    right: -25px;
+}
+@media (max-width: 729px) {
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-name {
+        text-align: center;
+    }
+
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-details {
+        text-align: left;
+    }
+
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-download {
+        margin: 0 auto;
+    }
+
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img,
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-text {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-img {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
         width: calc(100% - 40px);
     }
 }

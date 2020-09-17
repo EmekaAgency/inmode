@@ -17,20 +17,13 @@ const SINGLE = 1;
 const TITLE = 2;
 const CONTENT = 3;
 const DK_TITLE = 4;
-<<<<<<< Updated upstream
 const SIDE_MENU = 5;
-=======
->>>>>>> Stashed changes
 
 // TYPE
 const TEXT = 1;
 const IMAGE = 2;
 const BUTTON = 3;
-<<<<<<< Updated upstream
 // const CARD = 4;
-=======
-const CARD = 4;
->>>>>>> Stashed changes
 
 const Menu = ({menu, prop_key, openOnClick, parent}) => {
 
@@ -68,7 +61,6 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type title-button`);
         return (<MenuTitleButton key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
     }
-<<<<<<< Updated upstream
     // else if(menu.variant === TITLE && menu.type === CARD) {
     //     console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type title-card`);
     //     return (<MenuTitleCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
@@ -140,15 +132,6 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     else {
         return null;
     }
-=======
-    else if(menu.variant == DK_TITLE && menu.type == TEXT) {
-        return (<MenuDKTitleText key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
-    }
-    else {
-        return null;
-    }
-    return null;
->>>>>>> Stashed changes
 }
 
 Menu.propTypes = {

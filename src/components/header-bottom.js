@@ -28,11 +28,7 @@ const HeaderBottom = ({ process = false, process_function = {} }) => {
 
     return (
         <div id="header-bottom" className="header-bottom">
-<<<<<<< Updated upstream
             {menus && menus.map((menu, key) => {
-=======
-            {menus.map((menu, key) => {
->>>>>>> Stashed changes
                 return (<Menu key={key} prop_key={key} menu={menu}/>);
             })}
         </div>
