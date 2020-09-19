@@ -1,30 +1,7 @@
 import React from 'react';
-import { useStaticQuery, graphql } from "gatsby";
-import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
 
-const HeaderBottom = ({ process = false, process_function = {} }) => {
-
-    const datas = useStaticQuery(graphql`
-        {
-            allMysqlHeaderBottom {
-                edges {
-                    node {
-                        container
-                        name
-                        position
-                        type
-                        under
-                        url
-                        variant
-                        mysqlId
-                    }
-                }
-            }
-        }
-    `).allMysqlHeaderBottom.edges;
-    
-    const [menus] = React.useState(process && process_function ? process_function(process_menu_datas(datas)) : process_menu_datas(datas));
+const HeaderBottom = ({ menus }) => {
 
     return (
         <div id="header-bottom" className="header-bottom">

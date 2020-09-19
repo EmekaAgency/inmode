@@ -14,31 +14,35 @@ import { format_string } from "./format_string";
 const img_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'svg'];
 
 export const resolve_image = (name, index = 0) => {
-    // console.log(`name : ${name}\nindex : ${index}`);
-    if(index > 0) {
-        console.log(`${get_img_path(`/icons/${name}.${img_extensions[index - 1]}`)} was not a valid path`);
-    }
-    console.log(`let's try with ${get_img_path(`/icons/${name}.${img_extensions[index]}`)}\n\n`);
-    if(index === img_extensions.length) {
+    if(index >= img_extensions.length) {
+        // console.log("Plus d'extension disponible, image par défaut");
         return get_img_path(`/icons/icons/no_img_available.svg`);
     }
-    let img = new Image();
-    img.src = get_img_path(`/icons/${name}.${img_extensions[index]}`);
-    img.onload = function() {
-        return get_img_path(`/icons/${name}.${img_extensions[index]}`);
-    }
-    img.onerror = function() {
-        return resolve_image(name, index + 1);
-    };
+    else {
+        // console.log(`Test avec ${get_img_path(`/icons/${name}.${img_extensions[index]}`)}`);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', get_img_path(`/icons/${name}.${img_extensions[index]}`), false);
+        xhr.send();
 
-    return get_img_path(`/icons/${name}.${img_extensions[index]}`);
+        // console.log(xhr.response.substr(0,15));
+
+        // TODO fixer cette douille de #d,/?
+        if (xhr.response.substr(0,15) === "<!DOCTYPE html>") {
+            // console.log("Not found");
+            return resolve_image(name, index + 1);
+        }
+        else {
+            // console.log(`Success, return img with path ${get_img_path(`/icons/${name}.${img_extensions[index]}`)}`);
+            return get_img_path(`/icons/${name}.${img_extensions[index]}`, true);
+        }
+    }
 };
 
 // TODO Refaire en Gatsby pour le rendu non client
-export const get_img_path = (path = "") => {
+export const get_img_path = (path = "", print = false) => {
     var source_path = typeof window !== 'undefined' ? window.location.origin : '';
     if(typeof path == "string"){
-        return source_path + format_string(path, true, false);
+        return source_path + format_string(path, true, false, print);
     }
     return "";
 };

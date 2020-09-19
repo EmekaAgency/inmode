@@ -1,52 +1,14 @@
 import React from 'react';
 import { get_img_path } from "../functions/get_images";
-import { useStaticQuery, graphql } from "gatsby";
-import { process_menu_datas } from '../functions/process_menu_datas';
 import Menu from './menu';
 
-const HeaderMini = ({ process = false, process_functions = {} }) => {
-
-    const datas = useStaticQuery(graphql`
-        {
-            allMysqlHeaderTop {
-                edges {
-                    node {
-                        container
-                        name
-                        position
-                        type
-                        under
-                        url
-                        variant
-                        mysqlId
-                    }
-                }
-            }
-            allMysqlHeaderBottom {
-                edges {
-                    node {
-                        container
-                        name
-                        position
-                        type
-                        under
-                        url
-                        variant
-                        mysqlId
-                    }
-                }
-            }
-        }
-    `);
+const HeaderMini = ({ menus_top, menus_bottom }) => {
 
     const closeMenu = (e) => {
         // console.log("closeMenu()");
         e.preventDefault();
         document.getElementById('header-mini').classList.remove('opened');
     }
-
-    const [menus_top] = React.useState(process['header-top'] && process_functions['header-top'] ? process_functions['header-top'](process_menu_datas(datas.allMysqlHeaderTop.edges)) : process_menu_datas(datas.allMysqlHeaderTop.edges));
-    const [menus_bottom] = React.useState(process['header-bottom'] && process_functions['header-bottom'] ? process_functions['header-bottom'](process_menu_datas(datas.allMysqlHeaderBottom.edges)) : process_menu_datas(datas.allMysqlHeaderBottom.edges));
 
     return (
         <div id="header-mini" className="header-mini">

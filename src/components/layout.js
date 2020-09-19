@@ -7,47 +7,41 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
 import Footer from "./footer"
 import ContactUs from "./contact-us"
 import PrivacyPolicy from "./privacy-policy"
+import MenusContext from "./contexts/menus-context"
+import FixedMenu from "./fixed-menu"
+import ProductsProvider from "../components/contexts/products-provider";
 
-const Layout = ({
-  children,
-  process_header = false,
-  header_process_functions = {},
-  process_footer = false,
-  footer_process_functions = {}
-}) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Layout = ({ children }) => {
+
+  const [menus_header_top] = React.useState(React.useContext(MenusContext).header_top);
+  const [menus_header_bottom] = React.useState(React.useContext(MenusContext).header_bottom);
+  const [menus_footer] = React.useState(React.useContext(MenusContext).footer);
 
   return (
     <>
       <Header
-        process={process_header}
-        process_functions={header_process_functions}
-        siteTitle={data.site.siteMetadata.title}
+        menus_top={menus_header_top}
+        menus_bottom={menus_header_bottom}
       />
-      <main>
-        {children}
-      </main>
+      <ProductsProvider>
+        <main>
+          {children}
+        </main>
+      </ProductsProvider>
+      <FixedMenu
+        menus={menus_header_bottom}
+      />
       <PrivacyPolicy />
       <ContactUs/>
-      <Footer
-        process={process_footer}
-        process_functions={footer_process_functions}
-      />
+        <Footer
+          menus={menus_footer}
+        />
       {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
     </>
   )

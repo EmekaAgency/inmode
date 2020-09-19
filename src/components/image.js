@@ -14,7 +14,7 @@ import Img from "gatsby-image"
  */
 
 const Image = () => {
-  const data = useStaticQuery(graphql`
+  const [data] = React.useState(useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
         childImageSharp {
@@ -24,7 +24,7 @@ const Image = () => {
         }
       }
     }
-  `)
+  `))
 
   return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }

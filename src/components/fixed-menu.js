@@ -1,56 +1,43 @@
 import React from "react"
 import { get_img_path } from "../functions/get_images";
 import Menu from "./menu";
-import { process_menu_datas } from "../functions/process_menu_datas";
-import { is_visible } from "../functions/is_visible";
 import { Link } from "gatsby";
 
-class FixedMenu extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            menus: props.process && props.process_function && false ? props.process_function(process_menu_datas(props.datas)) : process_menu_datas(props.datas),
-            // menus: process_menu_datas(props.datas),
-            visible: false
+const FixedMenu = ({ menus, customClass }) => {
+
+    const [ isVisible, setIsVisible ] = React.useState();
+
+    React.useEffect(_ => {
+        const handleScroll = _ => { 
+            if (window.pageYOffset > 150) {
+                setIsVisible(true)
+            } else {
+                setIsVisible(false)
+            }
+        };
+        window.addEventListener('scroll', handleScroll)
+        return _ => {
+            window.removeEventListener('scroll', handleScroll)
         }
-        this.handleScroll = this.handleScroll.bind(this);
-    }
+    }, []);
 
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
-        this.setState({
-            visible: is_visible()
-        });
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    handleScroll = ev => {
-        window.scrollY > 200 && !this.state.visible && this.setState({visible: true});
-        window.scrollY <= 200 && this.state.visible && this.setState({visible: false});
-    };
-
-    render () {
-        return (
-            <div id="fixed-menu" className={`transition${' ' + this.props.customClass || ''}`} style={{top: this.state.visible ? 0 : -55, boxShadow: this.state.visible ? null : 'unset'}}>
-                <div className="fixed-menu-container">
-                    <div className="fixed-menu-logo">
-                        <img src={get_img_path('/icons/header-logo.png')} alt="header-logo"/>
-                        <Link to="/" className="zone-link"></Link>
-                    </div>
-                    <div className="fixed-menus">
-                        {this.state.menus && this.state.menus.map((menu, key) => {
-                            return (
-                                <Menu key={key} prop_key={key} menu={menu} />
-                            );
-                        })}
-                    </div>
+    return (
+        <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible ? 0 : -55, boxShadow: isVisible ? null : 'unset'}}>
+            <div className="fixed-menu-container">
+                <div className="fixed-menu-logo">
+                    <img src={get_img_path('/icons/header-logo.png')} alt="header-logo"/>
+                    <Link to="/" className="zone-link"></Link>
+                </div>
+                <div className="fixed-menus">
+                    {menus && menus.map((menu, key) => {
+                        return (
+                            <Menu key={key} prop_key={key} menu={menu} />
+                        );
+                    })}
                 </div>
             </div>
-        );
-    };
+        </div>
+    );
 }
 
 FixedMenu.propTypes = {

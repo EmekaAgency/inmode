@@ -25,22 +25,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: 'src/images/favicon.png',
-        header_icons: [
-          'public/icons/social-network/facebook.jpg',
-          'public/icons/social-network/twitter.jpg',
-          'public/icons/social-network/instagram.jpg',
-          'public/icons/social-network/linkedin.jpg',
-          'public/icons/social-network/youtube.jpg'
-        ],
-        footer_icons: [
-          'public/icons/icomoon/svg/073-location2.jpg',
-          'public/icons/icomoon/svg/067-phone.jpg',
-          'public/icons/icomoon/svg/391-mail5.jpg',
-          'public/icons/icomoon/svg/social-facebook.jpg',
-          'public/icons/icomoon/svg/social-instagram.jpg',
-          'public/icons/icomoon/svg/social-linkedin.jpg',
-          'public/icons/icomoon/svg/social-youtube.jpg'
-        ]
       },
     },
     {
@@ -90,16 +74,20 @@ module.exports = {
             name: 'footer'
           },
           {
-            statement: 'SELECT * FROM product WHERE type IN (0, 1)',
+            statement: 'SELECT * FROM product',
             idFieldName: 'id',
             nameFieldName: 'name',
             shortDescrFieldName: 'short_descr',
             descrFieldName: 'descr',
-            imgPathFieldName: 'img_path',
             priceFieldName: 'price',
             typeFieldName: 'type',
-            parentsFieldName: 'parents',
-            name: 'slides-products'
+            name: 'products'
+          },
+          {
+            statement: 'SELECT * FROM product_matching',
+            productIdFieldName: 'product_id',
+            addonIdFieldName: 'addon_id',
+            name: 'product_matching'
           },
           // {
           //   statement: 'SELECT * FROM product_matching INNER JOIN product WHERE product_matching.addon_id = product.id',
@@ -109,10 +97,9 @@ module.exports = {
           //   nameFieldName: 'name',
           //   shortDescrFieldName: 'short_descr',
           //   descrFieldName: 'descr',
-          //   imgPathFieldName: 'img_path',
           //   priceFieldName: 'price',
           //   typeFieldName: 'type',
-          //   parentName: 'product',
+          //   parentName: 'products',
           //   foreignKey: 'ProductId',
           //   cardinality: 'OneToMany',
           //   name: 'slides-addons'

@@ -1,8 +1,12 @@
 import React from "react"
 import { format_string } from "../../functions/format_string";
 import { resolve_image, get_img_path } from "../../functions/get_images"
+import ProductsContext from "../contexts/products-context";
 
-const ProductBanner = ({ product }) => {
+const ProductBanner = ({  }) => {
+  
+    const product = React.useContext(ProductsContext).product(5);
+
     // TODO récupérer images et vidéos pour chaque produit
     return (
         <div className="product-banner transition">

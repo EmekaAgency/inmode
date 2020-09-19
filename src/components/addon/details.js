@@ -1,8 +1,11 @@
 import React from "react"
 import { format_string } from "../../functions/format_string";
 import { resolve_image } from "../../functions/get_images";
+import ProductsContext from "../contexts/products-context";
 
-const AddonDetails = ({ addon }) => {
+const AddonDetails = ({  }) => {
+  
+    const addon = React.useContext(ProductsContext).addons[0];
 
     return (
         <div className="addon-details">
@@ -28,10 +31,10 @@ const AddonDetails = ({ addon }) => {
                 'Anim et esse veniam dolore reprehenderit anim velit elit ex incididunt. Aute ex voluptate veniam deser.'
             ].map((benefit, key) => {
                 return (
-                    <p key={key} className="key">
+                    <div key={key} className="key">
                         <img src={resolve_image('icons/key_benefit')} alt="key_benefit"/>
                         <div className="text">{benefit}</div>
-                    </p>
+                    </div>
                 );
             })}
         </div>

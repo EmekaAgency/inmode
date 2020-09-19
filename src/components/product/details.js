@@ -1,8 +1,12 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
 import { format_string } from "../../functions/format_string";
 import { resolve_image } from "../../functions/get_images";
+import ProductsContext from "../contexts/products-context";
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = ({  }) => {
+  
+    const product = React.useContext(ProductsContext).product(5);
 
     return (
         <div className="product-details">
@@ -28,10 +32,10 @@ const ProductDetails = ({ product }) => {
                     'Anim et esse veniam dolore reprehenderit anim velit elit ex incididunt. Aute ex voluptate veniam deser.'
                 ].map((benefit, key) => {
                     return (
-                        <p key={key} className="key">
+                        <div key={key} className="key">
                             <img src={resolve_image('icons/key_benefit')} alt="key_benefit"/>
                             <div className="text">{benefit}</div>
-                        </p>
+                        </div>
                     );
                 })}
             </div>

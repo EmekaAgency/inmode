@@ -1,8 +1,12 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
 import Flickity from "react-flickity-component";
 import { resolve_image } from "../../functions/get_images";
+import ProductsContext from "../contexts/products-context";
 
-const ProductClinicalStudies = ({ product }) => {
+const ProductClinicalStudies = ({  }) => {
+  
+    const product = React.useContext(ProductsContext).product(5);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -33,7 +37,7 @@ const ProductClinicalStudies = ({ product }) => {
                 >
                     {['1', '2', '3'].map((study, key) => {
                         return (
-                            <div className="study-slide">
+                            <div key={key} className="study-slide">
                                 <div className="study-img">
                                     <img src={resolve_image('products/clinical_study')} alt="clinical-study"/>
                                 </div>

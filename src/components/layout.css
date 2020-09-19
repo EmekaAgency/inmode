@@ -3112,11 +3112,12 @@ input[type="submit"].neumorphic:hover,
 }
 
 .product-details .key-benefits .key img {
-    width: 42px;
+    width: 46px;
     height: 46px;
     position: absolute;
     left: 0;
     top: 0;
+    filter: invert;
 }
 
 .product-details .key-benefits .key .text {
@@ -3356,11 +3357,12 @@ input[type="submit"].neumorphic:hover,
     border-radius: 4.5px;
     background-color: #fff;
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .product-addons .product-addon .addon-carousel .slide-addons .flickity-page-dots .dot.is-selected {
-    opacity: 1;
+    background-color: #59b7b3;
+    box-shadow: #59b7b3 0 0 5px;
 }
 
 @media (max-width: 729px) {
@@ -3991,4 +3993,21 @@ input[type="submit"].neumorphic:hover,
     .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
         width: calc(100% - 40px);
     }
+}
+
+.testparent {
+    min-height: 30px;
+}
+
+.testnom {
+    display: inline-block;
+}
+
+.testnom::after {
+    content: '|';
+    padding: 0 5px;
+}
+
+.testnom:last-child::after {
+    content: '';
 }

@@ -6,7 +6,7 @@ import HeaderBottom from "./header-bottom";
 import HeaderMini from "./header-mini";
 import { get_img_path } from "../functions/get_images";
 
-const Header = ({ siteTitle, process_header = false, process_functions = {} }) => {
+const Header = ({ menus_top, menus_bottom }) => {
 
   const openMenu = (e) => {
     // console.log("openMenu()");
@@ -23,16 +23,14 @@ const Header = ({ siteTitle, process_header = false, process_functions = {} }) =
         </div>
         <div className="header-parts">
           <HeaderTop
-            process={process['header-top']}
-            process_function={process_functions['header-top']}
+            menus={menus_top}
           />
           <HeaderBottom
-            process={process['header-bottom']}
-            process_function={process_functions['header-bottom']}
+            menus={menus_bottom}
           />
           <HeaderMini
-            process={process}
-            process_functions={process_functions}
+            menus_top={menus_top}
+            menus_bottom={menus_bottom}
           />
           <button
             className="header-mini-menu"

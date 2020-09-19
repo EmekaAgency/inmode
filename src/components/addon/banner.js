@@ -1,7 +1,10 @@
 import React from "react"
 import { get_img_path, resolve_image } from "../../functions/get_images";
+import ProductsContext from "../contexts/products-context";
 
-const AddonBanner = ({ addon }) => {
+const AddonBanner = ({  }) => {
+  
+    const addon = React.useContext(ProductsContext).addons[0];
 
     return (
         <div className="addon-banner">

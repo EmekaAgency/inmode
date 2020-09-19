@@ -1,20 +1,19 @@
-import React from "react"
+import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import ProductsContext from "../contexts/products-context";
 
-const ProductNavigation = ({ product }) => {
+const ProductNavigation = ({  }) => {
+  
+    const product = React.useContext(ProductsContext).product(5);
 
-    const menus = [
-        {'name': 'what is it', 'url': '#what-is'},
-        {'name': 'key benefits', 'url': '#key-benefits'},
-        {'name': 'technologies on the workstation', 'url': '#technologies'},
-        {'name': 'clinical studies', 'url': '#studies'}
-    ];
+    const menus = React.useContext(ProductsContext).product_navigation;
 
     return (
         <div className="product-navigation">
             {menus.map((menu, key) => {
                 return (
-                    <div className="product-nav">
-                        <a key={key} href={menu.url} className="product-nav">
+                    <div key={key} className="product-nav">
+                        <a href={menu.url} className="product-nav">
                             {menu.name}
                         </a>
                     </div>

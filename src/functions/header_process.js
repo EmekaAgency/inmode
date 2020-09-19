@@ -1,8 +1,11 @@
 const _TYPES = ['TEXT', 'IMAGE', 'BUTTON', 'CARD'];
 const _VARIANTS = ['SINGLE', 'TITLE', 'CONTENT', 'DK-TITLE', 'SIDE-MENU'];
 
-export const header_process = (datas) => {
-    console.log(datas);
+// TODO regarder et log pour position
+// TODO already under return autre version par fonction comme already_process
+// de process_menu_datas
+
+export const header_process = (datas, from) => {
     let retour = [];
     let single_image_pos = -1;
     let temp = {};
@@ -46,9 +49,6 @@ export const header_process = (datas) => {
                 return true;
             }
         } else { // CONTENT
-            console.log(data);
-            console.log(data.temp_under);
-            console.log(temp);
             if (retour[temp[data.temp_under].position - 1] === undefined) {
                 retour[temp[data.temp_under].position - 1] = {};
             }

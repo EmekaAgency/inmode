@@ -1,31 +1,11 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import { process_slide_datas } from "../../functions/process_slide_datas";
-import { get_img_path } from '../../functions/get_images';
+import { get_img_path, resolve_image } from '../../functions/get_images';
 import Flickity from "react-flickity-component";
 import ProductView from "./product-view";
 import { format_string } from "../../functions/format_string";
+import ProductsContext from "../contexts/products-context";
 
 const Slides = ({from}) => {
-
-    const datas = useStaticQuery(graphql`
-        {
-            allMysqlSlidesProducts {
-                edges {
-                    node {
-                        type
-                        short_descr
-                        price
-                        parents
-                        name
-                        mysqlId
-                        img_path
-                        descr
-                    }
-                }
-            }
-        }
-    `);
 
     const [current, setCurrent] = React.useState(-1);
     const [open, setOpen] = React.useState(false);
@@ -45,7 +25,7 @@ const Slides = ({from}) => {
         autoPlay: false
     });
 
-    const [slides] = React.useState(process_slide_datas(datas.allMysqlSlidesProducts.edges, from));
+    const [slides] = React.useState(React.useContext(ProductsContext).products);
 
     // const set_current = (e) => {
         // setFlickity(e);
@@ -105,6 +85,7 @@ const Slides = ({from}) => {
                 // flickityRef={(e) => {set_current(e);}}
             >
                 {slides && slides.map((slide, key) => {
+                    // console.log(slide);
                     return (
                         <div
                             key={key}
@@ -117,15 +98,21 @@ const Slides = ({from}) => {
                                 {`.${(key + 1) < 10 ? '0' + (key + 1) : (key + 1)}`}
                                 <br/>
                                 {format_string(slide.name)}
+                                {/* TODO ajouter informations Visage | Corps | Intimité */}
+                                {/* <div className="testparent"> */}
+                                    {/* {Math.random() * 10 > 2 ? <div className="testnom">Visage</div>: ' '} */}
+                                    {/* {Math.random() * 10 > 2 ? <div className="testnom">Corps</div>: ' '} */}
+                                    {/* {Math.random() * 10 > 2 ? <div className="testnom">Intimité</div>: ' '} */}
+                                {/* </div> */}
                             </div>
                             <div className="slide-content">
                                 <div className="slide-background-ico">
-                                    <img className="slide-bg-img" src={get_img_path(slide.img_path)} alt={format_string(slide.name)}/>
+                                    <img className="slide-bg-img" src={resolve_image(`products/${slide.name}`)} alt={format_string(slide.name)}/>
                                 </div>
                                 <div className="slide-background-product">
                                     {/* <img className="slide-bg-img" src={get_img_path('/icons/products/votiva-right.png')} alt='product'/> */}
                                     {/* <img className="slide-bg-img" src ={get_img_path('/icons/products/votiva-courshadow.png')} alt='product'/> */}
-                                    <img className="slide-bg-img" src ={get_img_path(`/icons/products/${format_string(slide.name)}-p.${'png' || 'jpg'}`)} alt='product'/>
+                                    <img className="slide-bg-img" src ={resolve_image(`products/${slide.name}-p`)} alt='product'/>
                                 </div>
                                 <div className="slide-short-descr">
                                     {slide.short_descr}

@@ -1,8 +1,11 @@
 import React from "react"
 import { resolve_image } from "../../functions/get_images";
 import Flickity from "react-flickity-component";
+import ProductsContext from "../contexts/products-context";
 
-const Addons = ({ product }) => {
+const Addons = ({  }) => {
+  
+    const product = React.useContext(ProductsContext).product(5);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,

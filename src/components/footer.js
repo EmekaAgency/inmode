@@ -1,31 +1,8 @@
 import React from 'react';
 import { get_img_path } from "../functions/get_images";
-import { useStaticQuery, graphql } from "gatsby";
-import { process_menu_datas } from '../functions/process_menu_datas';
 import { format_string } from '../functions/format_string';
 
-const Footer = ({process = false, process_functions = {}}) => {
-
-    const datas = useStaticQuery(graphql`
-        {
-            allMysqlFooter {
-                edges {
-                    node {
-                        container
-                        name
-                        position
-                        type
-                        under
-                        url
-                        variant
-                        mysqlId
-                    }
-                }
-            }
-        }
-    `).allMysqlFooter.edges;
-
-    const [menus] = React.useState(process.footer && process_functions ? process_functions.footer(process_menu_datas(datas)) : process_menu_datas(datas));
+const Footer = ({ menus }) => {
 
     const icos = {
         'location': '073-location2',
