@@ -67,9 +67,9 @@ function already_processed(datas = []) {
 export const process_menu_datas = (datas = [], from = null) => {
     let temp = new Object({});
     for(let i = 0; i < datas.length; i++) {
-        temp[datas[i].node.mysqlId] = datas[i].node;
+        temp[datas[i].mysqlId] = datas[i];
     }
-    if(Array.isArray(datas[0].node.under)) {
+    if(Array.isArray(datas[0].under)) {
         return already_processed(temp);
     }
     else {

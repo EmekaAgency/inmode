@@ -11,17 +11,20 @@ import ProductsContext from "../components/contexts/products-context";
 
 const Product = () => {
 
-    const product = React.useContext(ProductsContext).product(5);
+    // TODO ajout TABLEs pour les textes
+    //          - short_banner
+    //          - key_benefits
+    //          - treats
 
     return (
         <MenusProvider>
             <Layout>
                 <SEO title="Product"/>
-                <ProductBanner/>
-                <ProductNavigation/>
-                <ProductDetails/>
-                {Array.isArray(product.under) ? <Addons/> : null}
-                <ProductClinicalStudies/>
+                <ProductBanner/>            {/* Status => done */}
+                <ProductNavigation/>        {/* Status => todo */}
+                <ProductDetails/>           {/* Status => todo */}
+                <Addons/>                   {/* Status => todo */}
+                <ProductClinicalStudies/>   {/* Status => todo */}
             </Layout>
         </MenusProvider>
     );

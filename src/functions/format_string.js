@@ -11,7 +11,7 @@ export const format_string = function (str, has_to_be_lower = false, italic = fa
         if(b){retour.push(b.replace('#', '').toLowerCase());}
     }
     else if (has_to_be_lower) {
-        print && console.log(str);
+        // print && console.log(str);
         // print && console.log(a);
         // print && console.log(b);
         retour = a.toLowerCase();

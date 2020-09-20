@@ -2082,12 +2082,16 @@ footer .footer-navigation-part {
 
 .contact-us {
     position: fixed;
-    right: 0;
+    right: -470px;
     bottom: 70px;
     min-width: 470px;
     max-width: 60vw;
     width: max-content;
     z-index: 1;
+}
+
+.contact-us.opened {
+    right: 0px;
 }
 
 .contact-us .transition {
@@ -2102,12 +2106,17 @@ footer .footer-navigation-part {
 }
 
 .contact-us>.stamp>img {
-    height: 160px;
-    left: -60px;
+    /* height: 160px; */
+    left: -58px;
     position: absolute;
     z-index: 1;
     top: 30px;
     border-right: 7px solid #0b1a25;
+    width: 65px;
+}
+
+.contact-us.opened>.stamp>img {
+
 }
 
 .contact-us img:hover {
@@ -2116,7 +2125,7 @@ footer .footer-navigation-part {
 
 .contact-us .stamp {
     position: relative;
-    right: -100%;
+    right: 0px;
 }
 
 .contact-us.opened .stamp {
@@ -2827,6 +2836,7 @@ input[type="submit"].neumorphic:hover,
     cursor: pointer;
     border: none;
     width: max-content;
+    font-size: 15px;
 }
 
 @media all and (max-width: 549px) {
@@ -2886,6 +2896,7 @@ input[type="submit"].neumorphic:hover,
     position: relative;
     background-image: linear-gradient(90deg, transparent, black, transparent, black);
     top: 0px;
+    z-index: 0;
 }
 
 .product-banner .top-transition {
@@ -2948,13 +2959,12 @@ input[type="submit"].neumorphic:hover,
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     display: block;
-    font-size: 2vw;
+    font-size: 35px;
     font-weight: 400;
     height: 45px;
     letter-spacing: 10px;
     line-height: 45px;
     text-transform: uppercase;
-    white-space: nowrap;
 }
 
 .product-banner .product-banner-mini {
@@ -3008,7 +3018,7 @@ input[type="submit"].neumorphic:hover,
     text-align: center;
     box-shadow: rgba(0, 0, 0, .5) 2px 2px 5px;
     position: relative;
-    z-index: 3;
+    z-index: 1;
 }
 
 .product-navigation div.product-nav {
@@ -3047,6 +3057,7 @@ input[type="submit"].neumorphic:hover,
     max-width: 1170px;
     margin: 50px auto;
     width: calc(100% - 100px);
+    /* z-index: 2; */
 }
 
 .product-details .title {
@@ -3062,7 +3073,7 @@ input[type="submit"].neumorphic:hover,
 }
 
 .product-details .text {
-    color:rgb(99, 100, 102);
+    color: rgb(99, 100, 102);
     display: block;
     font-size: 20px;
     font-weight: 400;
@@ -3071,6 +3082,7 @@ input[type="submit"].neumorphic:hover,
     vertical-align: baseline;
     margin: 0 auto;
     padding-bottom: 30px;
+    /* text-shadow: rgba(99, 100, 102, .7) 1px 1px 13px; */
 }
 
 .product-details div.product-details-img {
@@ -3078,13 +3090,12 @@ input[type="submit"].neumorphic:hover,
     top: 0;
     left: 0;
     max-width: 33%;
-    background: #59b7b3;
     width: 100%;
     height: 100%;
 }
 
 .product-details div.product-details-img img {
-    max-width: 100%;
+    max-height: 100%;
 }
 
 .product-details .what-is,
@@ -3117,7 +3128,7 @@ input[type="submit"].neumorphic:hover,
     position: absolute;
     left: 0;
     top: 0;
-    filter: invert;
+    filter: invert(1);
 }
 
 .product-details .key-benefits .key .text {
@@ -3169,6 +3180,7 @@ input[type="submit"].neumorphic:hover,
     .product-details .what-is {
         width: 100%;
         margin-left: 0;
+        min-height: 100%;
     }
 
     .product-details .key-benefits {
@@ -3184,6 +3196,7 @@ input[type="submit"].neumorphic:hover,
     max-width: 1170px;
     margin: 50px auto;
     width: calc(100% - 100px);
+    /* z-index: 2; */
 }
 
 .product-addons .section-title {
@@ -3219,20 +3232,14 @@ input[type="submit"].neumorphic:hover,
     display: inline-block;
     vertical-align: top;
     width: calc(100vw / 8);
-    max-width: 100px;
     max-height: 400px;
     height: 100%;
-    background: orange;
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-img img {
-    max-width: 100px;
     width: 100%;
-    max-height: 400px;
     margin: 0 auto;
     display: block;
-    height: 100%;
-    background: orange;
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-title {
@@ -3244,7 +3251,7 @@ input[type="submit"].neumorphic:hover,
     letter-spacing: 2px;
     line-height: 30px;
     padding-bottom: 30px;
-    margin-left: calc(100vw / 8);
+    margin-left: calc(100vw / 7);
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-description {
@@ -3256,7 +3263,7 @@ input[type="submit"].neumorphic:hover,
     letter-spacing: 1px;
     line-height: 28px;
     padding-bottom: 30px;
-    margin-left: calc(100vw / 8);
+    margin-left: calc(100vw / 7);
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat {
@@ -3268,7 +3275,7 @@ input[type="submit"].neumorphic:hover,
     letter-spacing: 1px;
     line-height: 32px;
     padding-bottom: 20px;
-    margin-left: calc(100vw / 8);
+    margin-left: calc(100vw / 7);
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-what-can-i-treat ul {
@@ -3321,23 +3328,35 @@ input[type="submit"].neumorphic:hover,
     
 }
 
-.product-addons .product-addon .addon-carousel {
+.product-addons .product-addon .addon-carousel,
+.product-addons .product-addon .addon-single {
     display: inline-block;
     vertical-align: top;
     width: 40%;
-    margin-left: 5%;
+    margin: 50px 0 50px 5%;
     overflow-x: hidden;
+    /* z-index: 2; */
+    /* position: relative; */
 }
 
 .product-addons .product-addon .addon-carousel .slide-addons {
     outline: transparent;
+    width: 100%;
 }
 
 .product-addons .product-addon .addon-carousel .slide-addons .addon{
     width: 100%;
-    background-color: yellow;
     max-width: 100%;
     text-align: center;
+    vertical-align: top;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .addon.is-selected {
+    z-index: 1;
+}
+
+.product-addons .product-addon .addon-carousel .slide-addons .addon img {
+    width: 100%;
 }
 
 .product-addons .product-addon .addon-carousel .slide-addons .flickity-prev-next-button {
@@ -3391,6 +3410,7 @@ input[type="submit"].neumorphic:hover,
     margin: 50px auto 0;
     width: calc(100% - 100px);
     padding-bottom: 50px;
+    z-index: 2;
 }
 
 .product-clinical-studies .title {
@@ -3447,7 +3467,6 @@ input[type="submit"].neumorphic:hover,
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: red;
 }
 
 .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
@@ -3499,6 +3518,7 @@ input[type="submit"].neumorphic:hover,
     top: 50%;
     transform: translate(-50%,-50%);
     left: -25px;
+    display: none;
 }
 
 .product-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.next {
@@ -3506,6 +3526,7 @@ input[type="submit"].neumorphic:hover,
     top: 50%;
     transform: translate(50%,-50%);
     right: -25px;
+    display: none;
 }
 @media (max-width: 729px) {
     .product-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-name {
@@ -3708,7 +3729,7 @@ input[type="submit"].neumorphic:hover,
     background-color: #0b1a25;
     position: relative;
     max-width: 1170px;
-    margin: 50px auto;
+    margin: 50px auto 0;
     width: calc(100% - 100px);
 }
 

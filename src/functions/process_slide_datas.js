@@ -3,11 +3,11 @@ const _TYPES = ['PRODUCT', 'ADDON'];
 export const process_slide_datas = (products = [], from = "") => {
     let retour = [], slides = {}, addons = {}, i, j;
     for(i = 0; i < products.length; i++) {
-        if(_TYPES[products[i].node.type] === 'PRODUCT') {
-            slides[products[i].node.mysqlId] = products[i].node;
+        if(_TYPES[products[i].type] === 'PRODUCT') {
+            slides[products[i].mysqlId] = products[i];
         }
-        else if(_TYPES[products[i].node.type] === 'ADDON') {
-            addons[products[i].node.mysqlId] = products[i].node;
+        else if(_TYPES[products[i].type] === 'ADDON') {
+            addons[products[i].mysqlId] = products[i];
         }
     }
     let keys_slides = Object.keys(slides).map((nb)=>{return parseInt(nb);});

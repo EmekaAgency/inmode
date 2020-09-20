@@ -5,7 +5,9 @@ import ProductsContext from "../contexts/products-context";
 
 const Addons = ({  }) => {
   
-    const product = React.useContext(ProductsContext).product(5);
+    const addons = React.useContext(ProductsContext).addons;
+
+    console.log(addons);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -22,13 +24,13 @@ const Addons = ({  }) => {
     return (
         <div className="product-addons">
             <div className="section-title"></div>
-            {product.under.map((addon, key) => {
+            {addons.map((addon, key) => {
                 return (
                     <div key={key} className="product-addon">
                         <div className="addon-details">
                             <div className="addon-description">
                                 <div className="addon-img">
-                                    <img src={resolve_image(`products/addons/${'product-01'}`)} alt="addon-img"/>
+                                    <img src={resolve_image(`products/morpheus8/${key + 1}-pic`)} alt="addon-img"/>
                                 </div>
                                 <div className="addon-title">{addon.name}</div>
                                 <div className="addon-description">{addon.description || 'Id excepteur quis ea aute elit laborum laboris sint irure Lorem esse aliquip. Velit eiusmod irure ex adipisicing do nulla nulla qui aute Lorem fugiat cupidatat consequat nisi. Reprehenderit proident veniam mollit duis exercitation ea tempor nulla.'}</div>
@@ -37,30 +39,33 @@ const Addons = ({  }) => {
                                         Que puis-je traiter ?
                                     </div>
                                     <ul>
-                                        <li>Bla</li>
-                                        <li>Ble</li>
-                                        <li>Bli</li>
+                                        {key + 1 == 1 && <li>Large body areas</li>}
+                                        {key + 1 == 2 && <li>Small hard-to-reach and facial soft tissue areas</li>}
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div className="addon-carousel">
-                            <Flickity
-                                id={`carousel-addons-${addon.name}`}
-                                elementType={'div'} // default 'div'
-                                options={flickityOptions} // takes flickity options {}
-                                disableImagesLoaded={false} // default false
-                                reloadOnUpdate={true} // default false
-                                static // default false
-                                className="slide-addons transition"
-                            >
-                                {['1', '2', '3'].map((pic, key) => {
-                                    return (
-                                        <div key={key} className="addon">{pic}</div>
-                                    );
-                                })}
-                            </Flickity>
-                        </div>
+                        {key + 1 == 1 ?
+                            <img className="addon-single" src={resolve_image(`products/morpheus8/${key + 1}-single`)} alt={`morpheus8-${key + 1}-single`}/>
+                            :
+                            <div className="addon-carousel">
+                                <Flickity
+                                    id={`carousel-addons-${addon.name}`}
+                                    elementType={'div'} // default 'div'
+                                    options={flickityOptions} // takes flickity options {}
+                                    disableImagesLoaded={false} // default false
+                                    reloadOnUpdate={true} // default false
+                                    static // default false
+                                    className="slide-addons transition"
+                                >
+                                    {[1, 2, 3].map((index) => {
+                                        return (
+                                            <img key={index} className="addon" src={resolve_image(`products/morpheus8/${key + 1}-slide-${index}`)} alt={`morpheus8-${key + 1}-slide-${index}`}/>
+                                        );
+                                    })}
+                                </Flickity>
+                            </div>
+                        }
                     </div>
                 );
             })}

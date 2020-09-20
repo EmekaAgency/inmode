@@ -6,7 +6,7 @@ import ProductsContext from "../contexts/products-context";
 
 const ProductClinicalStudies = ({  }) => {
   
-    const product = React.useContext(ProductsContext).product(5);
+    const product = React.useContext(ProductsContext).products[0];console.log(product);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -16,7 +16,7 @@ const ProductClinicalStudies = ({  }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: 3000,
+        autoPlay: 5000,
         wrapAround: true
     });
 
@@ -39,7 +39,7 @@ const ProductClinicalStudies = ({  }) => {
                         return (
                             <div key={key} className="study-slide">
                                 <div className="study-img">
-                                    <img src={resolve_image('products/clinical_study')} alt="clinical-study"/>
+                                    <img src={resolve_image('products/clinical-study')} alt="clinical-study"/>
                                 </div>
                                 <div className="study-text">
                                     <div className="study-name">Magna adipisicing laborum sint dolore.</div>

@@ -73,7 +73,7 @@ const ContactUs = () => {
     }
 
     return (
-        <div id="contact-us" className={`contact-us${open ? ' opened' : ''}`}>
+        <div id="contact-us" className={`contact-us transition${open ? ' opened' : ''}`}>
             <div className="stamp transition">
                 <img id="piece" className="transition" src={get_img_path('/icons/contact_us.png')} alt="contact-us" onClick={(e) => {resolve_click(e)}}/>
                 <div className="content">

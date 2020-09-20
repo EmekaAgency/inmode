@@ -10,53 +10,51 @@ const MenusProvider = ({ requested = "", children }) => {
     const datas = useStaticQuery(graphql`
         {
             allMysqlHeaderTop {
-                edges {
-                    node {
-                        variant
-                        url
-                        under
-                        type
-                        position
-                        name
-                        mysqlId
-                        container
-                    }
+                nodes {
+                    variant
+                    url
+                    under
+                    type
+                    position
+                    name
+                    mysqlId
+                    container
                 }
             }
             allMysqlHeaderBottom {
-                edges {
-                    node {
-                        variant
-                        url
-                        under
-                        type
-                        position
-                        name
-                        mysqlId
-                        container
-                    }
+                nodes {
+                    variant
+                    url
+                    under
+                    type
+                    position
+                    name
+                    mysqlId
+                    container
                 }
             }
             allMysqlFooter {
-                edges {
-                    node {
-                        variant
-                        url
-                        under
-                        type
-                        position
-                        name
-                        mysqlId
-                        container
-                    }
+                nodes {
+                    variant
+                    url
+                    under
+                    type
+                    position
+                    name
+                    mysqlId
+                    container
                 }
             }
         }
     `);
 
-    const [menusHeaderTop] = React.useState(process_menu_datas(datas.allMysqlHeaderTop.edges, 'HeaderTop'));
-    const [menusHeaderBottom] = React.useState(process_menu_datas(datas.allMysqlHeaderBottom.edges, 'HeaderBottom'));
-    const [menusFooter] = React.useState(footer_process(process_menu_datas(datas.allMysqlFooter.edges, 'Footer')));
+    // const header_top_request = request_db("SELECT * FROM menus WHERE container = 'header-top';", );
+    // const header_bottom_request = request_db("SELECT * FROM menus WHERE container = 'header-bottom';", );
+    // const footer_request = request_db("SELECT * FROM menus WHERE container LIKE \'footer%\';", );
+
+    const [menusHeaderTop] = React.useState(process_menu_datas(datas.allMysqlHeaderTop.nodes, 'HeaderTop'));
+    const [menusHeaderBottom] = React.useState(process_menu_datas(datas.allMysqlHeaderBottom.nodes, 'HeaderBottom'));
+    const [menusFooter] = React.useState(footer_process(process_menu_datas(datas.allMysqlFooter.nodes, 'Footer')));
     
     return (
         <MenusContext.Provider
