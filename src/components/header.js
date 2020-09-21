@@ -17,7 +17,7 @@ const Header = ({ menus_top, menus_bottom }) => {
   return (
     <header>
       <div className="header-content container">
-        <div className="header-logo background-image" style={{backgroundImage: 'url('+get_img_path('/icons/header-logo.png')+')'}}>
+        <div className="header-logo background-image" style={{backgroundImage: 'url('+get_img_path('header-logo.png')+')'}}>
           <Link to="/" className="zone-link">
           </Link>
         </div>

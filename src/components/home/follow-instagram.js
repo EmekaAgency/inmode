@@ -12,16 +12,16 @@ const FollowInstagram = () => {
                 </h2>
                 <div className="wrapper">
                     <div className="elem">
-                        <img className="background-image" src={get_img_path('/icons/home/insta-1.jpg')} alt="insta-1"/>
+                        <img className="background-image" src={get_img_path('home/insta-1.jpg')} alt="insta-1"/>
                     </div>
                     <div className="elem">
-                        <img className="background-image" src={get_img_path('/icons/home/insta-2.jpg')} alt="insta-2"/>
+                        <img className="background-image" src={get_img_path('home/insta-2.jpg')} alt="insta-2"/>
                     </div>
                     <div className="elem">
-                        <img className="background-image" src={get_img_path('/icons/home/insta-3.jpg')} alt="insta-3"/>
+                        <img className="background-image" src={get_img_path('home/insta-3.jpg')} alt="insta-3"/>
                     </div>
                     <div className="elem">
-                        <img className="background-image" src={get_img_path('/icons/home/insta-4.jpg')} alt="insta-4"/>
+                        <img className="background-image" src={get_img_path('home/insta-4.jpg')} alt="insta-4"/>
                     </div>
                 </div>
             </div>

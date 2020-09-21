@@ -25,8 +25,8 @@ const PrivacyPolicy = () => {
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
             <button className="open-button" onClick={(e) => {process_cookies(e);}}>
-                <img className="main" src={get_img_path('/icons/privacy-icon.svg')} alt="privacy-triangle"/>
-                <img className="content" src={get_img_path('/icons/privacy-c.png')} alt="privacy-icon"/>
+                <img className="main" src={get_img_path('privacy-icon.svg')} alt="privacy-triangle"/>
+                <img className="content" src={get_img_path('privacy-c.png')} alt="privacy-icon"/>
             </button>
             <div className="panel cookies transition">
                 <div className="cookies-our-use">

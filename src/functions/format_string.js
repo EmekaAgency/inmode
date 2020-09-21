@@ -3,8 +3,10 @@ import { capitalize } from "./capitalize";
 export const format_string = function (str, has_to_be_lower = false, italic = false, print) {
     let a = str.split('|')[0].replace('%', ' ');
     let b = str.split('|')[1] && str.split('|')[1].replace('%', ' ');
-    // console.log(a);
-    // console.log(b);
+    // print && console.log(a);
+    // print && console.log(b);
+    // print && console.log(has_to_be_lower ? 'minuscule' : 'basique');
+    // print && console.log(italic ? 'italique' : 'normal');
     let retour = undefined;
     if(has_to_be_lower && italic) {
         retour = [].push(a.toLowerCase());
@@ -14,7 +16,7 @@ export const format_string = function (str, has_to_be_lower = false, italic = fa
         // print && console.log(str);
         // print && console.log(a);
         // print && console.log(b);
-        retour = a.toLowerCase();
+        retour = a.toLowerCase().replace('#', '');
         // print && console.log(retour);
         if(b){retour = retour + b.replace('#', '').toLowerCase();}
         // print && console.log(retour);
@@ -25,7 +27,7 @@ export const format_string = function (str, has_to_be_lower = false, italic = fa
         if(b){retour.push(b.indexOf('#') === - 1 ? capitalize(b) : b.toUpperCase());}
     }
     else {
-        retour = capitalize(a);
+        retour = capitalize(a).replace('#', '');
         if(b){retour = retour + (b.indexOf('#') === - 1 ? capitalize(b) : b.toUpperCase());}
     }
     return retour;

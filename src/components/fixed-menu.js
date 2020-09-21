@@ -25,7 +25,7 @@ const FixedMenu = ({ menus, customClass }) => {
         <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible ? 0 : -55, boxShadow: isVisible ? null : 'unset'}}>
             <div className="fixed-menu-container">
                 <div className="fixed-menu-logo">
-                    <img src={get_img_path('/icons/header-logo.png')} alt="header-logo"/>
+                    <img src={get_img_path('header-logo.png')} alt="header-logo"/>
                     <Link to="/" className="zone-link"></Link>
                 </div>
                 <div className="fixed-menus">

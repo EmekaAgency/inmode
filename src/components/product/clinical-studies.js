@@ -1,12 +1,28 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
 import Flickity from "react-flickity-component";
-import { resolve_image } from "../../functions/get_images";
+import { get_img_path } from "../../functions/get_images";
 import ProductsContext from "../contexts/products-context";
 
 const ProductClinicalStudies = ({  }) => {
   
-    const product = React.useContext(ProductsContext).products[0];console.log(product);
+    const addon = React.useContext(ProductsContext).addons[0];
+
+    const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
+    const [index, setIndex] = React.useState(0);
+
+    const resolve_image = (name ) => {
+        let img = new Image();
+        img.src = get_img_path(`${name}.${img_extensions[index]}`);
+        img.onerror = function() {
+            setIndex(index + 1);
+            return resolve_image(name);
+        };
+    
+        return get_img_path(`${name}.${img_extensions[index]}`);
+    };
+  
+    const product = React.useContext(ProductsContext).products[0];
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -39,7 +55,10 @@ const ProductClinicalStudies = ({  }) => {
                         return (
                             <div key={key} className="study-slide">
                                 <div className="study-img">
-                                    <img src={resolve_image('products/clinical-study')} alt="clinical-study"/>
+                                    <img
+                                        src={get_img_path('products/clinical-study.png')}
+                                        alt="clinical-study"
+                                    />
                                 </div>
                                 <div className="study-text">
                                     <div className="study-name">Magna adipisicing laborum sint dolore.</div>

@@ -17,14 +17,14 @@ const Footer = ({ menus }) => {
             <div className="footer-content container">
                 <div className="footer-logo-infos-part">
                     <div className="footer-infos logo">
-                        <img className="footer-logo background-image" src={get_img_path('/icons/footer-logo.png')} alt="footer-logo"/>
+                        <img className="footer-logo background-image" src={get_img_path('footer-logo.png')} alt="footer-logo"/>
                     </div>
                     {menus.infos && menus.infos.map((menu, key) => {
                         return (
                             <div key={key} className={`footer-infos ${menu.type.replace('footer-', '')}`}>
                                 <img
                                     className={`${menu.type}-ico background-image`}
-                                    src={get_img_path(`/icons/icons/icomoon/${isSvg? 'svg' : 'png'}/${icos[menu.type.replace('footer-', '')]}.${isSvg ? 'svg' : 'png'}`)}
+                                    src={get_img_path(`icons/icomoon/${isSvg? 'svg' : 'png'}/${icos[menu.type.replace('footer-', '')]}.${isSvg ? 'svg' : 'png'}`)}
                                     alt={menu.type.replace('footer-', '')}
                                 />
                                 <div className="footer-infos-text">{format_string(menu.name)}</div>
@@ -35,7 +35,7 @@ const Footer = ({ menus }) => {
                 <div className="footer-social-part">
                     {menus['footer-social'] && menus['footer-social'].map((menu, key) => {
                         return (
-                            <div key={key} className="footer-social-ico background-image" style={{backgroundImage: 'url('+get_img_path(`/icons/icons/icomoon/${isSvg ? 'svg' : 'png'}/social-${menu.name}.${isSvg ? 'svg' : 'png'}`)+')'}}>
+                            <div key={key} className="footer-social-ico background-image" style={{backgroundImage: 'url('+get_img_path(`icons/icomoon/${isSvg ? 'svg' : 'png'}/social-${menu.name}.${isSvg ? 'svg' : 'png'}`)+')'}}>
                                 <a className="zone-link" href={menu.url || '#'}></a>
                             </div>
                         );

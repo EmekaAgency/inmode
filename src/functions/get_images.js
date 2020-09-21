@@ -11,38 +11,52 @@
 
 import { format_string } from "./format_string";
 
-const img_extensions = ['jpg', 'jpeg', 'bmp', 'png', 'svg'];
+// const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
 
-export const resolve_image = (name, index = 0) => {
-    if(index >= img_extensions.length) {
-        // console.log("Plus d'extension disponible, image par défaut");
-        return get_img_path(`/icons/icons/no_img_available.svg`);
-    }
-    else {
-        // console.log(`Test avec ${get_img_path(`/icons/${name}.${img_extensions[index]}`)}`);
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', get_img_path(`/icons/${name}.${img_extensions[index]}`), false);
-        xhr.send();
+// export const resolve_image = (name, index = 0) => {
+//     if(typeof XMLHttpRequest !== "undefined") {
+//         if(index >= img_extensions.length) {
+//             // console.log("Plus d'extension disponible, image par défaut");
+//             return get_img_path(`$/icons/icons/no_img_available.svg`);
+//         }
+//         else {
+            // // console.log(`Test avec ${get_img_path(`${name}.${img_extensions[index]}`)}`);
+            // var xhr = new XMLHttpRequest();
+            // xhr.open('GET', get_img_path(`${name}.${img_extensions[index]}`), false);
+            // xhr.send();
 
-        // console.log(xhr.response.substr(0,15));
+            // // console.log(xhr.response.substr(0,15));
 
-        // TODO fixer cette douille de #d,/?
-        if (xhr.response.substr(0,15) === "<!DOCTYPE html>") {
-            // console.log("Not found");
-            return resolve_image(name, index + 1);
-        }
-        else {
-            // console.log(`Success, return img with path ${get_img_path(`/icons/${name}.${img_extensions[index]}`)}`);
-            return get_img_path(`/icons/${name}.${img_extensions[index]}`, true);
-        }
-    }
-};
+            // // TODO fixer cette douille de #d,/?
+            // if (xhr.response.substr(0,15) === "<!DOCTYPE html>") {
+            //     // console.log("Not found");
+            //     return resolve_image(name, index + 1);
+            // }
+            // else {
+            //     // console.log(`Success, return img with path ${get_img_path(`${name}.${img_extensions[index]}`)}`);
+            //     return get_img_path(`${name}.${img_extensions[index]}`, true);
+            // }
+
+//             let img = new Image();
+//             img.src = get_img_path(`${name}.${img_extensions[index]}`);
+//             img.onload = function() {
+//                 return get_img_path(`${name}.${img_extensions[index]}`);
+//             }
+//             img.onerror = function() {
+//                 return resolve_image(name, index + 1);
+//             };
+        
+//             return get_img_path(`${name}.${img_extensions[index]}`);
+//         }
+//     }
+//     return "";
+// };
 
 // TODO Refaire en Gatsby pour le rendu non client
 export const get_img_path = (path = "", print = false) => {
     var source_path = typeof window !== 'undefined' ? window.location.origin : '';
     if(typeof path == "string"){
-        return source_path + format_string(path, true, false, print);
+        return source_path + '/icons/' + format_string(path, true, false, print);
     }
     return "";
 };

@@ -48,10 +48,10 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                         return (
                             <div key={key} className="dk-item">
                                 <a href={content.url || '#'}>
-                                    <img className="dk-picture transition" src={get_img_path(`/icons/products/${content.name}.png`)} alt={format_string(content.name)}/>
+                                    <img className="dk-picture transition" src={get_img_path(`products/${content.name}.png`)} alt={format_string(content.name)}/>
                                     <div className="dk-title">{format_string(content.name)}</div>
                                 </a>
-                                {Array.isArray(content.under) ?
+                                {Array.isArray(content.under) && content.under.length > 0 ?
                                     <div className={`dk-item-sub ${content.variant === TITLE ? 'dropdown-menu' : 'dk-dropdown-menu'}`}>
                                         {
                                             content.under.map((sub, key) => {

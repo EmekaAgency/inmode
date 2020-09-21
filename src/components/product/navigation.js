@@ -4,7 +4,7 @@ import ProductsContext from "../contexts/products-context";
 
 const ProductNavigation = ({  }) => {
   
-    const product = React.useContext(ProductsContext).products[0];console.log(product);
+    const product = React.useContext(ProductsContext).products[0];
 
     const menus = React.useContext(ProductsContext).product_navigation;
 

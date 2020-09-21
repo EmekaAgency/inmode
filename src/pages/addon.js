@@ -1,6 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react'
+import AddonDivider from '../components/addon/addon-divider';
 import AddonBanner from '../components/addon/banner';
+import AddonBeforeAfter from '../components/addon/before-after';
 import AddonClinicalStudies from '../components/addon/clinical-studies';
 import AddonDetails from '../components/addon/details';
 import AddonNavigation from '../components/addon/navigation';
@@ -16,12 +18,15 @@ const Addon = () => {
     <MenusProvider>
       <Layout>
           <SEO title="Addon"/>
-          <AddonBanner/>            {/* Status => todo */}
-          <AddonNavigation/>        {/* Status => todo */}
-          <AddonDetails/>           {/* Status => todo */}
-          <AddonVideos/>            {/* Status => todo */}
-          <AddonWhatTreat/>         {/* Status => todo */}
-          <AddonClinicalStudies/>   {/* Status => todo */}
+          <AddonBanner/>                      {/* Status => done */}
+          <AddonNavigation/>                  {/* Status => done */}
+          <AddonDetails/>                     {/* Status => done */}
+          <AddonDivider position="top"/>      {/* Status => done */}
+          <AddonVideos/>                      {/* Status => done */}
+          <AddonBeforeAfter/>                 {/* Status => done */}
+          <AddonDivider position="bottom"/>   {/* Status => done */}
+          <AddonWhatTreat/>                   {/* Status => done */}
+          <AddonClinicalStudies/>             {/* Status => done */}
       </Layout>
     </MenusProvider>
   );

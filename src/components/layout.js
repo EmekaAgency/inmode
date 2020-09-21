@@ -15,7 +15,7 @@ import ContactUs from "./contact-us"
 import PrivacyPolicy from "./privacy-policy"
 import MenusContext from "./contexts/menus-context"
 import FixedMenu from "./fixed-menu"
-import ProductsProvider from "../components/contexts/products-provider";
+import ProductsProvider from "./contexts/products-provider";
 
 const Layout = ({ children }) => {
 
@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
         menus_bottom={menus_header_bottom}
       />
       <ProductsProvider>
-        <main>
+        <main id="main">
           {children}
         </main>
       </ProductsProvider>

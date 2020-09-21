@@ -1,18 +1,37 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
 import { format_string } from "../../functions/format_string";
-import { resolve_image } from "../../functions/get_images";
+import { get_img_path } from "../../functions/get_images";
 import ProductsContext from "../contexts/products-context";
 
 const ProductDetails = ({  }) => {
   
-    const product = React.useContext(ProductsContext).products[0];console.log(product);
+    const addon = React.useContext(ProductsContext).addons[0];
+
+    const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
+    const [index, setIndex] = React.useState(0);
+
+    const resolve_image = (name ) => {
+        let img = new Image();
+        img.src = get_img_path(`${name}.${img_extensions[index]}`);
+        img.onerror = function() {
+            setIndex(index + 1);
+            return resolve_image(name);
+        };
+    
+        return get_img_path(`${name}.${img_extensions[index]}`);
+    };
+  
+    const product = React.useContext(ProductsContext).products[0];
 
     return (
         <div className="product-details">
             <div id="what-is" className="what-is transition">
                 <div className="product-details-img transition">
-                    <img src={resolve_image(`products/${format_string(product.name)}-p`)} alt={product.name}/>
+                    <img
+                        src={get_img_path(`products/${product.name}-p.png`)}
+                        alt={product.name}
+                    />
                 </div>
                 <div className="title">
                     {`What is ${format_string(product.name)} ?`}
@@ -34,7 +53,10 @@ const ProductDetails = ({  }) => {
                 ].map((benefit, key) => {
                     return (
                         <div key={key} className="key">
-                            <img src={resolve_image('icons/key_benefit')} alt="key_benefit"/>
+                            <img
+                                src={get_img_path('icons/key_benefit.png')}
+                                alt="key_benefit"
+                            />
                             <div className="text">{benefit}</div>
                         </div>
                     );

@@ -63,19 +63,18 @@ const ProductsProvider = ({ requested = "", children }) => {
             {
                 'banner': datas.allMysqlShortBanner.nodes,
                 'key_benefits': datas.allMysqlKeyBenefits.nodes,
-                'treats': datas.allMysqlTreats.nodes,
+                'treats': datas.allMysqlTreats.nodes
             }
         )
     );
+    
     const [addons] = React.useState(
-        add_product_datas(
-            process_addons(datas.allMysqlProducts.nodes, 'Addons'),
-            {
-                'banner': datas.allMysqlShortBanner.nodes,
-                'key_benefits': datas.allMysqlKeyBenefits.nodes,
-                'treats': datas.allMysqlTreats.nodes,
-            }
-        )
+        process_addons(datas.allMysqlProducts.nodes, 'Addons'),
+        {
+            'banner': datas.allMysqlShortBanner.nodes,
+            'key_benefits': datas.allMysqlKeyBenefits.nodes,
+            'treats': datas.allMysqlTreats.nodes,
+        }
     );
 
     const product_navigation = [

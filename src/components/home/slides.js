@@ -1,11 +1,27 @@
 import React from "react";
-import { get_img_path, resolve_image } from '../../functions/get_images';
+import { get_img_path } from '../../functions/get_images';
 import Flickity from "react-flickity-component";
 import ProductView from "./product-view";
 import { format_string } from "../../functions/format_string";
 import ProductsContext from "../contexts/products-context";
 
 const Slides = ({from}) => {
+  
+    const addon = React.useContext(ProductsContext).addons[0];
+
+    const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
+    const [index, setIndex] = React.useState(0);
+
+    const resolve_image = (name ) => {
+        let img = new Image();
+        img.src = get_img_path(`${name}.${img_extensions[index]}`);
+        img.onerror = function() {
+            setIndex(index + 1);
+            return resolve_image(name);
+        };
+    
+        return get_img_path(`${name}.${img_extensions[index]}`);
+    };
 
     const [current, setCurrent] = React.useState(-1);
     const [open, setOpen] = React.useState(false);
@@ -32,8 +48,8 @@ const Slides = ({from}) => {
     // }
 
     const view_detail = (e) => {
-        e.preventDefault();
-        window.alert("Pas encore de fonctionnalité");
+        // e.preventDefault();
+        // window.alert("Pas encore de fonctionnalité");
     }
 
     const view_product = (e, pos) => {
@@ -49,6 +65,7 @@ const Slides = ({from}) => {
             autoPlay: false
         });
         setCurrent(pos);
+        document.getElementById('main').style.zIndex = 4;
         setOpen(true);
     }
 
@@ -68,6 +85,7 @@ const Slides = ({from}) => {
             e.target.classList.contains('close') ||
             e.target.classList.contains('close-product-view')
         ) {
+            document.getElementById('main').style.zIndex = 0;
             setOpen(false);
         }
     }
@@ -97,33 +115,48 @@ const Slides = ({from}) => {
                             <div className="slide-title">
                                 {`.${(key + 1) < 10 ? '0' + (key + 1) : (key + 1)}`}
                                 <br/>
-                                {format_string(slide.name)}
+                                {/* {format_string(slide.name)} */}
                                 {/* TODO ajouter informations Visage | Corps | Intimité */}
-                                {/* <div className="testparent"> */}
-                                    {/* {Math.random() * 10 > 2 ? <div className="testnom">Visage</div>: ' '} */}
-                                    {/* {Math.random() * 10 > 2 ? <div className="testnom">Corps</div>: ' '} */}
-                                    {/* {Math.random() * 10 > 2 ? <div className="testnom">Intimité</div>: ' '} */}
-                                {/* </div> */}
+                                <div className="testparent">
+                                    {Math.random() * 10 > 2 ? <div className="testnom">Visage</div>: ' '}
+                                    {Math.random() * 10 > 2 ? <div className="testnom">Corps</div>: ' '}
+                                    {Math.random() * 10 > 2 ? <div className="testnom">Intimité</div>: ' '}
+                                </div>
                             </div>
                             <div className="slide-content">
                                 <div className="slide-background-ico">
-                                    <img className="slide-bg-img" src={resolve_image(`products/${slide.name}`)} alt={format_string(slide.name)}/>
+                                    <img
+                                        className="slide-bg-img"
+                                        src={get_img_path(`products/${slide.name}.png`)}
+                                        alt={format_string(slide.name)}
+                                    />
                                 </div>
                                 <div className="slide-background-product">
-                                    {/* <img className="slide-bg-img" src={get_img_path('/icons/products/votiva-right.png')} alt='product'/> */}
-                                    {/* <img className="slide-bg-img" src ={get_img_path('/icons/products/votiva-courshadow.png')} alt='product'/> */}
-                                    <img className="slide-bg-img" src ={resolve_image(`products/${slide.name}-p`)} alt='product'/>
+                                    <img
+                                        className="slide-bg-img"
+                                        src ={get_img_path(`products/${slide.name}-p.png`)}
+                                        alt='product'
+                                    />
                                 </div>
                                 <div className="slide-short-descr">
-                                    {slide.short_descr}
+                                    {format_string(slide.name)}
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
                                     Voir le détail
-                                    <img className="slide-view-detail-arrow transition" src={get_img_path('/icons/icons/arrow-right.png')} alt="arrow-right"/>
+                                    <img
+                                        className="slide-view-detail-arrow transition"
+                                        src={get_img_path('icons/arrow-right.png')}
+                                        alt="arrow-right"
+                                    />
+                                    <a className="zone-link" href="/product"></a>
                                 </div>
                                 {slide.under ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
                                     Voir les produits
-                                    <img className="slide-view-product-arrow transition" src={get_img_path('/icons/icons/arrow-right.png')} alt="arrow-left"/>
+                                    <img
+                                        className="slide-view-product-arrow transition"
+                                        src={get_img_path('icons/arrow-right.png')}
+                                        alt="arrow-left"
+                                    />
                                 </div> : null}
                             </div>
                         </div>
@@ -134,9 +167,13 @@ const Slides = ({from}) => {
                 className={"product-view" + (current > -1 && open ? " show" : '')}
                 onClick={(e) => {close_view(e);}}
             >
-                <ProductView datas={current > -1 && open ? slides[current] : null}>
+                <ProductView datas={current > -1 && open ? addon : null}>
                     <div className="close">
-                        <img className="close-product-view" src={get_img_path('/icons/icons/close-white.webp')} alt="close-product-view"/>
+                        <img
+                            className="close-product-view"
+                            src={get_img_path('icons/close-white.webp')}
+                            alt="close-product-view"
+                        />
                     </div>
                 </ProductView>
             </div>

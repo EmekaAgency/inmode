@@ -75,12 +75,10 @@ const ContactUs = () => {
     return (
         <div id="contact-us" className={`contact-us transition${open ? ' opened' : ''}`}>
             <div className="stamp transition">
-                <img id="piece" className="transition" src={get_img_path('/icons/contact_us.png')} alt="contact-us" onClick={(e) => {resolve_click(e)}}/>
+                <img id="piece" className="transition" src={get_img_path('contact_us.png')} alt="contact-us" onClick={(e) => {resolve_click(e)}}/>
                 <div className="content">
                     <div id="close" className="close-contact-us" onClick={(e) => {resolve_click(e)}}>
-                        {/* <img href={get_img_path('/icons/hexa-close.svg')} alt="hexa-close"/> */}
-                        <img src={get_img_path('/icons/icons/closingcross.png')} alt="hexa-close"/>
-                        {/* <img src={get_img_path('/icons/icons/close-white.webp')} alt="hexa-close"/> */}
+                        <img src={get_img_path('icons/closingcross.png')} alt="hexa-close"/>
                     </div>
                     <div className="contact-choice transition">
                         <div onClick={(e) => {resolve_contact(e);}} id="patient" className="patient transition">Je suis patient</div>

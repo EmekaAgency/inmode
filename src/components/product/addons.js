@@ -1,13 +1,25 @@
 import React from "react"
-import { resolve_image } from "../../functions/get_images";
 import Flickity from "react-flickity-component";
+import { get_img_path } from "../../functions/get_images";
 import ProductsContext from "../contexts/products-context";
 
 const Addons = ({  }) => {
   
     const addons = React.useContext(ProductsContext).addons;
 
-    console.log(addons);
+    const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
+    const [index, setIndex] = React.useState(0);
+
+    const resolve_image = (name ) => {
+        let img = new Image();
+        img.src = get_img_path(`${name}.${img_extensions[index]}`);
+        img.onerror = function() {
+            setIndex(index + 1);
+            return resolve_image(name);
+        };
+    
+        return get_img_path(`${name}.${img_extensions[index]}`);
+    };
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -30,10 +42,16 @@ const Addons = ({  }) => {
                         <div className="addon-details">
                             <div className="addon-description">
                                 <div className="addon-img">
-                                    <img src={resolve_image(`products/morpheus8/${key + 1}-pic`)} alt="addon-img"/>
+                                    <img
+                                        src={get_img_path(`products/morpheus8/${key + 1}-pic.png`)}
+                                        alt="addon-img"
+                                    />
                                 </div>
-                                <div className="addon-title">{addon.name}</div>
-                                <div className="addon-description">{addon.description || 'Id excepteur quis ea aute elit laborum laboris sint irure Lorem esse aliquip. Velit eiusmod irure ex adipisicing do nulla nulla qui aute Lorem fugiat cupidatat consequat nisi. Reprehenderit proident veniam mollit duis exercitation ea tempor nulla.'}</div>
+                                <div className="addon-title">
+                                    <img src={get_img_path(`products/morpheus8/${key + 1}-title.png`)} alt={`morpheus8-${key + 1}-title`}/>
+                                    <a className="zone-link" href="/addon"></a>
+                                </div>
+                                <div className="addon-description">{addon.descr}</div>
                                 <div className="addon-what-can-i-treat">
                                     <div className="title">
                                         Que puis-je traiter ?
@@ -46,7 +64,11 @@ const Addons = ({  }) => {
                             </div>
                         </div>
                         {key + 1 == 1 ?
-                            <img className="addon-single" src={resolve_image(`products/morpheus8/${key + 1}-single`)} alt={`morpheus8-${key + 1}-single`}/>
+                            <img
+                                className="addon-single"
+                                src={get_img_path(`products/morpheus8/${key + 1}-single.jpg`)}
+                                alt={`morpheus8-${key + 1}-single`}
+                            />
                             :
                             <div className="addon-carousel">
                                 <Flickity
@@ -60,7 +82,12 @@ const Addons = ({  }) => {
                                 >
                                     {[1, 2, 3].map((index) => {
                                         return (
-                                            <img key={index} className="addon" src={resolve_image(`products/morpheus8/${key + 1}-slide-${index}`)} alt={`morpheus8-${key + 1}-slide-${index}`}/>
+                                            <img
+                                                key={index}
+                                                className="addon"
+                                                src={get_img_path(`products/morpheus8/${key + 1}-slide-${index}.jpg`)}
+                                                alt={`morpheus8-${key + 1}-slide-${index}`}
+                                            />
                                         );
                                     })}
                                 </Flickity>

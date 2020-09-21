@@ -35,7 +35,7 @@ const Alveoles = () => {
                 {alveoles(5).map((alveole, key) => {
                     return (
                         <div key={key} className="alveole">
-                            <img src={get_img_path(`/icons/home/${images[key]}`)} alt={`/icons/products/alveole-${key + 1}`}/>
+                            <img src={get_img_path(`home/${images[key]}`)} alt={`/icons/products/alveole-${key + 1}`}/>
                             <div className="alveole-text">{texts[key]}</div>
                         </div>
                     );

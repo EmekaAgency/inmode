@@ -6,18 +6,18 @@ import PropTypes from 'prop-types';
 
 const MenuSingleImage = ({menu, prop_key}) => {
 
-    // const [path, setPath] = React.useState(get_img_path(`/icons/icons/icomoon/svg/social-${menu.name}.svg`));
+    // const [path, setPath] = React.useState(get_img_path(`icons/icomoon/svg/social-${menu.name}.svg`));
     // const [inside, setInside] = React.useState(true);
 
     // const resolve_hover = (e, enter) => {
     //     if(enter && !inside) {
-    //         // setPath(get_img_path(`/icons/icons/icomoon/svg/social-${menu.name}.svg`));
-    //         setPath(get_img_path(`/icons/icons/social-networks/${menu.name}.webp`));
+    //         // setPath(get_img_path(`icons/icomoon/svg/social-${menu.name}.svg`));
+    //         setPath(get_img_path(`icons/social-networks/${menu.name}.webp`));
     //         setInside(true);
     //     }
     //     else if(!enter && inside) {
-    //         // setPath(get_img_path(`/icons/icons/social-networks/${menu.name}.webp`));
-    //         setPath(get_img_path(`/icons/icons/icomoon/svg/social-${menu.name}.svg`));
+    //         // setPath(get_img_path(`icons/social-networks/${menu.name}.webp`));
+    //         setPath(get_img_path(`icons/icomoon/svg/social-${menu.name}.svg`));
     //         setInside(false);
     //     }
     // }
@@ -27,12 +27,12 @@ const MenuSingleImage = ({menu, prop_key}) => {
             <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"}>
                 <img
                     className="init"
-                    src={get_img_path(`/icons/icons/icomoon/svg/social-${menu.name}-init.svg`)}
+                    src={get_img_path(`icons/icomoon/svg/social-${menu.name}-init.svg`)}
                     alt={format_string(menu.name)}
                 />
                 <img
                     className="blue"
-                    src={get_img_path(`/icons/icons/icomoon/svg/social-${menu.name}.svg`)}
+                    src={get_img_path(`icons/icomoon/svg/social-${menu.name}.svg`)}
                     alt={format_string(menu.name)}
                 />
             </Link>

@@ -1078,6 +1078,7 @@ footer {
     background-image: url('/icons/footer-bg-pattern.png');
     background-repeat: repeat;
     box-shadow: #000000a8 -4px -4px 12px;
+    position: relative;
 }
 
 footer .footer-logo-infos-part {
@@ -1632,8 +1633,7 @@ footer .footer-navigation-part {
 
 .slides-home .addons-view-cards .addon .addon-title {
     display: block;
-    width: 100%;
-    height: 45px;
+    max-width: 100%;
 }
 
 .slides-home .addons-view-cards .addon:hover .addon-general,
@@ -1652,6 +1652,10 @@ footer .footer-navigation-part {
 
 .slides-home .addons-view-cards .addon:hover .addon-general {
     bottom: 400px;
+}
+
+.slides-home .addons-view-cards .addon .addon-general .title {
+    height: 45px;
 }
 
 .slides-home .addons-view-cards .addon:hover .addon-details {
@@ -1691,7 +1695,8 @@ footer .footer-navigation-part {
 
 .slides-home .addons-view-cards .addon .addon-general .addon-picture {
     display: block;
-    width: 100%;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .slides-home .addons-view-cards .addon .addon-details {
@@ -1732,7 +1737,7 @@ footer .footer-navigation-part {
 }
 
 .slides-home .addons-view-cards .addon .purchase-infos {
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
@@ -1743,6 +1748,8 @@ footer .footer-navigation-part {
     color: white;
     font-size: 16px;
     font-weight: 600;
+    display: block;
+    width: max-content;
 }
 
 .slides-home .addons-view-cards .addon .price.euro::after {
@@ -1757,8 +1764,25 @@ footer .footer-navigation-part {
     content: ' £';
 }
 
+.slides-home .addons-view-cards .addon .details {
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5% 0;
+    background-color: #59b7b3cc;
+    padding: 7px 28px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: #000000 2px 2px 12px;
+    outline: transparent;
+    cursor: pointer;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
 .slides-home .addons-view-cards .addon .add-to-cart {
-    flex-grow: 1;
+    display: inline-block;
+    width: 40%;
+    margin: 20px 5% 0;
 }
 
 .slides-home .addons-view-cards .addon .add-to-cart button {
@@ -1767,10 +1791,9 @@ footer .footer-navigation-part {
     border-radius: 5px;
     border: none;
     box-shadow: #000000 2px 2px 12px;
-}
-
-.slides-home .addons-view-cards .addon .add-to-cart button:hover {
+    outline: transparent;
     cursor: pointer;
+    font-size: 13px;
 }
 
 .slides-home .addons-view-cards .addon .show-more {
@@ -3191,12 +3214,8 @@ input[type="submit"].neumorphic:hover,
 /* product addons */
 
 .product-addons {
-    background-color: #0b1a25;
+    background-color: #0d1f2c;
     position: relative;
-    max-width: 1170px;
-    margin: 50px auto;
-    width: calc(100% - 100px);
-    /* z-index: 2; */
 }
 
 .product-addons .section-title {
@@ -3208,17 +3227,21 @@ input[type="submit"].neumorphic:hover,
     letter-spacing: 1px;
     line-height: 38px;
     text-transform: uppercase;
+    max-width: 1170px;
+    margin: 0 auto;
 }
 
 .product-addons .product-addon {
     width: 100%;
-    margin-bottom: 50px;
+    max-width: 1170px;
+    margin: 0 auto;
 }
 
 .product-addons .product-addon .addon-details {
     display: inline-block;
     vertical-align: top;
     width: 55%;
+    background-color: #0d1f2c;
 }
 
 .product-addons .product-addon .addon-details .addon-description {
@@ -3252,6 +3275,11 @@ input[type="submit"].neumorphic:hover,
     line-height: 30px;
     padding-bottom: 30px;
     margin-left: calc(100vw / 7);
+    position: relative;
+}
+
+.product-addons .product-addon .addon-details .addon-description .addon-title img {
+    width: 100%;
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-description {
@@ -3401,6 +3429,48 @@ input[type="submit"].neumorphic:hover,
     }
 }
 
+/* product divider */
+
+.product-divider-bottomtop {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.product-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.product-divider-bottom .shape-fill {
+    fill: #0D1F2C;
+}
+
+.product-divider-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.product-divider-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.product-divider-top .shape-fill {
+    fill: #0D1F2C;
+}
+
 /* product clinical studies */
 
 .product-clinical-studies {
@@ -3514,18 +3584,18 @@ input[type="submit"].neumorphic:hover,
 }
 
 .product-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.previous {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    left: -25px;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translate(-50%,-50%); */
+    /* left: -25px; */
     display: none;
 }
 
 .product-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.next {
-    position: absolute;
-    top: 50%;
-    transform: translate(50%,-50%);
-    right: -25px;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translate(50%,-50%); */
+    /* right: -25px; */
     display: none;
 }
 @media (max-width: 729px) {
@@ -3610,7 +3680,7 @@ input[type="submit"].neumorphic:hover,
 }
 
 .addon-banner .addon-banner-media img {
-    display: none;
+    
 }
 
 .addon-banner .addon-banner-media video {
@@ -3638,7 +3708,6 @@ input[type="submit"].neumorphic:hover,
     letter-spacing: 10px;
     line-height: 45px;
     text-transform: uppercase;
-    white-space: nowrap;
 }
 
 .addon-banner .addon-banner-mini {
@@ -3762,9 +3831,10 @@ input[type="submit"].neumorphic:hover,
     top: 0;
     left: 0;
     max-width: 33%;
-    background: #59b7b3;
     width: 100%;
     height: 100%;
+    padding-right: 35px;
+    box-sizing: border-box;
 }
 
 .addon-details div.addon-details-img img {
@@ -3801,6 +3871,7 @@ input[type="submit"].neumorphic:hover,
     position: absolute;
     left: 0;
     top: 0;
+    filter: invert(1);
 }
 
 .addon-details .key-benefits .key .text {
@@ -3858,6 +3929,231 @@ input[type="submit"].neumorphic:hover,
 
     }
 }
+
+/* addon videos */
+
+.addon-videos {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 80px;
+    overflow-x: hidden;
+    background-color: #0d1f2c;
+}
+.addon-videos .title {
+    font-size: 30px;
+    line-height: 38px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    position: relative;
+    max-width: 1170px;
+}
+
+.addon-videos .carousel-addon-videos {
+    outline: transparent;
+    max-width: 1170px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.addon-videos .carousel-addon-videos video {
+    width: calc(100% / 3);
+}
+
+.addon-videos .carousel-addon-videos .flickity-prev-next-button {
+    display: none;
+}
+/* addon before after */
+
+.addon-before-after {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 80px;
+    background-color: #0d1f2c;
+}
+
+.addon-before-after .title {
+    font-size: 30px;
+    line-height: 38px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    position: relative;
+    max-width: 1170px;
+}
+
+.addon-before-after .slides-before-after {
+    outline: transparent;
+    overflow: hidden;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.addon-before-after .slides-before-after .ba-slide {
+    text-align: center;
+    width: calc(100% / 3);
+}
+
+.addon-before-after .slides-before-after .ba-slide img {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.addon-before-after .slides-before-after .ba-slide .ba-doctor {
+    font-size: 24px;
+    line-height: 32px;
+    font-family: "brandon-grotesque",sans-serif;
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+}
+
+.addon-before-after .slides-before-after .ba-slide .ba-descr {
+    font-size: 20px;
+    line-height: 28px;
+    color: #fff;
+    opacity: 0.7;
+    padding-bottom: 30px;
+}
+
+.addon-before-after .slides-before-after .flickity-prev-next-button {
+    display: none;
+}
+
+.addon-before-after .request-informations {
+    background-color: #59b7b3;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 220px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+/* addon divider */
+
+.addon-divider-bottomtop {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.addon-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg);
+}
+
+.addon-divider-bottom .shape-fill {
+    fill: #0D1F2C;
+}
+
+.addon-divider-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.addon-divider-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+    transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.addon-divider-top .shape-fill {
+    fill: #0D1F2C;
+}
+
+/* addon what treat */
+
+.addon-what-treat {
+    width: 100vw;
+}
+
+.addon-what-treat .title {
+    font-size: 30px;
+    line-height: 38px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 0;
+    position: relative;
+}
+
+.addon-what-treat .treats {
+    display: inline-flex;
+}
+
+.addon-what-treat .treats .treat-part {
+    flex: 1;
+    text-align: center;
+}
+
+.addon-what-treat .treats .treat-part img {
+    width: 100%;
+}
+
+.addon-what-treat .treats .treat-part .it-treats {
+    color: #fff;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.addon-what-treat .treats .treat-part .treat-descr {
+    color: #fff;
+    opacity: 0.7;
+    font-size: 20px;
+    line-height: 28px;
+    padding-bottom: 30px;
+}
+
+.addon-what-treat .request-informations {
+    background-color: #59b7b3;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17.5px;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 220px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
 
 
 /* addon clinical studies */
@@ -3925,7 +4221,6 @@ input[type="submit"].neumorphic:hover,
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: red;
 }
 
 .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text {
@@ -3973,17 +4268,19 @@ input[type="submit"].neumorphic:hover,
 }
 
 .addon-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.previous {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    left: -25px;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translate(-50%,-50%); */
+    /* left: -25px; */
+    display: none;
 }
 
 .addon-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.next {
-    position: absolute;
-    top: 50%;
-    transform: translate(50%,-50%);
-    right: -25px;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translate(50%,-50%); */
+    /* right: -25px; */
+    display: none;
 }
 @media (max-width: 729px) {
     .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-name {
