@@ -3,7 +3,9 @@ import Flickity from "react-flickity-component";
 import { get_img_path } from "../../functions/get_images";
 import ProductsContext from "../contexts/products-context";
 
-const Addons = ({  }) => {
+const Addons = ({ datas }) => {
+
+    console.log(datas);
   
     const addons = React.useContext(ProductsContext).addons;
 
@@ -34,7 +36,7 @@ const Addons = ({  }) => {
     });
 
     return (
-        <div className="product-addons">
+        <div id="technologies" className="product-addons">
             <div className="section-title"></div>
             {addons.map((addon, key) => {
                 return (

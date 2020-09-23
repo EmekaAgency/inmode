@@ -1,27 +1,6 @@
 import React from "react"
-import { format_string } from "../../functions/format_string";
-import { get_img_path } from "../../functions/get_images"
-import ProductsContext from "../contexts/products-context";
 
-const ProductBanner = ({  }) => {
-  
-    const addon = React.useContext(ProductsContext).addons[0];
-
-    const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
-    const [index, setIndex] = React.useState(0);
-
-    const resolve_image = (name ) => {
-        let img = new Image();
-        img.src = get_img_path(`${name}.${img_extensions[index]}`);
-        img.onerror = function() {
-            setIndex(index + 1);
-            return resolve_image(name);
-        };
-    
-        return get_img_path(`${name}.${img_extensions[index]}`);
-    };
-  
-    const product = React.useContext(ProductsContext).products[0];
+const ProductBanner = ({ datas }) => {
 
     // TODO récupérer images et vidéos pour chaque produit
     return (
@@ -33,7 +12,7 @@ const ProductBanner = ({  }) => {
                     autoPlay="autoplay"
                     loop={true}
                     muted={true}
-                    poster={get_img_path(`products/${product.name}-p.png`)}
+                    poster={datas.banner_left.publicURL}
                     height={380}
                 >
                     <source
@@ -46,18 +25,17 @@ const ProductBanner = ({  }) => {
             <div className="product-banner-details">
                 <img
                     className="product-banner-logo"
-                    src={get_img_path(`products/${product.name}-img-txt.png`)}
+                    src={datas.banner_right_title.publicURL}
                     alt="bodytite-logo-text"
                 />
                 {/* <div className="product-banner-short-descr">{product.short_descr}</div> */}
                 <div className="product-banner-short-descr">
-                    FULL BODY FRACTIONAL REMODELING
+                    {datas.short_descr}
                 </div>
             </div>
             <div className="product-banner-mini">
                 <img
-                    src={get_img_path(`products/${product.name}/banner-mini.jpg`)}
-                    alt={`${format_string(product.name)}-banner-mini`}
+                    src={datas.banner_mini.publicURL}
                 />
             </div>
             <div className="product-banner-mask"></div>

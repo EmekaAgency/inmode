@@ -22,6 +22,14 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        products: allStrapiProductTemplates {
+          edges {
+            node {
+              id
+              TitrePage
+            }
+          }
+        }
       }
     `
   )
@@ -45,4 +53,21 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // Create products pages.
+  const products = result.data.products.edges
+
+  const ProductTemplates = require.resolve("./src/templates/product.js")
+
+  products.forEach((product, index) => {
+    console.log(product.node.TitrePage);
+    createPage({
+      path: `/product/${product.node.TitrePage}`,
+      component: ProductTemplates,
+      context: {
+        id: product.node.id,
+      },
+    })
+  })
+
 }

@@ -1,12 +1,13 @@
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import ProductsContext from "../contexts/products-context";
 
 const ProductNavigation = ({  }) => {
-  
-    const product = React.useContext(ProductsContext).products[0];
 
-    const menus = React.useContext(ProductsContext).product_navigation;
+    const [menus] = React.useState([
+        {'name': 'what is it', 'url': '#what-is'},
+        {'name': 'key benefits', 'url': '#key-benefits'},
+        {'name': 'technologies on the workstation', 'url': '#technologies'},
+        {'name': 'clinical studies', 'url': '#studies'}
+    ]);
 
     return (
         <div className="product-navigation">

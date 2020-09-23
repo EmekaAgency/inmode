@@ -39,29 +39,28 @@ export default AddonTemplates;
 export const query = graphql`
     query AddonTemplates($id: String!) {
         strapiAddonTemplates(id: {eq: $id}) {
+            BeforeAfterTitle
             TitrePage
-            what_treats {
-                description
-                title
+            TreatTitle
+            VideoTitle
+            addon_banner {
+                banner_left {
+                    publicURL
+                }
+                banner_mini {
+                    publicURL
+                }
+                banner_right_title {
+                    publicURL
+                }
+                short_descr
+            }
+            befores_afters {
+                descr
+                doctor
                 image {
                     publicURL
                 }
-            }
-            what_is {
-                description
-                title
-                image {
-                    publicURL
-                }
-            }
-            videos {
-                video_url
-                poster {
-                    publicURL
-                }
-            }
-            key_benefits {
-                text
             }
             clinical_studies {
                 description
@@ -71,28 +70,84 @@ export const query = graphql`
                     publicURL
                 }
             }
-            befores_afters {
-                descr
-                doctor
+            key_benefits {
+                text
+            }
+            videos {
+                video_url
+                poster {
+                    publicURL
+                }
+            }
+            what_is {
+                description
                 image {
                     publicURL
                 }
+                title
             }
-            addon_banner {
-                banner_right_title {
+            what_treats {
+                description
+                image {
                     publicURL
                 }
-                banner_mini {
-                    publicURL
-                }
-                banner_left {
-                    publicURL
-                }
-                short_descr
+                title
             }
-            VideoTitle
-            BeforeAfterTitle
-            TreatTitle
+          }
         }
-    }
-`;
+      `;
+
+
+// what_treats {
+//     description
+//     title
+//     image {
+//         publicURL
+//     }
+// }
+// what_is {
+//     description
+//     title
+//     image {
+//         publicURL
+//     }
+// }
+// videos {
+//     video_url
+//     poster {
+//         publicURL
+//     }
+// }
+// key_benefits {
+//     text
+// }
+// clinical_studies {
+//     description
+//     title
+//     url
+//     image {
+//         publicURL
+//     }
+// }
+// befores_afters {
+//     descr
+//     doctor
+//     image {
+//         publicURL
+//     }
+// }
+// addon_banner {
+//     banner_right_title {
+//         publicURL
+//     }
+//     banner_mini {
+//         publicURL
+//     }
+//     banner_left {
+//         publicURL
+//     }
+//     short_descr
+// }
+// VideoTitle
+// BeforeAfterTitle
+// TreatTitle

@@ -6,6 +6,7 @@ body {
     background-color: #d2d2d2;
     font-family: 'raleway', sans-serif;
     font-size: 0;
+    scroll-behavior: smooth;
 }
 
 body {
