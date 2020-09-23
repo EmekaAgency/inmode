@@ -27,6 +27,16 @@ module.exports = {
         icon: 'src/images/favicon.png',
       },
     },
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `http://localhost:1337`,
+        contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
+          `addon-templates`
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-mysql`,
       options: {

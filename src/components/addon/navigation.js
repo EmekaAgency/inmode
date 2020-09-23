@@ -2,10 +2,13 @@ import React from "react"
 import ProductsContext from "../contexts/products-context";
 
 const AddonNavigation = ({  }) => {
-  
-  const addon = React.useContext(ProductsContext).addons[0];
 
-    const menus = React.useContext(ProductsContext).addon_navigation;
+    const [menus] = React.useState([
+        {'name': 'what is it', 'url': '#what-is'},
+        {'name': 'before and after\'s', 'url': '#before-after'},
+        {'name': 'what can you treat', 'url': '#what-treat'},
+        {'name': 'clinical studies', 'url': '#studies'}
+    ]);
 
     return (
         <div className="addon-navigation">

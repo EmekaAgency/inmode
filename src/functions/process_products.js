@@ -9,7 +9,6 @@ export const process_products = (products = [], matching, from = "") => {
     }
     matchs[++i] = {'product_id': 1, 'addon_id' :16};
     matchs[++i] = {'product_id': 1, 'addon_id' :18};
-    console.log(matchs);
     return Object.keys(prods).map((key) => {
         if(prods[key].type === 0) {
             return {...prods[key], ...{

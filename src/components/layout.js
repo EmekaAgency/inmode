@@ -52,3 +52,43 @@ Layout.propTypes = {
 }
 
 export default Layout
+
+
+// import React from 'react'
+
+// const Component = ({datas}) => {
+
+//   return (
+//     <text>{datas.variant}</text>
+//   );
+
+// };
+
+// export default Component;
+
+// import React from 'react'
+
+// const Component = ({identifiant}) => {
+//   const datas = useStaticQuery(graphql`
+//     {
+//       allMysqlHeaderTop {
+//         nodes {
+//           variant${identifiant}
+//           url${identifiant}
+//           under${identifiant}
+//           type${identifiant}
+//           position${identifiant}
+//           name${identifiant}
+//           mysqlId${identifiant}
+//           container${identifiant}
+//         }
+//       }
+//     }
+//   }`);
+
+//   return (
+//     <text>{datas.[`variant${identifiant}`]}</text>
+//   );
+// };
+
+// export default Component;

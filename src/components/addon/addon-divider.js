@@ -1,6 +1,6 @@
 import React from "react"
 
-const AddonDivider = ({position}) => {
+const AddonDivider = ({ position }) => {
 
     return (
         <div className={`addon-divider-${position}`}>

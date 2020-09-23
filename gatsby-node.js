@@ -1,24 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
-
-const { createFilePath } = require(`gatsby-source-filesystem`)
-
-// TODO vérifier modules pour erreur à création page par md
-
-exports.onCreateNode = ({ node, getNode }) => {
-  // console.log(`Node created of type "${node.internal.type}"`)
-  if (node.internal.type === `MarkdownRemark`) {
-    const fileNode = getNode(node.parent)
-    console.log(`\n`, fileNode.relativePath)
-    console.log(createFilePath({ node, getNode, basePath: `pages` }))
-  }
-}
-
 exports.onCreateWebpackConfig = ({actions}) => {
   actions.setWebpackConfig({
     resolve: {
@@ -27,5 +6,43 @@ exports.onCreateWebpackConfig = ({actions}) => {
       // correctly.
       modules: ['node_modules']
     }
+  })
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(
+    `
+      {
+        addons: allStrapiAddonTemplates {
+          edges {
+            node {
+              id
+              TitrePage
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (result.errors) {
+    throw result.errors
+  }
+
+  // Create addons pages.
+  const addons = result.data.addons.edges
+
+  const AddonTemplates = require.resolve("./src/templates/addon.js")
+
+  addons.forEach((addon, index) => {
+    console.log(addon.node.TitrePage);
+    createPage({
+      path: `/addon/${addon.node.TitrePage}`,
+      component: AddonTemplates,
+      context: {
+        id: addon.node.id,
+      },
+    })
   })
 }
