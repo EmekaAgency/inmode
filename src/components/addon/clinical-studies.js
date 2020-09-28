@@ -15,6 +15,12 @@ const AddonClinicalStudies = ({ datas }) => {
         wrapAround: true
     });
 
+    console.log(datas);
+
+    if(!datas) {
+        return false;
+    }
+
     return (
         <div id="studies" className="addon-clinical-studies">
             <div className="title">

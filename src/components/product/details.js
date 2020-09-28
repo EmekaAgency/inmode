@@ -4,19 +4,25 @@ import { get_img_path } from "../../functions/get_images";
 const ProductDetails = ({ datas }) => {
 
     return (
-        <div className="product-details">
-            <div id="what-is" className="what-is transition">
+        <div id="what-is" className="product-details">
+            <div className="what-is transition">
                 <div className="product-details-img transition">
                     <img
-                        src={datas.what_is.image.publicURL}
+                        src={datas.what_is.picture.childImageSharp.fluid.srcWebp}
                     />
                 </div>
-                <div className="title">
-                    {datas.what_is.title}
-                </div>
-                <p className="text">
-                    {datas.what_is.description}
-                </p>
+                {datas.what_is.TitleText.map((section, key) => {
+                    return (
+                        <div key={key}>
+                            <div className="title">
+                                {section.title}
+                            </div>
+                            <p className="text">
+                                {section.text}
+                            </p>
+                        </div>
+                    )
+                })}
             </div>
             <div id="key-benefits" className="key-benefits transition">
                 <div className="title">
@@ -29,7 +35,7 @@ const ProductDetails = ({ datas }) => {
                                 src={get_img_path('icons/key_benefit.png')}
                                 alt="key_benefit"
                             />
-                            <div className="text">{benefit.text}</div>
+                            <div className="text">{benefit.texte}</div>
                         </div>
                     );
                 })}

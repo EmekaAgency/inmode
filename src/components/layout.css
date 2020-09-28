@@ -3261,7 +3261,8 @@ input[type="submit"].neumorphic:hover,
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-img img {
-    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
     margin: 0 auto;
     display: block;
 }
@@ -3277,10 +3278,12 @@ input[type="submit"].neumorphic:hover,
     padding-bottom: 30px;
     margin-left: calc(100vw / 7);
     position: relative;
+    text-transform: uppercase;
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-title img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 30px;
 }
 
 .product-addons .product-addon .addon-details .addon-description .addon-description {
@@ -3363,9 +3366,10 @@ input[type="submit"].neumorphic:hover,
     vertical-align: top;
     width: 40%;
     margin: 50px 0 50px 5%;
-    overflow-x: hidden;
+    overflow: hidden;
     /* z-index: 2; */
     /* position: relative; */
+    min-height: 200px;
 }
 
 .product-addons .product-addon .addon-carousel .slide-addons {
@@ -3429,6 +3433,86 @@ input[type="submit"].neumorphic:hover,
         max-height: calc(100vw / 2);
     }
 }
+
+/* product selling args */
+
+.product-selling-args {
+    max-width: 1170px;
+    display: block;
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.product-selling-args .title {
+    font-size: 30px;
+    line-height: 38px;
+    font-family: "brandon-grotesque",sans-serif;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+}
+
+.product-selling-args .key {
+    position: relative;
+}
+
+.product-selling-args .key img {
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
+.product-selling-args .key .text {
+    position: relative;
+    padding-left: 85px;
+    font-size: 20px;
+    line-height: 28px;
+    color: #636466;
+    padding-bottom: 30px;
+    min-height: 46px;
+}
+
+
+/* product demo */
+
+.product-demo {
+    background: darkcyan;
+}
+
+.product-demo .picture {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40vw;
+    padding: 20px 5vw;
+    position: relative;
+}
+
+.product-demo .picture img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.product-demo .text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40vw;
+    padding: 20px 5vw;
+    font-size: 28px;
+    line-height: 34px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+}
+
 
 /* product divider */
 
@@ -3582,6 +3666,7 @@ input[type="submit"].neumorphic:hover,
     text-align: center;
     text-transform: uppercase;
     width: 220px;
+    margin-top: 10px;
 }
 
 .product-clinical-studies .clinical-studies-slider .slide-studies .flickity-prev-next-button.previous {
@@ -3974,6 +4059,11 @@ input[type="submit"].neumorphic:hover,
     margin: 0 auto;
     padding-top: 80px;
     background-color: #0d1f2c;
+    padding-bottom: 30px;
+}
+
+.addon-before-after.product {
+    background-color: unset;
 }
 
 .addon-before-after .title {
@@ -4242,7 +4332,11 @@ input[type="submit"].neumorphic:hover,
     padding-bottom: 10px;
 }
 
-.addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-details {
+.study-text .study-author,
+.study-text .study-technologies,
+.study-text .study-technologies a,
+.study-text .study-published,
+.study-text .study-publication {
     box-sizing: border-box;
     color: rgba(255, 255, 255, 0.7);
     display: block;
@@ -4250,7 +4344,11 @@ input[type="submit"].neumorphic:hover,
     font-weight: 400;
     letter-spacing: 1px;
     line-height: 20px;
-    padding-bottom: 20px;
+}
+
+.study-text .study-technologies a {
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 .addon-clinical-studies .clinical-studies-slider .slide-studies .study-slide .study-text .study-download {

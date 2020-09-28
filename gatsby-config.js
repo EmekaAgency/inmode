@@ -7,6 +7,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        offset: -100
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -33,10 +39,10 @@ module.exports = {
       options: {
         apiURL: `http://localhost:1337`,
         contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
-          `addon-templates`,
-          `product-templates`
+          `addon`,
+          `product`
         ],
-        // queryLimit: 1000,
+        queryLimit: 1000,
         // loginData: {
         //   identifier: 'inmode@emeka.fr',
         //   password: 'Bonsoir34**'

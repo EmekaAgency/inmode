@@ -1,3 +1,4 @@
+import { graphql, StaticQuery, useStaticQuery } from "gatsby";
 import React from "react"
 
 const ProductBanner = ({ datas }) => {
@@ -12,11 +13,11 @@ const ProductBanner = ({ datas }) => {
                     autoPlay="autoplay"
                     loop={true}
                     muted={true}
-                    poster={datas.banner_left.publicURL}
+                    poster={datas.left_img.childImageSharp.fluid.srcWebp}
                     height={380}
                 >
                     <source
-                        src="https://inmodemd.com/wp-content/uploads/2020/08/Morpheus8-Workstation-Video.mp4"
+                        src={datas.left_video}
                         type="video/mp4"
                     />
                     <track src="" kind="subtitles" srcLang="en" label="English"></track>
@@ -25,17 +26,17 @@ const ProductBanner = ({ datas }) => {
             <div className="product-banner-details">
                 <img
                     className="product-banner-logo"
-                    src={datas.banner_right_title.publicURL}
+                    src={datas.right_img.childImageSharp.fluid.srcWebp}
                     alt="bodytite-logo-text"
                 />
                 {/* <div className="product-banner-short-descr">{product.short_descr}</div> */}
                 <div className="product-banner-short-descr">
-                    {datas.short_descr}
+                    {datas.right_text}
                 </div>
             </div>
             <div className="product-banner-mini">
                 <img
-                    src={datas.banner_mini.publicURL}
+                    src={datas.mini.childImageSharp.fluid.srcWebp}
                 />
             </div>
             <div className="product-banner-mask"></div>

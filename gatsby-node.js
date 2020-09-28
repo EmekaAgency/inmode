@@ -14,19 +14,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        addons: allStrapiAddonTemplates {
+        addons: allStrapiAddon {
           edges {
             node {
               id
-              TitrePage
+              Name
+              Page_addon
             }
           }
         }
-        products: allStrapiProductTemplates {
+        products: allStrapiProduct {
           edges {
             node {
               id
-              TitrePage
+              Name
             }
           }
         }
@@ -44,9 +45,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const AddonTemplates = require.resolve("./src/templates/addon.js")
 
   addons.forEach((addon, index) => {
-    console.log(addon.node.TitrePage);
     createPage({
-      path: `/addon/${addon.node.TitrePage}`,
+      path: `/technology/${addon.node.Name}`,
       component: AddonTemplates,
       context: {
         id: addon.node.id,
@@ -60,9 +60,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const ProductTemplates = require.resolve("./src/templates/product.js")
 
   products.forEach((product, index) => {
-    console.log(product.node.TitrePage);
     createPage({
-      path: `/product/${product.node.TitrePage}`,
+      path: `/workstation/${product.node.Name}`,
       component: ProductTemplates,
       context: {
         id: product.node.id,

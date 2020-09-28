@@ -37,7 +37,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
         <ul key={prop_key} className="menu-dk-title menu-text">
             <Link
                 className="menu-dk-title menu-text"
-                to={menu.url || "#"}
+                to={"/shop"}
                 onClick={(e) => {resolveOnClick(e);}}
             >
                 {format_string(menu.name)}
@@ -47,10 +47,10 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                     {menu.under && menu.under.map((content, key) => {
                         return (
                             <div key={key} className="dk-item">
-                                <a href={content.url || '#'}>
-                                    <img className="dk-picture transition" src={get_img_path(`products/${content.name}.png`)} alt={format_string(content.name)}/>
+                                <Link to={`/workstation/${format_string(content.name, true, false).replace('#', '')}`}>
+                                    <img className="dk-picture transition" src={get_img_path(`products/${format_string(content.name, true, false)}/${format_string(content.name, true, false).replace('#', '')}.png`)} alt={format_string(content.name)}/>
                                     <div className="dk-title">{format_string(content.name)}</div>
-                                </a>
+                                </Link>
                                 {Array.isArray(content.under) && content.under.length > 0 ?
                                     <div className={`dk-item-sub ${content.variant === TITLE ? 'dropdown-menu' : 'dk-dropdown-menu'}`}>
                                         {
