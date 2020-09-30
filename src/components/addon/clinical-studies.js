@@ -36,26 +36,45 @@ const AddonClinicalStudies = ({ datas }) => {
                     static // default false
                     className="slide-studies transition"
                 >
-                    {datas.map((study, key) => {
-                        return (
-                            <div key={key} className="study-slide">
-                                <div className="study-img">
-                                    <img
-                                        src={study.image.publicURL}
-                                        alt="clinical-study"
-                                    />
-                                </div>
-                                <div className="study-text">
-                                    <div className="study-name">{study.title}</div>
-                                    <div className="study-details">{study.description}</div>
-                                    <div className="study-download">
-                                        Télécharger
-                                        <a className="zone-link" href={study.url} download/>
-                                    </div>
+                    {datas.length == 1 ?
+                        <div className="study-slide">
+                            <div className="study-img">
+                                <img
+                                    src={datas[0].image.publicURL}
+                                    alt="clinical-study"
+                                />
+                            </div>
+                            <div className="study-text">
+                                <div className="study-name">{datas[0].title}</div>
+                                <div className="study-details">{datas[0].description}</div>
+                                <div className="study-download">
+                                    Télécharger
+                                    <a className="zone-link" href={datas[0].url} download/>
                                 </div>
                             </div>
-                        );
-                    })}
+                        </div>
+                        :
+                        datas.map((study, key) => {
+                            return (
+                                <div key={key} className="study-slide">
+                                    <div className="study-img">
+                                        <img
+                                            src={study.image.publicURL}
+                                            alt="clinical-study"
+                                        />
+                                    </div>
+                                    <div className="study-text">
+                                        <div className="study-name">{study.title}</div>
+                                        <div className="study-details">{study.description}</div>
+                                        <div className="study-download">
+                                            Télécharger
+                                            <a className="zone-link" href={study.url} download/>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    }
                 </Flickity>
             </div>
         </div>

@@ -40,7 +40,9 @@ module.exports = {
         apiURL: `http://localhost:1337`,
         contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
           `addon`,
-          `product`
+          `product`,
+          `tag`,
+          `tag-family`
         ],
         queryLimit: 1000,
         // loginData: {

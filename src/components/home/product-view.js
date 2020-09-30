@@ -19,7 +19,7 @@ const ProductView = ({children, datas}) => {
         <div className="product-view-container">
             {children}
             <div className="product-view-img">
-                <img src={get_img_path(`products/${product.name}-p.${'png' || 'jpg'}`)} alt='product'/>
+                <img src={get_img_path(`products/${product.name}/${product.name}-p.${'png' || 'jpg'}`)} alt='product'/>
             </div>
             <div className="product-view-details">
                 <div className="product-view-title">{product.name}</div>

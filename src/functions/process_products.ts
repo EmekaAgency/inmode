@@ -1,4 +1,4 @@
-export const process_products = (products = [], matching, from = "") => {
+export const process_products = (products : Array<any> = [], matching : Array<any> = [], from : String = "") => {
     let prods = new Object({}), i;
     for(i = 0; i < products.length; i++) {
         prods[products[i].mysqlId] = products[i];

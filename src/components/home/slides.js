@@ -4,6 +4,7 @@ import Flickity from "react-flickity-component";
 import ProductView from "./product-view";
 import { format_string } from "../../functions/format_string";
 import ProductsContext from "../contexts/products-context";
+import { Link } from "gatsby";
 
 const Slides = ({from}) => {
   
@@ -127,14 +128,14 @@ const Slides = ({from}) => {
                                 <div className="slide-background-ico">
                                     <img
                                         className="slide-bg-img"
-                                        src={get_img_path(`products/${slide.name}.png`)}
+                                        src={get_img_path(`products/${format_string(slide.name, true, false)}/${format_string(slide.name, true, false)}.png`)}
                                         alt={format_string(slide.name)}
                                     />
                                 </div>
                                 <div className="slide-background-product">
                                     <img
                                         className="slide-bg-img"
-                                        src ={get_img_path(`products/${slide.name}-p.png`)}
+                                        src ={get_img_path(`products/${format_string(slide.name, true, false)}/${format_string(slide.name, true, false)}-p.png`)}
                                         alt='product'
                                     />
                                 </div>
@@ -142,16 +143,16 @@ const Slides = ({from}) => {
                                     {format_string(slide.name)}
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
-                                    Voir le détail
+                                    Informations produits
                                     <img
                                         className="slide-view-detail-arrow transition"
                                         src={get_img_path('icons/arrow-right.png')}
                                         alt="arrow-right"
                                     />
-                                    <a className="zone-link" href="/product"></a>
+                                    <Link className="zone-link" to={`/workstation/${format_string(slide.name, true, false)}`}></Link>
                                 </div>
                                 {slide.under ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
-                                    Voir les produits
+                                    Pièces à main
                                     <img
                                         className="slide-view-product-arrow transition"
                                         src={get_img_path('icons/arrow-right.png')}

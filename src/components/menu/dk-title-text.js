@@ -37,7 +37,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
         <ul key={prop_key} className="menu-dk-title menu-text">
             <Link
                 className="menu-dk-title menu-text"
-                to={"/shop"}
+                to={menu.url || "#"}
                 onClick={(e) => {resolveOnClick(e);}}
             >
                 {format_string(menu.name)}
