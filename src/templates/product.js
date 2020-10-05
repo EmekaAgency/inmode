@@ -2,19 +2,22 @@ import React from 'react'
 import MenusProvider from '../components/contexts/menus-provider';
 import Layout from '../components/layout';
 import Addons from '../components/product/addons';
-import ProductDivider from '../components/product/product-divider';
+import Divider from '../components/divider';
 import ProductBanner from '../components/product/banner';
-import ProductClinicalStudies from '../components/product/clinical-studies';
-import ProductDetails from '../components/product/details';
+import Details from '../components/details';
 import ProductNavigation from '../components/product/navigation';
 import SEO from '../components/seo';
 import ProductBeforeAfter from '../components/product/before-after';
 import ProductDemo from '../components/product/demo';
-import ProductSellingArgs from '../components/product/selling-args';
+import SellingArgs from '../components/selling-args';
+import ClinicalStudies from '../components/clinical-studies';
+import GenericDetails from '../components/details';
 
 const ProductTemplates = ({ data }) => {
 
     const [datas] = React.useState(data.strapiProduct);
+
+    console.log(datas);
 
     return (
         <MenusProvider>
@@ -28,15 +31,24 @@ const ProductTemplates = ({ data }) => {
                         'studies': datas.ClinicalStudies != [] && datas.ClinicalStudies.length > 0
                     }}
                 />
-                <ProductDetails datas={{'what_is': datas.WhatIs, 'before_keys': datas.BeforeKeyBenefits, 'key_benefits': datas.KeyBenefits}}/>
-                <ProductDivider position="top"/>
+                <GenericDetails
+                    datas={{
+                        'what_is': datas.WhatIs,
+                        'before_keys': datas.BeforeKeyBenefits,
+                        'list': datas.KeyBenefits,
+                        'list_title': 'key benefits',
+                        'list_icon': 'icons/key_benefit.png',
+                        'anchor_key': 'key-benefits'
+                    }}
+                />
+                <Divider position="top"/>
                 <Addons datas={{'addons': datas.Addons, id: datas.strapiId}}/>
-                <ProductDivider position="bottom" specialBackground={datas.Demo ? 'darkcyan' : null}/>
+                <Divider position="bottom" specialBackground={datas.Demo ? 'darkcyan' : null}/>
                 <ProductDemo datas={datas.Demo}/>
-                {datas.Demo && <ProductDivider position="top" specialBackground={'darkcyan'} specialFill={"#0b1a25"}/>}
+                {datas.Demo && <Divider position="top" specialBackground={'darkcyan'} specialFill={"#0b1a25"}/>}
                 <ProductBeforeAfter datas={datas.BeforesAfters}/>
-                <ProductSellingArgs datas={datas.SellingArgs[0]}/>
-                <ProductClinicalStudies datas={datas.ClinicalStudies}/>
+                <SellingArgs datas={datas.SellingArgs[0]}/>
+                <ClinicalStudies datas={datas.ClinicalStudies}/>
             </Layout>
         </MenusProvider>
     );

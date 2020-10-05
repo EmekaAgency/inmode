@@ -3,6 +3,7 @@ import Flickity from "react-flickity-component";
 import { format_title } from "../../functions/format_title";
 import { get_img_path } from "../../functions/get_images";
 import ProductsContext from "../contexts/products-context";
+import Slider from "../slider";
 
 const Addons = ({ datas }) => {
 
@@ -28,6 +29,8 @@ const Addons = ({ datas }) => {
         return temp;
     }
     
+    console.log(datas);
+
     return (
         <div id="technologies" className="product-addons">
             <div className="section-title">technologies on the workstation</div>
@@ -64,6 +67,8 @@ const Addons = ({ datas }) => {
                                             </div>
                                             <ul>
                                             {product.ProductPresentationTreats.map((descr, key) => {
+                                                console.log(product);
+                                                console.log(descr);
                                                 if(descr.product.id == datas.id) {
                                                     return (
                                                         <li key={key}>{descr.treat_short}</li>

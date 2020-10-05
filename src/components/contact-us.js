@@ -76,7 +76,7 @@ const ContactUs = () => {
         <div id="contact-us" className={`contact-us transition${open ? ' opened' : ''}`}>
             <div className="stamp transition">
                 <img id="piece" className="transition" src={get_img_path('contact_us.png')} alt="contact-us" onClick={(e) => {resolve_click(e)}}/>
-                <div className="content">
+                <div className="content custom-scrollbar">
                     <div id="close" className="close-contact-us" onClick={(e) => {resolve_click(e)}}>
                         <img src={get_img_path('icons/closingcross.png')} alt="hexa-close"/>
                     </div>
@@ -84,7 +84,7 @@ const ContactUs = () => {
                         <div onClick={(e) => {resolve_contact(e);}} id="patient" className="patient transition">Je suis patient</div>
                         <div onClick={(e) => {resolve_contact(e);}} id="physician" className="physician transition">Je suis médecin</div>
                     </div>
-                    <div id="contact-form" className="transition neumorphic" hidden={!formOpen}>
+                    <div id="contact-form" className="transition neumorphic custom-scrollbar" hidden={!formOpen}>
                         <form onSubmit={(e) => {e.preventDefault()}}>
                             <input id="contact-type" name="type" style={{display: 'none'}}/>
                             <input type="email" placeholder="Adresse mail" name="mail" spellCheck={false} required={true}/>

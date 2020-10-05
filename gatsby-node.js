@@ -11,6 +11,7 @@ exports.onCreateWebpackConfig = ({actions}) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+
   const result = await graphql(
     `
       {
@@ -31,9 +32,17 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+        treatments: allStrapiTreatment {
+          edges {
+            node {
+              id
+              Name
+            }
+          }
+        }
       }
     `
-  )
+  );
 
   if (result.errors) {
     throw result.errors
@@ -45,8 +54,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const AddonTemplates = require.resolve("./src/templates/addon.js")
 
   addons.forEach((addon, index) => {
-    createPage({
-      path: `/technology/${addon.node.Name}`,
+    addon.node.Page_addon && createPage({
+      path: `/technology/${addon.node.Name.replace(/ /g, '-')}`,
       component: AddonTemplates,
       context: {
         id: addon.node.id,
@@ -65,6 +74,21 @@ exports.createPages = async ({ graphql, actions }) => {
       component: ProductTemplates,
       context: {
         id: product.node.id,
+      },
+    })
+  })
+
+  // Create treatments pages.
+  const treatments = result.data.treatments.edges
+
+  const TreatmentTemplates = require.resolve("./src/templates/treatment.js")
+
+  treatments.forEach((treatment, index) => {
+    createPage({
+      path: `/treatment/${treatment.node.Name.replace(/ /g, '-')}`,
+      component: TreatmentTemplates,
+      context: {
+        id: treatment.node.id
       },
     })
   })

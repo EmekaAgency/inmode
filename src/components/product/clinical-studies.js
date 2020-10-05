@@ -2,6 +2,7 @@ import React from "react"
 import Flickity from "react-flickity-component";
 import { format_title } from "../../functions/format_title";
 import ClinicalStudy from "../clinical-study";
+import Slider from "../slider";
 
 const ProductClinicalStudies = ({ datas }) => {
 
@@ -40,7 +41,7 @@ const ProductClinicalStudies = ({ datas }) => {
                         className="slide-studies transition"
                     >
                         {[...datas, ...datas].map((study, key) => {
-                            return (<ClinicalStudy prop_key={key} study={study}/>);
+                            return (<ClinicalStudy key={key} prop_key={key} study={study}/>);
                         })}
                     </Flickity>
                 }

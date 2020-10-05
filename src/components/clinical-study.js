@@ -2,6 +2,7 @@ import React from "react";
 import { format_title } from "../functions/format_title";
 
 const ClinicalStudy = ({study, prop_key = null}) => {
+    
     return (
         <div key={prop_key} className="study-slide">
             <div className="study-img">

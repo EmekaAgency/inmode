@@ -3,22 +3,10 @@ import { get_img_path } from "../../functions/get_images";
 import ProductsContext from "../contexts/products-context";
 
 const AddonWhatTreat = ({ datas }) => {
-  
-  const addon = React.useContext(ProductsContext).addons[0];
-
-  const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
-  const [index, setIndex] = React.useState(0);
-
-  const resolve_image = (name ) => {
-    let img = new Image();
-    img.src = get_img_path(`${name}.${img_extensions[index]}`);
-    img.onerror = function() {
-        setIndex(index + 1);
-        return resolve_image(name);
-    };
-
-    return get_img_path(`${name}.${img_extensions[index]}`);
-};
+    
+  if(!datas || datas.length == 0) {
+      return false;
+  }
 
     return (
         <div id="what-treat" className="addon-what-treat">
@@ -28,10 +16,10 @@ const AddonWhatTreat = ({ datas }) => {
               return (
                 <div key={key} className="treat-part">
                   <img
-                    src={treat.image.publicURL}
+                    src={treat.picture.childImageSharp.fluid.srcWebp}
                   />
                   <div className="it-treats">{treat.title}</div>
-                  <div className="treat-descr">{treat.description}</div>
+                  <div className="treat-descr">{treat.text}</div>
                 </div>
               );
             })}

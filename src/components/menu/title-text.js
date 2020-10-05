@@ -22,13 +22,21 @@ const MenuTitleText = ({menu, prop_key, openOnClick}) => {
 
     return (
         <ul key={prop_key} className="menu-title menu-text">
-            <Link
-                className="menu-title menu-text"
-                to={menu.url || "#"}
-                onClick={(e) => {resolveOnClick(e);}}
-            >
-                {format_string(menu.name)}
-            </Link>
+            {menu.url ?
+                <Link
+                    className="menu-title menu-text"
+                    to={menu.url || "#"}
+                    onClick={(e) => {resolveOnClick(e);}}
+                >
+                    {format_string(menu.name)}
+                </Link>
+                :
+                <div
+                    className="menu-title menu-text"
+                >
+                    {format_string(menu.name)}
+                </div>
+            }
             <ul className="dropdown-menu">
                 {menu.under && menu.under.map((content, key) => {
                     return (

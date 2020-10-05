@@ -1,7 +1,7 @@
 import React from "react";
 import ShopProduct from "./shop-product";
 
-const ShopMenu = ({ products, tag_families, technologies }) => {
+const ShopMenu = ({ products, tag_families, technologies, special }) => {
 
   const [tags, setTags] = React.useState([]);
   const [memoryTags, setMemoryTags] = React.useState([]);
@@ -110,7 +110,7 @@ const ShopMenu = ({ products, tag_families, technologies }) => {
             >
                 {tag.FamilyName}
             </span>
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu custom-scrollbar">
                 <div className="selection transition">
                   <input
                     id={`${key}-all`}
@@ -147,7 +147,7 @@ const ShopMenu = ({ products, tag_families, technologies }) => {
           >
               technologies
           </span>
-          <ul className="dropdown-menu">
+          <ul className="dropdown-menu custom-scrollbar">
               {technologies.map((techno, key) => {
                   return (
                     <div key={key} className="selection transition">
@@ -166,7 +166,7 @@ const ShopMenu = ({ products, tag_families, technologies }) => {
           </ul>
         </ul>
       </div>
-      <div className="workstation-products">
+      <div className={`workstation-products${special ? " special" : ""}`}>
         {products.map((product, key) => {
           // console.log(product.Tags.map(tag => {return tag.tag;}));
           // console.log(tags);
@@ -178,7 +178,7 @@ const ShopMenu = ({ products, tag_families, technologies }) => {
             // console.log(`\n/////////`);
             // console.log(`no tags, default display ${product.Name}`);
             return (
-              <ShopProduct key={key} product={product}/>
+              <ShopProduct key={key} product={product} special={special}/>
             );
           }
           else if(filtered_tag.length > 0 || filtered_tech.length > 0) {
@@ -187,7 +187,7 @@ const ShopMenu = ({ products, tag_families, technologies }) => {
             console.log(filtered_tag);
             console.log(filtered_tech);
             return (
-              <ShopProduct key={key} product={product}/>
+              <ShopProduct key={key} product={product} special={special}/>
             );
           }
         })}

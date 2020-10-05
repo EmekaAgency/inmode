@@ -5,6 +5,7 @@ import ProductView from "./product-view";
 import { format_string } from "../../functions/format_string";
 import ProductsContext from "../contexts/products-context";
 import { Link } from "gatsby";
+import Slider from "../slider";
 
 const Slides = ({from}) => {
   
@@ -164,20 +165,25 @@ const Slides = ({from}) => {
                     );
                 })}
             </Flickity>
-            <div
-                className={"product-view" + (current > -1 && open ? " show" : '')}
-                onClick={(e) => {close_view(e);}}
-            >
-                <ProductView datas={current > -1 && open ? addon : null}>
-                    <div className="close">
-                        <img
-                            className="close-product-view"
-                            src={get_img_path('icons/close-white.webp')}
-                            alt="close-product-view"
-                        />
+            {slides && slides.map((slide, key) => {
+                return (
+                    <div
+                        className={"product-view" + (current > -1 && current == key && open ? " show" : '')}
+                        onClick={(e) => {close_view(e);}}
+                        key={key}
+                    >
+                        <ProductView datas={{'current': current}}>
+                            <div className="close">
+                                <img
+                                    className="close-product-view"
+                                    src={get_img_path('icons/close-white.webp')}
+                                    alt="close-product-view"
+                                />
+                            </div>
+                        </ProductView>
                     </div>
-                </ProductView>
-            </div>
+                );
+            })}
         </div>
     );
 }

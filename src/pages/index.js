@@ -9,7 +9,19 @@ import Slides from "../components/home/slides"
 import Alveoles from "../components/home/alveoles"
 import MenusProvider from "../components/contexts/menus-provider"
 
+// import axios from 'axios';
+
 const IndexPage = () => {
+
+  // axios.get(
+  //     'http://localhost:1337/treatments',
+  //     {
+  //     identifier: 'inmode@emeka.com',
+  //     password: 'Bonsoir34**',
+  //     }
+  // ).then((res) => {
+  //   console.log(res.data);
+  // });
 
   return (
     <MenusProvider>

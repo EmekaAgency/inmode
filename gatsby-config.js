@@ -42,13 +42,10 @@ module.exports = {
           `addon`,
           `product`,
           `tag`,
-          `tag-family`
+          `tag-family`,
+          `treatment`
         ],
-        queryLimit: 1000,
-        // loginData: {
-        //   identifier: 'inmode@emeka.fr',
-        //   password: 'Bonsoir34**'
-        // }
+        queryLimit: 10000,
       },
     },
     {
