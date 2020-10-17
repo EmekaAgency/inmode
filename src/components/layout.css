@@ -3373,7 +3373,6 @@ input[type="submit"].neumorphic:hover,
 .selling-args .title {
     font-size: 30px;
     line-height: 38px;
-    font-family: "brandon-grotesque",sans-serif;
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
@@ -3764,7 +3763,6 @@ input[type="submit"].neumorphic:hover,
 .before-after .container-ba.few .few-ba .ba-doctor {
     font-size: 24px;
     line-height: 32px;
-    font-family: "brandon-grotesque",sans-serif;
     text-align: center;
     color: #fff;
     font-weight: normal;
@@ -3795,7 +3793,6 @@ input[type="submit"].neumorphic:hover,
 .before-after .slides-before-after .ba-slide .ba-doctor {
     font-size: 24px;
     line-height: 32px;
-    font-family: "brandon-grotesque",sans-serif;
     text-align: center;
     color: #fff;
     font-weight: normal;
@@ -4959,7 +4956,6 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     display: block;
     font-weight: bold;
     font-size: 18px;
-    font-family: "brandon-grotesque", sans-serif;
     text-transform: uppercase;
     margin-bottom: 6px;
     color: #fff;
@@ -4994,6 +4990,11 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     box-sizing: border-box;
     resize: none;
     caret-color: #59b7b3;
+}
+
+.contact-page.contact-form .message-zone textarea::placeholder {
+    font-size: 13px;
+    letter-spacing: 2px;
 }
 
 .contact-page.contact-form .message-zone .current-length {

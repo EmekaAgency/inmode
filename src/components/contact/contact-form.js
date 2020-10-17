@@ -77,7 +77,7 @@ const ContactForm = ({ from }) => {
                 <div className="field">
                     <label htmlFor="speciality">Spécialité</label>
                     <select name="speciality" required>
-                        <option defaultValue="" disabled selected>Choisir une spécialité</option>
+                        <option disabled selected>Choisir une spécialité</option>
                         <option value="Aesthetic Medecine">Aesthetic Medecine</option>
                         <option value="Anti-Aging">Anti-Aging</option>
                         <option value="Lasers">Lasers</option>
