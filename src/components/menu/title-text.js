@@ -7,13 +7,14 @@ import Menu from '../menu';
 
 const MenuTitleText = ({menu, prop_key, openOnClick}) => {
 
-    const resolveOnClick = (e) => {
+    const resolveOnClick = (e, is_link) => {
         if(openOnClick === true) {
-            e.preventDefault();
+            !is_link && e.preventDefault();
             if(e.target.parentNode.classList.contains('opened')) {
                 e.target.parentNode.classList.remove('opened');
             }
             else {
+                e.preventDefault();
                 resolve_mini_menu_opened();
                 e.target.parentNode.classList.add('opened')
             }
@@ -26,21 +27,22 @@ const MenuTitleText = ({menu, prop_key, openOnClick}) => {
                 <Link
                     className="menu-title menu-text"
                     to={menu.url || "#"}
-                    onClick={(e) => {resolveOnClick(e);}}
+                    onClick={(e) => {resolveOnClick(e, true);}}
                 >
-                    {format_string(menu.name)}
+                    {format_string(menu.title)}
                 </Link>
                 :
                 <div
                     className="menu-title menu-text"
+                    onClick={(e) => {resolveOnClick(e, false);}}
                 >
-                    {format_string(menu.name)}
+                    {format_string(menu.title)}
                 </div>
             }
             <ul className="dropdown-menu">
-                {menu.under && menu.under.map((content, key) => {
+                {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
                     return (
-                        <Menu key={key} prop_key={key} menu={content}/>
+                        <Menu key={key_sub} prop_key={key_sub} menu={sub}/>
                     );
                 })}
             </ul>

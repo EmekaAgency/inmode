@@ -58,21 +58,27 @@ export const query = graphql `
                 left_img {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
                 mini {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
                 right_img {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -86,7 +92,9 @@ export const query = graphql `
                 picture {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -100,7 +108,9 @@ export const query = graphql `
                 poster {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -111,7 +121,9 @@ export const query = graphql `
                 image {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -122,7 +134,9 @@ export const query = graphql `
                 picture {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -135,7 +149,9 @@ export const query = graphql `
                 picture {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -152,7 +168,9 @@ export const query = graphql `
                 picture {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }
@@ -163,7 +181,9 @@ export const query = graphql `
                 picture {
                     childImageSharp {
                         fluid {
+                            base64
                             srcWebp
+                            srcSetWebp
                         }
                     }
                 }

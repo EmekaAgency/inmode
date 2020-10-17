@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_base_treats",
+  "info": {
+    "name": "Treat",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "treats": {
+      "type": "text"
+    }
+  }
+}

@@ -22,12 +22,16 @@ const Layout = ({ children }) => {
   const [menus_header_top] = React.useState(React.useContext(MenusContext).header_top);
   const [menus_header_bottom] = React.useState(React.useContext(MenusContext).header_bottom);
   const [menus_footer] = React.useState(React.useContext(MenusContext).footer);
+  const [strapi_header_top] = React.useState(React.useContext(MenusContext).strapi_header_top);
+  const [strapi_header_bottom] = React.useState(React.useContext(MenusContext).strapi_header_bottom);
 
   return (
     <>
       <Header
         menus_top={menus_header_top}
         menus_bottom={menus_header_bottom}
+        strapi_top={strapi_header_top}
+        strapi_bottom={strapi_header_bottom}
       />
       <ProductsProvider>
         <main id="main">
@@ -39,9 +43,9 @@ const Layout = ({ children }) => {
       />
       <PrivacyPolicy />
       <ContactUs/>
-        <Footer
-          menus={menus_footer}
-        />
+      <Footer
+        menus={menus_footer}
+      />
       {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
     </>
   )
@@ -52,43 +56,3 @@ Layout.propTypes = {
 }
 
 export default Layout
-
-
-// import React from 'react'
-
-// const Component = ({datas}) => {
-
-//   return (
-//     <text>{datas.variant}</text>
-//   );
-
-// };
-
-// export default Component;
-
-// import React from 'react'
-
-// const Component = ({identifiant}) => {
-//   const datas = useStaticQuery(graphql`
-//     {
-//       allMysqlHeaderTop {
-//         nodes {
-//           variant${identifiant}
-//           url${identifiant}
-//           under${identifiant}
-//           type${identifiant}
-//           position${identifiant}
-//           name${identifiant}
-//           mysqlId${identifiant}
-//           container${identifiant}
-//         }
-//       }
-//     }
-//   }`);
-
-//   return (
-//     <text>{datas.[`variant${identifiant}`]}</text>
-//   );
-// };
-
-// export default Component;

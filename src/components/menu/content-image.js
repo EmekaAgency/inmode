@@ -2,13 +2,34 @@ import React from 'react';
 import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
+import Menu from '../menu';
 
 const MenuContentImage = ({menu, prop_key}) => {
 
+    const content = (_menu) => {
+        return (
+            <>
+                {format_string(_menu.title)}
+                {_menu.menus.length > 0 && _menu.menus.map((sub, key_sub) => {
+                        return (<Menu key={key_sub} prop_key={key_sub} menu={sub}/>);
+                    })
+                }
+            </>
+        );
+    }
+
     return (
-        <Link key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
-            {format_string(menu.name)}
-        </Link>
+        <>
+            {menu.url ?
+                <Link key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
+                    {content(menu)}
+                </Link>
+                :
+                <div key={prop_key} className="menu-content menu-image">
+                    {content(menu)}
+                </div>
+            }
+        </>
     );
 }
 

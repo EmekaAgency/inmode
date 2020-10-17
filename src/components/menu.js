@@ -3,6 +3,7 @@ import MenuSingleText from './menu/single-text';
 import MenuSingleImage from './menu/single-image';
 import MenuSingleButton from './menu/single-button';
 import MenuTitleText from './menu/title-text';
+import MenuTitleCard from './menu/title-card';
 import MenuDKTitleText from './menu/dk-title-text';
 import MenuTitleImage from './menu/title-image';
 import MenuTitleButton from './menu/title-button';
@@ -13,17 +14,17 @@ import MenuSideMenuText from './menu/side_menu-text';
 import PropTypes from 'prop-types';
 
 // VARIANT
-const SINGLE = 1;
-const TITLE = 2;
-const CONTENT = 3;
-const DK_TITLE = 4;
-const SIDE_MENU = 5;
+const SINGLE = 'single';
+const TITLE = 'title';
+const CONTENT = 'content';
+const DK_TITLE = 'dk_title';
+const SIDE_MENU = 'side_menu';
 
 // TYPE
-const TEXT = 1;
-const IMAGE = 2;
-const BUTTON = 3;
-// const CARD = 4;
+const TEXT = 'text';
+const IMAGE = 'image';
+const BUTTON = 'button';
+const CARD = 'card';
 
 const Menu = ({menu, prop_key, openOnClick, parent}) => {
 
@@ -33,13 +34,7 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
     }
     else if(menu.variant === SINGLE && menu.type === IMAGE) {
        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type single-image`);
-       // return (
-           // <div key={prop_key} className={format_string(menu.name)}>
-           //     {menu.content && menu.content.map((menu, key) => {
-                   return (<MenuSingleImage key={prop_key} prop_key={prop_key} menu={menu}/>);
-           //     })}
-           // </div>
-       // )
+        return (<MenuSingleImage key={prop_key} prop_key={prop_key} menu={menu}/>);
     }
     else if(menu.variant === SINGLE && menu.type === BUTTON) {
        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type single-button`);
@@ -61,10 +56,10 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type title-button`);
         return (<MenuTitleButton key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
     }
-    // else if(menu.variant === TITLE && menu.type === CARD) {
-    //     console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type title-card`);
-    //     return (<MenuTitleCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
-    // }
+    else if(menu.variant === TITLE && menu.type === CARD) {
+        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type title-card`);
+        return (<MenuTitleCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);
+    }
     else if(menu.variant === CONTENT && menu.type === TEXT) {
        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type content-text`);
         return (

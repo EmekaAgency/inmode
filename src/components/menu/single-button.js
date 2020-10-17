@@ -6,7 +6,7 @@ const MenuSingleButton = ({menu, prop_key}) => {
 
     return (
         <div key={prop_key} className="menu-single menu-button">
-            {format_string(menu.name)}
+            {format_string(menu.title)}
         </div>
     );
 }

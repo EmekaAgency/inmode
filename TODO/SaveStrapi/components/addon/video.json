@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_addon_videos",
+  "info": {
+    "name": "Video",
+    "icon": "file-video"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "poster": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

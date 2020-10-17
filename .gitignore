@@ -81,8 +81,13 @@ yarn-error.log
 *.gz
 *.zipx
 
+# Heroku
+
+package-lock.json
+
 # Persos
 
-TODO
+# TODO
 
 /*.sql
+

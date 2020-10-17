@@ -8,24 +8,6 @@ import Unknown404 from "../components/404/unknown-404";
 import MenusProvider from "../components/contexts/menus-provider";
 
 const NotFoundPage = () => {
-  const datas = useStaticQuery(graphql`
-    {
-      allMysqlHeaderBottom {
-        edges {
-          node {
-            container
-            name
-            position
-            type
-            under
-            url
-            variant
-            mysqlId
-          }
-        }
-      }
-    }
-  `).allMysqlHeaderBottom.edges;
 
   return (
     <MenusProvider>

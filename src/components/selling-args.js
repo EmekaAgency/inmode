@@ -1,5 +1,6 @@
 import React from "react"
 import { get_img_path } from "../functions/get_images";
+import Img from "gatsby-image"
 
 const SellingArgs = ({ datas }) => {
     
@@ -13,6 +14,7 @@ const SellingArgs = ({ datas }) => {
             {datas.Arg.map((arg, key) => {
                 return (
                     <div key={key} className="key">
+                        {/* TODO single type */}
                         <img
                             src={get_img_path('icons/key_benefit.png')}
                             alt="key_benefit"

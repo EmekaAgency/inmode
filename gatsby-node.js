@@ -21,6 +21,9 @@ exports.createPages = async ({ graphql, actions }) => {
               id
               Name
               Page_addon
+              MenuParams {
+                url
+              }
             }
           }
         }
@@ -29,6 +32,9 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               Name
+              MenuParams {
+                url
+              }
             }
           }
         }
@@ -37,6 +43,9 @@ exports.createPages = async ({ graphql, actions }) => {
             node {
               id
               Name
+              MenuParams {
+                url
+              }
             }
           }
         }
@@ -55,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   addons.forEach((addon, index) => {
     addon.node.Page_addon && createPage({
-      path: `/technology/${addon.node.Name.replace(/ /g, '-')}`,
+      path: addon.node.MenuParams.url,
       component: AddonTemplates,
       context: {
         id: addon.node.id,
@@ -70,7 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   products.forEach((product, index) => {
     createPage({
-      path: `/workstation/${product.node.Name}`,
+      path: product.node.MenuParams.url,
       component: ProductTemplates,
       context: {
         id: product.node.id,
@@ -85,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   treatments.forEach((treatment, index) => {
     createPage({
-      path: `/treatment/${treatment.node.Name.replace(/ /g, '-')}`,
+      path: treatment.node.MenuParams.url,
       component: TreatmentTemplates,
       context: {
         id: treatment.node.id

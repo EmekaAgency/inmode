@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addons",
+  "info": {
+    "name": "Addon"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "base.banner"
+    },
+    "WhatIs": {
+      "type": "component",
+      "repeatable": false,
+      "component": "generic.what-is"
+    },
+    "KeyBenefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "base.key-benefits"
+    },
+    "Videos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "addon.video"
+    },
+    "BeforesAfters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "addon.before-after"
+    },
+    "WhatTreats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "addon.what-treat"
+    },
+    "ClinicalStudies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "generic.clinical-studies"
+    },
+    "ProductPresentation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "addon.product-presentation"
+    },
+    "ShopTreatDescr": {
+      "type": "richtext"
+    },
+    "TreatmentTreatDescr": {
+      "type": "string"
+    },
+    "ProductPresentationTreats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "base.treat"
+    },
+    "Price": {
+      "type": "decimal"
+    }
+  }
+}

@@ -37,15 +37,23 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
+        // apiURL: `http://51.178.141.192:1338`,
         apiURL: `http://localhost:1337`,
         contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
           `addon`,
           `product`,
           `tag`,
           `tag-family`,
-          `treatment`
+          `treatment`,
+          `menu`
         ],
         queryLimit: 10000,
+      },
+    },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `1317505554`,
       },
     },
     {

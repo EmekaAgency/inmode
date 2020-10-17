@@ -11,7 +11,7 @@ const HeaderMini = ({ menus_top, menus_bottom }) => {
     }
 
     return (
-        <div id="header-mini" className="header-mini">
+        <div id="header-mini" className="header-mini custom-scrollbar">
             <div className="menu-close transition" onClick={(e) => {closeMenu(e);}}>
                 <span>FERMER</span>
                 <img className="close-mini-menu-icon" src={get_img_path('icons/close-white.webp')} alt="close-white"/>

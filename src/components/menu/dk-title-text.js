@@ -7,26 +7,28 @@ import PropTypes from 'prop-types';
 import Menu from '../menu';
 
 // VARIANT
-// const SINGLE = 1;
-const TITLE = 2;
-// const CONTENT = 3;
-// const DK_TITLE = 4;
+const SINGLE = 'single';
+const TITLE = 'title';
+const CONTENT = 'content';
+const DK_TITLE = 'dk_title';
+const SIDE_MENU = 'side_menu';
 
 // TYPE
-// const TEXT = 1;
-// const IMAGE = 2;
-// const BUTTON = 3;
-// const CARD = 4;
+const TEXT = 'text';
+const IMAGE = 'image';
+const BUTTON = 'button';
+const CARD = 'card';
 
 const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
 
-    const resolveOnClick = (e) => {
+    const resolveOnClick = (e, is_link) => {
         if(openOnClick === true) {
-            e.preventDefault();
+            !is_link && e.preventDefault();
             if(e.target.parentNode.classList.contains('opened')) {
                 e.target.parentNode.classList.remove('opened');
             }
             else {
+                e.preventDefault();
                 resolve_mini_menu_opened();
                 e.target.parentNode.classList.add('opened')
             }
@@ -35,35 +37,31 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
 
     return (
         <ul key={prop_key} className="menu-dk-title menu-text">
-            <Link
-                className="menu-dk-title menu-text"
-                to={menu.url || "#"}
-                onClick={(e) => {resolveOnClick(e);}}
-            >
-                {format_string(menu.name)}
-            </Link>
+            {menu.url ?
+                <Link
+                    className="menu-dk-title menu-text"
+                    to={menu.url || "#"}
+                    onClick={(e) => {resolveOnClick(e, true);}}
+                >
+                    {format_string(menu.title)}
+                </Link>
+                :
+                <div
+                    className="menu-dk-title menu-text"
+                    onClick={(e) => {resolveOnClick(e, false);}}
+                >
+                    {format_string(menu.title)}
+                </div>
+            }
             <ul className="dk-dropdown-menu">
                 <div className="dk-sub-container">
-                    {menu.under && menu.under.map((content, key) => {
+                    {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
                         return (
-                            <div key={key} className="dk-item">
-                                <Link to={`/workstation/${format_string(content.name, true, false).replace('#', '')}`}>
-                                    <img className="dk-picture transition" src={get_img_path(`products/${format_string(content.name, true, false)}/${format_string(content.name, true, false).replace('#', '')}.png`)} alt={format_string(content.name)}/>
-                                    <div className="dk-title">{format_string(content.name)}</div>
-                                </Link>
-                                {Array.isArray(content.under) && content.under.length > 0 ?
-                                    <div className={`dk-item-sub ${content.variant === TITLE ? 'dropdown-menu' : 'dk-dropdown-menu'}`}>
-                                        {
-                                            content.under.map((sub, key) => {
-                                                return (
-                                                    <Menu key={key} prop_key={key} menu={sub} />
-                                                );
-                                            })
-                                        }
-                                    </div>: null
-                                }
-                            </div>
+                            <Menu key={key_sub} prop_key={key_sub} menu={sub}/>
                         );
+                    })}
+                    {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
+                        // TODO dk-item is a {'type': 'content', 'variant': 'card'}
                     })}
                 </div>
             </ul>

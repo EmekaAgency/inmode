@@ -7,7 +7,7 @@ const MenuSingleText = ({menu, prop_key}) => {
 
     return (
         <Link key={prop_key} className="menu-single menu-text" to={menu.url || "#"}>
-            {format_string(menu.name)}
+            {format_string(menu.title)}
         </Link>
     );
 }

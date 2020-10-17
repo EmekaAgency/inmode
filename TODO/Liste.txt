@@ -1,0 +1,38 @@
+LINKS / REDESIGN
+Sélectionnez une région                         --> not a link
+    Monde                                       --> link inmodemd.com
+    Toutes les régions                          --> # puis cf clients
+
+Inmode University                               --> link similar inmodemd.com
+    Inmode University - upcoming events         --> link similar inmodemd.com/events
+    Inmode University - e-Learning              --> link similar inmodemd.com/e-learning
+
+Workstations                                    --> done puis retours clients
+
+Workstations/:name                              --> done puis retours clients
+
+Technologies/:name                              --> done puis retours clients
+
+Informations                                    --> not a link
+    ...
+    ...
+    Publications scientifiques                  --> link inmodemd.com
+    Ressource Center                            --> link inmodemd.com
+    Financier                                   --> link inmodemd.com
+    Galerie de photos avant / après             --> link inmodemd.com
+
+CREATION
+Événements                                      --> les 3 sort by date, section X link vers X
+    Congrès                                     --> seminars, flèche retour vers événements
+    Workshops                                   --> xxxxx, flèche retour vers événements
+    Webinars                                    --> e-seminars, flèche retour vers événements
+
+Informations
+    Notre histoire                              --> refaire page notre histoire
+    Annulé - Réseaux sociaux                             --> à créer de toute pièce (FB, Insta, Linkedin) mais idée débile sauf si client force
+    ...
+    ...
+    ...
+    ...
+
+Contactez-nous                                  --> 

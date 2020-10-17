@@ -101,11 +101,13 @@ const ContactUs = () => {
                                 name="message"
                                 maxLength={max_length}
                                 rows={5}
+                                onKeyUp={(e) => {setMsgLength(e.currentTarget.value.length);}}
                                 onKeyDown={(e) => {setMsgLength(e.currentTarget.value.length);}}
                                 spellCheck={false}
                                 required={true}
+                                className="custom-scrollbar"
                             ></textarea>
-                            <div className="current-length" style={{color: msgLength === max_length ? '#f00' : '#fff'}}>{`${msgLength} / ${max_length}`}</div>
+                            <div className="current-length" style={{color: msgLength === max_length ? '#f00' : '#59b7b3'}}>{`${msgLength} / ${max_length}`}</div>
                             <input type="submit" placeholder="Envoyer"/>
                         </form>
                     </div>

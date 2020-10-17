@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Product"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "base.banner"
+    },
+    "WhatIs": {
+      "type": "component",
+      "repeatable": false,
+      "component": "generic.what-is"
+    },
+    "KeyBenefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "base.key-benefits"
+    },
+    "ClinicalStudies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "generic.clinical-studies"
+    },
+    "Price": {
+      "type": "decimal"
+    },
+    "TreatmentDescription": {
+      "type": "text"
+    },
+    "ShopDescription": {
+      "type": "text"
+    }
+  }
+}

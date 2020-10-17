@@ -3,7 +3,7 @@ import { get_img_path } from "../../functions/get_images";
 
 const ClinicalStudies = () => {
     return (
-        <div className="clinical-studies background-image">
+        <div className="clinical-studies-home background-image">
             <div className="container">
                 <div className="studies">
                     <h2 className="title">Études cliniques</h2>

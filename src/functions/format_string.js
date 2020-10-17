@@ -1,6 +1,8 @@
 import { capitalize } from "./capitalize";
 
 export const format_string = function (str, has_to_be_lower = false, italic = false, print) {
+    // console.log(str);
+    return str;
     let a = str.split('|')[0].replace('%', ' ');
     let b = str.split('|')[1] && str.split('|')[1].replace('%', ' ');
     // print && console.log(a);

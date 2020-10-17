@@ -17,8 +17,6 @@ const ProductTemplates = ({ data }) => {
 
     const [datas] = React.useState(data.strapiProduct);
 
-    console.log(datas);
-
     return (
         <MenusProvider>
             <Layout>
@@ -61,137 +59,157 @@ export const query = graphql`
         strapiProduct(id: {eq: $id}) {
             strapiId
             Banner {
-                left_img {
-                    childImageSharp {
-                        fluid {
-                            srcWebp
-                        }
-                    }
+              left_img {
+                childImageSharp {
+                  fluid {
+                    base64
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
-                left_video
-                right_img {
-                    childImageSharp {
-                        fluid {
-                            srcWebp
-                        }
-                    }
+              }
+              left_video
+              right_img {
+                childImageSharp {
+                  fluid {
+                    base64
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
-                mini {
-                    childImageSharp {
-                        fluid {
-                            srcWebp
-                        }
-                    }
+              }
+              mini {
+                childImageSharp {
+                  fluid {
+                    base64
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
-                right_text
+              }
+              right_text
             }
             WhatIs {
-                picture {
-                    childImageSharp {
-                        fluid {
-                            srcWebp
-                        }
-                    }
+              picture {
+                childImageSharp {
+                  fluid {
+                    base64
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
-                TitleText {
-                    text
-                    title
-                }
+              }
+              TitleText {
+                text
+                title
+              }
             }
             BeforeKeyBenefits
             KeyBenefits {
-                texte
+              texte
             }
             Addons {
-                ProductPresentation {
-                    left_image {
-                        childImageSharp {
-                            fluid {
-                                srcWebp
-                            }
-                        }
+              ProductPresentation {
+                left_image {
+                  childImageSharp {
+                    fluid {
+                      base64
+                      srcWebp
+                        srcSetWebp
                     }
-                    title_image {
-                        childImageSharp {
-                            fluid {
-                                srcWebp
-                            }
-                        }
-                    }
-                    title_text
-                    Images {
-                        image {
-                            childImageSharp {
-                                fluid {
-                                    srcWebp
-                                }
-                            }
-                        }
-                        product {
-                            id
-                        }
-                    }
-                    AddonProductsDescr {
-                        descr
-                        product {
-                            id
-                        }
-                    }
-                    ProductPresentationTreats {
-                        treat_short
-                        product {
-                            id
-                        }
-                    }
-                    appears_everywhere
-                    products {
-                        id
-                    }
+                  }
                 }
+                title_image {
+                  childImageSharp {
+                    fluid {
+                      base64
+                      srcWebp
+                    srcSetWebp
+                    }
+                  }
+                }
+                title_text
+                Images {
+                  image {
+                    childImageSharp {
+                      fluid {
+                        base64
+                        srcWebp
+                        srcSetWebp
+                      }
+                    }
+                  }
+                  product {
+                    id
+                  }
+                }
+                AddonProductsDescr {
+                  descr
+                  product {
+                    id
+                  }
+                }
+                ProductPresentationTreats {
+                  treat_short
+                  product {
+                    id
+                  }
+                }
+                appears_everywhere
+                products {
+                  id
+                }
+              }
             }
             Demo {
               text
               picture {
                 childImageSharp {
                   fluid {
+                    base64
                     srcWebp
+                    srcSetWebp
                   }
                 }
               }
             }
             BeforesAfters {
-                doctor
-                image {
-                    childImageSharp {
-                        fluid {
-                            srcWebp
-                        }
-                    }
+              doctor
+              image {
+                childImageSharp {
+                  fluid {
+                    base64
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
-                text
+              }
+              text
             }
             SellingArgs {
-                SectionTitle
-                Arg {
-                    texte
-                }
+              SectionTitle
+              Arg {
+                texte
+              }
             }
             ClinicalStudies {
-                addons {
-                    Name
+              addons {
+                Name
+              }
+              author
+              published_date
+              title
+              url
+              picture {
+                childImageSharp {
+                  fluid {
+                    base64
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
-                author
-                published_date
-                title
-                url
-                picture {
-                    childImageSharp {
-                        fluid {
-                            srcWebp
-                        }
-                    }
-                }
-                publication
+              }
+              publication
             }
             Name
         }

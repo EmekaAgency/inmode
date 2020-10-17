@@ -1,13 +1,22 @@
 import React from "react";
 import { format_title } from "../functions/format_title";
+import Img from "gatsby-image"
 
 const ClinicalStudy = ({study, prop_key = null}) => {
     
     return (
         <div key={prop_key} className="study-slide">
             <div className="study-img">
+                {/* <Img
+                    fluid={study.picture.childImageSharp.fluid}
+                    fadeIn={true}
+                    style={{position: 'unset'}}
+                    imgStyle={{objectFit: 'contain'}}
+                    durationFadeIn={100}
+                /> */}
                 <img
                     src={study.picture.childImageSharp.fluid.srcWebp}
+                    srcSet={study.picture.childImageSharp.fluid.srcSetWebp}
                     alt="clinical-study"
                 />
             </div>

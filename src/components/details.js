@@ -1,5 +1,6 @@
 import React from "react";
 import { get_img_path } from "../functions/get_images";
+import Img from "gatsby-image"
 
 const GenericDetails = ({ datas }) => {
 
@@ -7,8 +8,16 @@ const GenericDetails = ({ datas }) => {
         <div id="what-is" className="details">
             <div className="what-is transition">
                 <div className="details-img transition">
+                    {/* <Img
+                        fluid={datas.what_is.picture.childImageSharp.fluid}
+                        fadeIn={true}
+                        style={{position: 'unset'}}
+                        imgStyle={{objectFit: 'contain'}}
+                        durationFadeIn={100}
+                    /> */}
                     <img
                         src={datas.what_is.picture.childImageSharp.fluid.srcWebp}
+                        srcSet={datas.what_is.picture.childImageSharp.fluid.srcSetWebp}
                     />
                 </div>
                 {datas.what_is.TitleText.map((section, key) => {
