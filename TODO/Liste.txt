@@ -36,3 +36,21 @@ Informations
     ...
 
 Contactez-nous                                  --> 
+
+
+Design international ?
+Twitter et Vimeo ?
+Shop
+Shop V2
+Remove background color sur events sauf nav
+Bouton sur card events
+Footer
+Slider
+Panier
+    grand : right contact push transi smooth
+        comme menu au hover mais en card
+    petit : barre en bas avec
+        gauche "mon panier" ouverture cubic-bézier
+        droite "Valider" pour payer
+purgeCSS
+CartContext

@@ -24,9 +24,14 @@ const MenuContentButton = ({menu, prop_key}) => {
                 // TODO faire une fonction qui renvoie Link pour les internal sinon a avec les props
                 // <Link {...props}>{children}</Link>
                 // <a {...props}>{children}</a>
-                <Link key={prop_key} className="menu-content menu-button" to={menu.url || "#"}>
-                    {content(menu)}
-                </Link>
+                menu.internal_link ?
+                    <Link key={prop_key} className="menu-content menu-button" to={menu.url || "#"}>
+                        {content(menu)}
+                    </Link>
+                    :
+                    <a key={prop_key} className="menu-content menu-button" href={menu.url || "#"}>
+                        {content(menu)}
+                    </a>
                 :
                 <div key={prop_key} className="menu-content menu-button">
                     {content(menu)}

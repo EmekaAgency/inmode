@@ -1,8 +1,11 @@
 import React from 'react';
 import { get_img_path } from "../functions/get_images";
 import { format_string } from '../functions/format_string';
+import MenusContext from "./contexts/menus-context"
 
-const Footer = ({ menus }) => {
+const Footer = ({  }) => {
+
+  const [menus] = React.useState(React.useContext(MenusContext).footer);
 
     const icos = {
         'location': '073-location2',

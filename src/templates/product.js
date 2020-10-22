@@ -1,5 +1,4 @@
 import React from 'react'
-import MenusProvider from '../components/contexts/menus-provider';
 import Layout from '../components/layout';
 import Addons from '../components/product/addons';
 import Divider from '../components/divider';
@@ -18,7 +17,6 @@ const ProductTemplates = ({ data }) => {
     const [datas] = React.useState(data.strapiProduct);
 
     return (
-        <MenusProvider>
             <Layout>
                 <SEO title="Product"/>
                 <ProductBanner datas={datas.Banner}/>
@@ -48,7 +46,6 @@ const ProductTemplates = ({ data }) => {
                 <SellingArgs datas={datas.SellingArgs[0]}/>
                 <ClinicalStudies datas={datas.ClinicalStudies}/>
             </Layout>
-        </MenusProvider>
     );
 }
 

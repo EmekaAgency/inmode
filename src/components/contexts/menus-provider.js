@@ -57,6 +57,7 @@ const MenusProvider = ({ requested = "", children }) => {
                     variant
                     container
                     parent_menu
+                    internal_link
                     menus {
                         id
                         title
@@ -119,6 +120,7 @@ const MenusProvider = ({ requested = "", children }) => {
                     variant
                     container
                     parent_menu
+                    internal_link
                     menus {
                         id
                         title
@@ -243,7 +245,6 @@ const MenusProvider = ({ requested = "", children }) => {
                 }));
             }
             if(_object[elem].treatments.length) {
-                console.log(_object[elem].treatments);
                 _object[elem].menus = _object[elem].menus.concat(_object[elem].treatments.map((treatment) => {
                     return {
                         ...treatment.MenuParams,

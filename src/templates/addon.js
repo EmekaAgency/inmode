@@ -9,7 +9,6 @@ import AddonVideos from '../components/addon/videos';
 import AddonWhatTreat from '../components/addon/what-treat';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import MenusProvider from '../components/contexts/menus-provider';
 import SellingArgs from '../components/selling-args';
 import SellingNew from '../components/selling-new';
 import ClinicalStudies from '../components/clinical-studies';
@@ -22,7 +21,6 @@ const AddonTemplates = ({ data }) => {
     console.log(datas);
 
     return (
-        <MenusProvider>
             <Layout>
                 <SEO title="Addon"/>
                 <AddonBanner datas={datas.Banner}/>
@@ -43,7 +41,6 @@ const AddonTemplates = ({ data }) => {
                 <SellingArgs datas={datas.SellingArgs && datas.SellingArgs[0] || []}/>
                 <SellingNew datas={datas.SellingNewGeneration}/>
             </Layout>
-        </MenusProvider>
     );
 };
 

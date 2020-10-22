@@ -37,6 +37,8 @@ Dans l'ordre
 06. gatsby-cache
 07. gatsby-lazy-loading
 
+TODO node --trace-deprecation node_modules/gatsby/dist/bin/gatsby build
+TODO ajouter les col-md-4 col-xl-4 ...
 
 05/10/2020
 

@@ -135,7 +135,7 @@ const ContactForm = ({ from }) => {
             <div className="tech-list">
                 <span
                     id="title-accordion"
-                    className="title transition"
+                    className="title title-accordion transition"
                     onClick={(e) => {resolveClick(e);}}
                 >
                     Quelles technologies vous intéressent ?

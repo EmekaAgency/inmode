@@ -1,5 +1,4 @@
 import React from 'react'
-import MenusProvider from '../components/contexts/menus-provider';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TreatmentBanner from '../components/treatment/treatment-banner';
@@ -17,7 +16,6 @@ const TreatmentTemplates = ({ data }) => {
     console.log(datas);
 
     return (
-        <MenusProvider>
             <Layout>
                 <SEO title="Treatment"/>
                 <TreatmentBanner datas={datas.Banner}/>
@@ -28,7 +26,6 @@ const TreatmentTemplates = ({ data }) => {
                 {!datas.ClinicalStudies || datas.ClinicalStudies.length == 0 ? null : <Divider position="bottom"/>}
                 <ClinicalStudies datas={datas.ClinicalStudies}/>
             </Layout>
-        </MenusProvider>
     );
 }
 

@@ -45,7 +45,11 @@ module.exports = {
           `tag`,
           `tag-family`,
           `treatment`,
-          `menu`
+          `menu`,
+          `shop`,
+          `conference`,
+          `seminar`,
+          `eseminar`
         ],
         queryLimit: 10000,
       },

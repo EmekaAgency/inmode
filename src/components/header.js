@@ -6,13 +6,20 @@ import HeaderBottom from "./header-bottom";
 import HeaderMini from "./header-mini";
 import { get_img_path } from "../functions/get_images";
 
-const Header = ({ menus_top, menus_bottom }) => {
+const Header = ({  }) => {
 
   const openMenu = (e) => {
     // console.log("openMenu()");
     e.preventDefault();
     document.getElementById('header-mini').classList.add('opened');
   }
+
+  const link_style = {
+    color: "#fff",
+    fontSize: 16,
+    display: "inline-block",
+    verticalAlign: "middle"
+  };
 
   return (
     <header>
@@ -22,16 +29,9 @@ const Header = ({ menus_top, menus_bottom }) => {
           </Link>
         </div>
         <div className="header-parts">
-          <HeaderTop
-            menus={menus_top}
-          />
-          <HeaderBottom
-            menus={menus_bottom}
-          />
-          <HeaderMini
-            menus_top={menus_top}
-            menus_bottom={menus_bottom}
-          />
+          <HeaderTop/>
+          <HeaderBottom/>
+          <HeaderMini/>
           <button
             className="header-mini-menu"
             onClick={(e)=>{openMenu(e)}}

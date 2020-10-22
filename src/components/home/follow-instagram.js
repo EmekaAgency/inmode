@@ -6,10 +6,12 @@ const FollowInstagram = () => {
 
     const datas = useStaticQuery(graphql`
         {
-            allInstaNode(limit: 4) {
+            allInstaNode(sort: {fields: timestamp, order: DESC}, limit: 4, filter: {username: {eq: "1317505554"}}) {
                 edges {
                     node {
                         comments
+                        likes
+                        caption
                         localFile {
                             childImageSharp {
                                 fluid {
@@ -18,9 +20,6 @@ const FollowInstagram = () => {
                                 }
                             }
                         }
-                        likes
-                        username
-                        timestamp
                     }
                 }
             }

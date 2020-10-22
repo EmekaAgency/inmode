@@ -4,14 +4,12 @@ import GetInTouch from "../components/contact/get-in-touch";
 import HowCanWeHelp from "../components/contact/how-can-we-help";
 import ProfessionalContact from "../components/contact/professional-contact";
 
-import MenusProvider from "../components/contexts/menus-provider";
 import GetStarted from "../components/home/get-started";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const ContactPage = () => {
     return (
-    <MenusProvider>
       <Layout>
         <SEO title="Contact"/>
         {/* <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css"></link> */}
@@ -22,7 +20,6 @@ const ContactPage = () => {
         <HowCanWeHelp from="contact-page"/>
         <GetStarted from="contact-page"/>
       </Layout>
-    </MenusProvider>
     );
 };
 

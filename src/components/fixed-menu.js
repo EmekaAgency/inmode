@@ -2,8 +2,11 @@ import React from "react"
 import { get_img_path } from "../functions/get_images";
 import Menu from "./menu";
 import { Link } from "gatsby";
+import MenusContext from "./contexts/menus-context"
 
-const FixedMenu = ({ menus, customClass }) => {
+const FixedMenu = ({ customClass }) => {
+
+    const [menus] = React.useState(React.useContext(MenusContext).header_bottom);
 
     const [ isVisible, setIsVisible ] = React.useState();
 

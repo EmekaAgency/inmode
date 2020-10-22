@@ -13,41 +13,34 @@ import "./layout.css"
 import Footer from "./footer"
 import ContactUs from "./contact-us"
 import PrivacyPolicy from "./privacy-policy"
-import MenusContext from "./contexts/menus-context"
 import FixedMenu from "./fixed-menu"
-import ProductsProvider from "./contexts/products-provider";
+import MenusProvider from "../components/contexts/menus-provider";
+import ProductsProvider from "../components/contexts/products-provider";
+import CartPurchase from "./cart-purchase"
+import CartProvider from "./contexts/cart-provider"
+import CartContext from "./contexts/cart-context"
+import MenusContext from "./contexts/menus-context"
+import ProductsContext from "./contexts/products-context"
 
 const Layout = ({ children }) => {
 
-  const [menus_header_top] = React.useState(React.useContext(MenusContext).header_top);
-  const [menus_header_bottom] = React.useState(React.useContext(MenusContext).header_bottom);
-  const [menus_footer] = React.useState(React.useContext(MenusContext).footer);
-  const [strapi_header_top] = React.useState(React.useContext(MenusContext).strapi_header_top);
-  const [strapi_header_bottom] = React.useState(React.useContext(MenusContext).strapi_header_bottom);
-
   return (
-    <>
-      <Header
-        menus_top={menus_header_top}
-        menus_bottom={menus_header_bottom}
-        strapi_top={strapi_header_top}
-        strapi_bottom={strapi_header_bottom}
-      />
-      <ProductsProvider>
-        <main id="main">
-          {children}
-        </main>
-      </ProductsProvider>
-      <FixedMenu
-        menus={menus_header_bottom}
-      />
-      <PrivacyPolicy />
-      <ContactUs/>
-      <Footer
-        menus={menus_footer}
-      />
-      {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
-    </>
+    <MenusProvider>
+      {/* <CartProvider> */}
+        <Header/>
+        <ProductsProvider>
+          <main id="main">
+            {children}
+          </main>
+        </ProductsProvider>
+        <FixedMenu/>
+        <CartPurchase/>
+        <PrivacyPolicy />
+        <ContactUs/>
+        <Footer/>
+        {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
+      {/* </CartProvider> */}
+    </MenusProvider>
   )
 }
 
