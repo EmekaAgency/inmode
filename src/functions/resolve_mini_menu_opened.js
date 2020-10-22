@@ -5,6 +5,10 @@ export const resolve_mini_menu_opened = () => {
     remove('opened', document.getElementsByClassName('menu-dk-title'));
 }
 
+export const resolve_tab_link_selected = () => {
+    remove('current', document.getElementsByClassName('tab-link'));
+}
+
 const remove = (classname = "", elems = []) => {
     for(let i = 0; i < elems.length; i++) {
         elems[i].classList.remove(classname);

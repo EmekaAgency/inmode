@@ -7,7 +7,6 @@ import FollowInstagram from "../components/home/follow-instagram"
 import GetStarted from "../components/home/get-started"
 import Slides from "../components/home/slides"
 import Alveoles from "../components/home/alveoles"
-import MenusProvider from "../components/contexts/menus-provider"
 
 // import axios from 'axios';
 
@@ -24,7 +23,6 @@ const IndexPage = () => {
   // });
 
   return (
-    <MenusProvider>
       <Layout>
         <SEO title="Home"/>
         {/* <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.css"></link> */}
@@ -35,7 +33,6 @@ const IndexPage = () => {
         <FollowInstagram/>
         <GetStarted/>
       </Layout>
-    </MenusProvider>
   );
 }
 

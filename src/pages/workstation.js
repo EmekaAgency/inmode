@@ -1,27 +1,25 @@
 import React from "react"
-import MenusProvider from "../components/contexts/menus-provider";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import ShopMenu from "../components/shop/shop-menu";
+import Shop from "../components/shop/shop";
 import { edges_to_array } from "../functions/edges_to_array";
 
-const ShopPage = ({ data }) => {
+const WorkstationPage = ({ data }) => {
     
     return (
-        <MenusProvider>
         <Layout>
           <SEO title="Shop"/>
-          <ShopMenu
+          <Shop
             products={edges_to_array(data.allStrapiProduct.edges)}
             tag_families={edges_to_array(data.allStrapiTagFamily.edges)}
             technologies={edges_to_array(data.allStrapiAddon.edges)}
-        />
+            shop_card="workstation"
+          />
         </Layout>
-      </MenusProvider>
     )
 }
 
-export default ShopPage;
+export default WorkstationPage;
 
 export const query = graphql`
   {

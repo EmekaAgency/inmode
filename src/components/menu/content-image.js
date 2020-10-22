@@ -21,9 +21,14 @@ const MenuContentImage = ({menu, prop_key}) => {
     return (
         <>
             {menu.url ?
-                <Link key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
-                    {content(menu)}
-                </Link>
+                menu.internal_link ?
+                    <Link key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
+                        {content(menu)}
+                    </Link>
+                    :
+                    <a key={prop_key} className="menu-content menu-image" href={menu.url || "#"}>
+                        {content(menu)}
+                    </a>
                 :
                 <div key={prop_key} className="menu-content menu-image">
                     {content(menu)}

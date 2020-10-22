@@ -24,13 +24,22 @@ const MenuTitleText = ({menu, prop_key, openOnClick}) => {
     return (
         <ul key={prop_key} className="menu-title menu-text">
             {menu.url ?
-                <Link
-                    className="menu-title menu-text"
-                    to={menu.url || "#"}
-                    onClick={(e) => {resolveOnClick(e, true);}}
-                >
-                    {format_string(menu.title)}
-                </Link>
+                menu.internal_link ?
+                    <Link
+                        className="menu-title menu-text"
+                        to={menu.url || "#"}
+                        onClick={(e) => {resolveOnClick(e, true);}}
+                    >
+                        {format_string(menu.title)}
+                    </Link>
+                    :
+                    <a
+                        className="menu-title menu-text"
+                        href={menu.url || "#"}
+                        onClick={(e) => {resolveOnClick(e, true);}}
+                    >
+                        {format_string(menu.title)}
+                    </a>
                 :
                 <div
                     className="menu-title menu-text"

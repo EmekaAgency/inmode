@@ -1,7 +1,10 @@
 import React from 'react';
 import Menu from './menu';
+import MenusContext from "./contexts/menus-context"
 
-const HeaderTop = ({ menus }) => {
+const HeaderTop = ({  }) => {
+
+  const [menus] = React.useState(React.useContext(MenusContext).header_top);
 
     return (
         <div id="header-top" className="header-top">

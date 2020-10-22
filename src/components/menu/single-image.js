@@ -26,18 +26,48 @@ const MenuSingleImage = ({menu, prop_key}) => {
 
     return (
         <>
-            <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"}>
-                <img
-                    className="init"
-                    src={menu.icon.url || menu.icon.publicURL}
-                    alt={format_string(menu.title)}
-                />
-                <img
-                    className="blue"
-                    src={menu.icon_hover.url || menu.icon_hover.publicURL}
-                    alt={format_string(menu.title)}
-                />
-            </Link>
+            {
+                menu.url ?
+                    menu.internal_link ?
+                    <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"}>
+                        <img
+                            className="init"
+                            src={menu.icon.url || menu.icon.publicURL}
+                            alt={format_string(menu.title)}
+                        />
+                        <img
+                            className="blue"
+                            src={menu.icon_hover.url || menu.icon_hover.publicURL}
+                            alt={format_string(menu.title)}
+                        />
+                    </Link>
+                    :
+                    <a key={prop_key} className="menu-single menu-image social-btn" href={menu.url || "#"}>
+                        <img
+                            className="init"
+                            src={menu.icon.url || menu.icon.publicURL}
+                            alt={format_string(menu.title)}
+                        />
+                        <img
+                            className="blue"
+                            src={menu.icon_hover.url || menu.icon_hover.publicURL}
+                            alt={format_string(menu.title)}
+                        />
+                    </a>
+                :
+                <div key={prop_key} className="menu-single menu-image social-btn">
+                    <img
+                        className="init"
+                        src={menu.icon.url || menu.icon.publicURL}
+                        alt={format_string(menu.title)}
+                    />
+                    <img
+                        className="blue"
+                        src={menu.icon_hover.url || menu.icon_hover.publicURL}
+                        alt={format_string(menu.title)}
+                    />
+                </div>
+            }
         </>
     );
 }

@@ -1,8 +1,12 @@
 import React from 'react';
 import { get_img_path } from "../functions/get_images";
 import Menu from './menu';
+import MenusContext from "./contexts/menus-context"
 
-const HeaderMini = ({ menus_top, menus_bottom }) => {
+const HeaderMini = ({  }) => {
+
+  const [menus_top] = React.useState(React.useContext(MenusContext).header_top);
+  const [menus_bottom] = React.useState(React.useContext(MenusContext).header_bottom);
 
     const closeMenu = (e) => {
         // console.log("closeMenu()");

@@ -20,15 +20,39 @@ const MenuTitleCard = ({ menu, prop_key }) => {
     
     return (
         <div key={prop_key} className="menu-title menu-card">
-            <Link to={menu.url}>
-                <img
-                    className="menu-title menu-card picture transition"
-                    src={menu.icon.srcWebp}
-                    srcSet={menu.icon.srcSetWebp}
-                    alt={format_string(menu.title)}
-                />
-                <span className="menu-title menu-card title">{format_string(menu.title)}</span>
-            </Link>
+            {
+                menu.url ?
+                    menu.internal_link ?
+                    <Link to={menu.url}>
+                        <img
+                            className="menu-title menu-card picture transition"
+                            src={menu.icon.srcWebp}
+                            srcSet={menu.icon.srcSetWebp}
+                            alt={format_string(menu.title)}
+                        />
+                        <span className="menu-title menu-card title">{format_string(menu.title)}</span>
+                    </Link>
+                    :
+                    <a href={menu.url}>
+                        <img
+                            className="menu-title menu-card picture transition"
+                            src={menu.icon.srcWebp}
+                            srcSet={menu.icon.srcSetWebp}
+                            alt={format_string(menu.title)}
+                        />
+                        <span className="menu-title menu-card title">{format_string(menu.title)}</span>
+                    </a>
+                :
+                <div>
+                    <img
+                        className="menu-title menu-card picture transition"
+                        src={menu.icon.srcWebp}
+                        srcSet={menu.icon.srcSetWebp}
+                        alt={format_string(menu.title)}
+                    />
+                    <span className="menu-title menu-card title">{format_string(menu.title)}</span>
+                </div>
+            }
             {menu.menus.length > 0 ?
                 <div className={`menu-title menu-card sub ${menu.variant === TITLE ? 'dropdown-menu' : 'menu-title menu-card dropdown-menu'}`}>
                     {
