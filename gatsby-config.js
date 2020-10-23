@@ -33,7 +33,6 @@ module.exports = {
         icon: 'src/images/favicon.png',
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-strapi`,
       options: {
