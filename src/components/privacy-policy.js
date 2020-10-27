@@ -1,7 +1,18 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
-import { get_img_path } from "../functions/get_images";
 
 const PrivacyPolicy = () => {
+
+    const icons = useStaticQuery(graphql`
+        {
+            privacy_icon: file(relativePath: {eq: "privacy-icon.svg"}) {
+                publicURL
+            }
+            privacy_c: file(relativePath: {eq: "privacy-c.png"}) {
+                publicURL
+            }
+        }
+    `);
 
     const [open, setOpen] = React.useState(false);
     // const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
@@ -25,8 +36,8 @@ const PrivacyPolicy = () => {
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
             <button className="open-button" onClick={(e) => {process_cookies(e);}}>
-                <img className="main" src={get_img_path('privacy-icon.svg')} alt="privacy-triangle"/>
-                <img className="content" src={get_img_path('privacy-c.png')} alt="privacy-icon"/>
+                <img className="main" src={icons.privacy_icon.publicURL} alt="privacy-triangle"/>
+                <img className="content" src={icons.privacy_c.publicURL} alt="privacy-icon"/>
             </button>
             <div className="panel cookies transition custom-scrollbar">
                 <div className="cookies-our-use">

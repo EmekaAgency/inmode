@@ -1,8 +1,21 @@
 import React from "react";
 import { get_img_path } from "../functions/get_images";
 import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby";
 
 const GenericDetails = ({ datas }) => {
+
+    const icons = useStaticQuery(graphql`
+        {
+            key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                    }
+                }
+            }
+        }
+    `);
 
     return (
         <div id="what-is" className="details">
@@ -42,7 +55,7 @@ const GenericDetails = ({ datas }) => {
                     return (
                         <div key={key} className="list-elem">
                             {datas.list_icon && <img
-                                src={get_img_path(datas.list_icon)}
+                                src={icons[datas.list_icon].childImageSharp.fluid.srcWebp}
                                 alt={`elem-${key}`}
                                 className="before-text"
                             />}

@@ -1,9 +1,19 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
-import { format_string } from "../../functions/format_string";
-import { get_img_path } from "../../functions/get_images";
-import ProductsContext from "../contexts/products-context";
 
 const AddonDetails = ({ name = "", datas }) => {
+
+    const icons = useStaticQuery(graphql`
+        {
+            key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                    }
+                }
+            }
+        }
+    `);
     
     if(!datas || datas.length == 0) {
         return false;
@@ -38,7 +48,7 @@ const AddonDetails = ({ name = "", datas }) => {
                     return (
                         <div key={key} className="key">
                             <img
-                                src={get_img_path('icons/key_benefit.png')}
+                                src={icons.key_benefit.childImageSharp.fluid.srcWebp}
                                 alt="key_benefit"
                             />
                             <div className="text">{benefit.texte}</div>

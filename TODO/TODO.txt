@@ -19,6 +19,7 @@ dans événements enlever les 2 inmode university             // DONE
 enlever embraceRF
 
 images
+TODO    replace les get_img_path et les path direct par des call graphql gatsby sharp
 react windows plugin
 DOM trop long
 cache

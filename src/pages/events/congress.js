@@ -1,24 +1,23 @@
-import { graphql } from "gatsby";
 import React from "react"
-import EventsLayout from "../components/events/events-layout";
-import Layout from "../components/layout"
+import EventsLayout from "../../components/events/events-layout";
+import Layout from "../../components/layout"
 
-const EventsPage = ({ data }) =>  {
+const SeminarsPage = ({ data }) =>  {
     return (
         <Layout>
-            <EventsLayout
-                current_page="upcoming events"
-                events={data.allStrapiEvent.nodes}
-            />
+        <EventsLayout
+            current_page="congrès"
+            events={data.allStrapiEvent.nodes}
+        />
         </Layout>
     );
 };
 
-export default EventsPage;
+export default SeminarsPage;
 
 export const query = graphql`
     {
-        allStrapiEvent(sort: {order: DESC, fields: begin}) {
+        allStrapiEvent(sort: {order: DESC, fields: begin}, filter: {type: {eq: "congres"}}) {
             nodes {
                 address
                 begin(formatString: "DD MMM. YY, HH:MM")
@@ -45,10 +44,3 @@ export const query = graphql`
         }
     }
 `;
-
-// TODO list
-// faire un seul component event qui prenne key en param_tre pour afficher le premier élément différement (class right or left avec flex order 1 2)
-// faire la requête pour les incoming et les pasts
-//      - from now to last
-//      - <hr/>
-//      - from now to first

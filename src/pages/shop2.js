@@ -79,7 +79,7 @@ export const query = graphql`
       }
     }
     allStrapiShop {
-      group(field: addon___Name) {
+      group(field: relative) {
         fieldValue
         nodes {
           reference
@@ -88,20 +88,7 @@ export const query = graphql`
           pack_type
           price
           discount
-          addon {
-            id
-            Name
-            Banner {
-              left_img {
-                childImageSharp {
-                  fluid {
-                    srcWebp
-                    srcSetWebp
-                  }
-                }
-              }
-            }
-          }
+          relative
           picture {
             childImageSharp {
               fluid {

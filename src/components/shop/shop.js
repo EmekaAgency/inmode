@@ -105,6 +105,24 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     setMemoryTechnology(temp);
   }
 
+  const filter = (e) => {
+    e.preventDefault();
+    e.currentTarget.classList.toggle('selected');
+    let temp = new Array(...tags);
+    if(tags.indexOf(e.currentTarget.dataset.value) < 0) {
+      temp.push(e.currentTarget.dataset.value);
+    }
+    else {
+      temp = temp.map((tag) => {
+        if(e.currentTarget.dataset.value == tag) {
+          return false;
+        }
+        return tag;
+      }).filter(tag => tag);
+    }
+    setTags(temp);
+  }
+
   return (
     <div className={`shopping-menu main-container ${shop_card}`}>
       <div className="menu">
@@ -116,7 +134,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
           checkbox_resolve_checked_selector={checkbox_resolve_checked_selector}
           resolve_technology={resolve_technology}
         />}
-         {shop_card == "shop" && <ShopMenu products={products}/>}
+         {shop_card == "shop" && <ShopMenu products={products} filter={filter}/>}
       </div>
       <div className={`${shop_card}-products${special ? " special" : ""}`}>
         {/* ///////////////////////////////////////// */}
@@ -148,7 +166,8 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
             }
           })}
           {/* ///////////////////////////////////////// */}
-            {shop_card == "shop" && products.map((group, group_key) => {
+          {shop_card == "shop" && products.map((group, group_key) => {
+            if(tags.length == 0 || tags.indexOf(group.fieldValue) >= 0) {
               return (
                 <div key={group_key} className="shop-addon">
                   <div className="addon-name">{group.fieldValue}</div>
@@ -159,7 +178,8 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
                   })}
                 </div>
               );
-            })}
+            }
+          })}
       </div>
     </div>
   );

@@ -18,15 +18,15 @@ const Addon = () => {
     <MenusProvider>
       <Layout>
           <SEO title="Addon"/>
-          <AddonBanner/>                      {/* Status => done */}
-          <AddonNavigation/>                  {/* Status => done */}
-          <AddonDetails/>                     {/* Status => done */}
-          <AddonDivider position="top"/>      {/* Status => done */}
-          <AddonVideos/>                      {/* Status => done */}
-          <AddonBeforeAfter/>                 {/* Status => done */}
-          <AddonDivider position="bottom"/>   {/* Status => done */}
-          <AddonWhatTreat/>                   {/* Status => done */}
-          <AddonClinicalStudies/>             {/* Status => done */}
+          <AddonBanner/>
+          <AddonNavigation/>
+          <AddonDetails/>
+          <AddonDivider position="top"/>
+          <AddonVideos/>
+          <AddonBeforeAfter/>
+          <AddonDivider position="bottom"/>
+          <AddonWhatTreat/>
+          <AddonClinicalStudies/>
       </Layout>
     </MenusProvider>
   );

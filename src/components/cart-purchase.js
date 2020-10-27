@@ -68,10 +68,10 @@ const CartPurchase = ({  }) => {
                                     <img className="blue" src={icons.rmv_blue.publicURL}/>
                                 </div>
                                 <div className="addon">
-                                    <img
-                                        src={cart.articles[article.reference].addon.Banner.left_img.childImageSharp.fluid.srcWebp}
-                                        srcSet={cart.articles[article.reference].addon.Banner.left_img.childImageSharp.fluid.srcSetWebp}
-                                    />
+                                    {cart.articles[article.reference].picture && (<img
+                                        src={cart.articles[article.reference].picture.childImageSharp.fluid.srcWebp}
+                                        srcSet={cart.articles[article.reference].picture.childImageSharp.fluid.srcSetWebp}
+                                    />)}
                                 </div>
                                 <div className="details">
                                     <div className="reference">{article.reference}</div>
@@ -107,14 +107,19 @@ const CartPurchase = ({  }) => {
                     <div className="cart-sub-total">
                         <div className="text">sous total</div>
                         <div className="price">
-                            {cart.total()}
+                            {cart.total().toFixed(2)}
                         </div>
                     </div>
-                    {/* <div className="cart-tva"></div> */}
+                    <div className="cart-tva">
+                        <div className="text">tva</div>
+                        <div className="price">
+                            {(cart.total() * 0.2).toFixed(2)}
+                        </div>
+                    </div>
                     <div className="cart-total">
                         <div className="text">total ttc</div>
                         <div className="price">
-                            {cart.total()}
+                            {(cart.total() * 1.2).toFixed(2)}
                         </div>
                     </div>
                     <div

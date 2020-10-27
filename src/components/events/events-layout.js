@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Conference from "./conference";
-import Eseminar from "./eseminar";
-import Seminar from "./seminar";
+import Congres from "./congres";
+import Webinar from "./webinar";
+import Workshop from "./workshop";
 
 import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
 import { useWindowSize } from "../../functions/window-size";
@@ -47,15 +47,15 @@ const EventsLayout = ({ children, current_page, events }) => {
         },
         {
             'name': 'congrès',
-            'url': '/events/conferences'
+            'url': '/events/congress'
         },
         {
             'name': 'webinars',
-            'url': '/events/webinar'
+            'url': '/events/webinars'
         },
         {
             'name': 'workshops',
-            'url': '/events/seminars'
+            'url': '/events/workshops'
         }
     ];
 
@@ -125,20 +125,22 @@ const EventsLayout = ({ children, current_page, events }) => {
                     </div>
                 </div>
                 <div className="events-content">
-                    {events.conferences && events.conferences.map((conference, key) => {
-                        return (
-                            <Conference key={key} event={conference}/>
-                        );
-                    })}
-                    {events.seminars && events.seminars.map((seminar, key) => {
-                        return (
-                            <Seminar key={key} event={seminar}/>
-                        );
-                    })}
-                    {events.eseminars && events.eseminars.map((eseminar, key) => {
-                        return (
-                            <Eseminar key={key} event={eseminar}/>
-                        );
+                    {events.length && events.forEach((event, key) => {
+                        if(event.type == "congres") {
+                            return (
+                                <Congres key={key} event={event}/>
+                            );
+                        }
+                        if(event.type == "workshop") {
+                            return (
+                                <Workshop key={key} event={event}/>
+                            );
+                        }
+                        if(event.type == "webinar") {
+                            return (
+                                <Webinar key={key} event={event}/>
+                            );
+                        }
                     })}
                 </div>
             </div>

@@ -1,28 +1,9 @@
 import React from 'react';
 import { Link } from "gatsby";
-import { get_img_path } from '../../functions/get_images';
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 
 const MenuSingleImage = ({menu, prop_key}) => {
-
-    // const [path, setPath] = React.useState(get_img_path(`icons/icomoon/svg/social-${menu.title}.svg`));
-    // const [inside, setInside] = React.useState(true);
-
-    // const resolve_hover = (e, enter) => {
-    //     if(enter && !inside) {
-    //         // setPath(get_img_path(`icons/icomoon/svg/social-${menu.title}.svg`));
-    //         setPath(get_img_path(`icons/social-networks/${menu.title}.webp`));
-    //         setInside(true);
-    //     }
-    //     else if(!enter && inside) {
-    //         // setPath(get_img_path(`icons/social-networks/${menu.title}.webp`));
-    //         setPath(get_img_path(`icons/icomoon/svg/social-${menu.title}.svg`));
-    //         setInside(false);
-    //     }
-    // }
-
-    // TODO changer les svg par des png pour que gatsby puisse les process
 
     return (
         <>

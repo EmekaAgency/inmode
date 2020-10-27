@@ -14,7 +14,6 @@ const ShopPage = ({ data }) => {
           <Shop
             products={data.allStrapiShop.group}
             tag_families={edges_to_array(data.allStrapiTagFamily.edges)}
-            technologies={edges_to_array(data.allStrapiAddon.edges)}
             shop_card="shop"
           />
       {/* </CartProvider> */}
@@ -29,37 +28,6 @@ export default ShopPage;
 
 export const query = graphql`
   {
-    allStrapiProduct {
-      edges {
-        node {
-          strapiId
-          Addons {
-            id
-          }
-          Icon {
-            childImageSharp {
-              fluid {
-                srcWebp
-                srcSetWebp
-              }
-            }
-          }
-          MenuParams {
-            url
-          }
-          ShopPicture {
-            childImageSharp {
-              fluid {
-                  srcWebp
-              }
-            }
-          }
-          Tags {
-            tag
-          }
-        }
-      }
-    }
     allStrapiTagFamily {
       edges {
         node {
@@ -70,37 +38,17 @@ export const query = graphql`
         }
       }
     }
-    allStrapiAddon {
-      edges {
-        node {
-          Name
-        }
-      }
-    }
     allStrapiShop {
-      group(field: addon___Name) {
+      group(field: relative) {
         fieldValue
         nodes {
+          relative
           reference
           Name
           pack_size
           pack_type
           price
           discount
-          addon {
-            id
-            Name
-            Banner {
-              left_img {
-                childImageSharp {
-                  fluid {
-                    srcWebp
-                    srcSetWebp
-                  }
-                }
-              }
-            }
-          }
           picture {
             childImageSharp {
               fluid {

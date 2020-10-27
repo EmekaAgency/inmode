@@ -1,9 +1,17 @@
 import React from 'react';
-import { get_img_path } from "../functions/get_images";
 import Menu from './menu';
 import MenusContext from "./contexts/menus-context"
+import { graphql, useStaticQuery } from 'gatsby';
 
 const HeaderMini = ({  }) => {
+
+    const icons = useStaticQuery(graphql`
+        {
+            close_white: file(relativePath: {eq: "icons/close-white.webp"}) {
+                publicURL
+            }
+        }
+    `);
 
   const [menus_top] = React.useState(React.useContext(MenusContext).header_top);
   const [menus_bottom] = React.useState(React.useContext(MenusContext).header_bottom);
@@ -18,7 +26,7 @@ const HeaderMini = ({  }) => {
         <div id="header-mini" className="header-mini custom-scrollbar">
             <div className="menu-close transition" onClick={(e) => {closeMenu(e);}}>
                 <span>FERMER</span>
-                <img className="close-mini-menu-icon" src={get_img_path('icons/close-white.webp')} alt="close-white"/>
+                <img className="close-mini-menu-icon" src={icons.close_white.publicURL} alt="close-white"/>
             </div>
             <div id="header-mini-bottom" className="header-bottom">
                 {menus_bottom && menus_bottom.map((menu, key) => {

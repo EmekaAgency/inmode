@@ -21,29 +21,26 @@ import CartProvider from "./contexts/cart-provider"
 import CartContext from "./contexts/cart-context"
 import MenusContext from "./contexts/menus-context"
 import ProductsContext from "./contexts/products-context"
-import ErrorBoundary from "../components/error-boundary";
 
 const Layout = ({ children }) => {
 
   return (
-    <ErrorBoundary>
-      <MenusProvider>
-        {/* <CartProvider> */}
-          <Header/>
-          <ProductsProvider>
-            <main id="main">
-              {children}
-            </main>
-          </ProductsProvider>
-          <FixedMenu/>
-          <CartPurchase/>
-          <PrivacyPolicy />
-          <ContactUs/>
-          <Footer/>
-          {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
-        {/* </CartProvider> */}
-      </MenusProvider>
-    </ErrorBoundary>
+    <MenusProvider>
+      {/* <CartProvider> */}
+        <Header/>
+        <ProductsProvider>
+          <main id="main">
+            {children}
+          </main>
+        </ProductsProvider>
+        <FixedMenu/>
+        <CartPurchase/>
+        <PrivacyPolicy />
+        <ContactUs/>
+        <Footer/>
+        {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
+      {/* </CartProvider> */}
+    </MenusProvider>
   )
 }
 

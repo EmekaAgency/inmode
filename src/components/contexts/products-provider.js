@@ -50,6 +50,71 @@ const ProductsProvider = ({ requested = "", children }) => {
                     treats_text
                 }
             }
+            allStrapiProduct(sort: {order: ASC, fields: position}) {
+                edges {
+                    node {
+                        Name
+                        ShopPicture {
+                            childImageSharp {
+                                fluid {
+                                    srcWebp
+                                    srcSetWebp
+                                }
+                            }
+                        }
+                        short_descr
+                        Icon {
+                            childImageSharp {
+                                fluid {
+                                    srcWebp
+                                    srcSetWebp
+                                }
+                            }
+                        }
+                        MenuParams {
+                            url
+                        }
+                        Addons {
+                            Name
+                            Banner {
+                                left_img {
+                                    childImageSharp {
+                                        fluid {
+                                            srcWebp
+                                            srcSetWebp
+                                        }
+                                    }
+                                }
+                                right_img {
+                                    childImageSharp {
+                                        fluid {
+                                            srcWebp
+                                            srcSetWebp
+                                        }
+                                    }
+                                }
+                                right_text
+                            }
+                            MenuParams {
+                                url
+                            }
+                            WhatIs {
+                                picture {
+                                    childImageSharp {
+                                        fluid {
+                                            srcWebp
+                                            srcSetWebp
+                                        }
+                                    }
+                                }
+                                TitleText {
+                                    text
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     `);
 
@@ -67,6 +132,8 @@ const ProductsProvider = ({ requested = "", children }) => {
             }
         )
     );
+
+    const [products2] = React.useState(datas.allStrapiProduct.edges.map(product => product.node));
     
     const [addons] = React.useState(
         process_addons(datas.allMysqlProducts.nodes, 'Addons'),
@@ -112,7 +179,7 @@ const ProductsProvider = ({ requested = "", children }) => {
             value={{
                 'product_navigation': product_navigation,
                 'addon_navigation': addon_navigation,
-                'products': products,
+                'products': products2,
                 'addons': addons
             }}
         >

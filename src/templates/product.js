@@ -33,7 +33,7 @@ const ProductTemplates = ({ data }) => {
                         'before_keys': datas.BeforeKeyBenefits,
                         'list': datas.KeyBenefits,
                         'list_title': 'key benefits',
-                        'list_icon': 'icons/key_benefit.png',
+                        'list_icon': 'key_benefit',
                         'anchor_key': 'key-benefits'
                     }}
                 />

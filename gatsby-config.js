@@ -46,9 +46,10 @@ module.exports = {
           `treatment`,
           `menu`,
           `shop`,
-          `conference`,
-          `seminar`,
-          `eseminar`
+          `event`
+        ],
+        singleTypes: [
+          `footer`
         ],
         queryLimit: 10000,
       },

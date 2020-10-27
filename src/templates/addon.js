@@ -31,7 +31,7 @@ const AddonTemplates = ({ data }) => {
                         'studies': datas.ClinicalStudies != [] && datas.ClinicalStudies.length > 0
                     }}
                 />
-                <GenericDetails datas={{'list': datas.KeyBenefits, 'what_is': datas.WhatIs, 'list_title': 'key benefits', 'list_icon' : 'icons/key_benefit.png'}}/>
+                <GenericDetails datas={{'list': datas.KeyBenefits, 'what_is': datas.WhatIs, 'list_title': 'key benefits', 'list_icon' : 'key_benefit'}}/>
                 <Divider position="top"/>
                 <AddonVideos datas={{'videos': datas.Videos, 'title': `${datas.Name} videos`, 'name': datas.Name}}/>
                 <AddonBeforeAfter datas={datas.BeforesAfters}/>

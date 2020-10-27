@@ -67,6 +67,7 @@ const MenusProvider = ({ requested = "", children }) => {
                     }
                     products {
                         id
+                        position
                         MenuParams {
                             title
                             url
@@ -130,6 +131,7 @@ const MenusProvider = ({ requested = "", children }) => {
                     }
                     products {
                         id
+                        position
                         MenuParams {
                             title
                             url
@@ -174,9 +176,41 @@ const MenusProvider = ({ requested = "", children }) => {
                     }
                 }
             }
+            footer: strapiFooter {
+                logo {
+                    childImageSharp {
+                        fluid {
+                            srcWebp
+                            srcSetWebp
+                        }
+                    }
+                }
+                address
+                phone
+                mail
+                social {
+                    icon {
+                        publicURL
+                        childImageSharp {
+                            fluid {
+                                srcWebp
+                                srcSetWebp
+                            }
+                        }
+                    }
+                    name
+                    url
+                    position
+                }
+                navigation {
+                    name
+                    url
+                }
+            }
             allStrapiProduct(filter: {Addons: {elemMatch: {Page_addon: {eq: true}}}}) {
                 nodes {
                     strapiId
+                    position
                     Addons {
                         id
                         MenuParams {
@@ -186,6 +220,12 @@ const MenusProvider = ({ requested = "", children }) => {
                             variant
                         }
                     }
+                }
+            }
+            allStrapiTreatment {
+                nodes {
+                    strapiId
+
                 }
             }
         }
@@ -217,7 +257,11 @@ const MenusProvider = ({ requested = "", children }) => {
                 recursive_process(array_to_object(_object[elem].menus, main));
             }
             if(_object[elem].products.length) {
-                _object[elem].menus = _object[elem].menus.concat(_object[elem].products.map((product) => {
+                let temp = new Array(_object[elem].products.length);
+                for(let i = 0; i < _object[elem].products.length; i++) {
+                    temp[_object[elem].products[i].position - 1] = _object[elem].products[i];
+                }
+                _object[elem].menus = _object[elem].menus.concat(temp.map((product) => {
                     product.menus = datas.allStrapiProduct.nodes.map((_product) => {
                         let temp = [];
                         if(JSON.stringify([product.id, product.strapiId].sort()) === JSON.stringify([_product.id, _product.strapiId].sort())) {
@@ -246,6 +290,9 @@ const MenusProvider = ({ requested = "", children }) => {
             }
             if(_object[elem].treatments.length) {
                 _object[elem].menus = _object[elem].menus.concat(_object[elem].treatments.map((treatment) => {
+                    // treatment.menus = datas.
+    // TODO récupérer treatment
+    // TODO faire comme product avec le map sous le map
                     return {
                         ...treatment.MenuParams,
                         'menus': treatment.menus || [],
@@ -257,6 +304,12 @@ const MenusProvider = ({ requested = "", children }) => {
             }
         });
     }
+
+    // const recursive_process = (_object) => {
+    //     Object.keys(_object).map((item) => {
+    //         console.log(_object[item]);
+    //     })
+    // }
 
     const process_menu = (list) => {
         let temp = array_to_object(list);
@@ -280,7 +333,8 @@ const MenusProvider = ({ requested = "", children }) => {
 
     // const [menusHeaderTop] = React.useState(process_menu_datas(datas.allMysqlHeaderTop.nodes, 'HeaderTop'));
     // const [menusHeaderBottom] = React.useState(process_menu_datas(datas.allMysqlHeaderBottom.nodes, 'HeaderBottom'));
-    const [menusFooter] = React.useState(footer_process(process_menu_datas(datas.allMysqlFooter.nodes, 'Footer')));
+    // const [menusFooter] = React.useState(footer_process(process_menu_datas(datas.allMysqlFooter.nodes, 'Footer')));
+    const [menusFooter] = React.useState(datas.footer);
     
     return (
         <MenusContext.Provider

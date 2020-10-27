@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import HeaderTop from "./header-top";
@@ -7,6 +7,19 @@ import HeaderMini from "./header-mini";
 import { get_img_path } from "../functions/get_images";
 
 const Header = ({  }) => {
+
+  const icon = useStaticQuery(graphql`
+    {
+      logo: file(relativePath: { eq: "header-logo.png"}) {
+        childImageSharp {
+          fluid {
+            srcWebp
+            srcSetWebp
+          }
+        }
+      }
+    }
+  `);
 
   const openMenu = (e) => {
     // console.log("openMenu()");
@@ -24,7 +37,7 @@ const Header = ({  }) => {
   return (
     <header>
       <div className="header-content container">
-        <div className="header-logo background-image" style={{backgroundImage: 'url('+get_img_path('header-logo.png')+')'}}>
+        <div className="header-logo background-image" style={{backgroundImage: 'url('+ icon.logo.childImageSharp.fluid.srcWebp +')'}}>
           <Link to="/" className="zone-link">
           </Link>
         </div>

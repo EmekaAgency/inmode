@@ -12,35 +12,23 @@ const CartProvider = ({ requested = "", children }) => {
         'tip': ['tip', 'tips'],
         'canule': ['canule', 'canules'],
         'kit': ['Kit-Mix', 'Kit-Mix'],
-        'pin': ['pin', 'pins']
+        'pin': ['pin', 'pins'],
+        'unite': ['unité', 'unités']
     };
 
     const [articles] = React.useState(
         Object.fromEntries(
             useStaticQuery(graphql`
                 {
-                    allStrapiShop(sort: {order: ASC, fields: addon___Name}) {
+                    allStrapiShop(sort: {order: ASC, fields: relative}) {
                         nodes {
+                            relative
                             reference
                             Name
                             pack_size
                             pack_type
                             price
                             discount
-                            addon {
-                                id
-                                Name
-                                Banner {
-                                  left_img {
-                                    childImageSharp {
-                                      fluid {
-                                        srcWebp
-                                        srcSetWebp
-                                      }
-                                    }
-                                  }
-                                }
-                            }
                             picture {
                                 childImageSharp {
                                     fluid {

@@ -75,22 +75,15 @@ const ContactForm = ({ from }) => {
                     <input type="text" name="company" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="speciality">Spécialité</label>
-                    <select name="speciality" required>
-                        <option disabled selected>Choisir une spécialité</option>
-                        <option value="Aesthetic Medecine">Aesthetic Medecine</option>
-                        <option value="Anti-Aging">Anti-Aging</option>
-                        <option value="Lasers">Lasers</option>
-                        <option value="Plastic Surgery">Plastic Surgery</option>
-                        <option value="Dermatology">Dermatology</option>
-                        <option value="ENT">ENT</option>
-                        <option value="Family/General Practice">Family/General Practice</option>
-                        <option value="Internal Medecine">Internal Medecine</option>
-                        <option value="Medical Spa">Medical Spa</option>
-                        <option value="OB/GYN">OB/GYN</option>
-                        <option value="General Surgery">General Surgery</option>
-                        <option value="Weight Loss">Weight Loss</option>
-                        <option value="Other">Other</option>
+                    <label htmlFor="speciality">Sélectionnez un sujet</label>
+                    <select name="speciality" required={true}>
+                        <option value="" disabled selected>Choisir une spécialité</option>
+                        <option value="plastic-surgeon">Chirurgien plasticien</option>
+                        <option value="facial-surgeon">Chirurgien maxillo-facial</option>
+                        <option value="dermatologist">Dermatologue</option>
+                        <option value="cosmetic-doctor">Médecin esthétique</option>
+                        <option value="gynecologist">Gynécologue</option>
+                        <option value="others">Autres</option>
                     </select>
                 </div>
                 <div className="field">

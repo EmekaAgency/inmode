@@ -1,29 +1,29 @@
 import React from "react";
-import { get_img_path } from '../../functions/get_images';
 import Flickity from "react-flickity-component";
 import ProductView from "./product-view";
-import { format_string } from "../../functions/format_string";
 import ProductsContext from "../contexts/products-context";
-import { Link } from "gatsby";
-import Slider from "../slider";
+import { graphql, Link, useStaticQuery } from "gatsby";
 
 const Slides = ({from}) => {
-  
-    const addon = React.useContext(ProductsContext).addons[0];
+
+    const icons = useStaticQuery(graphql`
+        {
+            arrow_right: file(relativePath: { eq: "icons/arrow-right.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                        srcSetWebp
+                    }
+                }
+            }
+            close_white: file(relativePath: { eq: "icons/close-white.webp"}) {
+                publicURL
+            }
+        }
+    `);
 
     const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
     const [index, setIndex] = React.useState(0);
-
-    const resolve_image = (name ) => {
-        let img = new Image();
-        img.src = get_img_path(`${name}.${img_extensions[index]}`);
-        img.onerror = function() {
-            setIndex(index + 1);
-            return resolve_image(name);
-        };
-    
-        return get_img_path(`${name}.${img_extensions[index]}`);
-    };
 
     const [current, setCurrent] = React.useState(-1);
     const [open, setOpen] = React.useState(false);
@@ -55,6 +55,7 @@ const Slides = ({from}) => {
     }
 
     const view_product = (e, pos) => {
+        console.log(pos);
         e.preventDefault();
         setFlickityOptions({
             initialIndex: pos,
@@ -115,48 +116,44 @@ const Slides = ({from}) => {
                             // onMouseMove={(e) => {process_drag(e);}}
                         >
                             <div className="slide-title">
-                                {`.${(key + 1) < 10 ? '0' + (key + 1) : (key + 1)}`}
-                                <br/>
-                                {/* {format_string(slide.name)} */}
-                                {/* TODO ajouter informations Visage | Corps | Intimité */}
-                                <div className="testparent">
-                                    {Math.random() * 10 > 2 ? <div className="testnom">Visage</div>: ' '}
-                                    {Math.random() * 10 > 2 ? <div className="testnom">Corps</div>: ' '}
-                                    {Math.random() * 10 > 2 ? <div className="testnom">Intimité</div>: ' '}
-                                </div>
+                                {slide.short_descr}
                             </div>
                             <div className="slide-content">
                                 <div className="slide-background-ico">
                                     <img
                                         className="slide-bg-img"
-                                        src={get_img_path(`products/${format_string(slide.name, true, false)}/${format_string(slide.name, true, false)}.png`)}
-                                        alt={format_string(slide.name)}
+                                        src={slide.Icon.childImageSharp.fluid.srcWebp}
+                                        srcSet={slide.Icon.childImageSharp.fluid.srcSetWebp}
+                                        alt={slide.Name}
                                     />
                                 </div>
                                 <div className="slide-background-product">
                                     <img
                                         className="slide-bg-img"
-                                        src ={get_img_path(`products/${format_string(slide.name, true, false)}/${format_string(slide.name, true, false)}-p.png`)}
+                                        src={slide.ShopPicture.childImageSharp.fluid.srcWebp}
+                                        srcSet={slide.ShopPicture.childImageSharp.fluid.srcSetWebp}
                                         alt='product'
                                     />
                                 </div>
                                 <div className="slide-short-descr">
-                                    {format_string(slide.name)}
+                                    {slide.Name}
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
                                     Informations produits
                                     <img
                                         className="slide-view-detail-arrow transition"
-                                        src={get_img_path('icons/arrow-right.png')}
+                                        src={icons.arrow_right.childImageSharp.fluid.srcWebp}
+                                        srcSet={icons.arrow_right.childImageSharp.fluid.srcSetWebp}
                                         alt="arrow-right"
                                     />
-                                    <Link className="zone-link" to={`/workstation/${format_string(slide.name, true, false)}`}></Link>
+                                    <Link className="zone-link" to={slide.MenuParams.url}></Link>
                                 </div>
-                                {slide.under ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
+                                {slide.Addons ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
                                     Pièces à main
                                     <img
                                         className="slide-view-product-arrow transition"
-                                        src={get_img_path('icons/arrow-right.png')}
+                                        src={icons.arrow_right.childImageSharp.fluid.srcWebp}
+                                        srcSet={icons.arrow_right.childImageSharp.fluid.srcSetWebp}
                                         alt="arrow-left"
                                     />
                                 </div> : null}
@@ -165,7 +162,7 @@ const Slides = ({from}) => {
                     );
                 })}
             </Flickity>
-            {slides && slides.map((slide, key) => {
+            {current > -1 && slides && slides.map((slide, key) => {
                 return (
                     <div
                         className={"product-view" + (current > -1 && current == key && open ? " show" : '')}
@@ -176,7 +173,7 @@ const Slides = ({from}) => {
                             <div className="close">
                                 <img
                                     className="close-product-view"
-                                    src={get_img_path('icons/close-white.webp')}
+                                    src={icons.close_white.publicURL}
                                     alt="close-product-view"
                                 />
                             </div>

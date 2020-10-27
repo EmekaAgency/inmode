@@ -54,3 +54,11 @@ Panier
         droite "Valider" pour payer
 purgeCSS
 CartContext
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+	
+VOTIVA
+AG605906A       FormaV Tip                    3 tips     250 €
+                Aviva 2 sensors HP            2 canules  500 €
+
+wireframe to react component

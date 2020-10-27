@@ -1,10 +1,23 @@
 import React from "react"
 import { get_img_path } from "../functions/get_images";
 import Menu from "./menu";
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import MenusContext from "./contexts/menus-context"
 
 const FixedMenu = ({ customClass }) => {
+
+    const images = useStaticQuery(graphql`
+        {
+            logo: file(relativePath: { eq: "header-logo.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                        srcSetWebp
+                    }
+                }
+            }
+        }
+    `);
 
     const [menus] = React.useState(React.useContext(MenusContext).header_bottom);
 
@@ -28,7 +41,11 @@ const FixedMenu = ({ customClass }) => {
         <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible ? 0 : -55, boxShadow: isVisible ? null : 'unset'}}>
             <div className="fixed-menu-container">
                 <div className="fixed-menu-logo">
-                    <img src={get_img_path('header-logo.png')} alt="header-logo"/>
+                    <img
+                        src={images.logo.childImageSharp.fluid.srcWebp}
+                        srcSet={images.logo.childImageSharp.fluid.srcSetWebp}
+                        alt="header-logo"
+                    />
                     <Link to="/" className="zone-link"></Link>
                 </div>
                 <div className="fixed-menus">

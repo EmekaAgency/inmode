@@ -1,7 +1,28 @@
 import React from "react"
-import { get_img_path } from "../functions/get_images";
+import { graphql, useStaticQuery } from "gatsby";
 
 const ContactUs = () => {
+
+    const icons = useStaticQuery(graphql`
+        {
+            piece: file(relativePath: {eq: "contact_us.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcSet
+                        srcSetWebp
+                    }
+                }
+            }
+            close: file(relativePath: { eq: "icons/closingcross.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcSet
+                        srcSetWebp
+                    }
+                }
+            }
+        }
+    `);
 
     // TODO enlever bottom 70px et mettre toute la height, puis overflow scroll
 
@@ -34,28 +55,33 @@ const ContactUs = () => {
 
     const resolve_click = (e) => {
         e.preventDefault();
-        console.log('e.currentTarget.id : ', e.currentTarget.id);
-        console.log('open : ', open);
-        console.log('formOpen : ', formOpen);
-        if(open) {
-            if(e.currentTarget.id === 'close') {
-                !formOpen && close_contact();
-                formOpen && close_form();
-                return false;
-            }
-            if(e.currentTarget.id === 'piece') {
-                formOpen && close_form();
-                close_contact();
-                return false;
-            }
-        }
-        document.getElementById('contact-us').classList.add('opened');
-        setOpen(true);
+        // console.log('e.currentTarget.id : ', e.currentTarget.id);
+        // console.log('open : ', open);
+        // console.log('formOpen : ', formOpen);
+        // if(open) {
+        //     if(e.currentTarget.id === 'close') {
+        //         !formOpen && close_contact();
+        //         formOpen && close_form();
+        //         return false;
+        //     }
+        //     if(e.currentTarget.id === 'piece') {
+        //         formOpen && close_form();
+        //         close_contact();
+        //         return false;
+        //     }
+        // }
+        // document.getElementById('contact-us').classList.add('opened');
+        // setOpen(true);
+        !formOpen && resolve_contact();
+        formOpen && close_form();
+        setOpen(!open);
+        document.getElementById('contact-us').classList.toggle('opened');
+        setFormOpen(!formOpen);
     }
 
     const resolve_contact = (e) => {
-        e.preventDefault();
-        document.getElementById('contact-type').value = e.currentTarget.id;
+        // e.preventDefault();
+        // document.getElementById('contact-type').value = e.currentTarget.id;
         [].forEach.call(document.getElementsByClassName('contact-choice'), function(elem) {
             // elem.style.transform = 'scale(0, 1)';
             // elem.style.display = 'none';
@@ -64,9 +90,10 @@ const ContactUs = () => {
             elem.style.transitionDelay = '0s';
         });
         // setTimeout(function () {document.getElementById('contact-form').style.display = 'inline-block';}, 300);
-        document.getElementById('contact-form').style.width = '500px';
+        document.getElementById('contact-form').style.width = '580px';
         document.getElementById('contact-form').style.height = window.innerHeight > 480 ? '470px' : window.innerHeight - 130 + 'px';
-        document.getElementById('contact-form').style.transitionDelay = '0.4s';
+        // document.getElementById('contact-form').style.transitionDelay = '0.4s';
+        document.getElementById('contact-form').style.transitionDelay = '0s';
         // document.getElementById('contact-form').style.transform = 'scale(1, 1)';
         setFormOpen(true);
 
@@ -75,25 +102,45 @@ const ContactUs = () => {
     return (
         <div id="contact-us" className={`contact-us transition${open ? ' opened' : ''}`}>
             <div className="stamp transition">
-                <img id="piece" className="transition" src={get_img_path('contact_us.png')} alt="contact-us" onClick={(e) => {resolve_click(e)}}/>
-                <div className="content custom-scrollbar">
+                <img
+                    id="piece"
+                    className="transition"
+                    src={icons.piece.childImageSharp.fluid.srcWebp}
+                    srcSet={icons.piece.childImageSharp.fluid.srcSetWebp}
+                    alt="contact-us"
+                    onClick={(e) => {resolve_click(e)}}
+                />
+                <div className="content">
                     <div id="close" className="close-contact-us" onClick={(e) => {resolve_click(e)}}>
-                        <img src={get_img_path('icons/closingcross.png')} alt="hexa-close"/>
+                        <img
+                            src={icons.close.childImageSharp.fluid.srcWebp}
+                            srcSet={icons.close.childImageSharp.fluid.srcSetWebp}
+                            alt="hexa-close"
+                        />
                     </div>
-                    <div className="contact-choice transition">
-                        <div onClick={(e) => {resolve_contact(e);}} id="patient" className="patient transition">Je suis patient</div>
-                        <div onClick={(e) => {resolve_contact(e);}} id="physician" className="physician transition">Je suis médecin</div>
-                    </div>
+                    {/* <div className="contact-choice transition"> */}
+                        {/* <div onClick={(e) => {resolve_contact(e);}} id="patient" className="patient transition">Je suis patient</div> */}
+                        {/* <div onClick={(e) => {resolve_contact(e);}} id="physician" className="physician transition">Je suis médecin</div> */}
+                    {/* </div> */}
                     <div id="contact-form" className="transition neumorphic custom-scrollbar" hidden={!formOpen}>
-                        <form onSubmit={(e) => {e.preventDefault()}}>
-                            <input id="contact-type" name="type" style={{display: 'none'}}/>
-                            <input type="email" placeholder="Adresse mail" name="mail" spellCheck={false} required={true}/>
+                        <form onSubmit={(e) => {e.preventDefault()}} className="custom-scrollbar">
+                            {/* <input id="contact-type" name="type" style={{display: 'none'}}/> */}
+                            <input type="text" placeholder="Nom" name="lastname" required={true}/>
+                            <input type="text" placeholder="Prénom" name="firstname" required={true}/>
                             <label htmlFor="subject">Sélectionnez un sujet</label>
                             <select name="subject" required={true}>
-                                <option value="subject-1">Sujet 1</option>
-                                <option value="subject-2">Sujet 2</option>
-                                <option value="subject-3">Sujet 3</option>
+                                <option value="" disabled selected>Choisir une spécialité</option>
+                                <option value="plastic-surgeon">Chirurgien plasticien</option>
+                                <option value="facial-surgeon">Chirurgien maxillo-facial</option>
+                                <option value="dermatologist">Dermatologue</option>
+                                <option value="cosmetic-doctor">Médecin esthétique</option>
+                                <option value="gynecologist">Gynécologue</option>
+                                <option value="others">Autres</option>
                             </select>
+                            <input type="email" placeholder="Adresse mail" name="mail" spellCheck={false} required={true}/>
+                            <input type="phone" placeholder="Téléphone" name="phone" spellCheck={false} required={true}/>
+                            <input type="zip" placeholder="Code postal" name="zip" spellCheck={false} required={true}/>
+                            <input type="city" placeholder="Ville" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message"
                                 type="textarea"
