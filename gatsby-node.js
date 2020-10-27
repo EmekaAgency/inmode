@@ -9,6 +9,19 @@ exports.onCreateWebpackConfig = ({actions}) => {
   })
 }
 
+exports.onCreatePage = ({page, actions}) => {
+  const { createPage, deletePage } = actions
+  deletePage(page)
+  // You can access the variable "house" in your page queries now
+  createPage({
+    ...page,
+    context: {
+      ...page.context,
+      today_string: [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()].join('-')
+    },
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 

@@ -74,6 +74,11 @@ const ProductsProvider = ({ requested = "", children }) => {
                         MenuParams {
                             url
                         }
+                        WhatIs {
+                            TitleText {
+                                text
+                            }
+                        }
                         Addons {
                             Name
                             Banner {

@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
 import { format_string } from "../../functions/format_string";
 import { get_img_path } from "../../functions/get_images";
@@ -11,7 +11,14 @@ const ProductView = ({children, datas}) => {
             more: file(relativePath: {eq: "icons/add.svg"}) {
                 publicURL
             }
-
+            arrow_right: file(relativePath: { eq: "icons/arrow-right.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                        srcSetWebp
+                    }
+                }
+            }
         }
     `)
 
@@ -37,7 +44,7 @@ const ProductView = ({children, datas}) => {
             <div className="product-view-details">
                 <div className="product-view-title">{products[datas.current].Name}</div>
                 <div className="product-view-descr">
-                    {products[datas.current].short_descr}
+                    {products[datas.current].WhatIs.TitleText[0].text}
                 </div>
                 <div className="addons-view-cards transition custom-scrollbar">
                     {products[datas.current].Addons && products[datas.current].Addons.map((addon, key) => {
@@ -65,7 +72,15 @@ const ProductView = ({children, datas}) => {
                                     </p>
                                     <div className="purchase-infos">
                                         {/* <div className={`price ${currency}`}>{addon.price}</div> */}
-                                        <a className="details" href={addon.MenuParams.url}>Détails</a>
+                                        <Link className="details" href={addon.MenuParams.url}>
+                                            Détails
+                                            <img
+                                                className="detail-view-addon-arrow transition"
+                                                src={icons.arrow_right.childImageSharp.fluid.srcWebp}
+                                                srcSet={icons.arrow_right.childImageSharp.fluid.srcSetWebp}
+                                                alt="arrow-left"
+                                            />
+                                        </Link>
                                         {/* <div className="add-to-cart"><button>Ajouter</button></div> */}
                                     </div>
                                 </div>

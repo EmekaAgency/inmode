@@ -13,8 +13,6 @@ const TreatmentTemplates = ({ data }) => {
 
     const [datas] = React.useState(data.strapiTreatment);
 
-    console.log(datas);
-
     return (
             <Layout>
                 <SEO title="Treatment"/>

@@ -59,6 +59,12 @@ CartContext
 	
 VOTIVA
 AG605906A       FormaV Tip                    3 tips     250 €
-                Aviva 2 sensors HP            2 canules  500 €
+                Aviva 2 sensors HP            2 canules  500 € ?
+module de banque
+produits différents de inmodemd
+erreurs appariement stations / pièces à main / traitements
 
-wireframe to react component
+régler largeur vimeo
+ajouter cart fixed menu et header-mini
+design tablette
+design mobile

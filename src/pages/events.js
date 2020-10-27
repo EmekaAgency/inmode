@@ -4,11 +4,12 @@ import EventsLayout from "../components/events/events-layout";
 import Layout from "../components/layout"
 
 const EventsPage = ({ data }) =>  {
+
     return (
         <Layout>
             <EventsLayout
                 current_page="upcoming events"
-                events={data.allStrapiEvent.nodes}
+                upcoming_events={data.incoming.nodes}
             />
         </Layout>
     );
@@ -17,8 +18,8 @@ const EventsPage = ({ data }) =>  {
 export default EventsPage;
 
 export const query = graphql`
-    {
-        allStrapiEvent(sort: {order: DESC, fields: begin}) {
+    query EventsPage($today_string: Date!) {
+        incoming: allStrapiEvent(filter: {begin: {gte: $today_string}}, sort: {fields: begin, order: ASC}) {
             nodes {
                 address
                 begin(formatString: "DD MMM. YY, HH:MM")

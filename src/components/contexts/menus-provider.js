@@ -225,7 +225,12 @@ const MenusProvider = ({ requested = "", children }) => {
             allStrapiTreatment {
                 nodes {
                     strapiId
-
+                    MenuParams {
+                        title
+                        url
+                        type
+                        variant
+                    }
                 }
             }
         }
@@ -251,7 +256,8 @@ const MenusProvider = ({ requested = "", children }) => {
                         'menus': menu.menus || [],
                         'products': menu.products || [],
                         'treatments': menu.treatments || [],
-                        'id': menu.id || menu.strapiId
+                        'id': menu.id || menu.strapiId,
+                        'parent': elem
                     };
                 })
                 recursive_process(array_to_object(_object[elem].menus, main));
@@ -284,36 +290,42 @@ const MenusProvider = ({ requested = "", children }) => {
                         'products': product.products || [],
                         'treatments': product.treatments || [],
                         'icon': product.Icon.childImageSharp.fluid || null,
-                        'id': product.id || product.strapiId
+                        'id': product.id || product.strapiId,
+                        'parent': elem
                     };
                 }));
             }
             if(_object[elem].treatments.length) {
                 _object[elem].menus = _object[elem].menus.concat(_object[elem].treatments.map((treatment) => {
-                    // treatment.menus = datas.
-    // TODO récupérer treatment
-    // TODO faire comme product avec le map sous le map
                     return {
                         ...treatment.MenuParams,
                         'menus': treatment.menus || [],
                         'products': treatment.products || [],
                         'treatments': treatment.treatments || [],
-                        'id': treatment.id || treatment.strapiId
+                        'id': treatment.id || treatment.strapiId,
+                        'parent': elem
                     };
                 }));
             }
         });
     }
 
-    // const recursive_process = (_object) => {
-    //     Object.keys(_object).map((item) => {
-    //         console.log(_object[item]);
-    //     })
-    // }
+    const resolve_dependance = (_object, main) => {
+        Object.keys(_object).map((menu) => {
+            if(_object[menu].parent_menu) {
+                _object[menu].menus.map((_elem) => {
+                    if(main[_elem.id || _elem.strapiId] && main[_elem.id || _elem.strapiId].title === _elem.title) {
+                        _elem.menus = main[_elem.id || _elem.strapiId].menus;
+                    }
+                });
+            }
+        })
+    }
 
     const process_menu = (list) => {
         let temp = array_to_object(list);
         recursive_process(temp, temp);
+        resolve_dependance(temp, temp);
         return Object.entries(temp).map((menu) => {
             menu[1].products = [];
             menu[1].treatments = [];

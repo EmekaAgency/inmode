@@ -3,7 +3,7 @@ import ProductsContext from "../contexts/products-context";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { format_title } from "../../functions/format_title";
 
-const AddonNavigation = ({ name, exist }) => {
+const AddonNavigation = ({ name, exist = {} }) => {
 
     let temp = [
         {'name': 'what is it', 'url': '#what-is'},

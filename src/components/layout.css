@@ -292,10 +292,12 @@ ul.menu-side-menu:hover .dropside-menu {
 header {
     margin: 0 auto;
     width: calc(100% - 30px);
-    padding: 25px 15px 0;
+    /* padding: 25px 15px 0; */
+    padding: 15px 15px 0;
     background-color: #0b1a25;
     /* background-image: linear-gradient(90deg, #0d1f2c, #0d1f2cbb); */
-    box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px;
+    /* box-shadow: rgba(0, 0, 0, .5) 3px 3px 25px; */
+    box-shadow: 3px 5px 10px rgb(0 0 0 / 55%);
     position: relative;
     z-index: 1;
 }
@@ -337,7 +339,8 @@ header {
     position: relative;
     background-size: 250px;
     background-position: center;
-    padding-top: 5px;
+    /* padding-top: 5px; */
+    padding-top: 25px;
 }
 
 .header-parts {
@@ -1040,10 +1043,15 @@ header {
         letter-spacing: 1px;
         padding: 5px 10px 0;
         margin: 0;
+        position: relative;
     }
 
     #fixed-menu .fixed-menus .menu-title .menu-title {
         line-height: 1;
+    }
+
+    #fixed-menu .fixed-menus ul.menu-title div.menu-title {
+        height: 25px;
     }
 
     #fixed-menu .fixed-menus ul.menu-dk-title a.menu-dk-title,
@@ -1108,7 +1116,9 @@ header {
         width: max-content;
         background-color: rgba(0, 0, 0, .5);
         padding: 15px 0;
-        top: 45px;
+        /* top: 35px; */
+        transform: translateX(-50%);
+        left: 50%;
     }
 
     #fixed-menu ul.menu-title:hover ul.dropdown-menu li {
@@ -1162,7 +1172,6 @@ main {
 footer {
     padding: 43px 0;
     background-color: #0d1f2c;
-    background-image: url('/icons/footer-bg-pattern.png');
     background-repeat: repeat;
     box-shadow: #000000a8 -4px -4px 12px;
     position: relative;
@@ -1459,9 +1468,9 @@ footer .footer-navigation-part {
     margin-right: 0;
 }
 
-.slides-home .slide.is-selected .slide-content {
-    background: rgba(0, 0, 55, .1);
-}
+/* .slides-home .slide.is-selected .slide-content { */
+    /* background: rgba(0, 0, 55, .1); */
+/* } */
 
 @media (max-width: 999px) {
     .slides-home .slide.is-selected .slide-content {
@@ -1475,6 +1484,8 @@ footer .footer-navigation-part {
     position: relative;
     font-size: 22px;
     /* text-transform: capitalize; */
+    letter-spacing: 1.2px;
+    font-weight: 600;
 }
 
 .slides-home .slide .slide-content {
@@ -1485,7 +1496,11 @@ footer .footer-navigation-part {
     background-color: #0d1f2c;
     box-sizing: border-box;
     position: relative;
-    box-shadow: rgba(0, 0, 0, .7) 7px 7px 10px;
+    /* box-shadow: rgba(0, 0, 0, .7) 7px 7px 10px; */
+
+    /* background: rgba(0, 0, 55, .1); */
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 55%);
+    background-color: #0a1727;
 }
 
 .slides-home .slide .slide-content .slide-background-ico {
@@ -1765,7 +1780,8 @@ footer .footer-navigation-part {
 }
 
 .slides-home .addons-view-cards .addon:hover .addon-details {
-    top: 24px;
+    /* top: 24px; */
+    top: 80px;
 }
 
 .slides-home .addons-view-cards .addon .addon-general .addon-description {
@@ -1819,7 +1835,8 @@ footer .footer-navigation-part {
 }
 
 .slides-home .addons-view-cards .addon .description {
-    font-size: 11px;
+    /* font-size: 11px; */
+    font-size: 14px;
     color: #fff;
     text-align: left;
     white-space: break-spaces;
@@ -1856,7 +1873,7 @@ footer .footer-navigation-part {
 }
 
 .slides-home .addons-view-cards .addon .details {
-    display: inline-block;
+    /* display: inline-block;
     width: 40%;
     margin: 20px 5% 0;
     background-color: #59b7b3cc;
@@ -1867,7 +1884,39 @@ footer .footer-navigation-part {
     outline: transparent;
     cursor: pointer;
     font-size: 13px;
-    box-sizing: border-box;
+    box-sizing: border-box; */
+    color: #07101d;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 14px;
+    background: #59b7b3;
+    float: left;
+    padding: 12px 40px 14px 20px;
+    transform-style: preserve-3d;
+    position: relative;
+    z-index: 2;
+}
+
+.slides-home .addons-view-cards .addon .details .detail-view-addon-arrow {
+    width: 14px;
+    height: auto;
+    position: absolute;
+    right: 20px;
+    left: auto;
+    top: 14px;
+}
+
+.slides-home .addons-view-cards .addon .details:hover .detail-view-addon-arrow {
+    width: 14px;
+    height: auto;
+    position: absolute;
+    right: 20px;
+    left: auto;
+    top: 14px;
+}
+
+.slides-home .addons-view-cards .addon .details:hover .detail-view-addon-arrow {
+    right: 15px;
 }
 
 /* .slides-home .addons-view-cards .addon .add-to-cart {
@@ -3741,6 +3790,35 @@ input[type="submit"].neumorphic:hover,
 
 /* 1, 2 */
 
+.videos-slide #video-iframe.opened {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-color: #0008;
+}
+
+.videos-slide #video-iframe.opened iframe {
+    width: 90%;
+    height: 90%;
+    outline: transparent;
+    left: 5%;
+    top: 5%;
+    position: relative;
+    border: none;
+}
+
+.videos-slide #video-iframe.opened .close-pic {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 .videos-slide .videos-container.few {
     max-width: 1170px;
     margin: 0 auto;
@@ -3783,7 +3861,7 @@ input[type="submit"].neumorphic:hover,
     margin: 0 auto;
 }
 
-.videos-slide .carousel-videos video {
+.videos-slide .carousel-videos img {
     width: calc(100% / 3);
     object-fit: cover;
     height: 300px;
@@ -4934,7 +5012,7 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
 
 .cart-purchase .cart-content {
     position: relative;
-    height: calc(100vh - 270px);
+    height: calc(100vh - 290px);
     overflow-y: auto;
 }
 
@@ -5099,7 +5177,7 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     text-transform: uppercase;
     width: 85%;
     padding: 15px 60px;
-    box-shadow: -5px 5px 14px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: -5px 5px 14px 0 rgba(0,0,0,.2);
     outline: none;
     cursor: pointer;
     font-size: 18px;
@@ -5107,8 +5185,8 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     color: #fff;
     text-align: center;
     box-sizing: border-box;
-    position: absolute;
-    bottom: 20px;
+    position: relative;
+    bottom: -5px;
     left: 7.5%;
 }
 
@@ -6109,9 +6187,23 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     top: -1px;
 }
 
-.events-layout .main-container .events-content .conference,
-.events-layout .main-container .events-content .eseminar,
-.events-layout .main-container .events-content .seminar {
+.events-layout .main-container .events-content .time-section-title {
+    width: max-content;
+    margin: 15px auto;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 7px 35px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1;
+}
+
+.events-layout .main-container .events-content > hr {
+
+}
+
+.events-layout .main-container .events-content .inmode-event {
     margin: 15px auto;
     padding: 15px;
     width: 95%;
@@ -6121,22 +6213,21 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     box-shadow: #0008 0px 0px 6px 2px;
 }
 
-.events-layout .main-container .events-content .conference,
-.events-layout .main-container .events-content .eseminar,
-.events-layout .main-container .events-content .seminar {
+.events-layout .main-container .events-content .inmode-event {
     position: relative;
     font-size: 0;
+    white-space: pre-wrap;
 }
 
-.events-layout .main-container .events-content .conference {
-
-}
-
-.events-layout .main-container .events-content .eseminar {
+.events-layout .main-container .events-content .inmode-event.congres {
 
 }
 
-.events-layout .main-container .events-content .seminar {
+.events-layout .main-container .events-content .inmode-event.webinar {
+
+}
+
+.events-layout .main-container .events-content .inmode-event.workshop {
 
 }
 
@@ -6176,7 +6267,7 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
 }
 
 .events-layout .main-container .events-content .img-part .event-pic::before {
-    content: url("../images/gatsby-astronaut.png");
+    
 }
 
 .events-layout .main-container .events-content .descr-part {
@@ -6228,10 +6319,9 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     color: #59b7b3;
 }
 
-.events-layout .main-container .events-content .eseminar .eseminar-card-tech-list {
+.events-layout .main-container .events-content .inmode-event .top-card {
     position: absolute;
     top: 0;
-    left: 0;
     padding: 25px;
     margin-bottom: 75px;
     background-color: #59b7b3;
@@ -6240,40 +6330,57 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     font-weight: 700;
     color: #fff;
     line-height: 1;
+}
+
+.events-layout .main-container .events-content .inmode-event .top-card.left {
+    left: 0;
     border-radius: 13px 0 13px 0;
 }
 
-.events-layout .main-container .events-content .eseminar {
+.events-layout .main-container .events-content .inmode-event .top-card.right {
+    right: 0;
+    border-radius: 0 13px 0 13px;
+}
+
+.events-layout .main-container .events-content .inmode-event {
     display: inline-flex;
 }
 
-.events-layout .main-container .events-content .eseminar .descr-part ,
-.events-layout .main-container .events-content .eseminar .img-part {
+.events-layout .main-container .events-content .inmode-event.has_card .descr-part ,
+.events-layout .main-container .events-content .inmode-event.has_card .img-part {
     position: relative;
     margin-top: 75px;
 }
 
-.events-layout .main-container .events-content .eseminar .descr-part {
+.events-layout .main-container .events-content .inmode-event .descr-part.left {
     order: 1;
 }
 
-.events-layout .main-container .events-content .eseminar .img-part {
+.events-layout .main-container .events-content .inmode-event .descr-part.right {
     order: 2;
+}
+
+.events-layout .main-container .events-content .inmode-event .img-part.right {
+    order: 2;
+}
+
+.events-layout .main-container .events-content .inmode-event .img-part.left {
+    order: 1;
 }
 
 @media (max-width: 759px) {
 
-    .events-layout .main-container .events-content .eseminar {
+    .events-layout .main-container .events-content .inmode-event {
         display: flex;
         flex-direction: column;
     }
 
-    .events-layout .main-container .events-content .eseminar .descr-part {
+    .events-layout .main-container .events-content .inmode-event .descr-part {
         order: 2;
         margin-top: 20px;
     }
 
-    .events-layout .main-container .events-content .eseminar .img-part {
+    .events-layout .main-container .events-content .inmode-event .img-part {
         margin-top: 75px;
         order: 1;
     }

@@ -39,14 +39,13 @@ const TreatmentProducts = ({ datas }) => {
                                 <div className="treatment-list">
                                     {bloc.RelatedAddonTreatment.map((treat, key_treat) => {
                                         if(treat.treatment.Name == datas.treatment) {
-                                            console.log(treat);
                                             return (
                                                 <div className="treat-elem" key={key_treat}>
                                                     <div className="addon text">{treat.addon.Name}</div>
                                                     <div className="treat text">
                                                         {treat.short.map((treat_elem, key_treat_elem) => {
                                                             return (
-                                                                <span>{treat_elem.texte}</span>
+                                                                <span key={key_treat_elem}>{treat_elem.texte}</span>
                                                             );
                                                         })}
                                                     </div>

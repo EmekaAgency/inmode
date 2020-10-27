@@ -27,13 +27,25 @@ const Footer = ({  }) => {
             mail: file(relativePath: { eq: "icons/icomoon/svg/391-mail5.svg"}) {
                 publicURL
             }
+            bg_pattern: file(relativePath: { eq: "footer-bg-pattern.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                        srcSetWebp
+                    }
+                }
+            }
         }
     `);
 
     const menus = ['address', 'phone', 'mail'];;
 
     return (
-        <footer>
+        <footer
+            style={{
+                backgroundImage: "url(" + icons.bg_pattern.childImageSharp.fluid.srcWebp +")"
+            }}
+        >
             <div className="footer-content container">
                 <div className="footer-logo-infos-part">
                     <div className="footer-infos logo">

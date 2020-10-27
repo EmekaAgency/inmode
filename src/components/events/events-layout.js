@@ -7,8 +7,9 @@ import Workshop from "./workshop";
 
 import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
 import { useWindowSize } from "../../functions/window-size";
+import InmodeEvent from "./event";
 
-const EventsLayout = ({ children, current_page, events }) => {
+const EventsLayout = ({ children, current_page, upcoming_events = {}, past_events = {} }) => {
 
     const sortBy = (function(){
         if (typeof Object.defineProperty === 'function'){
@@ -125,22 +126,18 @@ const EventsLayout = ({ children, current_page, events }) => {
                     </div>
                 </div>
                 <div className="events-content">
-                    {events.length && events.forEach((event, key) => {
-                        if(event.type == "congres") {
-                            return (
-                                <Congres key={key} event={event}/>
-                            );
-                        }
-                        if(event.type == "workshop") {
-                            return (
-                                <Workshop key={key} event={event}/>
-                            );
-                        }
-                        if(event.type == "webinar") {
-                            return (
-                                <Webinar key={key} event={event}/>
-                            );
-                        }
+                    {/* {upcoming_events.length > 0 && <div className="time-section-title">Événements à venir</div>} */}
+                    {upcoming_events.length > 0 && upcoming_events.map((event, key) => {
+                        return (
+                            <InmodeEvent key={key} event={event} prop_key={key} current_page={current_page}/>
+                        )
+                    })}
+                    {/* {upcoming_events.length > 0 && past_events.length > 0 && <hr/>} */}
+                    {/* {past_events.length > 0 && <div className="time-section-title">Événements passés</div>} */}
+                    {past_events.length > 0 && past_events.map((event, key) => {
+                        return (
+                            <InmodeEvent key={key} event={event} prop_key={key + upcoming_events.length} current_page={current_page}/>
+                        )
                     })}
                 </div>
             </div>
