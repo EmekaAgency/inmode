@@ -72,7 +72,7 @@ const ContactForm = ({ from }) => {
                 </div>
                 <div className="field">
                     <label htmlFor="company">Société</label>
-                    <input type="text" name="company" required/>
+                    <input type="text" name="company"/>
                 </div>
                 <div className="field">
                     <label htmlFor="speciality">Sélectionnez un sujet</label>
@@ -93,6 +93,14 @@ const ContactForm = ({ from }) => {
                 <div className="field">
                     <label htmlFor="phone_number">Téléphone</label>
                     <input type="tel" name="phone_number" required/>
+                </div>
+                <div className="field">
+                    <label htmlFor="address">Adresse</label>
+                    <input type="text" name="address" required/>
+                </div>
+                <div className="field">
+                    <label htmlFor="city">Ville</label>
+                    <input type="text" name="city" required/>
                 </div>
                 <div className="field">
                     <label htmlFor="zip">Code postal</label>

@@ -10,6 +10,7 @@ import MenuTitleButton from './menu/title-button';
 import MenuContentText from './menu/content-text';
 import MenuContentImage from './menu/content-image';
 import MenuContentButton from './menu/content-button';
+import MenuContentCard from './menu/content-card';
 import MenuSideMenuText from './menu/side_menu-text';
 import PropTypes from 'prop-types';
 
@@ -84,14 +85,14 @@ const Menu = ({menu, prop_key, openOnClick, parent}) => {
             </li>
         );
     }
-    // else if(menu.variant === CONTENT && menu.type === CARD) {
+    else if(menu.variant === CONTENT && menu.type === CARD) {
     //    console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type content-card`);
-    //     return (
-    //         <li key={prop_key}>
-    //             <MenuContentCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>
-    //         </li>
-    //    );
-    // }
+        return (
+            <li key={prop_key}>
+                <MenuContentCard key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>
+            </li>
+       );
+    }
     else if(menu.variant === DK_TITLE && menu.type === TEXT) {
        // console.log(`Le menu id : ${menu.mysqlId} nommé ${menu.name} est de type dk-title-text`);
         return (<MenuDKTitleText key={prop_key} prop_key={prop_key} menu={menu} openOnClick={openOnClick}/>);

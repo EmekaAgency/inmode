@@ -1,6 +1,5 @@
-import React from "react"
+import React from "react";
 import Flickity from "react-flickity-component";
-import { format_title } from "../../functions/format_title";
 import ClinicalStudy from "../clinical-study";
 import Slider from "../slider";
 
@@ -18,7 +17,7 @@ const ProductClinicalStudies = ({ datas }) => {
         wrapAround: true
     });
 
-    if(!datas || datas.length == 0) {
+    if(!datas || datas.length === 0) {
         return false;
     }
 
@@ -28,7 +27,7 @@ const ProductClinicalStudies = ({ datas }) => {
                 études cliniques
             </div>
             <div className="clinical-studies-slider">
-                {datas.length == 1 ?
+                {datas.length === 1 ?
                     <ClinicalStudy study={datas[0]}/>
                     :
                     <Flickity

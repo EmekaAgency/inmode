@@ -3,16 +3,20 @@ import React from "react"
 
 const PrivacyPolicy = () => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             privacy_icon: file(relativePath: {eq: "privacy-icon.svg"}) {
                 publicURL
             }
             privacy_c: file(relativePath: {eq: "privacy-c.png"}) {
-                publicURL
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                    }
+                }
             }
         }
-    `);
+    `));
 
     const [open, setOpen] = React.useState(false);
     // const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
@@ -37,7 +41,7 @@ const PrivacyPolicy = () => {
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
             <button className="open-button" onClick={(e) => {process_cookies(e);}}>
                 <img className="main" src={icons.privacy_icon.publicURL} alt="privacy-triangle"/>
-                <img className="content" src={icons.privacy_c.publicURL} alt="privacy-icon"/>
+                <img className="content" src={icons.privacy_c.childImageSharp.fluid.srcWebp} alt="privacy-icon"/>
             </button>
             <div className="panel cookies transition custom-scrollbar">
                 <div className="cookies-our-use">

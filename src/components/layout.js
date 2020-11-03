@@ -26,7 +26,6 @@ const Layout = ({ children }) => {
 
   return (
     <MenusProvider>
-      {/* <CartProvider> */}
         <Header/>
         <ProductsProvider>
           <main id="main">
@@ -38,8 +37,6 @@ const Layout = ({ children }) => {
         <PrivacyPolicy />
         <ContactUs/>
         <Footer/>
-        {/* <link href="http://mozilla.github.io/foundation-icons/assets/foundation-icons.css" type="text/css" rel="stylesheet"></link> */}
-      {/* </CartProvider> */}
     </MenusProvider>
   )
 }

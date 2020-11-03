@@ -46,7 +46,7 @@ const ShopProduct2 = ({ reference, special }) => {
                     cart.toggle_open_cart();
                 }}
             >
-                Commander
+                Ajouter au panier
             </div>
         </div>
     );

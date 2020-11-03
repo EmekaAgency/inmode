@@ -1,5 +1,4 @@
 import React from "react";
-import { get_img_path } from "../../functions/get_images";
 
 const Webinar = ({ event = {} }) => {
 

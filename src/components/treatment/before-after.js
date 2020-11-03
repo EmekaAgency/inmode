@@ -15,7 +15,7 @@ const TreatmentBeforeAfter = ({ datas }) => {
         wrapAround: true,
     });
 
-    if(datas.length == 0) {
+    if(datas.length === 0) {
         return false;
     }
 

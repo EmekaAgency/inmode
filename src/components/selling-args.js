@@ -1,10 +1,9 @@
 import React from "react"
-import { get_img_path } from "../functions/get_images";
 import { graphql, useStaticQuery } from "gatsby";
 
 const SellingArgs = ({ datas }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
                 childImageSharp {
@@ -14,9 +13,9 @@ const SellingArgs = ({ datas }) => {
                 }
             }
         }
-    `);
+    `));
     
-    if(!datas || datas.length == 0) {
+    if(!datas || datas.length === 0) {
         return false;
     }
 

@@ -9,45 +9,46 @@ import { process_menu_datas } from '../../functions/process_menu_datas';
 const _TYPES = ['text', 'image', 'button', 'card'];
 const _VARIANTS = ['single', 'title', 'content', 'dk_title', 'side_menu'];
 
+// allMysqlHeaderTop {
+//     nodes {
+//         variant
+//         url
+//         under
+//         type
+//         position
+//         name
+//         mysqlId
+//         container
+//     }
+// }
+// allMysqlHeaderBottom {
+//     nodes {
+//         variant
+//         url
+//         under
+//         type
+//         position
+//         name
+//         mysqlId
+//         container
+//     }
+// }
+// allMysqlFooter {
+//     nodes {
+//         variant
+//         url
+//         under
+//         type
+//         position
+//         name
+//         mysqlId
+//         container
+//     }
+// }
+
 const MenusProvider = ({ requested = "", children }) => {
-    const datas = useStaticQuery(graphql`
+    const [datas] = React.useState(useStaticQuery(graphql`
         {
-            allMysqlHeaderTop {
-                nodes {
-                    variant
-                    url
-                    under
-                    type
-                    position
-                    name
-                    mysqlId
-                    container
-                }
-            }
-            allMysqlHeaderBottom {
-                nodes {
-                    variant
-                    url
-                    under
-                    type
-                    position
-                    name
-                    mysqlId
-                    container
-                }
-            }
-            allMysqlFooter {
-                nodes {
-                    variant
-                    url
-                    under
-                    type
-                    position
-                    name
-                    mysqlId
-                    container
-                }
-            }
             header_top: allStrapiMenu(filter: {container: {eq: "header_top"}}) {
                 nodes {
                     strapiId
@@ -191,12 +192,6 @@ const MenusProvider = ({ requested = "", children }) => {
                 social {
                     icon {
                         publicURL
-                        childImageSharp {
-                            fluid {
-                                srcWebp
-                                srcSetWebp
-                            }
-                        }
                     }
                     name
                     url
@@ -234,7 +229,7 @@ const MenusProvider = ({ requested = "", children }) => {
                 }
             }
         }
-    `);
+    `));
 
     const array_to_object = (_array) => {
         if(!_array) {
@@ -259,7 +254,7 @@ const MenusProvider = ({ requested = "", children }) => {
                         'id': menu.id || menu.strapiId,
                         'parent': elem
                     };
-                })
+                });
                 recursive_process(array_to_object(_object[elem].menus, main));
             }
             if(_object[elem].products.length) {
@@ -313,9 +308,10 @@ const MenusProvider = ({ requested = "", children }) => {
     const resolve_dependance = (_object, main) => {
         Object.keys(_object).map((menu) => {
             if(_object[menu].parent_menu) {
-                _object[menu].menus.map((_elem) => {
+                _object[menu].menus.map((_elem, key) => {
                     if(main[_elem.id || _elem.strapiId] && main[_elem.id || _elem.strapiId].title === _elem.title) {
-                        _elem.menus = main[_elem.id || _elem.strapiId].menus;
+                        _object[menu].menus[key] = {..._elem, ...main[_elem.id || _elem.strapiId]};
+                        // _elem = {..._elem, ...main[_elem.id || _elem.strapiId].menus};
                     }
                 });
             }

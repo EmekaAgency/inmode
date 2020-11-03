@@ -13,7 +13,7 @@ export const process_products = (products : Array<any> = [], matching : Array<an
         if(prods[key].type === 0) {
             return {...prods[key], ...{
                 'under': Object.keys(matchs).map((match_key) => {
-                    if(matchs[match_key].product_id == prods[key].mysqlId) {
+                    if(matchs[match_key].product_id === prods[key].mysqlId) {
                         return prods[matchs[match_key].addon_id];
                     }
                     return false;

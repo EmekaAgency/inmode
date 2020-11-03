@@ -5,19 +5,13 @@ import { useCart } from "./contexts/cart-provider";
 
 const CartPurchase = ({  }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             cart_basket: file(relativePath: {eq: "icons/cart_basket.svg"}) {
                 publicURL
             }
             close: file(relativePath: {eq: "icons/close-white.webp"}) {
                 publicURL
-                childImageSharp {
-                    fluid {
-                        srcSet
-                        srcSetWebp
-                    }
-                }
             }
             rmv_init: file(relativePath: {eq: "icons/rmv-article-init.svg"}) {
                 publicURL
@@ -26,7 +20,7 @@ const CartPurchase = ({  }) => {
                 publicURL
             }
         }
-    `)
+    `));
 
     const cart = useContext(CartContext);
 
@@ -39,12 +33,13 @@ const CartPurchase = ({  }) => {
                     className="cart-close"
                     onClick={(e) => {
                         e.preventDefault();
+                        setFormOpened(false);
                         cart.toggle_open_cart();
                     }}
                 >
                     <img
-                        src={icons.close.publicURL || icons.close.childImageSharp.fluid.srcWebp}
-                        srcSet={icons.close.publicURL || icons.close.childImageSharp.fluid.srcSetWebp}
+                        src={icons.close.publicURL}
+                        srcSet={icons.close.publicURL}
                     />
                 </div>
                 <div className="cart-head">
@@ -104,8 +99,14 @@ const CartPurchase = ({  }) => {
                     })}
                 </div>
                 <div className="cart-final">
+                    <div className="cart-discount">
+                        <div className="text">Livraison{cart.total() * 1.2 < 500 ? '' : ' gratuite'}</div>
+                        {cart.total() * 1.2 < 500 ? <div className="price">
+                            {cart.total() == 0 ? (0).toFixed(2) : (10).toFixed(2)}
+                        </div>: null }
+                    </div>
                     <div className="cart-sub-total">
-                        <div className="text">sous total</div>
+                        <div className="text">sous total (HT)</div>
                         <div className="price">
                             {cart.total().toFixed(2)}
                         </div>
@@ -119,7 +120,7 @@ const CartPurchase = ({  }) => {
                     <div className="cart-total">
                         <div className="text">total ttc</div>
                         <div className="price">
-                            {(cart.total() * 1.2).toFixed(2)}
+                            {((cart.total() * 1.2) + (cart.total() * 1.2 < 500 ? 10 : 0)).toFixed(2)}
                         </div>
                     </div>
                     <div
@@ -129,7 +130,7 @@ const CartPurchase = ({  }) => {
                             setFormOpened(!formOpened);
                         }}
                     >
-                        Valider
+                        Acheter
                     </div>
                 </div>
             </div>
@@ -140,26 +141,30 @@ const CartPurchase = ({  }) => {
                         className="form-close"
                         onClick={(e) => {
                             e.preventDefault();
-                            setFormOpened(!formOpened);
+                            setFormOpened(false);
                         }}
                     >
                         <img
-                            src={icons.close.publicURL || icons.close.childImageSharp.fluid.srcWebp}
-                            srcSet={icons.close.publicURL || icons.close.childImageSharp.fluid.srcSetWebp}
+                            src={icons.close.publicURL}
+                            srcSet={icons.close.publicURL}
                         />
                     </div>
                     informations de facturation
                     <hr/>
                 </div>
                 <form className="neumorphic" onSubmit={(e) => {e.preventDefault();}}>
-                    <input name="nom" placeholder="" type="text" required placeholder="Nom"/>
-                    <input name="prénom" placeholder="" type="text" required placeholder="Prénom"/>
+                    <input name="name" placeholder="" type="text" required placeholder="Nom"/>
+                    <input name="society" placeholder="" type="text" placeholder="Société"/>
                     <textarea name="adresse1" placeholder="" type="text" required placeholder="Adresse" rows="3"></textarea>
                     <input name="zip" placeholder="" type="text" required placeholder="Code postal"/>
                     <input name="city" placeholder="" type="text" required placeholder="Ville"/>
                     <input name="phone" placeholder="" type="tel" required placeholder="Téléphone"/>
                     <input name="mail" placeholder="" type="email" required placeholder="Mail"/>
-                    <input name="valider" placeholder="" type="submit"/>
+                    <input id="facture" name="facture" value="facture" type="checkbox"/>
+                    <label htmlFor="facture">
+                        Adresse de livraison différente
+                    </label>
+                    <button type="submit">Passer la commande</button>
                 </form>
             </div>
         </>

@@ -1,11 +1,9 @@
 import React from "react";
-import { get_img_path } from "../functions/get_images";
-import Img from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby";
 
 const GenericDetails = ({ datas }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
                 childImageSharp {
@@ -15,19 +13,12 @@ const GenericDetails = ({ datas }) => {
                 }
             }
         }
-    `);
+    `));
 
     return (
         <div id="what-is" className="details">
             <div className="what-is transition">
                 <div className="details-img transition">
-                    {/* <Img
-                        fluid={datas.what_is.picture.childImageSharp.fluid}
-                        fadeIn={true}
-                        style={{position: 'unset'}}
-                        imgStyle={{objectFit: 'contain'}}
-                        durationFadeIn={100}
-                    /> */}
                     <img
                         src={datas.what_is.picture.childImageSharp.fluid.srcWebp}
                         srcSet={datas.what_is.picture.childImageSharp.fluid.srcSetWebp}

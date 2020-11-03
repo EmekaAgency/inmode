@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from "gatsby";
 import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_opened';
-import { get_img_path } from '../../functions/get_images';
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 import Menu from '../menu';

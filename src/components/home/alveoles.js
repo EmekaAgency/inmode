@@ -1,10 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import { get_img_path } from "../../functions/get_images";
 
 const Alveoles = () => {
 
-    const images = useStaticQuery(graphql`
+    const [images] = React.useState(useStaticQuery(graphql`
         {
             image_1: file(relativePath: {eq: "home/alveole-1.jpg"}) {
                 childImageSharp {
@@ -47,7 +46,7 @@ const Alveoles = () => {
                 }
             }
         }
-    `);
+    `));
 
     const alveoles = (size) => {
         let temp = [];

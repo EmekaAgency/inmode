@@ -55,7 +55,7 @@ import { format_string } from "./format_string";
 // TODO Refaire en Gatsby pour le rendu non client
 export const get_img_path = (path = "", print = false) => {
     var source_path = typeof window !== 'undefined' ? window.location.origin : '';
-    if(typeof path == "string"){
+    if(typeof path === "string"){
         return source_path + '/icons/' + format_string(path, true, false, print);
     }
     return "";
@@ -69,7 +69,7 @@ export const get_avatar_path = (id = null) => {
     var source_path = typeof window !== 'undefined' ? window.location.href : '';
     var avatar_path = "images/profiles/avatar/";
     var default_avatar_path = "defaut_avatar.png";
-    if(typeof id == "string" || typeof id == "number"){
+    if(typeof id === "string" || typeof id === "number"){
         // TODO id permet de trouver le id_path par hash
         // return source_path + avatar_path + id_path;
         return source_path + avatar_path + id;

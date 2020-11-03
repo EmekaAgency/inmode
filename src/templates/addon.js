@@ -27,8 +27,8 @@ const AddonTemplates = ({ data }) => {
                 <AddonNavigation
                     name={datas.Name}
                     exist={{
-                        'before-after': datas.BeforesAfters != [] && datas.BeforesAfters.length > 0,
-                        'studies': datas.ClinicalStudies != [] && datas.ClinicalStudies.length > 0
+                        'before-after': datas.BeforesAfters !== [] && datas.BeforesAfters.length > 0,
+                        'studies': datas.ClinicalStudies !== [] && datas.ClinicalStudies.length > 0
                     }}
                 />
                 <GenericDetails datas={{'list': datas.KeyBenefits, 'what_is': datas.WhatIs, 'list_title': 'key benefits', 'list_icon' : 'key_benefit'}}/>

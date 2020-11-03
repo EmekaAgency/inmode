@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const ContactUs = () => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             piece: file(relativePath: {eq: "contact_us.png"}) {
                 childImageSharp {
@@ -22,7 +22,7 @@ const ContactUs = () => {
                 }
             }
         }
-    `);
+    `));
 
     // TODO enlever bottom 70px et mettre toute la height, puis overflow scroll
 
@@ -55,9 +55,9 @@ const ContactUs = () => {
 
     const resolve_click = (e) => {
         e.preventDefault();
-        // console.log('e.currentTarget.id : ', e.currentTarget.id);
-        // console.log('open : ', open);
-        // console.log('formOpen : ', formOpen);
+        console.log('e.currentTarget.id : ', e.currentTarget.id);
+        console.log('open : ', open);
+        console.log('formOpen : ', formOpen);
         // if(open) {
         //     if(e.currentTarget.id === 'close') {
         //         !formOpen && close_contact();
@@ -111,7 +111,7 @@ const ContactUs = () => {
                     onClick={(e) => {resolve_click(e)}}
                 />
                 <div className="content">
-                    <div id="close" className="close-contact-us" onClick={(e) => {resolve_click(e)}}>
+                    <div id="close" className="close-contact-us transition" onClick={(e) => {resolve_click(e)}}>
                         <img
                             src={icons.close.childImageSharp.fluid.srcWebp}
                             srcSet={icons.close.childImageSharp.fluid.srcSetWebp}

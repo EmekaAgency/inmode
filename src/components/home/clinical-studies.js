@@ -1,10 +1,9 @@
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import { get_img_path } from "../../functions/get_images";
+import { graphql, useStaticQuery } from "gatsby";
 
 const ClinicalStudies = () => {
 
-    const images = useStaticQuery(graphql`
+    const [images] = React.useState(useStaticQuery(graphql`
         {
             back: file(relativePath: {eq: "home/media-bg.jpg"}) {
                 childImageSharp {
@@ -23,7 +22,7 @@ const ClinicalStudies = () => {
                 }
             }
         }
-    `);
+    `));
 
     return (
         <div

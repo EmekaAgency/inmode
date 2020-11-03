@@ -1,17 +1,17 @@
 import React from 'react';
 import Menu from './menu';
-import MenusContext from "./contexts/menus-context"
 import { graphql, useStaticQuery } from 'gatsby';
+import MenusContext from "./contexts/menus-context";
 
 const HeaderMini = ({  }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             close_white: file(relativePath: {eq: "icons/close-white.webp"}) {
                 publicURL
             }
         }
-    `);
+    `));
 
   const [menus_top] = React.useState(React.useContext(MenusContext).header_top);
   const [menus_bottom] = React.useState(React.useContext(MenusContext).header_bottom);

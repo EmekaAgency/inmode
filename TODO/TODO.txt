@@ -127,14 +127,14 @@ pour juste champ changer en input
 
 -fond trop noir -> retravailler logo ou changer background-color header
 
-if(temp[keys[i]].under == 0) {
-    current_pos = single_image_pos == -1 ? temp[keys[i]].position - 1 : temp[keys[i]].position;
+if(temp[keys[i]].under === 0) {
+    current_pos = single_image_pos === -1 ? temp[keys[i]].position - 1 : temp[keys[i]].position;
     if(
-        ['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] == 'IMAGE' &&
-        ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] == 'SINGLE'
+        ['TEXT', 'IMAGE', 'BUTTON'][temp[keys[i]].type - 1] === 'IMAGE' &&
+        ['SINGLE', 'TITLE', 'CONTENT'][temp[keys[i]].variant - 1] === 'SINGLE'
     ) {
         console.log(`We got ${++i} image${i > 1 ? 's' : ''} !`);
-        if(retour[current_pos] == undefined) {
+        if(retour[current_pos] === undefined) {
             console.log(`retour[${current_pos}] is undefined`);
             single_image_pos = current_pos;
             retour[single_image_pos] = {
@@ -158,7 +158,7 @@ if(temp[keys[i]].under == 0) {
         }
     }
     else {
-        if(retour[current_pos] == undefined) {
+        if(retour[current_pos] === undefined) {
             retour[current_pos] = {
                 'name' :temp[keys[i]].name,
                 'url' :temp[keys[i]].url,

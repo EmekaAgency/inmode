@@ -9,7 +9,7 @@ const ShopPage = ({ data }) => {
     
   return (
     <Layout>
-      <SEO title="Shop"/>
+      <SEO title="Produits"/>
         {/* <CartProvider> */}
           <Shop
             products={data.allStrapiShop.group}

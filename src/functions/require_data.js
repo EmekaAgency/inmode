@@ -4,7 +4,7 @@ function buildFormData(formData, data, parentKey) {
         buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
       });
     } else {
-      const value = data == null ? '' : data;
+      const value = data === null ? '' : data;
   
       formData.append(parentKey, value);
     }
@@ -28,7 +28,7 @@ function request(method = 'POST', cors = true, datas = {}) {
         cache: 'default',
     };
 
-    if(method != 'GET' && datas != {}) {
+    if(method !== 'GET' && datas !== {}) {
         params.body = jsonToFormData(datas)
     }
 
@@ -36,14 +36,14 @@ function request(method = 'POST', cors = true, datas = {}) {
 }
 
 function return_local() {
-    if(window == undefined) {
+    if(window === undefined) {
         return false;
     }
     else return window.location.origin;
 }
 
 export const require_menu = function(menu = '') {
-    if(menu == '') {
+    if(menu === '') {
         return {};
     }
     if(!return_local()) {

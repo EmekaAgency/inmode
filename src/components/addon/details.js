@@ -3,7 +3,7 @@ import React from "react"
 
 const AddonDetails = ({ name = "", datas }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
                 childImageSharp {
@@ -13,9 +13,9 @@ const AddonDetails = ({ name = "", datas }) => {
                 }
             }
         }
-    `);
+    `));
     
-    if(!datas || datas.length == 0) {
+    if(!datas || datas.length === 0) {
         return false;
     }
 

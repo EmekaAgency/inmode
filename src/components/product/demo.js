@@ -1,5 +1,4 @@
-import React from "react"
-import Img from "gatsby-image"
+import React from "react";
 
 const ProductDemo = ({ datas }) => {
 
@@ -10,13 +9,6 @@ const ProductDemo = ({ datas }) => {
     return (
         <div id="demo" className="product-demo">
             <div className="picture">
-                {/* <Img
-                    fluid={datas.picture.childImageSharp.fluid}
-                    fadeIn={true}
-                    style={{position: 'unset'}}
-                    imgStyle={{objectFit: 'contain'}}
-                    durationFadeIn={100}
-                /> */}
                 <img
                     src={datas.picture.childImageSharp.fluid.srcWebp}
                     srcSet={datas.picture.childImageSharp.fluid.srcSetWebp}

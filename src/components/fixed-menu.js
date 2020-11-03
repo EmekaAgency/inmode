@@ -1,12 +1,12 @@
 import React from "react"
-import { get_img_path } from "../functions/get_images";
 import Menu from "./menu";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import MenusContext from "./contexts/menus-context"
+import { useCart } from './contexts/cart-provider';
 
 const FixedMenu = ({ customClass }) => {
 
-    const images = useStaticQuery(graphql`
+    const [images] = React.useState(useStaticQuery(graphql`
         {
             logo: file(relativePath: { eq: "header-logo.png"}) {
                 childImageSharp {
@@ -16,8 +16,11 @@ const FixedMenu = ({ customClass }) => {
                     }
                 }
             }
+            cart_basket: file(relativePath: {eq: "icons/cart_basket.svg"}) {
+                publicURL
+            }
         }
-    `);
+    `));
 
     const [menus] = React.useState(React.useContext(MenusContext).header_bottom);
 
@@ -25,7 +28,7 @@ const FixedMenu = ({ customClass }) => {
 
     React.useEffect(_ => {
         const handleScroll = _ => { 
-            if (window.pageYOffset > 150) {
+            if (window.pageYOffset > 150 && window.innerWidth > 999) {
                 setIsVisible(true)
             } else {
                 setIsVisible(false)
@@ -36,6 +39,8 @@ const FixedMenu = ({ customClass }) => {
             window.removeEventListener('scroll', handleScroll)
         }
     }, []);
+
+    const cart = useCart();
 
     return (
         <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible ? 0 : -55, boxShadow: isVisible ? null : 'unset'}}>
@@ -54,6 +59,16 @@ const FixedMenu = ({ customClass }) => {
                             <Menu key={key} prop_key={key} menu={menu} />
                         );
                     })}
+                    {
+                        cart.cart.length > 0 || cart.appeared ?
+                            <img
+                                className="cart"
+                                src={images.cart_basket.publicURL}
+                                onClick={(e) => {cart.toggle_open_cart()}}
+                            />
+                            :
+                            null
+                    }
                 </div>
             </div>
         </div>

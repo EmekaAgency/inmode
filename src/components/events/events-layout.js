@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Congres from "./congres";
-import Webinar from "./webinar";
-import Workshop from "./workshop";
-
 import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
 import { useWindowSize } from "../../functions/window-size";
 import InmodeEvent from "./event";
+import NoEvents from "./no-events";
 
 const EventsLayout = ({ children, current_page, upcoming_events = {}, past_events = {} }) => {
 
@@ -87,7 +84,7 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
             <div className="main-container">
                 <div className="tab-navigation transition">
                     {size.width < accordion_width && tabs.map((tab, key) => {
-                        if(tab.name == current_page) {
+                        if(tab.name === current_page) {
                             return (
                                 <span
                                     id="title-accordion"
@@ -109,10 +106,10 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
                         }}
                     >
                         {tabs.map((tab, key) => {
-                            if(tab.name != current_page || size.width >= accordion_width) {
+                            if(tab.name !== current_page || size.width >= accordion_width) {
                                 return (
                                     <Link
-                                        className={`tab-link${tab.name == current_page ? ' current' : ''}`}
+                                        className={`tab-link${tab.name === current_page ? ' current' : ''}`}
                                         to={tab.url}
                                         // to="#"
                                         // onClick={(e) => {resolveClick(e);}}
@@ -132,6 +129,7 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
                             <InmodeEvent key={key} event={event} prop_key={key} current_page={current_page}/>
                         )
                     })}
+                    {upcoming_events.length == 0 && <NoEvents/>}
                     {/* {upcoming_events.length > 0 && past_events.length > 0 && <hr/>} */}
                     {/* {past_events.length > 0 && <div className="time-section-title">Événements passés</div>} */}
                     {past_events.length > 0 && past_events.map((event, key) => {

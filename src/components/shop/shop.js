@@ -22,12 +22,12 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     let list = document.getElementsByClassName(classname);
     Object.keys(list).map(elem => {
       if(remove) {
-        if(list[elem].value == value && list[elem].checked == true) {
+        if(list[elem].value === value && list[elem].checked === true) {
           list[elem].checked = false;
         }
       }
       else {
-        if(list[elem].value == value && list[elem].checked == false) {
+        if(list[elem].value === value && list[elem].checked === false) {
           list[elem].checked = true;
         }
       }
@@ -44,13 +44,13 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     else {
       resolve_checked(e.currentTarget.value, true);
       temp = temp.map(tag => {
-        if(tag != e.currentTarget.value){
+        if(tag !== e.currentTarget.value){
           return tag;
         }
         return null;
       }).filter(tag => tag) || [];
     }
-    if(temp == [] || temp.length == 0) {
+    if(temp === [] || temp.length === 0) {
       resolve_checked('cure-choice', false, 'cure-choice-all');
     }
     setTags(temp);
@@ -95,7 +95,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     }
     else {
       temp = temp.map(tech => {
-        if(tech != e.currentTarget.value){
+        if(tech !== e.currentTarget.value){
           return tech;
         }
         return null;
@@ -114,7 +114,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     }
     else {
       temp = temp.map((tag) => {
-        if(e.currentTarget.dataset.value == tag) {
+        if(e.currentTarget.dataset.value === tag) {
           return false;
         }
         return tag;
@@ -126,7 +126,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
   return (
     <div className={`shopping-menu main-container ${shop_card}`}>
       <div className="menu">
-         {shop_card == "workstation" && <WorkstationMenu
+         {shop_card === "workstation" && <WorkstationMenu
           tag_families={tag_families}
           technologies={technologies}
           allResolve={allResolve}
@@ -134,23 +134,23 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
           checkbox_resolve_checked_selector={checkbox_resolve_checked_selector}
           resolve_technology={resolve_technology}
         />}
-         {shop_card == "shop" && <ShopMenu products={products} filter={filter}/>}
+         {shop_card === "shop" && <ShopMenu products={products} filter={filter}/>}
       </div>
       <div className={`${shop_card}-products${special ? " special" : ""}`}>
         {/* ///////////////////////////////////////// */}
-        {shop_card == "workstation" && products.map((product, key) => {
+        {shop_card === "workstation" && products.map((product, key) => {
           // console.log(product.Tags.map(tag => {return tag.tag;}));
           // console.log(tags);
           let filtered_tag = [];
           let filtered_tech = [];
-          if(shop_card == 'workstation') {
+          if(shop_card === 'workstation') {
             filtered_tag = tags.filter(value => product.Tags.map(tag => {return tag.tag;}).includes(value));
             filtered_tech = technology.filter(value => product.Addons.map(tech => {return tech.Name;}).includes(value));
             filtered_tag.length > 0 && console.log(`${product.Name} has tags`);
             filtered_tech.length > 0 && console.log(`${product.Name} has tech`);
           }
           if(
-            (tags == [] || tags.length == 0) && (technology == [] || technology.length == 0)
+            (tags === [] || tags.length === 0) && (technology === [] || technology.length === 0)
             ||
             filtered_tag.length > 0 || filtered_tech.length > 0
             ) {
@@ -166,8 +166,8 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
             }
           })}
           {/* ///////////////////////////////////////// */}
-          {shop_card == "shop" && products.map((group, group_key) => {
-            if(tags.length == 0 || tags.indexOf(group.fieldValue) >= 0) {
+          {shop_card === "shop" && products.map((group, group_key) => {
+            if(tags.length === 0 || tags.indexOf(group.fieldValue) >= 0) {
               return (
                 <div key={group_key} className="shop-addon">
                   <div className="addon-name">{group.fieldValue}</div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { get_img_path } from "../functions/get_images";
 import { format_string } from '../functions/format_string';
 import MenusContext from "./contexts/menus-context"
 import { graphql, useStaticQuery } from 'gatsby';
@@ -8,7 +7,7 @@ const Footer = ({  }) => {
 
     const [footer] = React.useState(React.useContext(MenusContext).footer);
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             logo: file(relativePath: { eq: "footer-logo.png"}) {
                 childImageSharp {
@@ -36,7 +35,7 @@ const Footer = ({  }) => {
                 }
             }
         }
-    `);
+    `));
 
     const menus = ['address', 'phone', 'mail'];;
 
@@ -76,7 +75,7 @@ const Footer = ({  }) => {
                             <div
                                 key={key}
                                 className="footer-social-ico background-image"
-                                style={{backgroundImage: 'url('+ menu.icon.publicURL || menu.icon.childImageSharp.fluid.srcWebp +')'}}
+                                style={{backgroundImage: 'url('+ menu.icon.publicURL +')'}}
                             >
                                 <a className="zone-link" href={menu.url || '#'}></a>
                             </div>

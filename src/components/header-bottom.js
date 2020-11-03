@@ -6,13 +6,13 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const HeaderBottom = ({  }) => {
 
-    const icon = useStaticQuery(graphql`
+    const [icon] = React.useState(useStaticQuery(graphql`
         {
             cart_basket: file(relativePath: {eq: "icons/cart_basket.svg"}) {
                 publicURL
             }
         }
-    `);
+    `));
 
     const [menus] = React.useState(React.useContext(MenusContext).header_bottom);
 
@@ -24,7 +24,7 @@ const HeaderBottom = ({  }) => {
                 return (<Menu key={key} prop_key={key} menu={menu}/>);
             })}
             {
-                cart.cart.length > 0 ?
+                cart.cart.length > 0 || cart.appeared ?
                     <img
                         className="cart"
                         src={icon.cart_basket.publicURL}

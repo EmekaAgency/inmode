@@ -16,6 +16,8 @@ const CartProvider = ({ requested = "", children }) => {
         'unite': ['unité', 'unités']
     };
 
+    const [appeared, setAppeared] = React.useState(false);
+
     const [articles] = React.useState(
         Object.fromEntries(
             useStaticQuery(graphql`
@@ -46,7 +48,7 @@ const CartProvider = ({ requested = "", children }) => {
                     {
                         ...article,
                         'pack_name': (function() {
-                            return `${article.pack_size} ${name_table[article.pack_type][article.pack_size == 1 ? 0 : 1]}`;
+                            return `${article.pack_size} ${name_table[article.pack_type][article.pack_size === 1 ? 0 : 1]}`;
                         })
                     }]
             })
@@ -60,7 +62,7 @@ const CartProvider = ({ requested = "", children }) => {
             'pack_size': articles[ref].pack_size,
             'type': articles[ref].pack_type,
             'pack_name': (function() {
-                return `${qnt * this.pack_size} ${name_table[this.pack_type][qnt * this.pack_size == 1 ? 0 : 1]}`;
+                return `${qnt * this.pack_size} ${name_table[this.pack_type][qnt * this.pack_size === 1 ? 0 : 1]}`;
             }),
             'add': (function(qnt) {
                 this.quantity+=qnt;
@@ -72,7 +74,7 @@ const CartProvider = ({ requested = "", children }) => {
                 this.quantity <= qnt && !process && this.add(0 - this.quantity);
                 return this;
             }),
-            'is_ref': (function(ref) {return ref == this.reference;}),
+            'is_ref': (function(ref) {return ref === this.reference;}),
             'price': articles[ref].price,
             'discount': articles[ref].discount || 0,
             'total': (function() {return this.price * this.quantity * (1 + this.discount / 100);}),
@@ -98,13 +100,14 @@ const CartProvider = ({ requested = "", children }) => {
 
     const find_article = (ref) => {
         return cart && cart.length && cart.find(item => {
-            if(ref == item.reference) {
+            if(ref === item.reference) {
                 return item;
             }
         }) || null;
     }
 
     const add_article = (ref, qnt) => {
+        !appeared && setAppeared(true);
         let temp = find_article(ref), process = 0;
         if(temp) {
             let _cart = new Array(...cart);
@@ -131,7 +134,7 @@ const CartProvider = ({ requested = "", children }) => {
     }
 
     const delete_article = (ref) => {
-        if(cart.length == 1) {
+        if(cart.length === 1) {
             setCart([]);
         }
         else if(article_index(ref) >= 0) {
@@ -162,7 +165,8 @@ const CartProvider = ({ requested = "", children }) => {
                 'cart_opened': purchaseOpened,
                 'open_cart': open_purchase,
                 'close_cart': close_purchase,
-                'toggle_open_cart': toggle_open_purchase
+                'toggle_open_cart': toggle_open_purchase,
+                'appeared': appeared
             }}
         >
             {children}

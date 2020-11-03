@@ -60,11 +60,89 @@ CartContext
 VOTIVA
 AG605906A       FormaV Tip                    3 tips     250 €
                 Aviva 2 sensors HP            2 canules  500 € ?
+
+J1 :
+
+5 min ou moins
+
+texte card details largeur                                  //TO DO     //DONE
+icon close contact-us                                       //TO DO     //DONE
+suivez-nous insta fr                                        //TO DO     //DONE
+insta picture insta monde et lien insta                     //TO DO     //DONE
+enlever les vieux events                                    //TO DO     //DONE
+mettre un affichage no event                                //TO DO     //DONE
+région avec drapeaux                                        //TO DO     //DONE
+adresse et ville sur page contact-us                        //TO DO     //DONE
+société non obligatoire                                     //TO DO     //DONE
+mettre le discount sur le cart                              //TO DO     //DONE
+comment pouvons-nous vous aider remove                      //TO DO     //DONE
+achat - champ société                                       //TO DO     //DONE
+laisser panier s'il a déjà été utilisé                      //TO DO     //DONE
+achat - ligne livraison                                     //TO DO     //REMEMBER
+cart dans fixed menu                                        //TO DO     //NEW - DONE
+cart dans mini menu                                         //TO DO     //NEW - DONE
+back sous-menu fixed menu couleur inmode                    //TO DO     //NEW - DONE
+couleur hover sous-menu                                     //TO DO     //NEW - DONE
+bug cart                                                    //TO DO     //NEW - DONE
+
+J2 :
+
+forma pas détourée                                          //ASK KÉVIN
+images titres evoke                                         //ASK KÉVIN
+
+FAIRE UN ADDON POUR CHAQUE ET REMPLIR LES CHAMPS UTILES À PRODUCT_VIEW
+evoke pièces à main                                         //TO DO     //DONE
+notre histoire (about inmode)                               //TO DO     //DONE
+opportunités professionneles en single-type                 //TO DO     //CANCEL
+achat - adresse de facturation différente                   //TO DO     //
+remove appels mysql                                         //TO DO     //NEW
+div 100vh lorem ipsum taille mobile first contentful pain   //TO DO     //NEW - DONE
+
+cart - adresse différente
+    button devient continuer
+    mobile step 2/2 devient 2/3
+
+J3 :
+
+régler largeur vimeo                                        //
+ajouter cart fixed menu et header-mini                      //TO DO     //DONE
+design tablette                                             //
+design mobile                                               //
+gatsby-purge-css                                            //
+gatsby-cache                                                //
+gatsby-minify                                               //
+responsive                                                  //
+
+Dépend d'eux
+
 module de banque
 produits différents de inmodemd
 erreurs appariement stations / pièces à main / traitements
 
-régler largeur vimeo
-ajouter cart fixed menu et header-mini
-design tablette
-design mobile
+react-window
+react-viewport
+supprimer li
+php mail back
+
+
+IMPORTANT
+
+`npm help config` et mettre key à `true` pour passer les sécurités cloudfare
+
+
+achat - adresse de facturation différente                   //TO DO     //
+cart - adresse différente                                   //TO DO     //
+    button devient continuer                                //TO DO     //
+    mobile step 2/2 devient 2/3                             //TO DO     //
+send mail php                                               //TO DO     //
+régler largeur vimeo                                        //TO DO     //
+design tablette                                             //TO DO     //
+design mobile                                               //TO DO     //
+gatsby-purge-css                                            //TO DO     //
+gatsby-cache                                                //TO DO     //
+gatsby-minify                                               //TO DO     //
+responsive                                                  //TO DO     //
+react-window                                                //TO DO     //
+react-viewport                                              //TO DO     //
+supprimer li                                                //TO DO     //
+php mail back                                               //TO DO     //

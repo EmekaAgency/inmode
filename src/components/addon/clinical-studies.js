@@ -17,7 +17,7 @@ const AddonClinicalStudies = ({ datas }) => {
         wrapAround: true
     });
     
-    if(!datas || datas.length == 0) {
+    if(!datas || datas.length === 0) {
         return false;
     }
 
@@ -27,7 +27,7 @@ const AddonClinicalStudies = ({ datas }) => {
                 études cliniques
             </div>
             <div className="clinical-studies-slider">
-                {datas.length == 1 ?
+                {datas.length === 1 ?
                     <ClinicalStudy study={datas[0]}/>
                     :
                     <Flickity

@@ -2,15 +2,17 @@ import { graphql } from "gatsby";
 import React from "react"
 import EventsLayout from "../../components/events/events-layout";
 import Layout from "../../components/layout"
+import SEO from "../../components/seo";
 
 const CongressPage = ({ data }) =>  {
     return (
         <Layout>
-        <EventsLayout
-            current_page="congrès"
-            upcoming_events={data.incoming.nodes}
-            past_events={data.past.nodes}
-        />
+            <SEO title="Congrès"/>
+            <EventsLayout
+                current_page="congrès"
+                upcoming_events={data.incoming.nodes}
+                // past_events={data.past.nodes}
+            />
         </Layout>
     );
 };

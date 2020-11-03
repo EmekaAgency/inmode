@@ -1,7 +1,5 @@
-import React from "react"
+import React from "react";
 import Flickity from "react-flickity-component";
-import Slider from "../slider";
-import Img from "gatsby-image"
 
 const ProductBeforeAfter = ({ datas }) => {
 
@@ -17,7 +15,7 @@ const ProductBeforeAfter = ({ datas }) => {
         wrapAround: true,
     });
 
-    if(datas.length == 0) {
+    if(datas.length === 0) {
         return false;
     }
 
@@ -31,13 +29,6 @@ const ProductBeforeAfter = ({ datas }) => {
                     datas.map((ba, key) => {
                         return (
                             <div key={key} className="few-ba">
-                                {/* <Img
-                                    fluid={ba.image.childImageSharp.fluid}
-                                    fadeIn={true}
-                                    style={{position: 'unset'}}
-                                    imgStyle={{objectFit: 'contain'}}
-                                    durationFadeIn={100}
-                                /> */}
                                 <img
                                     src={ba.image.childImageSharp.fluid.srcWebp}
                                     srcSet={ba.image.childImageSharp.fluid.srcSetWebp}
@@ -50,23 +41,16 @@ const ProductBeforeAfter = ({ datas }) => {
                     :
                     <Flickity
                         id={`carousel-ba`}
-                        elementType={'div'} // default 'div'
-                        options={flickityOptions} // takes flickity options {}
-                        disableImagesLoaded={false} // default false
-                        reloadOnUpdate={true} // default false
-                        static // default false
+                        elementType={'div'}
+                        options={flickityOptions}
+                        disableImagesLoaded={false}
+                        reloadOnUpdate={true}
+                        static
                         className="slides-before-after transition"
                     >
                         {[...datas, ...datas].map((ba, key) => {
                                 return (
                                     <div key={key} className="ba-slide">
-                                        {/* <Img
-                                            fluid={ba.image.childImageSharp.fluid}
-                                            fadeIn={true}
-                                            style={{position: 'unset'}}
-                                            imgStyle={{objectFit: 'contain'}}
-                                            durationFadeIn={100}
-                                        /> */}
                                         <img
                                             src={ba.image.childImageSharp.fluid.srcWebp}
                                             srcSet={ba.image.childImageSharp.fluid.srcSetWebp}

@@ -1,12 +1,10 @@
-import { graphql, Link, useStaticQuery } from "gatsby";
 import React from "react";
-import { format_string } from "../../functions/format_string";
-import { get_img_path } from "../../functions/get_images";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import ProductsContext from "../contexts/products-context";
 
 const ProductView = ({children, datas}) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             more: file(relativePath: {eq: "icons/add.svg"}) {
                 publicURL
@@ -20,15 +18,17 @@ const ProductView = ({children, datas}) => {
                 }
             }
         }
-    `)
+    `));
 
     const [currency, setCurrency] = React.useState('euro');
 
     const [products] = React.useState(React.useContext(ProductsContext).products);
 
-    if(products.length == 0 || datas.current == -1) {
+    if(products.length === 0 || datas.current === -1) {
         return (<></>);
     }
+
+    console.log(products[datas.current]);
     
 
     return (
@@ -67,6 +67,14 @@ const ProductView = ({children, datas}) => {
                                         alt={addon.Name}/>
                                 </div>
                                 <div className="addon-details transition">
+                                    <div className="title">
+                                        <img
+                                            className="addon-title"
+                                            src={addon.Banner.right_img.childImageSharp.fluid.srcWebp}
+                                            srcSet={addon.Banner.right_img.childImageSharp.fluid.srcSetWebp}
+                                            alt={addon.Name}
+                                        />
+                                    </div>
                                     <p className="description custom-scrollbar">
                                         {addon.WhatIs.TitleText[0].text}
                                     </p>

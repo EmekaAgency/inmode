@@ -1118,7 +1118,7 @@ function drawMouseSpeedDemo() {
   var mdraw = function () {
     var md = new Date();
     var timenow = md.getTime();
-    if (lastmousetime && lastmousetime != timenow) {
+    if (lastmousetime && lastmousetime !== timenow) {
       var pps = Math.round(mousetravel / (timenow - lastmousetime) * 1000);
       mpoints.push(pps);
       if (mpoints.length > mpoints_max)

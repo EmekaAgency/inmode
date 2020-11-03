@@ -17,7 +17,7 @@ const ClinicalStudies = ({ datas }) => {
         wrapAround: true
     });
     
-    if(!datas || datas.length == 0) {
+    if(!datas || datas.length === 0) {
         return false;
     }
 
@@ -26,8 +26,8 @@ const ClinicalStudies = ({ datas }) => {
             <div className="title">
                 études cliniques
             </div>
-            <div className={`clinical-studies-slider${datas.length == 1 ? ' few' : ''}`}>
-                {datas.length == 1 ?
+            <div className={`clinical-studies-slider${datas.length === 1 ? ' few' : ''}`}>
+                {datas.length === 1 ?
                     <ClinicalStudy study={datas[0]}/>
                     :
                     <Flickity

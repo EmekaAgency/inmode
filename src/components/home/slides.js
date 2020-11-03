@@ -6,7 +6,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 
 const Slides = ({from}) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             arrow_right: file(relativePath: { eq: "icons/arrow-right.png"}) {
                 childImageSharp {
@@ -20,7 +20,7 @@ const Slides = ({from}) => {
                 publicURL
             }
         }
-    `);
+    `));
 
     const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
     const [index, setIndex] = React.useState(0);
@@ -165,7 +165,7 @@ const Slides = ({from}) => {
             {current > -1 && slides && slides.map((slide, key) => {
                 return (
                     <div
-                        className={"product-view" + (current > -1 && current == key && open ? " show" : '')}
+                        className={"product-view" + (current > -1 && current === key && open ? " show" : '')}
                         onClick={(e) => {close_view(e);}}
                         key={key}
                     >

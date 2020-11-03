@@ -23,8 +23,8 @@ const ProductTemplates = ({ data }) => {
                 <ProductNavigation
                     name={datas.name}
                     exist={{
-                        'before-after': datas.BeforesAfters != [] && datas.BeforesAfters.length > 0,
-                        'studies': datas.ClinicalStudies != [] && datas.ClinicalStudies.length > 0
+                        'before-after': datas.BeforesAfters !== [] && datas.BeforesAfters.length > 0,
+                        'studies': datas.ClinicalStudies !== [] && datas.ClinicalStudies.length > 0
                     }}
                 />
                 <GenericDetails

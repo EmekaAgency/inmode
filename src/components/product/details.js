@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const ProductDetails = ({ datas }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
         {
             key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
                 childImageSharp {
@@ -13,7 +13,7 @@ const ProductDetails = ({ datas }) => {
                 }
             }
         }
-    `);
+    `));
 
     return (
         <div id="what-is" className="product-details">

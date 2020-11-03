@@ -16,7 +16,7 @@ const AddonBeforeAfter = ({ datas }) => {
         wrapAround: true,
     });
     
-    if(!datas || datas.length == 0) {
+    if(!datas || datas.length === 0) {
         return false;
     }
 

@@ -2,11 +2,13 @@ import { graphql } from "gatsby";
 import React from "react"
 import EventsLayout from "../components/events/events-layout";
 import Layout from "../components/layout"
+import SEO from "../components/seo";
 
 const EventsPage = ({ data }) =>  {
 
     return (
         <Layout>
+            <SEO title="Événements"/>
             <EventsLayout
                 current_page="upcoming events"
                 upcoming_events={data.incoming.nodes}

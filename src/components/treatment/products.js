@@ -8,7 +8,7 @@ const TreatmentProducts = ({ datas }) => {
                 return (
                     <div key={key} className="workstation-container">
                         {bloc.WhatIsProduct.map((product, key_product) => {
-                            if(product.treatment.Name == datas.treatment) {
+                            if(product.treatment.Name === datas.treatment) {
                                 return (
                                     <div key={key_product} className="workstation-details">
                                         <div className="workstation-img">
@@ -38,7 +38,7 @@ const TreatmentProducts = ({ datas }) => {
                                 </div>
                                 <div className="treatment-list">
                                     {bloc.RelatedAddonTreatment.map((treat, key_treat) => {
-                                        if(treat.treatment.Name == datas.treatment) {
+                                        if(treat.treatment.Name === datas.treatment) {
                                             return (
                                                 <div className="treat-elem" key={key_treat}>
                                                     <div className="addon text">{treat.addon.Name}</div>

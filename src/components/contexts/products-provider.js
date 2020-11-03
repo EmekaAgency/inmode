@@ -11,7 +11,7 @@ const ProductsProvider = ({ requested = "", children }) => {
 
 // SELECT * FROM ((product INNER JOIN short_banner ON product.id = short_banner.product) INNER JOIN key_benefits ON key_benefits.product = short_banner.product) INNER JOIN treats ON treats.product = key_benefits.product;
 // graphql-markdown ./path/to/schema.json > schema.md
-    const datas = useStaticQuery(graphql`
+    const [datas] = React.useState(useStaticQuery(graphql`
         {
             allMysqlProducts {
                 nodes {
@@ -121,7 +121,7 @@ const ProductsProvider = ({ requested = "", children }) => {
                 }
             }
         }
-    `);
+    `));
 
     // request_db();
 

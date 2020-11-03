@@ -49,7 +49,8 @@ module.exports = {
           `event`
         ],
         singleTypes: [
-          `footer`
+          `footer`,
+          `about-us`
         ],
         queryLimit: 10000,
       },

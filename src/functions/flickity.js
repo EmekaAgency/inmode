@@ -1286,7 +1286,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('fizzy-ui-utils/utils', [
       'doc-ready/doc-ready',
@@ -1294,7 +1294,7 @@
     ], function (docReady, matchesSelector) {
       return factory(window, docReady, matchesSelector);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -1336,7 +1336,7 @@
 
   var objToString = Object.prototype.toString;
   utils.isArray = function (obj) {
-    return objToString.call(obj) == '[object Array]';
+    return objToString.call(obj) === '[object Array]';
   };
 
   // ----- makeArray ----- //
@@ -1347,7 +1347,7 @@
     if (utils.isArray(obj)) {
       // use object if already an array
       ary = obj;
-    } else if (obj && typeof obj.length == 'number') {
+    } else if (obj && typeof obj.length === 'number') {
       // convert nodeList to array
       for (var i = 0, len = obj.length; i < len; i++) {
         ary.push(obj[i]);
@@ -1377,7 +1377,7 @@
 
   utils.removeFrom = function (ary, obj) {
     var index = utils.indexOf(ary, obj);
-    if (index != -1) {
+    if (index !== -1) {
       ary.splice(index, 1);
     }
   };
@@ -1385,13 +1385,13 @@
   // ----- isElement ----- //
 
   // http://stackoverflow.com/a/384380/182183
-  utils.isElement = (typeof HTMLElement == 'function' || typeof HTMLElement == 'object') ?
+  utils.isElement = (typeof HTMLElement === 'function' || typeof HTMLElement === 'object') ?
     function isElementDOM2(obj) {
       return obj instanceof HTMLElement;
     } :
     function isElementQuirky(obj) {
-      return obj && typeof obj == 'object' &&
-        obj.nodeType == 1 && typeof obj.nodeName == 'string';
+      return obj && typeof obj === 'object' &&
+        obj.nodeType === 1 && typeof obj.nodeName === 'string';
     };
 
   // ----- setText ----- //
@@ -1410,7 +1410,7 @@
   // ----- getParent ----- //
 
   utils.getParent = function (elem, selector) {
-    while (elem != document.body) {
+    while (elem !== document.body) {
       elem = elem.parentNode;
       if (matchesSelector(elem, selector)) {
         return elem;
@@ -1422,7 +1422,7 @@
 
   // use element as selector string
   utils.getQueryElement = function (elem) {
-    if (typeof elem == 'string') {
+    if (typeof elem === 'string') {
       return document.querySelector(elem);
     }
     return elem;
@@ -1551,14 +1551,14 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/cell', [
       'get-size/get-size'
     ], function (getSize) {
       return factory(window, getSize);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -1614,7 +1614,7 @@
   };
 
   Cell.prototype.setDefaultTarget = function () {
-    var marginProperty = this.parent.originSide == 'left' ? 'marginLeft' : 'marginRight';
+    var marginProperty = this.parent.originSide === 'left' ? 'marginLeft' : 'marginRight';
     this.target = this.x + this.size[marginProperty] +
       this.size.width * this.parent.cellAlign;
   };
@@ -1645,7 +1645,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/animate', [
       'get-style-property/get-style-property',
@@ -1653,7 +1653,7 @@
     ], function (getStyleProperty, utils) {
       return factory(window, getStyleProperty, utils);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -1803,7 +1803,7 @@
 
   proto.settle = function (previousX) {
     // keep track of frames where x hasn't moved
-    if (!this.isPointerDown && Math.round(this.x * 100) == Math.round(previousX * 100)) {
+    if (!this.isPointerDown && Math.round(this.x * 100) === Math.round(previousX * 100)) {
       this.restingFrames++;
     }
     // stop animating if resting for 3 or more frames
@@ -1903,7 +1903,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/flickity', [
       'classie/classie',
@@ -1916,7 +1916,7 @@
     ], function (classie, EventEmitter, eventie, getSize, utils, Cell, animatePrototype) {
       return factory(window, classie, EventEmitter, eventie, getSize, utils, Cell, animatePrototype);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -2377,7 +2377,7 @@
     // loop through cells to get the one that matches
     for (var i = 0, len = this.cells.length; i < len; i++) {
       var cell = this.cells[i];
-      if (cell.element == elem) {
+      if (cell.element === elem) {
         return cell;
       }
     }
@@ -2480,7 +2480,7 @@
       document.head.appendChild(style);
       var afterContent = getComputedStyle(document.body, ':after').content;
       // check if able to get :after content
-      supports = afterContent.indexOf('foo') != -1;
+      supports = afterContent.indexOf('foo') !== -1;
       document.head.removeChild(style);
       return supports;
     };
@@ -2495,14 +2495,14 @@
     var supports = supportsConditionalCSS();
     if (!supports) {
       // activate if watch option is fallbackOn
-      var method = watchOption == 'fallbackOn' ? 'activate' : 'deactivate';
+      var method = watchOption === 'fallbackOn' ? 'activate' : 'deactivate';
       this[method]();
       return;
     }
 
     var afterContent = getComputedStyle(this.element, ':after').content;
     // activate if :after { content: 'flickity' }
-    if (afterContent.indexOf('flickity') != -1) {
+    if (afterContent.indexOf('flickity') !== -1) {
       this.activate();
     } else {
       this.deactivate();
@@ -2515,16 +2515,16 @@
   Flickity.prototype.onkeydown = function (event) {
     // only work if element is in focus
     if (!this.options.accessibility ||
-      (document.activeElement && document.activeElement != this.element)) {
+      (document.activeElement && document.activeElement !== this.element)) {
       return;
     }
 
-    if (event.keyCode == 37) {
+    if (event.keyCode === 37) {
       // go left
       var leftMethod = this.options.rightToLeft ? 'next' : 'previous';
       this.uiChange();
       this[leftMethod]();
-    } else if (event.keyCode == 39) {
+    } else if (event.keyCode === 39) {
       // go right
       var rightMethod = this.options.rightToLeft ? 'previous' : 'next';
       this.uiChange();
@@ -2625,7 +2625,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('unipointer/unipointer', [
       'eventEmitter/EventEmitter',
@@ -2633,7 +2633,7 @@
     ], function (EventEmitter, eventie) {
       return factory(window, EventEmitter, eventie);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -2702,7 +2702,7 @@
   Unipointer.prototype.getTouch = function (touches) {
     for (var i = 0, len = touches.length; i < len; i++) {
       var touch = touches[i];
-      if (touch.identifier == this.pointerIdentifier) {
+      if (touch.identifier === this.pointerIdentifier) {
         return touch;
       }
     }
@@ -2803,7 +2803,7 @@
 
   Unipointer.prototype.onMSPointerMove =
     Unipointer.prototype.onpointermove = function (event) {
-      if (event.pointerId == this.pointerIdentifier) {
+      if (event.pointerId === this.pointerIdentifier) {
         this._pointerMove(event, event);
       }
     };
@@ -2839,7 +2839,7 @@
 
   Unipointer.prototype.onMSPointerUp =
     Unipointer.prototype.onpointerup = function (event) {
-      if (event.pointerId == this.pointerIdentifier) {
+      if (event.pointerId === this.pointerIdentifier) {
         this._pointerUp(event, event);
       }
     };
@@ -2885,7 +2885,7 @@
 
   Unipointer.prototype.onMSPointerCancel =
     Unipointer.prototype.onpointercancel = function (event) {
-      if (event.pointerId == this.pointerIdentifier) {
+      if (event.pointerId === this.pointerIdentifier) {
         this._pointerCancel(event, event);
       }
     };
@@ -2942,7 +2942,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('unidragger/unidragger', [
       'eventie/eventie',
@@ -2950,7 +2950,7 @@
     ], function (eventie, Unipointer) {
       return factory(window, eventie, Unipointer);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -2984,9 +2984,9 @@
   }
 
   function getParentLink(elem) {
-    while (elem != document.body) {
+    while (elem !== document.body) {
       elem = elem.parentNode;
-      if (elem.nodeName == 'A') {
+      if (elem.nodeName === 'A') {
         return elem;
       }
     }
@@ -3060,7 +3060,7 @@
   // IE8 only
   var disableImgOndragstart = !isIE8 ? noop : function (handle) {
 
-    if (handle.nodeName == 'IMG') {
+    if (handle.nodeName === 'IMG') {
       handle.ondragstart = noDragStart;
     }
 
@@ -3104,10 +3104,10 @@
 
     var targetNodeName = event.target.nodeName;
     // HACK iOS, allow clicks on buttons, inputs, and links, or children of links
-    var isTouchstartNode = event.type == 'touchstart' &&
+    var isTouchstartNode = event.type === 'touchstart' &&
       (allowTouchstartNodes[targetNodeName] || getParentLink(event.target));
     // do not prevent default on touchstart nodes or <select>
-    if (!isTouchstartNode && targetNodeName != 'SELECT') {
+    if (!isTouchstartNode && targetNodeName !== 'SELECT') {
       preventDefaultEvent(event);
     }
   };
@@ -3227,7 +3227,7 @@
   // triggered after pointer down & up with no/tiny movement
   Unidragger.prototype._staticClick = function (event, pointer) {
     // allow click in text input
-    if (event.target.nodeName == 'INPUT' && event.target.type == 'text') {
+    if (event.target.nodeName === 'INPUT' && event.target.type === 'text') {
       event.target.focus();
     }
     this.staticClick(event, pointer);
@@ -3258,7 +3258,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/drag', [
       'classie/classie',
@@ -3269,7 +3269,7 @@
     ], function (classie, eventie, Flickity, Unidragger, utils) {
       return factory(window, classie, eventie, Flickity, Unidragger, utils);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -3369,7 +3369,7 @@
 
     // kludge to blur focused inputs in dragger
     var focused = document.activeElement;
-    if (focused && focused.blur && focused != this.element) {
+    if (focused && focused.blur && focused !== this.element) {
       focused.blur();
     }
     this.pointerDownFocus(event);
@@ -3494,7 +3494,7 @@
       var restingX = this.getRestingPosition();
       this.isFreeScrolling = -restingX > this.cells[0].target &&
         -restingX < this.getLastCell().target;
-    } else if (!this.options.freeScroll && index == this.selectedIndex) {
+    } else if (!this.options.freeScroll && index === this.selectedIndex) {
       // boost selection if selected index has not changed
       index += this.dragEndBoostSelect();
     }
@@ -3640,14 +3640,14 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('tap-listener/tap-listener', [
       'unipointer/unipointer'
     ], function (Unipointer) {
       return factory(window, Unipointer);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -3735,7 +3735,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/prev-next-button', [
       'eventie/eventie',
@@ -3745,7 +3745,7 @@
     ], function (eventie, Flickity, TapListener, utils) {
       return factory(window, eventie, Flickity, TapListener, utils);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -3784,7 +3784,7 @@
       }
       var div = document.createElement('div');
       div.innerHTML = '<svg/>';
-      supports = (div.firstChild && div.firstChild.namespaceURI) == svgURI;
+      supports = (div.firstChild && div.firstChild.namespaceURI) === svgURI;
       return supports;
     }
     return checkSupport;
@@ -3803,9 +3803,9 @@
   PrevNextButton.prototype._create = function () {
     // properties
     this.isEnabled = true;
-    this.isPrevious = this.direction == -1;
+    this.isPrevious = this.direction === -1;
     var leftDirection = this.parent.options.rightToLeft ? 1 : -1;
-    this.isLeft = this.direction == leftDirection;
+    this.isLeft = this.direction === leftDirection;
 
     var element = this.element = document.createElement('button');
     element.className = 'flickity-prev-next-button';
@@ -3888,7 +3888,7 @@
   PrevNextButton.prototype.onclick = function () {
     // only allow clicks from keyboard
     var focused = document.activeElement;
-    if (focused && focused == this.element) {
+    if (focused && focused === this.element) {
       this.onTap();
     }
   };
@@ -3921,7 +3921,7 @@
     }
     var lastIndex = cells.length ? cells.length - 1 : 0;
     var boundIndex = this.isPrevious ? 0 : lastIndex;
-    var method = this.parent.selectedIndex == boundIndex ? 'disable' : 'enable';
+    var method = this.parent.selectedIndex === boundIndex ? 'disable' : 'enable';
     this[method]();
   };
 
@@ -3974,7 +3974,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/page-dots', [
       'eventie/eventie',
@@ -3984,7 +3984,7 @@
     ], function (eventie, Flickity, TapListener, utils) {
       return factory(window, eventie, Flickity, TapListener, utils);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -4103,7 +4103,7 @@
   PageDots.prototype.onTap = function (instance, event) {
     var target = event.target;
     // only care about dot clicks
-    if (target.nodeName != 'LI') {
+    if (target.nodeName !== 'LI') {
       return;
     }
 
@@ -4160,7 +4160,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/player', [
       'eventEmitter/EventEmitter',
@@ -4169,7 +4169,7 @@
     ], function (EventEmitter, eventie, Flickity) {
       return factory(EventEmitter, eventie, Flickity);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       require('wolfy87-eventemitter'),
@@ -4240,7 +4240,7 @@
     this.tickTime = new Date();
     var time = this.parent.options.autoPlay;
     // default to 3 seconds
-    time = typeof time == 'number' ? time : 3000;
+    time = typeof time === 'number' ? time : 3000;
     var _this = this;
     this.timeout = setTimeout(function () {
       _this.parent.next(true);
@@ -4347,7 +4347,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/add-remove-cell', [
       './flickity',
@@ -4355,7 +4355,7 @@
     ], function (Flickity, utils) {
       return factory(window, Flickity, utils);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -4404,7 +4404,7 @@
     // add cells with document fragment
     var fragment = getCellsFragment(cells);
     // append to slider
-    var isAppend = index == len;
+    var isAppend = index === len;
     if (isAppend) {
       this.slider.appendChild(fragment);
     } else {
@@ -4531,7 +4531,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity/js/index', [
       './flickity',
@@ -4541,7 +4541,7 @@
       './player',
       './add-remove-cell'
     ], factory);
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       require('./flickity'),
@@ -4570,7 +4570,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define('flickity-as-nav-for/as-nav-for', [
       'classie/classie',
@@ -4579,7 +4579,7 @@
     ], function (classie, Flickity, utils) {
       return factory(window, classie, Flickity, utils);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,
@@ -4627,7 +4627,7 @@
     elem = utils.getQueryElement(elem);
     var companion = Flickity.data(elem);
     // stop if no companion or companion is self
-    if (!companion || companion == this) {
+    if (!companion || companion === this) {
       return;
     }
 
@@ -4653,7 +4653,7 @@
     // set nav selected class
     this.removeNavSelectedElement();
     // stop if companion has more cells than this one
-    if (this.selectedIndex != index) {
+    if (this.selectedIndex !== index) {
       return;
     }
     this.navSelectedElement = this.cells[index].element;
@@ -4673,7 +4673,7 @@
   };
 
   Flickity.prototype.onNavStaticClick = function (event, pointer, cellElement, cellIndex) {
-    if (typeof cellIndex == 'number') {
+    if (typeof cellIndex === 'number') {
       this.navCompanion.select(cellIndex);
     }
   };
@@ -5046,7 +5046,7 @@
 
   // universal module definition
 
-  if (typeof define == 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     // AMD
     define([
       'flickity/js/index',
@@ -5054,7 +5054,7 @@
     ], function (Flickity, imagesLoaded) {
       return factory(window, Flickity, imagesLoaded);
     });
-  } else if (typeof exports == 'object') {
+  } else if (typeof exports === 'object') {
     // CommonJS
     module.exports = factory(
       window,

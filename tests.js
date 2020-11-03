@@ -56,7 +56,7 @@ const Component = ({ data }) => {
     const query = React.useState(data.strapiAddonTemplates);
 
     
-    const headerTop = useStaticQuery(graphql`
+    const [headerTop] = React.useState(useStaticQuery(graphql`
         {
             allMysqlHeaderTop {
                 nodes {
@@ -71,7 +71,7 @@ const Component = ({ data }) => {
                 }
             }
         }
-    `).allMysqlHeaderTop.nodes;
+    `).allMysqlHeaderTop.nodes);
 
     return (
         <>

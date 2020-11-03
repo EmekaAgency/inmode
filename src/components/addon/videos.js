@@ -5,13 +5,13 @@ import Slider from "../slider";
 
 const AddonVideos = ({ datas = {} }) => {
 
-    const icons = useStaticQuery(graphql`
+    const [icons] = React.useState(useStaticQuery(graphql`
       {
         close_white: file(relativePath: {eq: "icons/close-white.webp"}) {
           publicURL
         }
       }
-    `);
+    `));
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -26,13 +26,13 @@ const AddonVideos = ({ datas = {} }) => {
         draggable: true
     });
     
-    if(!datas.videos || datas.videos.length == 0) {
+    if(!datas.videos || datas.videos.length === 0) {
         return false;
     }
 
     const resolve_click = (e) => {
       e.preventDefault();
-      if(e.currentTarget.id == "video-iframe" || e.currentTarget.classList.contains('close-pic')) {
+      if(e.currentTarget.id === "video-iframe" || e.currentTarget.classList.contains('close-pic')) {
         document.getElementsByTagName('main')[0].style.zIndex = 'initial';
         document.getElementById('video-iframe').classList.toggle('opened');
         e.currentTarget.innerHTML = "";

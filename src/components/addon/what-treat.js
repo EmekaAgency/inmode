@@ -1,10 +1,8 @@
-import React from "react"
-import { get_img_path } from "../../functions/get_images";
-import ProductsContext from "../contexts/products-context";
+import React from "react";
 
 const AddonWhatTreat = ({ datas }) => {
     
-  if(!datas || datas.length == 0) {
+  if(!datas || datas.length === 0) {
       return false;
   }
 

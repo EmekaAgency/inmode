@@ -1,10 +1,9 @@
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import { get_img_path } from "../../functions/get_images";
+import { graphql, useStaticQuery } from "gatsby";
 
 const FollowInstagram = () => {
 
-    const datas = useStaticQuery(graphql`
+    const [datas] = React.useState(useStaticQuery(graphql`
         {
             allInstaNode(sort: {fields: timestamp, order: DESC}, limit: 4, filter: {username: {eq: "1317505554"}}) {
                 edges {
@@ -23,19 +22,33 @@ const FollowInstagram = () => {
                     }
                 }
             }
+            comments: file(relativePath: {eq: "icons/insta-comments.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                    }
+                }
+            }
+            likes: file(relativePath: {eq: "icons/insta-likes.png"}) {
+                childImageSharp {
+                    fluid {
+                        srcWebp
+                    }
+                }
+            }
         }
-    `).allInstaNode.edges;
+    `));
 
     return (
         <div className="follow-instagram">
             <div className="container">
                 <h2>
-                    <a href="#">
+                    <a href="https://www.instagram.com/inmode.france">
                         Suivez nous sur Instagram
                     </a>
                 </h2>
                 <div className="wrapper">
-                    {datas.map((post, key) => {
+                    {datas.allInstaNode.edges.map((post, key) => {
                         return(
                             <div key={key} className="elem">
                                 <img
@@ -44,6 +57,20 @@ const FollowInstagram = () => {
                                     srcSet={post.node.localFile.childImageSharp.fluid.srcSetWebp}
                                     alt={`insta-${key + 1}`}
                                 />
+                                <div className="stats">
+                                    <div className="stats-comments">
+                                        <img
+                                            src={datas.comments.childImageSharp.fluid.srcWebp}
+                                        />
+                                        <div>{post.node.comments}</div>
+                                    </div>
+                                    <div className="stats-likes">
+                                        <img
+                                            src={datas.likes.childImageSharp.fluid.srcWebp}
+                                        />
+                                        <div>{post.node.likes}</div>
+                                    </div>
+                                </div>
                             </div>
                         );
                     })}

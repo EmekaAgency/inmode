@@ -1,6 +1,5 @@
 import React from "react";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { format_title } from "../../functions/format_title";
 
 const ProductNavigation = ({ name, exist }) => {
 

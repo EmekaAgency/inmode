@@ -21,7 +21,7 @@ const TreatmentTemplates = ({ data }) => {
                 <Divider position="top"/>
                 <TreatmentProducts datas={{'products': datas.products, 'treatment': datas.Name}}/>
                 <TreatmentBeforeAfter datas={datas.BeforesAfters}/>
-                {!datas.ClinicalStudies || datas.ClinicalStudies.length == 0 ? null : <Divider position="bottom"/>}
+                {!datas.ClinicalStudies || datas.ClinicalStudies.length === 0 ? null : <Divider position="bottom"/>}
                 <ClinicalStudies datas={datas.ClinicalStudies}/>
             </Layout>
     );
