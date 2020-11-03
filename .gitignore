@@ -90,5 +90,5 @@ package-lock.json
 # TODO
 
 *.sql
-./public
-./js_old
+.public/
+.js_old/
