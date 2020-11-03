@@ -104,6 +104,14 @@ ol {
     }
 }
 
+*.hidden {
+    display: none!important;
+}
+
+.visible {
+    display: initial;
+}
+
 @font-face {
     font-family: 'raleway';
     src: url("../fonts/raleway/raleway.woff2")
@@ -5497,8 +5505,17 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     top: -5px;
 }
 
+.cart-purchase-form.opened .title span#step-1.click,
+.cart-purchase-form.opened .title span#step-2.click {
+    cursor: pointer;
+}
+
 .cart-purchase-form.opened form.neumorphic {
     padding-top: 50px;
+}
+
+.cart-purchase-form.opened form.neumorphic.other-address {
+    padding-top: 120px;
 }
 
 .cart-purchase-form.opened form.neumorphic input {
@@ -5516,7 +5533,6 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
 
 .cart-purchase-form.opened form.neumorphic label {
     cursor: pointer;
-    padding-bottom: 15px;
     top: 2px;
 }
 
