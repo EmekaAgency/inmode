@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby";
+import { useWindowSize } from "../functions/window-size";
 
 const ContactUs = () => {
 
@@ -29,6 +30,7 @@ const ContactUs = () => {
     const [open, setOpen] = React.useState(false);
     const [formOpen, setFormOpen] = React.useState(false);
     const [msgLength, setMsgLength] = React.useState(0);
+    // const size = useWindowSize();
 
     const max_length = 300;
 
@@ -43,7 +45,8 @@ const ContactUs = () => {
         });
         document.getElementById('contact-form').style.width = '0px';
         document.getElementById('contact-form').style.height = '0px';
-        document.getElementById('contact-form').style.transitionDelay = '0s';
+        // document.getElementById('contact-form').style.transitionDelay = size.width > 480 ? '0s' : '0.5s';
+        document.getElementById('contact-form').classList.remove('custom-scrollbar');
         // document.getElementById('contact-form').style.transform = 'scale(0, 1)';
         // setTimeout(function () {document.getElementById('contact-form').style.display = 'none';}, 300);
     }
@@ -93,7 +96,8 @@ const ContactUs = () => {
         document.getElementById('contact-form').style.width = '580px';
         document.getElementById('contact-form').style.height = window.innerHeight > 480 ? '470px' : window.innerHeight - 130 + 'px';
         // document.getElementById('contact-form').style.transitionDelay = '0.4s';
-        document.getElementById('contact-form').style.transitionDelay = '0s';
+        // document.getElementById('contact-form').style.transitionDelay = '0s';
+        document.getElementById('contact-form').classList.add('custom-scrollbar');
         // document.getElementById('contact-form').style.transform = 'scale(1, 1)';
         setFormOpen(true);
 

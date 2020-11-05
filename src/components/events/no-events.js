@@ -2,7 +2,7 @@ import React from "react";
 
 const NoEvents = ({  }) => {
     return (
-        <div class="no-events">
+        <div className="no-events">
             Il n'y a actuellement aucun événement à venir
         </div>
     );

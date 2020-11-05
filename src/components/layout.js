@@ -33,7 +33,8 @@ const Layout = ({ children }) => {
           </main>
         </ProductsProvider>
         <FixedMenu/>
-        <CartPurchase/>
+        {/* {window == undefined ? null : window.innerHeight < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
+        {window == undefined ? null : window.innerHeight >= 800 && <CartPurchase/>}
         <PrivacyPolicy />
         <ContactUs/>
         <Footer/>

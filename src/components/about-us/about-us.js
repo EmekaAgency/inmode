@@ -17,7 +17,7 @@ const AboutUs = ({ from = "" }) => {
             <div className="container">
                 <div className="title">About InMode</div>
                 <div className="content">
-                    <iframe src={datas.about_video_url} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+                    <iframe title="about-us" src={datas.about_video_url} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
                         
                     </iframe>
                     <div className="txt">
