@@ -214,7 +214,7 @@ const CartPurchase = ({  }) => {
                 </div>
             </div>
             <div id="step-2-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
-                <div className={`title transition unmorphic${otherAddressOpened ? ' opened' : ''}`}>
+                <div className={`title unmorphic${otherAddressOpened ? ' opened' : ''}`}>
                     <div
                         className="form-close unmorphic"
                         onClick={(e) => {
@@ -232,7 +232,7 @@ const CartPurchase = ({  }) => {
                     <hr className="unmorphic"/>
                 </div>
                 {otherAddress &&
-                    <>
+                    <div className="form custom-scrollbar">
                         <input className="required form-field step-2" name="other-name" type="text" required placeholder="Facture - Nom"/>
                         <input className="form-field step-2" name="other-society" type="text" placeholder="Facture - Société"/>
                         <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Facture - Adresse" rows="3"></textarea>
@@ -240,7 +240,7 @@ const CartPurchase = ({  }) => {
                         <input className="required form-field step-2" name="other-city" type="text" required placeholder="Facture - Ville"/>
                         <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Facture - Téléphone"/>
                         <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Facture - Mail"/>
-                    </>
+                    </div>
                 }
             </div>
             <div className="step-1 facture neumorphic">

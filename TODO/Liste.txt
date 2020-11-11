@@ -94,7 +94,7 @@ FAIRE UN ADDON POUR CHAQUE ET REMPLIR LES CHAMPS UTILES À PRODUCT_VIEW
 evoke pièces à main                                         //TO DO     //DONE
 notre histoire (about inmode)                               //TO DO     //DONE
 opportunités professionneles en single-type                 //TO DO     //CANCEL
-achat - adresse de facturation différente                   //TO DO     //
+achat - adresse de facturation différente                   //TO DO     //DONE
 remove appels mysql                                         //TO DO     //NEW
 div 100vh lorem ipsum taille mobile first contentful pain   //TO DO     //NEW - DONE
 
@@ -129,23 +129,56 @@ IMPORTANT
 
 `npm help config` et mettre key à `true` pour passer les sécurités cloudfare
 
+achat - adresse de facturation différente                   //TO DO CLIENT      //DONE
+achat - champ société                                       //TO DO CLIENT      //DONE
+achat - ligne livraison                                     //TO DO CLIENT      //REMEMBER
+achat - adresse de facturation différente                   //TO DO CLIENT      //DONE
+cart - adresse différente                                   //TO DO CLIENT      //DONE
+    button devient continuer                                //TO DO CLIENT      //DONE
+    mobile step 2/2 devient 2/3                             //TO DO US          //
+texte card details largeur                                  //TO DO CLIENT      //DONE
+icon close contact-us                                       //TO DO CLIENT      //DONE
+suivez-nous insta fr                                        //TO DO CLIENT      //DONE
+insta picture insta monde et lien insta                     //TO DO CLIENT      //DONE
+enlever les vieux events                                    //TO DO CLIENT      //DONE
+mettre un affichage no event                                //TO DO CLIENT      //DONE
+région avec drapeaux                                        //TO DO CLIENT      //DONE
+adresse et ville sur page contact-us                        //TO DO CLIENT      //DONE
+société non obligatoire                                     //TO DO CLIENT      //DONE
+mettre le discount sur le cart                              //TO DO CLIENT      //DONE
+comment pouvons-nous vous aider remove                      //TO DO CLIENT      //DONE
+laisser panier s'il a déjà été utilisé                      //TO DO CLIENT      //DONE
+evoke pièces à main                                         //TO DO CLIENT      //DONE
+notre histoire (about inmode)                               //TO DO CLIENT      //DONE
+ajouter cart fixed menu et header-mini                      //TO DO CLIENT      //DONE
+cart dans fixed menu                                        //TO DO US          //NEW - DONE
+cart dans mini menu                                         //TO DO US          //NEW - DONE
+back sous-menu fixed menu couleur inmode                    //TO DO US          //NEW - DONE
+couleur hover sous-menu                                     //TO DO US          //NEW - DONE
+bug cart                                                    //TO DO US          //NEW - DONE
+div 100vh lorem ipsum taille mobile first contentful pain   //TO DO US          //NEW - DONE
+remove appels mysql                                         //TO DO US          //NEW
+opportunités professionnelles en single-type                //TO DO US          //CANCEL
+send mail php                                               //TO DO US          //
+php mail back                                               //TO DO US          //
+régler largeur vimeo                                        //TO DO US          //
+design tablette                                             //TO DO US          //
+design mobile                                               //TO DO US          //
+gatsby-purge-css                                            //TO DO US          //
+gatsby-cache                                                //TO DO US          //
+gatsby-minify                                               //TO DO US          //
+responsive                                                  //TO DO US          //
+react-window                                                //TO DO US          //
+react-viewport                                              //TO DO US          //
+supprimer li                                                //TO DO US          //
 
-achat - adresse de facturation différente                   //TO DO     //
-cart - adresse différente                                   //TO DO     //
-    button devient continuer                                //TO DO     //
-    mobile step 2/2 devient 2/3                             //TO DO     //
-send mail php                                               //TO DO     //
-régler largeur vimeo                                        //TO DO     //
-design tablette                                             //TO DO     //
-design mobile                                               //TO DO     //
-gatsby-purge-css                                            //TO DO     //
-gatsby-cache                                                //TO DO     //
-gatsby-minify                                               //TO DO     //
-responsive                                                  //TO DO     //
-react-window                                                //TO DO     //
-react-viewport                                              //TO DO     //
-supprimer li                                                //TO DO     //
-php mail back                                               //TO DO     //
+module de banque                                            //TO DO THEM        //
+produits différents de inmodemd                             //TO DO THEM        //
+erreurs appariement stations / pièces à main / traitements  //TO DO THEM        //
+Référence Aviva 2 sensors HP                                //TO DO THEM        //
+
+forma pas détourée                                          //ASK KÉVIN CLIENT  //
+images titres evoke                                         //ASK KÉVIN CLIENT  //
 
 Dyneff
 phone       =>      0240163278

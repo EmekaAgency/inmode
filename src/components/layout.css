@@ -119,26 +119,106 @@ ol {
 @font-face {
     font-family: 'raleway';
     src: url("../fonts/raleway/raleway.woff2")
-        /* url("/fonts/raleway/Raleway-Black.ttf"),
-         url("/fonts/raleway/Raleway-BlackItalic.ttf"),
-         url("/fonts/raleway/Raleway-Bold.ttf"),
-         url("/fonts/raleway/Raleway-BoldItalic.ttf"),
-         url("/fonts/raleway/Raleway-ExtraBold.ttf"),
-         url("/fonts/raleway/Raleway-ExtraBoldItalic.ttf"),
-         url("/fonts/raleway/Raleway-ExtraLight.ttf"),
-         url("/fonts/raleway/Raleway-ExtraLightItalic.ttf"),
-         url("/fonts/raleway/Raleway-Italic.ttf"),
-         url("/fonts/raleway/Raleway-Italic-VariableFont_wght.ttf"),
-         url("/fonts/raleway/Raleway-Light.ttf"),
-         url("/fonts/raleway/Raleway-LightItalic.ttf"),
-         url("/fonts/raleway/Raleway-Medium.ttf"),
-         url("/fonts/raleway/Raleway-MediumItalic.ttf"),
-         url("/fonts/raleway/Raleway-Regular.ttf"),
-         url("/fonts/raleway/Raleway-SemiBold.ttf"),
-         url("/fonts/raleway/Raleway-SemiBoldItalic.ttf"),
-         url("/fonts/raleway/Raleway-Thin.ttf"),
-         url("/fonts/raleway/Raleway-ThinItalic.ttf"),
-         url("/fonts/raleway/Raleway-VariableFont_wght.ttf"); */
+}
+
+@font-face {
+    font-family: 'raleway-black';
+    src: url("../fonts/raleway/Raleway-Black.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-blackitalic';
+    src: url("../fonts/raleway/Raleway-BlackItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-bold';
+    src: url("../fonts/raleway/Raleway-Bold.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-bolditalic';
+    src: url("../fonts/raleway/Raleway-BoldItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-extrabold';
+    src: url("../fonts/raleway/Raleway-ExtraBold.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-extrabolditalic';
+    src: url("../fonts/raleway/Raleway-ExtraBoldItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-extralight';
+    src: url("../fonts/raleway/Raleway-ExtraLight.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-extralightitalic';
+    src: url("../fonts/raleway/Raleway-ExtraLightItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-italic';
+    src: url("../fonts/raleway/Raleway-Italic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-italic-variablefont_wght';
+    src: url("../fonts/raleway/Raleway-Italic-VariableFont_wght.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-light';
+    src: url("../fonts/raleway/Raleway-Light.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-lightitalic';
+    src: url("../fonts/raleway/Raleway-LightItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-medium';
+    src: url("../fonts/raleway/Raleway-Medium.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-mediumitalic';
+    src: url("../fonts/raleway/Raleway-MediumItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-regular';
+    src: url("../fonts/raleway/Raleway-Regular.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-semibold';
+    src: url("../fonts/raleway/Raleway-SemiBold.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-semibolditalic';
+    src: url("../fonts/raleway/Raleway-SemiBoldItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-thin';
+    src: url("../fonts/raleway/Raleway-Thin.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-thinitalic';
+    src: url("../fonts/raleway/Raleway-ThinItalic.ttf"),
+}
+
+@font-face {
+    font-family: 'raleway-variablefont_wght';
+    src: url("../fonts/raleway/Raleway-VariableFont_wght.ttf");
 }
 
 @font-face {
@@ -1243,15 +1323,310 @@ main {
     min-height: calc(100vh - (140px + 320px));
 }
 
-.home-div-test {
-    height: 0px;
-    transition: height 0.3s ease-in;
+.home-hero {
+    position: relative;
+    display: block;
+    min-height: 700px;
+    height: calc(100vh - 140px);
+    /* background-color: #091822; */
+    background-color: #59b7b3;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    padding-left: 90px;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.home-hero .hero-left {
+    max-width: calc(48.175% - 5vw);
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 999px) {
+    .home-hero .hero-left {
+        width: 87vw;
+        max-width: unset;
+        margin: 0;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 739px) {
+    .home-hero .hero-left {
+        width: 72vw;
+        max-width: unset;
+        margin: 0;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 709px) {
+    .home-hero .hero-left {
+        width: 75vw;
+        max-width: unset;
+        margin: 0;
+        padding: 30px;
+    }
+}
+
+.home-hero .layout-2 {
+    z-index: 2;
+    height: calc(100vh - 140px);
+    /* top: 0; */
+    /* bottom: 115vh; */
+    width: calc(100vw + 40px)!important;
+    background-color: #59b7b3;
+}
+
+.home-hero .layout-3 {
+    z-index: 3;
+    height: calc(82.2vh - 140px);
+    /* top: 10px; */
+    /* bottom: 110vh; */
+    width: calc(100vw + 260px)!important;
+    background-color: #4a9c99;
+    border-radius: 0 0 100% 0;
+}
+
+.home-hero .layout-4 {
+    z-index: 4;
+    height: calc(79.5vh - 140px);
+    /* top: 20px; */
+    /* bottom: 95vh; */
+    width: calc(100vw + 110px)!important;
+    background-color: #3a8583;
+    border-radius: 0 0 100% 0;
+}
+
+.home-hero .layout-5 {
+    z-index: 5;
+    height: calc(77vh - 140px);
+    /* top: 30px; */
+    width: calc(100vw + 40px)!important;
+    background-color: #fff;
+    border-radius: 0 0 100% 0;
+}
+
+.home-hero .layout-6 {
+    z-index: 6;
+    height: calc(76vh - 140px);
+    /* top: 30px; */
+    width: calc(100vw + 30px)!important;
+    border-radius: 0 0 100% 0%;
+    background-color: #091822;
+}
+
+.home-hero .layout-2,
+.home-hero .layout-3,
+.home-hero .layout-4,
+.home-hero .layout-5,
+.home-hero .layout-6 {
+    transition: border-radius 0.3s ease-in-out;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* height: 120vh; */
+}
+
+.home-hero .layout-2 img,
+.home-hero .layout-3 img,
+.home-hero .layout-4 img,
+.home-hero .layout-5 img {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+@media (max-width: 999px) {
+    .home-hero .layout-2 {
+        height: calc(100vh - 50px);
+    }
+}
+
+@media (max-width: 669px) {
+    .home-hero .layout-2 {
+        border-radius: 0;
+        transition: border-radius 0.2s ease-in-out;
+    }
+
+    .home-hero .layout-3 {
+        border-radius: 0;
+        transition: border-radius 0.2s ease-in-out;
+    }
+
+    .home-hero .layout-4 {
+        border-radius: 0;
+        transition: border-radius 0.2s ease-in-out;
+    }
+
+    .home-hero .layout-5 {
+        border-radius: 0;
+        transition: border-radius 0.2s ease-in-out;
+    }
+
+    .home-hero .layout-6 {
+        border-radius: 0;
+        transition: border-radius 0.2s ease-in-out;
+    }
+
+}
+
+.home-hero .hero-left,
+.home-hero .hero-right {
+    z-index: 7;
+    height: calc(100vh - 140px);
+}
+
+.home-hero .top-text,
+.home-hero .bottom-text {
+    color: #fff;
+}
+
+.home-hero .top-text {
+    font-family: 'raleway-extrabold', sans-serif;
+    font-size: 2.7em;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    line-height: 70px;
+    top: 15%;
+    position: relative;
+    transition: top 0.3s ease-in-out;
+
+}
+
+@media (max-width: 1169px) {
+    .home-hero .top-text {
+        top: 10%;
+        transition: top 0.3s ease-in-out;
+    }
+}
+
+@media (max-width: 1099px) {
+    .home-hero .top-text {
+        top: 5%;
+        transition: top 0.3s ease-in-out;
+    }
+}
+
+@media (max-width: 669px) {
+    .home-hero .top-text {
+        top: 0%;
+        transition: top 0.3s ease-in-out;
+    }
+}
+
+.home-hero .bottom-text {
+    bottom: 0;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 42px;
+    position: absolute;
+    bottom: 30px;
+}
+
+@media (max-width: 1299px) {
+    .home-hero .bottom-text {
+        width: 135%;
+    }
+}
+
+@media (max-width: 999px) {
+    .home-hero .bottom-text {
+        width: 85vw;
+    }
+}
+
+.home-hero .hero-right {
+    /* position: relative; */
+    /* top: 0; */
+    /* max-width: 46.875%; */
+    /* max-width: 680px; */
+    /* width: 95%; */
+    position: relative;
+    top: 0;
+    height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 999px) {
+    .home-hero .hero-right {
+        display: none;
+    }
+}
+
+.home-hero .hero-right img {
+    /* position: relative; */
+    /* width: 90%; */
+    /* filter: drop-shadow(2px 2px 10px black); */
+    margin: 0 auto;
+    /* top: 70px; */
+    position: relative;
+    max-height: 90%;
+    transition: max-height 0.5s ease-in;
+    filter: drop-shadow(2px 2px 10px black);
+    display: block;
+    right: 50px;
+}
+
+@media (max-width: 1349px) {
+    .home-hero .hero-right img {
+        max-height: 80%;
+        transition: max-height 0.5s ease-in;
+    }
+}
+
+@media (max-width: 1249px) {
+    .home-hero .hero-right img {
+        max-height: 75%;
+        transition: max-height 0.5s ease-in;
+    }
+}
+
+@media (max-width: 1169px) {
+    .home-hero .hero-right img {
+        max-height: 70%;
+        transition: max-height 0.5s ease-in;
+    }
+}
+
+@media (max-width: 1049px) {
+    .home-hero .hero-right img {
+        max-height: 65%;
+        transition: max-height 0.5s ease-in;
+    }
+}
+
+.home-hero .blue-back {
+    position: absolute;
+    top: 430px;
+    left: 0;
+    width: 150vw;
+    height: 100%;
+    z-index: 1;
+    background-color: #59b7b3;
+    border-top: 11px solid #fff;
+    transform: rotate(-11deg);
 }
 
 @media (max-width: 999px) {
     main {
         margin-top: 50px;
         min-height: calc(100vh - (50px + 320px));
+    }
+
+    .home-hero {
+        display: block;
+        margin-top: 50px;
+        min-height: calc(100vh - 50px);
+        /* background-color: #091822; */
+        background-color: #59b7b3;
+        padding-left: 0;
     }
 }
 
@@ -1263,13 +1638,6 @@ main {
 }
 
 @media (max-width: 599px) {
-    .home-div-test {
-        display: block;
-        margin-top: 50px;
-        height: calc(100vh - 50px);
-        transition: height 0.3s ease-in-out;
-        background-color: #091822;
-    }
 
     main {
         margin-top: 0;
@@ -1443,7 +1811,8 @@ footer .footer-navigation-part {
     width: 100vw;
     padding: 50px 50px 75px;
     /* background-color: #0d1f2c; */
-    background-color: #0b1a25;
+    /* background-color: #0b1a25; */
+    background-color: #59b7b3;
     position: relative;
     max-width: calc(100vw - 100px);
     height: 520px;
@@ -2720,8 +3089,14 @@ footer .footer-navigation-part {
     }
 
     .contact-us .stamp {
-
+        position: fixed;
+        right: -100%;
+        transition: 0s;
     }
+    /* 
+        TODO height bottom contact-us img
+        TODO contact-us arrive par la gauche en grand
+    */
 
     .contact-us.opened .stamp {
         right: 0;
@@ -2731,7 +3106,7 @@ footer .footer-navigation-part {
 
     .contact-us .content {
         width: 100vw;
-        border: 3px solid white;
+        border: 7px solid white;
         border-radius: 0;
         padding: 40px;
         height: calc(100vh - 50px);
@@ -5240,6 +5615,7 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
 
 .cart-purchase.opened {
     right: 0px;
+    z-index: 5;
 }
 
 .cart-purchase .cart-close {
@@ -5491,7 +5867,7 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     /* right: 442.6px; */
     right: 400px;
     transition: right 0.3s ease-in-out;
-    transition-delay: 0s;
+    transition-delay: 0.1s;
     z-index: 0;
 }
 
@@ -5527,7 +5903,7 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
 }
 
 .cart-purchase-form.opened.other-opened {
-    
+    z-index: 4;
 }
 
 .cart-purchase-form.opened .form-close,
@@ -5647,7 +6023,7 @@ form#purchase .neumorphic label {
     height: 100%;
 }
 
-.cart-purchase-form.opened +#step-2-part {
+.cart-purchase-form +#step-2-part {
     position: fixed;
     width: 400px;
     height: 100%;
@@ -5677,6 +6053,12 @@ form#purchase .neumorphic label {
 .cart-purchase.opened +.cart-purchase-form.opened +#step-2-part.other-opened {
     right: 800px;
     transition: right 0.3s ease-in-out;
+    z-index: 3;
+}
+
+.cart-purchase.opened +.cart-purchase-form.opened +#step-2-part.other-opened .form {
+    max-height: calc(100vh - 200px);
+    overflow: auto;
 }
 
 .cart-purchase-form.opened +#step-2-part .title {
@@ -5717,22 +6099,37 @@ form#purchase .neumorphic label {
     transition-delay: 0s;
 }
 
+form#purchase.step-2-3 #step-2-part.other-opened + .facture {
+    bottom: 30px;
+    transition: bottom 0.3s ease-in-out 0.1s;
+}
+
+form#purchase.step-2-3 #step-2-part.other-opened + .facture + .cgu {
+    bottom: -10px;
+    transition: bottom 0.3s ease-in-out 0.1s;
+}
+
 form#purchase.all-close > .step-1.neumorphic,
 form#purchase > .step-1.neumorphic.facture,
 form#purchase > .step-1.neumorphic.cgu {
     position: fixed;
     right: -400px;
-    transition: right 0.3s ease-in-out;
-    z-index: 3;
+    transition: right, bottom 0.3s ease-in-out;
+    z-index: 4;
     width: 400px;
 }
 
 form#purchase > .step-1.neumorphic.facture {
-    top: 657px;
+    padding-top: 10px;
+    bottom: 100px;
+    background-color: #0b1a25;
+    transition: bottom 0.3s ease-in-out;
 }
 
 form#purchase > .step-1.neumorphic.cgu {
-    top: 700px;
+    bottom: 60px;
+    background-color: #0b1a25;
+    transition: bottom 0.3s ease-in-out;
 }
 
 form#purchase.step-1 > .step-1.neumorphic {
@@ -5742,7 +6139,7 @@ form#purchase.step-1 > .step-1.neumorphic {
 
 form#purchase.step-2-3 > .step-1.neumorphic {
     right: 400px;
-    transition: right 0.3s ease-in-out;
+    transition: right, bottom 0.3s ease-in-out;
 }
 
 form#purchase button.cart-validate {

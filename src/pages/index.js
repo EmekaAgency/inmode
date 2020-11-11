@@ -2,6 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Hero from "../components/home/hero"
 import ClinicalStudies from "../components/home/clinical-studies"
 import FollowInstagram from "../components/home/follow-instagram"
 import GetStarted from "../components/get-started"
@@ -15,7 +16,7 @@ const IndexPage = () => {
   return (
       <Layout>
         <SEO title="Accueil"/>
-        <div className="home-div-test"></div>
+        <Hero/>
         <Slides from='home'/>
         <Alveoles />
         <ClinicalStudies/>

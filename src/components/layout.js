@@ -21,11 +21,15 @@ import CartProvider from "./contexts/cart-provider"
 import CartContext from "./contexts/cart-context"
 import MenusContext from "./contexts/menus-context"
 import ProductsContext from "./contexts/products-context"
+import { useWindowSize } from "../functions/window-size"
 
 const Layout = ({ children }) => {
 
+  const size = useWindowSize();
+
   return (
     <MenusProvider>
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
         <Header/>
         <ProductsProvider>
           <main id="main">
@@ -33,8 +37,8 @@ const Layout = ({ children }) => {
           </main>
         </ProductsProvider>
         <FixedMenu/>
-        {/* {window == undefined ? null : window.innerHeight < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
-        {window == undefined ? null : window.innerHeight >= 800 && <CartPurchase/>}
+        {/* {size.height < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
+        <CartPurchase/>
         <PrivacyPolicy />
         <ContactUs/>
         <Footer/>
