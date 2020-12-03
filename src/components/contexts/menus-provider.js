@@ -9,43 +9,6 @@ import { process_menu_datas } from '../../functions/process_menu_datas';
 const _TYPES = ['text', 'image', 'button', 'card'];
 const _VARIANTS = ['single', 'title', 'content', 'dk_title', 'side_menu'];
 
-// allMysqlHeaderTop {
-//     nodes {
-//         variant
-//         url
-//         under
-//         type
-//         position
-//         name
-//         mysqlId
-//         container
-//     }
-// }
-// allMysqlHeaderBottom {
-//     nodes {
-//         variant
-//         url
-//         under
-//         type
-//         position
-//         name
-//         mysqlId
-//         container
-//     }
-// }
-// allMysqlFooter {
-//     nodes {
-//         variant
-//         url
-//         under
-//         type
-//         position
-//         name
-//         mysqlId
-//         container
-//     }
-// }
-
 const MenusProvider = ({ requested = "", children }) => {
     const [datas] = React.useState(useStaticQuery(graphql`
         {
@@ -334,14 +297,6 @@ const MenusProvider = ({ requested = "", children }) => {
 
     const [menusHeaderTop] = React.useState(process_menu(datas.header_top.nodes));
     const [menusHeaderBottom] = React.useState(process_menu(datas.header_bottom.nodes.map(elem => elem)));
-
-    // const header_top_request = request_db("SELECT * FROM menus WHERE container = 'header-top';", );
-    // const header_bottom_request = request_db("SELECT * FROM menus WHERE container = 'header-bottom';", );
-    // const footer_request = request_db("SELECT * FROM menus WHERE container LIKE \'footer%\';", );
-
-    // const [menusHeaderTop] = React.useState(process_menu_datas(datas.allMysqlHeaderTop.nodes, 'HeaderTop'));
-    // const [menusHeaderBottom] = React.useState(process_menu_datas(datas.allMysqlHeaderBottom.nodes, 'HeaderBottom'));
-    // const [menusFooter] = React.useState(footer_process(process_menu_datas(datas.allMysqlFooter.nodes, 'Footer')));
     const [menusFooter] = React.useState(datas.footer);
     
     return (

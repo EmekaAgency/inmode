@@ -11,6 +11,7 @@ import ProductDemo from '../components/product/demo';
 import SellingArgs from '../components/selling-args';
 import ClinicalStudies from '../components/clinical-studies';
 import GenericDetails from '../components/details';
+import { graphql } from 'gatsby';
 
 const ProductTemplates = ({ data }) => {
 

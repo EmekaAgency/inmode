@@ -6,6 +6,9 @@ import HeaderBottom from "./header-bottom";
 import HeaderMini from "./header-mini";
 import { useCart } from './contexts/cart-provider';
 
+import Img from "gatsby-image";
+import { useWindowSize } from "../functions/window-size";
+
 const Header = ({  }) => {
 
   const [icon] = React.useState(useStaticQuery(graphql`
@@ -15,6 +18,8 @@ const Header = ({  }) => {
           fluid {
             srcWebp
             srcSetWebp
+            base64
+            tracedSVG
           }
         }
       }
@@ -39,6 +44,8 @@ const Header = ({  }) => {
 
   const cart = useCart();
 
+  const window = useWindowSize();
+
   return (
     <header>
       <div className="header-content container">
@@ -47,9 +54,9 @@ const Header = ({  }) => {
           </Link>
         </div>
         <div className="header-parts">
-          <HeaderTop/>
-          <HeaderBottom/>
-          <HeaderMini/>
+          {window.width > 999 && <HeaderTop/>}
+          {window.width > 999 && <HeaderBottom/>}
+          {window.width < 1000 && <HeaderMini/>}
           {
               cart.cart.length > 0 || cart.appeared ?
                   <img

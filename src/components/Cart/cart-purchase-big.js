@@ -1,8 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React, { useContext } from "react"
-import CartContext from "./contexts/cart-context";
+import CartContext from "../contexts/cart-context";
 
-const CartPurchase = ({  }) => {
+import './big.css';
+
+const CartPurchaseBig = ({  }) => {
 
     const [icons] = React.useState(useStaticQuery(graphql`
         {
@@ -66,6 +68,7 @@ const CartPurchase = ({  }) => {
                 backgroundColor: '#f00',
                 zIndex: 5
             }}></div> */}
+            {/* FIRST PART */}
             <div className={`cart-purchase transition${cart.cart_opened ? ' opened' : ''}`}>
                 <div className="cart-close"
                     onClick={(e) => {
@@ -134,6 +137,7 @@ const CartPurchase = ({  }) => {
                             </div>
                         );
                     })}
+                     {cart.total() * 1.2 < 500 && <div className="free-message">Livraison gratuite à + de 500€</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
@@ -181,6 +185,7 @@ const CartPurchase = ({  }) => {
                     </div>
                 </div>
             </div>
+            {/* SECOND PART */}
             <div className={`cart-purchase-form custom-scrollbar${formOpened ? ' opened' : ''}${otherAddressOpened ? ' other-opened' : ''}`}>
                 <div className={`title transition${formOpened ? ' opened' : ''}`}>
                     <div
@@ -213,6 +218,7 @@ const CartPurchase = ({  }) => {
                     </div>
                 </div>
             </div>
+            {/* THIRD PART */}
             <div id="step-2-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
                 <div className={`title unmorphic${otherAddressOpened ? ' opened' : ''}`}>
                     <div
@@ -243,6 +249,7 @@ const CartPurchase = ({  }) => {
                     </div>
                 }
             </div>
+            {/* CHECKBOXES */}
             <div className="step-1 facture neumorphic">
                 <input
                     id="facture"
@@ -293,12 +300,12 @@ const CartPurchase = ({  }) => {
     );
 };
 
-CartPurchase.propTypes = {
+CartPurchaseBig.propTypes = {
 
 };
 
-CartPurchase.defaultProps = {
+CartPurchaseBig.defaultProps = {
 
 };
 
-export default CartPurchase;
+export default CartPurchaseBig;

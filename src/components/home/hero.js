@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import { useWindowSize } from "../../functions/window-size";
 
 const Hero = ({  }) => {
 
@@ -28,19 +29,23 @@ const Hero = ({  }) => {
         }
     `));
 
+    // TODO faire un bloc bleu border-radius bottom-right et un bloc down #59b7b3, image en position absolute du hero
+
     const img_init_right = 3;
+
+    const window = useWindowSize();
 
     return (
         <div
             className="home-hero"
-            onMouseMove={(e) => {
-                let _w = window.innerWidth/2;
-                let _h = window.innerHeight/2;
-                let _mouseX = e.clientX;
-                let _mouseY = e.clientY;
-                document.getElementById('hero-img').style.right = `calc(${(_mouseX - _w) * 0.005}% + ${img_init_right}vw`;
-                document.getElementById('hero-img').style.bottom = `${(_mouseY - _h) * 0.005}%`;
-            }}
+            // onMouseMove={(e) => {
+            //     let _w = window.innerWidth/2;
+            //     let _h = window.innerHeight/2;
+            //     let _mouseX = e.clientX;
+            //     let _mouseY = e.clientY;
+            //     document.getElementById('hero-img').style.right = `calc(${(_mouseX - _w) * 0.005}% + ${img_init_right}vw`;
+            //     document.getElementById('hero-img').style.bottom = `${(_mouseY - _h) * 0.005}%`;
+            // }}
         >
             <div className="hero-left">
                 <div className="top-text">
@@ -48,6 +53,11 @@ const Hero = ({  }) => {
                     Inmode fournissent des résultats
                     supérieurs à vos patients.
                 </div>
+                {/* {window.width < 670 && <> */}
+                <div className="border-5"></div>
+                <div className="border-4"></div>
+                <div className="border-3"></div>
+                {/* </>} */}
                 <div className="bottom-text">
                     Traitements esthétiques du visage,
                     corps, peau et santé et bien-être des femmes.

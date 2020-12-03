@@ -1,7 +1,7 @@
 import React from "react";
 import WorkstationProduct from "./workstation-product";
-import ShopProduct from "./shop-product";
-import ShopProduct2 from "./shop-product2";
+import ShopProduct from "./shop-product2";
+import ShopProduct2 from "./shop-product";
 import CartContext from "../contexts/cart-context";
 import CartProvider from "../contexts/cart-provider";
 import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
@@ -134,7 +134,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
           checkbox_resolve_checked_selector={checkbox_resolve_checked_selector}
           resolve_technology={resolve_technology}
         />}
-         {shop_card === "shop" && <ShopMenu products={products} filter={filter}/>}
+         {shop_card === "shop" && <ShopMenu products={products} filter={filter} tags={tags}/>}
       </div>
       <div className={`${shop_card}-products${special ? " special" : ""}`}>
         {/* ///////////////////////////////////////// */}

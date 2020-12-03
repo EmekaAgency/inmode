@@ -139,7 +139,7 @@ const Slides = ({from}) => {
                                     {slide.Name}
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
-                                    Informations produits
+                                    Informations produit
                                     <img
                                         className="slide-view-detail-arrow transition"
                                         src={icons.arrow_right.childImageSharp.fluid.srcWebp}

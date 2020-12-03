@@ -8,6 +8,7 @@ import ClinicalStudies from '../components/clinical-studies';
 import GenericDetails from '../components/details';
 import TreatmentProducts from '../components/treatment/products';
 import TreatmentBeforeAfter from '../components/treatment/before-after';
+import { graphql } from 'gatsby';
 
 const TreatmentTemplates = ({ data }) => {
 

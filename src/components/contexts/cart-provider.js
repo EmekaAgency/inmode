@@ -1,5 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import React, { useContext } from 'react';
+import { disableScroll, enableScroll } from '../../functions/disable-scroll';
 import CartContext from './cart-context';
 
 export const useCart = () => {
@@ -88,8 +89,14 @@ const CartProvider = ({ requested = "", children }) => {
     const [cart, setCart] = React.useState([]);
     const [purchaseOpened, setPurchaseOpened] = React.useState(false);
 
-    const open_purchase = () => {setPurchaseOpened(true);}
-    const close_purchase = () => {setPurchaseOpened(false);}
+    const open_purchase = () => {
+        setPurchaseOpened(true);
+        disableScroll(document.getElementById('main'), 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel');
+    }
+    const close_purchase = () => {
+        enableScroll(document.getElementById('main'), 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel');
+        setPurchaseOpened(false);
+    }
     const toggle_open_purchase = () => {purchaseOpened ? close_purchase() : open_purchase();}
 
     const article_index = (ref) => {

@@ -46,7 +46,7 @@ const AddonTemplates = ({ data }) => {
 
 export default AddonTemplates;
 
-export const query = graphql `
+export const query = graphql`
     query Addon($id: String!) {
         strapiAddon(id: { eq: $id }) {
             Name

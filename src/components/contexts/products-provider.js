@@ -13,43 +13,6 @@ const ProductsProvider = ({ requested = "", children }) => {
 // graphql-markdown ./path/to/schema.json > schema.md
     const [datas] = React.useState(useStaticQuery(graphql`
         {
-            allMysqlProducts {
-                nodes {
-                    mysqlId
-                    name
-                    short_descr
-                    descr
-                    price
-                    type
-                }
-            }
-            allMysqlProductMatching {
-                nodes {
-                    product_id
-                    addon_id
-                }
-            }
-            allMysqlShortBanner {
-                nodes {
-                    product
-                    banner_text
-                }
-            }
-            allMysqlKeyBenefits {
-                nodes {
-                    product
-                    key_text
-                    position
-                }
-            }
-            allMysqlTreats {
-                nodes {
-                    product
-                    addon
-                    position
-                    treats_text
-                }
-            }
             allStrapiProduct(sort: {order: ASC, fields: position}) {
                 edges {
                     node {
@@ -127,27 +90,7 @@ const ProductsProvider = ({ requested = "", children }) => {
 
     // https://github.com/gatsbyjs/gatsby/issues/26226
 
-    const [products] = React.useState(
-        add_product_datas(
-            process_products(datas.allMysqlProducts.nodes, datas.allMysqlProductMatching.nodes, 'Products'),
-            {
-                'banner': datas.allMysqlShortBanner.nodes,
-                'key_benefits': datas.allMysqlKeyBenefits.nodes,
-                'treats': datas.allMysqlTreats.nodes
-            }
-        )
-    );
-
-    const [products2] = React.useState(datas.allStrapiProduct.edges.map(product => product.node));
-    
-    const [addons] = React.useState(
-        process_addons(datas.allMysqlProducts.nodes, 'Addons'),
-        {
-            'banner': datas.allMysqlShortBanner.nodes,
-            'key_benefits': datas.allMysqlKeyBenefits.nodes,
-            'treats': datas.allMysqlTreats.nodes,
-        }
-    );
+    const [products] = React.useState(datas.allStrapiProduct.edges.map(product => product.node));
 
     const product_navigation = [
         {'name': 'what is it', 'url': '#what-is'},
@@ -162,30 +105,13 @@ const ProductsProvider = ({ requested = "", children }) => {
         {'name': 'what can you treat', 'url': '#what-treat'},
         {'name': 'clinical studies', 'url': '#studies'}
     ];
-
-    const get_products = () => {
-        return products;
-    };
-
-    const get_product = (index) => {
-        return products[index];
-    };
-
-    const get_addons = () => {
-        return addons;
-    };
-
-    const get_addon = (index) => {
-        return addons[index];
-    };
     
     return (
         <ProductsContext.Provider
             value={{
                 'product_navigation': product_navigation,
                 'addon_navigation': addon_navigation,
-                'products': products2,
-                'addons': addons
+                'products': products
             }}
         >
             {children}

@@ -41,7 +41,7 @@ const FollowInstagram = () => {
 
     return (
         <div className="follow-instagram">
-            <div className="container">
+            {/* <div className="container"> */}
                 <h2>
                     <a href="https://www.instagram.com/inmode.france">
                         Suivez nous sur Instagram
@@ -57,7 +57,7 @@ const FollowInstagram = () => {
                                     srcSet={post.node.localFile.childImageSharp.fluid.srcSetWebp}
                                     alt={`insta-${key + 1}`}
                                 />
-                                <div className="stats">
+                                {/* <div className="stats">
                                     <div className="stats-comments">
                                         <img
                                             src={datas.comments.childImageSharp.fluid.srcWebp}
@@ -70,12 +70,12 @@ const FollowInstagram = () => {
                                         />
                                         <div>{post.node.likes}</div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         );
                     })}
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     );
 };

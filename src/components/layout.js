@@ -16,16 +16,9 @@ import PrivacyPolicy from "./privacy-policy"
 import FixedMenu from "./fixed-menu"
 import MenusProvider from "../components/contexts/menus-provider";
 import ProductsProvider from "../components/contexts/products-provider";
-import CartPurchase from "./cart-purchase"
-import CartProvider from "./contexts/cart-provider"
-import CartContext from "./contexts/cart-context"
-import MenusContext from "./contexts/menus-context"
-import ProductsContext from "./contexts/products-context"
-import { useWindowSize } from "../functions/window-size"
+import CartPurchase from "./Cart";
 
 const Layout = ({ children }) => {
-
-  const size = useWindowSize();
 
   return (
     <MenusProvider>

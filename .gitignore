@@ -89,6 +89,7 @@ package-lock.json
 
 # TODO
 
+/TODO
 *.sql
 .public/
 .js_old/
