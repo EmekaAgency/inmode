@@ -1,6 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import React, { useContext } from 'react';
-import { disableScroll, enableScroll } from '../../functions/disable-scroll';
+import { disableMainScroll, enableMainScroll } from '../../functions/disable-scroll';
+import { useWindowSize } from '../../functions/window-size';
 import CartContext from './cart-context';
 
 export const useCart = () => {
@@ -88,13 +89,14 @@ const CartProvider = ({ requested = "", children }) => {
 
     const [cart, setCart] = React.useState([]);
     const [purchaseOpened, setPurchaseOpened] = React.useState(false);
+    const size = useWindowSize();
 
     const open_purchase = () => {
         setPurchaseOpened(true);
-        disableScroll(document.getElementById('main'), 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel');
+        size.width < 1200 && disableMainScroll();
     }
     const close_purchase = () => {
-        enableScroll(document.getElementById('main'), 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel');
+        enableMainScroll();
         setPurchaseOpened(false);
     }
     const toggle_open_purchase = () => {purchaseOpened ? close_purchase() : open_purchase();}
@@ -106,16 +108,19 @@ const CartProvider = ({ requested = "", children }) => {
     }
 
     const find_article = (ref) => {
-        return cart && cart.length && cart.find(item => {
-            if(ref === item.reference) {
-                return item;
-            }
-        }) || null;
+        if(cart && cart.length) {
+            return cart.find(item => {
+                if(ref === item.reference) {
+                    return item;
+                }
+            })
+        }
+        return null;
     }
 
     const add_article = (ref, qnt) => {
         !appeared && setAppeared(true);
-        let temp = find_article(ref), process = 0;
+        let temp = find_article(ref);
         if(temp) {
             let _cart = new Array(...cart);
             _cart.splice(article_index(ref), 1, temp.add(qnt))
@@ -129,7 +134,7 @@ const CartProvider = ({ requested = "", children }) => {
     }
 
     const remove_article = (ref, qnt) => {
-        let temp = find_article(ref), process = 0;
+        let temp = find_article(ref);
         if(temp && temp.quantity <= qnt) {
             delete_article(ref);
         }

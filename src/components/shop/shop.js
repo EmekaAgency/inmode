@@ -1,10 +1,6 @@
 import React from "react";
 import WorkstationProduct from "./workstation-product";
-import ShopProduct from "./shop-product2";
 import ShopProduct2 from "./shop-product";
-import CartContext from "../contexts/cart-context";
-import CartProvider from "../contexts/cart-provider";
-import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
 import WorkstationMenu from "./workstation-menu";
 import ShopMenu from "./shop-menu";
 
@@ -14,7 +10,6 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
   const [memoryTags, setMemoryTags] = React.useState([]);
   
   const [technology, setTechnology] = React.useState([]);
-  const [memoryTechnology, setMemoryTechnology] = React.useState([]);
 
   const checkbox_resolve_checked_selector = "shopping-menu-filter-checkbox";
 
@@ -102,7 +97,6 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
       }).filter(tech => tech) || [];
     }
     setTechnology(temp);
-    setMemoryTechnology(temp);
   }
 
   const filter = (e) => {
@@ -139,32 +133,23 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
       <div className={`${shop_card}-products${special ? " special" : ""}`}>
         {/* ///////////////////////////////////////// */}
         {shop_card === "workstation" && products.map((product, key) => {
-          // console.log(product.Tags.map(tag => {return tag.tag;}));
-          // console.log(tags);
           let filtered_tag = [];
           let filtered_tech = [];
           if(shop_card === 'workstation') {
             filtered_tag = tags.filter(value => product.Tags.map(tag => {return tag.tag;}).includes(value));
             filtered_tech = technology.filter(value => product.Addons.map(tech => {return tech.Name;}).includes(value));
-            filtered_tag.length > 0 && console.log(`${product.Name} has tags`);
-            filtered_tech.length > 0 && console.log(`${product.Name} has tech`);
           }
           if(
             (tags === [] || tags.length === 0) && (technology === [] || technology.length === 0)
             ||
             filtered_tag.length > 0 || filtered_tech.length > 0
-            ) {
-              // console.log(`\n/////////`);
-              // console.log(`no tags, default display ${product.Name}`);
-              // console.log(`\n/////////`);
-              // console.log(`tags, dynamic display ${product.Name}`);
-              // console.log(filtered_tag);
-            // console.log(filtered_tech);
+          ) {
             return (
               <WorkstationProduct key={key} product={product} special={special}/>
-              );
-            }
-          })}
+            );
+          }
+          return <></>;
+        })}
           {/* ///////////////////////////////////////// */}
           {shop_card === "shop" && products.map((group, group_key) => {
             if(tags.length === 0 || tags.indexOf(group.fieldValue) >= 0) {
@@ -179,6 +164,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
                 </div>
               );
             }
+            return <></>;
           })}
       </div>
     </div>

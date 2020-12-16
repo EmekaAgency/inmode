@@ -4,19 +4,7 @@ import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_open
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 import Menu from '../menu';
-
-// VARIANT
-const SINGLE = 'single';
-const TITLE = 'title';
-const CONTENT = 'content';
-const DK_TITLE = 'dk_title';
-const SIDE_MENU = 'side_menu';
-
-// TYPE
-const TEXT = 'text';
-const IMAGE = 'image';
-const BUTTON = 'button';
-const CARD = 'card';
+import { enableMainScroll } from '../../functions/disable-scroll';
 
 const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
 
@@ -41,7 +29,10 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                     <Link
                         className="menu-dk-title menu-text"
                         to={menu.url || "#"}
-                        onClick={(e) => {resolveOnClick(e, true);}}
+                        onClick={(e) => {
+                            resolveOnClick(e, true);
+                            enableMainScroll();
+                        }}
                     >
                         {format_string(menu.title)}
                     </Link>
@@ -49,7 +40,12 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                     <a
                         className="menu-dk-title menu-text"
                         href={menu.url || "#"}
-                        onClick={(e) => {resolveOnClick(e, true);}}
+                        onClick={(e) => {
+                            resolveOnClick(e, true);
+                            enableMainScroll();
+                        }}
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         {format_string(menu.title)}
                     </a>
@@ -70,6 +66,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                     })}
                     {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
                         // TODO dk-item is a {'type': 'content', 'variant': 'card'}
+                        return <></>;
                     })}
                 </div>
             </ul>

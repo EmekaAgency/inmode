@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Flickity from "react-flickity-component";
+import Carousel from "../Carousel";
 
 const Staff = ({ from = "" }) => {
 
@@ -23,9 +23,7 @@ const Staff = ({ from = "" }) => {
         }
     `).strapiAboutUs);
 
-    const [current, setCurrent] = React.useState(-1);
-
-    const [flickityOptions, setFlickityOptions] = React.useState({
+    const [flickityOptions] = React.useState({
         initialIndex: 0,
         cellAlign: 'left',
         pageDots: false,
@@ -33,46 +31,42 @@ const Staff = ({ from = "" }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: false,
-        wrapAround: true
+        // autoPlay: false,
+        // wrapAround: true,
     });
     
     return (
         <div className={`staff${from ? ` ${from}` : ''}`}>
             <div className="container-1660">
-            <Flickity
-                id={`carousel-${from}`}
-                elementType={'div'} // default 'div'
-                options={flickityOptions} // takes flickity options {}
-                disableImagesLoaded={false} // default false
-                reloadOnUpdate={true} // default false
-                static // default false
-                className="slides-main transition carousel-staff"
-                // flickityRef={(e) => {set_current(e);}}
-            >
-                {datas.staff && [...datas.staff, ...datas.staff].map((slide, key) => {
-                    // console.log(slide);
-                    return (
-                        <div
-                            key={key}
-                            className="elem"
-                        >
-                            <img
-                                src={slide.picture.childImageSharp.fluid.srcWebp}
-                            />
-                            <div className="name">
-                                {slide.name}
+                <Carousel
+                    id={`carousel-${from}`}
+                    options={flickityOptions}
+                    classList={'slides-main transition carousel-staff'}
+                >
+                    {/* {datas.staff && [...datas.staff, ...datas.staff].map((slide, key) => { */}
+                    {datas.staff && datas.staff.map((slide, key) => {
+                        return (
+                            <div
+                                key={key}
+                                className="elem"
+                            >
+                                <img
+                                    src={slide.picture.childImageSharp.fluid.srcWebp}
+                                    alt={`about-us-staff-${key}`}
+                                />
+                                <div className="name">
+                                    {slide.name}
+                                </div>
+                                <div className="position">
+                                    {slide.position}
+                                </div>
+                                <div className="descr">
+                                    {slide.short_descr}
+                                </div>
                             </div>
-                            <div className="position">
-                                {slide.position}
-                            </div>
-                            <div className="descr">
-                                {slide.short_descr}
-                            </div>
-                        </div>
-                    );
-                })}
-            </Flickity>
+                        );
+                    })}
+                </Carousel>
             </div>
         </div>
     );

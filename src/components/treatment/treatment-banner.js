@@ -1,5 +1,4 @@
-import { graphql, StaticQuery, useStaticQuery } from "gatsby";
-import React from "react"
+import React from "react";
 
 const TreatmentBanner = ({ datas }) => {
 

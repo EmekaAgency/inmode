@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 
 const GetStarted = () => {
@@ -6,7 +7,7 @@ const GetStarted = () => {
             <div className="container">
                 <p>Lancez-vous</p>
                 <h2>Laquelle de nos technologies pourrait vous être utile ?</h2>
-                <a>Contactez nous</a>
+                <Link to="/contact">Contactez nous</Link>
             </div>
         </div>
     );

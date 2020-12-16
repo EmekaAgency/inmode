@@ -2,10 +2,6 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import ProductsContext from "./products-context";
-import { process_products } from '../../functions/process_products';
-import { process_addons } from '../../functions/process_addons';
-import { add_product_datas } from '../../functions/add_product_datas';
-import { request_db } from '../../functions/request_db';
 
 const ProductsProvider = ({ requested = "", children }) => {
 
@@ -36,6 +32,7 @@ const ProductsProvider = ({ requested = "", children }) => {
                         }
                         MenuParams {
                             url
+                            internal_link
                         }
                         WhatIs {
                             TitleText {
@@ -65,6 +62,7 @@ const ProductsProvider = ({ requested = "", children }) => {
                             }
                             MenuParams {
                                 url
+                                internal_link
                             }
                             WhatIs {
                                 picture {
@@ -85,10 +83,6 @@ const ProductsProvider = ({ requested = "", children }) => {
             }
         }
     `));
-
-    // request_db();
-
-    // https://github.com/gatsbyjs/gatsby/issues/26226
 
     const [products] = React.useState(datas.allStrapiProduct.edges.map(product => product.node));
 

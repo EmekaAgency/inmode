@@ -54,18 +54,19 @@ const Learn = ({ from = "" }) => {
                     <img
                         src={datas.strapiAboutUs.learn_icon.childImageSharp.fluid.srcWebp}
                         srcSet={datas.strapiAboutUs.learn_icon.childImageSharp.fluid.srcSetWebp}
+                        alt='about-us-learn'
                     />
                     <div className="texts">
                         {datas.strapiAboutUs.learn_txts && datas.strapiAboutUs.learn_txts.map((txt, key) => {
                             return (
-                                <>
-                                    <div key={key} className="title">
+                                <span key={key}>
+                                    <div key={`${key}-title`} className="title">
                                         {txt.title}
                                     </div>
-                                    <div key={key} className="text">
+                                    <div key={`${key}-text`} className="text">
                                         {txt.text}
                                     </div>
-                                </>
+                                </span>
                             );
                         })}
                     </div>

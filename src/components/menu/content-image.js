@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 import Menu from '../menu';
+import { enableMainScroll } from '../../functions/disable-scroll';
 
 const MenuContentImage = ({menu, prop_key}) => {
 
@@ -22,11 +23,11 @@ const MenuContentImage = ({menu, prop_key}) => {
         <>
             {menu.url ?
                 menu.internal_link ?
-                    <Link key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
+                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
                         {content(menu)}
                     </Link>
                     :
-                    <a key={prop_key} className="menu-content menu-image" href={menu.url || "#"}>
+                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" href={menu.url || "#"} target="_blank" rel="noreferrer">
                         {content(menu)}
                     </a>
                 :

@@ -28,7 +28,6 @@ const TreatmentProducts = ({ datas }) => {
                                     </div>
                                 );
                             }
-                            return false;
                         })}
                         <div className="workstation-addons">
                             <div className="treatment-addon">
@@ -53,7 +52,6 @@ const TreatmentProducts = ({ datas }) => {
                                                 </div>
                                             );
                                         }
-                                        return false;
                                     })}
                                 </div>
                             </div>

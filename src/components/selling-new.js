@@ -11,6 +11,7 @@ const SellingNew = ({ datas = {} }) => {
             <div className="selling-details-img transition">
                 <img
                     src={datas.picture.childImageSharp.fluid.srcWebp}
+                    alt="selling-new"
                 />
             </div>
             <div className="selling-details">

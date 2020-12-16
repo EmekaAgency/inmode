@@ -1,8 +1,6 @@
 import React from "react";
 
 const Webinar = ({ event = {} }) => {
-
-    console.log(event);
     
     return (
         <div className="eseminar">

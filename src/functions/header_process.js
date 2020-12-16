@@ -37,7 +37,6 @@ export const header_process = (datas, from) => {
                     'name': data.name,
                     'url': data.url
                 };
-                return true;
             } else { // REGULAR MENUS
                 if (retour[data.position - 1] === undefined) {
                     retour[data.position - 1] = {};
@@ -46,7 +45,6 @@ export const header_process = (datas, from) => {
                 retour[data.position - 1].url = data.url;
                 retour[data.position - 1].type = data.type;
                 retour[data.position - 1].variant = data.variant;
-                return true;
             }
         } else { // CONTENT
             if (retour[temp[data.temp_under].position - 1] === undefined) {
@@ -61,7 +59,6 @@ export const header_process = (datas, from) => {
                 'type': data.type,
                 'variant': data.variant
             };
-            return true;
         }
     });
     return retour;

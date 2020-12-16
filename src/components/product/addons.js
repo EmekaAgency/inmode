@@ -1,6 +1,6 @@
-import React from "react"
-import Flickity from "react-flickity-component";
-import { format_title } from "../../functions/format_title";
+import { Link } from "gatsby";
+import React from "react";
+import Carousel from "../Carousel";
 
 const Addons = ({ datas }) => {
 
@@ -12,8 +12,8 @@ const Addons = ({ datas }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: 3000,
-        wrapAround: true,
+        // autoPlay: 3000,
+       // wrapAround: true,
     });
 
     const select_mines = (object, id) => {
@@ -29,12 +29,12 @@ const Addons = ({ datas }) => {
     return (
         <div id="technologies" className="product-addons">
             <div className="section-title">technologies on the workstation</div>
-            {datas.addons.map((addon, key) => {
+            {datas.addons.map((addon) => {
                 return addon.ProductPresentation.map((product, key) => {
                     if(product.appears_everywhere || (product.products && product.products[0].id === datas.id)) {
                         let images = select_mines(product.Images, datas.id);
                         // TODO ton on evolve => evolve-tone
-                        let product_title = product.title_text.toLowerCase().replace(' on ', '-').replace(/ /g, '-').replace(/\*/g, '').replace(/\#/g, '');
+                        let product_title = product.title_text.toLowerCase().replace(' on ', '-').replace(/ /g, '-').replace(/\*/g, '').replace(/#/g, '');
                         return (
                             <div key={key} className="product-addon">
                                 <div className="addon-details">
@@ -55,7 +55,7 @@ const Addons = ({ datas }) => {
                                                 />
                                             )}
                                             {!product.title_image && product.title_text}
-                                            {product.appears_everywhere && <a className="zone-link" href={`/technology/${product_title}`}></a>}
+                                            {product.appears_everywhere && <Link className="zone-link" to={`/technology/${product_title}`}></Link>}
                                         </div>
                                         {product.AddonProductsDescr.map((descr, key) => {
                                             if(descr.product.id === datas.id) {
@@ -63,6 +63,7 @@ const Addons = ({ datas }) => {
                                                     <div key={key} className="addon-description">{descr.descr}</div>
                                                 );
                                             }
+                                            return <></>;
                                         })}
                                         <div className="addon-what-can-i-treat">
                                             <div className="title">
@@ -70,14 +71,11 @@ const Addons = ({ datas }) => {
                                             </div>
                                             <ul>
                                             {product.ProductPresentationTreats.map((descr, key) => {
-                                                // console.log(product);
-                                                // console.log(descr);
                                                 if(descr.product.id === datas.id) {
                                                     return (
                                                         <li key={key}>{descr.treat_short}</li>
                                                     );
                                                 }
-                                                return false;
                                             })}
                                             </ul>
                                         </div>
@@ -92,32 +90,31 @@ const Addons = ({ datas }) => {
                                     />
                                     :
                                     <div className="addon-carousel">
-                                        <Flickity
+                                        <Carousel
                                             id={`carousel-addons-${product_title}`}
-                                            elementType={'div'}
                                             options={flickityOptions}
-                                            disableImagesLoaded={false}
-                                            reloadOnUpdate={true}
-                                            static
-                                            className="slide-addons transition"
+                                            classList={'slide-addons transition'}
                                         >
                                             {images.map((image, key) => {
                                                 return (
-                                                    <img
-                                                        key={key}
-                                                        className="addon"
-                                                        src={image.image.childImageSharp.fluid.srcWebp}
-                                                        srcSet={image.image.childImageSharp.fluid.srcSetWebp}
-                                                        alt={`${product_title}-slide-${key}`}
-                                                    />
+                                                    <div className="addon" key={key}>
+                                                        <img
+                                                            key={key}
+                                                            className="addon-img"
+                                                            src={image.image.childImageSharp.fluid.srcWebp}
+                                                            srcSet={image.image.childImageSharp.fluid.srcSetWebp}
+                                                            alt={`${product_title}-slide-${key}`}
+                                                        />
+                                                    </div>
                                                 );
                                             })}
-                                        </Flickity>
+                                        </Carousel>
                                     </div>
                                 }
                             </div>
                         );
                     }
+                    return <></>;
                 });
             })}
         </div>

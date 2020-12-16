@@ -5,13 +5,8 @@ const ClinicalStudies = () => {
 
     const [images] = React.useState(useStaticQuery(graphql`
         {
-            back: file(relativePath: {eq: "home/media-bg.jpg"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                        srcSetWebp
-                    }
-                }
+            back: file(relativePath: {eq: "home/media-bg.webp"}) {
+                publicURL
             }
             study: file(relativePath: {eq: "home/studies-img.png"}) {
                 childImageSharp {
@@ -27,8 +22,11 @@ const ClinicalStudies = () => {
     return (
         <div
             className="clinical-studies-home background-image"
+            // style={{
+            //     'backgroundImage': 'url(' + images.back.childImageSharp.fluid.srcWebp + ')'
+            // }}
             style={{
-                'backgroundImage': 'url(' + images.back.childImageSharp.fluid.srcWebp + ')'
+                'backgroundImage': 'url(' + images.back.publicURL + ')'
             }}
         >
             <div className="container">
@@ -40,7 +38,7 @@ const ClinicalStudies = () => {
                             srcSet={images.study.childImageSharp.fluid.srcSetWebp}
                             alt="studies-img"
                         />
-                        <a href="https://inmodemd.com/clinical-papers/">
+                        <a href="https://inmodemd.com/clinical-papers/" target="_blank" rel="noreferrer">
                             Voir les études
                         </a>
                     </div>

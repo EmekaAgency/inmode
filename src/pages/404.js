@@ -1,9 +1,7 @@
-import { graphql, useStaticQuery } from "gatsby";
-import React from "react"
+import React from "react";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Slides from "../components/home/slides";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 import Unknown404 from "../components/404/unknown-404";
 
 const NotFoundPage = () => {

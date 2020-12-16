@@ -1,43 +1,16 @@
-// left: 37, up: 38, right: 39, down: 40,
-// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-var keys = {37: 1, 38: 1, 39: 1, 40: 1};
-
-function preventDefault(e) {
-  e.preventDefault();
+export const disableMainScroll = function () {
+  document.querySelector('body').classList.add('no-scroll');
 }
 
-function preventDefaultForScrollKeys(e) {
-  if (keys[e.keyCode]) {
-    preventDefault(e);
-    return false;
+export const enableMainScroll = function () {
+  let i = 0;
+  document.querySelector('#contact-us.opened') && ++i;
+  document.querySelector('.privacy-policy.opened') && ++i;
+  document.querySelector('#purchase-mini.step-1') && ++i;
+  document.querySelector('#purchase-mini.step-2-3') && ++i;
+  document.querySelector('#header-mini.opened') && ++i;
+  if(i > 1) {
+    return;
   }
-}
-
-// modern Chrome requires { passive: false } when adding event
-var supportsPassive = false;
-try {
-  window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-    get: function () { supportsPassive = true; } 
-  }));
-} catch(e) {}
-
-var wheelOpt = supportsPassive ? { passive: false } : false;
-// var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-
-// call this to Disable
-export const disableScroll = function (elem, wheelEvent) {
-  console.log("disableScroll");
-  elem.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-  elem.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-  elem.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-  elem.addEventListener('keydown', preventDefaultForScrollKeys, false);
-}
-
-// call this to Enable
-export const enableScroll = function (elem, wheelEvent) {
-  console.log("enableScroll");
-  elem.removeEventListener('DOMMouseScroll', preventDefault, false);
-  elem.removeEventListener(wheelEvent, preventDefault, wheelOpt); 
-  elem.removeEventListener('touchmove', preventDefault, wheelOpt);
-  elem.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  document.querySelector('body').classList.remove('no-scroll');
 }

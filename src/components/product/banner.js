@@ -1,4 +1,3 @@
-import { graphql, StaticQuery, useStaticQuery } from "gatsby";
 import React from "react"
 
 const ProductBanner = ({ datas }) => {
@@ -37,6 +36,7 @@ const ProductBanner = ({ datas }) => {
             <div className="product-banner-mini">
                 <img
                     src={datas.mini.childImageSharp.fluid.srcWebp}
+                    alt="product-banner-mini"
                 />
             </div>
             <div className="product-banner-mask"></div>

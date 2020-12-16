@@ -23,6 +23,7 @@ const Banner = ({ from = "" }) => {
             <img
                 src={datas.banner.childImageSharp.fluid.srcWebp}
                 srcSet={datas.banner.childImageSharp.fluid.srcSetWebp}
+                alt='about-us-banner'
             />
         </div>
     );

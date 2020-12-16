@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import Divider from '../components/divider';
 import AddonBanner from '../components/addon/banner';
 import AddonBeforeAfter from '../components/addon/before-after';
-import Details from '../components/details';
 import AddonNavigation from '../components/addon/navigation';
 import AddonVideos from '../components/addon/videos';
 import AddonWhatTreat from '../components/addon/what-treat';
@@ -17,8 +16,6 @@ import GenericDetails from '../components/details';
 const AddonTemplates = ({ data }) => {
 
     const [datas] = React.useState(data.strapiAddon);
-
-    console.log(datas);
 
     return (
             <Layout>

@@ -53,6 +53,9 @@ forma pas détourée                                          //ASK KÉVIN CLIEN
 images titres evoke                                         //ASK KÉVIN CLIENT  //
 
 
+gatsby unit testing                                                         //TO DO             // LATER
+
+
 MARDI 18h
 
 
@@ -61,16 +64,16 @@ retirer liste clinique, etc notre histoire                                  //TO
 aligner values key_benefit notre histoire                                   //TO DO DONE        // 10m
 changer message livraison gratuite pour plus compréhensible                 //TO DO DONE        // 15m (12px, 300, 1.6) bottom left
 mettre design cards foncées sur fond clair avec machines intérieur          //TO DO DONE        // 1h30
-excel treatments et machines                                                //TO DO             // 2h
+excel treatments et machines                                                //TO DO DONE        // 2h manque les textes pour nouvelles machines treatments
 mobile stepper                                                              //TO DO DONE        // 4h
 refaire cart                                                                //TO DO DONE        // 1h30
-target _blank tout ce qui est externe                                       //TO DO             // 1h
-card shop                                                                   //TO DO US          // 1h
+target _blank tout ce qui est externe                                       //TO DO DONE        // 1h
+card shop                                                                   //TO DO US          // 1h DONE
 send mail php                                                               //TO DO US          // 
 remove appels mysql                                                         //TO DO US DONE     // NEW
 custom strapi                                                               //TO DO             // ~?
 préparer un doc / une man pour strapi                                       //TO DO             // ~?
-Référence Aviva 2 sensors HP                                                //TO DO THEM        //  
+Référence Aviva 2 sensors HP                                                //TO DO THEM        // 
 
 ref                 ajouter
     canule  - 3 +   au panier
@@ -79,3 +82,45 @@ nom                 prix (HT)
 nom / reference
 - 3 +       prix
 Ajouter en panier
+
+rassembler les graphql dans des contextes                                   //TO DO             // 
+juste inmode pour taille mini                                               //TO DO             // DONE
+place holder facture différente                                             //TO DO             // DONE
+vignette cart                                                               //TO DO             // 
+vignette lorsqu'il y a un nouvel événement.                                 //TO DO             // 
+logo " play " sur les vidéo page produit                                    //TO DO             // DONE
+"livraison gratuite à partir de 500€"                                       //TO DO             // DONE
+virer provisoirement le numéro.                                             //TO DO             // DONE
+contact.fr@inmodemd.com                                                     //TO DO             // DONE
+cartwrapper to localstorage                                                 //TO DO             // 
+IMD France 12, place dauphine 75001 Paris                                   //TO DO             // DONE
+sub -level treatment mini menu                                              //TO DO             // DONE
+flickity                                                                    //TO DO             // PENDING
+
+DESIGN
+
+Contact us "Envoyer" est trop bas                                           //TO DO             // DONE
+Même en petit menu doit passer par-dessus shop                              //TO DO             // DONE
+useEffect window.width pour carousel ou pas (drag 3 pour 3 inutile)         //TO DO             // LATER
+remettre onClick different onDrag pour vidéos                               //TO DO             // DONE
+flickity fix wrapAround // ib click right return first                      //TO DO             // LATER
+"Suivez-nous sur Instagram" mal aligné en faible résolution                 //TO DO             // DONE
+remove console.log inutiles et commenter utiles mais privé                  //TO DO             // DONE
+résoudre no-scroll en production                                            //TO DO             // DONE
+
+Due to sensivitity no pics                                                  //TO DO             // 
+Remplir texte manquant pièces à main                                        //TO DO             // 
+Phone tourné textes                                                         //TO DO             // 
+Bloquer scroll certaines parties panier                                     //TO DO             // 
+SSL                                                                         //TO DO             // DONE Kévin
+Lien Insta américain                                                        //TO DO             // DONE
+la workstation s'appelle " Morpheus Pro"                                    //TO DO             // DONE
+retirer l'autoPlay sur tous les carousels                                   //TO DO             // DONE
+ajouter un mailto sur le mail footer                                        //TO DO             // DONE
+contact.fr@inmodemd.com (BACK SEND MAIL)                                    //TO DO             // DONE
+feedback sur les actions                                                    //TO DO             // 
+Faire un composant link (gérer les besoins self, blank, scroll, ...)        //TO DO             // 
+
+https://youtu.be/_a2FmrUngDU
+
+Variables environnement

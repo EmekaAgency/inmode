@@ -2,8 +2,6 @@ import React from "react";
 
 const InmodeEvent = ({ event = {}, prop_key, current_page }) => {
 
-    // console.log(event);
-
     const has_card = current_page === "upcoming events" || event.type === "webinar";
 
     return (
@@ -18,6 +16,7 @@ const InmodeEvent = ({ event = {}, prop_key, current_page }) => {
                     className="event-pic"
                     src={event.picture.childImageSharp.fluid.srcWebp}
                     srcSet={event.picture.childImageSharp.fluid.srcSetWebp}
+                    alt={`event-pic-'${event.title}`}
                 />
             </div>
             <div className={`descr-part ${prop_key === 0 ? 'left' : 'right'}`}>
@@ -31,13 +30,13 @@ const InmodeEvent = ({ event = {}, prop_key, current_page }) => {
                     {`${event.begin}${event.finish ? ` - ${event.finish}` : ''}`}
                 </div>}
                 {event.place && <div className="address_link">
-                    <a href={event.place_url || "#"}>{event.place}</a>
+                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer">{event.place}</a>
                 </div>}
                 {event.address && <div className="address">
                     {event.address}
                 </div>}
                 {event.map_link && <div className="maps_location">
-                    <a href={event.maps_link || "#"}>+ Google Map</a>
+                    <a href={event.maps_link || "#"} target="_blank" rel="noreferrer">+ Google Map</a>
                 </div>}
             </div>
         </div>

@@ -1,9 +1,8 @@
 import React from 'react';
-import { format_string } from '../functions/format_string';
 import MenusContext from "./contexts/menus-context"
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 
-const Footer = ({  }) => {
+const Footer = (  ) => {
 
     const [footer] = React.useState(React.useContext(MenusContext).footer);
 
@@ -64,7 +63,15 @@ const Footer = ({  }) => {
                                     srcSet={icons[menu].publicURL}
                                     alt={menu}
                                 />
-                                <div className="footer-infos-text">{footer[menu]}</div>
+                                {menu === "mail" ? 
+                                    <a href={`mailto:${footer[menu]}`} className="footer-infos-text">
+                                        {footer[menu]}
+                                    </a>
+                                    :
+                                    <div className="footer-infos-text">
+                                        {footer[menu]}
+                                    </div>
+                                }
                             </div>
                         )
                     })}
@@ -77,7 +84,7 @@ const Footer = ({  }) => {
                                 className="footer-social-ico background-image"
                                 style={{backgroundImage: 'url('+ menu.icon.publicURL +')'}}
                             >
-                                <a className="zone-link" href={menu.url || '#'}></a>
+                                <Link className="zone-link" to={menu.url || '#'}></Link>
                             </div>
                         );
                     })}
@@ -89,9 +96,9 @@ const Footer = ({  }) => {
                             return (
                                 <span key={key}>
                                     <span className="footer-navigation-separator"></span>
-                                    <a href={menu.url || '#'} className="footer-navigation-part">
+                                    <Link to={menu.url || '#'} className="footer-navigation-part">
                                         {menu.name}
-                                    </a>
+                                    </Link>
                                 </span>
                             );
                         })}

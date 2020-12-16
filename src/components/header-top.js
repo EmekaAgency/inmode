@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './menu';
 import MenusContext from "./contexts/menus-context"
 
-const HeaderTop = ({  }) => {
+const HeaderTop = (  ) => {
 
   const [menus] = React.useState(React.useContext(MenusContext).header_top);
 

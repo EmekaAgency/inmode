@@ -1,6 +1,5 @@
-import React from "react"
-import Flickity from "react-flickity-component";
-import Slider from "../slider";
+import React from "react";
+import Carousel from "../Carousel";
 
 const AddonBeforeAfter = ({ datas }) => {
 
@@ -12,15 +11,13 @@ const AddonBeforeAfter = ({ datas }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: 5000,
-        wrapAround: true,
+        // autoPlay: 5000,
+       // wrapAround: true,
     });
     
     if(!datas || datas.length === 0) {
         return false;
     }
-
-    console.log(datas);
 
     return (
         <div id="before-after" className="before-after">
@@ -34,6 +31,7 @@ const AddonBeforeAfter = ({ datas }) => {
                             <div key={key} className="few-ba">
                                 <img
                                     src={ba.image.childImageSharp.fluid.srcWebp}
+                                    alt="addon-before-after"
                                 />
                                 <div className="ba-doctor">{ba.doctor}</div>
                                 <div className="ba-descr">{ba.text}</div>
@@ -41,20 +39,18 @@ const AddonBeforeAfter = ({ datas }) => {
                         );
                     })
                     :
-                    <Flickity
-                        id={`carousel-ba`}
-                        elementType={'div'} // default 'div'
-                        options={flickityOptions} // takes flickity options {}
-                        disableImagesLoaded={false} // default false
-                        reloadOnUpdate={true} // default false
-                        static // default false
-                        className="slides-before-after transition"
+                    <Carousel
+                        id={'carousel-ba'}
+                        options={flickityOptions}
+                        classList={'slides-before-after transition'}
                     >
-                        {[...datas, ...datas].map((ba, key) => {
+                        {/* {[...datas, ...datas].map((ba, key) => { */}
+                        {datas.map((ba, key) => {
                                 return (
                                     <div key={key} className="ba-slide">
                                         <img
                                             src={ba.image.childImageSharp.fluid.srcWebp}
+                                            alt={`addon-before-after-${key}`}
                                         />
                                         <div className="ba-doctor">{ba.doctor}</div>
                                         <div className="ba-descr">{ba.text}</div>
@@ -62,7 +58,7 @@ const AddonBeforeAfter = ({ datas }) => {
                                 );
                             })
                         }
-                    </Flickity>
+                    </Carousel>
                 }
             </div>
             <a className="request-informations" href="#">

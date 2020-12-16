@@ -3,7 +3,6 @@ import Layout from '../components/layout';
 import Addons from '../components/product/addons';
 import Divider from '../components/divider';
 import ProductBanner from '../components/product/banner';
-import Details from '../components/details';
 import ProductNavigation from '../components/product/navigation';
 import SEO from '../components/seo';
 import ProductBeforeAfter from '../components/product/before-after';

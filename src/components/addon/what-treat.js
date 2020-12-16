@@ -15,6 +15,7 @@ const AddonWhatTreat = ({ datas }) => {
                 <div key={key} className="treat-part">
                   <img
                     src={treat.picture.childImageSharp.fluid.srcWebp}
+                    alt="addon-what-treat"
                   />
                   <div className="it-treats">{treat.title}</div>
                   <div className="treat-descr">{treat.text}</div>

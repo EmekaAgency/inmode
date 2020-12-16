@@ -9,7 +9,6 @@
     background: #0b1a25;
     z-index: 4;
     box-sizing: border-box;
-    box-shadow: -4px 0px 8px 0px #0000009c;
 }
 
 .cart-purchase >*:not(.cart-head) {
@@ -19,6 +18,7 @@
 .cart-purchase.opened {
     right: 0px;
     z-index: 5;
+    box-shadow: -4px 0px 8px 0px #0000009c;
 }
 
 .cart-purchase .cart-close {
@@ -97,14 +97,8 @@
     padding: 10px 0;
     margin: 10px 0;
     box-shadow: #0006 -3px 2px 3px 1px;
-    /* transition: box-shadow 0.3s ease; */
     position: relative;
 }
-
-/* .cart-article:hover {
-    box-shadow: inset #0006 -3px 2px 3px 1px;
-    transition: box-shadow 0.3s ease;
-} */
 
 .cart-purchase .cart-content .cart-article .rmv {
     position: absolute;
@@ -300,13 +294,13 @@
     background: #0b1a25;
     z-index: 2;
     box-sizing: border-box;
-    box-shadow: -4px 0px 8px 0px #0000009c;
     padding: 32px 16px 16px;
     overflow-y: auto;
     transition: right 0.3s ease-in-out;
 }
 
 .cart-purchase-form.opened {
+    box-shadow: -4px 0px 8px 0px #0000009c;
     right: 400px;
     z-index: 3;
     transition: right 0.3s ease-in-out;
@@ -318,8 +312,8 @@
 
 .cart-purchase-form.opened .form-close,
 .cart-purchase-form .form-close img,
-#step-2-part .form-close,
-#step-2-part .form-close img {
+#step-3-part .form-close,
+#step-3-part .form-close img {
     position: absolute;
     top: 22px;
     right: 15px;
@@ -330,7 +324,7 @@
 }
 
 .cart-purchase-form.opened .form-close img,
-#step-2-part .form-close img {
+#step-3-part .form-close img {
     position: absolute;
     top: 0;
     left: 0;
@@ -342,7 +336,7 @@
 }
 
 .cart-purchase-form .title,
-#step-2-part .title {
+#step-3-part .title {
     text-transform: uppercase;
     color: #fff;
     text-align: center;
@@ -364,7 +358,7 @@
 }
 
 .cart-purchase-form.opened .title,
-#step-2-part.other-opened .title{
+#step-3-part.other-opened .title{
     right: 400px;
     transition: right 0.3s ease-in-out;
     height: 100px;
@@ -375,7 +369,7 @@
 }
 
 .cart-purchase-form.opened .title hr,
-#step-2-part .title hr {
+#step-3-part .title hr {
     position: relative;
 }
 
@@ -398,7 +392,7 @@ form#purchase .neumorphic input {
 }
 
 .cart-purchase-form.opened div#purchase-form.neumorphic textarea,
-#step-2-part textarea {
+#step-3-part textarea {
     height: unset;
 }
 
@@ -433,7 +427,7 @@ form#purchase .neumorphic label {
     height: 100%;
 }
 
-.cart-purchase-form +#step-2-part {
+.cart-purchase-form +#step-3-part {
     position: fixed;
     width: 400px;
     height: 100%;
@@ -442,41 +436,41 @@ form#purchase .neumorphic label {
     background: #0b1a25;
     z-index: 2;
     box-sizing: border-box;
-    box-shadow: -4px 0px 8px 0px #0000009c;
     padding: 90px 16px 16px;
     overflow-y: auto;
     transition: right 0.3s ease-in-out;
 }
 
-.cart-purchase +.cart-purchase-form +#step-2-part {
+.cart-purchase +.cart-purchase-form +#step-3-part {
     right: -400px;
 }
 
-.cart-purchase.opened +.cart-purchase-form +#step-2-part {
+.cart-purchase.opened +.cart-purchase-form +#step-3-part {
     right: 0;
+    box-shadow: -4px 0px 8px 0px #0000009c;
 }
 
-.cart-purchase.opened +.cart-purchase-form.opened +#step-2-part {
+.cart-purchase.opened +.cart-purchase-form.opened +#step-3-part {
     right: 400px;
 }
 
-.cart-purchase.opened +.cart-purchase-form.opened +#step-2-part.other-opened {
+.cart-purchase.opened +.cart-purchase-form.opened +#step-3-part.other-opened {
     right: 800px;
     transition: right 0.3s ease-in-out;
     z-index: 3;
 }
 
-.cart-purchase.opened +.cart-purchase-form.opened +#step-2-part.other-opened .form {
+.cart-purchase.opened +.cart-purchase-form.opened +#step-3-part.other-opened .form {
     max-height: calc(100vh - 200px);
     overflow: auto;
 }
 
-.cart-purchase-form.opened +#step-2-part .title {
+.cart-purchase-form.opened +#step-3-part .title {
     position: absolute;
     left: 0;
 }
 
-.cart-purchase-form.opened +#step-2-part.other-opened .title {
+.cart-purchase-form.opened +#step-3-part.other-opened .title {
     transition: right 0.3s ease-in-out;
 }
 
@@ -509,12 +503,12 @@ form#purchase .neumorphic label {
     transition-delay: 0s;
 }
 
-form#purchase.step-2-3 #step-2-part.other-opened + .facture {
+form#purchase.step-2-3 #step-3-part.other-opened + .facture {
     bottom: 30px;
     transition: bottom 0.3s ease-in-out 0.1s;
 }
 
-form#purchase.step-2-3 #step-2-part.other-opened + .facture + .cgu {
+form#purchase.step-2-3 #step-3-part.other-opened + .facture + .cgu {
     bottom: -10px;
     transition: bottom 0.3s ease-in-out 0.1s;
 }

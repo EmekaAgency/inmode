@@ -1,7 +1,6 @@
 import React from "react";
-import Flickity from "react-flickity-component";
+import Carousel from "../Carousel";
 import ClinicalStudy from "../clinical-study";
-import Slider from "../slider";
 
 const ProductClinicalStudies = ({ datas }) => {
 
@@ -13,8 +12,8 @@ const ProductClinicalStudies = ({ datas }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: 5000,
-        wrapAround: true
+        // autoPlay: 5000,
+       // wrapAround: true
     });
 
     if(!datas || datas.length === 0) {
@@ -30,19 +29,16 @@ const ProductClinicalStudies = ({ datas }) => {
                 {datas.length === 1 ?
                     <ClinicalStudy study={datas[0]}/>
                     :
-                    <Flickity
-                        id={`carousel-clinical-studies`}
-                        elementType={'div'} // default 'div'
-                        options={flickityOptions} // takes flickity options {}
-                        disableImagesLoaded={false} // default false
-                        reloadOnUpdate={true} // default false
-                        static // default false
-                        className="slide-studies transition"
+                    <Carousel
+                        id={'carousel-clinical-studies'}
+                        options={flickityOptions}
+                        classList={'slide-studies transition'}
                     >
-                        {[...datas, ...datas].map((study, key) => {
+                        {/* {[...datas, ...datas].map((study, key) => { */}
+                        {datas.map((study, key) => {
                             return (<ClinicalStudy key={key} prop_key={key} study={study}/>);
                         })}
-                    </Flickity>
+                    </Carousel>
                 }
             </div>
         </div>

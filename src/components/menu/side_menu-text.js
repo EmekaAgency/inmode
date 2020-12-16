@@ -4,6 +4,7 @@ import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_open
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 import Menu from '../menu';
+import { enableMainScroll } from '../../functions/disable-scroll';
 
 const MenuSideMenuText = ({menu, prop_key, openOnClick}) => {
 
@@ -21,21 +22,6 @@ const MenuSideMenuText = ({menu, prop_key, openOnClick}) => {
         }
     }
 
-    const content = (_menu) => {
-        return (
-            <>
-                {format_string(_menu.title)}
-                {_menu.menus.length > 0 && _menu.menus.map((sub, key_sub) => {
-                    return (
-                        <Menu key={key_sub} prop_key={key_sub} menu={sub}/>
-                    )
-                })}
-            </>
-        )
-    }
-
-    // console.log(menu);
-
     return (
         <ul key={prop_key} className="menu-side-menu menu-text transition">
             {menu.url ?
@@ -43,7 +29,10 @@ const MenuSideMenuText = ({menu, prop_key, openOnClick}) => {
                     <Link
                         className="menu-side-menu menu-text"
                         to={menu.url || "#"}
-                        onClick={(e) => {resolveOnClick(e, true);}}
+                        onClick={(e) => {
+                            resolveOnClick(e, true);
+                            enableMainScroll();
+                        }}
                     >
                         {format_string(menu.title)}
                     </Link>
@@ -51,7 +40,12 @@ const MenuSideMenuText = ({menu, prop_key, openOnClick}) => {
                     <a
                         className="menu-side-menu menu-text"
                         href={menu.url || "#"}
-                        onClick={(e) => {resolveOnClick(e, true);}}
+                        onClick={(e) => {
+                            resolveOnClick(e, true);
+                            enableMainScroll();
+                        }}
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         {format_string(menu.title)}
                     </a>

@@ -1,22 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link, useStaticQuery } from "gatsby";
 import ProductsContext from "../contexts/products-context";
+import { Link } from "gatsby";
 
 const SlidesMini = ({ from }) => {
-
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            arrow_right: file(relativePath: { eq: "icons/arrow-right.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                        srcSetWebp
-                    }
-                }
-            }
-        }
-    `));
 
     const [products] = React.useState(React.useContext(ProductsContext).products);
 
@@ -54,11 +41,11 @@ const SlidesMini = ({ from }) => {
 };
 
 SlidesMini.propTypes = {
-
+    from: PropTypes.string.isRequired,
 };
 
 SlidesMini.defaultProps = {
-
+    from: 'any'
 };
 
 export default SlidesMini;

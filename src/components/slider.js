@@ -1,7 +1,7 @@
-import React from "react"
-import Flickity from "react-flickity-component";
+import React from "react";
+import Carousel from "./Carousel";
 
-const Slider = ({ children, options, id, classlist }) => {
+const Slider = ({ children, options, id, classList }) => {
 
     const [flickityOptions] = React.useState({
         initialIndex: options.current || 0,
@@ -11,23 +11,19 @@ const Slider = ({ children, options, id, classlist }) => {
         selectedAttraction: options.attraction || 0.01,
         friction: options.friction || 0.15,
         percentPosition: options.percent || false,
-        autoPlay: options.autoplay || 5000,
-        wrapAround: options.wrap || true,
+        // autoPlay: options.autoplay || 5000,
+        // wrapAround: options.wrap || true,
         draggable: options.draggable || true,
     });
 
     return (
-            <Flickity
-              id={id}
-              elementType={'div'} // default 'div'
-              options={flickityOptions} // takes flickity options {}
-              disableImagesLoaded={false} // default false
-              reloadOnUpdate={true} // default false
-              static // default false
-              className={classlist}
-            >
-                {children}
-            </Flickity>
+        <Carousel
+            id={id}
+            options={flickityOptions}
+            classList={classList}
+        >
+            {children}
+        </Carousel>
     );
 }
 

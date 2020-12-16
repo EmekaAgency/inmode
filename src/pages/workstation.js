@@ -27,11 +27,15 @@ export const query = graphql`
       edges {
         node {
           Name
+          MenuParams {
+            url
+            internal_link
+          }
           ShopPicture {
             childImageSharp {
-            fluid {
-                srcWebp
-            }
+              fluid {
+                  srcWebp
+              }
             }
           }
           ShopDescription

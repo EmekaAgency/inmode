@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import React from "react";
 import { useWindowSize } from "../../functions/window-size";
 
@@ -50,7 +49,6 @@ const ShopMenu = ({ products, filter, tags }) => {
                                 key={key} 
                                 className={`tab-link menu-title menu-text transition${tags.length > 0 && tags.indexOf(product.fieldValue) >= 0 ? ' selected' : ''}`}
                                 onClick={(e) => {filter(e);}}
-                                key={key}
                             >
                                 <span
                                     className="menu-title menu-text"

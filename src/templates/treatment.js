@@ -2,7 +2,6 @@ import React from 'react'
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TreatmentBanner from '../components/treatment/treatment-banner';
-import Details from '../components/details';
 import Divider from '../components/divider';
 import ClinicalStudies from '../components/clinical-studies';
 import GenericDetails from '../components/details';
@@ -27,8 +26,6 @@ const TreatmentTemplates = ({ data }) => {
             </Layout>
     );
 }
-
-// array1.filter(value => array2.includes(value))
 
 export default TreatmentTemplates;
 

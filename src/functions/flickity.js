@@ -1752,7 +1752,6 @@
     /**/
   };
 
-
   var transformProperty = getStyleProperty('transform');
   var is3d = !!getStyleProperty('perspective');
 
@@ -1993,7 +1992,7 @@
     accessibility: true,
     cellAlign: 'center',
     // cellSelector: undefined,
-    // contain: false,
+    contain: false,
     freeScrollFriction: 0.075, // friction when free-scrolling
     friction: 0.28, // friction when selecting
     // initialIndex: 0,

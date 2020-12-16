@@ -2,12 +2,9 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import MenusContext from "./menus-context";
-import { header_process } from '../../functions/header_process';
-import { footer_process } from '../../functions/footer_process';
-import { process_menu_datas } from '../../functions/process_menu_datas';
 
-const _TYPES = ['text', 'image', 'button', 'card'];
-const _VARIANTS = ['single', 'title', 'content', 'dk_title', 'side_menu'];
+// const _TYPES = ['text', 'image', 'button', 'card'];
+// const _VARIANTS = ['single', 'title', 'content', 'dk_title', 'side_menu'];
 
 const MenusProvider = ({ requested = "", children }) => {
     const [datas] = React.useState(useStaticQuery(graphql`
@@ -37,6 +34,7 @@ const MenusProvider = ({ requested = "", children }) => {
                             url
                             type
                             variant
+                            internal_link
                         }
                         Icon {
                             childImageSharp {
@@ -54,6 +52,7 @@ const MenusProvider = ({ requested = "", children }) => {
                             url
                             type
                             variant
+                            internal_link
                         }
                     }
                     icon {
@@ -101,6 +100,7 @@ const MenusProvider = ({ requested = "", children }) => {
                             url
                             type
                             variant
+                            internal_link
                         }
                         Icon {
                             childImageSharp {
@@ -118,6 +118,17 @@ const MenusProvider = ({ requested = "", children }) => {
                             url
                             type
                             variant
+                            internal_link
+                        }
+                    }
+                    mini_treatments {
+                        id
+                        MenuParams {
+                            title
+                            url
+                            type
+                            variant
+                            internal_link
                         }
                     }
                     icon {
@@ -176,6 +187,7 @@ const MenusProvider = ({ requested = "", children }) => {
                             url
                             type
                             variant
+                            internal_link
                         }
                     }
                 }
@@ -188,6 +200,7 @@ const MenusProvider = ({ requested = "", children }) => {
                         url
                         type
                         variant
+                        internal_link
                     }
                 }
             }
@@ -214,6 +227,7 @@ const MenusProvider = ({ requested = "", children }) => {
                         'menus': menu.menus || [],
                         'products': menu.products || [],
                         'treatments': menu.treatments || [],
+                        'mini_treatments': menu.mini_treatments || [],
                         'id': menu.id || menu.strapiId,
                         'parent': elem
                     };
@@ -236,6 +250,7 @@ const MenusProvider = ({ requested = "", children }) => {
                                     'menus': _product.Addons[addon].menus || [],
                                     'products': _product.Addons[addon].products || [],
                                     'treatments': _product.Addons[addon].treatments || [],
+                                    'mini_treatments': _product.Addons[addon].mini_treatments || [],
                                 });
                             };
                         }
@@ -247,6 +262,7 @@ const MenusProvider = ({ requested = "", children }) => {
                         'menus': product.menus || [],
                         'products': product.products || [],
                         'treatments': product.treatments || [],
+                        'mini_treatments': product.mini_treatments || [],
                         'icon': product.Icon.childImageSharp.fluid || null,
                         'id': product.id || product.strapiId,
                         'parent': elem
@@ -260,10 +276,16 @@ const MenusProvider = ({ requested = "", children }) => {
                         'menus': treatment.menus || [],
                         'products': treatment.products || [],
                         'treatments': treatment.treatments || [],
+                        'mini_treatments': treatment.mini_treatments || [],
                         'id': treatment.id || treatment.strapiId,
                         'parent': elem
                     };
                 }));
+            }
+            if(_object[elem].mini_treatments && _object[elem].mini_treatments.length) {
+                _object[elem].mini_treatments = _object[elem].mini_treatments.map((elem) => {
+                    return {...elem, ...elem.MenuParams};
+                });
             }
         });
     }

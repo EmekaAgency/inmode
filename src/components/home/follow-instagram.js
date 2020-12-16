@@ -22,20 +22,6 @@ const FollowInstagram = () => {
                     }
                 }
             }
-            comments: file(relativePath: {eq: "icons/insta-comments.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
-                }
-            }
-            likes: file(relativePath: {eq: "icons/insta-likes.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
-                }
-            }
         }
     `));
 
@@ -43,7 +29,7 @@ const FollowInstagram = () => {
         <div className="follow-instagram">
             {/* <div className="container"> */}
                 <h2>
-                    <a href="https://www.instagram.com/inmode.france">
+                    <a href="https://www.instagram.com/inmode.france" target="_blank" rel="noreferrer">
                         Suivez nous sur Instagram
                     </a>
                 </h2>
@@ -57,20 +43,7 @@ const FollowInstagram = () => {
                                     srcSet={post.node.localFile.childImageSharp.fluid.srcSetWebp}
                                     alt={`insta-${key + 1}`}
                                 />
-                                {/* <div className="stats">
-                                    <div className="stats-comments">
-                                        <img
-                                            src={datas.comments.childImageSharp.fluid.srcWebp}
-                                        />
-                                        <div>{post.node.comments}</div>
-                                    </div>
-                                    <div className="stats-likes">
-                                        <img
-                                            src={datas.likes.childImageSharp.fluid.srcWebp}
-                                        />
-                                        <div>{post.node.likes}</div>
-                                    </div>
-                                </div> */}
+                                <a href="https://www.instagram.com/inmodeaesthetics/" className="zone-link" target="_blank" rel="noreferrer"></a>
                             </div>
                         );
                     })}

@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import { format_title } from "../functions/format_title";
 
@@ -20,9 +21,9 @@ const ClinicalStudy = ({study, prop_key = null}) => {
                         return (
                             <>
                                 &nbsp;
-                                <a key={`${prop_key}-${key2}` || null} href={`/technology/${format_title(addon.Name)}`}>
+                                <Link key={`${prop_key}-${key2}` || null} to={`/technology/${format_title(addon.Name)}`}>
                                     {format_title(addon.Name)}
-                                </a>
+                                </Link>
                                 &nbsp;
                             </>
                         );
@@ -32,12 +33,11 @@ const ClinicalStudy = ({study, prop_key = null}) => {
                 <div className="study-publication">Publication : {study.publication}</div>
                 <div className="study-download">
                     Télécharger
-                    <a
+                    <a 
                         className="zone-link"
                         href={study.url}
-                        // download={study.url.split('/')[study.url.split('/').length - 1]}
-                        download
                         target="_blank"
+                        rel="noreferrer"
                     ></a>
                 </div>
             </div>

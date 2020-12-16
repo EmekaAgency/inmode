@@ -10,8 +10,8 @@
     #purchase-mini .cart-purchase {
         width: 100%;
         right: -100%;
-        top: 100px;
-        height: calc(100% - 100px);
+        top: 150px;
+        height: calc(100% - 150px);
     }
     
     #purchase-mini .cart-purchase >*:not(.cart-head) {}
@@ -26,7 +26,7 @@
         padding: 0;
         width: 100vw;
         height: 100px;
-        top: 0;
+        top: 50px;
         z-index: 4;
         transition: left 0.3s ease-in-out 0s;
     }
@@ -139,7 +139,7 @@
     #purchase-mini .cart-purchase hr {}
     
     #purchase-mini .cart-purchase .cart-content {
-        height: calc(100vh - 430px);
+        height: calc(100vh - 480px);
     }
     
     #purchase-mini .cart-purchase .cart-content.purchase {}
@@ -208,20 +208,38 @@
     
     #purchase-mini .cart-purchase .cart-final .cart-total {}
     
-    #purchase-mini .cart-purchase .cart-final .cart-validate {
+    #purchase-mini .cart-validate {
+        text-transform: uppercase;
+        padding: 15px 60px;
+        box-shadow: -5px 5px 14px 0 rgba(0,0,0,.2);
+        outline: none;
+        cursor: pointer;
+        font-size: 18px;
+        background: #59b7b3;
+        color: #fff;
+        text-align: center;
+        box-sizing: border-box;
+        position: fixed;
+        bottom: 12px;
         width: 75%;
         display: block;
         margin-right: 12.5%;
+        height: 50px;
+        z-index: 5;
         right: -100%;
+        transition: right 0.3s ease-in-out 0s;
     }
     
-    #purchase-mini .cart-purchase.opened .cart-final .cart-validate {}
+    #purchase-mini.step-1 .cart-validate {
+        right: 0;
+        transition: right 0.3s ease-in-out 0s;
+    }
     
-    #purchase-mini .cart-purchase.opened .cart-final .cart-validate.form-transition {
+    #purchase-mini .cart-validate.form-transition {
         right: 0;
     }
     
-    #purchase-mini .cart-purchase.opened .cart-final .cart-validate.other-address-transition {
+    #purchase-mini .cart-validate.other-address-transition {
         right: 0;
     }
     
@@ -230,9 +248,9 @@
     #purchase-mini .cart-purchase-form {
         right: -100%;
         z-index: 5;
-        height: calc(100% - 180px);
+        height: calc(100% - 230px);
         width: 100%;
-        top: 100px;
+        top: 150px;
     }
     
     #purchase-mini .cart-purchase-form.opened {
@@ -243,18 +261,18 @@
     
     #purchase-mini .cart-purchase-form.opened .form-close,
     #purchase-mini .cart-purchase-form .form-close img,
-    #purchase-mini #step-2-part .form-close,
-    #purchase-mini #step-2-part .form-close img {}
+    #purchase-mini #step-3-part .form-close,
+    #purchase-mini #step-3-part .form-close img {}
     
     #purchase-mini .cart-purchase-form.opened .form-close img,
-    #purchase-mini #step-2-part .form-close img {}
+    #purchase-mini #step-3-part .form-close img {}
     
     #purchase-mini .cart-purchase-form .title {}
     
     #purchase-mini .cart-purchase-form .title,
-    #purchase-mini #step-2-part .title {
+    #purchase-mini #step-3-part .title {
         position: fixed;
-        top: 100px;
+        top: 150px;
         height: 80px;
         padding-top: 12px;
         right: -100%;
@@ -264,7 +282,7 @@
     }
     
     #purchase-mini .cart-purchase-form.opened .title,
-    #purchase-mini #step-2-part.other-opened .title{
+    #purchase-mini #step-3-part.other-opened .title{
         right: 0;
         transition: right 0.3s ease-in-out 0s;
     }
@@ -272,7 +290,7 @@
     #purchase-mini .cart-purchase-form.opened > .title {}
     
     #purchase-mini .cart-purchase-form.opened .title hr,
-    #purchase-mini #step-2-part .title hr {}
+    #purchase-mini #step-3-part .title hr {}
     
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic {
         right: 0;
@@ -282,8 +300,8 @@
     #purchase-mini .cart-purchase-form div#purchase-form.neumorphic {
         right: -100%;
         margin-top: 80px;
-        top: 90px;
-        height: calc(100% - 330px);
+        top: 140px;
+        height: calc(100% - 380px);
     }
     
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic input:not([type="checkbox"]),
@@ -293,7 +311,7 @@
     }
     
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic textarea,
-    #purchase-mini #step-2-part textarea {
+    #purchase-mini #step-3-part textarea {
         width: 90%;
         margin: 10px auto;
     }
@@ -322,42 +340,42 @@
         max-height: calc(100vh - 300px);
     }
     
-    #purchase-mini .cart-purchase-form +#step-2-part {
+    #purchase-mini .cart-purchase-form +#step-3-part {
         width: 100%;
         right: -100%;
-        height: calc(100% - 180px);
-        top: 100px;
+        height: calc(100% - 230px);
+        top: 150px;
         padding: 32px 16px 16px;
         z-index: 5;
     }
     
-    #purchase-mini .cart-purchase +.cart-purchase-form +#step-2-part {}
+    #purchase-mini .cart-purchase +.cart-purchase-form +#step-3-part {}
     
-    #purchase-mini .cart-purchase.opened +.cart-purchase-form +#step-2-part {}
+    #purchase-mini .cart-purchase.opened +.cart-purchase-form +#step-3-part {}
     
-    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-2-part {}
+    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-3-part {}
     
-    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-2-part .form {
+    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-3-part .form {
         max-height: calc(100% - 100px);
         position: relative;
         right: -100%;
         transition: right 0.3s ease-in-out 0s;
-        top: 40px;
+        top: 28px;
         overflow: auto;
     }
 
-    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-2-part.other-opened {
+    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-3-part.other-opened {
         right: 0;
     }
     
-    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-2-part.other-opened .form {
+    #purchase-mini .cart-purchase.opened +.cart-purchase-form.opened +#step-3-part.other-opened .form {
         right: 0;
         transition: right 0.3s ease-in-out 0s;
     }
     
-    #purchase-mini .cart-purchase-form.opened +#step-2-part .title {}
+    #purchase-mini .cart-purchase-form.opened +#step-3-part .title {}
     
-    #purchase-mini .cart-purchase-form.opened +#step-2-part.other-opened .title {}
+    #purchase-mini .cart-purchase-form.opened +#step-3-part.other-opened .title {}
     
     #purchase-mini .cart-purchase-form div#purchase-form.neumorphic .end-purchase,
     #purchase-mini .cart-purchase-form div#purchase-form.neumorphic .address-purchase {}
@@ -365,9 +383,9 @@
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic .end-purchase,
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic .address-purchase {}
     
-    #purchase-mini.step-2-3 #purchase-mini #step-2-part.other-opened + .facture {}
+    #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .facture {}
     
-    #purchase-mini.step-2-3 #purchase-mini #step-2-part.other-opened + .facture + .cgu {}
+    #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .facture + .cgu {}
     
     #purchase-mini.all-close > .step-1.neumorphic,
     #purchase-mini > .step-1.neumorphic.facture,
@@ -389,11 +407,11 @@
     }
     
     #purchase-mini > .step-1.neumorphic.facture {
-        bottom: 115px;
+        bottom: 110px;
     }
     
     #purchase-mini > .step-1.neumorphic.cgu {
-        bottom: 80px;
+        bottom: 75px;
     }
     
     #purchase-mini.step-1 > .step-1.neumorphic {}

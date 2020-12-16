@@ -13,6 +13,7 @@ const AddonBanner = ({ datas }) => {
                 <img
                     src={datas.left_img.childImageSharp.fluid.srcWebp}
                     srcSet={datas.left_img.childImageSharp.fluid.srcSetWebp || null}
+                    alt="addon-banner"
                 />
             </div>
             <div className="addon-banner-details">

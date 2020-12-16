@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
+import { enableMainScroll } from '../../functions/disable-scroll';
 
 const MenuSingleImage = ({menu, prop_key}) => {
 
@@ -10,7 +11,7 @@ const MenuSingleImage = ({menu, prop_key}) => {
             {
                 menu.url ?
                     menu.internal_link ?
-                    <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"}>
+                    <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"} onClick={(e) => {enableMainScroll();}}>
                         <img
                             className="init"
                             src={menu.icon.url || menu.icon.publicURL}
@@ -20,10 +21,12 @@ const MenuSingleImage = ({menu, prop_key}) => {
                             className="blue"
                             src={menu.icon_hover.url || menu.icon_hover.publicURL}
                             alt={format_string(menu.title)}
+                            target="_blank"
+                            rel="noreferrer"
                         />
                     </Link>
                     :
-                    <a key={prop_key} className="menu-single menu-image social-btn" href={menu.url || "#"}>
+                    <a key={prop_key} className="menu-single menu-image social-btn" href={menu.url || "#"} target="_blank" rel="noreferrer" onClick={(e) => {enableMainScroll();}}>
                         <img
                             className="init"
                             src={menu.icon.url || menu.icon.publicURL}

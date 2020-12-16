@@ -1,5 +1,5 @@
 import React from "react";
-import Flickity from "react-flickity-component";
+import Carousel from "../Carousel";
 
 const ProductBeforeAfter = ({ datas }) => {
 
@@ -11,8 +11,8 @@ const ProductBeforeAfter = ({ datas }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: 5000,
-        wrapAround: true,
+        // autoPlay: 5000,
+       // wrapAround: true,
     });
 
     if(datas.length === 0) {
@@ -32,6 +32,7 @@ const ProductBeforeAfter = ({ datas }) => {
                                 <img
                                     src={ba.image.childImageSharp.fluid.srcWebp}
                                     srcSet={ba.image.childImageSharp.fluid.srcSetWebp}
+                                    alt="product-before-after"
                                 />
                                 <div className="ba-doctor">{ba.doctor}</div>
                                 <div className="ba-descr">{ba.text}</div>
@@ -39,21 +40,19 @@ const ProductBeforeAfter = ({ datas }) => {
                         );
                     })
                     :
-                    <Flickity
-                        id={`carousel-ba`}
-                        elementType={'div'}
+                    <Carousel
+                        id={'carousel-ba'}
                         options={flickityOptions}
-                        disableImagesLoaded={false}
-                        reloadOnUpdate={true}
-                        static
-                        className="slides-before-after transition"
+                        classList={'slides-before-after transition'}
                     >
-                        {[...datas, ...datas].map((ba, key) => {
+                        {/* {[...datas, ...datas].map((ba, key) => { */}
+                        {datas.map((ba, key) => {
                                 return (
                                     <div key={key} className="ba-slide">
                                         <img
                                             src={ba.image.childImageSharp.fluid.srcWebp}
                                             srcSet={ba.image.childImageSharp.fluid.srcSetWebp}
+                                            alt={`product-before-after-${key}`}
                                         />
                                         <div className="ba-doctor">{ba.doctor}</div>
                                         <div className="ba-descr">{ba.text}</div>
@@ -61,7 +60,7 @@ const ProductBeforeAfter = ({ datas }) => {
                                 );
                             })
                         }
-                    </Flickity>
+                    </Carousel>
                 }
             </div>
             <a className="request-informations" href="#">

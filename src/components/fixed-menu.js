@@ -2,7 +2,7 @@ import React from "react"
 import Menu from "./menu";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import MenusContext from "./contexts/menus-context"
-import { useCart } from './contexts/cart-provider';
+// import { useCart } from './contexts/cart-provider';
 
 const FixedMenu = ({ customClass }) => {
 
@@ -40,7 +40,7 @@ const FixedMenu = ({ customClass }) => {
         }
     }, []);
 
-    const cart = useCart();
+    // const cart = useCart();
 
     return (
         <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible ? 0 : -55, boxShadow: isVisible ? null : 'unset'}}>
@@ -59,7 +59,7 @@ const FixedMenu = ({ customClass }) => {
                             <Menu key={key} prop_key={key} menu={menu} />
                         );
                     })}
-                    {
+                    {/* {
                         cart.cart.length > 0 || cart.appeared ?
                             <img
                                 className="cart"
@@ -68,7 +68,7 @@ const FixedMenu = ({ customClass }) => {
                             />
                             :
                             null
-                    }
+                    } */}
                 </div>
             </div>
         </div>

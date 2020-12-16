@@ -22,4 +22,4 @@ export const process_products = (products : Array<any> = [], matching : Array<an
         }
         return false;
     }).filter(prod => prod);
-}
+};

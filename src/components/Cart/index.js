@@ -8,14 +8,14 @@ import './main.css';
 
 const CartPurchase = ({ }) => {
 
-  const window = useWindowSize();
+  const size = useWindowSize();
 
   const cart = useCart();
 
     // if(cart.cart.length <= 0 && cart.appeared) {
     //     return null;
     // }
-    if(window.width > 1199) {
+    if(size.width > 1199) {
         return <CartPurchaseBig/>;
     }
     else {

@@ -1,20 +1,21 @@
 import { Link } from "gatsby";
 import React from "react";
+import { enableMainScroll } from "../../functions/disable-scroll";
 import { format_string } from "../../functions/format_string";
 import Menu from "../menu";
 
 // VARIANT
-const SINGLE = 'single';
+// const SINGLE = 'single';
 const TITLE = 'title';
-const CONTENT = 'content';
-const DK_TITLE = 'dk_title';
-const SIDE_MENU = 'side_menu';
+// const CONTENT = 'content';
+// const DK_TITLE = 'dk_title';
+// const SIDE_MENU = 'side_menu';
 
 // TYPE
-const TEXT = 'text';
-const IMAGE = 'image';
-const BUTTON = 'button';
-const CARD = 'card';
+// const TEXT = 'text';
+// const IMAGE = 'image';
+// const BUTTON = 'button';
+// const CARD = 'card';
 
 const MenuTitleCard = ({ menu, prop_key }) => {
     
@@ -23,7 +24,7 @@ const MenuTitleCard = ({ menu, prop_key }) => {
             {
                 menu.url ?
                     menu.internal_link ?
-                    <Link to={menu.url}>
+                    <Link onClick={(e) => {enableMainScroll();}} to={menu.url}>
                         <img
                             className="menu-title menu-card picture transition"
                             src={menu.icon.srcWebp}
@@ -33,12 +34,14 @@ const MenuTitleCard = ({ menu, prop_key }) => {
                         <span className="menu-title menu-card title">{format_string(menu.title)}</span>
                     </Link>
                     :
-                    <a href={menu.url}>
+                    <a onClick={(e) => {enableMainScroll();}} href={menu.url}>
                         <img
                             className="menu-title menu-card picture transition"
                             src={menu.icon.srcWebp}
                             srcSet={menu.icon.srcSetWebp}
                             alt={format_string(menu.title)}
+                            target="_blank"
+                            rel="noreferrer"
                         />
                         <span className="menu-title menu-card title">{format_string(menu.title)}</span>
                     </a>

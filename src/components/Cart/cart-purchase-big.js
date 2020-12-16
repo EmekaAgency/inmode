@@ -4,7 +4,7 @@ import CartContext from "../contexts/cart-context";
 
 import './big.css';
 
-const CartPurchaseBig = ({  }) => {
+const CartPurchaseBig = (  ) => {
 
     const [icons] = React.useState(useStaticQuery(graphql`
         {
@@ -29,29 +29,14 @@ const CartPurchaseBig = ({  }) => {
     const [otherAddress, setOtherAddress] = React.useState(false);
     const [otherAddressOpened, setOtherAddressOpened] = React.useState(false);
 
-    const [formValues, setFormValues] = React.useState({'step-1': {}, 'step-2': {}});
-
     const manageChange = (e) => {
         otherAddress && setOtherAddressOpened(false);
         !otherAddress && setOtherAddressOpened(true);
         setOtherAddress(e.currentTarget.checked);
     }
 
-    const manageStep = (e, step) => {
-        e.preventDefault();
-        if(step === 1 && e.currentTarget.id == "step-1" && otherAddress) {
-            
-        }
-        if(step === 2 && (e.currentTarget.id == "step-2" || e.currentTarget.id == "continue")) {
-            
-        }
-    }
-
     const sendForm = (e) => {
         e.preventDefault();
-        console.log("formOpened => ", formOpened);
-        console.log("otherAddress => ", otherAddress);
-        console.log("otherAddressOpened => ", otherAddressOpened);
     }
 
     return (
@@ -59,15 +44,6 @@ const CartPurchaseBig = ({  }) => {
             id="purchase"
             className={!cart.cart_opened ? "all-close" : !formOpened ? 'step-1' : 'step-2-3'}
         >
-            {/* <div style={{
-                position: 'fixed',
-                width: '100vw',
-                left: 0,
-                top: 100,
-                height: 1,
-                backgroundColor: '#f00',
-                zIndex: 5
-            }}></div> */}
             {/* FIRST PART */}
             <div className={`cart-purchase transition${cart.cart_opened ? ' opened' : ''}`}>
                 <div className="cart-close"
@@ -137,13 +113,13 @@ const CartPurchaseBig = ({  }) => {
                             </div>
                         );
                     })}
-                     {cart.total() * 1.2 < 500 && <div className="free-message">Livraison gratuite à + de 500€</div>}
+                     {cart.total() * 1.2 < 500 && <div className="free-message">Livraison gratuite à partir de 500€</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         <div className="text">Livraison{cart.total() * 1.2 < 500 ? '' : ' gratuite'}</div>
                         {cart.total() * 1.2 < 500 ? <div className="price">
-                            {cart.total() == 0 ? (0).toFixed(2) : (10).toFixed(2)}
+                            {cart.total() === 0 ? (0).toFixed(2) : (10).toFixed(2)}
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
@@ -169,11 +145,9 @@ const CartPurchaseBig = ({  }) => {
                         onClick={(e) => {
                             e.preventDefault();
                             if(!formOpened){
-                                // console.log("Open form");
                                 setFormOpened(true);
                             }
                             else if(formOpened && otherAddress && !otherAddressOpened){
-                                // console.log("Open other address");
                                 setOtherAddressOpened(true);
                             }
                             else {
@@ -205,7 +179,7 @@ const CartPurchaseBig = ({  }) => {
                 </div>
                 <div
                     id="purchase-form"
-                    className={`neumorphic ${otherAddress && ' other-address' || ''}`}
+                    className={`neumorphic ${otherAddress && (' other-address' || '')}`}
                 >
                     <div id="step-1-part" className="unmorphic custom-scrollbar">
                         <input className="required form-field step-1" name="name" type="text" required placeholder="Nom"/>
@@ -219,7 +193,7 @@ const CartPurchaseBig = ({  }) => {
                 </div>
             </div>
             {/* THIRD PART */}
-            <div id="step-2-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
+            <div id="step-3-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
                 <div className={`title unmorphic${otherAddressOpened ? ' opened' : ''}`}>
                     <div
                         className="form-close unmorphic"
@@ -239,13 +213,13 @@ const CartPurchaseBig = ({  }) => {
                 </div>
                 {otherAddress &&
                     <div className="form custom-scrollbar">
-                        <input className="required form-field step-2" name="other-name" type="text" required placeholder="Facture - Nom"/>
-                        <input className="form-field step-2" name="other-society" type="text" placeholder="Facture - Société"/>
-                        <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Facture - Adresse" rows="3"></textarea>
-                        <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Facture - Code postal"/>
-                        <input className="required form-field step-2" name="other-city" type="text" required placeholder="Facture - Ville"/>
-                        <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Facture - Téléphone"/>
-                        <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Facture - Mail"/>
+                        <input className="required form-field step-2" name="other-name" type="text" required placeholder="Nom"/>
+                        <input className="form-field step-2" name="other-society" type="text" placeholder="Société"/>
+                        <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Adresse" rows="3"></textarea>
+                        <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Code postal"/>
+                        <input className="required form-field step-2" name="other-city" type="text" required placeholder="Ville"/>
+                        <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/>
+                        <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/>
                     </div>
                 }
             </div>

@@ -1,7 +1,6 @@
 import React from "react";
 
 import Divider from '../components/divider';
-import HowCanWeHelp from "../components/contact/how-can-we-help";
 import GetStarted from "../components/get-started";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -21,7 +20,6 @@ const AboutUsPage = () => {
         <Learn from="about-us"/>
         <Divider position="bottom"/>
         <Staff from="about-us"/>
-        {/* <HowCanWeHelp from="about-us"/> */}
         <GetStarted/>
       </Layout>
     );

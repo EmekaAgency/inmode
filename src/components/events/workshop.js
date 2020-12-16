@@ -1,8 +1,6 @@
 import React from "react";
 
 const Workshop = ({ event = {} }) => {
-
-    console.log(event);
     
     return (
         <div className="seminar">
@@ -24,7 +22,7 @@ const Workshop = ({ event = {} }) => {
                     {`${event.begin}${event.finish ? ` - ${event.finish}` : ''}`}
                 </div>}
                 {event.place && <div className="address_link">
-                    <a href={event.place_url || "#"}>
+                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer">
                         {event.place}
                     </a>
                 </div>}
@@ -32,7 +30,7 @@ const Workshop = ({ event = {} }) => {
                     {event.address}
                 </div>}
                 {event.map_link && <div className="maps_location">
-                    <a href={event.map_link || "#"}>+ Google Map</a>
+                    <a href={event.map_link || "#"} target="_blank" rel="noreferrer">+ Google Map</a>
                 </div>}
             </div>
         </div>

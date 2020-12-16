@@ -9,7 +9,6 @@ export const footer_process = (datas) => {
                 'name': data.name.replace('\\n', '\n'),
                 'type': data.container
             };
-            return true;
         }
         else {
             if(retour[data.container] === undefined) {
@@ -19,7 +18,6 @@ export const footer_process = (datas) => {
                 'name': data.name,
                 'url': data.url
             };
-            return true;
         }
     });
     return retour;

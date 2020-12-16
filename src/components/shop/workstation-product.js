@@ -3,8 +3,6 @@ import React from "react";
 
 const WorkstationProduct = ({ product, special }) => {
 
-    // console.log(product);
-
     return (
         <div className={`workstation-product transition${special ? " special" : ""}`}>
             <div className={`workstation-front transition${special ? " special" : ""}`}>
@@ -19,7 +17,7 @@ const WorkstationProduct = ({ product, special }) => {
                 <div className={`workstation-description custom-scrollbar${special ? " special" : ""}`}>{product.ShopDescription}</div>
                 <div className={`workstation-more-details transition${special ? " special" : ""}`}>
                     En savoir plus
-                    <Link className={`zone-link${special ? " special" : ""}`} to={`/workstation/${product.Name.toLowerCase()}`}></Link>
+                    <Link className={`zone-link${special ? " special" : ""}`} to={`${product.MenuParams.url}`}></Link>
                 </div>
             </div>
         </div>

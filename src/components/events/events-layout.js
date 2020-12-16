@@ -1,39 +1,46 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
+// import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
 import { useWindowSize } from "../../functions/window-size";
 import InmodeEvent from "./event";
 import NoEvents from "./no-events";
+// import { useLocalStorage } from "../../functions/use-localstorage";
 
 const EventsLayout = ({ children, current_page, upcoming_events = {}, past_events = {} }) => {
 
-    const sortBy = (function(){
-        if (typeof Object.defineProperty === 'function'){
-          try{Object.defineProperty(Array.prototype,'sortBy',{value:sb}); }catch(e){}
-        }
-        if (!Array.prototype.sortBy) Array.prototype.sortBy = sb;
+    // TODO localstorage cookie for last event saw vignette si jamais visité
+
+    // const LocalStorage = useLocalStorage;
+    // console.log(upcoming_events);
+
+    // LocalStorage.getItem('last-event-visit') === null && LocalStorage.setItem('last-event-visit', );
+    
+
+    // const sortBy = (function(){
+    //     if (typeof Object.defineProperty === 'function'){
+    //       try{Object.defineProperty(Array.prototype,'sortBy',{value:sb}); }catch(e){}
+    //     }
+    //     if (!Array.prototype.sortBy) Array.prototype.sortBy = sb;
       
-        function sb(f){
-          for (var i=this.length;i;){
-            var o = this[--i];
-            this[i] = [].concat(f.call(o,o,i),o);
-          }
-          this.sort(function(a,b){
-            for (var i=0,len=a.length;i<len;++i){
-              if (a[i]!=b[i]) return a[i]>b[i]?-1:1;
-            }
-            return 0;
-          });
-          for (var i=this.length;i;){
-            this[--i]=this[i][this[i].length-1];
-          }
-          return this;
-        }
-      })();
-
-    // console.log([...events.seminars, ...events.conferences, ...events.eseminars].sortBy(function(o){return o.begin || o.created_at}));
-
+    //     function sb(f){
+    //       for (var i=this.length;i;){
+    //         var o = this[--i];
+    //         this[i] = [].concat(f.call(o,o,i),o);
+    //       }
+    //       this.sort(function(a,b){
+    //         for (var i=0,len=a.length;i<len;++i){
+    //           if (a[i]!=b[i]) return a[i]>b[i]?-1:1;
+    //         }
+    //         return 0;
+    //       });
+    //       for (var i=this.length;i;){
+    //         this[--i]=this[i][this[i].length-1];
+    //       }
+    //       return this;
+    //     }
+    //   })();
+    
     const accordion_width = 760;
 
     const size = useWindowSize();
@@ -48,23 +55,23 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
             'url': '/events/congress'
         },
         {
+            'name': 'workshops',
+            'url': '/events/workshops'
+        },
+        {
             'name': 'webinars',
             'url': '/events/webinars'
         },
-        {
-            'name': 'workshops',
-            'url': '/events/workshops'
-        }
     ];
 
     const [maxHeight, setMaxHeight] = React.useState(0);
     const [openedAccordion, setOpenedAccordion] = React.useState(false);
 
-    const resolveClick = (e) => {
-        e.preventDefault();
-        resolve_tab_link_selected();
-        e.currentTarget.classList.add('current');
-    }
+    // const resolveClick = (e) => {
+    //     e.preventDefault();
+    //     resolve_tab_link_selected();
+    //     e.currentTarget.classList.add('current');
+    // }
 
     const resolveAccordion = ( e ) => {
         e.currentTarget.classList.toggle('opened');
@@ -96,6 +103,7 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
                                 </span>
                             );
                         }
+                        return <></>;
                     })}
                     <div
                         id="accordion"
@@ -129,7 +137,7 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
                             <InmodeEvent key={key} event={event} prop_key={key} current_page={current_page}/>
                         )
                     })}
-                    {upcoming_events.length == 0 && <NoEvents/>}
+                    {upcoming_events.length === 0 && <NoEvents/>}
                     {/* {upcoming_events.length > 0 && past_events.length > 0 && <hr/>} */}
                     {/* {past_events.length > 0 && <div className="time-section-title">Événements passés</div>} */}
                     {past_events.length > 0 && past_events.map((event, key) => {

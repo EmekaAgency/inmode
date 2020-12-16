@@ -22,6 +22,7 @@ const GenericDetails = ({ datas }) => {
                     <img
                         src={datas.what_is.picture.childImageSharp.fluid.srcWebp}
                         srcSet={datas.what_is.picture.childImageSharp.fluid.srcSetWebp}
+                        alt="detail-main-pic"
                     />
                 </div>
                 {datas.what_is.TitleText.map((section, key) => {

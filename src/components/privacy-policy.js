@@ -1,7 +1,13 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react"
+import { disableMainScroll, enableMainScroll } from "../functions/disable-scroll";
+import { useLocalStorage } from "../functions/use-localstorage";
+import { useWindowSize } from "../functions/window-size";
 
-const PrivacyPolicy = () => {
+const PrivacyPolicy = (props) => {
+
+    const generalCookies = 'inmodemd-fr-accept-cookies';
+    const analyticsCookies = 'inmodemd-fr-accept-analytics-cookies';
 
     const [icons] = React.useState(useStaticQuery(graphql`
         {
@@ -19,23 +25,48 @@ const PrivacyPolicy = () => {
     `));
 
     const [open, setOpen] = React.useState(false);
-    // const [acceptAnalytics, setAcceptAnalytics] = React.useState(false);
-    // const [acceptAnalytics] = React.useState(true);
-    // const [acceptCookies, setAcceptCookies] = React.useState(false);
-    const [acceptCookies, setAcceptCookies] = React.useState(true);
+    const [accepted, setAccepted] = React.useState(false);
+    const [hasMounted, setHasMounted] = React.useState(false);
 
-    
-    const process_cookies = (e) => {
+    const size = useWindowSize();
+    const LocalStorage = useLocalStorage;
+
+    async function process_cookies(e, checked) {
         if(open) {
+            setAccepted(checked ? true : false);
+            LocalStorage.setItem(analyticsCookies, checked ? 'true' : 'false');
+            LocalStorage.setItem(generalCookies, 'true');
+            enableMainScroll();
             setOpen(false);
-            setAcceptCookies(true)
         }
         else if(!open) {
+            size.width <= 450 && disableMainScroll();
             setOpen(true);
         }
     }
-    
-    (!acceptCookies && !open) && setTimeout(() => {setOpen(true);}, 1000);
+
+    const isInitialized = () => {
+        return LocalStorage.getItem(generalCookies) == 'true';
+    }
+
+    React.useEffect(() => {
+        setHasMounted(true);
+        if(LocalStorage.getItem(generalCookies) == null) {
+            LocalStorage.setItem(generalCookies, 'false');
+        }
+        if(LocalStorage.getItem(analyticsCookies) == null) {
+            LocalStorage.setItem(analyticsCookies, 'false');
+        }
+        isInitialized() && enableMainScroll();
+        !isInitialized() && disableMainScroll();
+        setOpen(!isInitialized());
+        setAccepted(LocalStorage.getItem(analyticsCookies) == 'true');
+        // document.querySelector('#onoffswitch').checked = accepted;
+    }, []);
+
+    if(!hasMounted) {
+        return null;
+    }
 
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
@@ -58,15 +89,24 @@ const PrivacyPolicy = () => {
                     <div className="cookies-title">Analytics cookies</div>
                     {/* TODO faire un component SWITCH */}
                     <div className="switch-component">
-                        <input type="checkbox" name="onoffswitch" className="switch-checkbox" id="onoffswitch"/>
-                        <label className="switch" htmlFor="onoffswitch">
+                        <input
+                            type="checkbox"
+                            name="onoffswitch"
+                            className={`switch-checkbox${accepted ? ' checked' : ''}`}
+                            id="onoffswitch"
+                            defaultChecked={accepted}
+                        />
+                        <label
+                            className="switch"
+                            htmlFor="onoffswitch"
+                        >
                             <span className="switch-inner"></span>
                             <span className="switch-switch"></span>
                         </label>
                     </div>
                     <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <a href="#">'Cookies page'</a>. The cookies collect information in an anonymous form.</div>
                 </div>
-                <div className="accept-close" onClick={(e) => {process_cookies(e);}}>
+                <div className="accept-close" onClick={(e) => {process_cookies(e, document.querySelector('#onoffswitch').checked);}}>
                     Accept and close
                 </div>
             </div>

@@ -6,10 +6,16 @@
 
 // You can delete this file if you're not using it
 
-import React from 'react';
+// import React from 'react';
 
-import CartWrapper from './src/components/cart-wrapper';
+// import CartWrapper from './src/components/cart-wrapper';
 
-export const wrapPageElement = ({ element, props }) => (
-  <CartWrapper {...props}>{element}</CartWrapper>
-);
+// export const wrapPageElement = ({ element, props }) => (
+//   <CartWrapper {...props}>{element}</CartWrapper>
+// );
+
+export function onRenderBody ({ setBodyAttributes }) {
+  setBodyAttributes({
+      className: 'no-js'
+    });
+};

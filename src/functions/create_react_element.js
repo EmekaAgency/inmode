@@ -1,9 +1,6 @@
 import React from 'react';
 
 export const create_react_element = (elem) => {
-    console.log('elem.type => ',elem.type);
-    console.log('elem.props => ',elem.props);
-    console.log('elem.children => ',elem.children);
     return React.createElement(
         elem.type,
         elem.props,

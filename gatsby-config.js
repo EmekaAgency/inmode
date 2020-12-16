@@ -1,8 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "dev"}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Inmode - Votiva, FaceTite, BodyTite, AccuTite, BodyFX, Fractora`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Les technologies innovantes Inmode fournissent des résultats supérieurs à vos patients. Traitements esthétiques du visage, corps, peau et santé et bien-être des femmes.`,
+    author: `@emeka`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

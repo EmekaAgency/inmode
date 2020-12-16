@@ -1,8 +1,8 @@
 import React from "react";
-import Flickity from "react-flickity-component";
 import ProductView from "./product-view";
 import ProductsContext from "../contexts/products-context";
 import { graphql, Link, useStaticQuery } from "gatsby";
+import Carousel from "../Carousel";
 
 const Slides = ({from}) => {
 
@@ -22,15 +22,8 @@ const Slides = ({from}) => {
         }
     `));
 
-    const img_extensions = ['jpg', 'png', 'svg', 'jpeg', 'webp', 'bmp'];
-    const [index, setIndex] = React.useState(0);
-
     const [current, setCurrent] = React.useState(-1);
     const [open, setOpen] = React.useState(false);
-    // const [clicked, setClicked] = React.useState(false);
-    // const [flickity, setFlickity] = React.useState(null);
-
-    // const auto_play_speed = 1000;
 
     const [flickityOptions, setFlickityOptions] = React.useState({
         initialIndex: current === -1 ? 0 : current,
@@ -40,22 +33,16 @@ const Slides = ({from}) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: false
+        // autoPlay: false
     });
 
     const [slides] = React.useState(React.useContext(ProductsContext).products);
 
-    // const set_current = (e) => {
-        // setFlickity(e);
-    // }
-
     const view_detail = (e) => {
-        // e.preventDefault();
-        // window.alert("Pas encore de fonctionnalité");
+        
     }
 
     const view_product = (e, pos) => {
-        console.log(pos);
         e.preventDefault();
         setFlickityOptions({
             initialIndex: pos,
@@ -65,24 +52,16 @@ const Slides = ({from}) => {
             selectedAttraction: 0.01,
             friction: 0.15,
             percentPosition: false,
-            autoPlay: false
+            // autoPlay: false
         });
         setCurrent(pos);
         document.getElementById('main').style.zIndex = 4;
         setOpen(true);
     }
 
-    // const process_drag = (e) => {
-        // e.preventDefault();
-        // console.log(clicked);
-        // e.movementX < 0 && console.log('gauche');
-        // e.movementX > 0 && console.log('droite');
-    // }
-
     
     const close_view = (e) => {
         e.preventDefault();
-        // console.log(e.target);
         if(
             e.target.classList.contains('product-view') ||
             e.target.classList.contains('close') ||
@@ -95,25 +74,16 @@ const Slides = ({from}) => {
 
     return (
         <div className={`slides-${from} ${current > -1 && open ? 'show' : ''}`}>
-            <Flickity
+            <Carousel
                 id={`carousel-${from}`}
-                elementType={'div'} // default 'div'
-                options={flickityOptions} // takes flickity options {}
-                disableImagesLoaded={false} // default false
-                reloadOnUpdate={true} // default false
-                static // default false
-                className="slides-main transition"
-                // flickityRef={(e) => {set_current(e);}}
+                options={flickityOptions}
+                classList={'slides-main transition'}
             >
                 {slides && slides.map((slide, key) => {
-                    // console.log(slide);
                     return (
                         <div
                             key={key}
                             className={"slide transition gallery-cell" + (current === key && open ? ' show' : '')}
-                            // onMouseUp={(e) => {setClicked(false);}}
-                            // onMouseDown={(e) => {setClicked(true);}}
-                            // onMouseMove={(e) => {process_drag(e);}}
                         >
                             <div className="slide-title">
                                 {slide.short_descr}
@@ -161,7 +131,7 @@ const Slides = ({from}) => {
                         </div>
                     );
                 })}
-            </Flickity>
+            </Carousel>
             {current > -1 && slides && slides.map((slide, key) => {
                 return (
                     <div
@@ -184,7 +154,7 @@ const Slides = ({from}) => {
         </div>
     );
 }
-// rgba(11, 18, 27, 0.7)
+
 Slides.propTypes = {
 
 };

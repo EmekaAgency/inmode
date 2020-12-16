@@ -4,6 +4,7 @@ import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_open
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 import Menu from '../menu';
+import { enableMainScroll } from '../../functions/disable-scroll';
 
 const MenuTitleImage = ({menu, prop_key, openOnClick}) => {
 
@@ -28,7 +29,10 @@ const MenuTitleImage = ({menu, prop_key, openOnClick}) => {
                     <Link
                         className="menu-title menu-image"
                         to={menu.url || "#"}
-                        onClick={(e) => {resolveOnClick(e, true);}}
+                        onClick={(e) => {
+                            resolveOnClick(e, true);
+                            enableMainScroll();
+                        }}
                     >
                         {format_string(menu.title)}
                     </Link>
@@ -36,7 +40,12 @@ const MenuTitleImage = ({menu, prop_key, openOnClick}) => {
                     <a
                         className="menu-title menu-image"
                         href={menu.url || "#"}
-                        onClick={(e) => {resolveOnClick(e, true);}}
+                        onClick={(e) => {
+                            resolveOnClick(e, true);
+                            enableMainScroll();
+                        }}
+                        target="_blank"
+                        rel="noreferrer"
                     >
                         {format_string(menu.title)}
                     </a>

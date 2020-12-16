@@ -1,7 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
-import React from "react"
-import Flickity from "react-flickity-component";
-import Slider from "../slider";
+import React from "react";
+import Carousel from "../Carousel";
 
 const AddonVideos = ({ datas = {} }) => {
 
@@ -21,9 +20,9 @@ const AddonVideos = ({ datas = {} }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        autoPlay: 10000,
-        wrapAround: true,
-        draggable: true
+        // autoPlay: 10000,
+        draggable: true,
+        // wrapAround: true
     });
     
     if(!datas.videos || datas.videos.length === 0) {
@@ -33,9 +32,11 @@ const AddonVideos = ({ datas = {} }) => {
     const resolve_click = (e) => {
       e.preventDefault();
       if(e.currentTarget.id === "video-iframe" || e.currentTarget.classList.contains('close-pic')) {
-        document.getElementsByTagName('main')[0].style.zIndex = 'initial';
-        document.getElementById('video-iframe').classList.toggle('opened');
+        document.getElementsByTagName('main')[0].style.removeProperty('z-index');
+        document.getElementById('video-iframe').classList.remove('opened');
         e.currentTarget.innerHTML = "";
+        document.querySelector('header').classList.remove('video-opened');
+        document.querySelector('.header-mini-menu').classList.remove('video-opened');
       }
     }
 
@@ -47,17 +48,24 @@ const AddonVideos = ({ datas = {} }) => {
       else if(url.includes('vimeo')) {
         url = url.replace('https://vimeo.com/', '//player.vimeo.com/video/') + '?autoplay=1&hd=1&show_title=1&show_byline=1&show_portrait=0&fullscreen=1';
       }
+      document.querySelector('header').classList.add('video-opened');
+      document.querySelector('.header-mini-menu').classList.add('video-opened');
       document.getElementsByTagName('main')[0].style.zIndex = 4;
-      document.getElementById('video-iframe').classList.toggle('opened');
-      document.getElementById('video-iframe').innerHTML = '\
-        <img class="close-pic" src=' + icons.close_white.publicURL + ' onclick="resolve_click(e)"/>\
-        <iframe\
-          allowfullscreen="allowfullscreen"\
-          allow="autoplay; fullscreen"\
-          src="' + url +'"\
-          scrolling="no"\
-        ></iframe>\
-      ';
+      document.getElementById('video-iframe').classList.add('opened');
+      let iframe = '';
+      iframe += '<img class="close-pic" src=' + icons.close_white.publicURL + ' onclick="resolve_click(e)"/>';
+      iframe += '<iframe';
+      iframe += 'allowfullscreen="allowfullscreen"';
+      iframe += 'allow="autoplay; fullscreen"';
+      iframe += 'src="' + url +'"';
+      iframe += 'scrolling="no"';
+      iframe += '></iframe>';
+      iframe += '';
+      document.getElementById('video-iframe').innerHTML = iframe;
+    }
+
+    const resolveVideoClick = (e, url) => {
+      openVideo(e, url);
     }
 
     return (
@@ -68,67 +76,50 @@ const AddonVideos = ({ datas = {} }) => {
           </div>
           <div className={`videos-container${datas.videos.length < 3 ? ' few' : ''}`}>
             {datas.videos.length < 3 ?
-              datas.videos.map((video, index) => {
+              datas.videos.map((video, key) => {
                 return (
-                  <img
-                    src={video.poster.childImageSharp.fluid.srcWebp}
-                    className=" few-videos poster"
-                    onClick={(e) => {openVideo(e, video.url)}}
-                  />
-                  // <video
-                  //   playsInline="" 
-                  //   autoPlay={false}
-                  //   loop={true}
-                  //   muted={true}
-                  //   poster={video.poster.childImageSharp.fluid.srcWebp}
-                  //   height={380}
-                  //   key={index}
-                  //   className="few-videos"
-                  // >
-                  //   <source
-                  //     src={video.url}
-                  //     type="video/mp4"
-                  //   />
-                  //   <track src="" kind="subtitles" srcLang="en" label="English"></track>
-                  // </video>
+                  <div
+                    className=" few-videos poster video"
+                    onMouseDown={(e) => {resolveVideoClick(e, video.url);}}
+                    onMouseUp={(e) => {resolveVideoClick(e, video.url);}}
+                    onClick={(e) => {resolveVideoClick(e, video.url);}}
+                  >
+                    <img
+                      src={video.poster.childImageSharp.fluid.srcWebp}
+                      alt={`addon-videos-${key}`}
+                    />
+                    <span className="video-bg"></span>
+                    <span className="video-play-btn"></span>
+                  </div>
                 );
               })
               :
-              <Flickity
-                id={`carousel-videos-${datas.name}`}
-                elementType={'div'} // default 'div'
-                options={flickityOptions} // takes flickity options {}
-                disableImagesLoaded={false} // default false
-                reloadOnUpdate={true} // default false
-                static // default false
-                className="carousel-videos transition"
+              <Carousel
+                  id={`carousel-videos-${datas.name}`}
+                  options={flickityOptions}
+                  classList={'carousel-videos transition'}
               >
-                {[...(datas.videos), ...(datas.videos)].map((video, index) => {
+                {/* {[...(datas.videos), ...(datas.videos)].map((video, index) => { */}
+                {datas.videos.map((video, key) => {
                     return (
-                      <img
-                        src={video.poster.childImageSharp.fluid.srcWebp}
-                        className=" poster"
-                        onClick={(e) => {openVideo(e, video.url)}}
-                      />
-                      // <video
-                      //   playsInline="" 
-                      //   autoPlay={false}
-                      //   loop={true}
-                      //   muted={true}
-                      //   poster={video.poster.childImageSharp.fluid.srcWebp}
-                      //   height={380}
-                      //   key={index}
-                      // >
-                      //   <source
-                      //     src={video.url}
-                      //     type="video/mp4"
-                      //   />
-                      //   <track src="" kind="subtitles" srcLang="en" label="English"></track>
-                      // </video>
+                      <div
+                        className="poster video"
+                        onMouseDown={(e) => {resolveVideoClick(e, video.url);}}
+                        onMouseUp={(e) => {resolveVideoClick(e, video.url);}}
+                        onClick={(e) => {resolveVideoClick(e, video.url);}}
+                        key={key}
+                      >
+                        <img
+                          src={video.poster.childImageSharp.fluid.srcWebp}
+                          alt={`addon-videos-${key}`}
+                        />
+                        <span className="video-bg"></span>
+                        <span className="video-play-btn"></span>
+                      </div>
                     );
                   })
                 }
-              </Flickity>
+              </Carousel>
             }
           </div>
         </div>

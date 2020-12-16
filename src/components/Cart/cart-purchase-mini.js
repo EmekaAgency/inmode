@@ -4,7 +4,7 @@ import CartContext from "../contexts/cart-context";
 
 import './mini.css';
 
-const CartPurchaseMini = ({  }) => {
+const CartPurchaseMini = (  ) => {
 
     const [icons] = React.useState(useStaticQuery(graphql`
         {
@@ -28,32 +28,18 @@ const CartPurchaseMini = ({  }) => {
     const [formOpened, setFormOpened] = React.useState(false);
     const [otherAddress, setOtherAddress] = React.useState(false);
     const [otherAddressOpened, setOtherAddressOpened] = React.useState(false);
-    const [step, setStep] = React.useState(0);
 
     const manageChange = (e) => {
         otherAddress && setOtherAddressOpened(false);
-        // !otherAddress && setOtherAddressOpened(true);
         setOtherAddress(e.currentTarget.checked);
-    }
-
-    const manageStep = (e, step) => {
-        e.preventDefault();
-        if(step === 1 && e.currentTarget.id == "step-1" && otherAddress) {
-            
-        }
-        if(step === 2 && (e.currentTarget.id == "step-2" || e.currentTarget.id == "continue")) {
-            
-        }
     }
 
     const sendForm = (e) => {
         e.preventDefault();
-        console.log("formOpened => ", formOpened);
-        console.log("otherAddress => ", otherAddress);
     }
 
     return (
-        <form
+        <div
             id="purchase-mini"
             className={!cart.cart_opened ? "all-close" : !formOpened ? 'step-1' : 'step-2-3'}
         >
@@ -141,13 +127,13 @@ const CartPurchaseMini = ({  }) => {
                             </div>
                         );
                     })}
-                     {cart.total() * 1.2 < 500 && <div className="free-message">Livraison gratuite à + de 500€</div>}
+                     {cart.total() * 1.2 < 500 && <div className="free-message">Livraison gratuite à partir de 500€</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         <div className="text">Livraison{cart.total() * 1.2 < 500 ? '' : ' gratuite'}</div>
                         {cart.total() * 1.2 < 500 ? <div className="price">
-                            {cart.total() == 0 ? (0).toFixed(2) : (10).toFixed(2)}
+                            {cart.total() === 0 ? (0).toFixed(2) : (10).toFixed(2)}
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
@@ -168,29 +154,10 @@ const CartPurchaseMini = ({  }) => {
                             {((cart.total() * 1.2) + (cart.total() * 1.2 < 500 ? 10 : 0)).toFixed(2)}
                         </div>
                     </div>
-                    <div
-                        className={`cart-validate${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if(!formOpened){
-                                // console.log("Open form");
-                                setFormOpened(true);
-                            }
-                            else if(formOpened && otherAddress && !otherAddressOpened){
-                                // console.log("Open other address");
-                                setOtherAddressOpened(true);
-                            }
-                            else {
-                                return;
-                            }
-                        }}
-                    >
-                        {!formOpened ? "Acheter" : !otherAddress || otherAddressOpened ? "Commander" : "Continuer"}
-                    </div>
                 </div>
             </div>
             {/* SECOND PART */}
-            <div className={`cart-purchase-form custom-scrollbar${formOpened ? ' opened' : ''}${otherAddressOpened ? ' other-opened' : ''}`}>
+            <form id="step-2-part" className={`cart-purchase-form custom-scrollbar${formOpened ? ' opened' : ''}${otherAddressOpened ? ' other-opened' : ''}`}>
                 <div className={`title transition${formOpened ? ' opened' : ''}`}>
                     <div
                         className="form-close"
@@ -209,7 +176,7 @@ const CartPurchaseMini = ({  }) => {
                 </div>
                 <div
                     id="purchase-form"
-                    className={`neumorphic ${otherAddress && ' other-address' || ''}`}
+                    className={`neumorphic ${otherAddress && (' other-address' || '')}`}
                 >
                     <div id="step-1-part" className="unmorphic custom-scrollbar">
                         <input className="required form-field step-1" name="name" type="text" required placeholder="Nom"/>
@@ -221,9 +188,9 @@ const CartPurchaseMini = ({  }) => {
                         <input className="required form-field step-1" name="mail" type="email" required placeholder="Mail"/>
                     </div>
                 </div>
-            </div>
+            </form>
             {/* THIRD PART */}
-            <div id="step-2-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
+            <form id="step-3-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
                 <div className={`title unmorphic${otherAddressOpened ? ' opened' : ''}`}>
                     <div
                         className="form-close unmorphic"
@@ -242,15 +209,15 @@ const CartPurchaseMini = ({  }) => {
                     <hr className="unmorphic"/>
                 </div>
                 <div className="form custom-scrollbar">
-                    <input className="required form-field step-2" name="other-name" type="text" required placeholder="Facture - Nom"/>
-                    <input className="form-field step-2" name="other-society" type="text" placeholder="Facture - Société"/>
-                    <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Facture - Adresse" rows="3"></textarea>
-                    <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Facture - Code postal"/>
-                    <input className="required form-field step-2" name="other-city" type="text" required placeholder="Facture - Ville"/>
-                    <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Facture - Téléphone"/>
-                    <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Facture - Mail"/>
+                    <input className="required form-field step-2" name="other-name" type="text" required placeholder="Nom"/>
+                    <input className="form-field step-2" name="other-society" type="text" placeholder="Société"/>
+                    <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Adresse" rows="3"></textarea>
+                    <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Code postal"/>
+                    <input className="required form-field step-2" name="other-city" type="text" required placeholder="Ville"/>
+                    <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/>
+                    <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/>
                 </div>
-            </div>
+            </form>
             {/* CHECKBOXES */}
             <div className="step-1 facture neumorphic">
                 <input
@@ -280,7 +247,33 @@ const CartPurchaseMini = ({  }) => {
                     J'accepte les CGV et les CGU
                 </label>
             </div>
-        </form>
+            {/* VALIDATE */}
+            <button
+                type="submit"
+                form={formOpened ? otherAddressOpened ? "step-3-part" : "step-2-part" : ''}
+                className={`cart-validate${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`}
+                onClick={(e) => {
+                    e.preventDefault();
+                    if(!formOpened){
+                        setFormOpened(true);
+                    }
+                    else if(formOpened && otherAddress && !otherAddressOpened){
+                        setOtherAddressOpened(true);
+                    }
+                    else if(formOpened && !otherAddress) {
+                        sendForm(e);
+                    }
+                    else if(formOpened && otherAddress && otherAddressOpened) {
+                        sendForm(e);
+                    }
+                    else {
+                        return;
+                    }
+                }}
+            >
+                {!formOpened ? "Acheter" : !otherAddress || otherAddressOpened ? "Commander" : "Continuer"}
+            </button>
+        </div>
     );
 };
 

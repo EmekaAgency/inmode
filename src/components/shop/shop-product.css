@@ -14,200 +14,167 @@
     position: relative;
 }
 
-.shop-products .shop-addon .shop-product2 .mini.part-1 {
+.shop-products .shop-addon .shop-product2 .part-1 {
     width: 30%;
 }
 
-.shop-products .shop-addon .shop-product2 .mini.part-2 {
+.shop-products .shop-addon .shop-product2 .part-2 {
     width: 40%;
 }
 
-.shop-products .shop-addon .shop-product2 .mini.part-3 {
+.shop-products .shop-addon .shop-product2 .part-3 {
     width: 30%;
 }
 
 
-.shop-products .shop-addon .shop-product2 .mini .reference,
-.shop-products .shop-addon .shop-product2 .mini .name,
-.shop-products .shop-addon .shop-product2 .mini .pack,
-.shop-products .shop-addon .shop-product2 .mini .manage,
-.shop-products .shop-addon .shop-product2 .mini .price,
-.shop-products .shop-addon .shop-product2 .mini .purchase {
+.shop-products .shop-addon .shop-product2 .reference,
+.shop-products .shop-addon .shop-product2 .name,
+.shop-products .shop-addon .shop-product2 .pack,
+.shop-products .shop-addon .shop-product2 .manage,
+.shop-products .shop-addon .shop-product2 .price,
+.shop-products .shop-addon .shop-product2 .purchase {
     height: 100%;
     padding: 20px 0;
 }
 
-.shop-products .shop-addon .shop-product2 .mini,
-.shop-products .shop-addon .shop-product2 .mini .reference,
-.shop-products .shop-addon .shop-product2 .mini .name,
-.shop-products .shop-addon .shop-product2 .mini .pack,
-.shop-products .shop-addon .shop-product2 .mini .manage,
-.shop-products .shop-addon .shop-product2 .mini .manage .minus,
-.shop-products .shop-addon .shop-product2 .mini .manage .quantity,
-.shop-products .shop-addon .shop-product2 .mini .manage .add,
-.shop-products .shop-addon .shop-product2 .mini .price,
-.shop-products .shop-addon .shop-product2 .mini .purchase {
+.shop-products .shop-addon .shop-product2 .reference,
+.shop-products .shop-addon .shop-product2 .name,
+.shop-products .shop-addon .shop-product2 .pack,
+.shop-products .shop-addon .shop-product2 .manage,
+.shop-products .shop-addon .shop-product2 .manage .minus,
+.shop-products .shop-addon .shop-product2 .manage .quantity,
+.shop-products .shop-addon .shop-product2 .manage .add,
+.shop-products .shop-addon .shop-product2 .price,
+.shop-products .shop-addon .shop-product2 .purchase {
     display: inline-block;
     vertical-align: middle;
     text-align: center;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .reference,
-.shop-products .shop-addon .shop-product2 .mini .name,
-.shop-products .shop-addon .shop-product2 .mini .pack,
-.shop-products .shop-addon .shop-product2 .mini .manage,
-.shop-products .shop-addon .shop-product2 .mini .manage .minus,
-.shop-products .shop-addon .shop-product2 .mini .manage .quantity,
-.shop-products .shop-addon .shop-product2 .mini .manage .add,
-.shop-products .shop-addon .shop-product2 .mini .price,
-.shop-products .shop-addon .shop-product2 .mini .purchase {
-    /* font-size: 25px; */
+.shop-products .shop-addon .shop-product2 .reference,
+.shop-products .shop-addon .shop-product2 .name,
+.shop-products .shop-addon .shop-product2 .pack,
+.shop-products .shop-addon .shop-product2 .manage,
+.shop-products .shop-addon .shop-product2 .manage .minus,
+.shop-products .shop-addon .shop-product2 .manage .quantity,
+.shop-products .shop-addon .shop-product2 .manage .add,
+.shop-products .shop-addon .shop-product2 .price,
+.shop-products .shop-addon .shop-product2 .purchase {
     font-size: 20px;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .manage .minus,
-.shop-products .shop-addon .shop-product2 .mini .manage .add {
+.shop-products .shop-addon .shop-product2 .manage .minus,
+.shop-products .shop-addon .shop-product2 .manage .add {
     background-color: #59b7b3;
     width: 25px;
-    /* line-height: 1; */
     height: 25px;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .reference {
-    width: calc(100% / 3);
+.shop-products .shop-addon .shop-product2 .reference {
+    width: 15%;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .name {
-    width: calc((100% / 3) * 2);
+.shop-products .shop-addon .shop-product2 .name {
+    width: 25%;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .pack {
-    width: 60%;
+.shop-products .shop-addon .shop-product2 .pack {
+    width: 15%;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .manage {
-    width: 40%;
+.shop-products .shop-addon .shop-product2 .manage {
+    width: 15%;
 }
 
-/* @media (max-width: 1099px) {
-    div.shop-products .shop-addon .shop-product2 .mini .manage {
-        padding: 0;
-    }
-
-    div.shop-products .shop-addon .shop-product2 .mini .manage .minus,
-    div.shop-products .shop-addon .shop-product2 .mini .manage .quantity,
-    div.shop-products .shop-addon .shop-product2 .mini .manage .add {
-        display: block;
-        margin: 2px auto;
-    }
-} */
-
-.shop-products .shop-addon .shop-product2 .mini .manage .minus {
+.shop-products .shop-addon .shop-product2 .manage .minus {
     margin: 0 5px;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .manage .quantity {
+.shop-products .shop-addon .shop-product2 .manage .quantity {
     margin: 0 5px;
     width: 10px;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .manage .add {
+.shop-products .shop-addon .shop-product2 .manage .add {
     margin: 0 5px;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .price {
-    width: 50%;
+.shop-products .shop-addon .shop-product2 .price {
+    width: 15%;
 }
 
-.shop-products .shop-addon .shop-product2 .mini .price::after {
+.shop-products .shop-addon .shop-product2 .price::after {
     content: " € (HT)";
 }
 
-.shop-products .shop-addon .shop-product2 .mini .purchase {
-    width: 50%;
+.shop-products .shop-addon .shop-product2 .purchase {
+    width: 15%;
     background-color: #59b7b3;
     border-radius: 0 13px 13px 0;
     cursor: pointer;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 767px) {
+    .shop-products .shop-addon .shop-product2 .reference,
+    .shop-products .shop-addon .shop-product2 .name,
+    .shop-products .shop-addon .shop-product2 .pack,
+    .shop-products .shop-addon .shop-product2 .manage,
+    .shop-products .shop-addon .shop-product2 .price,
+    .shop-products .shop-addon .shop-product2 .purchase {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+    }
+
     .shop-products .shop-addon .shop-product2 {
         padding: 0;
-        padding-left: 5px;
         box-sizing: border-box;
         width: 100%;
-        margin: 20px auto;
+        margin: 40px auto;
         font-family: Roboto, sans-serif;
+        height: 100%;
+        padding-top: 5px;
     }
 
     .shop-products .shop-addon {
         box-shadow: none;
+        margin: 30px auto;
     }
 
-    .shop-products .shop-addon .shop-product2 .mini {
-        height: 100%;
+    .shop-products .shop-addon .shop-product2 {}
+
+    .shop-products .shop-addon .shop-product2 .reference {}
+
+    .shop-products .shop-addon .shop-product2 .name {
+        margin: 5px 0;
     }
 
-    .shop-products .shop-addon .shop-product2 .mini.part-1 {
-        text-align: center;
+    .shop-products .shop-addon .shop-product2 {}
+
+    .shop-products .shop-addon .shop-product2 .pack {
         display: inline-block;
+        width: 30%;
         vertical-align: middle;
     }
 
-    .shop-products .shop-addon .shop-product2 .mini.part-1 .reference {
-        display: block;
-        text-align: center;
-        width: 100%;
-    }
-
-    .shop-products .shop-addon .shop-product2 .mini.part-1 .name {
-        display: block;
-        text-align: center;
-        width: 100%;
-    }
-
-    .shop-products .shop-addon .shop-product2 .mini.part-2 {
+    .shop-products .shop-addon .shop-product2 .manage {
         display: inline-block;
+        width: 30%;
         vertical-align: middle;
+        margin: 5px 5% 10px;
     }
 
-    .shop-products .shop-addon .shop-product2 .mini.part-2 .pack {
+    .shop-products .shop-addon .shop-product2 .price {
         display: inline-block;
+        width: 30%;
         vertical-align: middle;
-        width: 50%;
     }
 
-    .shop-products .shop-addon .shop-product2 .mini.part-2 .manage {
-        display: inline-block;
-        vertical-align: middle;
-        width: 50%;
-    }
-
-    .shop-products .shop-addon .shop-product2 .mini.part-3 {
-        text-align: center;
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        vertical-align: middle;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
-    .shop-products .shop-addon .shop-product2 .mini.part-3 .price {
-        order: 2;
-        width: 100%;
-        text-align: center;
-    }
-
-    .shop-products .shop-addon .shop-product2 .mini.part-3 .purchase {
-        order: 1;
-        width: 100%;
-        border-radius: 0 13px 0 0;
-        text-align: center;
+    .shop-products .shop-addon .shop-product2 .purchase {
+        border-radius: 0 0 13px 13px;
     }
 
 }

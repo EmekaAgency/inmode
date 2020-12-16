@@ -4,12 +4,11 @@ import React from "react";
 import HeaderTop from "./header-top";
 import HeaderBottom from "./header-bottom";
 import HeaderMini from "./header-mini";
-import { useCart } from './contexts/cart-provider';
-
-import Img from "gatsby-image";
+// import { useCart } from './contexts/cart-provider';
 import { useWindowSize } from "../functions/window-size";
+import { disableMainScroll } from "../functions/disable-scroll";
 
-const Header = ({  }) => {
+const Header = (  ) => {
 
   const [icon] = React.useState(useStaticQuery(graphql`
     {
@@ -30,21 +29,14 @@ const Header = ({  }) => {
   `));
 
   const openMenu = (e) => {
-    // console.log("openMenu()");
     e.preventDefault();
     document.getElementById('header-mini').classList.add('opened');
+    size.width < 1000 && disableMainScroll();
   }
 
-  const link_style = {
-    color: "#fff",
-    fontSize: 16,
-    display: "inline-block",
-    verticalAlign: "middle"
-  };
+  // const cart = useCart();
 
-  const cart = useCart();
-
-  const window = useWindowSize();
+  const size = useWindowSize();
 
   return (
     <header>
@@ -54,10 +46,10 @@ const Header = ({  }) => {
           </Link>
         </div>
         <div className="header-parts">
-          {window.width > 999 && <HeaderTop/>}
-          {window.width > 999 && <HeaderBottom/>}
-          {window.width < 1000 && <HeaderMini/>}
-          {
+          {size.width > 999 && <HeaderTop/>}
+          {size.width > 999 && <HeaderBottom/>}
+          {size.width < 1000 && <HeaderMini/>}
+          {/* {
               cart.cart.length > 0 || cart.appeared ?
                   <img
                       className="cart"
@@ -66,7 +58,7 @@ const Header = ({  }) => {
                   />
                   :
                   null
-          }
+          } */}
           <button
             className="header-mini-menu"
             onClick={(e)=>{openMenu(e)}}

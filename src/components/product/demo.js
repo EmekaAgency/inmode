@@ -12,6 +12,7 @@ const ProductDemo = ({ datas }) => {
                 <img
                     src={datas.picture.childImageSharp.fluid.srcWebp}
                     srcSet={datas.picture.childImageSharp.fluid.srcSetWebp}
+                        alt="product-demo"
                 />
             </div>
             <div className="text">

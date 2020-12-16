@@ -20,15 +20,11 @@ const ProductView = ({children, datas}) => {
         }
     `));
 
-    const [currency, setCurrency] = React.useState('euro');
-
     const [products] = React.useState(React.useContext(ProductsContext).products);
 
     if(products.length === 0 || datas.current === -1) {
         return (<></>);
     }
-
-    console.log(products[datas.current]);
     
 
     return (
@@ -80,7 +76,7 @@ const ProductView = ({children, datas}) => {
                                     </p>
                                     <div className="purchase-infos">
                                         {/* <div className={`price ${currency}`}>{addon.price}</div> */}
-                                        <Link className="details" href={addon.MenuParams.url}>
+                                        <Link className="details" to={addon.MenuParams.url}>
                                             Détails
                                             <img
                                                 className="detail-view-addon-arrow transition"

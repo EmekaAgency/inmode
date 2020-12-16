@@ -1,8 +1,8 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import { useWindowSize } from "../../functions/window-size";
+// import { useWindowSize } from "../../functions/window-size";
 
-const Hero = ({  }) => {
+const Hero = (  ) => {
 
     const [images] = React.useState(useStaticQuery(graphql`
         {
@@ -14,18 +14,6 @@ const Hero = ({  }) => {
                     }
                 }
             }
-            blanc: file(relativePath: {eq: "home/blanc.svg"}) {
-                publicURL
-            }
-            foncey: file(relativePath: {eq: "home/foncey.svg"}) {
-                publicURL
-            }
-            moinfoncey: file(relativePath: {eq: "home/moinfoncey.svg"}) {
-                publicURL
-            }
-            clair: file(relativePath: {eq: "home/clair.svg"}) {
-                publicURL
-            }
         }
     `));
 
@@ -33,14 +21,14 @@ const Hero = ({  }) => {
 
     const img_init_right = 3;
 
-    const window = useWindowSize();
+    // const size = useWindowSize();
 
     return (
         <div
             className="home-hero"
             // onMouseMove={(e) => {
-            //     let _w = window.innerWidth/2;
-            //     let _h = window.innerHeight/2;
+            //     let _w = size.innerWidth/2;
+            //     let _h = size.innerHeight/2;
             //     let _mouseX = e.clientX;
             //     let _mouseY = e.clientY;
             //     document.getElementById('hero-img').style.right = `calc(${(_mouseX - _w) * 0.005}% + ${img_init_right}vw`;
@@ -53,7 +41,7 @@ const Hero = ({  }) => {
                     Inmode fournissent des résultats
                     supérieurs à vos patients.
                 </div>
-                {/* {window.width < 670 && <> */}
+                {/* {size.width < 670 && <> */}
                 <div className="border-5"></div>
                 <div className="border-4"></div>
                 <div className="border-3"></div>
@@ -69,6 +57,7 @@ const Hero = ({  }) => {
                     src={images.hero.childImageSharp.fluid.srcWebp}
                     srcSet={images.hero.childImageSharp.fluid.srcSetWebp}
                     style={{"right": img_init_right + 'vw'}}
+                    alt="hero-right-img"
                 />
             </div>
             <div className="layout-2"></div>
@@ -76,10 +65,6 @@ const Hero = ({  }) => {
             <div className="layout-4"></div>
             <div className="layout-5"></div>
             <div className="layout-6"></div>
-            {/* <div className="layout-2"><img src={images.blanc.publicURL}/></div> */}
-            {/* <div className="layout-3"><img src={images.foncey.publicURL}/></div> */}
-            {/* <div className="layout-4"><img src={images.moinfoncey.publicURL}/></div> */}
-            {/* <div className="layout-5"><img src={images.clair.publicURL}/></div> */}
         </div>
     );
 };
