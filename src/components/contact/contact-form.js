@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { useWindowSize } from "../../functions/window-size";
 import SelectCountry from "../select-country";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 const tech_list = [
     "MORPHEUS8 | FACIAL AND BODY FRACTIONAL REMODELING",
@@ -206,7 +207,7 @@ const ContactForm = ({ from }) => {
             </div> */}
             <div className="policy">
                 <input type="checkbox" id="policy" name="policy" value="policy" required/>
-                <label htmlFor={"policy"}>J'accepte les <Link to="#" target="_blank">conditions générales d'utilisation</Link></label>
+                <label htmlFor={"policy"}>J'accepte les <AnchorLink to="/mentions-legales#cgu" target="_blank" title="Conditions générales d'utilisation">conditions générales d'utilisation</AnchorLink></label>
             </div>
             <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWidth: 400}}></div>
             <div className="req-return error" style={{color: 'red', fontSize: 15, fontWidth: 400}}></div>

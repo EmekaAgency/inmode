@@ -23,11 +23,11 @@ const MenuContentImage = ({menu, prop_key}) => {
         <>
             {menu.url ?
                 menu.internal_link ?
-                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" to={menu.url || "#"}>
+                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" to={menu.url || "#"} title={format_string(menu.title)}>
                         {content(menu)}
                     </Link>
                     :
-                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" href={menu.url || "#"} target="_blank" rel="noreferrer">
+                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" href={menu.url || "#"} target="_blank" rel="noreferrer" title={format_string(menu.title)}>
                         {content(menu)}
                     </a>
                 :

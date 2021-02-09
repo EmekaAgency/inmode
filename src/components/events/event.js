@@ -30,13 +30,13 @@ const InmodeEvent = ({ event = {}, prop_key, current_page }) => {
                     {`${event.begin}${event.finish ? ` - ${event.finish}` : ''}`}
                 </div>}
                 {event.place && <div className="address_link">
-                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer">{event.place}</a>
+                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer" title="Lieu">{event.place}</a>
                 </div>}
                 {event.address && <div className="address">
                     {event.address}
                 </div>}
                 {event.map_link && <div className="maps_location">
-                    <a href={event.maps_link || "#"} target="_blank" rel="noreferrer">+ Google Map</a>
+                    <a href={event.maps_link || "#"} target="_blank" rel="noreferrer" title="Localisation Google Maps">+ Google Map</a>
                 </div>}
             </div>
         </div>

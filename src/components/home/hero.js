@@ -1,21 +1,9 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-// import { useWindowSize } from "../../functions/window-size";
+import { useImages } from '../contexts/images-provider';
 
 const Hero = (  ) => {
 
-    const [images] = React.useState(useStaticQuery(graphql`
-        {
-            hero: file(relativePath: {eq: "hero-3.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                        srcSetWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
 
     // TODO faire un bloc bleu border-radius bottom-right et un bloc down #59b7b3, image en position absolute du hero
 
@@ -54,8 +42,8 @@ const Hero = (  ) => {
             <div className="hero-right">
                 <img
                     id="hero-img"
-                    src={images.hero.childImageSharp.fluid.srcWebp}
-                    srcSet={images.hero.childImageSharp.fluid.srcSetWebp}
+                    src={images.getOne('heroHeader').childImageSharp.fluid.srcWebp}
+                    srcSet={images.getOne('heroHeader').childImageSharp.fluid.srcSetWebp}
                     style={{"right": img_init_right + 'vw'}}
                     alt="hero-right-img"
                 />

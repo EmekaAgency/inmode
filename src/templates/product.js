@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Addons from '../components/product/addons';
 import Divider from '../components/divider';
 import ProductBanner from '../components/product/banner';
@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import ProductBeforeAfter from '../components/product/before-after';
 import ProductDemo from '../components/product/demo';
 import SellingArgs from '../components/selling-args';
-import ClinicalStudies from '../components/clinical-studies';
+import ClinicalStudies from '../components/Clinical/clinical-studies';
 import GenericDetails from '../components/details';
 import { graphql } from 'gatsby';
 

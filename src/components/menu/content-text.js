@@ -26,11 +26,11 @@ const MenuContentText = ({menu, prop_key}) => {
         <>
             {menu.url ?
                 menu.internal_link ?
-                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" to={menu.url || "#"}>
+                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" to={menu.url || "#"} title={format_string(menu.title)}>
                         {content(menu)}
                     </Link>
                     :
-                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" href={menu.url || "#"} target="_blank" rel="noreferrer">
+                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" href={menu.url || "#"} target="_blank" rel="noreferrer" title={format_string(menu.title)}>
                         {content(menu)}
                     </a>
                 :

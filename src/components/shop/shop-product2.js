@@ -17,7 +17,7 @@ const ShopProduct = ({ product, special }) => {
                 <div className={`workstation-description custom-scrollbar${special ? " special" : ""}`}>{product.ShopDescription}</div>
                 <div className={`workstation-more-details transition${special ? " special" : ""}`}>
                     En savoir plus
-                    <Link className={`zone-link${special ? " special" : ""}`} to={`/workstation/${product.MenuParams.url}`}></Link>
+                    <Link className={`zone-link${special ? " special" : ""}`} to={`/workstation/${product.MenuParams.url}`} title={product.Name}></Link>
                 </div>
             </div>
         </div>

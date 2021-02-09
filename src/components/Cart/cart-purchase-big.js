@@ -1,27 +1,12 @@
-import { graphql, useStaticQuery } from "gatsby";
-import React, { useContext } from "react"
+import React, { useContext } from "react";
 import CartContext from "../contexts/cart-context";
+import { useImages } from '../contexts/images-provider';
 
 import './big.css';
 
 const CartPurchaseBig = (  ) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            cart_basket: file(relativePath: {eq: "icons/cart_basket.svg"}) {
-                publicURL
-            }
-            close: file(relativePath: {eq: "icons/close-white.webp"}) {
-                publicURL
-            }
-            rmv_init: file(relativePath: {eq: "icons/rmv-article-init.svg"}) {
-                publicURL
-            }
-            rmv_blue: file(relativePath: {eq: "icons/rmv-article-blue.svg"}) {
-                publicURL
-            }
-        }
-    `));
+    const images = useImages();
 
     const cart = useContext(CartContext);
 
@@ -54,14 +39,14 @@ const CartPurchaseBig = (  ) => {
                     }}
                 >
                     <img
-                        src={icons.close.publicURL}
-                        srcSet={icons.close.publicURL}
+                        src={images.getOne('closeWhiteIcon').publicURL}
+                        srcSet={images.getOne('closeWhiteIcon').publicURL}
                     />
                 </div>
                 <div className="cart-head">
                     <img
-                        src={icons.cart_basket.publicURL}
-                        srcSet={icons.cart_basket.publicURL}
+                        src={images.getOne('cartBasketIcon').publicURL}
+                        srcSet={images.getOne('cartBasketIcon').publicURL}
                     />
                     <span>{`Panier, ${cart.cart.length} objet${cart.cart.length > 1 ? 's' : ''}`}</span>
                 </div>
@@ -75,8 +60,8 @@ const CartPurchaseBig = (  ) => {
                                         cart.remove(article.reference, article.quantity);
                                     }}
                                 >
-                                    <img className="init" src={icons.rmv_init.publicURL}/>
-                                    <img className="blue" src={icons.rmv_blue.publicURL}/>
+                                    <img className="init" src={images.getOne('rmvInit').publicURL}/>
+                                    <img className="blue" src={images.getOne('rmvHover').publicURL}/>
                                 </div>
                                 <div className="addon">
                                     {cart.articles[article.reference].picture && (<img
@@ -170,8 +155,8 @@ const CartPurchaseBig = (  ) => {
                         }}
                     >
                         <img
-                            src={icons.close.publicURL}
-                            srcSet={icons.close.publicURL}
+                            src={images.getOne('closeWhiteIcon').publicURL}
+                            srcSet={images.getOne('closeWhiteIcon').publicURL}
                         />
                     </div>
                     <span className={`${otherAddress ? 'click' : ''}`}>adresse de facturation</span>
@@ -203,8 +188,8 @@ const CartPurchaseBig = (  ) => {
                         }}
                     >
                         <img
-                            src={icons.close.publicURL}
-                            srcSet={icons.close.publicURL}
+                            src={images.getOne('closeWhiteIcon').publicURL}
+                            srcSet={images.getOne('closeWhiteIcon').publicURL}
                             className="unmorphic"
                         />
                     </div>

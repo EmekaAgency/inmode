@@ -1,6 +1,9 @@
 import React from "react";
+import { useImages } from '../contexts/images-provider';
 
 const Webinar = ({ event = {} }) => {
+
+    const images = useImages();
     
     return (
         <div className="eseminar">
@@ -18,7 +21,8 @@ const Webinar = ({ event = {} }) => {
             <div className="img-part">
                 <img
                     className="event-pic"
-                    src={get_img_path("gatsby-astronaut.png")}
+                    src={images.getOne('gatsbyAstronaut').fluid.srcWebp}
+                    srcSet={images.getOne('gatsbyAstronaut').fluid.srcSetWebp}
                 />
             </div>
         </div>

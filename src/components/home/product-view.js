@@ -1,31 +1,17 @@
 import React from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import ProductsContext from "../contexts/products-context";
+import { useImages } from '../contexts/images-provider';
 
 const ProductView = ({children, datas}) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            more: file(relativePath: {eq: "icons/add.svg"}) {
-                publicURL
-            }
-            arrow_right: file(relativePath: { eq: "icons/arrow-right.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                        srcSetWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
 
     const [products] = React.useState(React.useContext(ProductsContext).products);
 
     if(products.length === 0 || datas.current === -1) {
         return (<></>);
     }
-    
 
     return (
         <div className="product-view-container">
@@ -55,7 +41,7 @@ const ProductView = ({children, datas}) => {
                                             alt={addon.Name}
                                         />
                                     </div>
-                                    <a className="addon-description custom-scrollbar">{addon.Banner.right_text}</a>
+                                    <a className="addon-description custom-scrollbar" title={addon.Name}>{addon.Banner.right_text}</a>
                                     <img
                                         className="addon-picture"
                                         src={addon.Banner.left_img.childImageSharp.fluid.srcWebp}
@@ -76,19 +62,19 @@ const ProductView = ({children, datas}) => {
                                     </p>
                                     <div className="purchase-infos">
                                         {/* <div className={`price ${currency}`}>{addon.price}</div> */}
-                                        <Link className="details" to={addon.MenuParams.url}>
+                                        <Link className="details" to={addon.MenuParams.url} title={addon.Name}>
                                             Détails
                                             <img
                                                 className="detail-view-addon-arrow transition"
-                                                src={icons.arrow_right.childImageSharp.fluid.srcWebp}
-                                                srcSet={icons.arrow_right.childImageSharp.fluid.srcSetWebp}
+                                                src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}
+                                                srcSet={images.getOne('arrowRightIcon').childImageSharp.fluid.srcSetWebp}
                                                 alt="arrow-left"
                                             />
                                         </Link>
-                                        {/* <div className="add-to-cart"><button>Ajouter</button></div> */}
+                                        <div className="add-to-cart"><button>Ajouter</button></div>
                                     </div>
                                 </div>
-                                <img src={icons.more.publicURL} className="show-more" alt="add"/>
+                                <img src={images.getOne('plusIcon').publicURL} className="show-more" alt="add"/>
                             </div>
                         );
                     })}

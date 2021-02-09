@@ -1,19 +1,9 @@
-import React from "react"
-import { graphql, useStaticQuery } from "gatsby";
+import React from "react";
+import { useImages } from './contexts/images-provider';
 
 const SellingArgs = ({ datas }) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
     
     if(!datas || datas.length === 0) {
         return false;
@@ -27,7 +17,7 @@ const SellingArgs = ({ datas }) => {
                     <div key={key} className="key">
                         {/* TODO single type */}
                         <img
-                            src={icons.key_benefit.childImageSharp.fluid.srcWebp}
+                            src={images.getOne('keyBenefitIcon').childImageSharp.fluid.srcWebp}
                             alt="key_benefit"
                         />
                         <div className="text">{arg.texte}</div>

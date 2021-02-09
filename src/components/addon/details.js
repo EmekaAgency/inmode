@@ -1,19 +1,10 @@
-import { graphql, useStaticQuery } from "gatsby";
-import React from "react"
+import React from "react";
+import RequestInformation from "../RequestInformation";
+import { useImages } from '../contexts/images-provider';
 
 const AddonDetails = ({ name = "", datas }) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
     
     if(!datas || datas.length === 0) {
         return false;
@@ -43,12 +34,12 @@ const AddonDetails = ({ name = "", datas }) => {
             <div className="key-benefits transition">
                 <div className="title">
                     {'key benefits:'}
-                </div>
-                {datas.key_benefits.map((benefit, key) => {
+                </div>key_benefit
+                {datas.s.map((benefit, key) => {
                     return (
                         <div key={key} className="key">
                             <img
-                                src={icons.key_benefit.childImageSharp.fluid.srcWebp}
+                                src={(images.getOne'keyBenefitIcon').childImageSharp.fluid.srcWebp}
                                 alt="key_benefit"
                             />
                             <div className="text">{benefit.texte}</div>
@@ -56,9 +47,7 @@ const AddonDetails = ({ name = "", datas }) => {
                     );
                 })}
             </div>
-            <a className="request-informations" href="#">
-                request informations
-            </a>
+            <RequestInformation/>
         </div>
     );
 }

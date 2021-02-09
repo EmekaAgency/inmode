@@ -1,26 +1,13 @@
 import React from "react";
 import ProductView from "./product-view";
 import ProductsContext from "../contexts/products-context";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import Carousel from "../Carousel";
+import { useImages } from '../contexts/images-provider';
 
 const Slides = ({from}) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            arrow_right: file(relativePath: { eq: "icons/arrow-right.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                        srcSetWebp
-                    }
-                }
-            }
-            close_white: file(relativePath: { eq: "icons/close-white.webp"}) {
-                publicURL
-            }
-        }
-    `));
+    const images = useImages();
 
     const [current, setCurrent] = React.useState(-1);
     const [open, setOpen] = React.useState(false);
@@ -112,18 +99,18 @@ const Slides = ({from}) => {
                                     Informations produit
                                     <img
                                         className="slide-view-detail-arrow transition"
-                                        src={icons.arrow_right.childImageSharp.fluid.srcWebp}
-                                        srcSet={icons.arrow_right.childImageSharp.fluid.srcSetWebp}
+                                        src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}
+                                        srcSet={images.getOne('arrowRightIcon').childImageSharp.fluid.srcSetWebp}
                                         alt="arrow-right"
                                     />
-                                    <Link className="zone-link" to={slide.MenuParams.url}></Link>
+                                    <Link className="zone-link" to={slide.MenuParams.url} title={slide.Name}></Link>
                                 </div>
                                 {slide.Addons ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
                                     Pièces à main
                                     <img
                                         className="slide-view-product-arrow transition"
-                                        src={icons.arrow_right.childImageSharp.fluid.srcWebp}
-                                        srcSet={icons.arrow_right.childImageSharp.fluid.srcSetWebp}
+                                        src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}
+                                        srcSet={images.getOne('arrowRightIcon').childImageSharp.fluid.srcSetWebp}
                                         alt="arrow-left"
                                     />
                                 </div> : null}
@@ -143,7 +130,7 @@ const Slides = ({from}) => {
                             <div className="close">
                                 <img
                                     className="close-product-view"
-                                    src={icons.close_white.publicURL}
+                                    src={images.getOne('closeWhiteIcon').publicURL}
                                     alt="close-product-view"
                                 />
                             </div>

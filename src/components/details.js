@@ -1,19 +1,11 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import RequestInformation from "./RequestInformation";
+import { useImages } from './contexts/images-provider';
 
 const GenericDetails = ({ datas }) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
 
     return (
         <div id="what-is" className="details">
@@ -47,7 +39,7 @@ const GenericDetails = ({ datas }) => {
                     return (
                         <div key={key} className="list-elem">
                             {datas.list_icon && <img
-                                src={icons[datas.list_icon].childImageSharp.fluid.srcWebp}
+                                src={images.getOne('keyBenefitIcon').childImageSharp.fluid.srcWebp || images.getOne('keyBenefitIcon').childImageSharp.fluid.srcWebp}
                                 alt={`elem-${key}`}
                                 className="before-text"
                             />}
@@ -57,9 +49,7 @@ const GenericDetails = ({ datas }) => {
                     );
                 })}
             </div>
-            <a className="request-informations" href="#">
-                request informations
-            </a>
+            <RequestInformation/>
         </div>
     );
 }

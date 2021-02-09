@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import Shop from "../components/shop/shop";
 import { edges_to_array } from "../functions/edges_to_array";

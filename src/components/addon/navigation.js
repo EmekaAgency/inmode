@@ -20,7 +20,7 @@ const AddonNavigation = ({ name, exist = {} }) => {
             {menus.map((menu, key) => {
                 return (
                     <div key={key} className="addon-nav">
-                        <AnchorLink to={menu.url} className="addon-nav">
+                        <AnchorLink to={menu.url} className="addon-nav" title={menu.name}>
                             {menu.name}
                         </AnchorLink>
                     </div>

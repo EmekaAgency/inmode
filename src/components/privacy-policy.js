@@ -1,28 +1,17 @@
 import { graphql, useStaticQuery } from "gatsby";
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 import React from "react"
 import { disableMainScroll, enableMainScroll } from "../functions/disable-scroll";
 import { useLocalStorage } from "../functions/use-localstorage";
 import { useWindowSize } from "../functions/window-size";
+import { useImages } from './contexts/images-provider';
 
 const PrivacyPolicy = (props) => {
 
+    const images = useImages();
+
     const generalCookies = 'inmodemd-fr-accept-cookies';
     const analyticsCookies = 'inmodemd-fr-accept-analytics-cookies';
-
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            privacy_icon: file(relativePath: {eq: "privacy-icon.svg"}) {
-                publicURL
-            }
-            privacy_c: file(relativePath: {eq: "privacy-c.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
-                }
-            }
-        }
-    `));
 
     const [open, setOpen] = React.useState(false);
     const [accepted, setAccepted] = React.useState(false);
@@ -71,8 +60,8 @@ const PrivacyPolicy = (props) => {
     return (
         <div className={`privacy-policy transition${open ? ' opened' : ''}`}>
             <button className="open-button" onClick={(e) => {process_cookies(e);}}>
-                <img className="main" src={icons.privacy_icon.publicURL} alt="privacy-triangle"/>
-                <img className="content" src={icons.privacy_c.childImageSharp.fluid.srcWebp} alt="privacy-icon"/>
+                <img className="main" src={images.getOne('privacyPolicyTriangle').publicURL} alt="privacy-triangle"/>
+                <img className="content" src={images.getOne('privacyPolicyC').childImageSharp.fluid.srcWebp} alt="privacy-icon"/>
             </button>
             <div className="panel cookies transition custom-scrollbar">
                 <div className="cookies-our-use">
@@ -82,7 +71,7 @@ const PrivacyPolicy = (props) => {
                 </div>
                 <div className="cookies-necessaries">
                     <div className="cookies-title">Necessary cookies</div>
-                    <div className="cookies-text">Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions. For more information please see our <a href="#">cookie policy</a>.</div>
+                    <div className="cookies-text">Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions. For more information please see our <AnchorLink to="/mentions-legales#cookies" tite="Cookies">cookie policy</AnchorLink>.</div>
                     <div className="cookies-divider"></div>
                 </div>
                 <div className="cookies-analytics">
@@ -104,7 +93,7 @@ const PrivacyPolicy = (props) => {
                             <span className="switch-switch"></span>
                         </label>
                     </div>
-                    <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <a href="#">'Cookies page'</a>. The cookies collect information in an anonymous form.</div>
+                    <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <AnchorLink to="/mentions-legales#cookies">'Cookies page'</AnchorLink>. The cookies collect information in an anonymous form.</div>
                 </div>
                 <div className="accept-close" onClick={(e) => {process_cookies(e, document.querySelector('#onoffswitch').checked);}}>
                     Accept and close

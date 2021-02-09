@@ -185,7 +185,7 @@ You next have to go in `Settings`>`GatsbyJS`. There, you'll have a token. Copy t
                         fieldName: "wpcontent",
                         url: `http://www.gwpb.emeka.fr/graphql`,
                         headers: {
-                        token: '<token>',
+                            token: '<token>',
                         },
                     },
             },

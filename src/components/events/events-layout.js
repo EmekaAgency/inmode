@@ -122,6 +122,7 @@ const EventsLayout = ({ children, current_page, upcoming_events = {}, past_event
                                         // to="#"
                                         // onClick={(e) => {resolveClick(e);}}
                                         key={key}
+                                        title={tab.name}
                                     >
                                         {tab.name}
                                     </Link>

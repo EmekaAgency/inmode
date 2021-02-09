@@ -24,7 +24,7 @@ const ProductNavigation = ({ name, exist }) => {
             {menus.map((menu, key) => {
                 return (
                     <div key={key} className="product-nav">
-                        <AnchorLink to={menu.url} className="product-nav">
+                        <AnchorLink to={menu.url} className="product-nav" title={menu.name}>
                             {menu.name}
                         </AnchorLink>
                     </div>

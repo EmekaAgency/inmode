@@ -1,4 +1,5 @@
 import React from "react";
+import RequestInformation from "../RequestInformation";
 
 const AddonWhatTreat = ({ datas }) => {
     
@@ -23,9 +24,7 @@ const AddonWhatTreat = ({ datas }) => {
               );
             })}
           </div>
-          <a className="request-informations" href="#">
-              request informations
-          </a>
+            <RequestInformation/>
         </div>
     );
 }

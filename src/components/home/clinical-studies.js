@@ -1,32 +1,15 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
+import { useImages } from '../contexts/images-provider';
 
 const ClinicalStudies = () => {
 
-    const [images] = React.useState(useStaticQuery(graphql`
-        {
-            back: file(relativePath: {eq: "home/media-bg.webp"}) {
-                publicURL
-            }
-            study: file(relativePath: {eq: "home/studies-img.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                        srcSetWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
 
     return (
         <div
             className="clinical-studies-home background-image"
-            // style={{
-            //     'backgroundImage': 'url(' + images.back.childImageSharp.fluid.srcWebp + ')'
-            // }}
             style={{
-                'backgroundImage': 'url(' + images.back.publicURL + ')'
+                'backgroundImage': 'url(' + images.getOne('homeClinicalBack').publicURL + ')'
             }}
         >
             <div className="container">
@@ -34,11 +17,11 @@ const ClinicalStudies = () => {
                     <h2 className="title">Études cliniques</h2>
                     <div className="content">
                         <img
-                            src={images.study.childImageSharp.fluid.srcWebp}
-                            srcSet={images.study.childImageSharp.fluid.srcSetWebp}
+                            src={images.getOne('homeClinicalStudy').childImageSharp.fluid.srcWebp}
+                            srcSet={images.getOne('homeClinicalStudy').childImageSharp.fluid.srcSetWebp}
                             alt="studies-img"
                         />
-                        <a href="https://inmodemd.com/clinical-papers/" target="_blank" rel="noreferrer">
+                        <a href="https://inmodemd.com/clinical-papers/" target="_blank" rel="noreferrer" title="Voir les études">
                             Voir les études
                         </a>
                     </div>

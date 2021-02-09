@@ -2,29 +2,11 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby";
 import { useWindowSize } from "../functions/window-size";
 import { disableMainScroll, enableMainScroll } from "../functions/disable-scroll";
+import { useImages } from './contexts/images-provider';
 
 const ContactUs = () => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-        {
-            piece: file(relativePath: {eq: "contact_us.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcSet
-                        srcSetWebp
-                    }
-                }
-            }
-            close: file(relativePath: { eq: "icons/closingcross.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcSet
-                        srcSetWebp
-                    }
-                }
-            }
-        }
-    `));
+    const images = useImages();
 
     const [open, setOpen] = React.useState(false);
     const [formOpen, setFormOpen] = React.useState(false);
@@ -121,16 +103,16 @@ const ContactUs = () => {
                 <img
                     id="piece"
                     className="transition"
-                    src={icons.piece.childImageSharp.fluid.srcWebp}
-                    srcSet={icons.piece.childImageSharp.fluid.srcSetWebp}
+                    src={images.getOne('contactUsPiece').childImageSharp.fluid.srcWebp}
+                    srcSet={images.getOne('contactUsPiece').childImageSharp.fluid.srcSetWebp}
                     alt="contact-us"
                     onClick={(e) => {resolve_click(e)}}
                 />
                 <div className="content">
                     <div id="close" className="close-contact-us transition" onClick={(e) => {resolve_click(e)}}>
                         <img
-                            src={icons.close.childImageSharp.fluid.srcWebp}
-                            srcSet={icons.close.childImageSharp.fluid.srcSetWebp}
+                            src={images.getOne('hexagonalCross').childImageSharp.fluid.srcWebp}
+                            srcSet={images.getOne('hexagonalCross').childImageSharp.fluid.srcSetWebp}
                             alt="hexa-close"
                         />
                     </div>

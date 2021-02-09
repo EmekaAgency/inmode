@@ -6,11 +6,11 @@ import AddonBeforeAfter from '../components/addon/before-after';
 import AddonNavigation from '../components/addon/navigation';
 import AddonVideos from '../components/addon/videos';
 import AddonWhatTreat from '../components/addon/what-treat';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import SellingArgs from '../components/selling-args';
 import SellingNew from '../components/selling-new';
-import ClinicalStudies from '../components/clinical-studies';
+import ClinicalStudies from '../components/Clinical/clinical-studies';
 import GenericDetails from '../components/details';
 
 const AddonTemplates = ({ data }) => {

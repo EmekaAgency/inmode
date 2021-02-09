@@ -22,7 +22,7 @@ const Workshop = ({ event = {} }) => {
                     {`${event.begin}${event.finish ? ` - ${event.finish}` : ''}`}
                 </div>}
                 {event.place && <div className="address_link">
-                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer">
+                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer" title="Lieu">
                         {event.place}
                     </a>
                 </div>}
@@ -30,7 +30,7 @@ const Workshop = ({ event = {} }) => {
                     {event.address}
                 </div>}
                 {event.map_link && <div className="maps_location">
-                    <a href={event.map_link || "#"} target="_blank" rel="noreferrer">+ Google Map</a>
+                    <a href={event.map_link || "#"} target="_blank" rel="noreferrer" title="Localisation Google Maps">+ Google Map</a>
                 </div>}
             </div>
         </div>

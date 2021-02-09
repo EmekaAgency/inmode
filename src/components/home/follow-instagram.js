@@ -3,38 +3,38 @@ import { graphql, useStaticQuery } from "gatsby";
 
 const FollowInstagram = () => {
 
-    const [datas] = React.useState(useStaticQuery(graphql`
-        {
-            allInstaNode(sort: {fields: timestamp, order: DESC}, limit: 4, filter: {username: {eq: "1317505554"}}) {
-                edges {
-                    node {
-                        comments
-                        likes
-                        caption
-                        localFile {
-                            childImageSharp {
-                                fluid {
-                                    srcWebp
-                                    srcSetWebp
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `));
+    // const [datas] = React.useState(useStaticQuery(graphql`
+    //     {
+    //         allInstaNode(sort: {fields: timestamp, order: DESC}, limit: 4, filter: {username: {eq: "1317505554"}}) {
+    //             edges {
+    //                 node {
+    //                     comments
+    //                     likes
+    //                     caption
+    //                     localFile {
+    //                         childImageSharp {
+    //                             fluid {
+    //                                 srcWebp
+    //                                 srcSetWebp
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // `));
 
     return (
         <div className="follow-instagram">
             {/* <div className="container"> */}
                 <h2>
-                    <a href="https://www.instagram.com/inmode.france" target="_blank" rel="noreferrer">
+                    <a href="https://www.instagram.com/inmode.france" target="_blank" rel="noreferrer" title="Suivez-nous sur Instagram">
                         Suivez nous sur Instagram
                     </a>
                 </h2>
                 <div className="wrapper">
-                    {datas.allInstaNode.edges.map((post, key) => {
+                    {/* {datas.allInstaNode.edges.map((post, key) => {
                         return(
                             <div key={key} className="elem">
                                 <img
@@ -43,10 +43,10 @@ const FollowInstagram = () => {
                                     srcSet={post.node.localFile.childImageSharp.fluid.srcSetWebp}
                                     alt={`insta-${key + 1}`}
                                 />
-                                <a href="https://www.instagram.com/inmodeaesthetics/" className="zone-link" target="_blank" rel="noreferrer"></a>
+                                <a href="https://www.instagram.com/inmodeaesthetics/" className="zone-link" target="_blank" rel="noreferrer" title="Suivez Inmode sur Instagram"></a>
                             </div>
                         );
-                    })}
+                    })} */}
                 </div>
             {/* </div> */}
         </div>

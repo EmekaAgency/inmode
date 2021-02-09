@@ -119,8 +119,16 @@ retirer l'autoPlay sur tous les carousels                                   //TO
 ajouter un mailto sur le mail footer                                        //TO DO             // DONE
 contact.fr@inmodemd.com (BACK SEND MAIL)                                    //TO DO             // DONE
 feedback sur les actions                                                    //TO DO             // 
-Faire un composant link (gérer les besoins self, blank, scroll, ...)        //TO DO             // 
+Faire un composant link (gérer les besoins self, blank, scroll, title, ...) //TO DO             // 
+Ajouter context RequestInformation pour pre-fill contact page form          //TO DO             // 
+remplacer gatsby source strapi par un composant qui fetch et des context    //TO DO             // 
+
+alvéoles écrasées en mobile                                                 //TO DO             // 
+alévoles texte trop grand en mobile                                         //TO DO             // 
 
 https://youtu.be/_a2FmrUngDU
 
 Variables environnement
+
+Hero header largest contentful paint mettre le Gatsby Img avec Tracev blur  //TO DO             // 
+Mettre police par défaut sur html et raleway sur body pour afficher texte   //TO DO             // 

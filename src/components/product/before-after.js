@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "../Carousel";
+import RequestInformation from "../RequestInformation";
 
 const ProductBeforeAfter = ({ datas }) => {
 
@@ -63,9 +64,7 @@ const ProductBeforeAfter = ({ datas }) => {
                     </Carousel>
                 }
             </div>
-            <a className="request-informations" href="#">
-                request informations
-            </a>
+            <RequestInformation/>
         </div>
     );
 }

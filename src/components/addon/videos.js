@@ -1,16 +1,10 @@
-import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
 import Carousel from "../Carousel";
+import { useImages } from '../contexts/images-provider';
 
 const AddonVideos = ({ datas = {} }) => {
 
-    const [icons] = React.useState(useStaticQuery(graphql`
-      {
-        close_white: file(relativePath: {eq: "icons/close-white.webp"}) {
-          publicURL
-        }
-      }
-    `));
+  const images = useImages();
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -53,7 +47,7 @@ const AddonVideos = ({ datas = {} }) => {
       document.getElementsByTagName('main')[0].style.zIndex = 4;
       document.getElementById('video-iframe').classList.add('opened');
       let iframe = '';
-      iframe += '<img class="close-pic" src=' + icons.close_white.publicURL + ' onclick="resolve_click(e)"/>';
+      iframe += '<img class="close-pic" src=' + images.getOne('closeWhiteIcon').publicURL + ' onclick="resolve_click(e)"/>';
       iframe += '<iframe';
       iframe += 'allowfullscreen="allowfullscreen"';
       iframe += 'allow="autoplay; fullscreen"';

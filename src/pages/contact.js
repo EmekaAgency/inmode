@@ -4,7 +4,7 @@ import GetInTouch from "../components/contact/get-in-touch";
 import ProfessionalContact from "../components/contact/professional-contact";
 
 import GetStarted from "../components/get-started";
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import SEO from "../components/seo"
 
 const ContactPage = () => {

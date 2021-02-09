@@ -24,7 +24,7 @@ const MenuTitleCard = ({ menu, prop_key }) => {
             {
                 menu.url ?
                     menu.internal_link ?
-                    <Link onClick={(e) => {enableMainScroll();}} to={menu.url}>
+                    <Link onClick={(e) => {enableMainScroll();}} to={menu.url} title={format_string(menu.title)}>
                         <img
                             className="menu-title menu-card picture transition"
                             src={menu.icon.srcWebp}
@@ -34,7 +34,7 @@ const MenuTitleCard = ({ menu, prop_key }) => {
                         <span className="menu-title menu-card title">{format_string(menu.title)}</span>
                     </Link>
                     :
-                    <a onClick={(e) => {enableMainScroll();}} href={menu.url}>
+                    <a onClick={(e) => {enableMainScroll();}} href={menu.url} title={format_string(menu.title)}>
                         <img
                             className="menu-title menu-card picture transition"
                             src={menu.icon.srcWebp}

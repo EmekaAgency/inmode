@@ -11,7 +11,7 @@ const MenuSingleImage = ({menu, prop_key}) => {
             {
                 menu.url ?
                     menu.internal_link ?
-                    <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"} onClick={(e) => {enableMainScroll();}}>
+                    <Link key={prop_key} className="menu-single menu-image social-btn" to={menu.url || "#"} onClick={(e) => {enableMainScroll();}} title={format_string(menu.title)}>
                         <img
                             className="init"
                             src={menu.icon.url || menu.icon.publicURL}
@@ -26,7 +26,7 @@ const MenuSingleImage = ({menu, prop_key}) => {
                         />
                     </Link>
                     :
-                    <a key={prop_key} className="menu-single menu-image social-btn" href={menu.url || "#"} target="_blank" rel="noreferrer" onClick={(e) => {enableMainScroll();}}>
+                    <a key={prop_key} className="menu-single menu-image social-btn" href={menu.url || "#"} target="_blank" rel="noreferrer" onClick={(e) => {enableMainScroll();}} title={format_string(menu.title)}>
                         <img
                             className="init"
                             src={menu.icon.url || menu.icon.publicURL}

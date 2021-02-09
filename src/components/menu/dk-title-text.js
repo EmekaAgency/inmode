@@ -33,6 +33,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                             resolveOnClick(e, true);
                             enableMainScroll();
                         }}
+                        title={format_string(menu.title)}
                     >
                         {format_string(menu.title)}
                     </Link>
@@ -46,6 +47,7 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}) => {
                         }}
                         target="_blank"
                         rel="noreferrer"
+                        title={format_string(menu.title)}
                     >
                         {format_string(menu.title)}
                     </a>

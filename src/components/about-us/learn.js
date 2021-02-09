@@ -1,7 +1,10 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
+import { useImages } from '../contexts/images-provider';
 
 const Learn = ({ from = "" }) => {
+
+    const images = useImages();
 
     const [datas] = React.useState(useStaticQuery(graphql`
         {
@@ -32,13 +35,6 @@ const Learn = ({ from = "" }) => {
                 }
                 learn_values {
                     texte
-                }
-            }
-            key_benefit: file(relativePath: {eq: "icons/key_benefit.png"}) {
-                childImageSharp {
-                    fluid {
-                        srcWebp
-                    }
                 }
             }
         }
@@ -77,7 +73,7 @@ const Learn = ({ from = "" }) => {
                     return (
                         <div key={key} className="list-elem">
                             <img
-                                src={datas.key_benefit.childImageSharp.fluid.srcWebp}
+                                src={images.getOne('keyBenefitIcon').childImageSharp.fluid.srcWebp}
                                 alt={`elem-${key}`}
                                 className="before-text"
                             />

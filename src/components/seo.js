@@ -2,69 +2,110 @@
  * SEO component that queries for data with
  *  Gatsby's useStaticQuery React hook
  *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
+ * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { useImages } from './contexts/images-provider';
 
 function SEO({ description, lang, meta, title }) {
-  const [{ site }] = React.useState(useStaticQuery(graphql`
+
+  const images = useImages();
+
+  const { site } = useStaticQuery(
+    graphql`
       query {
         site {
           siteMetadata {
-            title
             description
-            author
+            og_locale
+            og_type
+            og_title
+            og_description
+            og_url
+            og_site_name
+            twitter_card
+            twitter_description
+            twitter_title
+            twitter_site
+            twitter_image
+            twitter_creator
+            msapplication_TileImage
           }
         }
       }
-  `));
+    `
+  );
 
   const metaDescription = description || site.siteMetadata.description
+  const defaultTitle = site.siteMetadata?.title
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      
+      title={`${title ? title + ' | ' : ''}Inmode - Votiva, FaceTite, BodyTite, AccuTite, BodyFX, Fractora`}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: site.siteMetadata.description,
         },
         {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
+          property: `og:locale`,
+          content: site.siteMetadata.og_locale,
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: site.siteMetadata.og_type,
+        },
+        {
+          property: `og:title`,
+          content: site.siteMetadata.og_title,
+        },
+        {
+          property: `og:description`,
+          content: site.siteMetadata.og_description,
+        },
+        {
+          property: `og:url`,
+          content: site.siteMetadata.og_url,
+        },
+        {
+          property: `og:site_name`,
+          content: site.siteMetadata.og_site_name,
         },
         {
           name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
+          content: site.siteMetadata.twitter_card,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: site.siteMetadata.twitter_description,
+        },
+        {
+          name: `twitter:title`,
+          content: site.siteMetadata.twitter_title,
+        },
+        {
+          name: `twitter:site`,
+          content: site.siteMetadata.twitter_site,
+        },
+        {
+          name: `twitter:image`,
+          content: images.getOne('seoLogo').img.srcProps.src,
+        },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.twitter_creator,
+        },
+        {
+          name: `msapplication-TileImage`,
+          content: images.getOne('seoLogo').img.srcProps.src,
         },
       ].concat(meta)}
     />
@@ -72,7 +113,7 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `fr`,
   meta: [],
   description: ``,
 }

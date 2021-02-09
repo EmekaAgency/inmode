@@ -9,9 +9,9 @@ const Unknown404 = () => {
                 Il semblerait que la page que vous cherchez n'existe pas
             </div>
             <div className="_404-suggestions">
-                <Link to="/">Accueil</Link>
-                <Link to="/products">Produits</Link>
-                <Link to="/addons">Pièces à main</Link>
+                <Link to="/" title="Accueil">Accueil</Link>
+                <Link to="/products" title="Produits">Produits</Link>
+                <Link to="/addons" title="Pièces à main">Pièces à main</Link>
             </div>
         </div>
     );
