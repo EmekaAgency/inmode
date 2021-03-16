@@ -243,7 +243,9 @@
     
 }
 
-.cart-purchase .cart-final .cart-validate {
+.cart-purchase .cart-final .cart-validate,
+form#purchase.step-1 .cart-validate.form-transition,
+form#purchase button.cart-validate {
     text-transform: uppercase;
     width: 312.8px;
     padding: 15px 60px;
@@ -263,24 +265,34 @@
     margin-right: 42.6px;
 }
 
-.cart-purchase.opened .cart-final .cart-validate {
+.cart-purchase.opened .cart-final .cart-validate,
+form#purchase.step-1 .cart-validate.form-transition,
+form#purchase.step-1 button.cart-validate {
     right: 0px;
     transition: right 0.3s ease-in-out;
     transition-delay: 0s;
 }
 
-.cart-purchase.opened .cart-final .cart-validate.form-transition {
+form#purchase button.cart-validate.form-transition:not(.other-address-transition),
+form#purchase button.cart-validate.form-transition.other-address-transition,
+form#purchase.step-1 button.cart-validate {
+    z-index: 5;
+}
+
+.cart-purchase.opened .cart-final .cart-validate.form-transition,
+form#purchase.step-2-3 .cart-validate.form-transition:not(.other-address-transition) {
     right: 400px;
     transition: right 0.3s ease-in-out;
     transition-delay: 0.1s;
-    z-index: 0;
+    /* z-index: 0; */
 }
 
-.cart-purchase.opened .cart-final .cart-validate.other-address-transition {
+.cart-purchase.opened .cart-final .cart-validate.other-address-transition,
+form#purchase .cart-validate.form-transition.other-address-transition {
     right: 800px;
     transition: right 0.3s ease-in-out;
     transition-delay: 0s;
-    z-index: 0;
+    /* z-index: 0; */
 }
 
 /* purchase form */
@@ -410,6 +422,7 @@ form#purchase .neumorphic input[type="checkbox"] {
 form#purchase .neumorphic label {
     cursor: pointer;
     top: -8px;
+    margin: 10px 0;
 }
 
 .cart-purchase-form.opened div#purchase-form.neumorphic input[type="submit"] {
@@ -503,17 +516,23 @@ form#purchase .neumorphic label {
     transition-delay: 0s;
 }
 
-form#purchase.step-2-3 #step-3-part.other-opened + .facture {
-    bottom: 30px;
+form#purchase.step-2-3 #step-3-part.other-opened + .sepa {
+    bottom: 90px;
     transition: bottom 0.3s ease-in-out 0.1s;
 }
 
-form#purchase.step-2-3 #step-3-part.other-opened + .facture + .cgu {
-    bottom: -10px;
+form#purchase.step-2-3 #step-3-part.other-opened + .sepa + .facture {
+    bottom: 50px;
+    transition: bottom 0.3s ease-in-out 0.1s;
+}
+
+form#purchase.step-2-3 #step-3-part.other-opened + .sepa + .facture + .cgu {
+    bottom: 10px;
     transition: bottom 0.3s ease-in-out 0.1s;
 }
 
 form#purchase.all-close > .step-1.neumorphic,
+form#purchase > .step-1.neumorphic.sepa,
 form#purchase > .step-1.neumorphic.facture,
 form#purchase > .step-1.neumorphic.cgu {
     position: fixed;
@@ -521,6 +540,13 @@ form#purchase > .step-1.neumorphic.cgu {
     transition: right 0.3s ease-in-out 0s, bottom 0.3s ease-in-out 0s;
     z-index: 4;
     width: 400px;
+}
+
+form#purchase > .step-1.neumorphic.sepa {
+    padding-top: 10px;
+    bottom: 140px;
+    background-color: #0b1a25;
+    transition: right 0.3s ease-in-out 0s, bottom 0.3s ease-in-out 0s;
 }
 
 form#purchase > .step-1.neumorphic.facture {

@@ -1,11 +1,11 @@
 Mercredi :
     - cards shop                                -> done
-    - composant SliderFlickity à part           -> 
-    - refaire le slider de la Home              -> 
+    - composant SliderFlickity à part           -> cancel
+    - refaire le slider de la Home              -> done
 
 Jeudi :
     - page Addons                               -> done
-    - Header et Footer avec Strapi              -> 
+    - Header et Footer avec Strapi              -> done
 
 Vendredi:
     - pages treatments                          -> done
@@ -13,8 +13,8 @@ Vendredi:
     - intégrer cache et svg                     -> 
 Samedi et dimanche :
     - retards cumulés                           -> 
-    - vrai shop ?                               -> 
-    - page 404 ?                                -> 
-    - alvéoles                                  -> 
+    - vrai shop ?                               -> done
+    - page 404 ?                                -> done
+    - alvéoles                                  -> done
 
     L'éclat pourpre des rivières du monde reflètent la miséricorde des anges après que l'humanité eu perdu la sacralité de la vie.

@@ -95,7 +95,7 @@ evoke pièces à main                                         //TO DO     //DONE
 notre histoire (about inmode)                               //TO DO     //DONE
 opportunités professionneles en single-type                 //TO DO     //CANCEL
 achat - adresse de facturation différente                   //TO DO     //DONE
-remove appels mysql                                         //TO DO     //NEW
+remove appels mysql                                         //TO DO     //NEW - DONE
 div 100vh lorem ipsum taille mobile first contentful pain   //TO DO     //NEW - DONE
 
 cart - adresse différente
@@ -106,12 +106,12 @@ J3 :
 
 régler largeur vimeo                                        //
 ajouter cart fixed menu et header-mini                      //TO DO     //DONE
-design tablette                                             //
-design mobile                                               //
+design tablette                                             //DONE
+design mobile                                               //DONE
 gatsby-purge-css                                            //
 gatsby-cache                                                //
 gatsby-minify                                               //
-responsive                                                  //
+responsive                                                  //DONE
 
 Dépend d'eux
 
@@ -135,7 +135,7 @@ achat - ligne livraison                                     //TO DO CLIENT      
 achat - adresse de facturation différente                   //TO DO CLIENT      //DONE
 cart - adresse différente                                   //TO DO CLIENT      //DONE
     button devient continuer                                //TO DO CLIENT      //DONE
-    mobile step 2/2 devient 2/3                             //TO DO US          //
+    mobile step 2/2 devient 2/3                             //TO DO US          //DONE
 texte card details largeur                                  //TO DO CLIENT      //DONE
 icon close contact-us                                       //TO DO CLIENT      //DONE
 suivez-nous insta fr                                        //TO DO CLIENT      //DONE
@@ -159,26 +159,26 @@ bug cart                                                    //TO DO US          
 div 100vh lorem ipsum taille mobile first contentful pain   //TO DO US          //NEW - DONE
 remove appels mysql                                         //TO DO US          //NEW
 opportunités professionnelles en single-type                //TO DO US          //CANCEL
-send mail php                                               //TO DO US          //
-php mail back                                               //TO DO US          //
+send mail php                                               //TO DO US          //DONE
+php mail back                                               //TO DO US          //DONE
 régler largeur vimeo                                        //TO DO US          //
-design tablette                                             //TO DO US          //
-design mobile                                               //TO DO US          //
+design tablette                                             //TO DO US          //DONE
+design mobile                                               //TO DO US          //DONE
 gatsby-purge-css                                            //TO DO US          //
 gatsby-cache                                                //TO DO US          //
 gatsby-minify                                               //TO DO US          //
-responsive                                                  //TO DO US          //
+responsive                                                  //TO DO US          //DONE
 react-window                                                //TO DO US          //
 react-viewport                                              //TO DO US          //
 supprimer li                                                //TO DO US          //
 
-module de banque                                            //TO DO THEM        //
-produits différents de inmodemd                             //TO DO THEM        //
-erreurs appariement stations / pièces à main / traitements  //TO DO THEM        //
-Référence Aviva 2 sensors HP                                //TO DO THEM        //
+module de banque                                            //TO DO THEM        //DONE
+produits différents de inmodemd                             //TO DO THEM        //DONE
+erreurs appariement stations / pièces à main / traitements  //TO DO THEM        //DONE
+Référence Aviva 2 sensors HP                                //TO DO THEM        //DONE
 
-forma pas détourée                                          //ASK KÉVIN CLIENT  //
-images titres evoke                                         //ASK KÉVIN CLIENT  //
+forma pas détourée                                          //ASK KÉVIN CLIENT  //DONE
+images titres evoke                                         //ASK KÉVIN CLIENT  //DONE
 
 Dyneff
 phone       =>      0240163278

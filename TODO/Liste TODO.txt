@@ -26,31 +26,31 @@ back sous-menu fixed menu couleur inmode                    //TO DO US          
 couleur hover sous-menu                                     //TO DO US          //NEW - DONE
 bug cart                                                    //TO DO US          //NEW - DONE
 div 100vh lorem ipsum taille mobile first contentful pain   //TO DO US          //NEW - DONE
-remove appels mysql                                         //TO DO US          //NEW
+remove appels mysql                                         //TO DO US          //NEW - DONE
 opportunités professionnelles en single-type                //TO DO US          //CANCEL
-send mail php                                               //TO DO US          //
-php mail back                                               //TO DO US          //
-régler largeur vimeo                                        //TO DO US          //
-design tablette                                             //TO DO US          //
-design mobile                                               //TO DO US          //
-gatsby-purge-css                                            //TO DO US          //
-voir anchor link                                            //TO DO US          // 1h~?
-gatsby-cache                                                //TO DO US          //
-gatsby-minify                                               //TO DO US          //
-responsive                                                  //TO DO US          //
-react-window                                                //TO DO US          //
-react-viewport                                              //TO DO US          //
-supprimer li                                                //TO DO US          //
-useEffect as componentDidMount toggle hidden true / false   //TO DO US          //NEW
-cart dans localstorage                                      //TO DO US          //NEW
+send mail php                                               //TO DO US          //DONE
+php mail back                                               //TO DO US          //DONE
+régler largeur vimeo                                        //TO DO US          //LATER
+design tablette                                             //TO DO US          //DONE
+design mobile                                               //TO DO US          //DONE
+gatsby-purge-css                                            //TO DO US          //LATER
+voir anchor link                                            //TO DO US          //DONE
+gatsby-cache                                                //TO DO US          //LATER
+gatsby-minify                                               //TO DO US          //LATER
+responsive                                                  //TO DO US          //DONE
+react-window                                                //TO DO US          //LATER
+react-viewport                                              //TO DO US          //LATER
+supprimer li                                                //TO DO US          //LATER
+useEffect as componentDidMount toggle hidden true / false   //TO DO US          //NEW - DONE
+cart dans localstorage                                      //TO DO US          //NEW - CANCEL
 
-module de banque                                            //TO DO THEM        //
-produits différents de inmodemd                             //TO DO THEM        //
-erreurs appariement stations / pièces à main / traitements  //TO DO THEM        //
-Référence Aviva 2 sensors HP                                //TO DO THEM        //
+module de banque                                            //TO DO THEM        //DONE
+produits différents de inmodemd                             //TO DO THEM        //DONE
+erreurs appariement stations / pièces à main / traitements  //TO DO THEM        //DONE
+Référence Aviva 2 sensors HP                                //TO DO THEM        //DONE
 
-forma pas détourée                                          //ASK KÉVIN CLIENT  //
-images titres evoke                                         //ASK KÉVIN CLIENT  //
+forma pas détourée                                          //ASK KÉVIN CLIENT  //DONE
+images titres evoke                                         //ASK KÉVIN CLIENT  //DONE
 
 
 gatsby unit testing                                                         //TO DO             // LATER
@@ -68,11 +68,11 @@ excel treatments et machines                                                //TO
 mobile stepper                                                              //TO DO DONE        // 4h
 refaire cart                                                                //TO DO DONE        // 1h30
 target _blank tout ce qui est externe                                       //TO DO DONE        // 1h
-card shop                                                                   //TO DO US          // 1h DONE
-send mail php                                                               //TO DO US          // 
+card shop                                                                   //TO DO US DONE     // 1h
+send mail php                                                               //TO DO US DONE     // 
 remove appels mysql                                                         //TO DO US DONE     // NEW
-custom strapi                                                               //TO DO             // ~?
-préparer un doc / une man pour strapi                                       //TO DO             // ~?
+custom strapi                                                               //TO DO DONE        // ~?
+préparer un doc / une man pour strapi                                       //TO DO             // LATER
 Référence Aviva 2 sensors HP                                                //TO DO THEM        // 
 
 ref                 ajouter
@@ -83,16 +83,16 @@ nom / reference
 - 3 +       prix
 Ajouter en panier
 
-rassembler les graphql dans des contextes                                   //TO DO             // 
+rassembler les graphql dans des contextes                                   //TO DO             // DONE
 juste inmode pour taille mini                                               //TO DO             // DONE
 place holder facture différente                                             //TO DO             // DONE
-vignette cart                                                               //TO DO             // 
+vignette cart                                                               //TO DO             // DONE
 vignette lorsqu'il y a un nouvel événement.                                 //TO DO             // 
 logo " play " sur les vidéo page produit                                    //TO DO             // DONE
 "livraison gratuite à partir de 500€"                                       //TO DO             // DONE
 virer provisoirement le numéro.                                             //TO DO             // DONE
 contact.fr@inmodemd.com                                                     //TO DO             // DONE
-cartwrapper to localstorage                                                 //TO DO             // 
+cartwrapper to localstorage                                                 //TO DO             // LATER
 IMD France 12, place dauphine 75001 Paris                                   //TO DO             // DONE
 sub -level treatment mini menu                                              //TO DO             // DONE
 flickity                                                                    //TO DO             // PENDING
@@ -108,10 +108,10 @@ flickity fix wrapAround // ib click right return first                      //TO
 remove console.log inutiles et commenter utiles mais privé                  //TO DO             // DONE
 résoudre no-scroll en production                                            //TO DO             // DONE
 
-Due to sensivitity no pics                                                  //TO DO             // 
-Remplir texte manquant pièces à main                                        //TO DO             // 
-Phone tourné textes                                                         //TO DO             // 
-Bloquer scroll certaines parties panier                                     //TO DO             // 
+Due to sensivitity no pics                                                  //TO DO             // DONE
+Remplir texte manquant pièces à main                                        //TO DO             // DONE
+Phone tourné textes                                                         //TO DO             // LATER
+Bloquer scroll certaines parties panier                                     //TO DO             // DONE
 SSL                                                                         //TO DO             // DONE Kévin
 Lien Insta américain                                                        //TO DO             // DONE
 la workstation s'appelle " Morpheus Pro"                                    //TO DO             // DONE
@@ -124,11 +124,11 @@ Ajouter context RequestInformation pour pre-fill contact page form          //TO
 remplacer gatsby source strapi par un composant qui fetch et des context    //TO DO             // 
 
 alvéoles écrasées en mobile                                                 //TO DO             // 
-alévoles texte trop grand en mobile                                         //TO DO             // 
+alévoles texte trop grand en mobile                                         //TO DO             // DONE
 
 https://youtu.be/_a2FmrUngDU
 
 Variables environnement
 
 Hero header largest contentful paint mettre le Gatsby Img avec Tracev blur  //TO DO             // 
-Mettre police par défaut sur html et raleway sur body pour afficher texte   //TO DO             // 
+Mettre police par défaut sur html et raleway sur body pour afficher texte   //TO DO             // DONE

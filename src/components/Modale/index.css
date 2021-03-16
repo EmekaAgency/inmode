@@ -1,0 +1,89 @@
+#modale {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #0008;
+    opacity: 0;
+}
+
+#modale.opened {
+    z-index: 6;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out 0s;
+}
+
+#modale #modale-container {
+    width: 60%;
+    height: 80%;
+    background-color: #070707;
+    border-top: 5px solid #59b7b3;
+    margin: 0 auto;
+    top: 10%;
+    position: relative;
+    box-shadow: #0e0e0e 0px 0px 5px;
+}
+
+#modale #modale-container #modale-content #modale-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 50px;
+    font-weight: 400;
+    color: #f2f2f2;
+    cursor: pointer;
+    transform: rotate(45deg);
+}
+
+#modale #modale-container #modale-content #modale-close:hover {
+    color: #59b7b3;
+}
+
+/*  ========================================
+    ========= MODALE PROJECT MAKER =========
+    ========================================
+*/
+
+/* EXT MODALE */
+#modale #modale-container.payment-sepa {
+    top: 15%;
+    min-height: 100px;
+    height: 700px;
+    width: 65%;
+}
+
+/* MODALE CONTENT */
+#modale #modale-container.payment-sepa #modale-content {
+    padding: 0 5%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* MODALE HEADER */
+#modale #modale-container.payment-sepa #modale-content h2 {
+    color: #f2f2f2;
+    font-weight: 600;
+    font-size: 35px;
+    text-align: center;
+    padding: 25px 0;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+#modale #modale-container.payment-sepa #modale-content .thanks {
+
+}
+
+#modale #modale-container.payment-sepa #modale-content .RIB {
+
+}
+
+#modale #modale-container.payment-sepa #modale-content .info {
+
+}
+
+#modale #modale-container.payment-sepa #modale-content .post-scriptum {
+
+}

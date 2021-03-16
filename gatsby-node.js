@@ -1,4 +1,6 @@
-exports.onCreateWebpackConfig = ({actions}) => {
+exports.onCreateWebpackConfig = ({
+  actions
+}) => {
   actions.setWebpackConfig({
     resolve: {
       // It's important to have 'node_modules' in resolve module,
@@ -9,21 +11,39 @@ exports.onCreateWebpackConfig = ({actions}) => {
   })
 }
 
-exports.onCreatePage = ({page, actions}) => {
-  const { createPage, deletePage } = actions
+exports.onCreatePage = async ({
+  page,
+  actions
+}) => {
+  const {
+    createPage,
+    deletePage
+  } = actions
   deletePage(page)
   // You can access the variable "house" in your page queries now
+
+  if(page.path == '/test/') {
+    return false;
+  }
+
   createPage({
     ...page,
     context: {
       ...page.context,
-      today_string: [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()].join('-')
+      today_string: [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()].join('-'),
+      strapi_id: process.env.STRAPI_ID,
+      strapi_pass: process.env.STRAPI_PASS,
     },
   })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.createPages = async ({
+  graphql,
+  actions
+}) => {
+  const {
+    createPage
+  } = actions
 
   const result = await graphql(
     `
@@ -73,7 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create addons pages.
   const addons = result.data.addons.edges
 
-  const AddonTemplates = require.resolve("./src/templates/addon.js")
+  const AddonTemplates = require.resolve("./src/templates/addon.tsx")
 
   addons.forEach((addon, index) => {
     addon.node.Page_addon && createPage({
@@ -88,7 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create products pages.
   const products = result.data.products.edges
 
-  const ProductTemplates = require.resolve("./src/templates/product.js")
+  const ProductTemplates = require.resolve("./src/templates/product.tsx")
 
   products.forEach((product, index) => {
     createPage({
@@ -103,7 +123,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create treatments pages.
   const treatments = result.data.treatments.edges
 
-  const TreatmentTemplates = require.resolve("./src/templates/treatment.js")
+  const TreatmentTemplates = require.resolve("./src/templates/treatment.tsx")
 
   treatments.forEach((treatment, index) => {
     createPage({

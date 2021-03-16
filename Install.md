@@ -119,7 +119,9 @@ and next gonna have to use the basic command :
 
 ```bash
     npm run develop
-    or
+```
+or
+```bash
     npm run build
 ```
 

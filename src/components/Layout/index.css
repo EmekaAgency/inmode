@@ -4,7 +4,7 @@ body {
     border: none;
     margin: 0;
     background-color: #d2d2d2;
-    font-family: 'raleway', sans-serif;
+    font-family: 'raleway', sans-serif, Roboto;
     font-size: 0;
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -419,17 +419,23 @@ header {
     height: 125px;
 }
 
-header .container .header-parts > img.cart {
-    display: none;
+@media (min-width: 1200px) {
+    header .container .header-parts > div.cart {
+        display: none;
+    }
+    
+    header .container .header-parts > div.cart.opened {
+        display: inline-block;
+    }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
     header .container .header-parts {
         max-width: calc(100% - 160px);
         width: 100%;
     }
 
-    header .container .header-parts > img.cart {
+    header .container .header-parts > div.cart {
         display: block;
         right: 120px;
         top: 9px;
@@ -484,7 +490,7 @@ header .container .header-parts > img.cart {
     display: inline-block;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
     .header-logo {
         height: 40px;
         width: 250px;
@@ -536,7 +542,7 @@ header .container .header-parts > img.cart {
     display: none;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
     header {
         position: fixed;
         top: 0px;
@@ -714,13 +720,14 @@ header .container .header-parts > img.cart {
 
 .header-parts>.header-bottom {
     line-height: 28px;
+    display: inline-block;
 }
 
 .header-parts .header-bottom a[href="/shop"] {
     color: #59b7b3;
 }
 
-.header-parts .header-bottom .cart {
+.header-parts .header-bottom + .cart {
     height: 18px;
     display: inline-block;
     vertical-align: top;
@@ -729,7 +736,7 @@ header .container .header-parts > img.cart {
     transition: margin 0.3s ease-in-out;
 }
 
-.header-parts .header-bottom .cart.opened {
+.header-parts .header-bottom + .cart.opened {
     margin-right: 0px;
     transition: margin 0.3s ease-in-out;
 }
@@ -1016,6 +1023,7 @@ header .container .header-parts > img.cart {
         padding: 5px 0;
         position: relative;
         min-height: 90px;
+        vertical-align: top;
     }
 
     .header-mini.opened .header-bottom ul.menu-dk-title.opened .dk-dropdown-menu .menu-title.menu-card .picture {
@@ -1142,6 +1150,24 @@ header .container .header-parts > img.cart {
         text-align: center;
         text-transform: uppercase;
     }
+
+    .header-mini.opened .header-top ul.menu-title.opened .dropdown-menu li a[href="https://inmodemd.es/"],
+    .header-mini.opened .header-top ul.menu-title.opened .dropdown-menu li a[href="https://inmodemd.es/"] img {
+        width: 60px;
+        height: 40px;
+    }
+
+    .header-mini.opened .header-top ul.menu-title.opened .dropdown-menu li a[href="https://www.inmodemd.co.uk/"],
+    .header-mini.opened .header-top ul.menu-title.opened .dropdown-menu li a[href="https://www.inmodemd.co.uk/"] img {
+        width: 60px;
+        height: 30px;
+    }
+
+    .header-mini.opened .header-top ul.menu-title.opened .dropdown-menu li {
+        width: 100px;
+        height: 50px;
+        margin: 0 auto;
+    }
 }
 
 /* FIXED MENU */
@@ -1203,7 +1229,7 @@ header .container .header-parts > img.cart {
     #fixed-menu .fixed-menus .menu-single,
     #fixed-menu .fixed-menus .menu-title,
     #fixed-menu .fixed-menus ul.menu-dk-title,
-    #fixed-menu .fixed-menus img.cart {
+    #fixed-menu .fixed-menus div.cart {
         text-transform: uppercase;
         color: #fff;
         font-weight: 600;
@@ -1319,7 +1345,7 @@ header .container .header-parts > img.cart {
         color: #fff;
     }
 
-    #fixed-menu .fixed-menus img.cart {
+    #fixed-menu .fixed-menus div.cart {
         width: 20px;
         height: 20px;
         top: 5px;
@@ -3456,6 +3482,12 @@ input[type="submit"].neumorphic:hover,
     padding: calc(100% / 14) 0;
     text-transform: uppercase;
     z-index: 1;
+}
+
+@media (max-width: 500px) {
+    .alveoles .alveole .alveole-text {
+        font-size: 3.5vw;
+    }
 }
 
 .alveoles .alveole a {
@@ -6509,7 +6541,8 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     border: 1px solid #59b7b3;
     padding: 35px 20px 50px;
     overflow: hidden;
-    margin: 40px auto;
+    /* margin: 40px auto; */
+    margin: 40px auto 0;
 }
 
 .contact-page.professional-contact .title {
@@ -6578,6 +6611,11 @@ div.workstation-products div.workstation-product div.workstation-more-infos .wor
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+}
+
+.contact-page.professional-contact + .divide-next {
+    width: 100%;
+    height: 40px;
 }
 
 /* how can we help */

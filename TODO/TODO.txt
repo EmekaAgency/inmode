@@ -19,7 +19,7 @@ dans événements enlever les 2 inmode university             // DONE
 enlever embraceRF
 
 images
-TODO    replace les get_img_path et les path direct par des call graphql gatsby sharp
+DONE    replace les get_img_path et les path direct par des call graphql gatsby sharp
 react windows plugin
 DOM trop long
 cache
@@ -39,7 +39,7 @@ Dans l'ordre
 07. gatsby-lazy-loading
 
 TODO node --trace-deprecation node_modules/gatsby/dist/bin/gatsby build
-TODO ajouter les col-md-4 col-xl-4 ...
+CANCEL ajouter les col-md-4 col-xl-4 ...
 
 05/10/2020
 

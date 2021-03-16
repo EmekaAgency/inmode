@@ -1,5 +1,9 @@
+const active_env = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
+
 require("dotenv").config({
-  path: `.env.${process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "dev"}`,
+  path: `.env.${active_env}`,
+  // path: `.env.${process.env.NODE_ENV}`,
+  // path: `.env`,
 })
 
 module.exports = {
@@ -19,8 +23,18 @@ module.exports = {
     twitter_image: ``,
     twitter_creator: `@InModeMDFrance`,
     msapplication_TileImage: ``,
+    shop_id: `${process.env.SHOP_ID}`,
+    url_success: `${process.env.URL_SUCCESS}`,
+    url_cancel: `${process.env.URL_CANCEL}`,
+    url_refused: `${process.env.URL_REFUSED}`,
+    url_error: `${process.env.URL_ERROR}`,
+    url_order_create: `${process.env.URL_ORDER_CREATE}`,
+    url_order_load: `${process.env.URL_ORDER_LOAD}`,
+    url_order_signature: `${process.env.URL_ORDER_SIGNATURE}`,
   },
   plugins: [
+    // '@typescript-eslint/eslint-plugin',
+    // 'react',
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-anchor-links",
@@ -53,8 +67,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `${process.env.STRAPI_URL}`,
-        apiURL: `http://51.178.141.192:1337`,
-        // apiURL: `http://localhost:1337`,
+        apiURL: `https://inmode-content.emeka.fr`,
         contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
           `addon`,
           `product`,
@@ -72,10 +85,8 @@ module.exports = {
         queryLimit: 10000,
         data: {
           login: {
-          //   identifier: process.env.STRAPI_ID,
-            identifier: 'inmode@emeka.fr',
-          //   // password: process.env.STRAPI_PASS
-            password: 'Bonsoir34**'
+            identifier: process.env.STRAPI_ID,
+            password: process.env.STRAPI_PASS
           }
         }
       },
@@ -90,4 +101,45 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
+
+  // TYPESCRIPT PART
+  // parser: '@typescript-eslint/parser',
+  // extends: [
+  //   'eslint:recommended',
+  //   'plugin:react/recommended',
+  //   'plugin:@typescript-eslint/recommended',
+  //   'prettier/@typescript-eslint',
+  //   'plugin:prettier/recommended'
+  // ],
+  // settings: {
+  //   react: {
+  //     version: 'detect'
+  //   }
+  // },
+  // env: {
+  //   browser: true,
+  //   node: true,
+  //   es6: true
+  // },
+  // parserOptions: {
+  //   ecmaFeatures: {
+  //     jsx: true
+  //   },
+  //   ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+  //   sourceType: 'module' // Allows for the use of imports
+  // },
+  // rules: {
+  //   'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
+  //   '@typescript-eslint/explicit-function-return-type': 'off'
+  // },
+  // overrides: [
+  //   // Override some TypeScript rules just for .js files
+  //   {
+  //     files: ['*.js'],
+  //     rules: {
+  //       '@typescript-eslint/no-var-requires': 'off' //
+  //     }
+  //   }
+  // ],
+  // END OF TYPESCRIPT PART
 }
