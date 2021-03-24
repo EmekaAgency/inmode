@@ -8,11 +8,11 @@ import GenericDetails from '../components/details';
 import TreatmentProducts from '../components/treatment/products';
 import TreatmentBeforeAfter from '../components/treatment/before-after';
 import { graphql } from 'gatsby';
-import { Strapi_Treatment_Interface } from '../components/interfaces';
+import { InmodePanel_Treatment_Interface } from '../components/interfaces';
 
 const TreatmentTemplates = ({ data }:TreatmentTemplates) => {
 
-    const [datas]:[Strapi_Treatment_Interface, React.Dispatch<Strapi_Treatment_Interface>] = React.useState(data.strapiTreatment);
+    const [datas]:[InmodePanel_Treatment_Interface, React.Dispatch<InmodePanel_Treatment_Interface>] = React.useState(data.strapiTreatment);
 
     return (
             <Layout>
@@ -30,7 +30,7 @@ const TreatmentTemplates = ({ data }:TreatmentTemplates) => {
 
 interface TreatmentTemplates {
     data: {
-        strapiTreatment: Strapi_Treatment_Interface;
+        strapiTreatment: InmodePanel_Treatment_Interface;
     };
 }
 

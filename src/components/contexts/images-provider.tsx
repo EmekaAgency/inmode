@@ -73,6 +73,13 @@ const ImagesProvider = ({ children }:{children:React.ReactNode}):React.Provider<
                     }
                 }
             }
+            seoLogo2: file(relativePath: {eq: "header-logo.png"}) {
+                img: childImageSharp {
+                    srcProps: fluid {
+                        src: srcWebp
+                    }
+                }
+            }
             footerLogo: file(relativePath: {eq: "footer-logo.png"}) {
                 childImageSharp {
                     fluid {

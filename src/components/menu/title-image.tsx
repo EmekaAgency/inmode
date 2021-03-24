@@ -4,7 +4,7 @@ import { resolve_mini_menu_opened } from '../../functions/resolve_mini_menu_open
 import { format_string } from '../../functions/format_string';
 import Menu from '../menu';
 import { enableMainScroll } from '../../functions/disable-scroll';
-import { Strapi_Menu_Interface } from '../interfaces';
+import { InmodePanel_Menu_Interface } from '../interfaces';
 
 const MenuTitleImage = ({menu, prop_key, openOnClick}:MenuTitleImage) => {
 
@@ -71,7 +71,7 @@ const MenuTitleImage = ({menu, prop_key, openOnClick}:MenuTitleImage) => {
 };
 
 interface MenuTitleImage {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
     openOnClick?: boolean;
 }

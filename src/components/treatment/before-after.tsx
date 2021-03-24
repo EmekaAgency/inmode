@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "../Carousel";
-import { Strapi_Generic_BeforeAfter_Interface } from "../interfaces";
+import { InmodePanel_Generic_BeforeAfter_Interface } from "../interfaces";
 import NoPicture from "../NoPic/no-picture";
 import Sensible from "../NoPic/sensible";
 import RequestInformation from "../RequestInformation";
@@ -81,7 +81,7 @@ const TreatmentBeforeAfter = ({ datas, sensible = false}:TreatmentBeforeAfter) =
 };
 
 interface TreatmentBeforeAfter {
-    datas: Strapi_Generic_BeforeAfter_Interface[] | undefined;
+    datas: InmodePanel_Generic_BeforeAfter_Interface[] | undefined;
     sensible: boolean;
 }
 

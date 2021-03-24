@@ -52,28 +52,41 @@ function closePart() {
 
 // Payment SEPA Modale
 
-export function paymentSEPA(reference:string, onOpen:Function = null, onClose:Function = null, total:string, RIB:string = "FR76 .... .... .... .... .... ...") {
+export function paymentSEPA(datas:paymentSEPA) {
     console.log('paymentSEPA');
     return {
-        onOpen: onOpen,
-        onClose: onClose,
+        onOpen: datas.onOpen,
+        onClose: datas.onClose,
         contentClass: 'payment-sepa',
         content: `
+            <h2>Commande validée</h2>
             <div class="thanks">
-                Merci, votre commande a bien été prise en compte. Nous procéderons à son envoi lorsque vous aurez réalisé le virement de ${total} € sur ce RIB:
-            /div>
-            <div class="RIB">
-                ${RIB}
+                Merci, votre commande a bien été prise en compte. Nous l'expédierons dès réception de votre virement de ${datas.total} € sur ce RIB:
             </div>
+            <table>
+                <tbody class="SEPA">
+                    <tr class="RIB"><td>RIB</td><td>${datas.RIB}</td></tr>
+                    <tr class="BIC"><td>BIC</td><td>${datas.BIC}</td></tr>
+                </tbody>
+            </table>
             <div class="info">
-                La référence de votre commande est <span class="reference">${reference}</span>, pensez à la notifier dans l'objet de votre virement
+                La référence de votre commande est <span class="reference">${datas.reference}</span>, pensez à la notifier dans le libellé de votre virement
             </div>
             <div class="post-scriptum">
                 PS : les informations relatives à la commande et son réglement vous ont aussi été envoyées par mail. Vous pourrez y retrouver toutes les informations présentes ici.
             </div>
-        `
+        `.trim()
     };
-}
+};
+
+interface paymentSEPA {
+    total: string;
+    RIB: string;
+    BIC: string;
+    reference: string;
+    onOpen?: Function;
+    onClose?: Function;
+};
 
 interface params {
     onOpen?: Function,

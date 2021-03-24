@@ -10,8 +10,21 @@ import Slides from "../components/home/slides";
 import Alveoles from "../components/home/alveoles";
 import { useWindowSize } from "../functions/window-size";
 import SlidesMini from "../components/home/slides-mini";
+import { graphql, useStaticQuery } from "gatsby";
 
 const IndexPage = () => {
+
+  const [instagram_id]:[string | number, React.Dispatch<string | number>] = React.useState(useStaticQuery(
+    graphql`
+      {
+          site {
+              siteMetadata {
+                  instagram_id
+              }
+          }
+      }
+    `
+  ).site.siteMetadata.instagram_id);
 
   const size = useWindowSize();
 
@@ -22,7 +35,7 @@ const IndexPage = () => {
         {size.width > 999 ? <Slides from='home'/> : <SlidesMini from="home"/>}
         <Alveoles />
         <ClinicalStudies/>
-        <FollowInstagram/>
+        <FollowInstagram insta_id={instagram_id}/>
         <GetStarted/>
       </Layout>
   );

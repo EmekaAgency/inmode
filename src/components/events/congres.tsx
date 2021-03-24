@@ -1,5 +1,5 @@
 import React from "react";
-import { Strapi_Event_Interface } from "../interfaces";
+import { InmodePanel_Event_Interface } from "../interfaces";
 
 const Congres = ({ event = undefined }:Congres) => {
 
@@ -43,7 +43,7 @@ const Congres = ({ event = undefined }:Congres) => {
 };
 
 interface Congres {
-    event: Strapi_Event_Interface | undefined;
+    event: InmodePanel_Event_Interface | undefined;
 };
 
 export default Congres;

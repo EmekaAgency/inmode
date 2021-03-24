@@ -26,6 +26,11 @@ exports.onCreatePage = async ({
     return false;
   }
 
+  {/* SWITCH CART */}
+  if(page.path == '/shop/') {
+    return false;
+  }
+
   createPage({
     ...page,
     context: {

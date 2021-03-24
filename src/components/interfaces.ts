@@ -1,28 +1,28 @@
 // Strapi interfaces
 // Collections
 
-export interface Strapi_Addon_Interface {
+export interface InmodePanel_Addon_Interface {
     Name?: string;
-    Banner? : Strapi_Base_Banner_Interface;
-    WhatIs?: Strapi_Generic_WhatIs_Interface;
-    KeyBenefits?: Strapi_Base_Texte_Interface[];
-    Videos?: Strapi_Addon_Video_Interface[];
-    BeforesAfters?: Strapi_Generic_BeforeAfter_Interface[];
-    WhatTreats?: Strapi_Addon_WhatTreat_Interface[];
-    ClinicalStudies?: Strapi_Generic_ClinicalStudies_Interface[];
-    ProductPresentation?: Strapi_Addon_ProductPresentation_Interface[];
+    Banner? : InmodePanel_Base_Banner_Interface;
+    WhatIs?: InmodePanel_Generic_WhatIs_Interface;
+    KeyBenefits?: InmodePanel_Base_Texte_Interface[];
+    Videos?: InmodePanel_Addon_Video_Interface[];
+    BeforesAfters?: InmodePanel_anel_Generic_BeforeAfter_Interface[];
+    WhatTreats?: InmodePanel_Addon_WhatTreat_Interface[];
+    ClinicalStudies?: InmodePanel_Generic_ClinicalStudies_Interface[];
+    ProductPresentation?: InmodePanel_Addon_ProductPresentation_Interface[];
     Price?: number;
-    Products?: Strapi_Product_Interface[];
+    Products?: InmodePanel_Product_Interface[];
     Page_addon?: boolean;
     BeforeKeyBenefits?: string;
     AfterKeyBenefits?: string;
-    SellingArgs?: Strapi_Generic_SellingArgs_Interface[];
-    SellingNewGeneration?: Strapi_Generic_SellingNewGeneration_Interface;
-    RelatedAddonTreats?: Strapi_Base_RelatedAddonTreat_Interface[];
-    MenuParams: Strapi_Generic_MenuParams_Interface;
+    SellingArgs?: InmodePanel_Generic_SellingArgs_Interface[];
+    SellingNewGeneration?: InmodePanel_Generic_SellingNewGeneration_Interface;
+    RelatedAddonTreats?: InmodePanel_Base_RelatedAddonTreat_Interface[];
+    MenuParams: InmodePanel_Generic_MenuParams_Interface;
     sensitivity: boolean;
 };
-export interface Strapi_Event_Interface {
+export interface InmodePanel_Event_Interface {
     picture: GatsbyImage_Interface;
     title: string;
     short_descr: string;
@@ -34,31 +34,31 @@ export interface Strapi_Event_Interface {
     place: string;
     place_url: string;
     maps_link: string;
-    addons: Strapi_Addon_Interface[];
+    addons: InmodePanel_Addon_Interface[];
 };
-export interface Strapi_Menu_Interface {
+export interface InmodePanel_Menu_Interface {
     title?: string;
     url?: string;
     type?: string;
     variant?: string;
     container?: string;
-    products?: Strapi_Product_Interface[];
-    treatment: Strapi_Treatment_Interface[]
-    menus?: Strapi_Menu_Interface[];
+    products?: InmodePanel_Product_Interface[];
+    treatment?: InmodePanel_Treatment_Interface[]
+    menus?: InmodePanel_Menu_Interface[];
     parent_menu?: boolean;
     icon?: GatsbyImage_Interface;
     icon_hover?: GatsbyImage_Interface;
     internal_link?: boolean;
-    mini_treatments?: Strapi_Treatment_Interface[];
-    mini_products?: Strapi_Product_Interface[];
-    mini_addons?: Strapi_Addon_Interface[];
+    mini_treatments?: InmodePanel_Treatment_Interface[];
+    mini_products?: InmodePanel_Product_Interface[];
+    mini_addons?: InmodePanel_Addon_Interface[];
 };
-export interface Strapi_Order_Interface {
+export interface InmodePanel_Order_Interface {
     Reference?: string | undefined;
     Date?: string;
-    Article?: Strapi_Product_BoughtArticle_Interface[];
-    Billing?: Strapi_Order_Billing_Interface;
-    Shipping?: Strapi_Order_Shipping_Interface;
+    Article?: InmodePanel_Product_BoughtArticle_Interface[];
+    Billing?: InmodePanel_Order_Billing_Interface;
+    Shipping?: InmodePanel_Order_Shipping_Interface;
     Paid?: boolean;
     Status?: string;
     Firstname?: string;
@@ -66,33 +66,33 @@ export interface Strapi_Order_Interface {
     Society?: string;
     DeliveryTax?: number;
 };
-export interface Strapi_Product_Interface {
+export interface InmodePanel_Product_Interface {
     strapiId: number;
     Name: string;
-    Banner: Strapi_Base_Banner_Interface;
-    WhatIs: Strapi_Generic_WhatIs_Interface;
+    Banner: InmodePanel_Base_Banner_Interface;
+    WhatIs: InmodePanel_Generic_WhatIs_Interface;
     BeforeKeyBenefits: string;
-    KeyBenefits: Strapi_Base_Texte_Interface[];
-    ClinicalStudies: Strapi_Generic_ClinicalStudies_Interface[];
+    KeyBenefits: InmodePanel_Base_Texte_Interface[];
+    ClinicalStudies: InmodePanel_Generic_ClinicalStudies_Interface[];
     Price: Number 	
     ShopDescription: string;
     Icon: GatsbyImage_Interface;
-    Tags: Strapi_Tags_Interface[]; // TODO
-    Addons: Strapi_Addon_Interface[];
-    BeforesAfters: Strapi_Generic_BeforeAfter_Interface[];
-    SellingArgs: Strapi_Generic_SellingArgs_Interface[];
-    WhatIsProduct: Strapi_Product_WhatIsProduct_Interface[];
-    Demo: Strapi_Generic_Demo_Interface;
-    ShopTreats: Strapi_Base_Texte_Interface[];
+    Tags: InmodePanel_Tags_Interface[]; // TODO
+    Addons: InmodePanel_Addon_Interface[];
+    BeforesAfters: InmodePanel_Generic_BeforeAfter_Interface[];
+    SellingArgs: InmodePanel_Generic_SellingArgs_Interface[];
+    WhatIsProduct: InmodePanel_Product_WhatIsProduct_Interface[];
+    Demo: InmodePanel_Generic_Demo_Interface;
+    ShopTreats: InmodePanel_Base_Texte_Interface[];
     ShopPicture: GatsbyImage_Interface;
-    treatments: Strapi_Treatment_Interface[];
-    RelatedAddonTreatment: Strapi_Product_RelatedAddonTreatment_Interface[];
-    MenuParams: Strapi_Generic_MenuParams_Interface;
+    treatments: InmodePanel_Treatment_Interface[];
+    RelatedAddonTreatment: InmodePanel_Product_RelatedAddonTreatment_Interface[];
+    MenuParams: InmodePanel_Generic_MenuParams_Interface;
     position: Number;
     short_descr: string;
     sensitivity: boolean;
 };
-export interface Strapi_Shop_Interface {
+export interface InmodePanel_Shop_Interface {
     strapiId?: number;
     reference?: string;
     Name?: string;
@@ -103,62 +103,62 @@ export interface Strapi_Shop_Interface {
     picture?: GatsbyImage_Interface;
     relative?: string;
 };
-export interface Strapi_TagFamily_Interface {
+export interface InmodePanel_TagFamily_Interface {
     FamilyName: string;
-    tags: Strapi_Tags_Interface[];
+    tags: InmodePanel_Tags_Interface[];
 };
-export interface Strapi_Tags_Interface {
+export interface InmodePanel_Tags_Interface {
     tag: string;
-    products: Strapi_Product_Interface[];
-    tag_families: Strapi_TagFamily_Interface[];
+    products: InmodePanel_Product_Interface[];
+    tag_families: InmodePanel_TagFamily_Interface[];
 };
-export interface Strapi_Treatment_Interface {
+export interface InmodePanel_Treatment_Interface {
     strapiId:number;
     Name?: string;
-    WhatIsTreat?: Strapi_Generic_WhatIs_Interface;
-    Banner?: Strapi_Treat_Banner_Interface;
-    BeforesAfters?: Strapi_Generic_BeforeAfter_Interface[];
-    ClinicalStudies?: Strapi_Generic_ClinicalStudies_Interface[];
+    WhatIsTreat?: InmodePanel_Generic_WhatIs_Interface;
+    Banner?: InmodePanel_Treat_Banner_Interface;
+    BeforesAfters?: InmodePanel_Generic_BeforeAfter_Interface[];
+    ClinicalStudies?: InmodePanel_Generic_ClinicalStudies_Interface[];
     IncludeTitle?: string;
-    IncludeList?: Strapi_Base_Texte_Interface[];
-    products?: Strapi_Product_Interface[];
-    MenuParams: Strapi_Generic_MenuParams_Interface;
+    IncludeList?: InmodePanel_Base_Texte_Interface[];
+    products?: InmodePanel_Product_Interface[];
+    MenuParams: InmodePanel_Generic_MenuParams_Interface;
     sensitivity: boolean;
 };
 
 // Single types
 
-export interface Strapi_AboutUs_Interface {
+export interface InmodePanel_AboutUs_Interface {
     banner?: GatsbyImage_Interface;
     about_video_url?: string;
     about_txt?: string;
     learn_bg?: GatsbyImage_Interface | null;
     learn_icon?: GatsbyImage_Interface | null;
-    learn_txts?: Strapi_Base_SectionTitreText_Interface[];
-    learn_values?: Strapi_Base_Texte_Interface[];
-    staff?: Strapi_Generic_Staff_Interface[];
-    menus?: Strapi_Menu_Interface[];
+    learn_txts?: InmodePanel_Base_SectionTitreText_Interface[];
+    learn_values?: InmodePanel_Base_Texte_Interface[];
+    staff?: InmodePanel_Generic_Staff_Interface[];
+    menus?: InmodePanel_Menu_Interface[];
 };
-export interface Strapi_Footer_Interface {
+export interface InmodePanel_Footer_Interface {
     logo: GatsbyImage_Interface | null;
     address: string;
     phone: string;
     mail: string;
-    social: Strapi_Generic_Social_Interface[];
-    navigation: Strapi_Generic_Navigate_Interface[];
+    social: InmodePanel_Generic_Social_Interface[];
+    navigation: InmodePanel_Generic_Navigate_Interface[];
 };
-export interface Strapi_NextGeneration_Inteface {
+export interface InmodePanel_NextGeneration_Inteface {
     picture?: GatsbyImage_Interface;
     title?: string;
     text?: string;
     source?: string;
 };
-export interface  Strapi_SellingArg_Interface {
+export interface  InmodePanel_SellingArg_Interface {
     picture?: GatsbyImage_Interface;
     title?: string;
     arg?: string;
 };
-export interface  Strapi_SellingNext_Interface {
+export interface  InmodePanel_SellingNext_Interface {
     picture?: GatsbyImage_Interface;
     title?: string;
     text?: string;
@@ -170,75 +170,75 @@ export interface  Strapi_SellingNext_Interface {
     
 
     // Addon
-    export interface Strapi_Addon_AddonProductDescr_Interface {
+    export interface InmodePanel_Addon_AddonProductDescr_Interface {
         descr?: string;
-        product?: Strapi_Product_Interface;
+        product?: InmodePanel_Product_Interface;
     };
-    export interface Strapi_Addon_ProductPresentation_Interface {
+    export interface InmodePanel_Addon_ProductPresentation_Interface {
         left_image?: GatsbyImage_Interface;
         title_image?: GatsbyImage_Interface;
         appears_everywhere?: boolean;
-        products?: Strapi_Product_Interface[];
-        ProductPresentationTreats?: Strapi_Base_Treat_Interface[];
-        Images?: Strapi_Base_Image_Interface[];
-        AddonProductsDescr?: Strapi_Addon_AddonProductDescr_Interface[];
+        products?: InmodePanel_Product_Interface[];
+        ProductPresentationTreats?: InmodePanel_Base_Treat_Interface[];
+        Images?: InmodePanel_Base_Image_Interface[];
+        AddonProductsDescr?: InmodePanel_Addon_AddonProductDescr_Interface[];
         title_text?: string;
     };
-    export interface Strapi_Addon_Video_Interface {
+    export interface InmodePanel_Addon_Video_Interface {
         url?: string;
         poster?: GatsbyImage_Interface;
     };
-    export interface Strapi_Addon_WhatTreat_Interface {
+    export interface InmodePanel_Addon_WhatTreat_Interface {
         picture?: GatsbyImage_Interface;
         title?: string;
         text?: string;
     };
 
     // Base
-    export interface Strapi_Base_Banner_Interface {
+    export interface InmodePanel_Base_Banner_Interface {
         left_img?: GatsbyImage_Interface;
         right_img?: GatsbyImage_Interface;
         left_video?: string;
         right_text?: string;
         mini?: GatsbyImage_Interface;
     };
-    export interface Strapi_Base_Image_Interface {
+    export interface InmodePanel_Base_Image_Interface {
         image?: GatsbyImage_Interface;
-        product?: Strapi_Product_Interface;
+        product?: InmodePanel_Product_Interface;
     };
-    export interface Strapi_Base_RelatedAddonTreat_Interface {
+    export interface InmodePanel_Base_RelatedAddonTreat_Interface {
         treat_short?: string;
-        product?: Strapi_Product_Interface;
-        treatment?: Strapi_Treatment_Interface;
+        product?: InmodePanel_Product_Interface;
+        treatment?: InmodePanel_Treatment_Interface;
     };
-    export interface Strapi_Base_SectionTitreText_Interface {
+    export interface InmodePanel_Base_SectionTitreText_Interface {
         title?: string;
         text?: string;
     };
-    export interface Strapi_Base_Texte_Interface {
+    export interface InmodePanel_Base_Texte_Interface {
         texte?: string;
     };
-    export interface Strapi_Base_Treat_Interface {
+    export interface InmodePanel_Base_Treat_Interface {
         treat_short?: string;
-        product?: Strapi_Product_Interface;
+        product?: InmodePanel_Product_Interface;
     };
 
     // Generic
-    export interface Strapi_Generic_BeforeAfter_Interface {
+    export interface InmodePanel_Generic_BeforeAfter_Interface {
         image?: GatsbyImage_Interface;
         doctor?: string;
         text?: string;
     };
-    export interface Strapi_Generic_ClinicalStudies_Interface {
+    export interface InmodePanel_Generic_ClinicalStudies_Interface {
         picture: GatsbyImage_Interface;
         title: string;
         url: string;
         author: string;
         published_date: string;
         publication: string;
-        addons: Strapi_Addon_Interface[];
+        addons: InmodePanel_Addon_Interface[];
     };
-    export interface Strapi_Generic_Customer_Interface {
+    export interface InmodePanel_Generic_Customer_Interface {
         Firstname?: string;
         Lastname?: string;
         Mail?: string;
@@ -249,51 +249,51 @@ export interface  Strapi_SellingNext_Interface {
         ZIP?: string;
         City?: string;
     };
-    export interface Strapi_Generic_Demo_Interface {
+    export interface InmodePanel_Generic_Demo_Interface {
         picture?: GatsbyImage_Interface;
         text?: string;
     };
-    export interface Strapi_Generic_MenuParams_Interface {
+    export interface InmodePanel_Generic_MenuParams_Interface {
         title: string;
         url: string;
         type: string;
         variant: string;
         internal_link: boolean | null;
     };
-    export interface Strapi_Generic_Navigate_Interface {
+    export interface InmodePanel_Generic_Navigate_Interface {
         name?: string;
         url?: string;
     };
-    export interface Strapi_Generic_SellingArgs_Interface {
+    export interface InmodePanel_Generic_SellingArgs_Interface {
         SectionTitle?: string;
-        Arg?: Strapi_Base_Texte_Interface[];
+        Arg?: InmodePanel_Base_Texte_Interface[];
         picture?: GatsbyImage_Interface;
     };
-    export interface Strapi_Generic_SellingNewGeneration_Interface {
+    export interface InmodePanel_Generic_SellingNewGeneration_Interface {
         picture?: GatsbyImage_Interface;
         text?: string;
         source?: string;
         title?: string;
     };
-    export interface Strapi_Generic_Social_Interface {
+    export interface InmodePanel_Generic_Social_Interface {
         url?: string;
         name?: string;
         icon?: GatsbyImage_Interface;
         position?: number;
     };
-    export interface Strapi_Generic_Staff_Interface {
+    export interface InmodePanel_Generic_Staff_Interface {
         picture?: GatsbyImage_Interface;
         name?: string;
         position?: string;
         short_descr?: string;
     };
-    export interface Strapi_Generic_WhatIs_Interface {
+    export interface InmodePanel_Generic_WhatIs_Interface {
         picture?: GatsbyImage_Interface;
-        TitleText?: Strapi_Base_SectionTitreText_Interface[];
+        TitleText?: InmodePanel_Base_SectionTitreText_Interface[];
     };
 
     // Order
-    export interface Strapi_Order_Billing_Interface {
+    export interface InmodePanel_Order_Billing_Interface {
         Firstname?: string;
         Lastname?: string;
         Phone?: string | number;
@@ -304,11 +304,11 @@ export interface  Strapi_SellingNext_Interface {
         City?: string;
         Society?: string;
     };
-    export interface Strapi_Order_Shipping_Interface {
+    export interface InmodePanel_Order_Shipping_Interface {
         Firstname?: string;
         Lastname?: string;
         Phone?: string | number;
-        // Mail?: string;
+        Mail?: string;
         Address1?: string;
         Address2?: string;
         ZIP?: string | number;
@@ -317,11 +317,11 @@ export interface  Strapi_SellingNext_Interface {
     };
 
     // Product
-    export interface Strapi_Product_BoughtArticle_Interface {
-        Article?: Strapi_Shop_Interface;
+    export interface InmodePanel_Product_BoughtArticle_Interface {
+        Article?: InmodePanel_Shop_Interface;
         Quantite?: number;
     };
-    export interface Strapi_Product_Buyer_Interface {
+    export interface InmodePanel_Product_Buyer_Interface {
         Firstname?: string;
         Lastname?: string;
         Phone?: string;
@@ -331,20 +331,20 @@ export interface  Strapi_SellingNext_Interface {
         City?: string;
         Society?: string;
     };
-    export interface Strapi_Product_RelatedAddonTreatment_Interface {
-        addon?: Strapi_Addon_Interface;
-        treatment?: Strapi_Treatment_Interface;
-        short?: Strapi_Base_Texte_Interface;
+    export interface InmodePanel_Product_RelatedAddonTreatment_Interface {
+        addon?: InmodePanel_Addon_Interface;
+        treatment?: InmodePanel_Treatment_Interface;
+        short?: InmodePanel_Base_Texte_Interface;
     };
-    export interface Strapi_Product_WhatIsProduct_Interface {
+    export interface InmodePanel_Product_WhatIsProduct_Interface {
         image?: GatsbyImage_Interface;
         title?: string;
         text?: string;
-        treatment?: Strapi_Treatment_Interface;
+        treatment?: InmodePanel_Treatment_Interface;
     };
 
     // Treat
-    export interface Strapi_Treat_Banner_Interface {
+    export interface InmodePanel_Treat_Banner_Interface {
         picture?: GatsbyImage_Interface;
         text?: string;
     };
@@ -419,6 +419,7 @@ export interface SogecommerceOrder {
     vads_ship_to_street: string;// "124 Rue de Crimée"
     vads_ship_to_street2: string;// ""
     vads_ship_to_zip: string | number;// "13003"
+    delivery_mail: string;
     vads_site_id: string | number;// "53371535"
     vads_trans_date: string;// "20210225143539"
     vads_trans_id?: string;// "SLLwPU"
@@ -512,15 +513,15 @@ export interface ProductsContext_Interface {
         name: string;
         url: string;
     }[];
-    products: Strapi_Product_Interface[];
+    products: InmodePanel_Product_Interface[];
 };
 
 export interface MenusContext_Interface {
     header_top: HeaderTop_Interface[];
     header_bottom: HeaderBottom_Interface[];
-    footer: Strapi_Footer_Interface;
-    allStrapiProduct?: Strapi_Product_Interface[];
-    allStrapiTreatment?: Strapi_Treatment_Interface[];
+    footer: InmodePanel_Footer_Interface;
+    allStrapiProduct?: InmodePanel_Product_Interface[];
+    allStrapiTreatment?: InmodePanel_Treatment_Interface[];
 };
 
 export interface HeaderTop_Interface {
@@ -532,16 +533,16 @@ export interface HeaderTop_Interface {
     container: string;
     parent_menu: boolean;
     internal_link: boolean | null;
-    menus: Strapi_Menu_Interface[];
+    menus: InmodePanel_Menu_Interface[];
     products: {
         id: number;
         position: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
         Icon: GatsbyImage_Interface | null;
     }[];
     treatments: {
         id: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
     icon: GatsbyImage_Interface | null;
     icon_hover: GatsbyImage_Interface | null;
@@ -556,28 +557,28 @@ export interface HeaderBottom_Interface {
     container: string;
     parent_menu: boolean;
     internal_link: boolean | null;
-    menus: Strapi_Menu_Interface[];
+    menus: InmodePanel_Menu_Interface[];
     products: {
         id: number;
         position: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
         Icon: GatsbyImage_Interface | null;
     }[];
     treatments: {
         id: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
     mini_treatments: {
         id: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
     mini_products: {
         id: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
     mini_addons: {
         id: number;
-        MenuParams: Strapi_Generic_MenuParams_Interface;
+        MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
     icon: GatsbyImage_Interface | null;
     icon_hover: GatsbyImage_Interface | null;

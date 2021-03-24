@@ -10,6 +10,7 @@ import {
     DeliveryCityField,
     DeliveryFirstNameField,
     DeliveryLastNameField,
+    DeliveryMailField,
     DeliveryPhoneField,
     DeliverySocietyField,
     DeliveryZipField,
@@ -33,7 +34,6 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     const [formOpened, setFormOpened] = React.useState(false);
     const [otherAddress, setOtherAddress] = React.useState(false);
     const [otherAddressOpened, setOtherAddressOpened] = React.useState(false);
-    const [sepa, setSepa]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
     const [isSubmit, setIsSubmit]:[Boolean | null, React.Dispatch<any>] = React.useState(null);
     const [isCreated, setIsCreated]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
 
@@ -42,30 +42,59 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
         setOtherAddress(e.currentTarget.checked);
     }
 
-    const manageSepa = (e:React.ChangeEvent<HTMLInputElement>) => {
-        sepa && setSepa(false);
-        setSepa(e.currentTarget.checked);
+    const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
+        if(document != undefined) {
+            if(e.currentTarget.id == 'sepa') {
+                let _other:HTMLInputElement = document.getElementById('soge');
+                if(_other && _other.checked == true && e.currentTarget.checked == true) {
+                    _other.checked= false;
+                }
+                else if(_other && _other.checked == false && e.currentTarget.checked == false) {
+                    _other.checked= true;
+                }
+            }
+            if(e.currentTarget.id == 'soge') {
+                let _other = document.getElementById('sepa');
+                if(_other && _other.checked == true && e.currentTarget.checked == true) {
+                    _other.checked= false;
+                }
+                else if(_other && _other.checked == false && e.currentTarget.checked == false) {
+                    _other.checked= true;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     const sendForm = async(e:React.FormEvent<HTMLFormElement>, same_address:boolean = true) => {
         e.preventDefault();
-        let fields:HTMLElement[] | any[] = []; 
-        // fields.push([...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_'))]);
-        // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && e.value));
-        if(same_address) {
-            console.log(Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_')));
-            // console.log(Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
-            fields = [...Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_'))];
-            // fields.push(...Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
+        if(!isSubmit) {
+            let _mini1 = document.getElementById('mini-submit-1');if(_mini1) _mini1.disabled = true;
+            let _mini2 = document.getElementById('mini-submit-2');if(_mini2) _mini2.disabled = true;
+            let _mini3 = document.getElementById('mini-submit-3');if(_mini3) _mini3.disabled = true;
+            let _sepa:HTMLInputElement | any = document.getElementById('sepa');
+            let fields:HTMLElement[] | any[] = []; 
+            // fields.push([...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_'))]);
+            // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && e.value));
+            if(same_address) {
+                console.log(Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_')));
+                // console.log(Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
+                fields = [...Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_'))];
+                // fields.push(...Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
+            }
+            else {
+                console.log([...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))]);
+                // console.log(Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
+                fields = [...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))];
+                // fields.push(...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
+            }
+            setIsSubmit(true);
+            setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
+            if(_mini1) _mini1.disabled = false;
+            if(_mini2) _mini2.disabled = false;
+            if(_mini3) _mini3.disabled = false;
         }
-        else {
-            console.log([...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))]);
-            // console.log(Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
-            fields = [...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))];
-            // fields.push(...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
-        }
-        setIsSubmit(true);
-        setIsCreated(await cart.redirectPay(fields, sepa) === true ? true : false);
     }
 
     const buttonText = ():string => {
@@ -107,9 +136,9 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
         }
     }, [isCreated]);
 
-    console.log(`isSubmit : ${isSubmit}, typeof isSubmit : ${typeof isSubmit}`);
-    console.log(`isCreated : ${isCreated}, typeof isCreated : ${typeof isCreated}`);
-    console.log(`formOpened : ${formOpened}, typeof formOpened : ${typeof formOpened}`);
+    // console.log(`isSubmit : ${isSubmit}, typeof isSubmit : ${typeof isSubmit}`);
+    // console.log(`isCreated : ${isCreated}, typeof isCreated : ${typeof isCreated}`);
+    // console.log(`formOpened : ${formOpened}, typeof formOpened : ${typeof formOpened}`);
 
     return (
         <div
@@ -245,7 +274,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                         sendForm(e);
                     }
                     else {
-                        return;
+                        return false;
                     }
                 }}
             >
@@ -291,6 +320,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 </div>
                 {(formOpened && (!otherAddress || (otherAddress && !otherAddressOpened))) && <button
                     type="submit"
+                    id="mini-submit-1"
                     className={`cart-validate unmorphic${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`}
                 >
                     {!formOpened ? "Acheter" : !otherAddress || otherAddressOpened ? "Commander" : "Continuer"}
@@ -336,9 +366,12 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     <DeliveryPhoneField classes="required form-field step-2" required={true}/>
                     {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/> */}
                     {/* <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/> */}
+                    <DeliveryMailField classes="form-field step-2" required={false}/>
+                    {/* <input className="form-field step-2" name="mail" type="email" placeholder="Mail"/> */}
                 </div>
                 {(formOpened && otherAddress && otherAddressOpened) && <button
                     type="submit"
+                    id="mini-submit-2"
                     form={formOpened ? otherAddressOpened ? "step-3-part" : "step-2-part" : ''}
                     className={`cart-validate unmorphic${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`}
                 >
@@ -346,20 +379,27 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 </button>}
             </form>
             {/* CHECKBOXES */}
-            <div className="step-1 sepa neumorphic">
-                <input
+            <div className="step-1 sepa soge neumorphic">
+                <div className="choice"><input
                     id="sepa"
                     name="sepa"
                     value="sepa"
+                    defaultChecked={false}
                     type="checkbox"
                     className="form-field"
-                    onChange={(e) => {
-                        manageSepa(e);
-                    }}
-                />
-                <label htmlFor="sepa">
-                    Paiement par virement
-                </label>
+                    onChange={(e) => {manageCheckboxPayment(e)}}
+                /></div>
+                <div className="choice-label sepa"><label htmlFor="sepa">Virement</label></div>
+                <div className="choice"><input
+                    type="checkbox"
+                    className="form-field"
+                    id="soge"
+                    name="soge"
+                    value="soge"
+                    defaultChecked={true}
+                    onChange={(e) => {manageCheckboxPayment(e)}}
+                /></div>
+                <div className="choice-label soge"><label htmlFor="soge">Paiement par carte</label></div>
             </div>
             <div className="step-1 facture neumorphic">
                 <input
@@ -394,6 +434,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
             {!formOpened && <button
                 disabled={isSubmit == true ? true : false}
                 type="submit"
+                id="mini-submit-3"
                 form={formOpened ? otherAddressOpened ? "step-3-part" : "step-2-part" : ''}
                 className={`cart-validate${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`}
                 onClick={(e) => {setFormOpened(true)}}

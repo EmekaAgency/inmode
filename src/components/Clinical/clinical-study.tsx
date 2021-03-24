@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import { format_title } from "../../functions/format_title";
-import { Strapi_Generic_ClinicalStudies_Interface } from "../interfaces";
+import { InmodePanel_Generic_ClinicalStudies_Interface } from "../interfaces";
 
 const ClinicalStudy = ({study, prop_key = null}:ClinicalStudy) => {
     
@@ -48,7 +48,7 @@ const ClinicalStudy = ({study, prop_key = null}:ClinicalStudy) => {
 }
 
 interface ClinicalStudy {
-    study: Strapi_Generic_ClinicalStudies_Interface;
+    study: InmodePanel_Generic_ClinicalStudies_Interface;
     prop_key?: number | null;
 }
 

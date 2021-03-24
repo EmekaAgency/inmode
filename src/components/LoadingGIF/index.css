@@ -27,6 +27,13 @@
     left: 0;
 }
 
+.loading-gif.mini .loader-circle,
+.loading-gif.mini .loader-bar {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
 .loading-gif .loader-circle {
     border: 5px solid #f3f3f3;
 }

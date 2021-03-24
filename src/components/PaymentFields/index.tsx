@@ -35,6 +35,7 @@ const defaultParams = {
     DeliveryPhone: {name: 'vads_ship_to_phone_num', id: 'vads_ship_to_phone_num', placeholder: 'Téléphone'},
     DeliveryStatus: {name: 'vads_ship_to_status', id: 'vads_ship_to_status', placeholder: 'Statut'},
     DeliverySociety: {name: 'vads_ship_to_legal_name', id: 'vads_ship_to_legal_name', placeholder: 'Société'},
+    DeliveryMail: {name: 'delivery_mail', id: 'delivery_mail', placeholder: 'Mail'},
         Phone: {name: 'vads_', id: 'vads_', placeholder: 'Téléphone'},
     MobilePhone: {name: 'vads_cust_cell_phone', id: 'vads_cust_cell_phone', placeholder: 'Téléphone'},
         FixePhone: {name: 'vads_', id: 'vads_', placeholder: 'Fixe'},
@@ -463,6 +464,20 @@ export const DeliverySocietyField = ({ value, placeholder, name, id, required, c
             placeholder={placeholder || `${defaultParams.DeliverySociety.placeholder}${required ? '*' :''}`}
             name={name || defaultParams.DeliverySociety.name}
             id={id || defaultParams.DeliverySociety.id}
+            required={required ||false}
+        />
+    );
+};
+export const DeliveryMailField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+    return (
+        <input
+            onChange={useCart().updateForm}
+            className={classes ||''}
+            type="text"
+            defaultValue={value || useCart().formSave[defaultParams.DeliveryMail.name] || ""}
+            placeholder={placeholder || `${defaultParams.DeliveryMail.placeholder}${required ? '*' :''}`}
+            name={name || defaultParams.DeliveryMail.name}
+            id={id || defaultParams.DeliveryMail.id}
             required={required ||false}
         />
     );

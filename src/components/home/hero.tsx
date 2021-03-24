@@ -2,8 +2,18 @@ import React from "react";
 import Img from "gatsby-image";
 
 import { useImages } from '../contexts/images-provider';
+import { graphql, useStaticQuery } from "gatsby";
 
 const Hero = ({}:Hero) => {
+
+    const [datas] = React.useState(useStaticQuery(graphql`
+        {
+            strapiHeroHeader {
+                TopText
+                BottomText
+            }
+        }
+    `).strapiHeroHeader);
 
     const images = useImages();
 
@@ -25,21 +35,15 @@ const Hero = ({}:Hero) => {
             //     document.getElementById('hero-img').style.bottom = `${(_mouseY - _h) * 0.005}%`;
             // }}
         >
+            {/* // TODO ajouter single content */}
             <div className="hero-left">
-                <div className="top-text">
-                    Les technologies innovantes
-                    Inmode fournissent des résultats
-                    supérieurs à vos patients.
-                </div>
+                <div className="top-text">{datas.TopText}</div>
                 {/* {size.width < 670 && <> */}
                 <div className="border-5"></div>
                 <div className="border-4"></div>
                 <div className="border-3"></div>
                 {/* </>} */}
-                <div className="bottom-text">
-                    Traitements esthétiques du visage,
-                    corps, peau et santé et bien-être des femmes.
-                </div>
+                <div className="bottom-text">{datas.BottomText}</div>
             </div>
             <div className="hero-right">
                 <img

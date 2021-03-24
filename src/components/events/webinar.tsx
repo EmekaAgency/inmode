@@ -1,6 +1,6 @@
 import React from "react";
 import { useImages } from '../contexts/images-provider';
-import { Strapi_Event_Interface } from "../interfaces";
+import { InmodePanel_Event_Interface } from "../interfaces";
 
 const Webinar = ({ event = undefined }:Webinar) => {
 
@@ -35,7 +35,7 @@ const Webinar = ({ event = undefined }:Webinar) => {
 };
 
 interface Webinar {
-    event: Strapi_Event_Interface | undefined;
+    event: InmodePanel_Event_Interface | undefined;
 }
 
 export default Webinar;

@@ -10,17 +10,17 @@ import PropTypes from "prop-types";
 
 import Header from "../Header/index";
 import Footer from "../Footer";
-import ContactUs from "../contact-us";
+import ContactUs from "../Contact/contact-us";
 import PrivacyPolicy from "../privacy-policy";
 import FixedMenu from "../fixed-menu";
 import MenusProvider from "../contexts/menus-provider";
 import ProductsProvider from "../contexts/products-provider";
-import CartPurchase from "../Cart";
+// import CartPurchase from "../Cart";
 import Modale from "../Modale";
 
 import "./index.css";
 import ImagesProvider from "../contexts/images-provider";
-import PayParams from "../Cart/pay_params";
+// import PayParams from "../Cart/pay_params";
 
 const Layout = ({ children }) => {
 
@@ -49,8 +49,9 @@ const Layout = ({ children }) => {
         </ProductsProvider>
         <FixedMenu/>
         {/* {size.height < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
-        <CartPurchase/>
-        <PayParams/>
+        {/* SWITCH CART */}
+        {/* <CartPurchase/> */}
+        {/* <PayParams/> */}
         <PrivacyPolicy />
         <ContactUs/>
         <Footer/>

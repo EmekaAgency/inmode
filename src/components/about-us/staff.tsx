@@ -2,12 +2,12 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Carousel from "../Carousel";
 
-import { FlickityOptions_Interface, Strapi_AboutUs_Interface } from "../interfaces";
+import { FlickityOptions_Interface, InmodePanel_AboutUs_Interface } from "../interfaces";
 import { FlickityOptions } from "react-flickity-component";
 
 const Staff = ({ from = "" }:Staff) => {
 
-    const [datas]:[Strapi_AboutUs_Interface, React.Dispatch<Strapi_AboutUs_Interface>] = React.useState(useStaticQuery(graphql`
+    const [datas]:[InmodePanel_AboutUs_Interface, React.Dispatch<InmodePanel_AboutUs_Interface>] = React.useState(useStaticQuery(graphql`
         {
             strapiAboutUs {
                 staff {
@@ -26,7 +26,8 @@ const Staff = ({ from = "" }:Staff) => {
         }
     `).strapiAboutUs);
 
-    const [flickityOptions]:[FlickityOptions_Interface, React.Dispatch<FlickityOptions_Interface>] = React.useState({
+    // TODO Understand why any and not FlickityOptions_Interface on Dispatch
+    const [flickityOptions]:[FlickityOptions_Interface, React.Dispatch<any>] = React.useState({
         initialIndex: 0,
         cellAlign: 'left',
         pageDots: false,

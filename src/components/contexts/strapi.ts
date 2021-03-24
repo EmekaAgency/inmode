@@ -1,10 +1,9 @@
 import {
     Article_Interface,
-    ArticleList,
-    Strapi_Order_Interface,
+    InmodePanel_Order_Interface,
     SogecommerceOrder,
-    Strapi_Order_Shipping_Interface,
-    Strapi_Order_Billing_Interface
+    InmodePanel_Order_Shipping_Interface,
+    InmodePanel_Order_Billing_Interface
 } from "../interfaces";
 
 // function date_from_transdate(_transdate:string):number {
@@ -20,7 +19,7 @@ function date_from_transdate(_transdate:string):string {
     // return new Date(str_date).getTime();
 }
 
-function fill_billing(datas:Strapi_Order_Billing_Interface):Strapi_Order_Billing_Interface | null {
+function fill_billing(datas:InmodePanel_Order_Billing_Interface):InmodePanel_Order_Billing_Interface | null {
     if(
         (typeof datas.Firstname == 'string' && datas.Firstname.length > 0) &&
         (typeof datas.Lastname == 'string' && datas.Lastname.length > 0) &&
@@ -43,7 +42,7 @@ function fill_billing(datas:Strapi_Order_Billing_Interface):Strapi_Order_Billing
     return null;
 }
 
-function fill_shipping(datas:Strapi_Order_Shipping_Interface):Strapi_Order_Shipping_Interface | null {
+function fill_shipping(datas:InmodePanel_Order_Shipping_Interface):InmodePanel_Order_Shipping_Interface | null {
     if(
         (typeof datas.Firstname == 'string' && datas.Firstname.length > 0) &&
         (typeof datas.Lastname == 'string' && datas.Lastname.length > 0) &&
@@ -70,17 +69,18 @@ function fill_shipping(datas:Strapi_Order_Shipping_Interface):Strapi_Order_Shipp
 //     return datas;
 // }
 
-function filter(datas:Strapi_Order_Interface):Strapi_Order_Interface {
+function filter(datas:InmodePanel_Order_Interface):InmodePanel_Order_Interface {
     datas.Billing = fill_billing(datas.Billing);
     datas.Shipping = fill_shipping(datas.Shipping);
     return datas;
 }
 
-export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Interface[], total:number):Strapi_Order_Interface {
+export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Interface[], total:number, sepa:boolean = false):InmodePanel_Order_Interface {
+    console.log(_datas);
     // vads_amount: "86400" // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
     // vads_currency: 978 // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
 
-    let _temp:Strapi_Order_Interface = {
+    let _temp:InmodePanel_Order_Interface = {
         Reference: _datas.vads_order_id,
         // vads_trans_date: "20210225143539"
         Date: date_from_transdate(_datas.vads_trans_date),
@@ -106,7 +106,7 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
             Firstname: _datas.vads_ship_to_first_name,
             Lastname: _datas.vads_ship_to_last_name,
             Phone: _datas.vads_ship_to_phone_num,
-            // Mail: 'mael.fallet@gmail.com', // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
+            Mail: _datas.delivery_mail,
             Address1: _datas.vads_ship_to_street,
             Address2: _datas.vads_ship_to_street2,
             ZIP: _datas.vads_ship_to_zip,
@@ -120,12 +120,13 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
         Paid: false,
         Status: 'UNDER_VERIFICATION',
         Total: total,
+        SEPA: sepa,
     };
 
     return filter(_temp);
 }
 
-export async function create_object(body:Strapi_Order_Interface, url:string):Promise<Response> {
+export async function create_object(body:InmodePanel_Order_Interface, url:string):Promise<Response> {
     console.log(body);
     let promise:Promise<Response>;
     let vars:RequestInit = {

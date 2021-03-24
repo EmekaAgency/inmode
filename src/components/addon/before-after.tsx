@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "../Carousel";
-import { Strapi_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface } from "../interfaces";
 import NoPicture from "../NoPic/no-picture";
 import Sensible from "../NoPic/sensible";
 import RequestInformation from "../RequestInformation";
@@ -80,7 +80,7 @@ const AddonBeforeAfter = ({ datas, sensible = false }:AddonBeforeAfter) => {
 };
 
 interface AddonBeforeAfter {
-    datas: Strapi_Addon_Interface["BeforesAfters"];
+    datas: InmodePanel_Addon_Interface["BeforesAfters"];
     sensible: boolean;
 };
 

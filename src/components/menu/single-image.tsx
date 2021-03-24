@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
 import { enableMainScroll } from '../../functions/disable-scroll';
-import { Strapi_Menu_Interface } from '../interfaces';
+import { InmodePanel_Menu_Interface } from '../interfaces';
 
 const MenuSingleImage = ({menu, prop_key = null}:MenuSingleImage) => {
 
@@ -55,7 +55,7 @@ const MenuSingleImage = ({menu, prop_key = null}:MenuSingleImage) => {
 };
 
 interface MenuSingleImage {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 };
 

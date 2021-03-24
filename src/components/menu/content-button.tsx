@@ -4,11 +4,11 @@ import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
 import Menu from '../menu';
 import { enableMainScroll } from '../../functions/disable-scroll';
-import { Strapi_Menu_Interface } from '../interfaces';
+import { InmodePanel_Menu_Interface } from '../interfaces';
 
 const MenuContentButton = ({menu, prop_key = null}:MenuContentButton) => {
 
-    const content = (_menu:Strapi_Menu_Interface) => {
+    const content = (_menu:InmodePanel_Menu_Interface) => {
         return (
             <>
                 {format_string(_menu.title)}
@@ -44,7 +44,7 @@ const MenuContentButton = ({menu, prop_key = null}:MenuContentButton) => {
 };
 
 interface MenuContentButton {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 };
 

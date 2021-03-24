@@ -1,7 +1,7 @@
 import React from 'react';
 import { format_string } from '../../functions/format_string';
 import PropTypes from 'prop-types';
-import { Strapi_Menu_Interface } from '../interfaces';
+import { InmodePanel_Menu_Interface } from '../interfaces';
 
 const MenuSingleButton = ({menu, prop_key = null}:MenuSingleButton) => {
 
@@ -13,7 +13,7 @@ const MenuSingleButton = ({menu, prop_key = null}:MenuSingleButton) => {
 };
 
 interface MenuSingleButton {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 }
 

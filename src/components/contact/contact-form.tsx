@@ -51,11 +51,14 @@ const ContactForm = ({ from }:ContactForm) => {
 
     function send_form (e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        document.querySelector('#full-contact-form .req-return.success').innerHTML = "";
+        document.querySelector('#full-contact-form .req-return.error').innerHTML = "";
+        document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
         let body:any = new Object({});
         if(document.forms["full-contact-form"] == null) {
             return false;
         }
-        Array.from(document.forms["full-contact-form"].elements).map((elem:HTMLInputElement) => {
+        Array.from(document.forms["full-contact-form"].elements).map((elem:HTMLInputElement | any) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "full-contact";
@@ -77,6 +80,7 @@ const ContactForm = ({ from }:ContactForm) => {
         )
         .then((response) => {
             if(response.status === 'success' && response.type === 'client') {
+                document.querySelector('#full-contact-form .submit').removeAttribute('disabled');
                 document.querySelector('#full-contact-form .req-return.success').innerHTML = response.message;
                 document.forms['full-contact-form'].reset();
             }
@@ -207,7 +211,7 @@ const ContactForm = ({ from }:ContactForm) => {
             </div> */}
             <div className="policy">
                 <input type="checkbox" id="policy" name="policy" value="policy" required/>
-                <label htmlFor={"policy"}>J'accepte les <AnchorLink to="/mentions-legales#cgu" target="_blank" title="Conditions générales d'utilisation">conditions générales d'utilisation</AnchorLink></label>
+                <label htmlFor={"policy"}>J'accepte les <a href="/mentions-legales#cgu" target="_blank" title="Conditions générales d'utilisation">conditions générales d'utilisation</a></label>
             </div>
             <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWeight: 400}}></div>
             <div className="req-return error" style={{color: 'red', fontSize: 15, fontWeight: 400}}></div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Strapi_Event_Interface } from "../interfaces";
+import { InmodePanel_Event_Interface } from "../interfaces";
 
 const Workshop = ({ event = undefined }:Workshop) => {
 
@@ -43,7 +43,7 @@ const Workshop = ({ event = undefined }:Workshop) => {
 };
 
 interface Workshop {
-    event: Strapi_Event_Interface | undefined;
+    event: InmodePanel_Event_Interface | undefined;
 }
 
 export default Workshop;

@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 import { useWindowSize } from "../../functions/window-size";
 import InmodeEvent from "./event";
 import NoEvents from "./no-events";
-import { Strapi_Event_Interface } from "../interfaces";
+import { InmodePanel_Event_Interface } from "../interfaces";
 // import { useLocalStorage } from "../../functions/use-localstorage";
 
 const EventsLayout = ({ children, current_page, upcoming_events = undefined, past_events = undefined }:EventsLayout) => {
@@ -159,8 +159,8 @@ const EventsLayout = ({ children, current_page, upcoming_events = undefined, pas
 interface EventsLayout {
     children: React.ReactNode;
     current_page: string;
-    upcoming_events: Strapi_Event_Interface[] | undefined;
-    past_events: Strapi_Event_Interface[] | undefined;
+    upcoming_events: InmodePanel_Event_Interface[] | undefined;
+    past_events: InmodePanel_Event_Interface[] | undefined;
 }
 
 export default EventsLayout;

@@ -4,7 +4,7 @@ import ProductsContext from "../contexts/products-context";
 import { Link } from "gatsby";
 import Carousel from "../Carousel";
 import { useImages } from '../contexts/images-provider';
-import { Strapi_Product_Interface, FlickityOptions_Interface } from "../interfaces";
+import { InmodePanel_Product_Interface, FlickityOptions_Interface } from "../interfaces";
 
 const Slides = ({from}:Slides) => {
 
@@ -24,7 +24,7 @@ const Slides = ({from}:Slides) => {
         // autoPlay: false
     });
 
-    const [slides]:[Strapi_Product_Interface[], React.Dispatch<Strapi_Product_Interface[]>] = React.useState(React.useContext(ProductsContext).products);
+    const [slides]:[InmodePanel_Product_Interface[], React.Dispatch<InmodePanel_Product_Interface[]>] = React.useState(React.useContext(ProductsContext).products);
 
     const view_detail = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, key: number | string) => {
         

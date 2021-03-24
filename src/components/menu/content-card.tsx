@@ -2,12 +2,12 @@ import { Link } from "gatsby";
 import React from "react";
 import { enableMainScroll } from "../../functions/disable-scroll";
 import { format_string } from "../../functions/format_string";
-import { Strapi_Menu_Interface } from "../interfaces";
+import { InmodePanel_Menu_Interface } from "../interfaces";
 import Menu from "../menu";
 
 const MenuContentCard = ({ menu, prop_key = null }:MenuContentCard) => {
     
-    const content = (_menu:Strapi_Menu_Interface) => {
+    const content = (_menu:InmodePanel_Menu_Interface) => {
         return (
             <>
                 <img
@@ -44,7 +44,7 @@ const MenuContentCard = ({ menu, prop_key = null }:MenuContentCard) => {
 };
 
 interface MenuContentCard {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 };
 

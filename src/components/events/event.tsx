@@ -1,5 +1,5 @@
 import React from "react";
-import { Strapi_Addon_Interface, Strapi_Event_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface, InmodePanel_Event_Interface } from "../interfaces";
 
 const InmodeEvent = ({ event = undefined, prop_key, current_page }:InmodeEvent) => {
 
@@ -14,7 +14,7 @@ const InmodeEvent = ({ event = undefined, prop_key, current_page }:InmodeEvent) 
             {has_card && <div className={`top-card ${prop_key === 0 ? 'left' : 'left'}`}>
                 {event.type === "congres" && "Congrès"}
                 {event.type === "workshop" && "Séminaire"}
-                {event.type === "webinar" && event.addons.map((addon:Strapi_Addon_Interface) => addon.Name).join(', ')}
+                {event.type === "webinar" && event.addons.map((addon:InmodePanel_Addon_Interface) => addon.Name).join(', ')}
             </div>}
             <div className={`img-part ${prop_key === 0 ? 'right' : 'left'}`}>
                 <img
@@ -25,12 +25,12 @@ const InmodeEvent = ({ event = undefined, prop_key, current_page }:InmodeEvent) 
                 />
             </div>
             <div className={`descr-part ${prop_key === 0 ? 'left' : 'right'}`}>
-                {event.title && <div className="title">
+                <div className="title">
                     {event.title}
-                </div>}
-                {event.short_descr && <div className="short_descr">
+                </div>
+                <div className="short_descr">
                     {event.short_descr}
-                </div>}
+                </div>
                 {event.begin && <div className="dates">
                     {`${event.begin}${event.finish ? ` - ${event.finish}` : ''}`}
                 </div>}
@@ -49,7 +49,7 @@ const InmodeEvent = ({ event = undefined, prop_key, current_page }:InmodeEvent) 
 };
 
 interface InmodeEvent {
-    event: Strapi_Event_Interface | undefined;
+    event: InmodePanel_Event_Interface | undefined;
     prop_key: string | number;
     current_page: string;
 }

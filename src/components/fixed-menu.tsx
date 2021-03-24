@@ -2,11 +2,11 @@ import React from "react"
 import Menu from "./menu";
 import { Link } from "gatsby";
 import MenusContext from "./contexts/menus-context"
-import CartBasket from "./CartBasket"
-import { useCart } from './contexts/cart-provider';
+// import CartBasket from "./CartBasket"
+// import { useCart } from './contexts/cart-provider';
 import { useImages } from './contexts/images-provider';
 
-const FixedMenu = ({ customClass }:{ customClass:string }) => {
+const FixedMenu = ({ customClass }:{ customClass?:string }) => {
 
     const [menus] = React.useState(React.useContext(MenusContext).header_bottom);
 
@@ -26,7 +26,7 @@ const FixedMenu = ({ customClass }:{ customClass:string }) => {
         };
     }, []);
 
-    const cart = useCart();
+    // const cart = useCart();
 
     const images = useImages();
 
@@ -47,7 +47,8 @@ const FixedMenu = ({ customClass }:{ customClass:string }) => {
                             <Menu key={key} prop_key={key} menu={menu} />
                         );
                     })}
-                    { cart.cart.length > 0 || cart.appeared ? <CartBasket/> : null }
+                    {/* SWITCH CART */}
+                    {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/> : null } */}
                 </div>
             </div>
         </div>

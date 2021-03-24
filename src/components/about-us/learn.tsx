@@ -2,13 +2,13 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { useImages } from '../contexts/images-provider';
 
-import { Strapi_AboutUs_Interface } from '../interfaces';
+import { InmodePanel_AboutUs_Interface } from '../interfaces';
 
 const Learn = ({ from = "" }:Learn) => {
 
     const images = useImages();
 
-    const [datas]:[Strapi_AboutUs_Interface, React.Dispatch<Strapi_AboutUs_Interface>] = React.useState(useStaticQuery(graphql`
+    const [datas]:[InmodePanel_AboutUs_Interface, React.Dispatch<InmodePanel_AboutUs_Interface>] = React.useState(useStaticQuery(graphql`
         {
             strapiAboutUs {
                 menus {

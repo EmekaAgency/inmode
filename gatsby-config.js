@@ -4,7 +4,7 @@ require("dotenv").config({
   path: `.env.${active_env}`,
   // path: `.env.${process.env.NODE_ENV}`,
   // path: `.env`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -14,11 +14,12 @@ module.exports = {
     og_type: `website`,
     og_title: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     og_description: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
+    og_image: ``,
     og_url: `https://inmodemd.fr/`,
     og_site_name: `InModeMD France`,
     twitter_card: `summary_large_image`,
-    twitter_description: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     twitter_title: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
+    twitter_description: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     twitter_site: `@InModeMDFrance`,
     twitter_image: ``,
     twitter_creator: `@InModeMDFrance`,
@@ -31,6 +32,7 @@ module.exports = {
     url_order_create: `${process.env.URL_ORDER_CREATE}`,
     url_order_load: `${process.env.URL_ORDER_LOAD}`,
     url_order_signature: `${process.env.URL_ORDER_SIGNATURE}`,
+    instagram_id: `${process.env.INSTA_ID}`,
   },
   plugins: [
     // '@typescript-eslint/eslint-plugin',
@@ -80,14 +82,15 @@ module.exports = {
         ],
         singleTypes: [
           `footer`,
-          `about-us`
+          `about-us`,
+          `professional-contact`,
+          `hero-header`,
+          `seo-meta`
         ],
         queryLimit: 10000,
-        data: {
-          login: {
-            identifier: process.env.STRAPI_ID,
-            password: process.env.STRAPI_PASS
-          }
+        loginData: {
+          identifier: process.env.STRAPI_ID,
+          password: process.env.STRAPI_PASS
         }
       },
     },
@@ -95,6 +98,7 @@ module.exports = {
       resolve: `gatsby-source-instagram`,
       options: {
         username: `1317505554`,
+        usernameId: `1317505554`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

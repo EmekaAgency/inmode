@@ -1,5 +1,5 @@
 import React from "react";
-import { Strapi_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface } from "../interfaces";
 
 const AddonBanner = ({ datas }:AddonBanner) => {
     
@@ -37,7 +37,7 @@ const AddonBanner = ({ datas }:AddonBanner) => {
 };
 
 interface AddonBanner {
-    datas: Strapi_Addon_Interface["Banner"];
+    datas: InmodePanel_Addon_Interface["Banner"];
 };
 
 export default AddonBanner;

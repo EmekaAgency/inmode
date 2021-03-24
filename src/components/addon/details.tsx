@@ -1,7 +1,7 @@
 import React from "react";
 import RequestInformation from "../RequestInformation";
 import { useImages } from '../contexts/images-provider';
-import { Strapi_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface } from "../interfaces";
 
 const AddonDetails = ({ name = "", datas }:AddonDetails) => {
 
@@ -61,7 +61,7 @@ const AddonDetails = ({ name = "", datas }:AddonDetails) => {
 
 interface AddonDetails {
     name?: string;
-    datas: Strapi_Addon_Interface;
+    datas: InmodePanel_Addon_Interface;
 }
 
 export default AddonDetails;

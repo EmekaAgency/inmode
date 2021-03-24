@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import ProductsContext from "./products-context";
-import { Strapi_Product_Interface, ProductsContext_Interface } from '../interfaces';
+import { InmodePanel_Product_Interface, ProductsContext_Interface } from '../interfaces';
 
 export const useProducts = ():ProductsContext_Interface => {
     return useContext(ProductsContext);
@@ -12,7 +12,7 @@ const ProductsProvider = ({ requested = "", children }:{ requested?:string, chil
 
 // SELECT * FROM ((product INNER JOIN short_banner ON product.id = short_banner.product) INNER JOIN key_benefits ON key_benefits.product = short_banner.product) INNER JOIN treats ON treats.product = key_benefits.product;
 // graphql-markdown ./path/to/schema.json > schema.md
-    const [products]:[Strapi_Product_Interface[], React.Dispatch<Strapi_Product_Interface[]>] = React.useState(useStaticQuery(graphql`
+    const [products]:[InmodePanel_Product_Interface[], React.Dispatch<InmodePanel_Product_Interface[]>] = React.useState(useStaticQuery(graphql`
         {
             allStrapiProduct(sort: {order: ASC, fields: position}) {
                 edges {
@@ -87,7 +87,7 @@ const ProductsProvider = ({ requested = "", children }:{ requested?:string, chil
                 }
             }
         }
-    `).allStrapiProduct.edges.map((elem:{node:Strapi_Product_Interface}) => elem.node));
+    `).allStrapiProduct.edges.map((elem:{node:InmodePanel_Product_Interface}) => elem.node));
 
     const product_navigation = [
         {'name': 'what is it', 'url': '#what-is'},

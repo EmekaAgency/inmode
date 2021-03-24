@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "../Carousel";
 import { useImages } from '../contexts/images-provider';
-import { Strapi_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface } from "../interfaces";
 import NoPicture from "../NoPic/no-picture";
 import Sensible from "../NoPic/sensible";
 
@@ -65,7 +65,7 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
       document.getElementById('video-iframe').innerHTML = iframe;
     }
 
-    const resolveVideoClick = (e:MouseEvent | KeyboardEvent, url:string) => {
+    const resolveVideoClick = (e:any, url:string) => {
       openVideo(e, url);
     }
 
@@ -134,8 +134,8 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
 }
 
 interface AddonVideos {
-  videos: Strapi_Addon_Interface["Videos"];
-  title: Strapi_Addon_Interface["Name"];
+  videos: InmodePanel_Addon_Interface["Videos"];
+  title: InmodePanel_Addon_Interface["Name"];
   name: string;
   sensible: boolean;
 }

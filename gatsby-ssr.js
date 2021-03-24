@@ -8,11 +8,13 @@
 
 import React from 'react';
 
-import CartWrapper from './src/components/CartWrapper';
+{/* SWITCH CART */}
 
-export const wrapPageElement = ({ element, props }) => (
-  <CartWrapper {...props}>{element}</CartWrapper>
-);
+// import CartWrapper from './src/components/CartWrapper';
+
+// export const wrapPageElement = ({ element, props }) => (
+//   <CartWrapper {...props}>{element}</CartWrapper>
+// );
 
 export function onRenderBody ({ setBodyAttributes }) {
   setBodyAttributes({

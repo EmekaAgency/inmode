@@ -382,15 +382,45 @@
     
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic .end-purchase,
     #purchase-mini .cart-purchase-form.opened div#purchase-form.neumorphic .address-purchase {}
+
+    #purchase-mini > .step-1.neumorphic.sepa.soge input,
+    #purchase-mini > .step-1.neumorphic.sepa.soge label,
+    #purchase-mini > .step-1.neumorphic.sepa.soge div {
+        display: inline-block;
+        vertical-align: middle;
+        width: max-content;
+        position: unset;
+        height: 20px;
+    }
+    
+    #purchase-mini > .step-1.neumorphic.sepa.soge div {
+        margin: 10px 0;
+    }
+    
+    #purchase-mini > .step-1.neumorphic.sepa.soge .choice:first-child {
+        margin-left: 0px;
+    }
+    
+    #purchase-mini > .step-1.neumorphic.sepa.soge .choice {
+        margin-left: 10px;
+    }
+    
+    #purchase-mini > .step-1.neumorphic.sepa.soge .choice input {
+        width: 20px;
+    }
+    
+    #purchase-mini > .step-1.neumorphic.sepa.soge .choice-label {
+        margin-left: 10px;
+    }
     
     #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .facture {}
-    #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .sepa + .facture {}
+    #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .sepa.soge + .facture {}
     
     #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .facture + .cgu {}
-    #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .sepa + .facture + .cgu {}
+    #purchase-mini.step-2-3 #purchase-mini #step-3-part.other-opened + .sepa.soge + .facture + .cgu {}
     
     #purchase-mini.all-close > .step-1.neumorphic,
-    #purchase-mini > .step-1.neumorphic.sepa,
+    #purchase-mini > .step-1.neumorphic.sepa.soge,
     #purchase-mini > .step-1.neumorphic.facture,
     #purchase-mini > .step-1.neumorphic.cgu {
         position: fixed;
@@ -403,14 +433,14 @@
     }
     
     #purchase-mini.step-2-3 > .step-1.neumorphic,
-    #purchase-mini.step-2-3 > .step-1.neumorphic.sepa,
+    #purchase-mini.step-2-3 > .step-1.neumorphic.sepa.soge,
     #purchase-mini.step-2-3 > .step-1.neumorphic.facture,
     #purchase-mini.step-2-3 > .step-1.neumorphic.cgu {
         left: 10%;
         transition: left 0.3s ease-in-out;
     }
     
-    #purchase-mini > .step-1.neumorphic.sepa {
+    #purchase-mini > .step-1.neumorphic.sepa.soge {
         bottom: 140px;
     }
     

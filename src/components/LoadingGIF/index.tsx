@@ -2,9 +2,9 @@ import React from 'react';
 
 import './index.css';
 
-const LoadingGIF = ({ custom = undefined }:LoadingGIF) => {
+const LoadingGIF = ({ customId = undefined, customClass = undefined, customStyle = undefined }:LoadingGIF) => {
     return (
-        <div className={`loading-gif${' ' + custom || null}`}>
+        <div id={customId != undefined ? customId : ''} className={`loading-gif${customClass != undefined ? ' ' + customClass : ''}`} style={customStyle != undefined ? customStyle : {}}>
             <div className="loader-circle"></div>
             <div className="loader-bar"></div>
             {/* <div className="up-border"></div> */}
@@ -14,7 +14,9 @@ const LoadingGIF = ({ custom = undefined }:LoadingGIF) => {
 };
 
 interface LoadingGIF {
-    custom?: string;
+    customId?: string;
+    customClass?: string;
+    customStyle?: React.CSSProperties;
 }
 
 export default LoadingGIF;

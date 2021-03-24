@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import Carousel from "../Carousel";
-import { Strapi_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface } from "../interfaces";
 import NoPicture from "../NoPic/no-picture";
 import Sensible from "../NoPic/sensible";
 
@@ -136,7 +136,7 @@ const Addons = ({ datas, sensible = false }:Addons) => {
 
 interface Addons {
     datas: {
-        addons: Strapi_Addon_Interface[];
+        addons: InmodePanel_Addon_Interface[];
         id: number;
     };
     sensible: boolean;

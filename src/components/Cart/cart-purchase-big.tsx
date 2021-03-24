@@ -10,6 +10,7 @@ import {
     DeliveryCityField,
     DeliveryFirstNameField,
     DeliveryLastNameField,
+    DeliveryMailField,
     DeliveryPhoneField,
     DeliverySocietyField,
     DeliveryZipField,
@@ -33,7 +34,6 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     const [formOpened, setFormOpened] = React.useState(false);
     const [otherAddress, setOtherAddress] = React.useState(false);
     const [otherAddressOpened, setOtherAddressOpened] = React.useState(false);
-    const [sepa, setSepa]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
     const [isSubmit, setIsSubmit]:[Boolean | null, React.Dispatch<any>] = React.useState(null);
     const [isCreated, setIsCreated]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
 
@@ -43,24 +43,47 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
         setOtherAddress(e.currentTarget.checked);
     }
 
-    const manageSepa = (e:React.ChangeEvent<HTMLInputElement>) => {
-        sepa && setSepa(false);
-        setSepa(e.currentTarget.checked);
+    const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
+        if(document != undefined) {
+            if(e.currentTarget.id == 'sepa') {
+                let _other:HTMLInputElement = document.getElementById('soge');
+                if(_other && _other.checked == true && e.currentTarget.checked == true) {
+                    _other.checked= false;
+                }
+                else if(_other && _other.checked == false && e.currentTarget.checked == false) {
+                    _other.checked= true;
+                }
+            }
+            if(e.currentTarget.id == 'soge') {
+                let _other = document.getElementById('sepa');
+                if(_other && _other.checked == true && e.currentTarget.checked == true) {
+                    _other.checked= false;
+                }
+                else if(_other && _other.checked == false && e.currentTarget.checked == false) {
+                    _other.checked= true;
+                }
+            }
+            return true;
+        }
+        return false;
     }
 
     const sendForm = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        document.getElementById('big-submit').disabled = true;
+        let _sepa:HTMLInputElement | any = document.getElementById('sepa');
         let fields = [...Array.from(document.forms["purchase"]).filter((field:any) => {return field.id.includes('vads_')})];
         // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && field.value));
         setIsSubmit(true);
-        setIsCreated(await cart.redirectPay(fields, sepa) === true ? true : false);
+        setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
+        document.getElementById('big-submit').disabled = false;
     }
 
     const submitClasses = ():string => {
         if(formOpened && !otherAddress) {
             return "cart-validate form-transition";
         }
-        if(formOpened && otherAddress && otherAddressOpened) {
+        if((formOpened && otherAddress && otherAddressOpened) || (formOpened && otherAddress)) {
             return "cart-validate form-transition other-address-transition";
         }
         return `cart-validate${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`;
@@ -96,14 +119,10 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 }
             }
             else {
-                setIsSubmit(null)
+            setIsSubmit(null)
             }
         }
     }, [isCreated]);
-
-    console.log(`isSubmit : ${isSubmit}, typeof isSubmit : ${typeof isSubmit}`);
-    console.log(`isCreated : ${isCreated}, typeof isCreated : ${typeof isCreated}`);
-    console.log(`formOpened : ${formOpened}, typeof formOpened : ${typeof formOpened}`);
 
     return (
         <form
@@ -116,6 +135,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 <div className="cart-close"
                     onClick={(e) => {
                         e.preventDefault();
+                        setOtherAddressOpened(false);
                         setFormOpened(false);
                         cart.toggle_open_cart();
                     }}
@@ -236,6 +256,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         className="form-close"
                         onClick={(e) => {
                             e.preventDefault();
+                            setOtherAddressOpened(false);
                             setFormOpened(false);
                         }}
                     >
@@ -273,13 +294,15 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 </div>
             </div>
             {/* THIRD PART */}
-            <div id="step-3-part" className={`other-address neumorphic${otherAddressOpened ? " other-opened" : ''}`}>
-                <div className={`title unmorphic${otherAddressOpened ? ' opened' : ''}`}>
+            <div id="step-3-part" className={`other-address neumorphic${(formOpened && otherAddress && otherAddressOpened) || (formOpened && otherAddress) ? " other-opened" : ''}`}>
+                <div className={`title unmorphic${formOpened && otherAddressOpened ? ' opened' : ''}`}>
                     <div
                         className="form-close unmorphic"
                         onClick={(e) => {
                             e.preventDefault();
                             setOtherAddressOpened(false);
+                            setOtherAddress(false);
+                            document.getElementById('facture').checked = false;
                         }}
                     >
                         <img
@@ -309,24 +332,33 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         <DeliveryPhoneField classes="required form-field step-2" required={true}/>
                         {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/> */}
                         {/* <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/> */}
+                        <DeliveryMailField classes="form-field step-2" required={false}/>
+                        {/* <input className="form-field step-2" name="mail" type="email" placeholder="Mail"/> */}
                     </div>
                 }
             </div>
             {/* CHECKBOXES */}
-            <div className="step-1 sepa neumorphic">
-                <input
+            <div className="step-1 sepa soge neumorphic">
+                <div className="choice"><input
                     id="sepa"
                     name="sepa"
                     value="sepa"
+                    defaultChecked={false}
                     type="checkbox"
                     className="form-field"
-                    onChange={(e) => {
-                        manageSepa(e);
-                    }}
-                />
-                <label htmlFor="sepa">
-                    Paiement par virement
-                </label>
+                    onChange={(e) => {manageCheckboxPayment(e)}}
+                /></div>
+                <div className="choice-label"><label htmlFor="sepa">Virement</label></div>
+                <div className="choice"><input
+                    type="checkbox"
+                    className="form-field"
+                    id="soge"
+                    name="soge"
+                    value="soge"
+                    defaultChecked={true}
+                    onChange={(e) => {manageCheckboxPayment(e)}}
+                /></div>
+                <div className="choice-label"><label htmlFor="soge">Paiement par carte</label></div>
             </div>
             <div className="step-1 facture neumorphic">
                 <input
@@ -359,7 +391,8 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
             {/* VALIDATE */}
             <button
                 disabled={isSubmit == true ? true : false}
-                type={!formOpened ? "button" : "submit"} 
+                type={!formOpened ? "button" : "submit"}
+                id="big-submit"
                 className={submitClasses()}
                 onClick={(e) => {
                     if(!formOpened){
@@ -375,7 +408,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 }}
             >
                 {buttonText()}
-                {isSubmit == true ? <LoadingGIF custom="payment"/> : null}
+                {isSubmit == true ? <LoadingGIF customClass="payment"/> : null}
             </button>
         </form>
     );

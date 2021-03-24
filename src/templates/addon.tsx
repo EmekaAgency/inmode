@@ -12,12 +12,12 @@ import SellingArgs from '../components/selling-args';
 import SellingNew from '../components/selling-new';
 import ClinicalStudies from '../components/Clinical/clinical-studies';
 import GenericDetails from '../components/details';
-import { Strapi_Addon_Interface } from '../components/interfaces';
+import { InmodePanel_Addon_Interface } from '../components/interfaces';
 import rand_token from '../functions/rand_token';
 
 const AddonTemplates = ({ data }:AddonTemplates) => {
 
-    const [datas]:[Strapi_Addon_Interface, React.Dispatch<Strapi_Addon_Interface>] = React.useState(data.strapiAddon);
+    const [datas]:[InmodePanel_Addon_Interface, React.Dispatch<InmodePanel_Addon_Interface>] = React.useState(data.strapiAddon);
 
     console.log(datas);
 
@@ -39,7 +39,7 @@ const AddonTemplates = ({ data }:AddonTemplates) => {
                 <AddonVideos videos={datas.Videos} title={`${datas.Name} videos`} name={datas.Name || rand_token(4)} sensible={datas.sensitivity}/>
                 <AddonBeforeAfter datas={datas.BeforesAfters} sensible={datas.sensitivity}/>
                 <Divider position="bottom"/>
-                <AddonWhatTreat datas={{WhatTreats: datas.WhatTreats}}/>
+                <AddonWhatTreat title="What can you treat ?" WhatTreats={datas.WhatTreats}/>
                 <ClinicalStudies datas={datas.ClinicalStudies}/>
                 <SellingArgs datas={datas.SellingArgs != undefined ? datas.SellingArgs[0] : []}/>
                 <SellingNew datas={datas.SellingNewGeneration}/>
@@ -49,7 +49,7 @@ const AddonTemplates = ({ data }:AddonTemplates) => {
 
 interface AddonTemplates {
     data: {
-        strapiAddon: Strapi_Addon_Interface;
+        strapiAddon: InmodePanel_Addon_Interface;
     };
 };
 

@@ -2,13 +2,15 @@ import React from 'react';
 import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
 import { enableMainScroll } from '../../functions/disable-scroll';
-import { Strapi_Menu_Interface } from '../interfaces';
+import { InmodePanel_Menu_Interface } from '../interfaces';
 
 const MenuSingleText = ({menu, prop_key = null}:MenuSingleText) => {
 
-    // if(menu.title.toLowerCase() === 'shop') {
-    //     return null;
-    // }
+    // SWITCH CART
+    if(menu.title.toLowerCase() === 'shop') {
+        return <></>;
+    }
+
     return (
         menu.url ?
             menu.internal_link ?
@@ -27,7 +29,7 @@ const MenuSingleText = ({menu, prop_key = null}:MenuSingleText) => {
 }
 
 interface MenuSingleText {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 }
 

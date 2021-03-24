@@ -11,7 +11,7 @@ Bouton à cocher
 TODO
 
 - Morpheus Pro ( sera différent. changement d'image à venir )
-    - strapi
+    - Inmode_Panel
 DONE
 
 - Sur contactez nous : ( remplacer selectionner un sujet par " choisir une spécialité )
@@ -32,7 +32,7 @@ DONE
 Identifiant :	klesieutre
 Mot de passe :	fVyillMb
 
-USER Strapi
+USER Inmode_Panel
 InmodeAdmin
 inmode@emeka.fr
 @f2WE5&kYC#fpxQSNUu%nSh95EP*ganF
@@ -51,7 +51,7 @@ Hn9FJ3EwPbc3
 ===============================================================
 ===============================================================
 
-STRAPI EMEKA
+Inmode_Panel EMEKA
 
 - 100px * 90%
 
@@ -72,33 +72,49 @@ STRAPI EMEKA
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
 
-Loading GIF à commander                                                     // TODO US NEW      // DONE
-Régler le undefined NaN sur les articles                                    // TODO US NEW      // 
-Ajouter € sur les champs nécessaires                                        // TODO US NEW      // 
-Ajouter total commande modèle order                                         // TODO US NEW      // DONE
-Ajouter au panier est un vrai ajout et modale sous icône cart               // TODO US NEW      // 
-Cancel all buttons flood                                                    // TODO US NEW      // 
-Close and empty cart on success                                             // TODO US NEW      // 
-achat - ligne livraison                                                     // TODO CLIENT      // REMEMBER
+Design modale virement                                                      // TODO NEW         // DONE
+Heure achat fixée                                                           // TODO US          // DONE
+Cart Big other adress fix graph                                             // TODO US          // DONE
+Cart Mini fix graph && open                                                 // TODO US          // EMERGENCY
+WhatTreats                                                                  // TODO FIX         // DONE
+Mettre title sur BACK                                                       // TODO NEW         // DONE
+Mettre le bon RIB                                                           // TODO NEW         // DONE
+Ajouter au panier est un vrai ajout et modale sous icône cart               // TODO US NEW      // KÉVIN ?
+Ajout mail dans les informations de livraison (Envoyer mail pour les 2 )    // TODO CLIENT      // 
 vignette lorsqu'il y a un nouvel événement.                                 // TODO             // 
-
-régler largeur vimeo                                                        // TODO US          // DONE
-préparer un doc / une man pour strapi                                       // TODO             // LATER
-Ne pas ouvrir un cart vide                                                  // TODO US          // DONE
-
-Sauvegarder mes informations de facturation                                 // TODO US NEW      // 
-Sauvegarder mes informations de livraison                                   // TODO US NEW      // 
-alvéoles border                                                             // TODO             // 
-alvéoles svg shadow                                                         // TODO             // 
-alvéoles écrasées en mobile                                                 // TODO             // 
-remplacer gatsby source strapi par un composant qui fetch et des context    // TODO             // 
+achat - ligne livraison graphique alignement                                // TODO CLIENT      // REMEMBER
+préparer un doc / une man pour Inmode_Panel                                 // TODO             // LATER
+Ajouter context RequestInformation pour pre-fill contact page form          // TODO             // 1/2 DONE
 Hero header largest contentful paint mettre le Gatsby Img avec Tracev blur  // TODO             // 
 feedback sur les actions                                                    // TODO             // 
-Faire un composant link (gérer les besoins self, blank, scroll, title, ...) // TODO             // 
-Ajouter context RequestInformation pour pre-fill contact page form          // TODO             // 
+Régler le undefined NaN sur les articles                                    // TODO US NEW      // INMODE PANEL
+Ajouter € sur les champs nécessaires                                        // TODO US NEW      // INMODE PANEL
+
+Inmode_Panel SINGLE CONTENT professionnal-contact                           // TODO NEW         // DONE
+Type, Title, Short_descr required for event                                 // TODO NEW         // DONE
+Ajouter SINGLE CONTENT META TAGS                                            // TODO NEW         // DONE
+Ajouter SINGLE CONTENT Hero                                                 // TODO NEW         // DONE
+Ajouter checkbox Carte / Virement au lieu de just choisir virement          // TODO NEW         // DONE
+Passer mail sur NodeJS                                                      // TODO US NEW      // CANCEL
+REMOVE Mail Envoyé                                                          // TODO US NEW      // DONE
+Loading GIF à commander                                                     // TODO US NEW      // DONE
+Ajouter total commande modèle order                                         // TODO US NEW      // DONE
+Cancel all buttons flood                                                    // TODO US NEW      // DONE
+Close and empty cart on success                                             // TODO US NEW      // DONE
+
+régler largeur vimeo                                                        // TODO US          // DONE
+Ne pas ouvrir un cart vide                                                  // TODO US          // DONE
+
+Sauvegarder mes informations de facturation                                 // TODO US NEW      // DONE
+Sauvegarder mes informations de livraison                                   // TODO US NEW      // DONE
+alvéoles border                                                             // TODO             // LATER
+alvéoles svg shadow                                                         // TODO             // LATER
+alvéoles écrasées en mobile                                                 // TODO             // LATER
+remplacer gatsby source Inmode_Panel par un composant qui fetch et des context    // TODO             // CANCEL
+Faire un composant link (gérer les besoins self, blank, scroll, title, ...) // TODO             // LATER
 cartwrapper to localstorage                                                 // TODO             // LATER
 supprimer li                                                                // TODO US          // LATER
-DOM trop long                                                               // TODO             // 
+DOM trop long                                                               // TODO             // LATER
 
 react-window                                                                // TODO US          // LATER
 react-viewport                                                              // TODO US          // LATER
@@ -113,6 +129,8 @@ gatsby unit testing                                                         // T
 flickity                                                                    // TODO             // PENDING
 useEffect window.width pour carousel ou pas (drag 3 pour 3 inutile)         // TODO             // LATER
 flickity fix wrapAround // ib click right return first                      // TODO             // LATER
-Phone tourné textes                                                         // TODO             // LATER
+Phone tourné textes                                                         // TODO             // DONE
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+L'égalité est la tyrannie des médiocres

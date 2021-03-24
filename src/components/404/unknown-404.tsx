@@ -12,8 +12,9 @@ const Unknown404 = ({  }:Unknown404) => {
             </div>
             <div className="_404-suggestions">
                 <Link to="/" title="Accueil">Accueil</Link>
-                <Link to="/products" title="Produits">Produits</Link>
-                <Link to="/addons" title="Pièces à main">Pièces à main</Link>
+                <Link to="/products" title="Machines">Machines</Link>
+                {/* SWITCH CART */}
+                {/* <Link to="/shop" title="Shop">Shop</Link> */}
             </div>
         </div>
     );

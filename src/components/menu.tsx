@@ -13,7 +13,7 @@ import MenuContentButton from './menu/content-button';
 import MenuContentCard from './menu/content-card';
 import MenuSideMenuText from './menu/side_menu-text';
 import PropTypes from 'prop-types';
-import { Strapi_Menu_Interface } from './interfaces';
+import { InmodePanel_Menu_Interface } from './interfaces';
 
 // VARIANT
 const SINGLE = 'single';
@@ -112,7 +112,7 @@ const Menu = ({menu, prop_key, openOnClick}:Menu) => {
 };
 
 interface Menu {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
     openOnClick?: boolean;
 };

@@ -3,11 +3,11 @@ import { Link } from "gatsby";
 import { format_string } from '../../functions/format_string';
 import Menu from '../menu';
 import { enableMainScroll } from '../../functions/disable-scroll';
-import { Strapi_Menu_Interface } from '../interfaces';
+import { InmodePanel_Menu_Interface } from '../interfaces';
 
 const MenuContentText = ({menu, prop_key}:MenuContentText) => {
 
-    const content = (_menu:Strapi_Menu_Interface) => {
+    const content = (_menu:InmodePanel_Menu_Interface) => {
         if(!_menu.menus) {
             return _menu.title;
         }
@@ -43,7 +43,7 @@ const MenuContentText = ({menu, prop_key}:MenuContentText) => {
 };
 
 interface MenuContentText {
-    menu: Strapi_Menu_Interface;
+    menu: InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 };
 

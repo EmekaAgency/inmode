@@ -516,7 +516,37 @@ form#purchase .neumorphic label {
     transition-delay: 0s;
 }
 
-form#purchase.step-2-3 #step-3-part.other-opened + .sepa {
+form#purchase .sepa input,
+form#purchase .sepa label,
+form#purchase .sepa div {
+    display: inline-block;
+    vertical-align: middle;
+    width: max-content;
+    position: unset;
+    height: 20px;
+}
+
+form#purchase .sepa div {
+    margin: 10px 0;
+}
+
+form#purchase .sepa div > * {
+    margin: 0;
+}
+
+form#purchase .sepa .choice:first-child {
+    margin-left: 28px;
+}
+
+form#purchase .sepa .choice {
+    margin-left: 10px;
+}
+
+form#purchase .sepa .choice-label {
+    margin-left: 10px;
+}
+
+form#purchase.step-2-3 #step-3-part.other-opened + .sepa.soge {
     bottom: 90px;
     transition: bottom 0.3s ease-in-out 0.1s;
 }

@@ -20,7 +20,7 @@ import '../interfaces';
 import {
     Article_Interface,
     NameTable_Interface,
-    Strapi_Shop_Interface,
+    InmodePanel_Shop_Interface,
     SogecommerceOrder,
     Cart_Interface
 } from '../interfaces';
@@ -69,7 +69,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
                         }
                     }
                 }
-            `).allStrapiShop.nodes.map((article:Strapi_Shop_Interface) => {
+            `).allStrapiShop.nodes.map((article:InmodePanel_Shop_Interface) => {
                 return [
                     article.reference,
                     {
@@ -363,16 +363,32 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             transId: order_id,
         });
 
+        let _delivery_mail = document.getElementById('delivery_mail');
+        if(_delivery_mail) {
+            _temp['delivery_mail'] = _delivery_mail.value;
+        }
+
         // initialize_transaction(_temp);
-        let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC())), pay_params.order_create)).json();
+        let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa), pay_params.order_create)).json();
         console.log(status);
         if(status && status == 'success') {
             if(sepa) {
-                openModale(paymentSEPA(order_id, undefined, undefined, total_TTC()));
+                openModale(
+                    paymentSEPA(
+                        {
+                            reference: order_id,
+                            total: total_TTC(),
+                            RIB: "FR76 3000 3015 7800 0200 1741 805",
+                            BIC: "SOGEFRPP",
+                        },
+                    )
+                );
             }
             else {
                 fill_redirect_form('payment_form', _temp);
                 submit_form('payment_form');
+                // TODO vérifier que la redirection est bien effectuée, sinon afficher erreur et détruire form
+                // document.getElementById('payment_form').remove();
             }
             close_purchase();
             reset_form_fields();

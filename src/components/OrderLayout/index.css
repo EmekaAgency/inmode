@@ -150,3 +150,68 @@
 .order-layout .order .order-status {
 
 }
+
+
+
+.order-layout .payment-suggestions {
+    margin-top: 120px;
+    text-align: center;
+}
+
+.order-layout .payment-suggestions a {
+    color: #f2f2f2;
+    width: 30%;
+    font-size: 35px;
+    font-weight: 200;
+    display: inline-block;
+}
+
+.order-layout .payment-suggestions a:hover {
+    color: #59b7b3;
+    transition: color 0.2s ease-in-out 0s;
+}
+
+.order-layout .payment-suggestions a::after {
+    content: '';
+    position: relative;
+    display: block;
+    width: 0%;
+    height: 3px;
+    background: #59b7b3;
+    border-radius: 50%;
+    margin: 0 auto;
+    transition: width 0.3s ease-in-out 0s;
+}
+
+.order-layout .payment-suggestions a:hover::after {
+    width: 95%;
+    transition: width 0.3s ease-in-out 0s;
+}
+
+@media (max-width:1199px) {
+    main#main {
+        min-height: calc(100vh - (40px + 280px));
+    }
+}
+
+@media (min-width:1000px) {
+    .order-layout .payment-suggestions a:first-child {
+        margin-right: 5%;
+    }
+    
+    .order-layout .payment-suggestions a:last-child {
+        margin-left: 5%;
+    }
+}
+
+@media (max-width:999px) {
+    main#main {
+        min-height: calc(100vh - (50px + 320px));
+    }
+
+    .order-layout .payment-suggestions a {
+        width: max-content;
+        display: block;
+        margin: 0 auto;
+    }
+}

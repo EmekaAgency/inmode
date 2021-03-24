@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 
-import { Strapi_AboutUs_Interface } from "../interfaces";
+import { InmodePanel_AboutUs_Interface } from "../interfaces";
 
 const Banner = ({ from = "" }:Banner) => {
 
-    const [datas]:[Strapi_AboutUs_Interface, React.Dispatch<Strapi_AboutUs_Interface>] = React.useState(useStaticQuery(graphql`
+    const [datas]:[InmodePanel_AboutUs_Interface, React.Dispatch<InmodePanel_AboutUs_Interface>] = React.useState(useStaticQuery(graphql`
         {
             strapiAboutUs {
                 banner {

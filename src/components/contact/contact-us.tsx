@@ -1,7 +1,8 @@
 import React from "react";
-import { useWindowSize } from "../functions/window-size";
-import { disableMainScroll, enableMainScroll } from "../functions/disable-scroll";
-import { useImages } from './contexts/images-provider';
+import { useWindowSize } from "../../functions/window-size";
+import { disableMainScroll, enableMainScroll } from "../../functions/disable-scroll";
+import { useImages } from '../contexts/images-provider';
+import LoadingGIF from "../LoadingGIF";
 
 const ContactUs = () => {
 
@@ -53,6 +54,8 @@ const ContactUs = () => {
 
     function send_form ( e ) {
         e.preventDefault();
+        document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
+        document.querySelector('#mini-contact-gif').style.display = 'inline-block';
         let body = new Object({});
         Array.from(document.forms['contact-mini'].elements).map((elem) => {
             body[elem.name] = elem.checked || elem.value;
@@ -65,6 +68,8 @@ const ContactUs = () => {
             mode: 'cors',
             cache: 'default'
         };
+        document.querySelector("#contact-mini .req-return.success").innerHTML = "";
+        document.querySelector("#contact-mini .req-return.error").innerHTML = "";
         fetch(
             `https://inmodemd.fr/back/app.php`,
             {
@@ -77,7 +82,9 @@ const ContactUs = () => {
             }
         )
         .then((response) => {
+            document.querySelector('#mini-contact-gif').style.display = 'none';
             if(response.status === 'success' && response.type === 'client') {
+                document.querySelector('#contact-mini .submit').removeAttribute('disabled');
                 document.querySelector('#contact-mini .req-return.success').innerHTML = response.message;
                 document.forms['contact-mini'].reset();
             }
@@ -131,7 +138,7 @@ const ContactUs = () => {
                             <input type="email" placeholder="Adresse mail" name="mail" spellCheck={false} required={true}/>
                             <input type="phone" placeholder="Téléphone" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
                             <input type="text" placeholder="Code postal" name="zip" spellCheck={false} required={true}/>
-                            <input type="text" placeholder="Ville" name="city" spellCheck={false} required={true}/>
+                            <input type="number" placeholder="Ville" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message-mini"
                                 type="textarea"
@@ -148,7 +155,11 @@ const ContactUs = () => {
                             <div className="current-length" style={{color: msgLength === max_length ? '#f00' : '#59b7b3'}}>{`${msgLength} / ${max_length}`}</div>
                             <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWidth: 400}}></div>
                             <div className="req-return error" style={{color: 'red', fontSize: 15, fontWidth: 400}}></div>
-                            <input type="submit" className="submit" placeholder={submitText}/>
+                            {/* Mettre LoadingGIF en attendant le retour du serveur */}
+                            <button type="submit" className="submit">
+                                {submitText}
+                                <LoadingGIF customId="mini-contact-gif" customClass="mini" customStyle={{'display': 'none', 'verticalAlign': 'middle', 'margin': '0', 'left': '15px'}}/>
+                            </button>
                         </form>
                     </div>
                 </div>

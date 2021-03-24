@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "../Carousel";
 import ClinicalStudy from "../Clinical/clinical-study";
-import { Strapi_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface } from "../interfaces";
 
 const AddonClinicalStudies = ({ datas }:AddonClinicalStudies) => {
 
@@ -47,7 +47,7 @@ const AddonClinicalStudies = ({ datas }:AddonClinicalStudies) => {
 };
 
 interface AddonClinicalStudies {
-    datas: Strapi_Addon_Interface["ClinicalStudies"];
+    datas: InmodePanel_Addon_Interface["ClinicalStudies"];
 };
 
 export default AddonClinicalStudies;

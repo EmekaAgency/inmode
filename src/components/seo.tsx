@@ -15,7 +15,7 @@ function SEO({ description, lang, meta, title }) {
 
   const images = useImages();
 
-  const { site } = useStaticQuery(
+  const { site, strapiSeoMeta } = useStaticQuery(
     graphql`
       query {
         site {
@@ -25,6 +25,7 @@ function SEO({ description, lang, meta, title }) {
             og_type
             og_title
             og_description
+            og_image
             og_url
             og_site_name
             twitter_card
@@ -35,6 +36,14 @@ function SEO({ description, lang, meta, title }) {
             twitter_creator
             msapplication_TileImage
           }
+        }
+        strapiSeoMeta {
+          PageTitle
+          Description
+          OG_Title
+          OG_Description
+          Twitter_Title
+          Twitter_Description
         }
       }
     `
@@ -48,12 +57,13 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={`${title ? title + ' | ' : ''}Inmode - Votiva, FaceTite, BodyTite, AccuTite, BodyFX, Fractora`}
+      title={`${title ? title + ' | ' : ''}${strapiSeoMeta.PageTitle}`}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
-          content: site.siteMetadata.description,
+          // content: site.siteMetadata.description,
+          content: strapiSeoMeta.Description,
         },
         {
           property: `og:locale`,
@@ -65,11 +75,13 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:title`,
-          content: site.siteMetadata.og_title,
+          // content: site.siteMetadata.og_title,
+          content: strapiSeoMeta.OG_Title,
         },
         {
           property: `og:description`,
-          content: site.siteMetadata.og_description,
+          // content: site.siteMetadata.og_description,
+          content: strapiSeoMeta.OG_Description,
         },
         {
           property: `og:url`,
@@ -84,12 +96,14 @@ function SEO({ description, lang, meta, title }) {
           content: site.siteMetadata.twitter_card,
         },
         {
-          name: `twitter:description`,
-          content: site.siteMetadata.twitter_description,
+          name: `twitter:title`,
+          // content: site.siteMetadata.twitter_title,
+          content: strapiSeoMeta.Twitter_Title,
         },
         {
-          name: `twitter:title`,
-          content: site.siteMetadata.twitter_title,
+          name: `twitter:description`,
+          // content: site.siteMetadata.twitter_description,
+          content: strapiSeoMeta.Twitter_Description,
         },
         {
           name: `twitter:site`,
@@ -97,7 +111,8 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:image`,
-          content: images.getOne('seoLogo').img.srcProps.src,
+          // content: images.getOne('seoLogo').img.srcProps.src,
+          content: images.getOne('seoLogo2').img.srcProps.src,
         },
         {
           name: `twitter:creator`,
@@ -105,7 +120,8 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `msapplication-TileImage`,
-          content: images.getOne('seoLogo').img.srcProps.src,
+          // content: images.getOne('seoLogo').img.srcProps.src,
+          content: images.getOne('seoLogo2').img.srcProps.src,
         },
       ].concat(meta)}
     />

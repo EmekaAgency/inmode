@@ -11,11 +11,11 @@ import SellingArgs from '../components/selling-args';
 import ClinicalStudies from '../components/Clinical/clinical-studies';
 import GenericDetails from '../components/details';
 import { graphql } from 'gatsby';
-import { Strapi_Product_Interface } from '../components/interfaces';
+import { InmodePanel_Product_Interface } from '../components/interfaces';
 
 const ProductTemplates = ({ data }:ProductTemplates) => {
 
-    const [datas]:[Strapi_Product_Interface, React.Dispatch<Strapi_Product_Interface>] = React.useState(data.strapiProduct);
+    const [datas]:[InmodePanel_Product_Interface, React.Dispatch<InmodePanel_Product_Interface>] = React.useState(data.strapiProduct);
 
     return (
             <Layout>
@@ -52,7 +52,7 @@ const ProductTemplates = ({ data }:ProductTemplates) => {
 
 interface ProductTemplates {
   data: {
-    strapiProduct: Strapi_Product_Interface;
+    strapiProduct: InmodePanel_Product_Interface;
   };
 }
 

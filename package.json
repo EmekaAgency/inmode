@@ -23,10 +23,10 @@
     "gatsby-plugin-typescript": "^2.12.1",
     "gatsby-source-filesystem": "^2.11.1",
     "gatsby-source-graphql": "^2.14.0",
-    "gatsby-source-instagram": "^0.9.0",
     "gatsby-source-mysql": "^2.2.3",
     "gatsby-source-strapi": "0.0.12",
     "gatsby-transformer-sharp": "^2.12.1",
+    "gatsby-source-instagram": "^0.9.0",
     "imagemin-pngquant": "^9.0.2",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
@@ -42,9 +42,10 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.17.0",
-    "@typescript-eslint/parser": "^4.17.0",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.22.0",
+    "gatsby-source-instagram": "^0.9.0",
     "prettier": "^2.2.1"
   },
   "keywords": [

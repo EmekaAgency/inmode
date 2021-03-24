@@ -1,14 +1,15 @@
+import { Link } from 'gatsby';
 import React from 'react';
 
 import { useCart } from '../contexts/cart-provider';
-import { Strapi_Order_Interface } from '../interfaces';
+import { InmodePanel_Order_Interface } from '../interfaces';
 import LoadingGIF from '../LoadingGIF';
 
 import './index.css';
 
 interface OrderLayoutParams {
     status: string;
-    order?: Strapi_Order_Interface;
+    order?: InmodePanel_Order_Interface;
 };
 
 function get_day(day:number):string {
@@ -49,7 +50,7 @@ function get_date(date:string):string {
     _temp += (_date.getDate() < 10 ? `0${_date.getDate()}` : _date.getDate()) + ' ';
     _temp += get_month(_date.getMonth() + 1) + ' ';
     _temp += _date.getFullYear() + ' à ';
-    _temp += (_date.getHours() < 10 ? `0${_date.getHours()}` : _date.getHours()) + ':';
+    _temp += (_date.getHours() + 1 < 10 ? `0${_date.getHours() + 1}` : _date.getHours() + 1) + ':';
     _temp += (_date.getMinutes() < 10 ? `0${_date.getMinutes()}` : _date.getMinutes()) + ':';
     _temp += (_date.getSeconds() < 10 ? `0${_date.getSeconds()}` : _date.getSeconds());
     return _temp;
@@ -70,9 +71,9 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                 {!order ? <LoadingGIF/> :
                 <div className="order">
                     {/* Reference: "geGCkk" */}
-                    <div className="order-id">Order {order.Reference}</div>
+                    {/* <div className="order-id">Order {order.Reference}</div> */}
                     {/* Article: (3) [{…}, {…}, {…}] */}
-                    <div className="order-articles">
+                    {/* <div className="order-articles">
                         {order.Article.map((article , key:number):any => {
                             console.log(article.Article.reference);
                             let _art = cart.article(article.Article.reference);
@@ -90,19 +91,19 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                             }
                             return null;
                         }).filter(e => e)}
-                    </div>
+                    </div> */}
                     {/* DeliveryTax: 10 */}
-                    <div className="order-delivery">
-                        {order.DeliveryTax == 0 && "Livraison gratuite"}
+                    {/* <div className="order-delivery"> */}
+                        {/* {order.DeliveryTax == 0 && "Livraison gratuite"} */}
                         {/* TODO Fonction currency(currency:number):string, ex 978 => '€' */}
-                        {order.DeliveryTax > 0 && `Frais de livraison : ${order.DeliveryTax}€`}
-                    </div>
+                        {/* {order.DeliveryTax > 0 && `Frais de livraison : ${order.DeliveryTax}€`} */}
+                    {/* </div> */}
                     {/* Date: "2021-02-26T05:40:43.000Z" */}
                     <div className="order-date">
                         Achat effectué le {get_date(order.Date)}
                     </div>
                     {/* Billing: {id: 20, Firstname: "m", Lastname: "m", Phone: "0667630604", Mail: "test@gmail.com", …} */}
-                    {order.Billing && <div className="order-billing">
+                    {/* {order.Billing && <div className="order-billing">
                         <h3>Informations de facturation</h3>
                         <div className="billing-table">
                             {order.Billing.Firstname && <div className="billing-firstname">{order.Billing.Firstname}</div>}
@@ -115,9 +116,9 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                             {order.Billing.Phone && <div className="billing-phone">{order.Billing.Phone}</div>}
                             {order.Billing.Mail && <div className="billing-mail">{order.Billing.Mail}</div>}
                         </div>
-                    </div>}
+                    </div>} */}
                     {/* Shipping: null */}
-                    {order.Shipping && <div className="order-shipping">
+                    {/* {order.Shipping && <div className="order-shipping">
                         <h3>Informations de livraison</h3>
                         <div className="shipping-table">
                             {order.Shipping.Firstname && <div className="shipping-firstname">{order.Shipping.Firstname}</div>}
@@ -128,16 +129,21 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                             {order.Shipping.ZIP && <div className="shipping-zip">{order.Shipping.ZIP}</div>}
                             {order.Shipping.City && <div className="shipping-city">{order.Shipping.City}</div>}
                             {order.Shipping.Phone && <div className="shipping-phone">{order.Shipping.Phone}</div>}
-                            {/* order.Shipping.Mail && <div className="shipping-mail">{order.Shipping.Mail}</div> */}
                         </div>
-                    </div>}
+                    </div>} */}
                     {/* TODO Create a function to display a generic message according to the status */}
                     {/* Statut: "ACCEPTED" */}
-                    <div className="order-status">
+                    {/* <div className="order-status">
                         {status_message(order.Statut)}
-                    </div>
+                    </div> */}
                 </div>
                 }
+                <div className="payment-suggestions">
+                    <Link to="/" title="Accueil">Accueil</Link>
+                    <Link to="/products" title="Machines">Machines</Link>
+                    {/* SWITCH CART */}
+                    {/* <Link to="/shop" title="Shop">Shop</Link> */}
+                </div>
             </div>
         </div>
     );

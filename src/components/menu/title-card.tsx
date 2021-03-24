@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { enableMainScroll } from "../../functions/disable-scroll";
 import { format_string } from "../../functions/format_string";
-import { Strapi_Menu_Interface } from "../interfaces";
+import { InmodePanel_Menu_Interface } from "../interfaces";
 import Menu from "../menu";
 
 // VARIANT
@@ -71,7 +71,7 @@ const MenuTitleCard = ({ menu, prop_key }:MenuTitleCard) => {
 };
 
 interface MenuTitleCard {
-    menu:Strapi_Menu_Interface;
+    menu:InmodePanel_Menu_Interface;
     prop_key: number | undefined;
 };
 
