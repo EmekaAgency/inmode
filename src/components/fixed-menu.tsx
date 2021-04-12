@@ -2,8 +2,12 @@ import React from "react"
 import Menu from "./menu";
 import { Link } from "gatsby";
 import MenusContext from "./contexts/menus-context"
-// import CartBasket from "./CartBasket"
-// import { useCart } from './contexts/cart-provider';
+// {/* SWITCH CART */}
+
+import CartBasket from "./CartBasket"
+import { useCart } from './contexts/cart-provider';
+
+// {/* SWITCH CART END */}
 import { useImages } from './contexts/images-provider';
 
 const FixedMenu = ({ customClass }:{ customClass?:string }) => {
@@ -26,7 +30,12 @@ const FixedMenu = ({ customClass }:{ customClass?:string }) => {
         };
     }, []);
 
-    // const cart = useCart();
+    
+    // {/* SWITCH CART */}
+    
+    const cart = useCart();
+
+    // {/* SWITCH CART END */}
 
     const images = useImages();
 
@@ -48,7 +57,10 @@ const FixedMenu = ({ customClass }:{ customClass?:string }) => {
                         );
                     })}
                     {/* SWITCH CART */}
-                    {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/> : null } */}
+
+                    { cart.cart.length > 0 || cart.appeared ? <CartBasket/> : null }
+
+                    {/* SWITCH CART END */}
                 </div>
             </div>
         </div>

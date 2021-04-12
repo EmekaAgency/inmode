@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "name": "Tags",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tag": {
+      "type": "string"
+    },
+    "products": {
+      "collection": "product",
+      "via": "Tags"
+    },
+    "tag_families": {
+      "collection": "tag-family",
+      "via": "tags"
+    }
+  }
+}

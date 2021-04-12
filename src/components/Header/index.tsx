@@ -3,11 +3,15 @@ import React from "react";
 import HeaderTop from "./header-top";
 import HeaderBottom from "./header-bottom";
 import HeaderMini from "./header-mini";
-// import { useCart } from '../contexts/cart-provider';
 import { useWindowSize } from "../../functions/window-size";
 import { disableMainScroll } from "../../functions/disable-scroll";
 import { useImages } from '../contexts/images-provider';
-// import CartBasket from "../CartBasket";
+// {/* SWITCH CART */}
+  
+import { useCart } from '../contexts/cart-provider';
+import CartBasket from "../CartBasket";
+
+// {/* SWITCH CART END */}
 
 const Header = ({}:Header) => {
 
@@ -19,7 +23,11 @@ const Header = ({}:Header) => {
     size.width < 1000 && disableMainScroll();
   }
 
-  // const cart = useCart();
+  // {/* SWITCH CART */}
+    
+  const cart = useCart();
+
+  // {/* SWITCH CART END */}
 
   const size = useWindowSize();
 
@@ -35,7 +43,10 @@ const Header = ({}:Header) => {
           {size.width > 1199 && <HeaderBottom/>}
           {size.width < 1200 && <HeaderMini/>}
           {/* SWITCH CART */}
-          {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null } */}
+
+          { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null }
+
+          {/* SWITCH CART END */}
           <button
             className="header-mini-menu"
             onClick={(e)=>{openMenu(e)}}

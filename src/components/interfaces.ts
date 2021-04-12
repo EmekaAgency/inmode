@@ -7,7 +7,7 @@ export interface InmodePanel_Addon_Interface {
     WhatIs?: InmodePanel_Generic_WhatIs_Interface;
     KeyBenefits?: InmodePanel_Base_Texte_Interface[];
     Videos?: InmodePanel_Addon_Video_Interface[];
-    BeforesAfters?: InmodePanel_anel_Generic_BeforeAfter_Interface[];
+    BeforesAfters?: InmodePanel_Generic_BeforeAfter_Interface[];
     WhatTreats?: InmodePanel_Addon_WhatTreat_Interface[];
     ClinicalStudies?: InmodePanel_Generic_ClinicalStudies_Interface[];
     ProductPresentation?: InmodePanel_Addon_ProductPresentation_Interface[];
@@ -244,8 +244,8 @@ export interface  InmodePanel_SellingNext_Interface {
         Mail?: string;
         Phone?: string;
         Society?: string;
-        Address1?: string;
-        Address2?: string;
+        Address?: string;
+        Country?: string;
         ZIP?: string;
         City?: string;
     };
@@ -298,8 +298,8 @@ export interface  InmodePanel_SellingNext_Interface {
         Lastname?: string;
         Phone?: string | number;
         Mail?: string;
-        Address1?: string;
-        Address2?: string;
+        Address?: string;
+        Country?: string;
         ZIP?: string | number;
         City?: string;
         Society?: string;
@@ -309,8 +309,8 @@ export interface  InmodePanel_SellingNext_Interface {
         Lastname?: string;
         Phone?: string | number;
         Mail?: string;
-        Address1?: string;
-        Address2?: string;
+        Address?: string;
+        Country?: string;
         ZIP?: string | number;
         City?: string;
         Society?: string;
@@ -325,8 +325,8 @@ export interface  InmodePanel_SellingNext_Interface {
         Firstname?: string;
         Lastname?: string;
         Phone?: string;
-        Address1?: string;
-        Address2?: string;
+        Address?: string;
+        Country?: string;
         ZIP?: string;
         City?: string;
         Society?: string;
@@ -381,12 +381,13 @@ export interface NameTable_Interface {
 
 export interface SogecommerceOrder {
     signature: string;// "szb8I5l+avSYQQ0qWq8E8FhI6WGiAOOOsbo9iyk7uIs="
+    intra_tva: string,
     vads_action_mode: string;// "INTERACTIVE"
     vads_amount: string | number;// "86400"
     vads_ctx_mode: string;// "TEST"
     vads_currency: string | number;// 978
     vads_cust_address: string;// "124 Rue de Crimée"
-    vads_cust_address2?: string;// ""
+    vads_cust_country?: string;// ""
     vads_cust_cell_phone: string | number;// "0667630604"
     vads_cust_city: string;// "Marseille"
     vads_cust_email: string;// "mael.fallet@gmail.com"
@@ -417,7 +418,7 @@ export interface SogecommerceOrder {
     vads_ship_to_legal_name: string;// "Emeka"
     vads_ship_to_phone_num: string | number;// "0769818682"
     vads_ship_to_street: string;// "124 Rue de Crimée"
-    vads_ship_to_street2: string;// ""
+    vads_ship_to_country: string;// ""
     vads_ship_to_zip: string | number;// "13003"
     delivery_mail: string;
     vads_site_id: string | number;// "53371535"
@@ -454,10 +455,45 @@ export interface Cart_Interface {
     init_shop(shop_id:string, urls:{success: string, cancel: string, refused: string, error: string}, order_urls:{create: string, load:string, signature:string}):Promise<void>;
     updateForm(e:Event | any):void;
     total_articles():number;
-    formSave: any;
+    formSave: Cart_FormSave_Interface | any;
     formReset():void,
     cartReset():void,
+    differentAddress: Boolean,
+    hasDifferentShipping(_b:boolean):void,
+    getTVAIntra():boolean,
 };
+
+export interface Cart_FormSave_Interface {
+    vads_cust_title?: string;
+    vads_cust_first_name?: string;
+    vads_cust_last_name?: string;
+    vads_cust_status?: string;
+    vads_cust_legal_name?: string;
+    vads_cust_address_number?: string;
+    vads_cust_address?: string;
+    vads_cust_address2?: string;
+    vads_cust_zip?: string;
+    vads_cust_city?: string;
+    vads_cust_state?: string;
+    vads_cust_country?: string;
+    intra_tva?: string;
+    vads_ship?: string;
+    vads_ship_to_street_number?: string;
+    vads_ship_to_street?: string;
+    vads_ship_to_street2?: string;
+    vads_ship_to_zip?: string;
+    vads_ship_to_city?: string;
+    vads_ship_to_state?: string;
+    vads_ship_to_country?: string;
+    vads_ship_to_first_name?: string;
+    vads_ship_to_last_name?: string;
+    vads_ship_to_phone_num?: string;
+    vads_ship_to_status?: string;
+    vads_ship_to_legal_name?: string;
+    delivery_mail?: string;
+    vads_cust_cell_phone?: string;
+    vads_cust_email?: string;
+}
 
 export interface PayParams_Interface {
     signature: string;

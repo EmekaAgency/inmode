@@ -75,11 +75,11 @@
 
 }
 
-.order-layout .order .order-billing .billing-table .billing-address1 {
+.order-layout .order .order-billing .billing-table .billing-address {
 
 }
 
-.order-layout .order .order-billing .billing-table .billing-address2 {
+.order-layout .order .order-billing .billing-table .billing-country {
 
 }
 
@@ -123,11 +123,11 @@
 
 }
 
-.order-layout .order .order-shipping .shipping-table .shipping-address1 {
+.order-layout .order .order-shipping .shipping-table .shipping-address {
 
 }
 
-.order-layout .order .order-shipping .shipping-table .shipping-address2 {
+.order-layout .order .order-shipping .shipping-table .shipping-country {
 
 }
 

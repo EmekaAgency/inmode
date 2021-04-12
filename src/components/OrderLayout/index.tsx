@@ -13,46 +13,41 @@ interface OrderLayoutParams {
 };
 
 function get_day(day:number):string {
-    switch(day) {
-        case 1: return 'lundi';
-        case 2: return 'mardi';
-        case 3: return 'mercredi';
-        case 4: return 'jeudi';
-        case 5: return 'vendredi';
-        case 6: return 'samedi';
-        case 7: return 'dimanche';
-        default: return 'unknown';
+    try {
+        return ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'][day];
+    }
+    catch(err) {
+        return 'unknown';
     }
 }
 
 function get_month(month:number):string {
-    switch(month) {
-        case 1: return 'janvier';
-        case 2: return 'février';
-        case 3: return 'mars';
-        case 4: return 'avril';
-        case 5: return 'mai';
-        case 6: return 'juin';
-        case 7: return 'juillet';
-        case 8: return 'août';
-        case 9: return 'septembre';
-        case 10: return 'octobre';
-        case 11: return 'novembre';
-        case 12: return 'décembre';
-        default : return 'unknown';
+    try {
+        return ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'][month]
+    }
+    catch(err) {
+        return 'unknown';
     }
 }
+
+function _getDay(_date:Date) {return get_day(_date.getDay());}
+function _getDate(_date:Date) {return (_date.getDate() < 10 ? `0${_date.getDate()}` : _date.getDate());}
+function _getMonth(_date:Date) {return get_month(_date.getMonth());}
+function _getFull_year(_date:Date) {return _date.getFullYear();}
+function _getHour(_date:Date) {return (_date.getHours() < 10 ? `0${_date.getHours()}` : _date.getHours());}
+function _getMinute(_date:Date) {return (_date.getMinutes() < 10 ? `0${_date.getMinutes()}` : _date.getMinutes());}
+function _getSecond(_date:Date) {return (_date.getSeconds() < 10 ? `0${_date.getSeconds()}` : _date.getSeconds());}
 
 function get_date(date:string):string {
     const _date = new Date(date);
     let _temp = "";
-    _temp += get_day(_date.getDay()) + ' ';
-    _temp += (_date.getDate() < 10 ? `0${_date.getDate()}` : _date.getDate()) + ' ';
-    _temp += get_month(_date.getMonth() + 1) + ' ';
-    _temp += _date.getFullYear() + ' à ';
-    _temp += (_date.getHours() + 1 < 10 ? `0${_date.getHours() + 1}` : _date.getHours() + 1) + ':';
-    _temp += (_date.getMinutes() < 10 ? `0${_date.getMinutes()}` : _date.getMinutes()) + ':';
-    _temp += (_date.getSeconds() < 10 ? `0${_date.getSeconds()}` : _date.getSeconds());
+    _temp += _getDay(_date) + ' ';
+    _temp += _getDate(_date) + ' ';
+    _temp += _getMonth(_date) + ' ';
+    _temp += _getFull_year(_date) + ' à ';
+    _temp += _getHour(_date) + ':';
+    _temp += _getMinute(_date) + ':';
+    _temp += _getSecond(_date);
     return _temp;
 }
 
@@ -109,8 +104,8 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                             {order.Billing.Firstname && <div className="billing-firstname">{order.Billing.Firstname}</div>}
                             {order.Billing.Lastname && <div className="billing-lastname">{order.Billing.Lastname}</div>}
                             {order.Billing.Society && <div className="billing-society">{order.Billing.Society}</div>}
-                            {order.Billing.Address1 && <div className="billing-address1">{order.Billing.Address1}</div>}
-                            {order.Billing.Address2 && <div className="billing-address2">{order.Billing.Address2}</div>}
+                            {order.Billing.Address && <div className="billing-address">{order.Billing.Address}</div>}
+                            {order.Billing.Country && <div className="billing-country">{order.Billing.Country}</div>}
                             {order.Billing.ZIP && <div className="billing-zip">{order.Billing.ZIP}</div>}
                             {order.Billing.City && <div className="billing-city">{order.Billing.City}</div>}
                             {order.Billing.Phone && <div className="billing-phone">{order.Billing.Phone}</div>}
@@ -124,8 +119,8 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                             {order.Shipping.Firstname && <div className="shipping-firstname">{order.Shipping.Firstname}</div>}
                             {order.Shipping.Lastname && <div className="shipping-lastname">{order.Shipping.Lastname}</div>}
                             {order.Shipping.Society && <div className="shipping-society">{order.Shipping.Society}</div>}
-                            {order.Shipping.Address1 && <div className="shipping-address1">{order.Shipping.Address1}</div>}
-                            {order.Shipping.Address2 && <div className="shipping-address2">{order.Shipping.Address2}</div>}
+                            {order.Shipping.Address && <div className="shipping-address">{order.Shipping.Address}</div>}
+                            {order.Shipping.Country && <div className="shipping-country">{order.Shipping.Country}</div>}
                             {order.Shipping.ZIP && <div className="shipping-zip">{order.Shipping.ZIP}</div>}
                             {order.Shipping.City && <div className="shipping-city">{order.Shipping.City}</div>}
                             {order.Shipping.Phone && <div className="shipping-phone">{order.Shipping.Phone}</div>}
@@ -140,9 +135,12 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                 }
                 <div className="payment-suggestions">
                     <Link to="/" title="Accueil">Accueil</Link>
-                    <Link to="/products" title="Machines">Machines</Link>
+                    <Link to="/workstation" title="Machines">Machines</Link>
                     {/* SWITCH CART */}
-                    {/* <Link to="/shop" title="Shop">Shop</Link> */}
+
+                    <Link to="/shop" title="Shop">Shop</Link>
+
+                    {/* SWITCH CART END */}
                 </div>
             </div>
         </div>

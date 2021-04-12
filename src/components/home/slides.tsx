@@ -70,7 +70,7 @@ const Slides = ({from}:Slides) => {
     }
 
     return (
-        <div className={`slides-${from} ${current > -1 && open ? 'show' : ''}`}>
+        <div className={`slides-${from} ${current > -1 && open === true ? 'show' : ''}`}>
             <Carousel
                 id={`carousel-${from}`}
                 options={flickityOptions}
@@ -80,7 +80,7 @@ const Slides = ({from}:Slides) => {
                     return (
                         <div
                             key={key}
-                            className={"slide transition gallery-cell" + (current === key && open ? ' show' : '')}
+                            className={"slide transition gallery-cell" + (current === key && open === true ? ' show' : '')}
                         >
                             <div className="slide-title">
                                 {slide.short_descr}
@@ -132,7 +132,7 @@ const Slides = ({from}:Slides) => {
             {current > -1 && slides && slides.map((slide, key) => {
                 return (
                     <div
-                        className={"product-view" + (current > -1 && current === key && open ? " show" : '')}
+                        className={"product-view" + (current > -1 && current === key && open === true ? " show" : '')}
                         onClick={(e) => {close_view(e, this);}}
                         key={key}
                     >

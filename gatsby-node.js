@@ -26,18 +26,31 @@ exports.onCreatePage = async ({
     return false;
   }
 
-  {/* SWITCH CART */}
-  if(page.path == '/shop/') {
-    return false;
-  }
+  // {/* SWITCH CART */}
+
+  // if(page.path == '/shop/') {
+  //   return false;
+  // }
+  // if(page.path == '/payment/cancel/') {
+  //   return false;
+  // }
+  // if(page.path == '/payment/error/') {
+  //   return false;
+  // }
+  // if(page.path == '/payment/paid/') {
+  //   return false;
+  // }
+  // if(page.path == '/payment/refused/') {
+  //   return false;
+  // }
+
+  // {/* SWITCH CART END */}
 
   createPage({
     ...page,
     context: {
       ...page.context,
       today_string: [new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate()].join('-'),
-      strapi_id: process.env.STRAPI_ID,
-      strapi_pass: process.env.STRAPI_PASS,
     },
   })
 }

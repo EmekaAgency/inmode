@@ -15,12 +15,17 @@ import PrivacyPolicy from "../privacy-policy";
 import FixedMenu from "../fixed-menu";
 import MenusProvider from "../contexts/menus-provider";
 import ProductsProvider from "../contexts/products-provider";
-// import CartPurchase from "../Cart";
 import Modale from "../Modale";
 
 import "./index.css";
 import ImagesProvider from "../contexts/images-provider";
-// import PayParams from "../Cart/pay_params";
+
+// {/* SWITCH CART */}
+
+import CartPurchase from "../Cart";
+import PayParams from "../Cart/pay_params";
+
+// {/* SWITCH CART END */}
 
 const Layout = ({ children }) => {
 
@@ -50,8 +55,11 @@ const Layout = ({ children }) => {
         <FixedMenu/>
         {/* {size.height < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
         {/* SWITCH CART */}
-        {/* <CartPurchase/> */}
-        {/* <PayParams/> */}
+
+        <CartPurchase/>
+        <PayParams/>
+
+        {/* SWITCH CART END */}
         <PrivacyPolicy />
         <ContactUs/>
         <Footer/>

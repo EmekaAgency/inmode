@@ -3,11 +3,13 @@ import { useCart } from "../contexts/cart-provider";
 import { useImages } from '../contexts/images-provider';
 import {
     AddressLine1Field,
-    AddressLine2Field,
+    // AddressLine2Field,
     CityField,
+    CountryField,
     DeliveryAddressLine1Field,
-    DeliveryAddressLine2Field,
+    // DeliveryAddressLine2Field,
     DeliveryCityField,
+    DeliveryCountryField,
     DeliveryFirstNameField,
     DeliveryLastNameField,
     DeliveryMailField,
@@ -15,6 +17,7 @@ import {
     DeliverySocietyField,
     DeliveryZipField,
     FirstNameField,
+    IntraTVAField,
     LastNameField,
     MailField,
     MobilePhoneField,
@@ -40,28 +43,19 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     const manageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         otherAddress && setOtherAddressOpened(false);
         setOtherAddress(e.currentTarget.checked);
+        cart.hasDifferentShipping(e.currentTarget.checked);
     }
+
+    // Tester mails
+    // Ajouter logs de partout
 
     const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
         if(document != undefined) {
-            if(e.currentTarget.id == 'sepa') {
-                let _other:HTMLInputElement = document.getElementById('soge');
-                if(_other && _other.checked == true && e.currentTarget.checked == true) {
-                    _other.checked= false;
-                }
-                else if(_other && _other.checked == false && e.currentTarget.checked == false) {
-                    _other.checked= true;
-                }
-            }
-            if(e.currentTarget.id == 'soge') {
-                let _other = document.getElementById('sepa');
-                if(_other && _other.checked == true && e.currentTarget.checked == true) {
-                    _other.checked= false;
-                }
-                else if(_other && _other.checked == false && e.currentTarget.checked == false) {
-                    _other.checked= true;
-                }
-            }
+            let current:HTMLInputElement = e.currentTarget;
+            console.log(`current : ${current.id}`);
+            let other:HTMLInputElement = document.getElementById(current.id == 'sepa' ? 'soge' : 'sepa');
+            console.log(`other : ${other.id}`);
+            other.checked = !current.checked;
             return true;
         }
         return false;
@@ -119,15 +113,36 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     React.useEffect(() => {
         if(isSubmit === true) {
             if(isCreated === true) {
+                // setIsSubmit(false);
+                // setIsCreated(false);
+                // setFormOpened(false);
+                // setOtherAddress(false);
+                // cart.hasDifferentShipping(false);
                 setIsSubmit(false);
                 setIsCreated(false);
                 setFormOpened(false);
+                setOtherAddress(false);
+                cart.hasDifferentShipping(false);
+                setOtherAddressOpened(false);
                 if(typeof document !== "undefined") {
                     document.forms["step-2-part"] && document.forms["step-2-part"].reset();
                     document.forms["step-3-part"] && document.forms["step-3-part"].reset();
-                    document.getElementById('sepa') != null && document.getElementById('sepa').setAttribute('checked', false);
-                    document.getElementById('facture') != null && document.getElementById('facture').setAttribute('checked', false);
-                    document.getElementById('terms') != null && document.getElementById('terms').setAttribute('checked', false);
+                    let _sepa = document.getElementById('sepa')
+                    if(_sepa) {
+                        _sepa.checked = _sepa.checked ? true : false;
+                    } // removeAttribute('checked');
+                    let _soge = document.getElementById('soge')
+                    if(_soge) {
+                        _soge.checked = _soge.checked ? true : false;
+                    } // setAttribute('checked', 'true');
+                    let _facture = document.getElementById('facture');
+                    if(_facture) {
+                        _facture.checked = false;
+                    }
+                    let _terms = document.getElementById('terms');
+                    if(_terms) {
+                        _terms.checked = false;
+                    }
                 }
             }
             else {
@@ -236,8 +251,14 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
+                        {/*PAS DE LIVRAISON*/}
+                        {/* <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div> */}
+                        {/*LIVRAISON*/}
                         <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div>
                         {cart.pay_delivery() ? <div className="price">
+                            {/*PAS DE LIVRAISON*/}
+                            {/* {(cart.delivery_tax() && false) || 0} */}
+                            {/*LIVRAISON*/}
                             {cart.delivery_tax()}
                         </div>: null }
                     </div>
@@ -300,13 +321,17 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     className={`neumorphic ${otherAddress && (' other-address' || '')}`}
                 >
                     <div id="step-1-part" className="unmorphic custom-scrollbar">
-                        <FirstNameField classes="required form-field step-1" required={true}/>
-                        <LastNameField classes="required form-field step-1" required={true}/>
+                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
+                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                         {/* <input className="required form-field step-1" name="name" type="text" required placeholder="Nom"/> */}
                         <SocietyField classes="form-field step-1" />
                         {/* <input className="form-field step-1" name="society" type="text" placeholder="Société"/> */}
                         <AddressLine1Field classes="required form-field step-1" required={true}/>
-                        <AddressLine2Field classes="required form-field step-1"/>
+                        {/* <AddressLine2Field classes="required form-field step-1"/> */}
+                        <CountryField classes="required form-field step-1"/>
+                        {
+                            cart.differentAddress == false && cart.getTVAIntra() && otherAddress == false && <IntraTVAField classes="required form-field step-1" required={true}/>
+                        }
                         {/* <textarea className="required form-field step-1" name="adresse1" type="text" required placeholder="Adresse" rows="3"></textarea> */}
                         <ZipField classes="required form-field step-1" required={true}/>
                         {/* <input className="required form-field step-1" name="zip" type="text" required placeholder="Code postal"/> */}
@@ -351,13 +376,17 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     <hr className="unmorphic"/>
                 </div>
                 <div className="form custom-scrollbar">
-                    <DeliveryFirstNameField classes="required form-field step-2" required={true}/>
-                    <DeliveryLastNameField classes="required form-field step-2" required={true}/>
+                    <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
+                    <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                     {/* <input className="required form-field step-2" name="other-name" type="text" required placeholder="Nom"/> */}
                     <DeliverySocietyField classes="form-field step-2" />
                     {/* <input className="form-field step-2" name="other-society" type="text" placeholder="Société"/> */}
                     <DeliveryAddressLine1Field classes="required form-field step-2" required={true}/>
-                    <DeliveryAddressLine2Field classes="required form-field step-2"/>
+                    {/* <DeliveryAddressLine2Field classes="required form-field step-2"/> */}
+                    <DeliveryCountryField classes="required form-field step-2"/>
+                    {
+                        cart.differentAddress == true && cart.getTVAIntra() && otherAddress == true && <IntraTVAField classes="required form-field step-1" required={true}/>
+                    }
                     {/* <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Adresse" rows="3"></textarea> */}
                     <DeliveryZipField classes="required form-field step-2" required={true}/>
                     {/* <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Code postal"/> */}
@@ -391,12 +420,12 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 /></div>
                 <div className="choice-label sepa"><label htmlFor="sepa">Virement</label></div>
                 <div className="choice"><input
-                    type="checkbox"
-                    className="form-field"
                     id="soge"
                     name="soge"
                     value="soge"
                     defaultChecked={true}
+                    type="checkbox"
+                    className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
                 <div className="choice-label soge"><label htmlFor="soge">Paiement par carte</label></div>
@@ -440,7 +469,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 onClick={(e) => {setFormOpened(true)}}
             >
                 {buttonText()}
-                {isSubmit == true ? <LoadingGIF custom="payment"/> : null}
+                {isSubmit == true ? <LoadingGIF customClass="payment"/> : null}
             </button>}
         </div>
     );

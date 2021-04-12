@@ -261,6 +261,23 @@ ol {
     }
 }
 
+/* TOOLS */
+
+.width-10 {width: 10%;}
+.width-20 {width: 20%;}
+.width-25 {width: 25%;}
+.width-1-3 {width: calc(100% / 3);}
+.width-40 {width: 40%;}
+.width-50 {width: 50%;}
+.width-60 {width: 60%;}
+.width-2-3 {width: calc(200% / 3);}
+.width-75 {width: 75%;}
+.width-80 {width: 80%;}
+.width-100 {width: 100%;}
+
+.inline {display: inline;}
+.inline-block {display: inline-block;}
+
 /* MENU-TITLE DROPDOWN-MENU */
 
 .header-parts>.header-top .menu-title .dropdown-menu,

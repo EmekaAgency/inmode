@@ -30,7 +30,7 @@ const IndexPage = () => {
 
   return (
       <Layout>
-        <SEO title="Inmode"/>
+        <SEO/>
         <Hero/>
         {size.width > 999 ? <Slides from='home'/> : <SlidesMini from="home"/>}
         <Alveoles />

@@ -1,8 +1,32 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import { useCart } from '../contexts/cart-provider';
 
 // TODO Créer classes Input, Select, etc pour minifier le code des Field
+
+// -----============================--------//
+// -----        CHECKING FUNCS      --------//
+// -----============================--------//
+
+function isCountry(country:{label:string, code:string}):boolean {
+    if(country.label == undefined || country.code == undefined) {
+        return false;
+    }
+    if(typeof country.label != 'string' || typeof country.code != 'string') {
+        return false;
+    }
+    return true;
+}
+
+// -----============================--------//
+// -----        DEFAULT PARAMS      --------//
+// -----============================--------//
+
+const defaultCountries = [
+    {label: 'France', code: 'FR'},
+    {label: 'Belgique', code: 'BE'},
+    {label: 'Luxembourg', code: 'LU'},
+];
 
 const defaultParams = {
 
@@ -16,20 +40,23 @@ const defaultParams = {
     Society: {name: 'vads_cust_legal_name', id: 'vads_cust_legal_name', placeholder: 'Société'},
         Address: {name: 'vads_', id: 'vads_', placeholder: 'Adresse'},
     AddressStreetNumber: {name: 'vads_cust_address_number', id: 'vads_cust_address_number', placeholder: 'Numéro de voie'},
-    AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Adresse ligne 1'},
+    // AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Adresse ligne 1'},
+    AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Adresse'},
     AddressLine2: {name: 'vads_cust_address2', id: 'vads_cust_address2', placeholder: 'Adresse ligne 2'},
     Zip: {name: 'vads_cust_zip', id: 'vads_cust_zip', placeholder: 'Code Postal'},
     City: {name: 'vads_cust_city', id: 'vads_cust_city', placeholder: 'Ville'},
     State: {name: 'vads_cust_state', id: 'vads_cust_state', placeholder: 'État/région'},
-    Country: {name: 'vads_cust_country', id: 'vads_cust_country', placeholder: 'Pays'},
+    Country: {name: 'vads_cust_country', id: 'vads_cust_country', placeholder: 'Pays', countries: defaultCountries},
+    Intra_TVA: {name: 'intra_tva', id: 'intra_tva', placeholder: 'TVA intracommunautaire'},
         DeliveryAddress: {name: 'vads_ship', id: 'vads_ship', placeholder: 'Adresse'},
     DeliveryAddressStreetNumber: {name: 'vads_ship_to_street_number', id: 'vads_ship_to_street_number', placeholder: 'Numéro de voie'},
-    DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Adresse ligne 1'},
+    // DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Adresse ligne 1'},
+    DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Adresse'},
     DeliveryAddressLine2: {name: 'vads_ship_to_street2', id: 'vads_ship_to_street2', placeholder: 'Adresse ligne 2'},
     DeliveryZip: {name: 'vads_ship_to_zip', id: 'vads_ship_to_zip', placeholder: 'Code Postal'},
     DeliveryCity: {name: 'vads_ship_to_city', id: 'vads_ship_to_city', placeholder: 'Ville'},
     DeliveryState: {name: 'vads_ship_to_state', id: 'vads_ship_to_state', placeholder: 'État/région'},
-    DeliveryCountry: {name: 'vads_ship_to_country', id: 'vads_ship_to_country', placeholder: 'Pays'},
+    DeliveryCountry: {name: 'vads_ship_to_country', id: 'vads_ship_to_country', placeholder: 'Pays', countries: defaultCountries},
     DeliveryFirstName: {name: 'vads_ship_to_first_name', id: 'vads_ship_to_first_name', placeholder: 'Prénom'},
     DeliveryLastName: {name: 'vads_ship_to_last_name', id: 'vads_ship_to_last_name', placeholder: 'Nom'},
     DeliveryPhone: {name: 'vads_ship_to_phone_num', id: 'vads_ship_to_phone_num', placeholder: 'Téléphone'},
@@ -69,11 +96,12 @@ const defaultParams = {
 // -----           IDENTITY         --------//
 // -----============================--------//
 
-export const CivilGenderField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const CivilGenderField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <select
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             defaultValue={value || useCart().formSave[defaultParams.CivilGender.name] || ""}
             placeholder={placeholder || `${defaultParams.CivilGender.placeholder}${required ? '*' :''}`}
             name={name || defaultParams.CivilGender.name}
@@ -85,10 +113,11 @@ export const CivilGenderField = ({ value, placeholder, name, id, required, class
         </select>
     );
 };
-export const FullNameField = ({ value, placeholder, name, id, required }:PayField_Interface) => {
+export const FullNameField = ({ value, placeholder, name, id, required, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.FullName.name] || ""}
             placeholder={placeholder || `${defaultParams.FullName.placeholder}${required ? '*' :''}`}
@@ -98,11 +127,12 @@ export const FullNameField = ({ value, placeholder, name, id, required }:PayFiel
         />
     );
 };
-export const FirstNameField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const FirstNameField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.FirstName.name] || ""}
             placeholder={placeholder || `${defaultParams.FirstName.placeholder}${required ? '*' :''}`}
@@ -112,11 +142,12 @@ export const FirstNameField = ({ value, placeholder, name, id, required, classes
         />
     );
 };
-export const LastNameField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const LastNameField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.LastName.name] || ""}
             placeholder={placeholder || `${defaultParams.LastName.placeholder}${required ? '*' :''}`}
@@ -126,11 +157,12 @@ export const LastNameField = ({ value, placeholder, name, id, required, classes 
         />
     );
 };
-export const StatusField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const StatusField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             hidden
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.Status.name] || ""}
@@ -148,11 +180,12 @@ export const StatusField = ({ value, placeholder, name, id, required, classes }:
 // -----            SOCIETY         --------//
 // -----============================--------//
 
-export const SocietyField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const SocietyField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.Society.name] || ""}
             placeholder={placeholder || `${defaultParams.Society.placeholder}${required ? '*' :''}`}
@@ -167,10 +200,11 @@ export const SocietyField = ({ value, placeholder, name, id, required, classes }
 // -----           ADDRESS          --------//
 // -----============================--------//
 
-export const AddressField = ({ value, placeholder, name, id, required}:PayField_Interface) => {
+export const AddressField = ({ value, placeholder, name, id, required, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.Address.name] || ""}
             placeholder={placeholder || `${defaultParams.Address.placeholder}${required ? '*' :''}`}
@@ -180,11 +214,12 @@ export const AddressField = ({ value, placeholder, name, id, required}:PayField_
         />
     );
 };
-export const AddressStreetNumberField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const AddressStreetNumberField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="number"
             defaultValue={value || useCart().formSave[defaultParams.AddressStreetNumber.name] || ""}
             placeholder={placeholder || `${defaultParams.AddressStreetNumber.placeholder}${required ? '*' :''}`}
@@ -194,11 +229,12 @@ export const AddressStreetNumberField = ({ value, placeholder, name, id, require
         />
     );
 };
-export const AddressLine1Field = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const AddressLine1Field = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.AddressLine1.name] || ""}
             placeholder={placeholder || `${defaultParams.AddressLine1.placeholder}${required ? '*' :''}`}
@@ -208,11 +244,12 @@ export const AddressLine1Field = ({ value, placeholder, name, id, required, clas
         />
     );
 };
-export const AddressLine2Field = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const AddressLine2Field = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.AddressLine2.name] || ""}
             placeholder={placeholder || `${defaultParams.AddressLine2.placeholder}${required ? '*' :''}`}
@@ -222,11 +259,12 @@ export const AddressLine2Field = ({ value, placeholder, name, id, required, clas
         />
     );
 };
-export const ZipField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const ZipField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="number"
             defaultValue={value || useCart().formSave[defaultParams.Zip.name] || ""}
             placeholder={placeholder || `${defaultParams.Zip.placeholder}${required ? '*' :''}`}
@@ -236,11 +274,12 @@ export const ZipField = ({ value, placeholder, name, id, required, classes }:Pay
         />
     );
 };
-export const CityField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const CityField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.City.name] || ""}
             placeholder={placeholder || `${defaultParams.City.placeholder}${required ? '*' :''}`}
@@ -250,11 +289,12 @@ export const CityField = ({ value, placeholder, name, id, required, classes }:Pa
         />
     );
 };
-export const StateField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const StateField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.State.name] || ""}
             placeholder={placeholder || `${defaultParams.State.placeholder}${required ? '*' :''}`}
@@ -264,19 +304,52 @@ export const StateField = ({ value, placeholder, name, id, required, classes }:P
         />
     );
 };
-// ISO 3166 alpha-2
-export const CountryField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const IntraTVAField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
-            type=""
-            defaultValue={value || useCart().formSave[defaultParams.Country.name] || ""}
+            style={style || undefined}
+            type="text"
+            defaultValue={value || useCart().formSave[defaultParams.Intra_TVA.name] || ""}
+            placeholder={placeholder || `${defaultParams.Intra_TVA.placeholder}${required ? '*' :''}`}
+            name={name || defaultParams.Intra_TVA.name}
+            id={id || defaultParams.Intra_TVA.id}
+            required={required ||false}
+        />
+    );
+}
+// ISO 3166 alpha-2
+export const CountryField = ({ value, placeholder, name, id, required, classes, style, countries }:CountryPayField_Interface) => {
+    return (
+        <select
+            onChange={useCart().updateForm}
+            className={classes ||''}
+            style={style || undefined}
+            defaultValue={value || useCart().formSave[defaultParams.Country.name] || "FR"}
             placeholder={placeholder || `${defaultParams.Country.placeholder}${required ? '*' :''}`}
             name={name || defaultParams.Country.name}
             id={id || defaultParams.Country.id}
             required={required ||false}
-        />
+        >
+            {
+                countries != undefined && Array.isArray(countries) && countries.length > 0 ? countries.map((country) => {
+                    if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
+                        return <option value={country.code}>{country.label}</option>
+                    }
+                    return <></>;
+                })
+                :
+                Array.isArray(defaultParams.Country.countries) && defaultParams.Country.countries.length > 0 ? defaultParams.Country.countries.map((country) => {
+                    if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
+                        return <option value={country.code}>{country.label}</option>
+                    }
+                    return <></>;
+                })
+                :
+                <></>
+            }
+        </select>
     );
 };
 
@@ -284,10 +357,11 @@ export const CountryField = ({ value, placeholder, name, id, required, classes }
 // -----       DELIVERY ADDRESS     --------//
 // -----============================--------//
 
-export const DeliveryAddressField = ({ value, placeholder, name, id, required }:PayField_Interface) => {
+export const DeliveryAddressField = ({ value, placeholder, name, id, required, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryAddress.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryAddress.placeholder}${required ? '*' :''}`}
@@ -297,11 +371,12 @@ export const DeliveryAddressField = ({ value, placeholder, name, id, required }:
         />
     );
 };
-export const DeliveryAddressStreetNumberField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryAddressStreetNumberField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="number"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryAddressStreetNumber.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryAddressStreetNumber.placeholder}${required ? '*' :''}`}
@@ -311,11 +386,12 @@ export const DeliveryAddressStreetNumberField = ({ value, placeholder, name, id,
         />
     );
 };
-export const DeliveryAddressLine1Field = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryAddressLine1Field = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryAddressLine1.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryAddressLine1.placeholder}${required ? '*' :''}`}
@@ -325,11 +401,12 @@ export const DeliveryAddressLine1Field = ({ value, placeholder, name, id, requir
         />
     );
 };
-export const DeliveryAddressLine2Field = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryAddressLine2Field = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryAddressLine2.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryAddressLine2.placeholder}${required ? '*' :''}`}
@@ -339,11 +416,12 @@ export const DeliveryAddressLine2Field = ({ value, placeholder, name, id, requir
         />
     );
 };
-export const DeliveryZipField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryZipField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="number"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryZip.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryZip.placeholder}${required ? '*' :''}`}
@@ -353,11 +431,12 @@ export const DeliveryZipField = ({ value, placeholder, name, id, required, class
         />
     );
 };
-export const DeliveryCityField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryCityField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryCity.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryCity.placeholder}${required ? '*' :''}`}
@@ -367,11 +446,12 @@ export const DeliveryCityField = ({ value, placeholder, name, id, required, clas
         />
     );
 };
-export const DeliveryStateField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryStateField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryState.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryState.placeholder}${required ? '*' :''}`}
@@ -382,25 +462,44 @@ export const DeliveryStateField = ({ value, placeholder, name, id, required, cla
     );
 };
 // ISO 3166 alpha-2
-export const DeliveryCountryField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryCountryField = ({ value, placeholder, name, id, required, classes, style, countries }:CountryPayField_Interface) => {
     return (
-        <input
+        <select
             onChange={useCart().updateForm}
             className={classes ||''}
-            type=""
-            defaultValue={value || useCart().formSave[defaultParams.DeliveryCountry.name] || ""}
+            style={style || undefined}
+            defaultValue={value || useCart().formSave[defaultParams.DeliveryCountry.name] || "FR"}
             placeholder={placeholder || `${defaultParams.DeliveryCountry.placeholder}${required ? '*' :''}`}
             name={name || defaultParams.DeliveryCountry.name}
             id={id || defaultParams.DeliveryCountry.id}
             required={required ||false}
-        />
+        >
+            {
+                countries != undefined && Array.isArray(countries) && countries.length > 0 ? countries.map((country) => {
+                    if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
+                        return <option value={country.code}>{country.label}</option>
+                    }
+                    return <></>;
+                })
+                :
+                Array.isArray(defaultParams.DeliveryCountry.countries) && defaultParams.DeliveryCountry.countries.length > 0 ? defaultParams.DeliveryCountry.countries.map((country) => {
+                    if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
+                        return <option value={country.code}>{country.label}</option>
+                    }
+                    return <></>;
+                })
+                :
+                <></>
+            }
+        </select>
     );
 };
-export const DeliveryFirstNameField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryFirstNameField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryFirstName.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryFirstName.placeholder}${required ? '*' :''}`}
@@ -410,11 +509,12 @@ export const DeliveryFirstNameField = ({ value, placeholder, name, id, required,
         />
     );
 };
-export const DeliveryLastNameField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryLastNameField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryLastName.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryLastName.placeholder}${required ? '*' :''}`}
@@ -424,11 +524,12 @@ export const DeliveryLastNameField = ({ value, placeholder, name, id, required, 
         />
     );
 };
-export const DeliveryStatusField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryStatusField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryStatus.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryStatus.placeholder}${required ? '*' :''}`}
@@ -440,11 +541,12 @@ export const DeliveryStatusField = ({ value, placeholder, name, id, required, cl
         />
     );
 };
-export const DeliveryPhoneField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryPhoneField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="tel"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryPhone.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryPhone.placeholder}${required ? '*' :''}`}
@@ -454,11 +556,12 @@ export const DeliveryPhoneField = ({ value, placeholder, name, id, required, cla
         />
     );
 };
-export const DeliverySocietyField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliverySocietyField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliverySociety.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliverySociety.placeholder}${required ? '*' :''}`}
@@ -468,11 +571,12 @@ export const DeliverySocietyField = ({ value, placeholder, name, id, required, c
         />
     );
 };
-export const DeliveryMailField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const DeliveryMailField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="text"
             defaultValue={value || useCart().formSave[defaultParams.DeliveryMail.name] || ""}
             placeholder={placeholder || `${defaultParams.DeliveryMail.placeholder}${required ? '*' :''}`}
@@ -487,10 +591,11 @@ export const DeliveryMailField = ({ value, placeholder, name, id, required, clas
 // -----           CONTACT          --------//
 // -----============================--------//
 
-export const PhoneField = ({ value, placeholder, name, id, required }:PayField_Interface) => {
+export const PhoneField = ({ value, placeholder, name, id, required, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
+            style={style || undefined}
             type="tel"
             defaultValue={value || useCart().formSave[defaultParams.Phone.name] || ""}
             placeholder={placeholder || `${defaultParams.Phone.placeholder}${required ? '*' :''}`}
@@ -500,11 +605,12 @@ export const PhoneField = ({ value, placeholder, name, id, required }:PayField_I
         />
     );
 };
-export const MobilePhoneField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const MobilePhoneField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="tel"
             defaultValue={value || useCart().formSave[defaultParams.MobilePhone.name] || ""}
             placeholder={placeholder || `${defaultParams.MobilePhone.placeholder}${required ? '*' :''}`}
@@ -514,10 +620,11 @@ export const MobilePhoneField = ({ value, placeholder, name, id, required, class
         />
     );
 };
-export const FixePhoneField = ({ value, placeholder, name, id, required }:PayField_Interface) => {
+export const FixePhoneField = ({ value, placeholder, name, id, required, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
+            style={style || undefined}
             type="tel"
             defaultValue={value || useCart().formSave[defaultParams.FixePhone.name] || ""}
             placeholder={placeholder || `${defaultParams.FixePhone.placeholder}${required ? '*' :''}`}
@@ -527,11 +634,12 @@ export const FixePhoneField = ({ value, placeholder, name, id, required }:PayFie
         />
     );
 };
-export const MailField = ({ value, placeholder, name, id, required, classes }:PayField_Interface) => {
+export const MailField = ({ value, placeholder, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             onChange={useCart().updateForm}
             className={classes ||''}
+            style={style || undefined}
             type="email"
             defaultValue={value || useCart().formSave[defaultParams.Mail.name] || ""}
             placeholder={placeholder || `${defaultParams.Mail.placeholder}${required ? '*' :''}`}
@@ -546,10 +654,11 @@ export const MailField = ({ value, placeholder, name, id, required, classes }:Pa
 // -----             CART           --------//
 // -----============================--------//
 
-export const NbProductsField = ({ value, name, id, required, classes }:PayField_Interface) => {
+export const NbProductsField = ({ value, name, id, required, classes, style }:PayField_Interface) => {
     return (
         <input
             className={classes ||''}
+            style={style || undefined}
             hidden
             type="number"
             value={value || useCart().formSave[defaultParams.NbProducts.name] || 0}
@@ -559,10 +668,11 @@ export const NbProductsField = ({ value, name, id, required, classes }:PayField_
         />
     )
 };
-export const ProductLabelField = ({ value, name, id, index, required, classes }:PayField_Interface) => {
+export const ProductLabelField = ({ value, name, id, index, required, classes, style }:PayField_Interface) => {
     return (
         <input
             className={classes ||''}
+            style={style || undefined}
             hidden
             type="text"
             value={value || useCart().formSave[defaultParams.ProductLabel.name] || ""}
@@ -572,10 +682,11 @@ export const ProductLabelField = ({ value, name, id, index, required, classes }:
         />
     )
 };
-export const ProductAmountField = ({ value, name, id, index, required, classes }:PayField_Interface) => {
+export const ProductAmountField = ({ value, name, id, index, required, classes, style }:PayField_Interface) => {
     return (
         <input
             className={classes ||''}
+            style={style || undefined}
             hidden
             type="text"
             value={value || useCart().formSave[defaultParams.ProductAmount.name] || ""}
@@ -585,10 +696,11 @@ export const ProductAmountField = ({ value, name, id, index, required, classes }
         />
     )
 };
-export const ProductRefField = ({ value, name, id, index, required, classes }:PayField_Interface) => {
+export const ProductRefField = ({ value, name, id, index, required, classes, style }:PayField_Interface) => {
     return (
         <input
             className={classes ||''}
+            style={style || undefined}
             hidden
             type="text"
             value={value || useCart().formSave[defaultParams.ProductRef.name] || ""}
@@ -598,10 +710,11 @@ export const ProductRefField = ({ value, name, id, index, required, classes }:Pa
         />
     )
 };
-export const ProductQtyField = ({ value, name, id, index, required, classes }:PayField_Interface) => {
+export const ProductQtyField = ({ value, name, id, index, required, classes, style }:PayField_Interface) => {
     return (
         <input
             className={classes ||''}
+            style={style || undefined}
             hidden
             type="text"
             value={value || useCart().formSave[defaultParams.ProductQty.name] || ""}
@@ -745,4 +858,9 @@ interface PayField_Interface {
     index?: string | number, 
     required?: boolean,
     classes?:string,
+    style?: CSSProperties,
+};
+
+interface CountryPayField_Interface extends PayField_Interface {
+    countries?: {label:string, code:string}[];
 };

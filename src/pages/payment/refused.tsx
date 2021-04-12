@@ -10,6 +10,8 @@ import { get_url_params } from '../../functions/url_utlis';
 
 const PaymentErrorPage = () => {
 
+    // TODO ajouter fallback si aucun order provided
+
     const [load_url] = React.useState(useStaticQuery(graphql`
         {
             site {

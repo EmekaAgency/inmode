@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_base_section_titre_texts",
+  "info": {
+    "name": "SectionTitreText",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

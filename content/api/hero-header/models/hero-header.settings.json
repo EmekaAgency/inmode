@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "hero_headers",
+  "info": {
+    "name": "HeroHeader"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "TopText": {
+      "type": "text"
+    },
+    "BottomText": {
+      "type": "text"
+    }
+  }
+}

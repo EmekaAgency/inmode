@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_generic_demos",
+  "info": {
+    "name": "Demo",
+    "icon": "arrow-alt-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "picture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

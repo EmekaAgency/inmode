@@ -436,7 +436,7 @@ form#purchase .neumorphic label {
     max-height: 550px;
     height: 100%;
     overflow-y: auto;
-    max-height: calc(100vh - 250px);
+    max-height: calc(100vh - 280px);
     height: 100%;
 }
 

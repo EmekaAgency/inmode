@@ -8,13 +8,15 @@
 
 import React from 'react';
 
-{/* SWITCH CART */}
 
-// import CartWrapper from './src/components/CartWrapper';
+import CartWrapper from './src/components/CartWrapper';
 
-// export const wrapPageElement = ({ element, props }) => (
-//   <CartWrapper {...props}>{element}</CartWrapper>
-// );
+export const wrapPageElement = ({ element, props }) => (
+  <CartWrapper {...props}>{element}</CartWrapper>
+);
+// {/* SWITCH CART */}
+
+// {/* SWITCH CART END */}
 
 export function onClientEntry () {
   window.addEventListener('load', () => {

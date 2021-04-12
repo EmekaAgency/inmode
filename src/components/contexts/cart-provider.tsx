@@ -22,7 +22,8 @@ import {
     NameTable_Interface,
     InmodePanel_Shop_Interface,
     SogecommerceOrder,
-    Cart_Interface
+    Cart_Interface,
+    Cart_FormSave_Interface
 } from '../interfaces';
 import { openModale, paymentSEPA } from '../../functions/modale';
 
@@ -106,7 +107,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         order_signature: "",
     });
 
-    const [formFields, setFormFields]:[any, React.Dispatch<any>] = React.useState({});
+    const [otherAddress, setOtherAddress]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
+    const [formFields, setFormFields]:[Cart_FormSave_Interface, React.Dispatch<Cart_FormSave_Interface>] = React.useState({});
 
     const article_base = (ref:string, qnt:number):Article_Interface => {
         return {
@@ -274,8 +276,54 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
     const total_DELIVER = ():string => {return count_total() === 0 ? (0).toFixed(2) : (10).toFixed(2);}
     const total_HT = ():string => {return count_total().toFixed(2);}
-    const total_TVA = ():string => {return (count_total() * 0.2).toFixed(2);}
-    const total_TTC = ():string => {return ((count_total() * 1.2) + (pay_delivery() ? 10 : 0)).toFixed(2);}
+    /*PAS DE LIVRAISON*/
+    // const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
+    // const total_TTC = ():string => {return ((count_total() * 1.2) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
+    // /*LIVRAISON*/
+    const hasTVA = ():boolean => {
+        if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
+            return true;
+        }
+        if((formFields.vads_cust_country == 'FR' && otherAddress == false) || (formFields.vads_ship_to_country == 'FR' && otherAddress == true)) {
+            return true;
+        }
+        return false;
+    }
+    const hasTVAIntra = ():boolean => {
+        let i = 0;
+        console.log(`vads_cust_country : ${formFields.vads_cust_country}`);
+        console.log(`vads_ship_to_country : ${formFields.vads_ship_to_country}`);
+        if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
+            console.log('Cas ' + ++i);
+            return false;
+        }
+        if(formFields.vads_cust_country != undefined && formFields.vads_cust_country != 'FR' && otherAddress == false) {
+            console.log('Cas ' + ++i);
+            return true;
+        }
+        if(formFields.vads_ship_to_country != undefined && formFields.vads_ship_to_country != 'FR' && otherAddress == true) {
+            console.log('Cas ' + ++i);
+            return true;
+        }
+        let _select_cust = document.getElementById('vads_cust_country');
+        let _select_ship = document.getElementById('vads_ship_to_country');
+        if(_select_cust == null && _select_ship == null) {
+            console.log('Cas ' + ++i);
+            return true;
+        }
+        if(_select_cust != null && _select_cust.value != 'FR' && otherAddress == false) {
+            console.log('Cas ' + ++i);
+            return true;
+        }
+        if(_select_ship != null && _select_ship.value != 'FR' && otherAddress == true) {
+            console.log('Cas ' + ++i);
+            return true;
+        }
+        console.log('Cas ', ++i);
+        return false;
+    }
+    const total_TVA = ():string => {return hasTVA() ? (count_total() * 0.2).toFixed(2) : (0).toFixed(2);}
+    const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
 
     const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 ? true : false;}
 
@@ -363,13 +411,40 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             transId: order_id,
         });
 
-        let _delivery_mail = document.getElementById('delivery_mail');
+        let _delivery_mail:HTMLElement | HTMLInputElement | null = document.getElementById('delivery_mail');
         if(_delivery_mail) {
             _temp['delivery_mail'] = _delivery_mail.value;
         }
+        let intra_tva:HTMLElement | HTMLInputElement | null = document.getElementById('intra_tva');
+        if(intra_tva) {
+            _temp['intra_tva'] = intra_tva.value;
+        }
+        
+        let _country = null;
+        console.log(`otherAddress : ${otherAddress}`);
+        if(!formFields.vads_cust_country && !formFields.vads_ship_to_country) {
+            if(otherAddress == true) {
+                _country = document.getElementById('vads_ship_to_country').value;
+            }
+            else {
+                _country = document.getElementById('vads_cust_country').value
+            }
+        }
+        else {
+            if(otherAddress == true) {
+                _country = formFields.vads_ship_to_country;
+            }
+            else {
+                _country = formFields.vads_cust_country;
+            }
+        }
+        if(_country == null) {
+            _country = 'FR';
+        }
+        console.log(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country));
 
         // initialize_transaction(_temp);
-        let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa), pay_params.order_create)).json();
+        let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country), pay_params.order_create)).json();
         console.log(status);
         if(status && status == 'success') {
             if(sepa) {
@@ -393,6 +468,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             close_purchase();
             reset_form_fields();
             reset_cart();
+            setOtherAddress(false);
             return true;
         }
         else {
@@ -429,7 +505,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
     const reset_form_fields = ():void => {
         setFormFields(Object.fromEntries(Object.keys(formFields).map((field) => {
-            return [field, ""];
+            return [field, undefined];
         })));
     }
 
@@ -450,6 +526,10 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             return 0;
         }
         return cart.map(article => article.quantity).reduce((sum, nbr) => sum + nbr);
+    }
+
+    const setOther = (_b:boolean):void => {
+        setOtherAddress(_b);
     }
 
     return (
@@ -481,6 +561,9 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
                 formSave: formFields,
                 formReset: reset_form_fields,
                 cartReset: reset_cart,
+                differentAddress: otherAddress,
+                hasDifferentShipping: setOther,
+                getTVAIntra: hasTVAIntra,
             }}
         >
             {children}

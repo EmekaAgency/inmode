@@ -6,6 +6,12 @@ import {
     InmodePanel_Order_Billing_Interface
 } from "../interfaces";
 
+const _countries = {
+    'FR': 'France',
+    'BE': 'Belgique',
+    'LU': 'Luxembourg',
+};
+
 // function date_from_transdate(_transdate:string):number {
 function date_from_transdate(_transdate:string):string {
     let str_date:string = "";
@@ -29,7 +35,8 @@ function fill_billing(datas:InmodePanel_Order_Billing_Interface):InmodePanel_Ord
             (typeof datas.Phone == 'number' && datas.Phone > 0)
         ) &&
         (typeof datas.Mail == 'string' && datas.Mail.length > 0) &&
-        (typeof datas.Address1 == 'string' && datas.Address1.length > 0) &&
+        (typeof datas.Address == 'string' && datas.Address.length > 0) &&
+        (typeof datas.Country == 'string' && datas.Country.length > 0) &&
         (
             (typeof datas.ZIP == 'string' && datas.ZIP.length >0)
             ||
@@ -52,7 +59,8 @@ function fill_shipping(datas:InmodePanel_Order_Shipping_Interface):InmodePanel_O
             (typeof datas.Phone == 'number' && datas.Phone > 0)
         ) &&
         // (typeof datas.Mail == 'string' && datas.Mail.length > 0) &&
-        (typeof datas.Address1 == 'string' && datas.Address1.length > 0) &&
+        (typeof datas.Address == 'string' && datas.Address.length > 0) &&
+        (typeof datas.Country == 'string' && datas.Country.length > 0) &&
         (
             (typeof datas.ZIP == 'string' && datas.ZIP.length >0)
             ||
@@ -75,8 +83,11 @@ function filter(datas:InmodePanel_Order_Interface):InmodePanel_Order_Interface {
     return datas;
 }
 
-export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Interface[], total:number, sepa:boolean = false):InmodePanel_Order_Interface {
+export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Interface[], total:number, sepa:boolean = false, country:string):InmodePanel_Order_Interface {
     console.log(_datas);
+    console.log(`total : ${total}`);
+    console.log(`sepa : ${sepa}`);
+    console.log(`country : ${country}`);
     // vads_amount: "86400" // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
     // vads_currency: 978 // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
 
@@ -87,8 +98,10 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
         Article: cart.map((article:Article_Interface) => {
             return {
                 Article: article.id,
-                Quantity: article.quantity
-                // Amount: article.quantity * article.price // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
+                Quantity: article.quantity,
+                Price: article.price,
+                Name: article.name,
+                Pack: article.pack_name(),
             }
         }),
         Billing: {
@@ -96,8 +109,8 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
             Lastname: _datas.vads_cust_last_name,
             Phone: _datas.vads_cust_cell_phone,
             Mail: _datas.vads_cust_email,
-            Address1: _datas.vads_cust_address,
-            Address2: _datas.vads_cust_address2,
+            Address: _datas.vads_cust_address,
+            Country: _countries[_datas.vads_cust_country],
             ZIP: _datas.vads_cust_zip,
             City: _datas.vads_cust_city,
             Society: _datas.vads_cust_legal_name,
@@ -107,8 +120,8 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
             Lastname: _datas.vads_ship_to_last_name,
             Phone: _datas.vads_ship_to_phone_num,
             Mail: _datas.delivery_mail,
-            Address1: _datas.vads_ship_to_street,
-            Address2: _datas.vads_ship_to_street2,
+            Address: _datas.vads_ship_to_street,
+            Country: _countries[_datas.vads_ship_to_country],
             ZIP: _datas.vads_ship_to_zip,
             City: _datas.vads_ship_to_city,
             Society: _datas.vads_ship_to_legal_name,
@@ -119,8 +132,10 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
         DeliveryTax: _datas.vads_product_qty9999 && _datas.vads_product_qty9999 == 1 ? 10 : 0,
         Paid: false,
         Status: 'UNDER_VERIFICATION',
-        Total: total,
+        Total: ((typeof _datas.vads_amount == 'string' ? parseInt(_datas.vads_amount, 10) : _datas.vads_amount)/100).toFixed(2) || total,
         SEPA: sepa,
+        Country: _countries[country],
+        TVA_Intra: _datas.intra_tva,
     };
 
     return filter(_temp);

@@ -1,0 +1,128 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "private": false
+    },
+    "Banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "base.banner"
+    },
+    "WhatIs": {
+      "type": "component",
+      "repeatable": false,
+      "component": "generic.what-is"
+    },
+    "BeforeKeyBenefits": {
+      "type": "text"
+    },
+    "KeyBenefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "base.key-benefits"
+    },
+    "ClinicalStudies": {
+      "type": "component",
+      "repeatable": true,
+      "component": "generic.clinical-studies"
+    },
+    "Price": {
+      "type": "decimal"
+    },
+    "ShopDescription": {
+      "type": "text"
+    },
+    "Icon": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "Tags": {
+      "via": "products",
+      "collection": "tags",
+      "dominant": true
+    },
+    "Addons": {
+      "via": "Products",
+      "collection": "addon",
+      "dominant": true
+    },
+    "BeforesAfters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "generic.before-after"
+    },
+    "SellingArgs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "generic.selling-args"
+    },
+    "WhatIsProduct": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.what-is-product"
+    },
+    "Demo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "generic.demo"
+    },
+    "ShopTreats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "base.key-benefits"
+    },
+    "ShopPicture": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "treatments": {
+      "via": "products",
+      "collection": "treatments"
+    },
+    "RelatedAddonTreatment": {
+      "type": "component",
+      "repeatable": true,
+      "component": "product.related-addon-treatment"
+    },
+    "MenuParams": {
+      "type": "component",
+      "repeatable": false,
+      "component": "generic.menu-params"
+    },
+    "position": {
+      "type": "integer",
+      "default": 0,
+      "unique": true,
+      "min": 0
+    },
+    "short_descr": {
+      "type": "text"
+    }
+  }
+}

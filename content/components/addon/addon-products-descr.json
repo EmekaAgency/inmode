@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_addon_addon_products_descrs",
+  "info": {
+    "name": "AddonProductDescr",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "descr": {
+      "type": "text"
+    },
+    "product": {
+      "model": "product"
+    }
+  }
+}
