@@ -255,15 +255,15 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
-                        {/*PAS DE LIVRAISON*/}
-                        {/* <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div> */}
-                        {/*LIVRAISON*/}
-                        <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div>
+                        {/*PAS DE FRAIS DE LIVRAISON*/}
+                        <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div>
+                        {/*FRAIS DE LIVRAISON*/}
+                        {/* <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div> */}
                         {cart.pay_delivery() ? <div className="price">
-                            {/*PAS DE LIVRAISON*/}
-                            {/* {(cart.delivery_tax() && false) || 0} */}
-                            {/*LIVRAISON*/}
-                            {cart.delivery_tax()}
+                            {/*PAS DE FRAIS DE LIVRAISON*/}
+                            {(cart.delivery_tax() && false) || 0}
+                            {/*FRAIS DE LIVRAISON*/}
+                            {/* {cart.delivery_tax()} */}
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">

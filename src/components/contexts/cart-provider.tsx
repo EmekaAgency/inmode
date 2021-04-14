@@ -87,10 +87,12 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         'EUR': 978
     };
 
+    // SWITCH TEST / PRODUCTION MODE
     const [pay_params, setPayParams] = React.useState({
         signature: "",
         actionMode: "INTERACTIVE",
-        ctxMode: "TEST",
+        // ctxMode: "TEST",
+        ctxMode: "PRODUCTION",
         currency: currencies.EUR,
         pageAction: "PAYMENT",
         siteId: "",
@@ -276,10 +278,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
     const total_DELIVER = ():string => {return count_total() === 0 ? (0).toFixed(2) : (10).toFixed(2);}
     const total_HT = ():string => {return count_total().toFixed(2);}
-    /*PAS DE LIVRAISON*/
-    // const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
-    // const total_TTC = ():string => {return ((count_total() * 1.2) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
-    // /*LIVRAISON*/
     const hasTVA = ():boolean => {
         if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
             return true;
@@ -322,10 +320,17 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         console.log('Cas ', ++i);
         return false;
     }
-    const total_TVA = ():string => {return hasTVA() ? (count_total() * 0.2).toFixed(2) : (0).toFixed(2);}
-    const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
-
-    const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 ? true : false;}
+    /*PAS DE FRAIS DE LIVRAISON*/
+    const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
+    const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
+    // /*FRAIS DE LIVRAISON*/
+    // const total_TVA = ():string => {return hasTVA() ? (count_total() * 0.2).toFixed(2) : (0).toFixed(2);}
+    // const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
+    
+    /*PAS DE FRAIS DE LIVRAISON*/
+    const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 && false ? true : false;}
+    /*PAS FRAIS DE LIVRAISON*/
+    // const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 ? true : false;}
 
     const payment_str = (form_fields) => {
         // console.log("payment_str");
@@ -361,7 +366,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
         form_fields = _sort_html_list(form_fields);
 
-        // console.log(form_fields);
+        console.log(form_fields);
 
         const date = moment.utc().format('YYYYMMDDHHmmss');
         
@@ -380,6 +385,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         _temp["vads_ctx_mode"] = pay_params.ctxMode;
         _temp["vads_currency"] = pay_params.currency;
         _temp["vads_page_action"] = pay_params.pageAction;
+        // REMPLACER PAR STRING '#SHOP_ID#' et replace en back pour garder secret l'identifiant du shop
         _temp["vads_site_id"] = pay_params.siteId;
         _temp["vads_trans_date"] = date;
         _temp["vads_trans_id"] = order_id;
@@ -391,15 +397,15 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         _temp["vads_url_cancel"] = pay_params.url_cancel;
         _temp["vads_url_refused"] = pay_params.url_refused;
 
-        // console.log(_temp);
+        console.log(_temp);
 
         _temp = _sort_object(filter_object(_temp, (e:any) => e && e != ""));
         
         const { signature } = await get_signature(payment_str(_temp));
         // console.log(payment_str(_temp));
         // console.log(_temp);
-        // console.log(order_id);
-        // console.log(signature);
+        console.log(order_id);
+        console.log(signature);
 
         _temp['signature'] = signature || '';
 
