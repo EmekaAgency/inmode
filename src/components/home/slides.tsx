@@ -106,7 +106,7 @@ const Slides = ({from}:Slides) => {
                                     {slide.Name}
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
-                                    Informations produit
+                                    Product informations
                                     <img
                                         className="slide-view-detail-arrow transition"
                                         src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}
@@ -116,7 +116,7 @@ const Slides = ({from}:Slides) => {
                                     <Link className="zone-link" to={slide.MenuParams.url} title={slide.Name}></Link>
                                 </div>
                                 {slide.Addons ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
-                                    Pièces à main
+                                    
                                     <img
                                         className="slide-view-product-arrow transition"
                                         src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}

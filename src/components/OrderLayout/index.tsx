@@ -14,7 +14,7 @@ interface OrderLayoutParams {
 
 function get_day(day:number):string {
     try {
-        return ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'][day];
+        return ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][day];
     }
     catch(err) {
         return 'unknown';
@@ -23,7 +23,7 @@ function get_day(day:number):string {
 
 function get_month(month:number):string {
     try {
-        return ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'][month]
+        return ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'][month]
     }
     catch(err) {
         return 'unknown';
@@ -95,7 +95,7 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     {/* </div> */}
                     {/* Date: "2021-02-26T05:40:43.000Z" */}
                     <div className="order-date">
-                        Achat effectué le {get_date(order.Date)}
+                        Bought {get_date(order.Date)}
                     </div>
                     {/* Billing: {id: 20, Firstname: "m", Lastname: "m", Phone: "0667630604", Mail: "test@gmail.com", …} */}
                     {/* {order.Billing && <div className="order-billing">
@@ -134,8 +134,8 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                 </div>
                 }
                 <div className="payment-suggestions">
-                    <Link to="/" title="Accueil">Accueil</Link>
-                    <Link to="/workstation" title="Machines">Machines</Link>
+                    <Link to="/" title="Home">Home</Link>
+                    <Link to="/workstation" title="Workstations">Workstations</Link>
                     {/* SWITCH CART */}
 
                     <Link to="/shop" title="Shop">Shop</Link>

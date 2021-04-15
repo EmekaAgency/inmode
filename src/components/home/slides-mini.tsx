@@ -30,7 +30,7 @@ const SlidesMini = ({ from }) => {
                             {product.Name}
                         </div>
                         <div className="slide-view-detail">
-                            Informations produit
+                            Product informations
                             <Link className="zone-link" to={product.MenuParams.url} title={product.Name}></Link>
                         </div>
                     </div>

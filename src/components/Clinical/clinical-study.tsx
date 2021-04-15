@@ -16,7 +16,7 @@ const ClinicalStudy = ({study, prop_key = null}:ClinicalStudy) => {
             </div>
             <div className="study-text">
                 <div className="study-name">{study.title}</div>
-                <div className="study-author">Auteurs : {study.author}</div>
+                <div className="study-author">Authors : {study.author}</div>
                 <div className="study-technologies">Technologies : 
                     {study.addons.map((addon, key2) => {
                         return (
@@ -30,10 +30,10 @@ const ClinicalStudy = ({study, prop_key = null}:ClinicalStudy) => {
                         );
                     })}
                 </div>
-                <div className="study-published">Date de publication : {study.published_date}</div>
+                <div className="study-published">Publication date : {study.published_date}</div>
                 <div className="study-publication">Publication : {study.publication}</div>
                 <div className="study-download">
-                    Télécharger
+                    Download
                     <a 
                         className="zone-link"
                         href={study.url}

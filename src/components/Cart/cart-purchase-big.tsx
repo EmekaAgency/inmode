@@ -93,21 +93,21 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
     const buttonText = ():string => {
         if(isSubmit === true && isCreated === true) {
-            return "Commande effectuée";
+            return "Order created";
         }
         if(isSubmit === null && isCreated === false) {
-            return "Erreur commande";
+            return "Order error";
         }
         if(isSubmit === true) {
-            return "En cours ...";
+            return "Processing ...";
         }
         if(!formOpened) {
-            return "Acheter";
+            return "Buy";
         }
         if(!otherAddress || otherAddressOpened) {
-            return "Commander";
+            return "Order";
         }
-        return "Continuer";
+        return "Continue";
     }
     
     // isSubmit : null
@@ -251,14 +251,14 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             </div>
                         );
                     })}
-                     {cart.pay_delivery() && <div className="free-message">Livraison gratuite à partir de 500€</div>}
+                    {cart.pay_delivery() && <div className="free-message">Free charges from 500 £</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         {/*PAS DE FRAIS DE LIVRAISON*/}
-                        <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div>
+                        <div className="text">{cart.pay_delivery() && false ? 'Charges' : 'Free charges'}</div>
                         {/*FRAIS DE LIVRAISON*/}
-                        {/* <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div> */}
+                        {/* <div className="text">{cart.pay_delivery() ? 'Charges' : 'Free charges'}</div> */}
                         {cart.pay_delivery() ? <div className="price">
                             {/*PAS DE FRAIS DE LIVRAISON*/}
                             {(cart.delivery_tax() && false) || 0}
@@ -267,19 +267,19 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
-                        <div className="text">sous total (HT)</div>
+                        <div className="text">subtotal (out of VAT)</div>
                         <div className="price">
                             {cart.total_base()}
                         </div>
                     </div>
                     <div className="cart-tva">
-                        <div className="text">tva</div>
+                        <div className="text">vat</div>
                         <div className="price">
                             {cart.total_tva()}
                         </div>
                     </div>
                     <div className="cart-total">
-                        <div className="text">total ttc</div>
+                        <div className="text">all included</div>
                         <div className="price">
                             {cart.total_all_included()}
                         </div>
@@ -320,7 +320,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`${otherAddress ? 'click' : ''}`}>adresse de facturation</span>
+                    <span className={`${otherAddress ? 'click' : ''}`}>Billing address</span>
                     <hr/>
                 </div>
                 <div
@@ -371,7 +371,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>informations de livraison</span>
+                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>Delivery datas</span>
                     <hr className="unmorphic"/>
                 </div>
                 {otherAddress &&
@@ -411,7 +411,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label"><label htmlFor="sepa">Virement</label></div>
+                <div className="choice-label"><label htmlFor="sepa">Transfer</label></div>
                 <div className="choice"><input
                     id="soge"
                     name="soge"
@@ -421,7 +421,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label"><label htmlFor="soge">Paiement par carte</label></div>
+                <div className="choice-label"><label htmlFor="soge">Card payment</label></div>
             </div>
             <div className="step-1 facture neumorphic">
                 <input
@@ -435,7 +435,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     }}
                 />
                 <label htmlFor="facture">
-                    Adresse de livraison différente
+                    Different delivery address
                 </label>
             </div>
             <div className="step-1 cgu neumorphic">
@@ -448,7 +448,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     required
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                    I do accept GTCS and TCU
                 </label>
             </div>
             {/* VALIDATE */}

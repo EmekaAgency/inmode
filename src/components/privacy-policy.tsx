@@ -9,8 +9,8 @@ const PrivacyPolicy = (props) => {
 
     const images = useImages();
 
-    const generalCookies = 'inmodemd-fr-accept-cookies';
-    const analyticsCookies = 'inmodemd-fr-accept-analytics-cookies';
+    const generalCookies = 'inmodemd-uk-accept-cookies';
+    const analyticsCookies = 'inmodemd-uk-accept-analytics-cookies';
 
     const [open, setOpen] = React.useState(false);
     const [accepted, setAccepted] = React.useState(false);
@@ -70,7 +70,7 @@ const PrivacyPolicy = (props) => {
                 </div>
                 <div className="cookies-necessaries">
                     <div className="cookies-title">Necessary cookies</div>
-                    <div className="cookies-text">Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions. For more information please see our <AnchorLink to="/mentions-legales#cookies" title="Cookies">cookie policy</AnchorLink>.</div>
+                    <div className="cookies-text">Necessary cookies enable core functionality such as security, network management, and accessibility. You may disable these by changing your browser settings, but this may affect how the website functions. For more information please see our <AnchorLink to="/legals#cookies" title="Cookies">cookie policy</AnchorLink>.</div>
                     <div className="cookies-divider"></div>
                 </div>
                 <div className="cookies-analytics">
@@ -92,7 +92,7 @@ const PrivacyPolicy = (props) => {
                             <span className="switch-switch"></span>
                         </label>
                     </div>
-                    <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <AnchorLink to="/mentions-legales#cookies" title="Cookies">'Cookies page'</AnchorLink>. The cookies collect information in an anonymous form.</div>
+                    <div className="cookies-text">We'd like to set Google Analytics cookies to help us to improve our website by collecting and reporting information on how you use it. For more information on how these cookies work please see our <AnchorLink to="/legals#cookies" title="Cookies">'Cookies page'</AnchorLink>. The cookies collect information in an anonymous form.</div>
                 </div>
                 <div className="accept-close" onClick={(e) => {process_cookies(e, document.querySelector('#onoffswitch').checked);}}>
                     Accept and close

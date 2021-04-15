@@ -21,7 +21,7 @@ const HeaderMini = ({}:HeaderMini) => {
     return (
         <div id="header-mini" className="header-mini custom-scrollbar">
             <div className="menu-close transition" onClick={(e) => {closeMenu(e);}}>
-                <span>FERMER</span>
+                <span>CLOSE</span>
                 <img className="close-mini-menu-icon" src={images.getOne('closeWhiteIcon').publicURL} alt="close-white"/>
             </div>
             <div id="header-mini-bottom" className="header-bottom">

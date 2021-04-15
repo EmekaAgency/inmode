@@ -74,7 +74,7 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                         })}
                                         <div className="addon-what-can-i-treat">
                                             <div className="title">
-                                                Que puis-je traiter ?
+                                                What can I treat ?
                                             </div>
                                             <ul>
                                             {product.ProductPresentationTreats.map((descr, key) => {

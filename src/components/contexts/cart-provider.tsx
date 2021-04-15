@@ -40,7 +40,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         canule: ['canule', 'canules'],
         kit: ['Kit-Mix', 'Kit-Mix'],
         pin: ['pin', 'pins'],
-        unite: ['unité', 'unités']
+        unite: ['unit', 'units']
     };
 
     const [appeared, setAppeared] = React.useState(false);

@@ -71,7 +71,7 @@ const Footer = ({}:Footer) => {
                     })}
                 </div>
                 <div className="footer-bottom-navigation">
-                    <div className="footer-trademark">© 2020 INMODE</div>
+                    <div className="footer-trademark">© 2021 INMODEUK</div>
                     <div className="footer-navigation">
                         {footer.navigation && footer.navigation.map((menu, key) => {
                             return (

@@ -3,7 +3,7 @@ const {
 } = require('./order_object.js');
 const { _request } = require('./fetch.js');
 
-const PHP_back = 'https://inmode.emeka.fr/back/app.php';
+const PHP_back = 'https://inmodeuk.emeka.fr/back/app.php';
 
 const usedValues = [
     'Reference',
@@ -31,15 +31,15 @@ function mailBody(_datas = null, _receiver = null, _type = null) {
     console.log(_type);
     console.log('//////////////////');
     if(_datas == null || _receiver == null) {
-        console.log('Cas 1');
+        console.log('Case 1');
         return null;
     }
     if(typeof _receiver != 'string' || typeof _type != 'string') {
-        console.log('Cas 2');
+        console.log('Case 2');
         return null;
     }
     if(typeof _datas != "object" || Array.isArray(_datas)) {
-        console.log('Cas 3');
+        console.log('Case 3');
         return null;
     }
     let _body = {};
@@ -55,7 +55,7 @@ function mailBody(_datas = null, _receiver = null, _type = null) {
         _body.email = _datas['Facturation']['Mail'];
     }
     catch (err) {
-        console.log('Cas 4');
+        console.log('Case 4');
         return null;
     }
     _body.action = 'order-mail';

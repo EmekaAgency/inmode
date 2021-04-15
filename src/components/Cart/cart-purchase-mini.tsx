@@ -93,21 +93,21 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
 
     const buttonText = ():string => {
         if(isSubmit === true && isCreated === true) {
-            return "Commande effectuée";
+            return "Order created";
         }
         if(isSubmit === null && isCreated === false) {
-            return "Erreur commande";
+            return "Order error";
         }
         if(isSubmit === true) {
-            return "En cours ...";
+            return "Processing ...";
         }
         if(!formOpened) {
-            return "Acheter";
+            return "Buy";
         }
         if(!otherAddress || otherAddressOpened) {
-            return "Commander";
+            return "Order";
         }
-        return "Continuer";
+        return "Continue";
     }
 
     React.useEffect(() => {
@@ -163,15 +163,15 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
             <div className="stepper">
                 <div id="step-1" className="step">
                     <div className="num">1</div>
-                    <span className="label">Panier</span>
+                    <span className="label">Cart</span>
                 </div>
                 <div id="step-2" className={`step${otherAddress ? ' other-address' : ''}`}>
                     <div className="num">2</div>
-                    <span className="label">Facture</span>
+                    <span className="label">Invoice</span>
                 </div>
                 <div id="step-3" className={`step${otherAddress ? ' other-address' : ''}`}>
                     <div className="num">3</div>
-                    <span className="label">Livraison</span>
+                    <span className="label">Delivery</span>
                 </div>
                 <div className={`progress-bar${otherAddress ? ' other-address' : ''}${otherAddress && otherAddressOpened ? ' other-opened' : ''}`}></div>
             </div>
@@ -247,14 +247,14 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                             </div>
                         );
                     })}
-                     {cart.pay_delivery() && <div className="free-message">Livraison gratuite à partir de 500€</div>}
+                     {cart.pay_delivery() && <div className="free-message">Free charges from 500 £</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         {/*PAS DE FRAIS DE LIVRAISON*/}
-                        <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div>
+                        <div className="text">{cart.pay_delivery() && false ? 'Charges' : 'Free charges'}</div>
                         {/*FRAIS DE LIVRAISON*/}
-                        {/* <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div> */}
+                        {/* <div className="text">{cart.pay_delivery() ? 'Charges' : 'Free charges'}</div> */}
                         {cart.pay_delivery() ? <div className="price">
                             {/*PAS DE FRAIS DE LIVRAISON*/}
                             {(cart.delivery_tax() && false) || 0}
@@ -263,19 +263,19 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
-                        <div className="text">sous total (HT)</div>
+                        <div className="text">subtotal (out of VAT)</div>
                         <div className="price">
                             {cart.total_base()}
                         </div>
                     </div>
                     <div className="cart-tva">
-                        <div className="text">tva</div>
+                        <div className="text">vat</div>
                         <div className="price">
                             {cart.total_tva()}
                         </div>
                     </div>
                     <div className="cart-total">
-                        <div className="text">total ttc</div>
+                        <div className="text">All included</div>
                         <div className="price">
                             {cart.total_all_included()}
                         </div>
@@ -313,7 +313,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`${otherAddress ? 'click' : ''}`}>adresse de facturation</span>
+                    <span className={`${otherAddress ? 'click' : ''}`}>Invoice address</span>
                     <hr/>
                 </div>
                 <div
@@ -372,7 +372,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>informations de livraison</span>
+                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>Delivery datas</span>
                     <hr className="unmorphic"/>
                 </div>
                 <div className="form custom-scrollbar">
@@ -418,7 +418,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label sepa"><label htmlFor="sepa">Virement</label></div>
+                <div className="choice-label sepa"><label htmlFor="sepa">Transfer</label></div>
                 <div className="choice"><input
                     id="soge"
                     name="soge"
@@ -428,7 +428,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label soge"><label htmlFor="soge">Paiement par carte</label></div>
+                <div className="choice-label soge"><label htmlFor="soge">Card payment</label></div>
             </div>
             <div className="step-1 facture neumorphic">
                 <input
@@ -442,7 +442,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     }}
                 />
                 <label htmlFor="facture">
-                    Adresse de livraison différente
+                    Different delivery address
                 </label>
             </div>
             <div className="step-1 cgu neumorphic">
@@ -456,7 +456,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     form={formOpened ? otherAddress ? "step-3-part" : "step-2-part" : ''}
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                I do accept GTCS and TCU
                 </label>
             </div>
             {/* VALIDATE */}

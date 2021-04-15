@@ -46,7 +46,7 @@ const ShopProduct2 = ({ reference, special }) => {
                     }
                 }}
             >
-                Ajouter au panier
+                Add to cart
             </div>
         </div>
     );
