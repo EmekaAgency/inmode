@@ -499,7 +499,7 @@
         $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
         $retour .= '    <tr>';
         $retour .= '        <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
-        $retour .= '            Détails de facturation';
+        $retour .= '            Détails de livraison';
         $retour .= '        </td>';
         $retour .= '    </tr>';
         $retour .= '</table>';
