@@ -28,9 +28,9 @@ function _headers(token, _bearer = true, _options = {}) {
     if(_bearer == true) {
         headers = {...bearer(token)};
     }
-    console.log(typeof _options);
-    console.log(Array.isArray(_options));
-    console.log(Object.keys(_options).length);
+    //* console.log(typeof _options);
+    //* console.log(Array.isArray(_options));
+    //* console.log(Object.keys(_options).length);
     if(typeof _options == "object" && !Array.isArray(_options) && Object.keys(_options).length > 0) {
         headers = {...headers, ..._options};
     }
@@ -40,22 +40,22 @@ function _headers(token, _bearer = true, _options = {}) {
 // method   token   url         body                        _bearer options
 // 'POST'   null    PHP_back    mailBody(order, 'client')   false   {}
 /*export */const _request = async function(method, token, url, body = {}, _bearer = true, options = {}) {
-    console.log('_request');
-    console.log(`method : ${method}`);
-    console.log(`url : ${url}`);
-    console.log(JSON.stringify(body));
+    //* console.log('_request');
+    //* console.log(`method : ${method}`);
+    //* console.log(`url : ${url}`);
+    //* console.log(JSON.stringify(body));
     let promise;
     switch(method) {
         case "POST":
         case "PUT":
             if(_bearer == true) {
-                console.log({method: method,url: url,headers: _headers(token),data: body,});
+                //* console.log({method: method,url: url,headers: _headers(token),data: body,});
                 promise = axios({
                     method: method,
                     url: url,
                     headers: _headers(token, _bearer, options),
                     data: body
-                }).catch(error => console.log(error));
+                }).catch(/* error => console.log(error) */);
             }
             else {
                 promise = axios({
@@ -63,18 +63,18 @@ function _headers(token, _bearer = true, _options = {}) {
                     url: url,
                     headers: _headers(null, false, options),
                     data: body
-                }).catch(error => console.log(error));
+                }).catch(/* error => console.log(error) */);
             }
             break;
         case "DELETE":
         case "GET":
             if(_bearer == true) {
-                console.log({method: method,url: url,headers: bearer(token),});
+                //* console.log({method: method,url: url,headers: bearer(token),});
                 promise = axios({
                     method: method,
                     url: url,
                     headers: bearer(token)
-                }).catch(error => console.log(error));
+                }).catch(/* error => console.log(error) */);
             }
             else {
                 promise = axios({

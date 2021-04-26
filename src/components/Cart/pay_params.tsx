@@ -92,10 +92,10 @@ const PayParams = ({  }:PayParams) => {
                     {/* {cart.pay_delivery() && <input hidden id="vads_product_qty0" name="vads_product_qty0" value="1"/>} */}
                     {/* {cart.pay_delivery() && <input hidden id="vads_product_ref0" name="vads_product_ref0" value="DELIVERY_TAX"/>} */}
                     {/* TVA */}
-                    <input hidden id="vads_product_amount9999" name="vads_product_amount9999" value={Math.ceil(parseInt(cart.total_tva(), 10) * 100)}/>
-                    <input hidden id="vads_product_label9999" name="vads_product_label9999" value="tva"/>
-                    <input hidden id="vads_product_qty9999" name="vads_product_qty9999" value="1"/>
-                    <input hidden id="vads_product_ref9999" name="vads_product_ref9999" value="TVA"/>
+                    <input hidden id="vads_product_amount9999" name="vads_product_amount9999" defaultValue={Math.ceil(parseInt(cart.total_tva(), 10) * 100)}/>
+                    <input hidden id="vads_product_label9999" name="vads_product_label9999" defaultValue="tva"/>
+                    <input hidden id="vads_product_qty9999" name="vads_product_qty9999" defaultValue="1"/>
+                    <input hidden id="vads_product_ref9999" name="vads_product_ref9999" defaultValue="TVA"/>
                     {cart.cart.length ? cart.cart.map((article, key) => {
                         return (
                             <div id={`${article.reference}-pay_params`} key={key}>

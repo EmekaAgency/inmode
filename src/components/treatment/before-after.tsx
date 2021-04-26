@@ -7,9 +7,9 @@ import RequestInformation from "../RequestInformation";
 
 const TreatmentBeforeAfter = ({ datas, sensible = false}:TreatmentBeforeAfter) => {
 
-    console.log(datas);
-    console.log(datas.length);
-    console.log(sensible);
+    //* console.log(datas);
+    //* console.log(datas.length);
+    //* console.log(sensible);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,

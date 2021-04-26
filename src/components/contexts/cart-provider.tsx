@@ -289,35 +289,35 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     }
     const hasTVAIntra = ():boolean => {
         let i = 0;
-        console.log(`vads_cust_country : ${formFields.vads_cust_country}`);
-        console.log(`vads_ship_to_country : ${formFields.vads_ship_to_country}`);
+        //* console.log(`vads_cust_country : ${formFields.vads_cust_country}`);
+        //* console.log(`vads_ship_to_country : ${formFields.vads_ship_to_country}`);
         if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
-            console.log('Cas ' + ++i);
+            //* console.log('Cas ' + ++i);
             return false;
         }
         if(formFields.vads_cust_country != undefined && formFields.vads_cust_country != 'FR' && otherAddress == false) {
-            console.log('Cas ' + ++i);
+            //* console.log('Cas ' + ++i);
             return true;
         }
         if(formFields.vads_ship_to_country != undefined && formFields.vads_ship_to_country != 'FR' && otherAddress == true) {
-            console.log('Cas ' + ++i);
+            //* console.log('Cas ' + ++i);
             return true;
         }
-        let _select_cust = document.getElementById('vads_cust_country');
-        let _select_ship = document.getElementById('vads_ship_to_country');
+        let _select_cust:any = oneById('vads_cust_country');
+        let _select_ship:any = oneById('vads_ship_to_country');
         if(_select_cust == null && _select_ship == null) {
-            console.log('Cas ' + ++i);
+            //* console.log('Cas ' + ++i);
             return true;
         }
         if(_select_cust != null && _select_cust.value != 'FR' && otherAddress == false) {
-            console.log('Cas ' + ++i);
+            //* console.log('Cas ' + ++i);
             return true;
         }
         if(_select_ship != null && _select_ship.value != 'FR' && otherAddress == true) {
-            console.log('Cas ' + ++i);
+            //* console.log('Cas ' + ++i);
             return true;
         }
-        console.log('Cas ', ++i);
+        //* console.log('Cas ', ++i);
         return false;
     }
     /*PAS DE FRAIS DE LIVRAISON*/
@@ -348,7 +348,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             cache: 'default',
             body: JSON.stringify({string: str})
         };
-        promise = await (await fetch(pay_params.order_signature, vars)).json().catch(err => console.log(err));
+        promise = await (await fetch(pay_params.order_signature, vars)).json().catch(/*err => console.log(err*/);
         return promise;
         // Base64.stringify(hmacSHA256(str, pay_params.hash_key));
     }
@@ -359,14 +359,14 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     }
 
     const redirect_payment = async (form_fields:any, sepa:Boolean):Promise<boolean | void> => {
-        console.log("redirect_payment");
+        //* console.log("redirect_payment");
 
         form_fields = [...form_fields, ...Array.from(formById('pay_back_params').elements)];
 
 
         form_fields = _sort_html_list(form_fields);
 
-        console.log(form_fields);
+        //* console.log(form_fields);
 
         const date = moment.utc().format('YYYYMMDDHHmmss');
         
@@ -397,15 +397,15 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         _temp["vads_url_cancel"] = pay_params.url_cancel;
         _temp["vads_url_refused"] = pay_params.url_refused;
 
-        console.log(_temp);
+        //* console.log(_temp);
 
         _temp = _sort_object(filter_object(_temp, (e:any) => e && e != ""));
         
         const { signature } = await get_signature(payment_str(_temp));
         // console.log(payment_str(_temp));
         // console.log(_temp);
-        console.log(order_id);
-        console.log(signature);
+        //* console.log(order_id);
+        //* console.log(signature);
 
         _temp['signature'] = signature || '';
 
@@ -417,23 +417,25 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             transId: order_id,
         });
 
-        let _delivery_mail:HTMLElement | HTMLInputElement | null = document.getElementById('delivery_mail');
+        let _delivery_mail:any = oneById('delivery_mail');
         if(_delivery_mail) {
             _temp['delivery_mail'] = _delivery_mail.value;
         }
-        let intra_tva:HTMLElement | HTMLInputElement | null = document.getElementById('intra_tva');
+        let intra_tva:any = oneById('intra_tva');
         if(intra_tva) {
             _temp['intra_tva'] = intra_tva.value;
         }
         
-        let _country = null;
-        console.log(`otherAddress : ${otherAddress}`);
+        let _country:any = null;
+        //* console.log(`otherAddress : ${otherAddress}`);
         if(!formFields.vads_cust_country && !formFields.vads_ship_to_country) {
             if(otherAddress == true) {
-                _country = document.getElementById('vads_ship_to_country').value;
+                _country = oneById('vads_ship_to_country')
+                _country = _country != null ? _country.value : null;
             }
             else {
-                _country = document.getElementById('vads_cust_country').value
+                _country = oneById('vads_cust_country')
+                _country = _country != null ? _country.value : null;
             }
         }
         else {
@@ -447,11 +449,11 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         if(_country == null) {
             _country = 'FR';
         }
-        console.log(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country));
+        //* console.log(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country));
 
         // initialize_transaction(_temp);
         let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country), pay_params.order_create)).json();
-        console.log(status);
+        //* console.log(status);
         if(status && status == 'success') {
             if(sepa) {
                 openModale(

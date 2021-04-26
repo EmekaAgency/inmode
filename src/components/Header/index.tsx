@@ -10,6 +10,7 @@ import { useImages } from '../contexts/images-provider';
   
 import { useCart } from '../contexts/cart-provider';
 import CartBasket from "../CartBasket";
+import { oneById } from "../../functions/selectors";
 
 // {/* SWITCH CART END */}
 
@@ -19,7 +20,8 @@ const Header = ({}:Header) => {
 
   const openMenu = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    document.getElementById('header-mini').classList.add('opened');
+    let _temp:any = oneById('header-mini');
+    _temp && _temp.classList.add('opened');
     size.width < 1000 && disableMainScroll();
   }
 

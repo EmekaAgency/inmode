@@ -24,22 +24,22 @@ const usedValues = [
 ];
 
 function mailBody(_datas = null, _receiver = null, _type = null) {
-    console.log('//////////////////');
-    console.log('mailBody');
-    console.log(_datas);
-    console.log(_receiver);
-    console.log(_type);
-    console.log('//////////////////');
+    //* console.log('//////////////////');
+    //* console.log('mailBody');
+    //* console.log(_datas);
+    //* console.log(_receiver);
+    //* console.log(_type);
+    //* console.log('//////////////////');
     if(_datas == null || _receiver == null) {
-        console.log('Case 1');
+        //* console.log('Case 1');
         return null;
     }
     if(typeof _receiver != 'string' || typeof _type != 'string') {
-        console.log('Case 2');
+        //* console.log('Case 2');
         return null;
     }
     if(typeof _datas != "object" || Array.isArray(_datas)) {
-        console.log('Case 3');
+        //* console.log('Case 3');
         return null;
     }
     let _body = {};
@@ -55,36 +55,36 @@ function mailBody(_datas = null, _receiver = null, _type = null) {
         _body.email = _datas['Facturation']['Mail'];
     }
     catch (err) {
-        console.log('Case 4');
+        //* console.log('Case 4');
         return null;
     }
     _body.action = 'order-mail';
     _body.for = _receiver;
     _body.type = _type;
-    console.log('$$$$$//////////////////$$$$$');
-    console.log('mailBody body');
-    console.log(_body);
-    console.log('$$$$$//////////////////$$$$$');
+    //* console.log('$$$$$//////////////////$$$$$');
+    //* console.log('mailBody body');
+    //* console.log(_body);
+    //* console.log('$$$$$//////////////////$$$$$');
     return _body;
 }
 
 async function MailPayment(order = null, _payment = null) {
-    console.log('//////////////////');
-    console.log('MailPayment');
-    console.log(order);
-    console.log(_payment);
-    console.log('//////////////////');
+    //* console.log('//////////////////');
+    //* console.log('MailPayment');
+    //* console.log(order);
+    //* console.log(_payment);
+    //* console.log('//////////////////');
     if (order == null || typeof order != "object" || Array.isArray(order)) {
-        console.log('MailPayment null 1');
+        //* console.log('MailPayment null 1');
         return false;
     }
     if(_payment == null) {
-        console.log('MailPayment null 2');
+        //* console.log('MailPayment null 2');
         return false;
     }
     let _body_client = mailBody(order, 'client', _payment);
     if(_body_client == null) {
-        console.log('MailPayment null 3');
+        //* console.log('MailPayment null 3');
         return null;
     }
     let res_client =  await _request('POST', null, PHP_back, _body_client, false, {});
@@ -94,7 +94,7 @@ async function MailPayment(order = null, _payment = null) {
     /////////////////////////////////
     let _body_pro = mailBody(order, 'pro', _payment);
     if(_body_pro == null) {
-        console.log('MailPayment null 4');
+        //* console.log('MailPayment null 4');
         return null;
     }
     let res_pro =  await _request('POST', null, PHP_back, _body_pro, false, {});

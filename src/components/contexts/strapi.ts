@@ -84,10 +84,10 @@ function filter(datas:InmodePanel_Order_Interface):InmodePanel_Order_Interface {
 }
 
 export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Interface[], total:number, sepa:boolean = false, country:string):InmodePanel_Order_Interface {
-    console.log(_datas);
-    console.log(`total : ${total}`);
-    console.log(`sepa : ${sepa}`);
-    console.log(`country : ${country}`);
+    //* console.log(_datas);
+    //* console.log(`total : ${total}`);
+    //* console.log(`sepa : ${sepa}`);
+    //* console.log(`country : ${country}`);
     // vads_amount: "86400" // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
     // vads_currency: 978 // À AJOUTER PLUS TARD DANS LE MODÈLE DE PAIEMENT
 
@@ -142,7 +142,7 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
 }
 
 export async function create_object(body:InmodePanel_Order_Interface, url:string):Promise<Response> {
-    console.log(body);
+    //* console.log(body);
     let promise:Promise<Response>;
     let vars:RequestInit = {
         method: "POST",

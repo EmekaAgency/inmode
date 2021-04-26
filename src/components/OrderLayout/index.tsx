@@ -70,9 +70,9 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     {/* Article: (3) [{…}, {…}, {…}] */}
                     {/* <div className="order-articles">
                         {order.Article.map((article , key:number):any => {
-                            console.log(article.Article.reference);
+                            //* console.log(article.Article.reference);
                             let _art = cart.article(article.Article.reference);
-                            console.log(_art);
+                            //* console.log(_art);
                             if(_art) {
                                 return (
                                     <div key={key} className="order-article">

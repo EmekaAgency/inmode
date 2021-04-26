@@ -3,6 +3,7 @@ import { useWindowSize } from "../../functions/window-size";
 import { disableMainScroll, enableMainScroll } from "../../functions/disable-scroll";
 import { useImages } from '../contexts/images-provider';
 import LoadingGIF from "../LoadingGIF";
+import { allByClass, oneById, oneBySelector } from "../../functions/selectors";
 
 const ContactUs = () => {
 
@@ -17,36 +18,41 @@ const ContactUs = () => {
 
     const close_form = () => {
         setFormOpen(false);
-        [].forEach.call(document.getElementsByClassName('contact-choice'), function(elem) {
+        [].forEach.call(allByClass('contact-choice'), function(elem) {
             elem.style.width = '250px';
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0.4s';
         });
-        document.getElementById('contact-form').classList.remove('custom-scrollbar');
-        document.querySelector('#contact-form .req-return.success').innerHTML = "";
-        document.querySelector('#contact-form .req-return.error').innerHTML = "";
+        let _temp:any = oneById('contact-form');
+        _temp && _temp.classList.remove('custom-scrollbar');
+        _temp = oneBySelector('#contact-form .req-return.success');
+        if(_temp) {_temp.innerHTML = "";}
+        _temp = oneBySelector('#contact-form .req-return.error');
+        if(_temp) {_temp.innerHTML = "";}
     }
 
     const resolve_click = (e) => {
         e.preventDefault();
         // WILL OPEN
-        !formOpen && resolve_contact();
+        !formOpen && resolve_contact(e);
         !formOpen && size.width <= 480 && disableMainScroll();
         // WILL CLOSE
         formOpen && close_form();
         formOpen && size.width <= 480 && enableMainScroll();
         setOpen(!open);
-        document.getElementById('contact-us').classList.toggle('opened');
+        let _temp:any = oneById('contact-us');
+        _temp && _temp.classList.toggle('opened');
         setFormOpen(!formOpen);
     }
 
     const resolve_contact = (e) => {
-        [].forEach.call(document.getElementsByClassName('contact-choice'), function(elem) {
+        [].forEach.call(allByClass('contact-choice'), function(elem:HTMLElement) {
             elem.style.setProperty('width', '0px', 'important');
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0s';
         });
-        document.getElementById('contact-form').classList.add('custom-scrollbar');
+        let _temp:any = oneById('contact-form');
+        _temp && _temp.classList.add('custom-scrollbar');
         setFormOpen(true);
     }
 
@@ -54,10 +60,12 @@ const ContactUs = () => {
 
     function send_form ( e ) {
         e.preventDefault();
-        document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
-        document.querySelector('#mini-contact-gif').style.display = 'inline-block';
+        let _temp:any = oneBySelector('#contact-mini .submit');
+        _temp && _temp.setAttribute('disabled', true);
+        _temp = oneBySelector('#mini-contact-gif');
+        if(_temp) {_temp.style.display = 'inline-block';}
         let body = new Object({});
-        Array.from(document.forms['contact-mini'].elements).map((elem) => {
+        Array.from(document.forms['contact-mini'].elements).map((elem:any) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "contact-us";
@@ -68,34 +76,44 @@ const ContactUs = () => {
             mode: 'cors',
             cache: 'default'
         };
-        document.querySelector("#contact-mini .req-return.success").innerHTML = "";
-        document.querySelector("#contact-mini .req-return.error").innerHTML = "";
+        _temp = oneBySelector("#contact-mini .req-return.success");
+        if(_temp) {_temp.innerHTML = "";}
+        _temp = oneBySelector("#contact-mini .req-return.error");
+        if(_temp) {_temp.innerHTML = "";}
+        let _request_init:RequestInit = {
+            ...fetch_post,
+            body: JSON.stringify(body)
+        };
         fetch(
             `https://inmodeuk.emeka.fr/back/app.php`,
-            {
-                ...fetch_post,
-                body: JSON.stringify(body)
-            }
+            _request_init
         )
         .then((promise) => {
             return promise.json();
             }
         )
         .then((response) => {
-            document.querySelector('#mini-contact-gif').style.display = 'none';
+            let _temp:any = oneBySelector('#mini-contact-gif');
+            if(_temp) {_temp.style.display = 'none';}
             if(response.status === 'success' && response.type === 'client') {
-                document.querySelector('#contact-mini .submit').removeAttribute('disabled');
-                document.querySelector('#contact-mini .req-return.success').innerHTML = response.message;
+                _temp = oneBySelector('#contact-mini .submit');
+                _temp.removeAttribute('disabled');
+                _temp = oneBySelector('#contact-mini .req-return.success');
+                if(_temp) {_temp.innerHTML = response.message;}
                 document.forms['contact-mini'].reset();
             }
             if(response.status === 'fail' && response.type === 'client') {
                 setSubmitText(response.message);
-                document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
-                document.querySelector('#contact-mini .req-return.success').innerHTML = "An error sending the message has occurred. Try refreshing the page or contacting an administrator.";
+                _temp = oneBySelector('#contact-mini .submit');
+                _temp.setAttribute('disabled', true);
+                _temp = oneBySelector('#contact-mini .req-return.success');
+                if(_temp) {_temp.innerHTML = "An error sending the message has occurred. Try refreshing the page or contacting an administrator.";}
             }
             if(response.status === 'fail' && response.type === 'server') {
-                document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
-                document.querySelector('#contact-mini .req-return.error').innerHTML = response.message;
+                _temp = oneBySelector('#contact-mini .submit');
+                _temp.setAttribute('disabled', true);
+                _temp = oneBySelector('#contact-mini .req-return.error');
+                if(_temp) {_temp.innerHTML = response.message;}
             }
         })
         .catch(function(error) {
@@ -127,7 +145,7 @@ const ContactUs = () => {
                             <input type="text" placeholder="Lastname" name="lastname" required={true}/>
                             <input type="text" placeholder="Firstname" name="firstname" required={true}/>
                             <select name="subject" required={true}>
-                                <option value="" selected disabled>Choose a speciality</option>
+                                <option value="" selected disabled style={{display: 'none'}}>Choose a speciality</option>
                                 <option value="plastic-surgeon">Plastic surgeon</option>
                                 <option value="facial-surgeon">Facial surgeon</option>
                                 <option value="dermatologist">Dermatologist</option>

@@ -1,47 +1,55 @@
 import { disableMainScroll, enableMainScroll } from './disable-scroll';
+import { oneById } from './selectors';
 
-function modale():HTMLElement {
-    return document.getElementById('modale');
+function modale():HTMLElement | null {
+    return oneById('modale');
 }
 
-function modaleContainer():HTMLElement {
-    return document.getElementById('modale-container');
+function modaleContainer():HTMLElement | null {
+    return oneById('modale-container');
 }
 
-function modaleContent():HTMLElement {
-    return document.getElementById('modale-content');
+function modaleContent():HTMLElement | null {
+    return oneById('modale-content');
 }
 
-function modaleClose():HTMLElement {
-    return document.getElementById('modale-close');
+function modaleClose():HTMLElement | null {
+    return oneById('modale-close');
 }
 
 export function openModale(params:params) {
     disableMainScroll();
-    modale().classList.add('opened');
-    params.modaleClass != undefined && modale().classList.add(params.modaleClass);
-    params.contentClass != undefined && modaleContainer().classList.add(params.contentClass);
-    modaleContent().innerHTML = closePart() + params.content;
+    let _modale:any = modale();
+    let _modale_content:any = modaleContent();
+    let _modale_container:any = modaleContainer();
+    let _modale_close:any = modaleClose();
+    _modale && _modale.classList.add('opened');
+    params.modaleClass != undefined && _modale && _modale.classList.add(params.modaleClass);
+    params.contentClass != undefined && _modale_container && _modale_container.classList.add(params.contentClass);
+    if(_modale_content) {_modale_content.innerHTML = closePart() + params.content;}
     params.onOpen && params.onOpen();
-    modale().addEventListener('click', function(e:MouseEvent) {
+    _modale && _modale.addEventListener('click', function(e:MouseEvent) {
         if(e.target.id == 'modale') {
             closeModale(params.onClose);
         }
     });
-    modale().addEventListener('keyup', function(e:KeyboardEvent) {
+    _modale && _modale.addEventListener('keyup', function(e:KeyboardEvent) {
         if(e.keyCode === 27) {
             closeModale(params.onClose);
         }
     });
-        modaleClose().addEventListener('click', function(e:MouseEvent) {
+        _modale_close && _modale_close.addEventListener('click', function(e:MouseEvent) {
         closeModale(params.onClose);
     });
 }
 
 export function closeModale(onClose:Function = null) {
-    modale().classList.remove('opened');
-    modaleContainer().classList.remove(...modaleContainer().classList);
-    modaleContent().innerHTML = "";
+    let _modale:any = modale();
+    let _modale_content:any = modaleContent();
+    let _modale_container:any = modaleContainer();
+    _modale && _modale.classList.remove('opened');
+    _modale_container && _modale_container.classList.remove(..._modale_container.classList);
+    if(_modale_content) {_modale_content.innerHTML = "";}
     onClose != null && onClose();
     enableMainScroll();
 }
@@ -53,7 +61,7 @@ function closePart() {
 // Payment SEPA Modale
 
 export function paymentSEPA(datas:paymentSEPA) {
-    console.log('paymentSEPA');
+    //* console.log('paymentSEPA');
     return {
         onOpen: datas.onOpen,
         onClose: datas.onClose,

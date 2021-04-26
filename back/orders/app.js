@@ -103,13 +103,13 @@ require("dotenv").config({
 let awaiting_mails = {};
 
 function keep_mail(_type = null, _reference = null, _datas = null) {
-    console.log('keep_mail');
+    //* console.log('keep_mail');
     if(_type == null || _reference == null || _datas == null) {
-        console.log('There are missing values to keep datas in safety during the payment process. The mail gonna be sent.');
+        //* console.log('There are missing values to keep datas in safety during the payment process. The mail gonna be sent.');
         return false;
     }
     if(typeof _type != 'string' || typeof _reference != 'string' || (typeof _datas != 'object' || Array.isArray(_datas))) {
-        console.log('Values types restrictions are not fullfiled. Datas can\'t be safely kept durung the payment process. The mail gonna be sent.');
+        //* console.log('Values types restrictions are not fullfiled. Datas can\'t be safely kept durung the payment process. The mail gonna be sent.');
         return false;
     }
     awaiting_mails[_reference] = {
@@ -120,28 +120,28 @@ function keep_mail(_type = null, _reference = null, _datas = null) {
 }
 
 function pursue_mail(_reference = null, _status = null) {
-    console.log('pursue_mail');
+    //* console.log('pursue_mail');
     if(_reference == null) {
-        console.log('The order reference \'_reference\' was not provided');
+        //* console.log('The order reference \'_reference\' was not provided');
         return false;
     }
     if(_status == null) {
-        console.log('The order status \'_status\' was not provided');
+        //* console.log('The order status \'_status\' was not provided');
         return false;
     }
     if(typeof _reference != 'string') {
-        console.log('The order reference \'_reference\' was not the correct type');
+        //* console.log('The order reference \'_reference\' was not the correct type');
         return false;
     }
     if(typeof _status != 'string') {
-        console.log('The order status \'_status\' was not the correct type');
+        //* console.log('The order status \'_status\' was not the correct type');
         return false;
     }
     if(send_mail(awaiting_mails[_reference].type, {...awaiting_mails[_reference].datas, Statut: _status})) {
-        console.log(`Mail for order '${_reference}' was sended with its new payment status`);
+        //* console.log(`Mail for order '${_reference}' was sended with its new payment status`);
         return delete awaiting_mails[_reference];
     }
-    console.log(`An error happened during the mail pursue protocol for the order referenced as '${_reference}'`);
+    //* console.log(`An error happened during the mail pursue protocol for the order referenced as '${_reference}'`);
     return false;
 }
 
@@ -195,7 +195,7 @@ async function get_strapi_jwt() {
         return data.jwt;
     }
     catch(err) {
-        console.log(err);
+        //* console.log(err);
         return err;
     }
 }
@@ -393,8 +393,8 @@ app.post('/back/orders/order-create'/*, auth*/, async (req, res) => {
             return false;
         }
         catch(error) {
-            console.log('/order-create error');
-            console.log(error);
+            //* console.log('/order-create error');
+            //* console.log(error);
             res.status(500).send(JSON.stringify({
                 status: 'error',
                 message: 'Error during order create',
@@ -403,7 +403,7 @@ app.post('/back/orders/order-create'/*, auth*/, async (req, res) => {
         }
     }
     catch(error) {
-        console.log('/order-create jwt token error');
+        //* console.log('/order-create jwt token error');
         // console.log(error);
         res.status(500).send(JSON.stringify({
             status: 'error',
@@ -440,20 +440,20 @@ app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
                 res.status(400).send('update_payment.data is empty');
                 return false;
             }
-            console.log(`Checking if order '${req.body.vads_order_id}' has awainting mails`);
+            //* console.log(`Checking if order '${req.body.vads_order_id}' has awainting mails`);
             try {
-                console.log(Object.keys(awaiting_mails));
+                //* console.log(Object.keys(awaiting_mails));
                 if(awaiting_mails[req.body.vads_order_id] != undefined) {
-                    console.log('Order ' + req.body.vads_order_id + ' got awaiting mails');
+                    //* console.log('Order ' + req.body.vads_order_id + ' got awaiting mails');
                     pursue_mail(req.body.vads_order_id, req.body.vads_trans_status);
                 }
                 else {
-                    console.log('There had not any awaiting mail for order ' + req.body.vads_order_id);
+                    //* console.log('There had not any awaiting mail for order ' + req.body.vads_order_id);
                 }
             }
             catch(error) {
-                console.log(`An error happened during mail pursuing for order '${req.body.vads_order_id}'`);
-                console.log(error);
+                //* console.log(`An error happened during mail pursuing for order '${req.body.vads_order_id}'`);
+                //* console.log(error);
             }
             res.status(200).send({
                 status: 'success',
@@ -462,7 +462,7 @@ app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
             return true;
         }
         catch(error) {
-            console.log('/order-payment-update error');
+            //* console.log('/order-payment-update error');
             // console.log(error);
             res.status(500).send(JSON.stringify({
                 status: 'error',
@@ -472,7 +472,7 @@ app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
         }
     }
     catch(error) {
-        console.log('/order-payment-update jwt token error');
+        //* console.log('/order-payment-update jwt token error');
         // console.log(error);
         res.status(500).send(JSON.stringify({
             status: 'error',
@@ -482,9 +482,9 @@ app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
-    console.log('/back/orders/order-update');
+    //* console.log('/back/orders/order-update');
     if(!req.body || req.body.length == 0) {
-        console.log('Form empty. Error 400');
+        //* console.log('Form empty. Error 400');
         res.sendStatus(400).send('Form empty');
     }
     if(!is_secured(req.body)) {
@@ -504,7 +504,7 @@ app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
             //     throw _update.error;
             // }
             if(!_update) {
-                console.log('Update did not work');
+                //* console.log('Update did not work');
                 res.status(500).send('update did not work');
                 return false;
             }
@@ -520,7 +520,7 @@ app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
             return false;
         }
         catch(error) {
-            console.log('/order-update error');
+            //* console.log('/order-update error');
             // console.log(error);
             res.status(500).send(JSON.stringify({
                 status: 'error',
@@ -530,7 +530,7 @@ app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
         }
     }
     catch(error) {
-        console.log('/order-update jwt token error');
+        //* console.log('/order-update jwt token error');
         // console.log(error);
         res.status(500).send(JSON.stringify({
             status: 'error',
@@ -571,7 +571,7 @@ app.post('/back/orders/order-load'/*, auth*/, async (req, res) => {
             return false;
         }
         catch(error) {
-            console.log('/order-load error');
+            //* console.log('/order-load error');
             // console.log(error);
             res.status(500).send(JSON.stringify({
                 status: 'error',
@@ -581,7 +581,7 @@ app.post('/back/orders/order-load'/*, auth*/, async (req, res) => {
         }
     }
     catch(error) {
-        console.log('/order-load jwt token error');
+        //* console.log('/order-load jwt token error');
         // console.log(error);
         res.status(500).send(JSON.stringify({
             status: 'error',
@@ -622,7 +622,7 @@ app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
             return false;
         }
         catch(error) {
-            console.log('/order-delete error');
+            //* console.log('/order-delete error');
             // console.log(error);
             res.status(500).send(JSON.stringify({
                 status: 'error',
@@ -632,7 +632,7 @@ app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
         }
     }
     catch(error) {
-        console.log('/order-delete jwt token error');
+        //* console.log('/order-delete jwt token error');
         // console.log(error);
         res.status(500).send(JSON.stringify({
             status: 'error',
@@ -642,8 +642,8 @@ app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-signature'/*, auth*/, async (req, res) => {
-    console.log('/order-signature');
-    console.log(req.body);
+    //* console.log('/order-signature');
+    //* console.log(req.body);
     const signature = Base64.stringify(hmacSHA256(req.body.string + `+${process.env.BO_KEY}`, process.env.BO_KEY));
     // console.log(`signature : ${signature}`);
     res.status(200).send(JSON.stringify({signature: signature}));
@@ -652,6 +652,6 @@ app.post('/back/orders/order-signature'/*, auth*/, async (req, res) => {
 //////////////////////////////
 
 http.listen(3000, () => {
-  console.log('listening on *:3000');
-  console.log(`Environment : ${process.env.NODE_ENV}`);
+  //* console.log('listening on *:3000');
+  //* console.log(`Environment : ${process.env.NODE_ENV}`);
 });

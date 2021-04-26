@@ -11,7 +11,7 @@ const StrapiDeletePage = ({  }) => {
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Submit delete');
+        //* console.log('Submit delete');
         send_form(e.target);
     }
 

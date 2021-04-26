@@ -10,7 +10,7 @@ const InmodeEvent = ({ event = undefined, prop_key, current_page }:InmodeEvent) 
     const has_card = current_page === "upcoming events" || event.type === "webinar";
 
     return (
-        <div className={`inmode-event ${event.type}${has_card ? ' has_card' : ''}`}>
+        <div key={prop_key} className={`inmode-event ${event.type}${has_card ? ' has_card' : ''}`}>
             {has_card && <div className={`top-card ${prop_key === 0 ? 'left' : 'left'}`}>
                 {event.type === "congres" && "Congress"}
                 {event.type === "workshop" && "Workshop"}

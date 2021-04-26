@@ -27,6 +27,7 @@ import {
 import LoadingGIF from '../LoadingGIF';
 
 import './big.css';
+import { oneById } from "../../functions/selectors";
 
 const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
@@ -41,9 +42,9 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     const [isCreated, setIsCreated]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
 
     const manageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        console.log('manageChange');
-        console.log(`otherAddress : ${otherAddress}`);
-        console.log(`e.currentTarget.checked : ${e.currentTarget.checked}`);
+        //* console.log('manageChange');
+        //* console.log(`otherAddress : ${otherAddress}`);
+        //* console.log(`e.currentTarget.checked : ${e.currentTarget.checked}`);
         otherAddress && setOtherAddressOpened(false);
         !otherAddress && setOtherAddressOpened(true);
         setOtherAddress(e.currentTarget.checked);
@@ -51,28 +52,30 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     }
 
     const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
-        console.log('manageCheckboxPayment');
+        //* console.log('manageCheckboxPayment');
         if(document != undefined) {
             let current:HTMLInputElement = e.currentTarget;
-            console.log(`current : ${current.id}`);
-            let other:HTMLInputElement = document.getElementById(current.id == 'sepa' ? 'soge' : 'sepa');
-            console.log(`other : ${other.id}`);
-            other.checked = !current.checked;
+            //* console.log(`current : ${current.id}`);
+            let other:any = oneById(current.id == 'sepa' ? 'soge' : 'sepa');
+            //* console.log(`other : ${other && other.id || null}`);
+            other && other.setProperty('checked', !current.checked);
             return true;
         }
-        console.log('document undefined');
+        //* console.log('document undefined');
         return false;
     }
 
     const sendForm = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        document.getElementById('big-submit').disabled = true;
-        let _sepa:HTMLInputElement | any = document.getElementById('sepa');
+        let _temp:any = oneById('big-submit')
+        _temp && _temp.setProperty('disabled', true);
+        let _sepa:HTMLInputElement | any = oneById('sepa');
         let fields = [...Array.from(document.forms["purchase"]).filter((field:any) => {return field.id.includes('vads_')})];
         // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && field.value));
         setIsSubmit(true);
         setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
-        document.getElementById('big-submit').disabled = false;
+        _temp = oneById('big-submit');
+        _temp && _temp.setProperty('disabled', false);
         // console.log('sendForm()');
         // console.log(`isSubmit : ${isSubmit}`);
         // console.log(`isCreated : ${isCreated}`);
@@ -144,19 +147,19 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 setOtherAddressOpened(false);
                 if(typeof document != "undefined") {
                     document.forms['purchase'] && document.forms['purchase'].reset();
-                    let _sepa = document.getElementById('sepa')
+                    let _sepa:any = oneById('sepa')
                     if(_sepa) {
                         _sepa.checked = _sepa.checked ? true : false;
                     } // removeAttribute('checked');
-                    let _soge = document.getElementById('soge')
+                    let _soge:any = oneById('soge')
                     if(_soge) {
                         _soge.checked = _soge.checked ? true : false;
                     } // setAttribute('checked', 'true');
-                    let _facture = document.getElementById('facture');
+                    let _facture:any = oneById('facture');
                     if(_facture) {
                         _facture.checked = false;
                     }
-                    let _terms = document.getElementById('terms');
+                    let _terms:any = oneById('terms');
                     if(_terms) {
                         _terms.checked = false;
                     }
@@ -361,7 +364,8 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             setOtherAddressOpened(false);
                             setOtherAddress(false);
                             cart.hasDifferentShipping(false);
-                            document.getElementById('facture').checked = false;
+                            let _temp:any = oneById('facture');
+                            _temp && _temp.setProperty('checked', false);
                         }}
                     >
                         <img

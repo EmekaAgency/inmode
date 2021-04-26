@@ -31,11 +31,11 @@ export async function InstaPost():Promise<string[] | null> {
             return photos.filter(e => e);
         }
         catch(err:any) {
-            console.log(err);
+            //* console.log(err);
             return [];
         }
     }).catch((err:any):null => {
-        console.log(`\nCould not fetch instagram posts. Error status ${err}`);
+        //* console.log(`\nCould not fetch instagram posts. Error status ${err}`);
         return null;
     });
 }
@@ -69,11 +69,11 @@ export async function InstagramPosts(insta_id:string | number):Promise<string[] 
             return photos.filter(e => e);
         }
         catch(err:any) {
-            console.log(err);
+            //* console.log(err);
             return [];
         }
     }).catch((err:any):null => {
-        console.log(`\nCould not fetch instagram posts. Error status ${err}`);
+        //* console.log(`\nCould not fetch instagram posts. Error status ${err}`);
         return null;
     });
 }
@@ -86,7 +86,7 @@ export async function scrapingInstagramPosts(username:string | number) {
                 photos.push(edge.node);
             }
         });
-        console.log(photos);
+        //* console.log(photos);
         return photos;
     }).catch(err => {
         console.warn(`\nCould not fetch instagram posts. Error status ${err}`);

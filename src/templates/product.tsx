@@ -113,6 +113,10 @@ export const query = graphql`
             texte
           }
           Addons {
+            MenuParams {
+              url
+              internal_link
+            }
             ProductPresentation {
               left_image {
                 childImageSharp {

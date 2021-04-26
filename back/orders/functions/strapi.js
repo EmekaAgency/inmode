@@ -1,7 +1,7 @@
 const { _request } = require('./fetch.js');
 
 const _create_object = async function(datas = {}, token, ObjectName, fieldName) {
-    console.log(`_create_object ${ObjectName}`);
+    //* console.log(`_create_object ${ObjectName}`);
     const id = await object_id(datas[fieldName], token, ObjectName, fieldName);
     if(id) {
         return false;
@@ -15,7 +15,7 @@ const _create_object = async function(datas = {}, token, ObjectName, fieldName) 
 }
 
 const _update_object = async function(reference, datas = {}, token, ObjectName, fieldName) {
-    console.log(`_update_object ${ObjectName} with reference ${reference}`);
+    //* console.log(`_update_object ${ObjectName} with reference ${reference}`);
     const id = await object_id(reference, token, ObjectName, fieldName);
     if(!id) {
         return false;
@@ -29,7 +29,7 @@ const _update_object = async function(reference, datas = {}, token, ObjectName, 
 }
 
 const _load_object = async function(value, token, ObjectName, fieldName) {
-    console.log(`_load_object ${ObjectName} with ${fieldName} ${value}`);
+    //* console.log(`_load_object ${ObjectName} with ${fieldName} ${value}`);
     return await _request(
         "GET",
         token,
@@ -38,7 +38,7 @@ const _load_object = async function(value, token, ObjectName, fieldName) {
 }
 
 const _delete_object = async function(reference, token, ObjectName, fieldName) {
-    console.log(`_delete_object ${ObjectName} with reference ${reference}`);
+    //* console.log(`_delete_object ${ObjectName} with reference ${reference}`);
     const id = await object_id(reference, token, ObjectName, fieldName);
     if(!id) {
         return false;

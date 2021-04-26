@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { useWindowSize } from "../../functions/window-size";
 import SelectCountry from "../select-country";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { oneById } from "../../functions/selectors";
 
 const tech_list = [
     "MORPHEUS8 | FACIAL AND BODY FRACTIONAL REMODELING",
@@ -39,8 +40,8 @@ const ContactForm = ({ from }:ContactForm) => {
 
     React.useEffect(() => {
         resize_panel(
-            document.getElementById("accordion"),
-            document.getElementById("title-accordion")
+            oneById("accordion"),
+            oneById("title-accordion")
         );
     }, [size.width]);
 
@@ -95,7 +96,7 @@ const ContactForm = ({ from }:ContactForm) => {
             }
         })
         .catch(function(error) {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+            //* console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
           });;
     }
 
@@ -125,7 +126,7 @@ const ContactForm = ({ from }:ContactForm) => {
                 <div className="field">
                     <label htmlFor="speciality">Choose a speciality</label>
                     <select name="speciality" required={true}>
-                        <option value="plastic-surgeon" selected>Plastic surgeon</option>
+                        <option value="plastic-surgeon">Plastic surgeon</option>
                         <option value="facial-surgeon">Facial surgeon</option>
                         <option value="dermatologist">Dermatologist</option>
                         <option value="cosmetic-doctor">Cosmetic doctor</option>

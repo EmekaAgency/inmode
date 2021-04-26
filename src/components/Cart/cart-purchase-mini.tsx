@@ -27,6 +27,7 @@ import {
 import LoadingGIF from '../LoadingGIF';
 
 import './mini.css';
+import { oneById } from "../../functions/selectors";
 
 const CartPurchaseMini = ({  }:CartPurchaseMini) => {
 
@@ -52,9 +53,9 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
         if(document != undefined) {
             let current:HTMLInputElement = e.currentTarget;
-            console.log(`current : ${current.id}`);
-            let other:HTMLInputElement = document.getElementById(current.id == 'sepa' ? 'soge' : 'sepa');
-            console.log(`other : ${other.id}`);
+            //* console.log(`current : ${current.id}`);
+            let other:any = oneById(current.id == 'sepa' ? 'soge' : 'sepa');
+            //* console.log(`other : ${other.id}`);
             other.checked = !current.checked;
             return true;
         }
@@ -64,21 +65,21 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     const sendForm = async(e:React.FormEvent<HTMLFormElement>, same_address:boolean = true) => {
         e.preventDefault();
         if(!isSubmit) {
-            let _mini1 = document.getElementById('mini-submit-1');if(_mini1) _mini1.disabled = true;
-            let _mini2 = document.getElementById('mini-submit-2');if(_mini2) _mini2.disabled = true;
-            let _mini3 = document.getElementById('mini-submit-3');if(_mini3) _mini3.disabled = true;
-            let _sepa:HTMLInputElement | any = document.getElementById('sepa');
+            let _mini1:any = oneById('mini-submit-1');if(_mini1) _mini1.disabled = true;
+            let _mini2:any = oneById('mini-submit-2');if(_mini2) _mini2.disabled = true;
+            let _mini3:any = oneById('mini-submit-3');if(_mini3) _mini3.disabled = true;
+            let _sepa:any = oneById('sepa');
             let fields:HTMLElement[] | any[] = []; 
             // fields.push([...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_'))]);
             // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && e.value));
             if(same_address) {
-                console.log(Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_')));
+                //* console.log(Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_')));
                 // console.log(Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
                 fields = [...Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_'))];
                 // fields.push(...Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
             }
             else {
-                console.log([...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))]);
+                //* console.log([...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))]);
                 // console.log(Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
                 fields = [...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))];
                 // fields.push(...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
@@ -127,19 +128,19 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 if(typeof document !== "undefined") {
                     document.forms["step-2-part"] && document.forms["step-2-part"].reset();
                     document.forms["step-3-part"] && document.forms["step-3-part"].reset();
-                    let _sepa = document.getElementById('sepa')
+                    let _sepa:any = oneById('sepa')
                     if(_sepa) {
                         _sepa.checked = _sepa.checked ? true : false;
                     } // removeAttribute('checked');
-                    let _soge = document.getElementById('soge')
+                    let _soge:any = oneById('soge')
                     if(_soge) {
                         _soge.checked = _soge.checked ? true : false;
                     } // setAttribute('checked', 'true');
-                    let _facture = document.getElementById('facture');
+                    let _facture:any = oneById('facture');
                     if(_facture) {
                         _facture.checked = false;
                     }
-                    let _terms = document.getElementById('terms');
+                    let _terms:any = oneById('terms');
                     if(_terms) {
                         _terms.checked = false;
                     }

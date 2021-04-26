@@ -34,7 +34,7 @@ const PaymentErrorPage = () => {
         setParams(new Object({..._test}));
         // delete _test.signature;
         // verify_signature();
-        console.log(_test);
+        //* console.log(_test);
         order_load(_test.vads_trans_id != undefined ? _test.vads_trans_id : _test.vads_order_id!= undefined ? _test.vads_order_id : null);
         window.history.pushState('', page_title, '/payment/refused/');
     }, []);
