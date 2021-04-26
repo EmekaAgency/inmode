@@ -27,7 +27,7 @@ const ContactForm = ({ from }:ContactForm) => {
     const size = useWindowSize();
 
     const resize_panel = (panel:Element | null, close:HTMLElement | null) => {
-        let closed:boolean = close != null ? close.classList.contains("opened") : false;
+        let closed:boolean = close != null ? false : close.classList.contains("opened");
         panel && panel.classList.contains('opened') && closed && panel.classList.remove('opened');
         panel && !panel.classList.contains('opened') && !closed && panel.classList.add('opened');
         if (maxHeight && close) {
