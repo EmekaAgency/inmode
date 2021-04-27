@@ -70,15 +70,15 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
     const sendForm = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let _temp:any = oneById('big-submit')
-        _temp && _temp.setProperty('disabled', true);
+        let _temp:any = oneById('big-submit');
+        if(_temp){ _temp.disabled= true; }
         let _sepa:HTMLInputElement | any = oneById('sepa');
         let fields = [...Array.from(document.forms["purchase"]).filter((field:any) => {return field.id.includes('vads_')})];
         // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && field.value));
         setIsSubmit(true);
         setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
         _temp = oneById('big-submit');
-        _temp && _temp.setProperty('disabled', false);
+        if(_temp) { _temp.disabled= false; }
         // console.log('sendForm()');
         // console.log(`isSubmit : ${isSubmit}`);
         // console.log(`isCreated : ${isCreated}`);
