@@ -82,15 +82,15 @@ const PayParams = ({  }:PayParams) => {
                 <div id="payment_articles">
                     {/* DELIVERY TAX */}
                     {/*PAS DE FRAIS DE LIVRAISON*/}
-                    {false && cart.pay_delivery() && <input hidden id="vads_product_amount0" name="vads_product_amount0" value="1000"/>}
-                    {false && cart.pay_delivery() && <input hidden id="vads_product_label0" name="vads_product_label0" value="livraison"/>}
-                    {false && cart.pay_delivery() && <input hidden id="vads_product_qty0" name="vads_product_qty0" value="1"/>}
-                    {false && cart.pay_delivery() && <input hidden id="vads_product_ref0" name="vads_product_ref0" value="DELIVERY_TAX"/>}
+                    {/* {false && cart.pay_delivery() && <input hidden id="vads_product_amount0" name="vads_product_amount0" value="1000"/>} */}
+                    {/* {false && cart.pay_delivery() && <input hidden id="vads_product_label0" name="vads_product_label0" value="livraison"/>} */}
+                    {/* {false && cart.pay_delivery() && <input hidden id="vads_product_qty0" name="vads_product_qty0" value="1"/>} */}
+                    {/* {false && cart.pay_delivery() && <input hidden id="vads_product_ref0" name="vads_product_ref0" value="DELIVERY_TAX"/>} */}
                     {/*FRAIS DE LIVRAISON*/}
-                    {/* {cart.pay_delivery() && <input hidden id="vads_product_amount0" name="vads_product_amount0" value="1000"/>} */}
-                    {/* {cart.pay_delivery() && <input hidden id="vads_product_label0" name="vads_product_label0" value="livraison"/>} */}
-                    {/* {cart.pay_delivery() && <input hidden id="vads_product_qty0" name="vads_product_qty0" value="1"/>} */}
-                    {/* {cart.pay_delivery() && <input hidden id="vads_product_ref0" name="vads_product_ref0" value="DELIVERY_TAX"/>} */}
+                    {cart.pay_delivery() && <input hidden id="vads_product_amount0" name="vads_product_amount0" value="1000"/>}
+                    {cart.pay_delivery() && <input hidden id="vads_product_label0" name="vads_product_label0" value="livraison"/>}
+                    {cart.pay_delivery() && <input hidden id="vads_product_qty0" name="vads_product_qty0" value="1"/>}
+                    {cart.pay_delivery() && <input hidden id="vads_product_ref0" name="vads_product_ref0" value="DELIVERY_TAX"/>}
                     {/* TVA */}
                     <input hidden id="vads_product_amount9999" name="vads_product_amount9999" value={Math.ceil(parseInt(cart.total_tva(), 10) * 100)}/>
                     <input hidden id="vads_product_label9999" name="vads_product_label9999" value="tva"/>

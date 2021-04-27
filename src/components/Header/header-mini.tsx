@@ -4,6 +4,7 @@ import MenusContext from "../contexts/menus-context";
 import { enableMainScroll } from '../../functions/disable-scroll';
 import { useImages } from '../contexts/images-provider';
 import { HeaderBottom_Interface, Inmode_MiniMenu_Interface } from '../interfaces';
+import { oneById } from '../../functions/selectors';
 
 const HeaderMini = ({}:HeaderMini) => {
 
@@ -14,7 +15,8 @@ const HeaderMini = ({}:HeaderMini) => {
 
     const closeMenu = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.preventDefault();
-        document.getElementById('header-mini').classList.remove('opened');
+        let _temp:any = oneById('header-mini');
+        _temp && _temp.classList.remove('opened');
         enableMainScroll();
     }
 

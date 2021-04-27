@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { useWindowSize } from "../../functions/window-size";
 import SelectCountry from "../select-country";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { oneById } from "../../functions/selectors";
 
 const tech_list = [
     "MORPHEUS8 | FACIAL AND BODY FRACTIONAL REMODELING",
@@ -39,8 +40,8 @@ const ContactForm = ({ from }:ContactForm) => {
 
     React.useEffect(() => {
         resize_panel(
-            document.getElementById("accordion"),
-            document.getElementById("title-accordion")
+            oneById("accordion"),
+            oneById("title-accordion")
         );
     }, [size.width]);
 
@@ -111,11 +112,11 @@ const ContactForm = ({ from }:ContactForm) => {
         <form id="full-contact-form" name="contact" onSubmit={(e) => {send_form(e);}} className={`contact-form main-container ${from}`}>
             <div className="mailer-datas">
                 <div className="field">
-                    <label htmlFor="lastname">Nom</label>
+                    <label htmlFor="lastname">Nom*</label>
                     <input type="text" name="lastname" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="firstname">Prénom</label>
+                    <label htmlFor="firstname">Prénom*</label>
                     <input type="text" name="firstname" required/>
                 </div>
                 <div className="field">
@@ -123,9 +124,10 @@ const ContactForm = ({ from }:ContactForm) => {
                     <input type="text" name="company"/>
                 </div>
                 <div className="field">
-                    <label htmlFor="speciality">Choisir une spécialité</label>
+                    <label htmlFor="speciality">Choisir une spécialité*</label>
                     <select name="speciality" required={true}>
-                        <option value="plastic-surgeon" selected>Chirurgien plasticien</option>
+                        <option value="" disabled selected style={{display: 'none'}}>Spécialité</option>
+                        <option value="plastic-surgeon">Chirurgien plasticien</option>
                         <option value="facial-surgeon">Chirurgien maxillo-facial</option>
                         <option value="dermatologist">Dermatologue</option>
                         <option value="cosmetic-doctor">Médecin esthétique</option>
@@ -134,23 +136,23 @@ const ContactForm = ({ from }:ContactForm) => {
                     </select>
                 </div>
                 <div className="field">
-                    <label htmlFor="mail">Email</label>
+                    <label htmlFor="mail">Email*</label>
                     <input spellCheck={false} type="email" name="mail" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="phone_number">Téléphone</label>
+                    <label htmlFor="phone_number">Téléphone*</label>
                     <input spellCheck={false} type="tel" name="phone_number" required pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
                 </div>
                 <div className="field">
-                    <label htmlFor="address">Adresse</label>
+                    <label htmlFor="address">Adresse*</label>
                     <input spellCheck={false} type="text" name="address" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="zip">Code postal</label>
+                    <label htmlFor="zip">Code postal*</label>
                     <input spellCheck={false} type="number" name="zip" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="city">Ville</label>
+                    <label htmlFor="city">Ville*</label>
                     <input spellCheck={false} type="text" name="city" required/>
                 </div>
                 <div className="field">
@@ -161,7 +163,7 @@ const ContactForm = ({ from }:ContactForm) => {
             <div className="message-zone">
                 <textarea
                     id="contact-message"
-                    placeholder="Entrez votre message ici"
+                    placeholder="Entrez votre message ici*"
                     name="message"
                     className="custom-scrollbar"
                     maxLength={max_length}

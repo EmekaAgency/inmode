@@ -303,8 +303,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             console.log('Cas ' + ++i);
             return true;
         }
-        let _select_cust = document.getElementById('vads_cust_country');
-        let _select_ship = document.getElementById('vads_ship_to_country');
+        let _select_cust:any = oneById('vads_cust_country');
+        let _select_ship:any = oneById('vads_ship_to_country');
         if(_select_cust == null && _select_ship == null) {
             console.log('Cas ' + ++i);
             return true;
@@ -321,16 +321,16 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         return false;
     }
     /*PAS DE FRAIS DE LIVRAISON*/
-    const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
-    const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
+    // const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
+    // const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
     // /*FRAIS DE LIVRAISON*/
-    // const total_TVA = ():string => {return hasTVA() ? (count_total() * 0.2).toFixed(2) : (0).toFixed(2);}
-    // const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
+    const total_TVA = ():string => {return hasTVA() ? (count_total() * 0.2).toFixed(2) : (0).toFixed(2);}
+    const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
     
     /*PAS DE FRAIS DE LIVRAISON*/
-    const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 && false ? true : false;}
+    // const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 && false ? true : false;}
     /*PAS FRAIS DE LIVRAISON*/
-    // const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 ? true : false;}
+    const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 ? true : false;}
 
     const payment_str = (form_fields) => {
         // console.log("payment_str");
@@ -417,11 +417,11 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             transId: order_id,
         });
 
-        let _delivery_mail:HTMLElement | HTMLInputElement | null = document.getElementById('delivery_mail');
+        let _delivery_mail:any = oneById('delivery_mail');
         if(_delivery_mail) {
             _temp['delivery_mail'] = _delivery_mail.value;
         }
-        let intra_tva:HTMLElement | HTMLInputElement | null = document.getElementById('intra_tva');
+        let intra_tva:any = oneById('intra_tva');
         if(intra_tva) {
             _temp['intra_tva'] = intra_tva.value;
         }
@@ -430,10 +430,10 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         console.log(`otherAddress : ${otherAddress}`);
         if(!formFields.vads_cust_country && !formFields.vads_ship_to_country) {
             if(otherAddress == true) {
-                _country = document.getElementById('vads_ship_to_country').value;
+                _country = oneById('vads_ship_to_country');
             }
             else {
-                _country = document.getElementById('vads_cust_country').value
+                _country = oneById('vads_cust_country');
             }
         }
         else {

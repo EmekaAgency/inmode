@@ -1,4 +1,5 @@
 import React from "react";
+import { oneById, oneBySelector, oneByTag } from "../../functions/selectors";
 import Carousel from "../Carousel";
 import { useImages } from '../contexts/images-provider';
 import { InmodePanel_Addon_Interface } from "../interfaces";
@@ -33,11 +34,15 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
     const resolve_click = (e) => {
       e.preventDefault();
       if(e.currentTarget.id === "video-iframe" || e.currentTarget.classList.contains('close-pic')) {
-        document.getElementsByTagName('main')[0].style.removeProperty('z-index');
-        document.getElementById('video-iframe').classList.remove('opened');
+        let _temp:any = oneByTag('main');
+        _temp && _temp.style.removeProperty('z-index');
+        _temp = oneById('video-iframe');
+        _temp && _temp.classList.remove('opened');
         e.currentTarget.innerHTML = "";
-        document.querySelector('header').classList.remove('video-opened');
-        document.querySelector('.header-mini-menu').classList.remove('video-opened');
+        _temp = oneBySelector('header');
+        _temp && _temp.classList.remove('video-opened');
+        _temp = oneBySelector('.header-mini-menu');
+        _temp && _temp.classList.remove('video-opened');
       }
     }
 
@@ -49,10 +54,14 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
       else if(url.includes('vimeo')) {
         url = url.replace('https://vimeo.com/', '//player.vimeo.com/video/') + '?autoplay=1&hd=1&show_title=1&show_byline=1&show_portrait=0&fullscreen=1';
       }
-      document.querySelector('header').classList.add('video-opened');
-      document.querySelector('.header-mini-menu').classList.add('video-opened');
-      document.getElementsByTagName('main')['0'].style.zIndex = 4;
-      document.getElementById('video-iframe').classList.add('opened');
+      let _temp:any = oneBySelector('header');
+      _temp && _temp.classList.add('video-opened');
+      _temp = oneBySelector('.header-mini-menu');
+      _temp && _temp.classList.add('video-opened');
+      _temp = oneByTag('main');
+      _temp && _temp.style.setProperty('z-index', 4);
+      _temp = oneById('video-iframe');
+      _temp && _temp.classList.add('opened');
       let iframe = '';
       iframe += '<img class="close-pic" src=' + images.getOne('closeWhiteIcon').publicURL + ' onclick="resolve_click(e)"/>';
       iframe += '<iframe ';
@@ -61,8 +70,9 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
       iframe += 'src="' + url +'" ';
       iframe += 'scrolling="no"';
       iframe += '></iframe>';
-      console.log(iframe);
-      document.getElementById('video-iframe').innerHTML = iframe;
+    //   console.log(iframe);
+      _temp = oneById('video-iframe');
+      if(_temp) {_temp.innerHTML = iframe;}
     }
 
     const resolveVideoClick = (e:any, url:string) => {

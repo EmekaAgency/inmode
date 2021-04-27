@@ -13,13 +13,16 @@ import CartBasket from "../CartBasket";
 
 // {/* SWITCH CART END */}
 
+import { oneById } from "../../functions/selectors";
+
 const Header = ({}:Header) => {
 
   const images = useImages();
 
   const openMenu = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    document.getElementById('header-mini').classList.add('opened');
+    let _temp:any = oneById('header-mini');
+    _temp && _temp.classList.add('opened');
     size.width < 1200 && disableMainScroll();
   }
 
