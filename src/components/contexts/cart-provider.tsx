@@ -91,8 +91,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     const [pay_params, setPayParams] = React.useState({
         signature: "",
         actionMode: "INTERACTIVE",
-        // ctxMode: "TEST",
-        ctxMode: "PRODUCTION",
+        ctxMode: "TEST",
+        // ctxMode: "PRODUCTION",
         currency: currencies.EUR,
         pageAction: "PAYMENT",
         siteId: "",

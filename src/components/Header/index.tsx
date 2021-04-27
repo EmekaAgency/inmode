@@ -20,7 +20,7 @@ const Header = ({}:Header) => {
   const openMenu = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     document.getElementById('header-mini').classList.add('opened');
-    size.width < 1000 && disableMainScroll();
+    size.width < 1200 && disableMainScroll();
   }
 
   // {/* SWITCH CART */}

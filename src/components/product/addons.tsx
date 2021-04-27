@@ -62,7 +62,7 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                                 />
                                             )}
                                             {!product.title_image && product.title_text}
-                                            {product.appears_everywhere && <Link className="zone-link" to={`/technology/${product_title}`} title={product.title}></Link>}
+                                            {product.appears_everywhere && <Link className="zone-link" to={addon.MenuParams.url} title={product.title}></Link>}
                                         </div>
                                         {product.AddonProductsDescr.map((descr, key) => {
                                             if(descr.product.id === datas.id) {

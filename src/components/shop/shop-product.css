@@ -116,7 +116,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
     .shop-products .shop-addon .shop-product2 .reference,
     .shop-products .shop-addon .shop-product2 .name,
     .shop-products .shop-addon .shop-product2 .pack,

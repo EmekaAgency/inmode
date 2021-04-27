@@ -26,7 +26,7 @@ const ContactForm = ({ from }:ContactForm) => {
     const size = useWindowSize();
 
     const resize_panel = (panel:Element | null, close:HTMLElement | null) => {
-        let closed:boolean = close != null ? close.classList.contains("opened") : false;
+        let closed:boolean = close != null ? false : close.classList.contains("opened");
         panel && panel.classList.contains('opened') && closed && panel.classList.remove('opened');
         panel && !panel.classList.contains('opened') && !closed && panel.classList.add('opened');
         if (maxHeight && close) {
@@ -71,7 +71,7 @@ const ContactForm = ({ from }:ContactForm) => {
             body: JSON.stringify(body),
         };
         fetch(
-            `https://inmodemd.fr/back/app.php`,
+            `https://inmode.emeka.fr/back/app.php`,
             request_init,
         )
         .then((promise) => {
@@ -147,7 +147,7 @@ const ContactForm = ({ from }:ContactForm) => {
                 </div>
                 <div className="field">
                     <label htmlFor="zip">Code postal</label>
-                    <input spellCheck={false} type="text" name="zip" required/>
+                    <input spellCheck={false} type="number" name="zip" required/>
                 </div>
                 <div className="field">
                     <label htmlFor="city">Ville</label>

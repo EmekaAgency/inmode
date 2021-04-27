@@ -228,6 +228,7 @@
         z-index: 5;
         right: -100%;
         transition: right 0.3s ease-in-out 0s;
+        border: none;
     }
     
     #purchase-mini.step-1 .cart-validate {

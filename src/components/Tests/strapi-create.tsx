@@ -29,7 +29,7 @@ const StrapiCreate = ({  }) => {
             <input id="update-Datetime" type="number" value={Date.now()} name="Datetime" placeholder="Datetime" required disabled/>
             {/* Article     ||  */}
             <select name="Article" required>
-                <option value="" selected disabled>Article</option>
+                <option value="" selected disabled style={{display: 'none'}}>Article</option>
                 {Object.keys(articles).map((reference:any, key:number) => {
                     return <option key={key} value={articles[reference].id}>{`${articles[reference].relative} ${reference}`}</option>
                 })}

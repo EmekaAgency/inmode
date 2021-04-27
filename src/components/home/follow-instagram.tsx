@@ -32,7 +32,7 @@ const FollowInstagram = ({insta_id}:FollowInstagram) => {
     // console.log(scrapingInstagramPosts(insta_id));
     // console.log(InstagramPosts(insta_id));
     
-    const [pics, setPics] = React.useState([]);
+    // const [pics, setPics] = React.useState([]);
 
     // let _headers = new Headers();
     // _headers.append('Allow-Origin', '*');

@@ -71,7 +71,7 @@ const ContactUs = () => {
         document.querySelector("#contact-mini .req-return.success").innerHTML = "";
         document.querySelector("#contact-mini .req-return.error").innerHTML = "";
         fetch(
-            `https://inmodemd.fr/back/app.php`,
+            `https://inmode.emeka.fr/back/app.php`,
             {
                 ...fetch_post,
                 body: JSON.stringify(body)
@@ -127,7 +127,7 @@ const ContactUs = () => {
                             <input type="text" placeholder="Nom" name="lastname" required={true}/>
                             <input type="text" placeholder="Prénom" name="firstname" required={true}/>
                             <select name="subject" required={true}>
-                                <option value="" selected disabled>Choisir une spécialité</option>
+                                <option value="" selected disabled style={{display: 'none'}}>Choisir une spécialité</option>
                                 <option value="plastic-surgeon">Chirurgien plasticien</option>
                                 <option value="facial-surgeon">Chirurgien maxillo-facial</option>
                                 <option value="dermatologist">Dermatologue</option>
@@ -137,8 +137,8 @@ const ContactUs = () => {
                             </select>
                             <input type="email" placeholder="Adresse mail" name="mail" spellCheck={false} required={true}/>
                             <input type="phone" placeholder="Téléphone" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
-                            <input type="text" placeholder="Code postal" name="zip" spellCheck={false} required={true}/>
-                            <input type="number" placeholder="Ville" name="city" spellCheck={false} required={true}/>
+                            <input type="number" placeholder="Code postal" name="zip" spellCheck={false} required={true}/>
+                            <input type="text" placeholder="Ville" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message-mini"
                                 type="textarea"

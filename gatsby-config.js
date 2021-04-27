@@ -33,10 +33,17 @@ module.exports = {
     url_order_load: `${process.env.URL_ORDER_LOAD}`,
     url_order_signature: `${process.env.URL_ORDER_SIGNATURE}`,
     instagram_id: `${process.env.INSTA_ID}`,
+    siteUrl: `https://inmodemd.fr`,
   },
   plugins: [
     // '@typescript-eslint/eslint-plugin',
     // 'react',
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-anchor-links",
