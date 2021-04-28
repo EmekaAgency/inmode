@@ -10,7 +10,7 @@ const Alveoles = ({}:Alveoles) => {
         {
             'image': images.getOne('alveole1').childImageSharp.fluid,
             'target': '_self',
-            'text': 'Congress',
+            'text': 'Congrès',
             'link': '/events/congress'
         },
         {
@@ -28,13 +28,13 @@ const Alveoles = ({}:Alveoles) => {
         {
             'image': images.getOne('alveole4').childImageSharp.fluid,
             'target': '_self',
-            'text': 'Products',
+            'text': 'Produits',
             'link': '/workstation'
         },
         {
             'image': images.getOne('alveole5').childImageSharp.fluid,
             'target': '_blank',
-            'text': 'Before / After',
+            'text': 'Avant / Après',
             'link': 'https://inmodemd.com/gallery/'
         }
     ];

@@ -32,8 +32,8 @@ const TreatmentProducts = ({ datas }) => {
                         <div className="workstation-addons">
                             <div className="treatment-addon">
                                 <div className="treatment-title">
-                                    <div>Technology</div>
-                                    <div>Treatment</div>
+                                    <div>Technologie</div>
+                                    <div>Traitement</div>
                                 </div>
                                 <div className="treatment-list">
                                     {bloc.RelatedAddonTreatment.map((treat, key_treat) => {

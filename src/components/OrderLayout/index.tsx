@@ -14,7 +14,7 @@ interface OrderLayoutParams {
 
 function get_day(day:number):string {
     try {
-        return ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][day];
+        return ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'][day];
     }
     catch(err) {
         return 'unknown';
@@ -23,7 +23,7 @@ function get_day(day:number):string {
 
 function get_month(month:number):string {
     try {
-        return ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'][month]
+        return ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'][month]
     }
     catch(err) {
         return 'unknown';
@@ -70,9 +70,9 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     {/* Article: (3) [{…}, {…}, {…}] */}
                     {/* <div className="order-articles">
                         {order.Article.map((article , key:number):any => {
-                            //* console.log(article.Article.reference);
+                            console.log(article.Article.reference);
                             let _art = cart.article(article.Article.reference);
-                            //* console.log(_art);
+                            console.log(_art);
                             if(_art) {
                                 return (
                                     <div key={key} className="order-article">
@@ -95,7 +95,7 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     {/* </div> */}
                     {/* Date: "2021-02-26T05:40:43.000Z" */}
                     <div className="order-date">
-                        Bought {get_date(order.Date)}
+                        Achat effectué le {get_date(order.Date)}
                     </div>
                     {/* Billing: {id: 20, Firstname: "m", Lastname: "m", Phone: "0667630604", Mail: "test@gmail.com", …} */}
                     {/* {order.Billing && <div className="order-billing">
@@ -134,11 +134,11 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                 </div>
                 }
                 <div className="payment-suggestions">
-                    <Link to="/" title="Home">Home</Link>
-                    <Link to="/workstation" title="Workstations">Workstations</Link>
+                    <Link to="/" title="Accueil">Accueil</Link>
+                    <Link to="/workstation" title="Machines">Machines</Link>
                     {/* SWITCH CART */}
 
-                    {/* <Link to="/shop" title="Shop">Shop</Link> */}
+                    <Link to="/shop" title="Shop">Shop</Link>
 
                     {/* SWITCH CART END */}
                 </div>

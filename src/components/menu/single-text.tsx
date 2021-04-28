@@ -8,9 +8,9 @@ const MenuSingleText = ({menu, prop_key = undefined}:MenuSingleText) => {
 
     // SWITCH CART
 
-    if(menu.title && menu.title.toLowerCase() === 'shop') {
-        return <></>;
-    }
+    // if(menu.title && menu.title.toLowerCase() === 'shop') {
+    //     return <></>;
+    // }
 
     // {/* SWITCH CART END */}
 

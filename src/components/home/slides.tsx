@@ -55,7 +55,7 @@ const Slides = ({from}:Slides) => {
     
     const close_view = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, elem:any) => {
         e.preventDefault();
-        //* console.log(elem);
+        console.log(elem);
         let _main:any = oneById('main');
         if(_main == null) {
             return false;
@@ -107,7 +107,7 @@ const Slides = ({from}:Slides) => {
                                     {slide.Name}
                                 </div>
                                 <div className="slide-view-detail" onClick={(e) => {view_detail(e, key);}}>
-                                    Product informations
+                                    Informations produit
                                     <img
                                         className="slide-view-detail-arrow transition"
                                         src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}
@@ -117,7 +117,7 @@ const Slides = ({from}:Slides) => {
                                     <Link className="zone-link" to={slide.MenuParams.url} title={slide.Name}></Link>
                                 </div>
                                 {slide.Addons ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
-                                    Technologies
+                                    Pièces à main
                                     <img
                                         className="slide-view-product-arrow transition"
                                         src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}

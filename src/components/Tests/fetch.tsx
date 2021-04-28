@@ -35,10 +35,10 @@ function send_request(method:string, body?:Object, url:string = _base_url) {
         return promise.json();
     })
     .then((response:Response) => {
-        //* console.log(response);
+        console.log(response);
     })
     .catch(function (error:Error) {
-        //* console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
     });
 }
 

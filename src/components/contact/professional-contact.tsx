@@ -5,7 +5,7 @@ const ProfessionalContact = ({ from }:ProfessionalContact) => {
         <div className={`professional-contact main-container ${from}`}>
             <div className="opportunities">
                 <div className="title">
-                    Professional opportunities
+                    Opportunités professionnelles
                 </div>
                 <hr/>
                 <div className="descr">
@@ -14,7 +14,7 @@ const ProfessionalContact = ({ from }:ProfessionalContact) => {
             </div>
             <div className="around-the-world">
                 <div className="title">
-                    Contact us by mail
+                    nous contacter par mail
                 </div>
                 <hr/>
                 <div className="distributors">
@@ -26,15 +26,15 @@ const ProfessionalContact = ({ from }:ProfessionalContact) => {
                             // },
                             // {
                             //     'place': 'Europe, Moyen-Orient, Afrique du Sud',
-                            //     'mail': 'emea@inmodemd'
+                            //     'mail': 'emea@inmodemd.com'
                             // },
                             // {
                             //     'place': 'Asie et Pacifique (APAC)',
                             //     'mail': 'apac@inmodemd.com'
                             // }
                             {
-                                'place': 'Inmode UK',
-                                'mail': 'info@inmodeuk.emeka.fr'
+                                'place': 'Inmode France',
+                                'mail': 'contact.fr@inmodemd.com'
                             }
                         ].map((distributor, key) => {
                             return (

@@ -12,7 +12,7 @@ const StrapiCreate = ({  }) => {
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //* console.log('Submit create');
+        console.log('Submit create');
         send_form(e.target);
     }
 

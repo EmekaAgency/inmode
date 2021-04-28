@@ -1746,7 +1746,7 @@
     // log animation frame rate
     var now = new Date();
     if ( this.then ) {
-      //* console.log( ~~( 1000 / (now-this.then)) + 'fps' )
+      console.log( ~~( 1000 / (now-this.then)) + 'fps' )
     }
     this.then = now;
     /**/
@@ -4871,7 +4871,7 @@
 
       function onConfirm(image, message) {
         if (_this.options.debug && hasConsole) {
-          //* console.log('confirm', image, message);
+          console.log('confirm', image, message);
         }
 
         _this.progress(image);

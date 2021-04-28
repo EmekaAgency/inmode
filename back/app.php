@@ -19,8 +19,8 @@
     $request_time = generateRandomString();
 
     header('Content-type: text/html; charset=UTF-8');
-    date_default_timezone_set('Europe/London');
-    setlocale(LC_TIME, "en_GB");
+    date_default_timezone_set('Europe/Paris');
+    setlocale(LC_TIME, "fr_FR");
     
     try
     {
@@ -33,7 +33,7 @@
         echo json_encode([
             'type' => 'client',
             'status' => 'fail',
-            'message' => 'Servor error'
+            'message' => 'Erreur serveur'
         ]);
         return;
     }
@@ -48,7 +48,7 @@
         echo json_encode([
             'type' => 'client',
             'status' => 'fail',
-            'message' => 'Servor error'
+            'message' => 'Erreur serveur'
         ]);
         return;
     }
@@ -63,17 +63,17 @@
         echo json_encode([
             'type' => 'client',
             'status' => 'fail',
-            'message' => 'Servor error'
+            'message' => 'Erreur serveur'
         ]);
         return;
     }
     
     logEvent('////////////////');
-    logEvent('New request');
+    logEvent('Nouvelle requête');
     
     if($_POST == null)
     {
-        logEvent('Body parsing success');
+        logEvent('Parse du body reçu');
         $req_body = file_get_contents('php://input');
         $_POST = json_decode($req_body, true);
     }
@@ -90,11 +90,11 @@
                 if(isset($_POST['speciality'], $_POST['action']))
                 {
                     tryMail('mael.fallet@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact');
-                    // tryMail('info@inmodeuk.emeka.fr', $_POST['speciality'], $_POST['action'], 'full-contact');
+                    // tryMail('contact.fr@inmodemd.com', $_POST['speciality'], $_POST['action'], 'full-contact');
                 }
                 else
                 {
-                    logError('One of the $_POST parameters is missing :');
+                    logError('Un des paramètres $_POST est manquant :');
                     logError(print_r($_POST));
                 }
             }
@@ -104,10 +104,10 @@
                 if(isset($_POST['subject'], $_POST['action']))
                 {
                     tryMail('mael.fallet@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us');
-                    // tryMail('info@inmodeuk.emeka.fr', $_POST['subject'], $_POST['action'], 'contact-us');
+                    // tryMail('contact.fr@inmodemd.com', $_POST['subject'], $_POST['action'], 'contact-us');
                 }
                 else {
-                    logError('One of the $_POST parameters is missing :');
+                    logError('Un des paramètres $_POST est manquant :');
                     logError(print_r($_POST));
                 }
             }
@@ -116,12 +116,24 @@
                 logEvent('$_POST action = \'order-mail\'');
                 if(isset($_POST['order'], $_POST['email'], $_POST['for'], $_POST['action'], $_POST['type']))
                 {
-                        tryMail('mael.fallet@gmail.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
-                        // tryMail($_POST['email'] , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    if(isset($_POST['order']['Livraison']) && $_POST['for'] == 'client') {
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        // tryMail($_POST['order']['Livraison']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    }
+                    if(isset($_POST['order']['Facturation']) && $_POST['for'] == 'client') {
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        // tryMail($_POST['order']['Facturation']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    }
+                    if($_POST['for'] == 'pro') {
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        // tryMail('contact.fr@inmodemd.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    }
+                    // tryMail('mael.fallet@gmail.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    // tryMail('contact.fr@inmodemd.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
                 }
                 else
                 {
-                    logError('One of the $_POST parameters is missing :');
+                    logError('Un des paramètres $_POST est manquant :');
                     logError(print_r($_POST));
                 }
             }
@@ -130,12 +142,12 @@
                 logEvent('$_POST action = \'fail-mail\'');
                 if(isset($_POST['type'], $_POST['for'], $_POST['action'])) {
                     tryMail('mael.fallet@gmail.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
-                    // tryMail('info@inmodeuk.emeka.fr' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
-                    // tryMail('inmodeuk@emeka.fr' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
+                    // tryMail('contact.fr@inmodemd.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
+                    // tryMail('inmode@emeka.fr' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
                 }
                 else
                 {
-                    logError('One of the $_POST parameters is missing :');
+                    logError('Un des paramètres $_POST est manquant :');
                     logError(print_r($_POST));
                 }
             }
@@ -155,7 +167,7 @@
             echo json_encode([
                 'type' => 'client',
                 'status' => 'fail',
-                'message' => 'Servor error'
+                'message' => 'Erreur serveur'
             ]);
             unset($_POST);
         }
@@ -166,7 +178,7 @@
         echo json_encode([
             'type' => 'client',
             'status' => 'fail',
-            'message' => 'Servor error'
+            'message' => 'Erreur serveur'
         ]);
         unset($_POST);
     }

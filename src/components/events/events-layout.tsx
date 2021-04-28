@@ -8,7 +8,7 @@ import NoEvents from "./no-events";
 import { InmodePanel_Event_Interface } from "../interfaces";
 // import { useLocalStorage } from "../../functions/use-localstorage";
 
-const EventsLayout = ({ current_page, upcoming_events = undefined, past_events = undefined }:EventsLayout) => {
+const EventsLayout = ({ children, current_page, upcoming_events = undefined, past_events = undefined }:EventsLayout) => {
 
     // TODO localstorage cookie for last event saw vignette si jamais visité
 
@@ -157,9 +157,10 @@ const EventsLayout = ({ current_page, upcoming_events = undefined, past_events =
 };
 
 interface EventsLayout {
+    children: React.ReactNode;
     current_page: string;
     upcoming_events: InmodePanel_Event_Interface[] | undefined;
-    past_events?: InmodePanel_Event_Interface[] | undefined;
+    past_events: InmodePanel_Event_Interface[] | undefined;
 }
 
 export default EventsLayout;

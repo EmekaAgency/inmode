@@ -4,20 +4,20 @@ import React from "react";
 const HowCanWeHelp = ({ from }:HowCanWeHelp) => {
     return (
         <div className={`how-can-we-help main-container ${from}`}>
-            <div className="title">How can we help you ?</div>
-            <div className="rule">Select a subject below</div>
+            <div className="title">Comment pouvons-nous vous aider ?</div>
+            <div className="rule">Sélectionnez votre sujet ci-dessous</div>
             <hr/>
             <div className="topic">
-                Find a <Link to="#" title="Clinic">clinic</Link>
+                Trouver une <Link to="#" title="Clinique">clinique</Link>
             </div>
             <div className="topic">
-                Questions about <Link to="#" title="Treatments">treatments</Link>
+                Questions à propos des <Link to="#" title="Traitements">traitements</Link>
             </div>
             <div className="topic">
-                Questions about <Link to="#" title="Technologies and workstations">technologies and workstations</Link>
+                Questions sur <Link to="#" title="Technologies et machines">technologies et machines</Link>
             </div>
             <div className="topic">
-                General inquiries by <Link to="mailto: info@inmodeuk.emeka.fr" title="Email">email</Link> or on <Link to="tel: +44 (0)20-8965-2594" title="Call us"> +44 (0)20-8965-2594</Link>
+                Demandes générales par <Link to="#" title="Mail">mail</Link> ou au <Link to="tel:+18559829199" title="Nous appeler">1.855.982.9199</Link>
             </div>
         </div>
     );

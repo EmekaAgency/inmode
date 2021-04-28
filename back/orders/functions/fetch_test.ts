@@ -14,10 +14,10 @@ fetch(_url, _request_init)
 .then(async(res:Response) => {
     switch(res.status) {
         case 200:
-            //* console.log(await res.json());
+            console.log(await res.json());
             break;
         default:
-            //* console.log(`Status : ${res.status}`);
+            console.log(`Status : ${res.status}`);
     }
 })
-.catch(/*err => console.log(err)*/)
+.catch(err => console.log(err))

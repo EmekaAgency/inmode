@@ -234,7 +234,7 @@ function is_secured(datas) {
 }
 
 /*export */const create_order_object = async function(object, token) {
-    //* console.log(`object.Date : ${object.Date}`);
+    console.log(`object.Date : ${object.Date}`);
     try {
         let _body = build_order_object(object);
         if(_body.error) {
@@ -248,8 +248,8 @@ function is_secured(datas) {
         );
     }
     catch(error) {
-        //* console.log('create_order_object error');
-        //* console.log(error);
+        console.log('create_order_object error');
+        console.log(error);
         return {
             error: error,
         };
@@ -272,8 +272,8 @@ function is_secured(datas) {
         );
     }
     catch(error) {
-        //* console.log('update_order_object error');
-        //* console.log(error);
+        console.log('update_order_object error');
+        console.log(error);
         return {
             error: error,
         };
@@ -302,7 +302,7 @@ function is_paid(status) {
 }
 
 /*export */const update_order_payment_status = async function(Reference, Trans_status, token) {
-    //* console.log(`Uptade status of order ${Reference} to ${Trans_status}`);
+    console.log(`Uptade status of order ${Reference} to ${Trans_status}`);
     try {
         return await _update_object(
             Reference,
@@ -317,8 +317,8 @@ function is_paid(status) {
         );
     }
     catch(error) {
-        //* console.log('update_order_object error');
-        //* console.log(error);
+        console.log('update_order_object error');
+        console.log(error);
         return {
             error: error,
         };
@@ -351,18 +351,18 @@ function is_paid(status) {
         },
     ],
     Facturation: {
-        Prenom: 'Kévin',
-        Nom: 'LESIEUTRE',
-        Telephone: '0769818682',
-        Mail: 'lesieutre.kevin@gmail.com',
+        Prenom: 'Maël',
+        Nom: 'FALLET',
+        Telephone: '0667630604',
+        Mail: 'mael.fallet@gmail.com',
         Adresse: '124 Rue de Crimée',
         Pays: 'FR',
         CodePostal: '13003',
         Ville: 'Marseille',
         // Societe: '',
     },
-    Prenom: 'Kévin',
-    Nom: 'LESIEUTRE',
+    Prenom: 'Maël',
+    Nom: 'FALLET',
     // Societe: '',
     // Livraison: {},
     FraisLivraison: 10,
@@ -383,10 +383,10 @@ function is_paid(status) {
         },
     ],
     Facturation: {
-        Prenom: 'Kévin',
-        Nom: 'LESIEUTRE',
-        Telephone: '0769818682',
-        Mail: 'lesieutre.kevin@gmail.com',
+        Prenom: 'Maël',
+        Nom: 'FALLET',
+        Telephone: '0667630604',
+        Mail: 'mael.fallet@gmail.com',
         Adresse: '124 Rue de Crimée',
         Pays: 'FR',
         CodePostal: '13003',
@@ -394,21 +394,21 @@ function is_paid(status) {
         Societe: '',
     },
     Livraison: {
-        Prenom: 'Kévin',
-        Nom: 'LESIEUTRE',
-        Telephone: '0769818682',
-        Mail: 'lesieutre.kevin@gmail.com',
-        Adresse: '124 Rue de Crimée',
+        Prenom: 'Maël',
+        Nom: 'FALLET',
+        Telephone: '0667630604',
+        Mail: 'mael.fallet@gmail.com',
+        Adresse: '197 Boulevard National',
         Pays: 'FR',
         CodePostal: '13003',
         Ville: 'Marseille',
-        Societe: 'Emeka',
+        Societe: 'Pekashem',
     },
     FraisLivraison: 0,
     Paye: true,
     Statut: 'ACCEPTED',
-    Prenom: 'Kévin',
-    Nom: 'LESIEUTRE',
+    Prenom: 'Maël',
+    Nom: 'FALLET',
     Societe: '',
 };
 /*export */const order_load = "a8g9m1";

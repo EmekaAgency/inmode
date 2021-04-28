@@ -74,7 +74,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
       else {
         let elems = allByClass('cure-choice');
         let temp = [];
-        elems && Object.keys(elems).forEach(index => {
+        Object.keys(elems).forEach(index => {
           elems[index].checked = true;
           temp.push(elems[index].value);
           resolve_checked(elems[index].value);

@@ -46,7 +46,7 @@ const ContactUs = () => {
     }
 
     const resolve_contact = (e) => {
-        [].forEach.call(allByClass('contact-choice'), function(elem:HTMLElement) {
+        [].forEach.call(allByClass('contact-choice'), function(elem) {
             elem.style.setProperty('width', '0px', 'important');
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0s';
@@ -65,7 +65,7 @@ const ContactUs = () => {
         _temp = oneBySelector('#mini-contact-gif');
         if(_temp) {_temp.style.display = 'inline-block';}
         let body = new Object({});
-        Array.from(document.forms['contact-mini'].elements).map((elem:any) => {
+        Array.from(document.forms['contact-mini'].elements).map((elem) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "contact-us";
@@ -85,13 +85,12 @@ const ContactUs = () => {
             body: JSON.stringify(body)
         };
         fetch(
-            `https://inmodeuk.emeka.fr/back/app.php`,
+            `https://inmode.emeka.fr/back/app.php`,
             _request_init
         )
         .then((promise) => {
             return promise.json();
-            }
-        )
+        })
         .then((response) => {
             let _temp:any = oneBySelector('#mini-contact-gif');
             if(_temp) {_temp.style.display = 'none';}
@@ -118,7 +117,7 @@ const ContactUs = () => {
         })
         .catch(function(error) {
             console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-          });;
+        });
     }
 
     return (
@@ -142,25 +141,25 @@ const ContactUs = () => {
                     </div>
                     <div id="contact-form" className="transition neumorphic custom-scrollbar" hidden={!formOpen}>
                         <form id="contact-mini" onSubmit={(e) => {send_form(e)}} className="custom-scrollbar">
-                            <input type="text" placeholder="Lastname" name="lastname" required={true}/>
-                            <input type="text" placeholder="Firstname" name="firstname" required={true}/>
+                            <input type="text" placeholder="Nom*" name="lastname" required={true}/>
+                            <input type="text" placeholder="Prénom*" name="firstname" required={true}/>
                             <select name="subject" required={true}>
-                                <option value="" selected disabled style={{display: 'none'}}>Choose a speciality</option>
-                                <option value="plastic-surgeon">Plastic surgeon</option>
-                                <option value="facial-surgeon">Facial surgeon</option>
-                                <option value="dermatologist">Dermatologist</option>
-                                <option value="cosmetic-doctor">Cosmetic doctor</option>
-                                <option value="gynecologist">Gynecologist</option>
-                                <option value="others">Others</option>
+                                <option value="" selected disabled style={{display: 'none'}}>Choisir une spécialité*</option>
+                                <option value="plastic-surgeon">Chirurgien plasticien</option>
+                                <option value="facial-surgeon">Chirurgien maxillo-facial</option>
+                                <option value="dermatologist">Dermatologue</option>
+                                <option value="cosmetic-doctor">Médecin esthétique</option>
+                                <option value="gynecologist">Gynécologue</option>
+                                <option value="others">Autres</option>
                             </select>
-                            <input type="email" placeholder="Mail" name="mail" spellCheck={false} required={true}/>
-                            <input type="phone" placeholder="Phone" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
-                            <input type="text" placeholder="ZIP" name="zip" spellCheck={false} required={true}/>
-                            <input type="number" placeholder="City" name="city" spellCheck={false} required={true}/>
+                            <input type="email" placeholder="Adresse mail*" name="mail" spellCheck={false} required={true}/>
+                            <input type="phone" placeholder="Téléphone*" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
+                            <input type="number" placeholder="Code postal*" name="zip" spellCheck={false} required={true}/>
+                            <input type="text" placeholder="Ville*" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message-mini"
                                 type="textarea"
-                                placeholder="Enter your message here"
+                                placeholder="Entrez votre message ici*"
                                 name="message"
                                 maxLength={max_length}
                                 rows={5}

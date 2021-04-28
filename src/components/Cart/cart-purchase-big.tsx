@@ -28,12 +28,15 @@ import LoadingGIF from '../LoadingGIF';
 
 import './big.css';
 import { oneById } from "../../functions/selectors";
+import { useWindowSize } from "../../functions/window-size";
 
 const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
     const images = useImages();
 
     const cart = useCart();
+
+    const size = useWindowSize();
 
     const [formOpened, setFormOpened] = React.useState(false);
     const [otherAddress, setOtherAddress] = React.useState(false);
@@ -42,9 +45,9 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     const [isCreated, setIsCreated]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
 
     const manageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        //* console.log('manageChange');
-        //* console.log(`otherAddress : ${otherAddress}`);
-        //* console.log(`e.currentTarget.checked : ${e.currentTarget.checked}`);
+        console.log('manageChange');
+        console.log(`otherAddress : ${otherAddress}`);
+        console.log(`e.currentTarget.checked : ${e.currentTarget.checked}`);
         otherAddress && setOtherAddressOpened(false);
         !otherAddress && setOtherAddressOpened(true);
         setOtherAddress(e.currentTarget.checked);
@@ -52,30 +55,30 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     }
 
     const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
-        //* console.log('manageCheckboxPayment');
+        console.log('manageCheckboxPayment');
         if(document != undefined) {
             let current:HTMLInputElement = e.currentTarget;
-            //* console.log(`current : ${current.id}`);
+            console.log(`current : ${current.id}`);
             let other:any = oneById(current.id == 'sepa' ? 'soge' : 'sepa');
-            //* console.log(`other : ${other && other.id || null}`);
-            other && other.setProperty('checked', !current.checked);
+            console.log(`other : ${other.id}`);
+            other.checked = !current.checked;
             return true;
         }
-        //* console.log('document undefined');
+        console.log('document undefined');
         return false;
     }
 
     const sendForm = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        let _temp:any = oneById('big-submit')
-        _temp && _temp.setProperty('disabled', true);
+        let _temp:any = oneById('big-submit');
+        if(_temp){ _temp.disabled= true; }
         let _sepa:HTMLInputElement | any = oneById('sepa');
         let fields = [...Array.from(document.forms["purchase"]).filter((field:any) => {return field.id.includes('vads_')})];
         // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && field.value));
         setIsSubmit(true);
         setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
         _temp = oneById('big-submit');
-        _temp && _temp.setProperty('disabled', false);
+        if(_temp) { _temp.disabled= false; }
         // console.log('sendForm()');
         // console.log(`isSubmit : ${isSubmit}`);
         // console.log(`isCreated : ${isCreated}`);
@@ -96,21 +99,21 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
     const buttonText = ():string => {
         if(isSubmit === true && isCreated === true) {
-            return "Order created";
+            return "Commande effectuée";
         }
         if(isSubmit === null && isCreated === false) {
-            return "Order error";
+            return "Erreur commande";
         }
         if(isSubmit === true) {
-            return "Processing ...";
+            return "En cours ...";
         }
         if(!formOpened) {
-            return "Buy";
+            return "Acheter";
         }
         if(!otherAddress || otherAddressOpened) {
-            return "Order";
+            return "Commander";
         }
-        return "Continue";
+        return "Continuer";
     }
     
     // isSubmit : null
@@ -147,11 +150,11 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 setOtherAddressOpened(false);
                 if(typeof document != "undefined") {
                     document.forms['purchase'] && document.forms['purchase'].reset();
-                    let _sepa:any = oneById('sepa')
+                    let _sepa:any = oneById('sepa');
                     if(_sepa) {
                         _sepa.checked = _sepa.checked ? true : false;
                     } // removeAttribute('checked');
-                    let _soge:any = oneById('soge')
+                    let _soge:any = oneById('soge');
                     if(_soge) {
                         _soge.checked = _soge.checked ? true : false;
                     } // setAttribute('checked', 'true');
@@ -254,35 +257,35 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             </div>
                         );
                     })}
-                    {cart.pay_delivery() && <div className="free-message">Free charges from 500 £</div>}
+                     {cart.pay_delivery() && <div className="free-message">Livraison gratuite à partir de 500€</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         {/*PAS DE FRAIS DE LIVRAISON*/}
-                        <div className="text">{cart.pay_delivery() && false ? 'Charges' : 'Free charges'}</div>
+                        {/* <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div> */}
                         {/*FRAIS DE LIVRAISON*/}
-                        {/* <div className="text">{cart.pay_delivery() ? 'Charges' : 'Free charges'}</div> */}
+                        <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div>
                         {cart.pay_delivery() ? <div className="price">
                             {/*PAS DE FRAIS DE LIVRAISON*/}
-                            {(cart.delivery_tax() && false) || 0}
+                            {/* {(cart.delivery_tax() && false) || 0} */}
                             {/*FRAIS DE LIVRAISON*/}
-                            {/* {cart.delivery_tax()} */}
+                            {cart.delivery_tax()}
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
-                        <div className="text">subtotal (out of VAT)</div>
+                        <div className="text">sous total (HT)</div>
                         <div className="price">
                             {cart.total_base()}
                         </div>
                     </div>
                     <div className="cart-tva">
-                        <div className="text">vat</div>
+                        <div className="text">tva</div>
                         <div className="price">
                             {cart.total_tva()}
                         </div>
                     </div>
                     <div className="cart-total">
-                        <div className="text">all included</div>
+                        <div className="text">total ttc</div>
                         <div className="price">
                             {cart.total_all_included()}
                         </div>
@@ -323,7 +326,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`${otherAddress ? 'click' : ''}`}>Billing address</span>
+                    <span className={`${otherAddress ? 'click' : ''}`}>adresse de facturation</span>
                     <hr/>
                 </div>
                 <div
@@ -331,8 +334,8 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className={`neumorphic ${otherAddress && (' other-address' || '')}`}
                 >
                     <div id="step-1-part" className="unmorphic custom-scrollbar">
-                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
-                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
+                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: `10px 0 20px ${size.width <1200 ? '5%' : '20px'}`, display: 'inline-block'}} required={true}/>
+                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                         {/* <input className="required form-field step-1" name="name" type="text" required placeholder="Nom"/> */}
                         <SocietyField classes="form-field step-1"/>
                         {/* <input className="form-field step-1" name="society" type="text" placeholder="Société"/> */}
@@ -348,7 +351,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         <CityField classes="required form-field step-1" required={true}/>
                         {/* <input className="required form-field step-1" name="city" type="text" required placeholder="Ville"/> */}
                         <MobilePhoneField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="phone" type="tel" required placeholder="Phone"/> */}
+                        {/* <input className="required form-field step-1" name="phone" type="tel" required placeholder="Téléphone"/> */}
                         <MailField classes="required form-field step-1" required={true}/>
                         {/* <input className="required form-field step-1" name="mail" type="email" required placeholder="Mail"/> */}
                     </div>
@@ -375,13 +378,13 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>Delivery datas</span>
+                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>informations de livraison</span>
                     <hr className="unmorphic"/>
                 </div>
                 {otherAddress &&
                     <div className="form custom-scrollbar">
-                        <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
-                        <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
+                        <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: `10px 0 20px ${size.width <1200 ? '5%' : '20px'}`, display: 'inline-block'}} required={true}/>
+                        <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                         {/* <input className="required form-field step-2" name="other-name" type="text" required placeholder="Nom"/> */}
                         <DeliverySocietyField classes="form-field step-2"/>
                         {/* <input className="form-field step-2" name="other-society" type="text" placeholder="Société"/> */}
@@ -397,7 +400,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         <DeliveryCityField classes="required form-field step-2" required={true}/>
                         {/* <input className="required form-field step-2" name="other-city" type="text" required placeholder="Ville"/> */}
                         <DeliveryPhoneField classes="required form-field step-2" required={true}/>
-                        {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Phone"/> */}
+                        {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/> */}
                         {/* <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/> */}
                         <DeliveryMailField classes="form-field step-2" required={false}/>
                         {/* <input className="form-field step-2" name="mail" type="email" placeholder="Mail"/> */}
@@ -415,7 +418,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label"><label htmlFor="sepa">Transfer</label></div>
+                <div className="choice-label"><label htmlFor="sepa">Virement</label></div>
                 <div className="choice"><input
                     id="soge"
                     name="soge"
@@ -425,7 +428,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label"><label htmlFor="soge">Card payment</label></div>
+                <div className="choice-label"><label htmlFor="soge">Paiement par carte</label></div>
             </div>
             <div className="step-1 facture neumorphic">
                 <input
@@ -439,7 +442,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     }}
                 />
                 <label htmlFor="facture">
-                    Different delivery address
+                    Adresse de livraison différente
                 </label>
             </div>
             <div className="step-1 cgu neumorphic">
@@ -452,7 +455,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     required
                 />
                 <label htmlFor="terms">
-                    I do accept GTCS and TCU
+                    J'accepte les CGV et les CGU
                 </label>
             </div>
             {/* VALIDATE */}

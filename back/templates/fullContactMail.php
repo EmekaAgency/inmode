@@ -49,7 +49,7 @@
                             <td><?=$_POST['message']?></td>
                         </tr>
                         <tr>
-                            <td>Interested by :</td>
+                            <td>Interessé par :</td>
                             <td></td>
                         </tr>
                         <tr>

@@ -3,7 +3,7 @@ import React from "react";
 const NoEvents = ({}:NoEvents) => {
     return (
         <div className="no-events">
-            There're actually no incomig event
+            Il n'y a actuellement aucun événement à venir
         </div>
     );
 };

@@ -48,7 +48,7 @@ const ContactForm = ({ from }:ContactForm) => {
     const [msgLength, setMsgLength] = React.useState(0);
     const [maxHeight, setMaxHeight] = React.useState(0);
 
-    const [submitText, setSubmitText] = React.useState('Send');
+    const [submitText, setSubmitText] = React.useState('Envoyer');
 
     function send_form (e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -72,7 +72,7 @@ const ContactForm = ({ from }:ContactForm) => {
             body: JSON.stringify(body),
         };
         fetch(
-            `https://inmodeuk.emeka.fr/back/app.php`,
+            `https://inmode.emeka.fr/back/app.php`,
             request_init,
         )
         .then((promise) => {
@@ -88,7 +88,7 @@ const ContactForm = ({ from }:ContactForm) => {
             if(response.status === 'fail' && response.type === 'client') {
                 setSubmitText(response.message);
                 document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
-                document.querySelector('#full-contact-form .req-return.success').innerHTML = "An error sending the message has occurred. Try refreshing the page or contacting an administrator.";
+                document.querySelector('#full-contact-form .req-return.success').innerHTML = "Une erreur d'envoi du message est survenu. Essayez de raffraîchir la page ou de contacter un administrateur.";
             }
             if(response.status === 'fail' && response.type === 'server') {
                 document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
@@ -96,7 +96,7 @@ const ContactForm = ({ from }:ContactForm) => {
             }
         })
         .catch(function(error) {
-            //* console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
           });;
     }
 
@@ -112,57 +112,58 @@ const ContactForm = ({ from }:ContactForm) => {
         <form id="full-contact-form" name="contact" onSubmit={(e) => {send_form(e);}} className={`contact-form main-container ${from}`}>
             <div className="mailer-datas">
                 <div className="field">
-                    <label htmlFor="lastname">Lastname</label>
+                    <label htmlFor="lastname">Nom*</label>
                     <input type="text" name="lastname" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="firstname">Firstname</label>
+                    <label htmlFor="firstname">Prénom*</label>
                     <input type="text" name="firstname" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="company">Society</label>
+                    <label htmlFor="company">Société</label>
                     <input type="text" name="company"/>
                 </div>
                 <div className="field">
-                    <label htmlFor="speciality">Choose a speciality</label>
+                    <label htmlFor="speciality">Choisir une spécialité*</label>
                     <select name="speciality" required={true}>
-                        <option value="plastic-surgeon">Plastic surgeon</option>
-                        <option value="facial-surgeon">Facial surgeon</option>
-                        <option value="dermatologist">Dermatologist</option>
-                        <option value="cosmetic-doctor">Cosmetic doctor</option>
-                        <option value="gynecologist">Gynecologist</option>
-                        <option value="others">Others</option>
+                        <option value="" disabled selected style={{display: 'none'}}>Spécialité</option>
+                        <option value="plastic-surgeon">Chirurgien plasticien</option>
+                        <option value="facial-surgeon">Chirurgien maxillo-facial</option>
+                        <option value="dermatologist">Dermatologue</option>
+                        <option value="cosmetic-doctor">Médecin esthétique</option>
+                        <option value="gynecologist">Gynécologue</option>
+                        <option value="others">Autres</option>
                     </select>
                 </div>
                 <div className="field">
-                    <label htmlFor="mail">Email</label>
+                    <label htmlFor="mail">Email*</label>
                     <input spellCheck={false} type="email" name="mail" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="phone_number">Phone</label>
+                    <label htmlFor="phone_number">Téléphone*</label>
                     <input spellCheck={false} type="tel" name="phone_number" required pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
                 </div>
                 <div className="field">
-                    <label htmlFor="address">Address</label>
+                    <label htmlFor="address">Adresse*</label>
                     <input spellCheck={false} type="text" name="address" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="zip">ZIP</label>
-                    <input spellCheck={false} type="text" name="zip" required/>
+                    <label htmlFor="zip">Code postal*</label>
+                    <input spellCheck={false} type="number" name="zip" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="city">City</label>
+                    <label htmlFor="city">Ville*</label>
                     <input spellCheck={false} type="text" name="city" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="country">Coutry</label>
+                    <label htmlFor="country">Pays</label>
                     <SelectCountry/>
                 </div>
             </div>
             <div className="message-zone">
                 <textarea
                     id="contact-message"
-                    placeholder="Enter your message here"
+                    placeholder="Entrez votre message ici*"
                     name="message"
                     className="custom-scrollbar"
                     maxLength={max_length}
@@ -186,7 +187,7 @@ const ContactForm = ({ from }:ContactForm) => {
                     className="title title-accordion transition"
                     onClick={(e) => {resolveClick(e);}}
                 >
-                    Which technology is right for you?
+                    Quelles technologies vous intéressent ?
                 </span>
                 <div
                     id="accordion"
@@ -212,7 +213,7 @@ const ContactForm = ({ from }:ContactForm) => {
             </div> */}
             <div className="policy">
                 <input type="checkbox" id="policy" name="policy" value="policy" required/>
-                <label htmlFor={"policy"}>I do accept <a href="/legals#tcu" target="_blank" title="TCUs">TCUs</a></label>
+                <label htmlFor={"policy"}>J'accepte les <a href="/mentions-legales#cgu" target="_blank" title="Conditions générales d'utilisation">conditions générales d'utilisation</a></label>
             </div>
             <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWeight: 400}}></div>
             <div className="req-return error" style={{color: 'red', fontSize: 15, fontWeight: 400}}></div>

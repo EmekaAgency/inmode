@@ -27,7 +27,7 @@ const Congres = ({ event = undefined }:Congres) => {
                     {`${event.begin}${event.finish ? ` - ${event.finish}` : ''}`}
                 </div>}
                 {event.place && <div className="address_link">
-                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer" title="Place">
+                    <a href={event.place_url || "#"} target="_blank" rel="noreferrer" title="Lieu">
                         {event.place}
                     </a>
                 </div>}

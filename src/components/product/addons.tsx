@@ -7,9 +7,9 @@ import Sensible from "../NoPic/sensible";
 
 const Addons = ({ datas, sensible = false }:Addons) => {
 
-    //* console.log(datas);
-    //* console.log(datas.length);
-    //* console.log(sensible);
+    console.log(datas);
+    console.log(datas.length);
+    console.log(sensible);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -25,7 +25,7 @@ const Addons = ({ datas, sensible = false }:Addons) => {
 
     const select_mines = (object, id) => {
         let temp = [];
-        object.forEach((_let) => {
+        object.map((_let) => {
             if(_let.product && _let.product.id === id) {
                 temp.push(_let);
             }
@@ -36,14 +36,14 @@ const Addons = ({ datas, sensible = false }:Addons) => {
     return (
         <div id="technologies" className="product-addons">
             <div className="section-title">technologies on the workstation</div>
-            {datas.addons.map((addon, key) => {
-                return addon.ProductPresentation.map((product, key2) => {
+            {datas.addons.map((addon) => {
+                return addon.ProductPresentation.map((product, key) => {
                     if(product.appears_everywhere || (product.products && product.products[0].id === datas.id)) {
                         let images = select_mines(product.Images, datas.id);
                         // TODO ton on evolve => evolve-tone
                         let product_title = product.title_text.toLowerCase().replace(' on ', '-').replace(/ /g, '-').replace(/\*/g, '').replace(/#/g, '');
                         return (
-                            <div key={`${key}-${key2}`} className="product-addon">
+                            <div key={key} className="product-addon">
                                 <div className="addon-details">
                                     <div className="addon-description">
                                         <div className="addon-img">
@@ -64,23 +64,23 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                             {!product.title_image && product.title_text}
                                             {product.appears_everywhere && <Link className="zone-link" to={addon.MenuParams.url} title={product.title}></Link>}
                                         </div>
-                                        {product.AddonProductsDescr.map((descr, key3) => {
+                                        {product.AddonProductsDescr.map((descr, key) => {
                                             if(descr.product.id === datas.id) {
                                                 return (
-                                                    <div key={`${key}-${key2}-${key3}`} className="addon-description">{descr.descr}</div>
+                                                    <div key={key} className="addon-description">{descr.descr}</div>
                                                 );
                                             }
-                                            return '';
+                                            return <></>;
                                         })}
                                         <div className="addon-what-can-i-treat">
                                             <div className="title">
-                                                What can I treat ?
+                                                Que puis-je traiter ?
                                             </div>
                                             <ul>
-                                            {product.ProductPresentationTreats.map((descr, key4) => {
+                                            {product.ProductPresentationTreats.map((descr, key) => {
                                                 if(descr.product.id === datas.id) {
                                                     return (
-                                                        <li key={`${key}-${key2}-${key4}`}>{descr.treat_short}</li>
+                                                        <li key={key}>{descr.treat_short}</li>
                                                     );
                                                 }
                                             })}
@@ -108,15 +108,15 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                                 options={flickityOptions}
                                                 classList={'slide-addons transition'}
                                             >
-                                                {images.map((image, key5) => {
+                                                {images.map((image, key) => {
                                                     return (
-                                                        <div className="addon" key={key5}>
+                                                        <div className="addon" key={key}>
                                                             <img
-                                                                key={`${key}-${key2}-${key5}`}
+                                                                key={key}
                                                                 className="addon-img"
                                                                 src={image.image.childImageSharp.fluid.srcWebp}
                                                                 srcSet={image.image.childImageSharp.fluid.srcSetWebp}
-                                                                alt={`${product_title}-slide-${key5}`}
+                                                                alt={`${product_title}-slide-${key}`}
                                                             />
                                                         </div>
                                                     );
@@ -127,7 +127,7 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                             </div>
                         );
                     }
-                    return '';
+                    return <></>;
                 });
             })}
         </div>

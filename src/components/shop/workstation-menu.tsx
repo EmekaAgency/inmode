@@ -54,7 +54,7 @@ const WorkstationMenu = ({
                                 className="cure-choice-all"
                                 defaultChecked={true}
                             />
-                            <label htmlFor={`${key}-all`}>Display all</label>
+                            <label htmlFor={`${key}-all`}>Tout afficher</label>
                             </div>
                             {tag.tags && tag.tags.map((sub_tag, key_sub) => {
                                 return (

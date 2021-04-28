@@ -194,7 +194,7 @@
     }
 }
 
-@media (min-width:1000px) {
+@media (min-width: 1200px) {
     .order-layout .payment-suggestions a:first-child {
         margin-right: 5%;
     }
@@ -204,7 +204,7 @@
     }
 }
 
-@media (max-width:999px) {
+@media (max-width:1199px) {
     main#main {
         min-height: calc(100vh - (50px + 320px));
     }

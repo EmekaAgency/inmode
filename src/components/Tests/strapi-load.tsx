@@ -11,7 +11,7 @@ const StrapiLoad = ({  }) => {
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //* console.log('Submit load');
+        console.log('Submit load');
         send_form(e.target);
     }
 

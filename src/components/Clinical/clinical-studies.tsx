@@ -23,7 +23,7 @@ const ClinicalStudies = ({ datas }) => {
     return (
         <div id="studies" className="clinical-studies">
             <div className="title">
-                Clinical studies
+                études cliniques
             </div>
             <div className={`clinical-studies-slider${datas.length === 1 ? ' few' : ''}`}>
                 {datas.length === 1 ?

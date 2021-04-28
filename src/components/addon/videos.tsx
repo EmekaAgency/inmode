@@ -10,9 +10,9 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
 
   const images = useImages();
 
-  //* console.log(videos);
-  //* console.log(videos.length);
-  //* console.log(sensible);
+  console.log(videos);
+  console.log(videos.length);
+  console.log(sensible);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -70,7 +70,7 @@ const AddonVideos = ({ videos = [], title = "", name = "", sensible = false}:Add
       iframe += 'src="' + url +'" ';
       iframe += 'scrolling="no"';
       iframe += '></iframe>';
-      //* console.log(iframe);
+    //   console.log(iframe);
       _temp = oneById('video-iframe');
       if(_temp) {_temp.innerHTML = iframe;}
     }

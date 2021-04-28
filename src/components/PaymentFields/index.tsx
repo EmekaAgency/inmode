@@ -32,40 +32,40 @@ const defaultParams = {
 
     ///// USER
 
-    CivilGender: {name: 'vads_cust_title', id: 'vads_cust_title', placeholder: 'Civility'},
-        FullName: {name: 'vads_', id: 'vads_', placeholder: 'Lastname - Firstname'},
-    FirstName: {name: 'vads_cust_first_name', id: 'vads_cust_first_name', placeholder: 'Firstname'},
-    LastName: {name: 'vads_cust_last_name', id: 'vads_cust_last_name', placeholder: 'Lastname'},
-    Status: {name: 'vads_cust_status', id: 'vads_cust_status', placeholder: 'Status'},
-    Society: {name: 'vads_cust_legal_name', id: 'vads_cust_legal_name', placeholder: 'Society'},
-        Address: {name: 'vads_', id: 'vads_', placeholder: 'Address'},
-    AddressStreetNumber: {name: 'vads_cust_address_number', id: 'vads_cust_address_number', placeholder: 'Street number'},
-    // AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Address Line '},
-    AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Address'},
-    AddressLine2: {name: 'vads_cust_address2', id: 'vads_cust_address2', placeholder: 'Address Line 2'},
-    Zip: {name: 'vads_cust_zip', id: 'vads_cust_zip', placeholder: 'ZIP Code'},
-    City: {name: 'vads_cust_city', id: 'vads_cust_city', placeholder: 'City'},
-    State: {name: 'vads_cust_state', id: 'vads_cust_state', placeholder: 'State/region'},
-    Country: {name: 'vads_cust_country', id: 'vads_cust_country', placeholder: 'Country', countries: defaultCountries},
-    Intra_TVA: {name: 'intra_tva', id: 'intra_tva', placeholder: 'Intra-community VAT'},
-        DeliveryAddress: {name: 'vads_ship', id: 'vads_ship', placeholder: 'Address'},
-    DeliveryAddressStreetNumber: {name: 'vads_ship_to_street_number', id: 'vads_ship_to_street_number', placeholder: 'Street number'},
-    // DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Address Line 1'},
-    DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Address'},
-    DeliveryAddressLine2: {name: 'vads_ship_to_street2', id: 'vads_ship_to_street2', placeholder: 'Address Line 2'},
-    DeliveryZip: {name: 'vads_ship_to_zip', id: 'vads_ship_to_zip', placeholder: 'ZIP Code'},
-    DeliveryCity: {name: 'vads_ship_to_city', id: 'vads_ship_to_city', placeholder: 'City'},
-    DeliveryState: {name: 'vads_ship_to_state', id: 'vads_ship_to_state', placeholder: 'State/region'},
-    DeliveryCountry: {name: 'vads_ship_to_country', id: 'vads_ship_to_country', placeholder: 'Country', countries: defaultCountries},
-    DeliveryFirstName: {name: 'vads_ship_to_first_name', id: 'vads_ship_to_first_name', placeholder: 'Firstname'},
-    DeliveryLastName: {name: 'vads_ship_to_last_name', id: 'vads_ship_to_last_name', placeholder: 'Lastname'},
-    DeliveryPhone: {name: 'vads_ship_to_phone_num', id: 'vads_ship_to_phone_num', placeholder: 'Phone'},
-    DeliveryStatus: {name: 'vads_ship_to_status', id: 'vads_ship_to_status', placeholder: 'Status'},
-    DeliverySociety: {name: 'vads_ship_to_legal_name', id: 'vads_ship_to_legal_name', placeholder: 'Society'},
+    CivilGender: {name: 'vads_cust_title', id: 'vads_cust_title', placeholder: 'Civilité'},
+        FullName: {name: 'vads_', id: 'vads_', placeholder: 'Nom - Prénom'},
+    FirstName: {name: 'vads_cust_first_name', id: 'vads_cust_first_name', placeholder: 'Prénom'},
+    LastName: {name: 'vads_cust_last_name', id: 'vads_cust_last_name', placeholder: 'Nom'},
+    Status: {name: 'vads_cust_status', id: 'vads_cust_status', placeholder: 'Statut'},
+    Society: {name: 'vads_cust_legal_name', id: 'vads_cust_legal_name', placeholder: 'Société'},
+        Address: {name: 'vads_', id: 'vads_', placeholder: 'Adresse'},
+    AddressStreetNumber: {name: 'vads_cust_address_number', id: 'vads_cust_address_number', placeholder: 'Numéro de voie'},
+    // AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Adresse ligne 1'},
+    AddressLine1: {name: 'vads_cust_address', id: 'vads_cust_address', placeholder: 'Adresse'},
+    AddressLine2: {name: 'vads_cust_address2', id: 'vads_cust_address2', placeholder: 'Adresse ligne 2'},
+    Zip: {name: 'vads_cust_zip', id: 'vads_cust_zip', placeholder: 'Code Postal'},
+    City: {name: 'vads_cust_city', id: 'vads_cust_city', placeholder: 'Ville'},
+    State: {name: 'vads_cust_state', id: 'vads_cust_state', placeholder: 'État/région'},
+    Country: {name: 'vads_cust_country', id: 'vads_cust_country', placeholder: 'Pays', countries: defaultCountries},
+    Intra_TVA: {name: 'intra_tva', id: 'intra_tva', placeholder: 'TVA intracommunautaire'},
+        DeliveryAddress: {name: 'vads_ship', id: 'vads_ship', placeholder: 'Adresse'},
+    DeliveryAddressStreetNumber: {name: 'vads_ship_to_street_number', id: 'vads_ship_to_street_number', placeholder: 'Numéro de voie'},
+    // DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Adresse ligne 1'},
+    DeliveryAddressLine1: {name: 'vads_ship_to_street', id: 'vads_ship_to_street', placeholder: 'Adresse'},
+    DeliveryAddressLine2: {name: 'vads_ship_to_street2', id: 'vads_ship_to_street2', placeholder: 'Adresse ligne 2'},
+    DeliveryZip: {name: 'vads_ship_to_zip', id: 'vads_ship_to_zip', placeholder: 'Code Postal'},
+    DeliveryCity: {name: 'vads_ship_to_city', id: 'vads_ship_to_city', placeholder: 'Ville'},
+    DeliveryState: {name: 'vads_ship_to_state', id: 'vads_ship_to_state', placeholder: 'État/région'},
+    DeliveryCountry: {name: 'vads_ship_to_country', id: 'vads_ship_to_country', placeholder: 'Pays', countries: defaultCountries},
+    DeliveryFirstName: {name: 'vads_ship_to_first_name', id: 'vads_ship_to_first_name', placeholder: 'Prénom'},
+    DeliveryLastName: {name: 'vads_ship_to_last_name', id: 'vads_ship_to_last_name', placeholder: 'Nom'},
+    DeliveryPhone: {name: 'vads_ship_to_phone_num', id: 'vads_ship_to_phone_num', placeholder: 'Téléphone'},
+    DeliveryStatus: {name: 'vads_ship_to_status', id: 'vads_ship_to_status', placeholder: 'Statut'},
+    DeliverySociety: {name: 'vads_ship_to_legal_name', id: 'vads_ship_to_legal_name', placeholder: 'Société'},
     DeliveryMail: {name: 'delivery_mail', id: 'delivery_mail', placeholder: 'Mail'},
-        Phone: {name: 'vads_', id: 'vads_', placeholder: 'Phone'},
-    MobilePhone: {name: 'vads_cust_cell_phone', id: 'vads_cust_cell_phone', placeholder: 'Phone'},
-        FixePhone: {name: 'vads_', id: 'vads_', placeholder: 'Fix phone'},
+        Phone: {name: 'vads_', id: 'vads_', placeholder: 'Téléphone'},
+    MobilePhone: {name: 'vads_cust_cell_phone', id: 'vads_cust_cell_phone', placeholder: 'Téléphone'},
+        FixePhone: {name: 'vads_', id: 'vads_', placeholder: 'Fixe'},
     Mail: {name: 'vads_cust_email', id: 'vads_cust_email', placeholder: 'Mail'},
 
     ///// CART
@@ -661,7 +661,7 @@ export const NbProductsField = ({ value, name, id, required, classes, style }:Pa
             style={style || undefined}
             hidden
             type="number"
-            defaultValue={value || useCart().formSave[defaultParams.NbProducts.name] || 0}
+            value={value || useCart().formSave[defaultParams.NbProducts.name] || 0}
             name={name || defaultParams.NbProducts.name}
             id={id || defaultParams.NbProducts.id}
             required={required || false}
@@ -675,7 +675,7 @@ export const ProductLabelField = ({ value, name, id, index, required, classes, s
             style={style || undefined}
             hidden
             type="text"
-            defaultValue={value || useCart().formSave[defaultParams.ProductLabel.name] || ""}
+            value={value || useCart().formSave[defaultParams.ProductLabel.name] || ""}
             name={name || `${defaultParams.ProductLabel.name}${index}`}
             id={id || `${defaultParams.ProductLabel.id}${index}`}
             required={required || false}
@@ -689,7 +689,7 @@ export const ProductAmountField = ({ value, name, id, index, required, classes, 
             style={style || undefined}
             hidden
             type="text"
-            defaultValue={value || useCart().formSave[defaultParams.ProductAmount.name] || ""}
+            value={value || useCart().formSave[defaultParams.ProductAmount.name] || ""}
             name={name || `${defaultParams.ProductAmount.name}${index}`}
             id={id || `${defaultParams.ProductAmount.id}${index}`}
             required={required || false}
@@ -703,7 +703,7 @@ export const ProductRefField = ({ value, name, id, index, required, classes, sty
             style={style || undefined}
             hidden
             type="text"
-            defaultValue={value || useCart().formSave[defaultParams.ProductRef.name] || ""}
+            value={value || useCart().formSave[defaultParams.ProductRef.name] || ""}
             name={name || `${defaultParams.ProductRef.name}${index}`}
             id={id || `${defaultParams.ProductRef.id}${index}`}
             required={required || false}
@@ -717,7 +717,7 @@ export const ProductQtyField = ({ value, name, id, index, required, classes, sty
             style={style || undefined}
             hidden
             type="text"
-            defaultValue={value || useCart().formSave[defaultParams.ProductQty.name] || ""}
+            value={value || useCart().formSave[defaultParams.ProductQty.name] || ""}
             name={name || `${defaultParams.ProductQty.name}${index}`}
             id={id || `${defaultParams.ProductQty.id}${index}`}
             required={required || false}
@@ -733,7 +733,7 @@ export const BackSignatureField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackSignature.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackSignature.name] || ""}
             name={name || defaultParams.BackSignature.name}
             id={id ||defaultParams.BackSignature.id}
         />
@@ -743,7 +743,7 @@ export const BackActionModeField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackActionMode.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackActionMode.name] || ""}
             name={name || defaultParams.BackActionMode.name}
             id={id ||defaultParams.BackActionMode.id}
         />
@@ -753,7 +753,7 @@ export const BackCtxModeField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackCtxMode.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackCtxMode.name] || ""}
             name={name || defaultParams.BackCtxMode.name}
             id={id ||defaultParams.BackCtxMode.id}
         />
@@ -763,7 +763,7 @@ export const BackCurrencyField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackCurrency.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackCurrency.name] || ""}
             name={name || defaultParams.BackCurrency.name}
             id={id ||defaultParams.BackCurrency.id}
         />
@@ -773,7 +773,7 @@ export const BackPageActionField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackPageAction.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackPageAction.name] || ""}
             name={name || defaultParams.BackPageAction.name}
             id={id ||defaultParams.BackPageAction.id}
         />
@@ -783,7 +783,7 @@ export const BackSiteIdField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackSiteId.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackSiteId.name] || ""}
             name={name || defaultParams.BackSiteId.name}
             id={id ||defaultParams.BackSiteId.id}
         />
@@ -793,7 +793,7 @@ export const BackTransDateField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackTransDate.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackTransDate.name] || ""}
             name={name || defaultParams.BackTransDate.name}
             id={id ||defaultParams.BackTransDate.id}
         />
@@ -803,7 +803,7 @@ export const BackTransIdField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackTransId.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackTransId.name] || ""}
             name={name || defaultParams.BackTransId.name}
             id={id ||defaultParams.BackTransId.id}
         />
@@ -813,7 +813,7 @@ export const BackVersionField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackVersion.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackVersion.name] || ""}
             name={name || defaultParams.BackVersion.name}
             id={id ||defaultParams.BackVersion.id}
         />
@@ -823,7 +823,7 @@ export const BackReferenceField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackReference.name] || ""}
+            value={value || useCart().formSave[defaultParams.BackReference.name] || ""}
             name={name || defaultParams.BackReference.name}
             id={id ||defaultParams.BackReference.id}
         />
@@ -833,7 +833,7 @@ export const BackPaymentConfigField = ({ value, name, id }:PayField_Interface) =
     return (
         <input
             hidden
-            defaultValue={value || useCart().formSave[defaultParams.BackPaymentConfig.name] || "SINGLE"}
+            value={value || useCart().formSave[defaultParams.BackPaymentConfig.name] || "SINGLE"}
             name={name || defaultParams.BackPaymentConfig.name}
             id={name || defaultParams.BackPaymentConfig.id}
         />
@@ -843,7 +843,7 @@ export const BackAmountField = ({ value, name, id }:PayField_Interface) => {
     return (
         <input
             hidden
-            defaultValue={Math.ceil(value * 100) || 0}
+            value={Math.ceil(value * 100) || 0}
             name={name || defaultParams.BackAmount.name}
             id={name || defaultParams.BackAmount.id}
         />

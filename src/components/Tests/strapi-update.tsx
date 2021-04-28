@@ -12,7 +12,7 @@ const StrapiUpdate = ({  }) => {
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        //* console.log('Submit update');
+        console.log('Submit update');
         send_form(e.target);
     }
 

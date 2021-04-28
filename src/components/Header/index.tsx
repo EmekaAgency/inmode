@@ -8,11 +8,12 @@ import { disableMainScroll } from "../../functions/disable-scroll";
 import { useImages } from '../contexts/images-provider';
 // {/* SWITCH CART */}
   
-// import { useCart } from '../contexts/cart-provider';
-// import CartBasket from "../CartBasket";
-// import { oneById } from "../../functions/selectors";
+import { useCart } from '../contexts/cart-provider';
+import CartBasket from "../CartBasket";
 
 // {/* SWITCH CART END */}
+
+import { oneById } from "../../functions/selectors";
 
 const Header = ({}:Header) => {
 
@@ -22,12 +23,12 @@ const Header = ({}:Header) => {
     e.preventDefault();
     let _temp:any = oneById('header-mini');
     _temp && _temp.classList.add('opened');
-    size.width < 1000 && disableMainScroll();
+    size.width < 1200 && disableMainScroll();
   }
 
   // {/* SWITCH CART */}
     
-  // const cart = useCart();
+  const cart = useCart();
 
   // {/* SWITCH CART END */}
 
@@ -46,7 +47,7 @@ const Header = ({}:Header) => {
           {size.width < 1200 && <HeaderMini/>}
           {/* SWITCH CART */}
 
-          {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null } */}
+          { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null }
 
           {/* SWITCH CART END */}
           <button

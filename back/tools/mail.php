@@ -25,19 +25,19 @@
     ];
     
     const SPECIALITY = [
-        "plastic-surgeon" => "Plastic surgeon",
-        "facial-surgeon" => "Facial surgeon",
-        "dermatologist" => "Dermatologist",
-        "cosmetic-doctor" => "Cosmetic doctor",
-        "gynecologist" => "Gynecologist",
-        "others" => "Others",
+        "plastic-surgeon" => "Chirurgien plasticien",
+        "facial-surgeon" => "Chirurgien maxillo-facial",
+        "dermatologist" => "Dermatologue",
+        "cosmetic-doctor" => "Médecin esthétique",
+        "gynecologist" => "Gynécologue",
+        "others" => "Autres spécialités",
     ];
 
     const MAIL_CONST = [
-        'default' => ['', 'noreply@inmodeuk.emeka.fr'],
-        'contact' => ['Contact', 'submit-contact@inmodeuk.emeka.fr'],
-        'order' => ['Order', 'submit-order@inmodeuk.emeka.fr'],
-        'error' => ['Security', 'security@inmodeuk.emeka.fr']
+        'default' => ['', 'noreply@inmodemd.fr'],
+        'contact' => ['Contact', 'submit-contact@inmodemd.fr'],
+        'order' => ['Commande', 'submit-order@inmodemd.fr'],
+        'error' => ['Security', 'security@inmodemd.fr']
     ];
 
     $RIB = "FR76 3000 3015 7800 0200 1741 805";
@@ -57,7 +57,7 @@
         $header .= '    <tbody style="display: block;">';
         $header .= '        <tr style="display: block;">';
         $header .= '            <td style="display: block;">';
-        $header .= '                <img src="https://inmodeuk.emeka.fr/back/assets/images/header-logo.png" width="300px" height="47.5px" alt="InmodeMD logo" style="display: inline-block; width: 80%; max-width: 300px;" />';
+        $header .= '                <img src="https://inmode.emeka.fr/back/assets/images/header-logo.png" width="300px" height="47.5px" alt="Logo InmodeMD" style="display: inline-block; width: 80%; max-width: 300px;" />';
         $header .= '            </td>';
         $header .= '        </tr>';
         $header .= '    </tbody>';
@@ -79,16 +79,16 @@
         $footer .= '    <tbody style="width: 100%; text-align: center;">';
         $footer .= '        <tr style="width: 100%; text-align: center;">';
         $footer .= '            <td valign="top" style="width: 100%; text-align: center;">';
-        $footer .= '                <img src="https://inmodeuk.emeka.fr/back/assets/icons/facebook.webp" width="25" height="25" alt="facebook" style="padding-top: 5px;" />';
+        $footer .= '                <img src="https://inmode.emeka.fr/back/assets/icons/facebook.webp" width="25" height="25" alt="facebook" style="padding-top: 5px;" />';
         $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">Facebook</span>';
         $footer .= '                <br />';
-        $footer .= '                <img src="https://inmodeuk.emeka.fr/back/assets/icons/instagram.webp" width="25" height="25" alt="instagram" style="padding-top: 5px;" />';
+        $footer .= '                <img src="https://inmode.emeka.fr/back/assets/icons/instagram.webp" width="25" height="25" alt="instagram" style="padding-top: 5px;" />';
         $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">Instagram</span>';
         $footer .= '                <br />';
-        $footer .= '                <img src="https://inmodeuk.emeka.fr/back/assets/icons/youtube.webp" width="25" height="25" alt="youtube" style="padding-top: 5px;" />';
+        $footer .= '                <img src="https://inmode.emeka.fr/back/assets/icons/youtube.webp" width="25" height="25" alt="youtube" style="padding-top: 5px;" />';
         $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">YouTube</span>';
         $footer .= '                <br />';
-        $footer .= '                <img src="https://inmodeuk.emeka.fr/back/assets/icons/linkedin.webp" width="25" height="25" alt="linkedin" style="padding-top: 5px;" />';
+        $footer .= '                <img src="https://inmode.emeka.fr/back/assets/icons/linkedin.webp" width="25" height="25" alt="linkedin" style="padding-top: 5px;" />';
         $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">Linkedin</span>';
         $footer .= '            </td>';
         $footer .= '        </tr>';
@@ -98,13 +98,11 @@
         $footer .= '    <tbody style="width: 100%; display: block;">';
         $footer .= '        <tr style="display: block;">';
         $footer .= '            <td valign="top" style="color: #f2f2f2; font-size: 20px; text-align: center; display: block;">';
-        $footer .= '                Wimple House<br />';
-        $footer .= '                1 Bashley Street<br />';
-        $footer .= '                London<br />';
-        $footer .= '                NW10 6TE<br />';
-        $footer .= '                United Kingdom<br />';
+        $footer .= '                InmodeMD<br />';
+        $footer .= '                RCS de Paris - 12 place Dauphine,<br />';
+        $footer .= '                75001 PARIS<br />';
         $footer .= '                884 502 980 00011<br />';
-        $footer .= '                info@inmodeuk.emeka.fr';
+        $footer .= '                contact.fr@inmodemd.fr';
         $footer .= '            </td>';
         $footer .= '        </tr>';
         $footer .= '    </tbody>';
@@ -134,7 +132,7 @@
             $retour .= '                <table style="padding-top: 30px; width: 100%; display: block;">';
             $retour .= '                    <tr>';
             $retour .= '                        <td style="color: #ff6868; font-size: 22px; font-weight: 600;">';
-            $retour .= '                            The email of order <span style="font-size: 20px; font-weight: 600;">'.$_POST['reference'].'</span> à destination '.($_POST['for'] == 'client' ? 'to the customer' : 'to InmodeMD UK').' could not be sent';
+            $retour .= '                            Le mail de la commande <span style="font-size: 20px; font-weight: 600;">'.$_POST['reference'].'</span> à destination '.($_POST['for'] == 'client' ? 'du client' : 'd\'InmodeMD France').' n\'a pas pu être envoyé';
             $retour .= '                        </td>';
             $retour .= '                    </tr>';
             $retour .= '                </table>';
@@ -144,7 +142,7 @@
             $retour .= '                <table style="padding-top: 30px; width: 100%; display: block;">';
             $retour .= '                    <tr>';
             $retour .= '                        <td style="color: #ff6868; font-size: 22px; font-weight: 600;">';
-            $retour .= '                            A mail of an unidentified order created at '.date('l d F Y à h:m:s', time()).' could not be sent due to a technical reason. Please contact a technician.';
+            $retour .= '                            Un mail d\'une commande non identifiée du '.date('l d F Y à h:m:s', time()).' n\'a pu être envoyé en raison d\'un problème technique. Veuillez contacter un technicien';
             $retour .= '                        </td>';
             $retour .= '                    </tr>';
             $retour .= '                </table>';
@@ -201,9 +199,9 @@
         }
         catch(Throwable $e)
         {
-            logEvent('Error during orderMail');
+            logEvent('Erreur durant orderMail');
             logEvent($e);
-            logError('Error during orderMail');
+            logError('Erreur durant orderMail');
             logError($e);
             return 'null';
         }
@@ -274,33 +272,32 @@
         $retour .= '        <td style="color: #f2f2f2; font-size: 18px; font-weight: 400;">';
         if($for == 'client')
         {
-            $retour .= 'We have received your order <span style="font-size: 20px; font-weight: 600;">'.$reference.'</span> made on <span';
+            $retour .= 'Nous avons bien reçu votre commande <span style="font-size: 20px; font-weight: 600;">'.$reference.'</span> effectuée le <span';
             $retour .= 'style="font-size: 20px; font-weight: 600;">'.buildDate($date, 'full').'</span>. ';
         }
         if($for == 'pro')
         {
-            $retour .= 'A new order <span style="font-size: 20px; font-weight: 600;">'.$reference.'</span> has arrived.';
+            $retour .= 'Une nouvelle commande <span style="font-size: 20px; font-weight: 600;">'.$reference.'</span> est arrivée.';
         }
         if($for == 'client' && $type == 'sepa')
         {
-            $retour .= ' Your order gonna be send once you\'ll have sent a bank transfer on the following account:';
+            $retour .= ' Votre commande vous sera expédiée une fois que vous aurez effectué un virement sur le RIB suivant:';
         }
         if($for == 'client' && $type == 'soge')
         {
-            $retour .= ' Your order gonna be shipped soon.';
+            $retour .= ' Votre commande sera expédiée sous peu.';
         }
         if($for == 'pro' && $type == 'sepa')
         {
-            $retour .= ' payment by bank transfer pending.';
+            $retour .= ' Paiement par virement en attente.';
         }
         if($for == 'pro' && $type == 'soge')
         {
-            $retour .= ' Payment '.(isPaid($statut) == true ? 'validated' : 'pending').'.';
+            $retour .= ' Le paiement est '.(isPaid($statut) == true ? 'validé' : 'en attente').'.';
         }
         $retour .= '        </td>';
         $retour .= '    </tr>';
         $retour .= '</table>';
-        // TODO Get bank datas
         if($for == 'client' && $type == 'sepa') {
             $retour .= '<table style="max-width: 400px; border: 2px solid #f2f2f2; width: 100%; display: block;">';
             $retour .= '    <tbody class="SEPA">';
@@ -339,7 +336,7 @@
             $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
             $retour .= '    <tr>';
             $retour .= '        <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
-            $retour .= '            Order details';
+            $retour .= '            Détails de la commande';
             $retour .= '        </td>';
             $retour .= '    </tr>';
             $retour .= '</table>';
@@ -347,7 +344,7 @@
             $retour .= '    <thead>';
             $retour .= '        <tr>';
             $retour .= '            <td style="width: 250px;">Article</td>';
-            $retour .= '            <td style="width: 150px; text-align: center;">Quantity</td>';
+            $retour .= '            <td style="width: 150px; text-align: center;">Quantité</td>';
             $retour .= '            <td style="width: 150px; text-align: center;">Total</td>';
             $retour .= '        </tr>';
             $retour .= '    </thead>';
@@ -367,7 +364,7 @@
                 $retour .= '        <tr style="width: 100%; text-align: center;">';
                 $retour .= '            <td style="width: 250px;">'.$article['Article']['Name'].'</td>';
                 $retour .= '            <td style="width: 150px; text-align: center;">'.$article['Quantite'].'</td>';
-                $retour .= '            <td style="width: 150px; text-align: center;">'.($article['Quantite'] * $article['Article']['price']).'£</td>';
+                $retour .= '            <td style="width: 150px; text-align: center;">'.($article['Quantite'] * $article['Article']['price']).'€</td>';
                 $retour .= '        </tr>';
                 $tva += $article['Quantite'] * $article['Article']['price'];
             }
@@ -379,8 +376,8 @@
             {        	
                 $retour .= '      <tr style="width: 100%; text-align: center;">';
                 $retour .= '          <td style="width: 250px;"></td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">Charges</td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">'.$delivery_tax.'£</td>';
+                $retour .= '          <td style="width: 150px; text-align: center;">Livraison</td>';
+                $retour .= '          <td style="width: 150px; text-align: center;">'.$delivery_tax.'€</td>';
                 $retour .= '      </tr>';
             }
             if($total != null && is_numeric($total))
@@ -389,14 +386,14 @@
                 {
                     $retour .= '      <tr style="width: 100%; text-align: center;">';
                     $retour .= '          <td style="width: 250px;"></td>';
-                    $retour .= '          <td style="width: 150px; text-align: center;">VAT</td>';
-                    $retour .= '          <td style="width: 150px; text-align: center;">'.($tva * 0.2).'£</td>';
+                    $retour .= '          <td style="width: 150px; text-align: center;">TVA</td>';
+                    $retour .= '          <td style="width: 150px; text-align: center;">'.($tva * 0.2).'€</td>';
                     $retour .= '      </tr>';
                 }
                 $retour .= '      <tr style="width: 100%; text-align: center;">';
                 $retour .= '          <td style="width: 250px;"></td>';
                 $retour .= '          <td style="width: 150px; text-align: center;">TOTAL</td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">'.$total.'£</td>';
+                $retour .= '          <td style="width: 150px; text-align: center;">'.$total.'€</td>';
                 $retour .= '      </tr>';
             }
             $retour .= '    </tbody>';
@@ -453,7 +450,7 @@
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
         $retour .= '            <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
-        $retour .= '                Billing details';
+        $retour .= '                Détails de facturation';
         $retour .= '            </td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
@@ -461,17 +458,17 @@
         $retour .= '<table style="max-width: 550px; border: 2px solid #f2f2f2; width: 100%; display: block; color: #f2f2f2; font-size: 16px; font-weight: 400;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Invoiced to</td>';
+        $retour .= '            <td>Facturé à</td>';
         $retour .= '            <td>'.$facturation['Prenom'].' '.$facturation['Nom'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>At</td>';
+        $retour .= '            <td>Au</td>';
         $retour .= '            <td>'.$facturation['Adresse'].', '.($facturation['Adresse'] != null ? $facturation['Adresse'].', ' : '').$facturation['CodePostal'].' '.$facturation['Ville'].', '.$facturation['Pays'].'</td>';
         $retour .= '        </tr>';
         if($facturation['Societe'] != null)
         {
             $retour .= '        <tr>';
-            $retour .= '            <td>For society</td>';
+            $retour .= '            <td>Pour la société</td>';
             $retour .= '            <td>'.$facturation['Societe'].'</td>';
             $retour .= '        </tr>';
         }
@@ -480,7 +477,7 @@
         $retour .= '            <td>'.$facturation['Mail'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Phone</td>';
+        $retour .= '            <td>Téléphone</td>';
         $retour .= '            <td>'.$facturation['Telephone'].'</td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
@@ -502,36 +499,36 @@
         $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
         $retour .= '    <tr>';
         $retour .= '        <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
-        $retour .= '            Shipping details';
+        $retour .= '            Détails de facturation';
         $retour .= '        </td>';
         $retour .= '    </tr>';
         $retour .= '</table>';
         $retour .= '<table style="max-width: 550px; border: 2px solid #f2f2f2; width: 100%; display: block; color: #f2f2f2; font-size: 16px; font-weight: 400;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Sended to </td>';
+        $retour .= '            <td>Facturé à</td>';
         $retour .= '            <td>'.$livraison['Prenom'].' '.$livraison['Nom'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>At</td>';
+        $retour .= '            <td>Au</td>';
         $retour .= '            <td>'.$livraison['Adresse'].', '.($livraison['Adresse'] != null ? $livraison['Adresse'].', ' : '').$livraison['CodePostal'].' '.$livraison['Ville'].', '.$livraison['Pays'].'</td>';
         $retour .= '        </tr>';
         if($livraison['Societe'] != null)
         {
             $retour .= '        <tr>';
-            $retour .= '            <td>For the society</td>';
+            $retour .= '            <td>Pour la société</td>';
             $retour .= '            <td>'.$livraison['Societe'].'</td>';
             $retour .= '        </tr>';
         }
         if($livraison['Mail'] != null)
         {
             $retour .= '        <tr>';
-            $retour .= '            <td>For the society</td>';
+            $retour .= '            <td>Pour la société</td>';
             $retour .= '            <td>'.$livraison['Mail'].'</td>';
             $retour .= '        </tr>';
         }
         $retour .= '        <tr>';
-        $retour .= '            <td>Phone</td>';
+        $retour .= '            <td>Téléphone</td>';
         $retour .= '            <td>'.$livraison['Telephone'].'</td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
@@ -555,43 +552,43 @@
         $message = $message.'               <td>';
         $message = $message.'                   <table>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Firstname</td>';
+        $message = $message.'                           <td>Prénom</td>';
         $message = $message.'                           <td>'.$_POST['firstname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Lastname</td>';
+        $message = $message.'                           <td>Nom</td>';
         $message = $message.'                           <td>'.$_POST['lastname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Enterprise</td>';
+        $message = $message.'                           <td>Entreprise</td>';
         $message = $message.'                           <td>'.$_POST['company'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Speciality</td>';
+        $message = $message.'                           <td>Spécialité</td>';
         $message = $message.'                           <td>'.SPECIALITY[$_POST['speciality']].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Address</td>';
+        $message = $message.'                           <td>Adresse</td>';
         $message = $message.'                           <td>'.$_POST['address'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Phone</td>';
+        $message = $message.'                           <td>Téléphone</td>';
         $message = $message.'                           <td>'.$_POST['phone_number'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>EMail</td>';
+        $message = $message.'                           <td>E-Mail</td>';
         $message = $message.'                           <td>'.$_POST['mail'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>ZIP Code</td>';
+        $message = $message.'                           <td>Code Postal</td>';
         $message = $message.'                           <td>'.$_POST['zip'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>City</td>';
+        $message = $message.'                           <td>Ville</td>';
         $message = $message.'                           <td>'.$_POST['city'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Country</td>';
+        $message = $message.'                           <td>Pays</td>';
         $message = $message.'                           <td>'.$_POST['country'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
@@ -599,7 +596,7 @@
         $message = $message.'                           <td>'.$_POST['message'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Interested by :</td>';
+        $message = $message.'                           <td>Interessé par :</td>';
         $message = $message.'                           <td></td>';
         $message = $message.'                       </tr>';
         foreach(MACHINES as $key => $value)
@@ -636,25 +633,25 @@
         $message = $message.'               <td>';
         $message = $message.'                   <table>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Firstname</td><td>'.$_POST['firstname'].'</td>';
+        $message = $message.'                           <td>Prénom</td><td>'.$_POST['firstname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Lastname</td><td>'.$_POST['lastname'].'</td>';
+        $message = $message.'                           <td>Nom</td><td>'.$_POST['lastname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Speciality</td><td>'.SPECIALITY[$_POST['subject']].'</td>';
+        $message = $message.'                           <td>Spécialité</td><td>'.SPECIALITY[$_POST['subject']].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>EMail</td><td>'.$_POST['mail'].'</td>';
+        $message = $message.'                           <td>E-Mail</td><td>'.$_POST['mail'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Phone</td><td>'.$_POST['phone'].'</td>';
+        $message = $message.'                           <td>Téléphone</td><td>'.$_POST['phone'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>ZIP Code</td><td>'.$_POST['zip'].'</td>';
+        $message = $message.'                           <td>Code postal</td><td>'.$_POST['zip'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>City</td><td>'.$_POST['city'].'</td>';
+        $message = $message.'                           <td>Ville</td><td>'.$_POST['city'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
         $message = $message.'                           <td>Message</td><td>'.$_POST['message'].'</td>';
@@ -745,7 +742,7 @@
                 echo json_encode([
                     'type' => 'client',
                     'status' => 'success',
-                    'message' => 'Mail sended'
+                    'message' => 'Mail envoyé'
                 ]);
             }
             else
@@ -753,7 +750,7 @@
                 echo json_encode([
                     'type' => 'client',
                     'status' => 'fail',
-                    'message' => 'Mail sending error'
+                    'message' => 'Erreur d\'envoi du mail'
                 ]);
             }
             return true;
@@ -764,7 +761,7 @@
             echo json_encode([
                 'type' => 'client',
                 'status' => 'fail',
-                'message' => 'Servor error'
+                'message' => 'Erreur serveur'
             ]);
             return false;
         }
