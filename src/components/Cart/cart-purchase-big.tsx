@@ -368,7 +368,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             setOtherAddress(false);
                             cart.hasDifferentShipping(false);
                             let _temp:any = oneById('facture');
-                            _temp && _temp.setProperty('checked', false);
+                            if(_temp) { _temp.checked = false; }
                         }}
                     >
                         <img

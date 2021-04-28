@@ -140,21 +140,7 @@
                     P1 France
                     <br/>P1 Belgique
                         <br/>P2 France
-                    <br/>P1 Belgique
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td class="num"></td>
-                <td>
-                    P1 France
-                    <br/>P1 Belgique
-                        <br/>P2 France
-                        <br/>P2 Belgique
-                    <br/>P1 Belgique
-                        <br/>P2 France
+                    <br/>P1 France
                 </td>
                 <td></td>
                 <td></td>
