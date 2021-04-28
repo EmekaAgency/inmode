@@ -3294,8 +3294,6 @@ textarea.neumorphic,
     width: 100%;
 }
 
-
-
 .neumorphic input[type="checkbox"],
 input.neumorphic[type="checkbox"] {
     position: relative;
@@ -3388,6 +3386,11 @@ button.neumorphic,
     margin-left: 5%;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;
+}
+
+select.neumorphic,
+.neumorphic select {
+    box-shadow: inset 2px 2px 5px #080808b0, inset 0px -5px 10px #0b1a25;
 }
 
 input.neumorphic::placeholder,

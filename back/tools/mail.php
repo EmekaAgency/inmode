@@ -142,7 +142,7 @@
             $retour .= '                <table style="padding-top: 30px; width: 100%; display: block;">';
             $retour .= '                    <tr>';
             $retour .= '                        <td style="color: #ff6868; font-size: 22px; font-weight: 600;">';
-            $retour .= '                            Un mail d\'une commande non identifiée du '.date('l d F Y à h:m:s', time()).' n\'a pu être envoyé en raison d\'un problème technique. Veuillez contacter un technicien';
+            $retour .= '                            Un mail d\'une commande non identifiée du '.date('l d F Y à H:i:s', time()).' n\'a pu être envoyé en raison d\'un problème technique. Veuillez contacter un technicien';
             $retour .= '                        </td>';
             $retour .= '                    </tr>';
             $retour .= '                </table>';

@@ -278,54 +278,71 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
     const total_DELIVER = ():string => {return count_total() === 0 ? (0).toFixed(2) : (10).toFixed(2);}
     const total_HT = ():string => {return count_total().toFixed(2);}
-    const hasTVA = ():boolean => {
-        if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
-            return true;
-        }
-        if((formFields.vads_cust_country == 'FR' && otherAddress == false) || (formFields.vads_ship_to_country == 'FR' && otherAddress == true)) {
-            return true;
-        }
-        return false;
-    }
     const hasTVAIntra = ():boolean => {
         let i = 0;
-        console.log(`vads_cust_country : ${formFields.vads_cust_country}`);
-        console.log(`vads_ship_to_country : ${formFields.vads_ship_to_country}`);
-        if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
-            console.log('Cas ' + ++i);
+        // console.log(`vads_cust_country : ${formFields.vads_cust_country}`);
+        // console.log(`vads_ship_to_country : ${formFields.vads_ship_to_country}`);
+        let _temp = oneById('facture');
+        console.log(_temp);
+        const _other_address = _temp ? _temp.checked : false;
+        console.log(_other_address);
+        _temp = oneById('vads_cust_country');
+        console.log(_temp);
+        const _part_1_country = _temp ? _temp.value : formFields.vads_cust_country || "FR";
+        console.log(_part_1_country);
+        _temp = oneById('vads_ship_to_country');
+        console.log(_temp);
+        const _part_2_country = _temp ? _temp.value : formFields.vads_ship_to_country || "FR";
+        console.log(_part_2_country);
+        if(_other_address == false && _part_1_country == "FR") {
             return false;
         }
-        if(formFields.vads_cust_country != undefined && formFields.vads_cust_country != 'FR' && otherAddress == false) {
-            console.log('Cas ' + ++i);
-            return true;
+        if(_other_address == true && _part_2_country == "FR") {
+            return false;
         }
-        if(formFields.vads_ship_to_country != undefined && formFields.vads_ship_to_country != 'FR' && otherAddress == true) {
-            console.log('Cas ' + ++i);
-            return true;
-        }
-        let _select_cust:any = oneById('vads_cust_country');
-        let _select_ship:any = oneById('vads_ship_to_country');
-        if(_select_cust == null && _select_ship == null) {
-            console.log('Cas ' + ++i);
-            return true;
-        }
-        if(_select_cust != null && _select_cust.value != 'FR' && otherAddress == false) {
-            console.log('Cas ' + ++i);
-            return true;
-        }
-        if(_select_ship != null && _select_ship.value != 'FR' && otherAddress == true) {
-            console.log('Cas ' + ++i);
-            return true;
-        }
-        console.log('Cas ', ++i);
-        return false;
+        return true;
+        // ++i;
+        // if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
+        //     console.log('Cas ' + i);
+        //     return false;
+        // }
+        // ++i;
+        // if(formFields.vads_cust_country != undefined && formFields.vads_cust_country != 'FR' && otherAddress == false) {
+        //     console.log('Cas ' + i);
+        //     return true;
+        // }
+        // ++i;
+        // if(formFields.vads_ship_to_country != undefined && formFields.vads_ship_to_country != 'FR' && otherAddress == true) {
+        //     console.log('Cas ' + i);
+        //     return true;
+        // }
+        // let _select_cust:any = oneById('vads_cust_country');
+        // let _select_ship:any = oneById('vads_ship_to_country');
+        // ++i;
+        // if(_select_cust == null && _select_ship == null) {
+        //     console.log('Cas ' + i);
+        //     return true;
+        // }
+        // ++i;
+        // if(_select_cust != null && _select_cust.value != 'FR' && otherAddress == false) {
+        //     console.log('Cas ' + i);
+        //     return true;
+        // }
+        // ++i;
+        // if(_select_ship != null && _select_ship.value != 'FR' && otherAddress == true) {
+        //     console.log('Cas ' + i);
+        //     return true;
+        // }
+        // ++i;
+        // console.log('Cas ', i);
+        // return false;
     }
     /*PAS DE FRAIS DE LIVRAISON*/
     // const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
     // const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
     // /*FRAIS DE LIVRAISON*/
-    const total_TVA = ():string => {return hasTVA() ? (count_total() * 0.2).toFixed(2) : (0).toFixed(2);}
-    const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
+    const total_TVA = ():string => {return hasTVAIntra() ? (0).toFixed(2) : (count_total() * 0.2).toFixed(2);}
+    const total_TTC = ():string => {return ((count_total() * (hasTVAIntra() ? 1 : 1.2)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
     
     /*PAS DE FRAIS DE LIVRAISON*/
     // const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 && false ? true : false;}
@@ -343,13 +360,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         let promise:Promise<{signature?:string}>;
         let vars:RequestInit = {
             method: "POST",
-            headers: new Headers({'content-type': 'application/json'}),
-            mode: 'cors',
-            cache: 'default',
-            body: JSON.stringify({string: str})
         };
         promise = await (await fetch(pay_params.order_signature, vars)).json().catch(err => console.log(err));
-        return promise;
         // Base64.stringify(hmacSHA256(str, pay_params.hash_key));
     }
 
@@ -521,6 +533,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
     const update_form_fields = (e:Event | any):void => {
         e.preventDefault();
+        console.log(`${e.target.name} -> ${e.target.value}`);
         setFormFields({
             ...formFields,
             [e.target.name]: e.target.value

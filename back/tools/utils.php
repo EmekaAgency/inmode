@@ -91,7 +91,7 @@
         {
             case 'full':
             default:
-                // return date('l d F Y à h:m:s', time($date));
-                return strftime('%A %d %B %G à %H:%M:%S', time($date));
+                // return date('l d F Y à H:i:s', time($date));
+                return strftime('%A %d %B %G à %H:%M:%S', strtotime($date));
         }
     }
