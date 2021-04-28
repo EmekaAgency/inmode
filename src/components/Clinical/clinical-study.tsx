@@ -39,7 +39,7 @@ const ClinicalStudy = ({study, prop_key = null}:ClinicalStudy) => {
                         href={study.url}
                         target="_blank"
                         rel="noreferrer"
-                        title="Télécharger l'étude"
+                        title="Download study"
                     ></a>
                 </div>
             </div>

@@ -138,7 +138,7 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     <Link to="/workstation" title="Workstations">Workstations</Link>
                     {/* SWITCH CART */}
 
-                    <Link to="/shop" title="Shop">Shop</Link>
+                    {/* <Link to="/shop" title="Shop">Shop</Link> */}
 
                     {/* SWITCH CART END */}
                 </div>

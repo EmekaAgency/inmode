@@ -22,8 +22,8 @@ import ImagesProvider from "../contexts/images-provider";
 
 // {/* SWITCH CART */}
 
-import CartPurchase from "../Cart";
-import PayParams from "../Cart/pay_params";
+// import CartPurchase from "../Cart";
+// import PayParams from "../Cart/pay_params";
 
 // {/* SWITCH CART END */}
 
@@ -56,8 +56,8 @@ const Layout = ({ children }) => {
         {/* {size.height < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
         {/* SWITCH CART */}
 
-        <CartPurchase/>
-        <PayParams/>
+        {/* <CartPurchase/> */}
+        {/* <PayParams/> */}
 
         {/* SWITCH CART END */}
         <PrivacyPolicy />

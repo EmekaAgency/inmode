@@ -95,7 +95,7 @@ function _headers(token, _bearer = true, _options = {}) {
         // console.log(response);
     // })
     // .catch(function (error) {
-        // console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+        // console.log('There has a problem with the fetch operation: ' + error.message);
     // });
 }
 

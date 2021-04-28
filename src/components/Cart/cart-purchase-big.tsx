@@ -348,7 +348,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         <CityField classes="required form-field step-1" required={true}/>
                         {/* <input className="required form-field step-1" name="city" type="text" required placeholder="Ville"/> */}
                         <MobilePhoneField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="phone" type="tel" required placeholder="Téléphone"/> */}
+                        {/* <input className="required form-field step-1" name="phone" type="tel" required placeholder="Phone"/> */}
                         <MailField classes="required form-field step-1" required={true}/>
                         {/* <input className="required form-field step-1" name="mail" type="email" required placeholder="Mail"/> */}
                     </div>
@@ -397,7 +397,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         <DeliveryCityField classes="required form-field step-2" required={true}/>
                         {/* <input className="required form-field step-2" name="other-city" type="text" required placeholder="Ville"/> */}
                         <DeliveryPhoneField classes="required form-field step-2" required={true}/>
-                        {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/> */}
+                        {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Phone"/> */}
                         {/* <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/> */}
                         <DeliveryMailField classes="form-field step-2" required={false}/>
                         {/* <input className="form-field step-2" name="mail" type="email" placeholder="Mail"/> */}

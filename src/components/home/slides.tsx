@@ -117,7 +117,7 @@ const Slides = ({from}:Slides) => {
                                     <Link className="zone-link" to={slide.MenuParams.url} title={slide.Name}></Link>
                                 </div>
                                 {slide.Addons ? <div className="slide-view-product" onClick={(e) => {view_product(e, key);}}>
-                                    
+                                    Technologies
                                     <img
                                         className="slide-view-product-arrow transition"
                                         src={images.getOne('arrowRightIcon').childImageSharp.fluid.srcWebp}
