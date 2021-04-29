@@ -55,7 +55,6 @@ const Slides = ({from}:Slides) => {
     
     const close_view = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, elem:any) => {
         e.preventDefault();
-        console.log(elem);
         let _main:any = oneById('main');
         if(_main == null) {
             return false;

@@ -22,10 +22,10 @@ const AddonDetails = ({ name = "", datas }:AddonDetails) => {
             <div id="what-is" className="what-is transition">
                 <div className="addon-details-img transition">
                     <img
-                        src={datas.WhatIs && datas.WhatIs.picture.childImageSharp.fluid.srcWebp}
+                        src={datas.WhatIs && datas.WhatIs.picture && datas.WhatIs.picture.childImageSharp.fluid.srcWebp}
                     />
                 </div>
-                    {datas.WhatIs && datas.WhatIs.TitleText.map((section, key) => {
+                    {datas.WhatIs && datas.WhatIs.TitleText && datas.WhatIs.TitleText.map((section, key) => {
                         return (
                             <div key={key}>
                                 <div className="title">

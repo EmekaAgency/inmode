@@ -18,7 +18,8 @@ const ContactUs = () => {
 
     const close_form = () => {
         setFormOpen(false);
-        [].forEach.call(allByClass('contact-choice'), function(elem) {
+        let _choices = allByClass('contact-choice');
+        _choices && [].forEach.call(_choices, function(elem:HTMLElement) {
             elem.style.width = '250px';
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0.4s';
@@ -31,7 +32,7 @@ const ContactUs = () => {
         if(_temp) {_temp.innerHTML = "";}
     }
 
-    const resolve_click = (e) => {
+    const resolve_click = (e:React.MouseEvent<HTMLDivElement, MouseEvent> | React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         e.preventDefault();
         // WILL OPEN
         !formOpen && resolve_contact(e);
@@ -46,7 +47,8 @@ const ContactUs = () => {
     }
 
     const resolve_contact = (e) => {
-        [].forEach.call(allByClass('contact-choice'), function(elem) {
+        let _choices = allByClass('contact-choice');
+        _choices && [].forEach.call(_choices, function(elem:HTMLElement) {
             elem.style.setProperty('width', '0px', 'important');
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0s';
@@ -65,7 +67,8 @@ const ContactUs = () => {
         _temp = oneBySelector('#mini-contact-gif');
         if(_temp) {_temp.style.display = 'inline-block';}
         let body = new Object({});
-        Array.from(document.forms['contact-mini'].elements).map((elem) => {
+        let _form = document.forms.namedItem('contact-mini');
+        Array.from(_form ? _form.elements : []).forEach((elem) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "contact-us";
@@ -99,7 +102,8 @@ const ContactUs = () => {
                 _temp.removeAttribute('disabled');
                 _temp = oneBySelector('#contact-mini .req-return.success');
                 if(_temp) {_temp.innerHTML = response.message;}
-                document.forms['contact-mini'].reset();
+                let _form = document.forms.namedItem('contact-mini');
+                _form && _form.reset();
             }
             if(response.status === 'fail' && response.type === 'client') {
                 setSubmitText(response.message);
@@ -116,7 +120,7 @@ const ContactUs = () => {
             }
         })
         .catch(function(error) {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
+            
         });
     }
 
@@ -158,7 +162,6 @@ const ContactUs = () => {
                             <input type="text" placeholder="Ville*" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message-mini"
-                                type="textarea"
                                 placeholder="Entrez votre message ici*"
                                 name="message"
                                 maxLength={max_length}
@@ -170,8 +173,8 @@ const ContactUs = () => {
                                 className="custom-scrollbar"
                             ></textarea>
                             <div className="current-length" style={{color: msgLength === max_length ? '#f00' : '#59b7b3'}}>{`${msgLength} / ${max_length}`}</div>
-                            <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWidth: 400}}></div>
-                            <div className="req-return error" style={{color: 'red', fontSize: 15, fontWidth: 400}}></div>
+                            <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWeight: 400}}></div>
+                            <div className="req-return error" style={{color: 'red', fontSize: 15, fontWeight: 400}}></div>
                             {/* Mettre LoadingGIF en attendant le retour du serveur */}
                             <button type="submit" className="submit">
                                 {submitText}

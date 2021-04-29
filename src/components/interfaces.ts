@@ -55,19 +55,24 @@ export interface InmodePanel_Menu_Interface {
 };
 export interface InmodePanel_Order_Interface {
     Reference?: string | undefined;
-    Date?: string;
-    Article?: InmodePanel_Product_BoughtArticle_Interface[];
-    Billing?: InmodePanel_Order_Billing_Interface;
+    Date: string;
+    Article: InmodePanel_Product_BoughtArticle_Interface[];
+    Billing: InmodePanel_Order_Billing_Interface;
     Shipping?: InmodePanel_Order_Shipping_Interface;
-    Paid?: boolean;
-    Status?: string;
-    Firstname?: string;
-    Lastname?: string;
-    Society?: string;
-    DeliveryTax?: number;
+    Paid: boolean;
+    Status: string;
+    Firstname: string;
+    Lastname: string;
+    Society: string;
+    DeliveryTax: number;
+    Total: string | number;
+    SEPA?: boolean;
+    Country: string;
+    TVA_Intra?: string;
 };
 export interface InmodePanel_Product_Interface {
     strapiId: number;
+    id: number;
     Name: string;
     Banner: InmodePanel_Base_Banner_Interface;
     WhatIs: InmodePanel_Generic_WhatIs_Interface;
@@ -132,15 +137,15 @@ export interface InmodePanel_AboutUs_Interface {
     banner?: GatsbyImage_Interface;
     about_video_url?: string;
     about_txt?: string;
-    learn_bg?: GatsbyImage_Interface | null;
-    learn_icon?: GatsbyImage_Interface | null;
+    learn_bg?: GatsbyImage_Interface | undefined;
+    learn_icon?: GatsbyImage_Interface | undefined;
     learn_txts?: InmodePanel_Base_SectionTitreText_Interface[];
     learn_values?: InmodePanel_Base_Texte_Interface[];
     staff?: InmodePanel_Generic_Staff_Interface[];
     menus?: InmodePanel_Menu_Interface[];
 };
 export interface InmodePanel_Footer_Interface {
-    logo: GatsbyImage_Interface | null;
+    logo: GatsbyImage_Interface | undefined;
     address: string;
     phone: string;
     mail: string;
@@ -318,8 +323,11 @@ export interface  InmodePanel_SellingNext_Interface {
 
     // Product
     export interface InmodePanel_Product_BoughtArticle_Interface {
-        Article?: InmodePanel_Shop_Interface;
-        Quantite?: number;
+        Article?: number;
+        Quantity?: number;
+        Price: number;
+        Name: string;
+        Pack: string;
     };
     export interface InmodePanel_Product_Buyer_Interface {
         Firstname?: string;
@@ -498,7 +506,7 @@ export interface Cart_FormSave_Interface {
 export interface PayParams_Interface {
     signature: string;
     actionMode: string;
-    ctxMode: string;
+    vads_ctx_mode: string;
     currency: number;
     pageAction: string;
     siteId: string;
@@ -574,14 +582,14 @@ export interface HeaderTop_Interface {
         id: number;
         position: number;
         MenuParams: InmodePanel_Generic_MenuParams_Interface;
-        Icon: GatsbyImage_Interface | null;
+        Icon: GatsbyImage_Interface | undefined;
     }[];
     treatments: {
         id: number;
         MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
-    icon: GatsbyImage_Interface | null;
-    icon_hover: GatsbyImage_Interface | null;
+    icon: GatsbyImage_Interface | undefined;
+    icon_hover: GatsbyImage_Interface | undefined;
 };
 
 export interface HeaderBottom_Interface {
@@ -598,7 +606,7 @@ export interface HeaderBottom_Interface {
         id: number;
         position: number;
         MenuParams: InmodePanel_Generic_MenuParams_Interface;
-        Icon: GatsbyImage_Interface | null;
+        Icon: GatsbyImage_Interface | undefined;
     }[];
     treatments: {
         id: number;
@@ -616,8 +624,8 @@ export interface HeaderBottom_Interface {
         id: number;
         MenuParams: InmodePanel_Generic_MenuParams_Interface;
     }[];
-    icon: GatsbyImage_Interface | null;
-    icon_hover: GatsbyImage_Interface | null;
+    icon: GatsbyImage_Interface | undefined;
+    icon_hover: GatsbyImage_Interface | undefined;
 };
 
 export interface FlickityOptions_Interface {

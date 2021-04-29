@@ -52,14 +52,18 @@ const ContactForm = ({ from }:ContactForm) => {
 
     function send_form (e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        document.querySelector('#full-contact-form .req-return.success').innerHTML = "";
-        document.querySelector('#full-contact-form .req-return.error').innerHTML = "";
-        document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
+        let _temp1:HTMLElement | null = document.querySelector('#full-contact-form .req-return.success');
+        if(_temp1) _temp1.innerHTML = "";
+        let _temp2:HTMLElement | null = document.querySelector('#full-contact-form .req-return.error');
+        if(_temp2) _temp2.innerHTML = "";
+        let _temp3:HTMLInputElement | null = document.querySelector('#full-contact-form .submit');
+        if(_temp3) _temp3.disabled = true;
         let body:any = new Object({});
-        if(document.forms["full-contact-form"] == null) {
+        if(document.forms.namedItem("full-contact-form") == null) {
             return false;
         }
-        Array.from(document.forms["full-contact-form"].elements).map((elem:HTMLInputElement | any) => {
+        let _form:HTMLFormElement | null = document.forms.namedItem("full-contact-form")
+        Array.from(_form ? _form.elements : []).map((elem:HTMLInputElement | any) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "full-contact";
@@ -81,23 +85,30 @@ const ContactForm = ({ from }:ContactForm) => {
         )
         .then((response) => {
             if(response.status === 'success' && response.type === 'client') {
-                document.querySelector('#full-contact-form .submit').removeAttribute('disabled');
-                document.querySelector('#full-contact-form .req-return.success').innerHTML = response.message;
-                document.forms['full-contact-form'].reset();
+                let _temp = document.querySelector('#full-contact-form .submit');
+                _temp && _temp.removeAttribute('disabled');
+                _temp = document.querySelector('#full-contact-form .req-return.success');
+                if(_temp) _temp.innerHTML = response.message;
+                let _form:HTMLFormElement | null = document.forms.namedItem('full-contact-form')
+                _form && _form.reset();
             }
             if(response.status === 'fail' && response.type === 'client') {
                 setSubmitText(response.message);
-                document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
-                document.querySelector('#full-contact-form .req-return.success').innerHTML = "Une erreur d'envoi du message est survenu. Essayez de raffraîchir la page ou de contacter un administrateur.";
+                let _temp1:HTMLInputElement | null = document.querySelector('#full-contact-form .submit');
+                if(_temp1) _temp1.disabled = true;
+                let _temp2:HTMLElement | null = document.querySelector('#full-contact-form .req-return.success');
+                if(_temp2) _temp2.innerHTML = "Une erreur d'envoi du message est survenu. Essayez de raffraîchir la page ou de contacter un administrateur.";
             }
             if(response.status === 'fail' && response.type === 'server') {
-                document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
-                document.querySelector('#full-contact-form .req-return.error').innerHTML = response.message;
+                let _temp1:HTMLInputElement | null = document.querySelector('#full-contact-form .submit');
+                if(_temp1) _temp1.disabled = true;
+                let _temp2 = document.querySelector('#full-contact-form .req-return.error');
+                if(_temp2) _temp2.innerHTML = response.message;
             }
         })
         .catch(function(error) {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-          });;
+            
+          });
     }
 
     const resolveClick = (e:React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -207,10 +218,6 @@ const ContactForm = ({ from }:ContactForm) => {
                     <hr/>
                 </div>
             </div>
-            {/* <div className="newsletter">
-                <input type="checkbox" id="mail_list" name="mail_list" value="mail_list"/>
-                <label htmlFor={"mail_list"}>S'abonner à la newsletter</label>
-            </div> */}
             <div className="policy">
                 <input type="checkbox" id="policy" name="policy" value="policy" required/>
                 <label htmlFor={"policy"}>J'accepte les <a href="/mentions-legales#cgu" target="_blank" title="Conditions générales d'utilisation">conditions générales d'utilisation</a></label>

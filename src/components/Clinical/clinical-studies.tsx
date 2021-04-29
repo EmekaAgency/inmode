@@ -1,8 +1,9 @@
 import React from "react";
 import Carousel from "../Carousel";
+import { InmodePanel_Generic_ClinicalStudies_Interface } from "../interfaces";
 import ClinicalStudy from "./clinical-study";
 
-const ClinicalStudies = ({ datas }) => {
+const ClinicalStudies = ({ datas }:ClinicalStudies_Interface) => {
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -45,12 +46,8 @@ const ClinicalStudies = ({ datas }) => {
     );
 }
 
-ClinicalStudies.defaultProps = {
-
-}
-
-ClinicalStudies.propTypes = {
-
-}
+interface ClinicalStudies_Interface {
+    datas: InmodePanel_Generic_ClinicalStudies_Interface[];
+};
 
 export default ClinicalStudies;

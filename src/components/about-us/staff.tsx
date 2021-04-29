@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import Carousel from "../Carousel";
 
 import { FlickityOptions_Interface, InmodePanel_AboutUs_Interface } from "../interfaces";
-import { FlickityOptions } from "react-flickity-component";
 
 const Staff = ({ from = "" }:Staff) => {
 
@@ -26,7 +25,6 @@ const Staff = ({ from = "" }:Staff) => {
         }
     `).strapiAboutUs);
 
-    // TODO Understand why any and not FlickityOptions_Interface on Dispatch
     const [flickityOptions]:[FlickityOptions_Interface, React.Dispatch<any>] = React.useState({
         initialIndex: 0,
         cellAlign: 'left',
@@ -35,8 +33,6 @@ const Staff = ({ from = "" }:Staff) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        // autoPlay: false,
-        // wrapAround: true,
     });
     
     return (
@@ -47,7 +43,6 @@ const Staff = ({ from = "" }:Staff) => {
                     options={flickityOptions}
                     classList={'slides-main transition carousel-staff'}
                 >
-                    {/* {datas.staff && [...datas.staff, ...datas.staff].map((slide, key) => { */}
                     {datas.staff && datas.staff.map((slide, key) => {
                         return (
                             <div

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 
-// import { resolve_tab_link_selected } from "../../functions/resolve_mini_menu_opened";
 import { useWindowSize } from "../../functions/window-size";
 import InmodeEvent from "./event";
 import NoEvents from "./no-events";
@@ -68,12 +67,6 @@ const EventsLayout = ({ children, current_page, upcoming_events = undefined, pas
     const [maxHeight, setMaxHeight] = React.useState(0);
     const [openedAccordion, setOpenedAccordion] = React.useState(false);
 
-    // const resolveClick = (e) => {
-    //     e.preventDefault();
-    //     resolve_tab_link_selected();
-    //     e.currentTarget.classList.add('current');
-    // }
-
     const resolveAccordion = (e:React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
         e.currentTarget.classList.toggle('opened');
         var panel = e.currentTarget.nextElementSibling;
@@ -123,8 +116,6 @@ const EventsLayout = ({ children, current_page, upcoming_events = undefined, pas
                                     <Link
                                         className={`tab-link${tab.name === current_page ? ' current' : ''}`}
                                         to={tab.url}
-                                        // to="#"
-                                        // onClick={(e) => {resolveClick(e);}}
                                         key={key}
                                         title={tab.name}
                                     >
@@ -136,15 +127,12 @@ const EventsLayout = ({ children, current_page, upcoming_events = undefined, pas
                     </div>
                 </div>
                 <div className="events-content">
-                    {/* {upcoming_events.length > 0 && <div className="time-section-title">Événements à venir</div>} */}
                     {upcoming_events && upcoming_events.length > 0 && upcoming_events.map((event, key) => {
                         return (
                             <InmodeEvent key={key} event={event} prop_key={key} current_page={current_page}/>
                         )
                     })}
                     {(!upcoming_events || (upcoming_events && upcoming_events.length == 0)) && <NoEvents/>}
-                    {/* {upcoming_events.length > 0 && past_events.length > 0 && <hr/>} */}
-                    {/* {past_events.length > 0 && <div className="time-section-title">Événements passés</div>} */}
                     {past_events && past_events.length > 0 && past_events.map((event, key) => {
                         return (
                             <InmodeEvent key={key} event={event} prop_key={key + (upcoming_events ? upcoming_events.length : 0)} current_page={current_page}/>

@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react";
 import PropTypes from "prop-types";
 
@@ -53,7 +46,6 @@ const Layout = ({ children }) => {
           </main>
         </ProductsProvider>
         <FixedMenu/>
-        {/* {size.height < 800 && <div style={{position: "fixed", height: 450, width: 450, top:0, left:0, background: "red"}}></div>} */}
         {/* SWITCH CART */}
 
         <CartPurchase/>

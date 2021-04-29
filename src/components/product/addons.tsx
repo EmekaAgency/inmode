@@ -1,15 +1,11 @@
 import { Link } from "gatsby";
 import React from "react";
 import Carousel from "../Carousel";
-import { InmodePanel_Addon_Interface } from "../interfaces";
+import { InmodePanel_Addon_Interface, InmodePanel_Base_Image_Interface } from "../interfaces";
 import NoPicture from "../NoPic/no-picture";
 import Sensible from "../NoPic/sensible";
 
 const Addons = ({ datas, sensible = false }:Addons) => {
-
-    console.log(datas);
-    console.log(datas.length);
-    console.log(sensible);
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -19,13 +15,11 @@ const Addons = ({ datas, sensible = false }:Addons) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        // autoPlay: 3000,
-       // wrapAround: true,
     });
 
-    const select_mines = (object, id) => {
-        let temp = [];
-        object.map((_let) => {
+    const select_mines = (object:InmodePanel_Base_Image_Interface[] | undefined, id:number):InmodePanel_Base_Image_Interface[] => {
+        let temp:InmodePanel_Base_Image_Interface[] = [];
+        object && object.map((_let) => {
             if(_let.product && _let.product.id === id) {
                 temp.push(_let);
             }
@@ -37,19 +31,19 @@ const Addons = ({ datas, sensible = false }:Addons) => {
         <div id="technologies" className="product-addons">
             <div className="section-title">technologies on the workstation</div>
             {datas.addons.map((addon) => {
-                return addon.ProductPresentation.map((product, key) => {
+                return addon.ProductPresentation && addon.ProductPresentation.map((product, key) => {
                     if(product.appears_everywhere || (product.products && product.products[0].id === datas.id)) {
                         let images = select_mines(product.Images, datas.id);
                         // TODO ton on evolve => evolve-tone
-                        let product_title = product.title_text.toLowerCase().replace(' on ', '-').replace(/ /g, '-').replace(/\*/g, '').replace(/#/g, '');
+                        let product_title = product.title_text ? product.title_text.toLowerCase().replace(' on ', '-').replace(/ /g, '-').replace(/\*/g, '').replace(/#/g, '') : "";
                         return (
                             <div key={key} className="product-addon">
                                 <div className="addon-details">
                                     <div className="addon-description">
                                         <div className="addon-img">
                                             <img
-                                                src={product.left_image.childImageSharp.fluid.srcWebp}
-                                                srcSet={product.left_image.childImageSharp.fluid.srcSetWebp}
+                                                src={product.left_image && product.left_image.childImageSharp.fluid.srcWebp}
+                                                srcSet={product.left_image && product.left_image.childImageSharp.fluid.srcSetWebp}
                                                 alt={product.title_text}
                                             />
                                         </div>
@@ -57,15 +51,15 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                             {product.title_image && (
                                                 <img
                                                     src={product.title_image.childImageSharp.fluid.srcWebp}
-                                                    srcSet={product.title_image.childImageSharp.fluid.setSetWebp}
+                                                    srcSet={product.title_image.childImageSharp.fluid.srcSetWebp}
                                                     alt={product.title_text}
                                                 />
                                             )}
                                             {!product.title_image && product.title_text}
-                                            {product.appears_everywhere && <Link className="zone-link" to={addon.MenuParams.url} title={product.title}></Link>}
+                                            {product.appears_everywhere && <Link className="zone-link" to={addon.MenuParams.url} title={product.title_text}></Link>}
                                         </div>
-                                        {product.AddonProductsDescr.map((descr, key) => {
-                                            if(descr.product.id === datas.id) {
+                                        {product.AddonProductsDescr && product.AddonProductsDescr.map((descr, key) => {
+                                            if(descr.product && descr.product.id === datas.id) {
                                                 return (
                                                     <div key={key} className="addon-description">{descr.descr}</div>
                                                 );
@@ -77,8 +71,8 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                                 Que puis-je traiter ?
                                             </div>
                                             <ul>
-                                            {product.ProductPresentationTreats.map((descr, key) => {
-                                                if(descr.product.id === datas.id) {
+                                            {product.ProductPresentationTreats && product.ProductPresentationTreats.map((descr, key) => {
+                                                if(descr.product && descr.product.id === datas.id) {
                                                     return (
                                                         <li key={key}>{descr.treat_short}</li>
                                                     );
@@ -97,8 +91,8 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                     images.length === 1 ?
                                         <img
                                             className="addon-single"
-                                            src={images[0].image.childImageSharp.fluid.srcWebp}
-                                            srcSet={images[0].image.childImageSharp.fluid.srcSetWebp}
+                                            src={images[0].image ? images[0].image.childImageSharp.fluid.srcWebp : ''}
+                                            srcSet={images[0].image ? images[0].image.childImageSharp.fluid.srcSetWebp : ''}
                                             alt={`morpheus8-${key + 1}-single`}
                                         />
                                         :
@@ -114,8 +108,8 @@ const Addons = ({ datas, sensible = false }:Addons) => {
                                                             <img
                                                                 key={key}
                                                                 className="addon-img"
-                                                                src={image.image.childImageSharp.fluid.srcWebp}
-                                                                srcSet={image.image.childImageSharp.fluid.srcSetWebp}
+                                                                src={image.image ? image.image.childImageSharp.fluid.srcWebp : ''}
+                                                                srcSet={image.image ? image.image.childImageSharp.fluid.srcSetWebp : ''}
                                                                 alt={`${product_title}-slide-${key}`}
                                                             />
                                                         </div>

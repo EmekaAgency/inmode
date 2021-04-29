@@ -33,9 +33,9 @@ const MenuTitleText = ({menu, prop_key, openOnClick}:MenuTitleText) => {
                             resolveOnClick(e, true);
                             enableMainScroll();
                         }}
-                        title={format_string(menu.title)}
+                        title={format_string(menu.title || '')}
                     >
-                        {format_string(menu.title)}
+                        {format_string(menu.title || '')}
                     </Link>
                     :
                     <a
@@ -47,20 +47,20 @@ const MenuTitleText = ({menu, prop_key, openOnClick}:MenuTitleText) => {
                         }}
                         target="_blank"
                         rel="noreferrer"
-                        title={format_string(menu.title)}
+                        title={format_string(menu.title || '')}
                     >
-                        {format_string(menu.title)}
+                        {format_string(menu.title || '')}
                     </a>
                 :
                 <div
                     className="menu-title menu-text"
                     onClick={(e) => {resolveOnClick(e, false);}}
                 >
-                    {format_string(menu.title)}
+                    {format_string(menu.title || '')}
                 </div>
             }
             <ul className="dropdown-menu">
-                {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
+                {menu.menus && menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
                     return (
                         <Menu key={key_sub} prop_key={key_sub} menu={sub}/>
                     );

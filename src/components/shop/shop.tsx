@@ -30,8 +30,8 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     })
   }
 
-  const resolveClick = (e) => {
-    let temp = new Array(...tags);
+  const resolveClick = (e:React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    let temp:string[] = new Array(...tags);
     if(e.currentTarget.checked) {
       resolve_checked('cure-choice', true, 'cure-choice-all');
       resolve_checked(e.currentTarget.value, false);
@@ -53,7 +53,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     setMemoryTags(temp);
   }
 
-  const allResolve = (e) => {
+  const allResolve = (e:React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     if(e.currentTarget.checked) {
       setMemoryTags([...tags]);
       resolve_checked('cure-choice', false, 'cure-choice-all');
@@ -62,7 +62,6 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
         elems[index].checked = false;
         resolve_checked(elems[index].value);
       });
-      // document.getElementsByClassName(e.currentTarget.value).map(elem => elem.checked = false);
       setTags([]);
     }
     else {
