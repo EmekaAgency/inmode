@@ -71,7 +71,7 @@
       'Adresse' => '124 Rue de Crimée',
       'Pays' => 'FR',
       'CodePostal' => '13003',
-      'Ville' => 'Marseille',
+      'City' => 'Marseille',
       'Societe' => null,
       'Mail' => 'mael.fallet@gmail.com',
     ]

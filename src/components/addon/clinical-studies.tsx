@@ -22,7 +22,7 @@ const AddonClinicalStudies = ({ datas }:AddonClinicalStudies) => {
     return (
         <div id="studies" className="product-clinical-studies">
             <div className="title">
-                études cliniques
+                clinical studies
             </div>
             <div className="clinical-studies-slider">
                 {datas.length === 1 ?

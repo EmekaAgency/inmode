@@ -93,7 +93,7 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     {/* </div> */}
                     {/* Date: "2021-02-26T05:40:43.000Z" */}
                     <div className="order-date">
-                        {status} le {get_date(order.Date)}
+                        {status} on {get_date(order.Date)}
                     </div>
                     {/* Billing: {id: 20, Firstname: "m", Lastname: "m", Phone: "0667630604", Mail: "test@gmail.com", …} */}
                     {/* {order.Billing && <div className="order-billing">
@@ -132,8 +132,8 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                 </div>
                 }
                 <div className="payment-suggestions">
-                    <Link to="/" title="Accueil">Accueil</Link>
-                    <Link to="/workstation" title="Machines">Machines</Link>
+                    <Link to="/" title="Home">Home</Link>
+                    <Link to="/workstation" title="Workstations">Workstations</Link>
                     {/* SWITCH CART */}
 
                     <Link to="/shop" title="Shop">Shop</Link>

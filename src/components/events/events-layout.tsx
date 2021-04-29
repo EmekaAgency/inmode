@@ -51,7 +51,7 @@ const EventsLayout = ({ children, current_page, upcoming_events = undefined, pas
             'url': '/events'
         },
         {
-            'name': 'congrès',
+            'name': 'Congress',
             'url': '/events/congress'
         },
         {

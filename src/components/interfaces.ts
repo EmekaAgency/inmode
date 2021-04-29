@@ -432,9 +432,9 @@ export interface SogecommerceOrder {
     vads_site_id: string | number;// "53371535"
     vads_trans_date: string;// "20210225143539"
     vads_trans_id?: string;// "SLLwPU"
-    vads_url_cancel?: string;// "https://www.inmodemd.fr/payment/cancel"
-    vads_url_refused?: string;// "https://www.inmodemd.fr/payment/refused"
-    vads_url_success?: string;// "https://www.inmodemd.fr/payment/paid"
+    vads_url_cancel?: string;// "https://www.inmodemd.co.uk/payment/cancel"
+    vads_url_refused?: string;// "https://www.inmodemd.co.uk/payment/refused"
+    vads_url_success?: string;// "https://www.inmodemd.co.uk/payment/paid"
     vads_product_qty9999?: number;
     vads_version: string;// "V2"
 };

@@ -8,7 +8,7 @@ const WorkstationPage = ({ data }) => {
     
     return (
         <Layout>
-          <SEO title="Gamme"/>
+          <SEO title="Workstations"/>
           <Shop
             products={edges_to_array(data.allStrapiProduct.edges)}
             tag_families={edges_to_array(data.allStrapiTagFamily.edges)}

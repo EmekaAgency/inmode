@@ -30,7 +30,7 @@ const ShopMenu = ({ products, filter, tags }:ShopMenu_Interface) => {
                     className="title-accordion title transition"
                     onClick={(e) => {resolveAccordion(e);}}
                 >
-                    Produits
+                    Products
                 </span>
             }
             <div

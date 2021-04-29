@@ -13,7 +13,7 @@ import Staff from "../components/about-us/staff";
 const AboutUsPage = () => {
     return (
       <Layout>
-        <SEO title="Notre histoire"/>
+        <SEO title="About us"/>
         <Banner from="about-us"/>
         <AboutUs from="about-us"/>
         <Divider position="top"/>

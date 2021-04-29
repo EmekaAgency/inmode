@@ -14,7 +14,7 @@ const ClinicalStudies = ({}:ClinicalStudies) => {
         >
             <div className="container">
                 <div className="studies">
-                    <h2 className="title">Études cliniques</h2>
+                    <h2 className="title">Clinical studies</h2>
                     <div className="content">
                         <img
                             src={images.getOne('homeClinicalStudy').childImageSharp.fluid.srcWebp}
@@ -22,7 +22,7 @@ const ClinicalStudies = ({}:ClinicalStudies) => {
                             alt="studies-img"
                         />
                         <a href="https://inmodemd.com/clinical-papers/" target="_blank" rel="noreferrer" title="Voir les études">
-                            Voir les études
+                            See studies
                         </a>
                     </div>
                 </div>

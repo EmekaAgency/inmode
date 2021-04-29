@@ -124,8 +124,8 @@ const FollowInstagram = ({insta_id}:FollowInstagram) => {
         <div className="follow-instagram">
             {/* <div className="container"> */}
                 <h2>
-                    <a href="https://www.instagram.com/inmode.france" target="_blank" rel="noreferrer" title="Suivez-nous sur Instagram">
-                        Suivez nous sur Instagram
+                    <a href="https://www.instagram.com/inmode.france" target="_blank" rel="noreferrer" title="Follow us on Instagram">
+                        Follow us on Instagram
                     </a>
                 </h2>
                 <div className="wrapper">

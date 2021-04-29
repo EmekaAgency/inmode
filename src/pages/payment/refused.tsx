@@ -27,7 +27,7 @@ const PaymentErrorPage = () => {
 
     const cart = useCart();
 
-    const page_title = "Paiement refusé";
+    const page_title = "Payment refused";
 
     React.useEffect(() => {
         let _test:any = get_url_params();

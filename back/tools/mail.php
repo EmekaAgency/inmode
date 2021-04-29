@@ -477,7 +477,7 @@
         $retour .= '            <td>'.$facturation['Mail'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Téléphone</td>';
+        $retour .= '            <td>Phone</td>';
         $retour .= '            <td>'.$facturation['Telephone'].'</td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
@@ -528,7 +528,7 @@
             $retour .= '        </tr>';
         }
         $retour .= '        <tr>';
-        $retour .= '            <td>Téléphone</td>';
+        $retour .= '            <td>Phone</td>';
         $retour .= '            <td>'.$livraison['Telephone'].'</td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
@@ -552,7 +552,7 @@
         $message = $message.'               <td>';
         $message = $message.'                   <table>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Prénom</td>';
+        $message = $message.'                           <td>Firstname</td>';
         $message = $message.'                           <td>'.$_POST['firstname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
@@ -572,7 +572,7 @@
         $message = $message.'                           <td>'.$_POST['address'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Téléphone</td>';
+        $message = $message.'                           <td>Phone</td>';
         $message = $message.'                           <td>'.$_POST['phone_number'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
@@ -580,7 +580,7 @@
         $message = $message.'                           <td>'.$_POST['mail'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Code Postal</td>';
+        $message = $message.'                           <td>ZIP code</td>';
         $message = $message.'                           <td>'.$_POST['zip'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
@@ -633,7 +633,7 @@
         $message = $message.'               <td>';
         $message = $message.'                   <table>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Prénom</td><td>'.$_POST['firstname'].'</td>';
+        $message = $message.'                           <td>Firstname</td><td>'.$_POST['firstname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
         $message = $message.'                           <td>Nom</td><td>'.$_POST['lastname'].'</td>';
@@ -645,10 +645,10 @@
         $message = $message.'                           <td>E-Mail</td><td>'.$_POST['mail'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Téléphone</td><td>'.$_POST['phone'].'</td>';
+        $message = $message.'                           <td>Phone</td><td>'.$_POST['phone'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Code postal</td><td>'.$_POST['zip'].'</td>';
+        $message = $message.'                           <td>ZIP code</td><td>'.$_POST['zip'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
         $message = $message.'                           <td>Ville</td><td>'.$_POST['city'].'</td>';

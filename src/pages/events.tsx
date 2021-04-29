@@ -7,7 +7,7 @@ const EventsPage = ({ data }) =>  {
 
     return (
         <Layout>
-            <SEO title="Événements"/>
+            <SEO title="Events"/>
             <EventsLayout
                 current_page="upcoming events"
                 upcoming_events={!data ? {} : data.incoming.nodes}

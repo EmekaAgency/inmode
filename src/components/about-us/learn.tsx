@@ -46,7 +46,7 @@ const Learn = ({ from = "" }:Learn) => {
         <div className={`learn${from ? ` ${from}` : ''}`}>
             <div className="container">
                 <div className="know-more">
-                    <span>En savoir plus sur:</span>
+                    <span>More about:</span>
                 </div>
                 <div className="goals">
                     <img

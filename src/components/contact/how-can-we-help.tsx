@@ -4,20 +4,20 @@ import React from "react";
 const HowCanWeHelp = ({ from }:HowCanWeHelp) => {
     return (
         <div className={`how-can-we-help main-container ${from}`}>
-            <div className="title">Comment pouvons-nous vous aider ?</div>
-            <div className="rule">Sélectionnez votre sujet ci-dessous</div>
+            <div className="title">How can we help ?</div>
+            <div className="rule">Select your subject beneath</div>
             <hr/>
             <div className="topic">
-                Trouver une <Link to="#" title="Clinique">clinique</Link>
+                Find a <Link to="#" title="Clinic">clinic</Link>
             </div>
             <div className="topic">
-                Questions à propos des <Link to="#" title="Traitements">traitements</Link>
+                Question about the <Link to="#" title="Treatments">treatments</Link>
             </div>
             <div className="topic">
-                Questions sur <Link to="#" title="Technologies et machines">technologies et machines</Link>
+                Question about <Link to="#" title="Technologies and workstations">technologies and workstations</Link>
             </div>
             <div className="topic">
-                Demandes générales par <Link to="#" title="Mail">mail</Link> ou au <Link to="tel:+18559829199" title="Nous appeler">1.855.982.9199</Link>
+                General askings by <Link to="#" title="Mail">mail</Link> or at <Link to="tel:+18559829199" title="Call us">1.855.982.9199</Link>
             </div>
         </div>
     );

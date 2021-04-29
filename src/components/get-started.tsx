@@ -5,9 +5,9 @@ const GetStarted = ({ from = null }:GetStarted) => {
     return (
         <div className="get-started">
             <div className="container">
-                <p>Lancez-vous</p>
-                <h2>Laquelle de nos technologies pourrait vous être utile ?</h2>
-                <Link to="/contact" title="Contactez-nous">Contactez nous</Link>
+                <p>Get started</p>
+                <h2>Which technology is right for you ?</h2>
+                <Link to="/contact" title="Contact us">Contact us</Link>
             </div>
         </div>
     );

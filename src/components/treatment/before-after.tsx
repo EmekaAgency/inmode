@@ -20,7 +20,7 @@ const TreatmentBeforeAfter = ({ datas, sensible = false}:TreatmentBeforeAfter) =
     return (
         <div id="before-after" className="before-after">
             <div className="title">
-                Avant / Après
+                Before / After
             </div>
             <div className={`container-ba${datas.length < 3 ? ' few' : ''}`}>
                 {datas.length == 0 ?

@@ -5,7 +5,7 @@ const ProfessionalContact = ({ from }:ProfessionalContact) => {
         <div className={`professional-contact main-container ${from}`}>
             <div className="opportunities">
                 <div className="title">
-                    Opportunités professionnelles
+                    Professional opportunities
                 </div>
                 <hr/>
                 <div className="descr">
@@ -14,7 +14,7 @@ const ProfessionalContact = ({ from }:ProfessionalContact) => {
             </div>
             <div className="around-the-world">
                 <div className="title">
-                    nous contacter par mail
+                    contact us by mail
                 </div>
                 <hr/>
                 <div className="distributors">

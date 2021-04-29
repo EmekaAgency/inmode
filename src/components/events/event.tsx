@@ -12,8 +12,8 @@ const InmodeEvent = ({ event = undefined, prop_key, current_page }:InmodeEvent) 
     return (
         <div className={`inmode-event ${event.type}${has_card ? ' has_card' : ''}`}>
             {has_card && <div className={`top-card ${prop_key === 0 ? 'left' : 'left'}`}>
-                {event.type === "congres" && "Congrès"}
-                {event.type === "workshop" && "Séminaire"}
+                {event.type === "congres" && "Congress"}
+                {event.type === "workshop" && "Workshop"}
                 {event.type === "webinar" && event.addons.map((addon:InmodePanel_Addon_Interface) => addon.Name).join(', ')}
             </div>}
             <div className={`img-part ${prop_key === 0 ? 'right' : 'left'}`}>

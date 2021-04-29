@@ -60,7 +60,7 @@ const Footer = ({}:Footer) => {
                                     alt={menu}
                                 />
                                 {menu === "mail" ? 
-                                    <a href={`mailto:${footer["mail"]}`} className="footer-infos-text" title="Nous contacter par mail">
+                                    <a href={`mailto:${footer["mail"]}`} className="footer-infos-text" title="Contact us by mail">
                                         {footer["mail"]}
                                     </a>
                                     :
@@ -86,7 +86,7 @@ const Footer = ({}:Footer) => {
                     })}
                 </div>
                 <div className="footer-bottom-navigation">
-                    <div className="footer-trademark">© 2020 INMODE</div>
+                    <div className="footer-trademark">© 2021 INMODEMD</div>
                     <div className="footer-navigation">
                         {footer.navigation && footer.navigation.map((menu, key) => {
                             return (

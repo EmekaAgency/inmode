@@ -58,7 +58,7 @@ const ContactUs = () => {
         setFormOpen(true);
     }
 
-    const [submitText, setSubmitText] = React.useState('Envoyer');
+    const [submitText, setSubmitText] = React.useState('Send');
 
     function send_form ( e ) {
         e.preventDefault();
@@ -88,7 +88,7 @@ const ContactUs = () => {
             body: JSON.stringify(body)
         };
         fetch(
-            `https://inmodemd.fr/back/app.php`,
+            `https://inmodeuk.emeka.fr/back/app.php`,
             _request_init
         )
         .then((promise) => {
@@ -145,24 +145,24 @@ const ContactUs = () => {
                     </div>
                     <div id="contact-form" className="transition neumorphic custom-scrollbar" hidden={!formOpen}>
                         <form id="contact-mini" onSubmit={(e) => {send_form(e)}} className="custom-scrollbar">
-                            <input type="text" placeholder="Nom*" name="lastname" required={true}/>
-                            <input type="text" placeholder="Prénom*" name="firstname" required={true}/>
+                            <input type="text" placeholder="Lastname*" name="lastname" required={true}/>
+                            <input type="text" placeholder="Firstname*" name="firstname" required={true}/>
                             <select name="subject" required={true}>
-                                <option value="" selected disabled style={{display: 'none'}}>Choisir une spécialité*</option>
-                                <option value="plastic-surgeon">Chirurgien plasticien</option>
-                                <option value="facial-surgeon">Chirurgien maxillo-facial</option>
-                                <option value="dermatologist">Dermatologue</option>
-                                <option value="cosmetic-doctor">Médecin esthétique</option>
-                                <option value="gynecologist">Gynécologue</option>
-                                <option value="others">Autres</option>
+                                <option value="" selected disabled style={{display: 'none'}}>Choose a speciality*</option>
+                                <option value="plastic-surgeon">Plastic surgeon</option>
+                                <option value="facial-surgeon">Facial surgeon</option>
+                                <option value="dermatologist">Dermatologist</option>
+                                <option value="cosmetic-doctor">Cosmetic doctor</option>
+                                <option value="gynecologist">Gynecologist</option>
+                                <option value="others">Others</option>
                             </select>
-                            <input type="email" placeholder="Adresse mail*" name="mail" spellCheck={false} required={true}/>
-                            <input type="phone" placeholder="Téléphone*" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
-                            <input type="number" placeholder="Code postal*" name="zip" spellCheck={false} required={true}/>
-                            <input type="text" placeholder="Ville*" name="city" spellCheck={false} required={true}/>
+                            <input type="email" placeholder="Email*" name="mail" spellCheck={false} required={true}/>
+                            <input type="phone" placeholder="Phone*" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
+                            <input type="number" placeholder="ZIP code*" name="zip" spellCheck={false} required={true}/>
+                            <input type="text" placeholder="City*" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message-mini"
-                                placeholder="Entrez votre message ici*"
+                                placeholder="Enter your message here*"
                                 name="message"
                                 maxLength={max_length}
                                 rows={5}

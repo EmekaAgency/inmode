@@ -380,7 +380,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             }
         }
         if(_country == null) {
-            _country = 'FR';
+            _country = 'GB';
         }
         
         let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country), pay_params.order_create)).json();

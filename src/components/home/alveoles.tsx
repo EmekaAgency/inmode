@@ -10,7 +10,7 @@ const Alveoles = ({}:Alveoles) => {
         {
             'image': images.getOne('alveole1').childImageSharp.fluid,
             'target': '_self',
-            'text': 'Congrès',
+            'text': 'Congress',
             'link': '/events/congress'
         },
         {
@@ -34,7 +34,7 @@ const Alveoles = ({}:Alveoles) => {
         {
             'image': images.getOne('alveole5').childImageSharp.fluid,
             'target': '_blank',
-            'text': 'Avant / Après',
+            'text': 'Before / After',
             'link': 'https://inmodemd.com/gallery/'
         }
     ];

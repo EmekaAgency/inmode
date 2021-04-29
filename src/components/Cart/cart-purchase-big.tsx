@@ -83,21 +83,21 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
     const buttonText = ():string => {
         if(isSubmit === true && isCreated === true) {
-            return "Commande effectuée";
+            return "Order placed";
         }
         if(isSubmit === null && isCreated === false) {
-            return "Erreur commande";
+            return "Order error";
         }
         if(isSubmit === true) {
-            return "En cours ...";
+            return "In progress ...";
         }
         if(!formOpened) {
-            return "Acheter";
+            return "Purchase";
         }
         if(!otherAddress || otherAddressOpened) {
-            return "Commander";
+            return "Order";
         }
-        return "Continuer";
+        return "Continue";
     }
 
     React.useEffect(() => {
@@ -168,7 +168,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         srcSet={images.getOne('cartBasketIcon').publicURL}
                         alt="Panier"
                     />
-                    <span>{`Panier, ${cart.cart.length} objet${cart.cart.length > 1 ? 's' : ''}`}</span>
+                    <span>{`Cart, ${cart.cart.length} object${cart.cart.length > 1 ? 's' : ''}`}</span>
                 </div>
                 <div className={`cart-content custom-scrollbar${formOpened ? ' purchase' : ''}`}>
                     {cart.cart.map((article, key) => {
@@ -219,14 +219,14 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             </div>
                         );
                     })}
-                     {cart.pay_delivery() && <div className="free-message">Livraison gratuite à partir de 500€</div>}
+                     {cart.pay_delivery() && <div className="free-message">Free delivery from 500 £</div>}
                 </div>
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         {/*PAS DE FRAIS DE LIVRAISON*/}
                         {/* <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div> */}
                         {/*FRAIS DE LIVRAISON*/}
-                        <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div>
+                        <div className="text">{cart.pay_delivery() ? '' : 'Free '}delivery</div>
                         {cart.pay_delivery() ? <div className="price">
                             {/*PAS DE FRAIS DE LIVRAISON*/}
                             {/* {(cart.delivery_tax() && false) || 0} */}
@@ -235,19 +235,19 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
-                        <div className="text">sous total (HT)</div>
+                        <div className="text">subtotal (out of tax)</div>
                         <div className="price">
                             {cart.total_base()}
                         </div>
                     </div>
                     <div className="cart-tva">
-                        <div className="text">tva</div>
+                        <div className="text">vat</div>
                         <div className="price">
                             {cart.total_tva()}
                         </div>
                     </div>
                     <div className="cart-total">
-                        <div className="text">total ttc</div>
+                        <div className="text">all included</div>
                         <div className="price">
                             {cart.total_all_included()}
                         </div>
@@ -271,7 +271,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`${otherAddress ? 'click' : ''}`}>adresse de facturation</span>
+                    <span className={`${otherAddress ? 'click' : ''}`}>billing address</span>
                     <hr/>
                 </div>
                 <div
@@ -315,7 +315,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             alt="Close"
                         />
                     </div>
-                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>informations de livraison</span>
+                    <span className={`unmorphic${otherAddressOpened ? ' click' : ''}`}>delivery information</span>
                     <hr className="unmorphic"/>
                 </div>
                 {otherAddress &&
@@ -346,7 +346,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label"><label htmlFor="sepa">Virement</label></div>
+                <div className="choice-label"><label htmlFor="sepa">Transfer</label></div>
                 <div className="choice"><input
                     id="soge"
                     name="soge"
@@ -356,7 +356,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className="form-field"
                     onChange={(e) => {manageCheckboxPayment(e)}}
                 /></div>
-                <div className="choice-label"><label htmlFor="soge">Paiement par carte</label></div>
+                <div className="choice-label"><label htmlFor="soge">Card payment</label></div>
             </div>
             <div className="step-1 facture neumorphic">
                 <input
@@ -370,7 +370,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     }}
                 />
                 <label htmlFor="facture">
-                    Adresse de livraison différente
+                    Different delivery address
                 </label>
             </div>
             <div className="step-1 cgu neumorphic">
@@ -383,7 +383,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     required
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                    I accept the T&Cs
                 </label>
             </div>
             {/* VALIDATE */}

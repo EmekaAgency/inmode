@@ -27,7 +27,7 @@ const PaymentCancelPage = () => {
 
     const cart = useCart();
 
-    const page_title = "Paiement annulé";
+    const page_title = "Payment cancelled";
 
     React.useEffect(() => {
         let _test:any = get_url_params();

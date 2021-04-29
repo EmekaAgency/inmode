@@ -27,7 +27,7 @@ const PaymentPaidPage = () => {
 
     const cart = useCart();
 
-    const page_title = "Paiement effectué";
+    const page_title = "Payment made";
 
     React.useEffect(() => {
         let _test:any = get_url_params();
