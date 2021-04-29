@@ -3,7 +3,7 @@ const {
 } = require('./order_object.js');
 const { _request } = require('./fetch.js');
 
-const PHP_back = 'https://inmode.emeka.fr/back/app.php';
+const PHP_back = 'https://inmodemd.fr/back/app.php';
 
 const usedValues = [
     'Reference',

@@ -88,7 +88,7 @@ const ContactUs = () => {
             body: JSON.stringify(body)
         };
         fetch(
-            `https://inmode.emeka.fr/back/app.php`,
+            `https://inmodemd.fr/back/app.php`,
             _request_init
         )
         .then((promise) => {
