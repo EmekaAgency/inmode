@@ -48,7 +48,6 @@ const TreatmentProducts = ({ datas }) => {
                                                             );
                                                         })}
                                                     </div>
-                                                    {/* {treat.treat_short} */}
                                                 </div>
                                             );
                                         }

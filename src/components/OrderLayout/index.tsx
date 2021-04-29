@@ -93,7 +93,7 @@ const OrderLayout = ({ status, order }:OrderLayoutParams) => {
                     {/* </div> */}
                     {/* Date: "2021-02-26T05:40:43.000Z" */}
                     <div className="order-date">
-                        Achat effectué le {get_date(order.Date)}
+                        {status} le {get_date(order.Date)}
                     </div>
                     {/* Billing: {id: 20, Firstname: "m", Lastname: "m", Phone: "0667630604", Mail: "test@gmail.com", …} */}
                     {/* {order.Billing && <div className="order-billing">

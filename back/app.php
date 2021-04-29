@@ -89,8 +89,8 @@
                 logEvent('$_POST action = \'full-contact\'');
                 if(isset($_POST['speciality'], $_POST['action']))
                 {
-                    // tryMail('mael.fallet@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact');
-                    tryMail('contact.fr@inmodemd.com', $_POST['speciality'], $_POST['action'], 'full-contact');
+                    tryMail('mael.fallet@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact');
+                    // tryMail('contact.fr@inmodemd.com', $_POST['speciality'], $_POST['action'], 'full-contact');
                 }
                 else
                 {
@@ -103,8 +103,8 @@
                 logEvent('$_POST action = \'contact-us\'');
                 if(isset($_POST['subject'], $_POST['action']))
                 {
-                    // tryMail('mael.fallet@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us');
-                    tryMail('contact.fr@inmodemd.com', $_POST['subject'], $_POST['action'], 'contact-us');
+                    tryMail('mael.fallet@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us');
+                    // tryMail('contact.fr@inmodemd.com', $_POST['subject'], $_POST['action'], 'contact-us');
                 }
                 else {
                     logError('Un des paramètres $_POST est manquant :');
@@ -117,16 +117,16 @@
                 if(isset($_POST['order'], $_POST['email'], $_POST['for'], $_POST['action'], $_POST['type']))
                 {
                     if(isset($_POST['order']['Livraison']) && $_POST['for'] == 'client') {
-                        // tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
-                        tryMail($_POST['order']['Livraison']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        // tryMail($_POST['order']['Livraison']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
                     }
                     if(isset($_POST['order']['Facturation']) && $_POST['for'] == 'client') {
-                        // tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
-                        tryMail($_POST['order']['Facturation']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        // tryMail($_POST['order']['Facturation']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
                     }
                     if($_POST['for'] == 'pro') {
-                        // tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
-                        tryMail('contact.fr@inmodemd.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                        // tryMail('contact.fr@inmodemd.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
                     }
                     // tryMail('mael.fallet@gmail.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
                     // tryMail('contact.fr@inmodemd.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');

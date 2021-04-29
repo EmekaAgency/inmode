@@ -76,7 +76,7 @@ const ContactForm = ({ from }:ContactForm) => {
             body: JSON.stringify(body),
         };
         fetch(
-            `https://inmode.emeka.fr/back/app.php`,
+            `https://inmodemd.fr/back/app.php`,
             request_init,
         )
         .then((promise) => {
