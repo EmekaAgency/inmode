@@ -3,8 +3,6 @@ import { InmodePanel_Addon_Interface } from "../interfaces";
 import RequestInformation from "../RequestInformation";
 
 const AddonWhatTreat = (datas:AddonWhatTreat) => {
-
-  console.log(datas);
     
   if(!datas || !datas.WhatTreats) {
       return <></>;

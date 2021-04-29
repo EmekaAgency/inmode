@@ -15,7 +15,11 @@ const CartBasket = ({  }:CartBasket) => {
             <img
                 className="cart-basket"
                 src={images.getOne('cartBasketIcon').publicURL}
-                onClick={(e) => {cart.toggle_open_cart()}}
+                onClick={(e) => {
+                    if(cart.total_articles()) {
+                        cart.toggle_open_cart();
+                    }
+                }}
             />
             <div hidden={cart.total_articles() ? false : true} className="cart-basket-nbr">
                 <span>{cart.total_articles()}</span>

@@ -4,9 +4,6 @@ import { disableMainScroll, enableMainScroll } from '../../functions/disable-scr
 import { useWindowSize } from '../../functions/window-size';
 import CartContext from './cart-context';
 
-import hmacSHA256 from 'crypto-js/hmac-sha256';
-import hmacMd5 from 'crypto-js/hmac-md5';
-import Base64 from 'crypto-js/enc-base64';
 import { _sort_html_list, _sort_object } from '../../functions/sort';
 import rand_token from '../../functions/rand_token';
 import { formById, oneById } from '../../functions/selectors';
@@ -32,8 +29,6 @@ export const useCart = ():Cart_Interface => {
 }
 
 const CartProvider = ({ requested = "", children }:{requested:string, children:ReactChild}):React.Provider<Cart_Interface> => {
-
-    // moment.locale('fr');
 
     const name_table:NameTable_Interface = {
         tip: ['tip', 'tips'],
@@ -91,8 +86,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     const [pay_params, setPayParams] = React.useState({
         signature: "",
         actionMode: "INTERACTIVE",
-        // ctxMode: "TEST",
-        ctxMode: "PRODUCTION",
+        // vads_ctx_mode: "TEST",
+        vads_ctx_mode: "PRODUCTION",
         currency: currencies.EUR,
         pageAction: "PAYMENT",
         siteId: "",
@@ -110,7 +105,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     });
 
     const [otherAddress, setOtherAddress]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
-    const [formFields, setFormFields]:[Cart_FormSave_Interface, React.Dispatch<Cart_FormSave_Interface>] = React.useState({});
+    const [formFields, setFormFields]:[Cart_FormSave_Interface, React.Dispatch<Cart_FormSave_Interface>] = React.useState(pay_params);
 
     const article_base = (ref:string, qnt:number):Article_Interface => {
         return {
@@ -155,7 +150,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             order_load: order_urls.load,
             order_signature: order_urls.signature,
         };
-        // console.log(_temp);
         await setPayParams(_temp);
     }
 
@@ -208,13 +202,11 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             let _cart:Cart_Interface["cart"] = new Array(...cart);
             _cart.splice(article_index(ref), 1, temp.add(qnt));
             setCart(_cart);
-            // add_paying_datas(ref, temp.quantity);
         }
         else {
             let _cart:Cart_Interface["cart"] = new Array(...cart);
             _cart.push(article_base(ref, qnt));
             setCart(_cart);
-            // add_paying_datas(ref, qnt);
         }
     }
 
@@ -230,7 +222,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             let _cart:Cart_Interface["cart"] = new Array(...cart);
             _cart.splice(article_index(ref), 1, temp.remove(qnt))
             setCart(_cart);
-            // edit_paying_datas(ref, temp.quantity);
         }
     }
 
@@ -243,29 +234,18 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             _cart.splice(article_index(ref), 1)
             setCart(_cart);
         }
-        // delete_paying_datas(ref);
     }
 
     const add_paying_datas = (ref:string, qnt:number):void => {
-        // console.log('add_paying_datas');
         let temp = find_in_cart(ref);
-        // console.log(temp);
-        // console.log(oneById('payment_articles'));
     }
 
     const edit_paying_datas = (ref:string, qnt:number):void => {
-        // console.log('edit_paying_datas');
         let temp = find_in_cart(ref);
-        // console.log(temp);
-        // console.log(oneById('payment_articles'));
     }
 
     const delete_paying_datas = (ref:string):void => {
-        // console.log('delete_paying_datas');
-        // console.log(`ref : ${ref}`);
         let temp = find_in_cart(ref);
-        // console.log(temp);
-        // console.log(oneById('payment_articles'));
     }
 
     const count_total = ():number => {
@@ -280,20 +260,12 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     const total_HT = ():string => {return count_total().toFixed(2);}
     const hasTVAIntra = ():boolean => {
         let i = 0;
-        // console.log(`vads_cust_country : ${formFields.vads_cust_country}`);
-        // console.log(`vads_ship_to_country : ${formFields.vads_ship_to_country}`);
         let _temp = oneById('facture');
-        console.log(_temp);
         const _other_address = _temp ? _temp.checked : false;
-        console.log(_other_address);
         _temp = oneById('vads_cust_country');
-        console.log(_temp);
         const _part_1_country = _temp ? _temp.value : formFields.vads_cust_country || "FR";
-        console.log(_part_1_country);
         _temp = oneById('vads_ship_to_country');
-        console.log(_temp);
         const _part_2_country = _temp ? _temp.value : formFields.vads_ship_to_country || "FR";
-        console.log(_part_2_country);
         if(_other_address == false && _part_1_country == "FR") {
             return false;
         }
@@ -301,41 +273,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             return false;
         }
         return true;
-        // ++i;
-        // if(formFields.vads_cust_country == undefined && formFields.vads_ship_to_country == undefined) {
-        //     console.log('Cas ' + i);
-        //     return false;
-        // }
-        // ++i;
-        // if(formFields.vads_cust_country != undefined && formFields.vads_cust_country != 'FR' && otherAddress == false) {
-        //     console.log('Cas ' + i);
-        //     return true;
-        // }
-        // ++i;
-        // if(formFields.vads_ship_to_country != undefined && formFields.vads_ship_to_country != 'FR' && otherAddress == true) {
-        //     console.log('Cas ' + i);
-        //     return true;
-        // }
-        // let _select_cust:any = oneById('vads_cust_country');
-        // let _select_ship:any = oneById('vads_ship_to_country');
-        // ++i;
-        // if(_select_cust == null && _select_ship == null) {
-        //     console.log('Cas ' + i);
-        //     return true;
-        // }
-        // ++i;
-        // if(_select_cust != null && _select_cust.value != 'FR' && otherAddress == false) {
-        //     console.log('Cas ' + i);
-        //     return true;
-        // }
-        // ++i;
-        // if(_select_ship != null && _select_ship.value != 'FR' && otherAddress == true) {
-        //     console.log('Cas ' + i);
-        //     return true;
-        // }
-        // ++i;
-        // console.log('Cas ', i);
-        // return false;
     }
     /*PAS DE FRAIS DE LIVRAISON*/
     // const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
@@ -350,9 +287,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 ? true : false;}
 
     const payment_str = (form_fields) => {
-        // console.log("payment_str");
-        // return [...form_fields, pay_params.hash_key].map(elem => elem ? typeof elem == 'string' ? elem : elem.value : null).join('+');
-        // return Object.keys(form_fields).sort().map(key => form_fields[key] && form_fields[key] != "" ? form_fields[key] : null).filter(elem => elem).join('+');
         return Object.keys(form_fields).sort().map((key:string):string => {return form_fields[key]}).join('+');
     }
 
@@ -360,25 +294,24 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         let promise:Promise<{signature?:string}>;
         let vars:RequestInit = {
             method: "POST",
+            headers: new Headers({'content-type': 'application/json'}),
+            mode: 'cors',
+            cache: 'default',
+            body: JSON.stringify({string: str})
         };
-        promise = await (await fetch(pay_params.order_signature, vars)).json().catch(err => console.log(err));
-        // Base64.stringify(hmacSHA256(str, pay_params.hash_key));
+        promise = await (await fetch(pay_params.order_signature, vars)).json().catch(err => {});
+        return promise;
     }
 
     const form_fields = (form) => {
-        // console.log("form_fields");
         return _sort_html_list(Array.from(form.elements), 'name', 'up').filter(e => e.name && e.id);
     }
 
     const redirect_payment = async (form_fields:any, sepa:Boolean):Promise<boolean | void> => {
-        console.log("redirect_payment");
 
         form_fields = [...form_fields, ...Array.from(formById('pay_back_params').elements)];
 
-
         form_fields = _sort_html_list(form_fields);
-
-        console.log(form_fields);
 
         const date = moment.utc().format('YYYYMMDDHHmmss');
         
@@ -387,17 +320,14 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
             _temp = {..._temp, [elem.name]: elem.value};
         });
         
-        // const order_id = Base64.stringify(hmacMd5(`${date}`, pay_params.hash_key));
-        // const order_id = `${f_cust_first_name}${f_cust_last_name}${f_ship_first_name}${f_ship_last_name}${f_cust_legal_name}${f_ship_legal_name}_${date}_${cart.map(art => art.id).join('_')}`;
         const order_id = rand_token(6);
 
         // TODO call back to check if id exists
 
         _temp["vads_action_mode"] = pay_params.actionMode;
-        _temp["vads_ctx_mode"] = pay_params.ctxMode;
+        _temp["vads_ctx_mode"] = pay_params.vads_ctx_mode;
         _temp["vads_currency"] = pay_params.currency;
         _temp["vads_page_action"] = pay_params.pageAction;
-        // REMPLACER PAR STRING '#SHOP_ID#' et replace en back pour garder secret l'identifiant du shop
         _temp["vads_site_id"] = pay_params.siteId;
         _temp["vads_trans_date"] = date;
         _temp["vads_trans_id"] = order_id;
@@ -409,15 +339,9 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         _temp["vads_url_cancel"] = pay_params.url_cancel;
         _temp["vads_url_refused"] = pay_params.url_refused;
 
-        console.log(_temp);
-
         _temp = _sort_object(filter_object(_temp, (e:any) => e && e != ""));
         
         const { signature } = await get_signature(payment_str(_temp));
-        // console.log(payment_str(_temp));
-        // console.log(_temp);
-        console.log(order_id);
-        console.log(signature);
 
         _temp['signature'] = signature || '';
 
@@ -439,7 +363,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         }
         
         let _country = null;
-        console.log(`otherAddress : ${otherAddress}`);
         if(!formFields.vads_cust_country && !formFields.vads_ship_to_country) {
             if(otherAddress == true) {
                 _country = oneById('vads_ship_to_country');
@@ -459,11 +382,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         if(_country == null) {
             _country = 'FR';
         }
-        console.log(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country));
-
-        // initialize_transaction(_temp);
+        
         let { status } = await (await create_object(create_strapi_order(_temp, cart, parseInt(total_TTC()), sepa, _country), pay_params.order_create)).json();
-        console.log(status);
         if(status && status == 'success') {
             if(sepa) {
                 openModale(
@@ -504,9 +424,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         let _form = formById(selector);
         _form.action = "https://sogecommerce.societegenerale.eu/vads-payment/";
         _form.method = "POST";
-        // _form.target = "_blank";
         _form.innerHTML = Object.keys(values).map(key => `<input hidden name="${key}" id="${key}" value="${values[key]}"/>`).join('');
-        // _form.innerHTML += `<input name="certificate" value="${pay_params.hash_key}"/>`;
         _form.innerHTML += '<input type="submit" name="payer" value="Payer"/>';
     }
 
@@ -517,7 +435,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         if(!formById(selector)) {
             return false;
         }
-        // console.log(formById(selector));
         formById(selector).submit();
     }
 
@@ -533,7 +450,6 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
 
     const update_form_fields = (e:Event | any):void => {
         e.preventDefault();
-        console.log(`${e.target.name} -> ${e.target.value}`);
         setFormFields({
             ...formFields,
             [e.target.name]: e.target.value

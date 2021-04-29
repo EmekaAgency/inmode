@@ -1,6 +1,7 @@
 import React from "react";
+import { InmodePanel_Generic_Demo_Interface } from "../interfaces";
 
-const ProductDemo = ({ datas }) => {
+const ProductDemo = ({ datas }:ProductDemo_Interface) => {
 
     if(!datas) {
         return <></>;
@@ -10,8 +11,8 @@ const ProductDemo = ({ datas }) => {
         <div id="demo" className="product-demo">
             <div className="picture">
                 <img
-                    src={datas.picture.childImageSharp.fluid.srcWebp}
-                    srcSet={datas.picture.childImageSharp.fluid.srcSetWebp}
+                    src={datas.picture && datas.picture.childImageSharp.fluid.srcWebp}
+                    srcSet={datas.picture && datas.picture.childImageSharp.fluid.srcSetWebp}
                         alt="product-demo"
                 />
             </div>
@@ -22,12 +23,8 @@ const ProductDemo = ({ datas }) => {
     );
 }
 
-ProductDemo.propTypes = {
-
-};
-
-ProductDemo.defaultProps = {
-
-};
+interface ProductDemo_Interface {
+    datas: InmodePanel_Generic_Demo_Interface;
+}
 
 export default ProductDemo;

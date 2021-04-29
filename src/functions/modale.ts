@@ -53,7 +53,6 @@ function closePart() {
 // Payment SEPA Modale
 
 export function paymentSEPA(datas:paymentSEPA) {
-    console.log('paymentSEPA');
     return {
         onOpen: datas.onOpen,
         onClose: datas.onClose,

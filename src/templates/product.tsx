@@ -22,7 +22,7 @@ const ProductTemplates = ({ data }:ProductTemplates) => {
                 <SEO title="Product"/>
                 <ProductBanner datas={datas.Banner}/>
                 <ProductNavigation
-                    name={datas.name}
+                    name={datas.Name}
                     exist={{
                         'before-after': datas.BeforesAfters !== [] && datas.BeforesAfters.length > 0,
                         'studies': datas.ClinicalStudies !== [] && datas.ClinicalStudies.length > 0

@@ -13,7 +13,7 @@ const MenuContentText = ({menu, prop_key}:MenuContentText) => {
         }
         return (
             <>
-                {format_string(_menu.title)}
+                {format_string(_menu.title || '')}
                 {_menu.menus && _menu.menus.length > 0 && _menu.menus.map((sub, key_sub) => {
                         return (<Menu key={key_sub} prop_key={key_sub} menu={sub}/>);
                     })
@@ -26,11 +26,11 @@ const MenuContentText = ({menu, prop_key}:MenuContentText) => {
         <>
             {menu.url ?
                 menu.internal_link ?
-                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" to={menu.url || "#"} title={format_string(menu.title)}>
+                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" to={menu.url || "#"} title={format_string(menu.title || '')}>
                         {content(menu)}
                     </Link>
                     :
-                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" href={menu.url || "#"} target="_blank" rel="noreferrer" title={format_string(menu.title)}>
+                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-text" href={menu.url || "#"} target="_blank" rel="noreferrer" title={format_string(menu.title || '')}>
                         {content(menu)}
                     </a>
                 :

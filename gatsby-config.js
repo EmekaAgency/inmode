@@ -15,7 +15,7 @@ module.exports = {
     og_title: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     og_description: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     og_image: ``,
-    og_url: `https://inmodeuk.emeka.fr/`,
+    og_url: `https://inmode.emeka.fr/`,
     og_site_name: `InModeMD UK`,
     twitter_card: `summary_large_image`,
     twitter_title: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
@@ -33,7 +33,7 @@ module.exports = {
     url_order_load: `${process.env.URL_ORDER_LOAD}`,
     url_order_signature: `${process.env.URL_ORDER_SIGNATURE}`,
     instagram_id: `${process.env.INSTA_ID}`,
-    siteUrl: `https://inmodemd.co.uk`,
+    siteUrl: `https://inmodemd.fr`,
   },
   plugins: [
     // '@typescript-eslint/eslint-plugin',
@@ -76,7 +76,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `${process.env.STRAPI_URL}`,
-        apiURL: `https://inmodeuk-content.emeka.fr`,
+        apiURL: `https://inmode-content.emeka.fr`,
         contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
           `addon`,
           `product`,

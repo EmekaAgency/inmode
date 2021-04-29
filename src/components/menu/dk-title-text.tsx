@@ -33,9 +33,9 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}:MenuDKTitleText) => {
                             resolveOnClick(e, true);
                             enableMainScroll();
                         }}
-                        title={format_string(menu.title)}
+                        title={format_string(menu.title || '')}
                     >
-                        {format_string(menu.title)}
+                        {format_string(menu.title || '')}
                     </Link>
                     :
                     <a
@@ -47,26 +47,26 @@ const MenuDKTitleText = ({menu, prop_key, openOnClick}:MenuDKTitleText) => {
                         }}
                         target="_blank"
                         rel="noreferrer"
-                        title={format_string(menu.title)}
+                        title={format_string(menu.title || '')}
                     >
-                        {format_string(menu.title)}
+                        {format_string(menu.title || '')}
                     </a>
                 :
                 <div
                     className="menu-dk-title menu-text"
                     onClick={(e) => {resolveOnClick(e, false);}}
                 >
-                    {format_string(menu.title)}
+                    {format_string(menu.title || '')}
                 </div>
             }
             <ul className="dk-dropdown-menu">
                 <div className="dk-sub-container">
-                    {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
+                    {menu.menus && menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
                         return (
                             <Menu key={key_sub} prop_key={key_sub} menu={sub}/>
                         );
                     })}
-                    {/* {menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
+                    {/* {menu.menus && menu.menus.length > 0 && menu.menus.map((sub, key_sub) => {
                         // TODO dk-item is a {'type': 'content', 'variant': 'card'}
                         return <></>;
                     })} */}

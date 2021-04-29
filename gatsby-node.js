@@ -28,21 +28,21 @@ exports.onCreatePage = async ({
 
   // {/* SWITCH CART */}
 
-  if(page.path == '/shop/') {
-    return false;
-  }
-  if(page.path == '/payment/cancel/') {
-    return false;
-  }
-  if(page.path == '/payment/error/') {
-    return false;
-  }
-  if(page.path == '/payment/paid/') {
-    return false;
-  }
-  if(page.path == '/payment/refused/') {
-    return false;
-  }
+//   if(page.path == '/shop/') {
+//     return false;
+//   }
+//   if(page.path == '/payment/cancel/') {
+//     return false;
+//   }
+//   if(page.path == '/payment/error/') {
+//     return false;
+//   }
+//   if(page.path == '/payment/paid/') {
+//     return false;
+//   }
+//   if(page.path == '/payment/refused/') {
+//     return false;
+//   }
 
   // {/* SWITCH CART END */}
 

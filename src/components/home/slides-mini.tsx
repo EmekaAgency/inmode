@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ProductsContext from "../contexts/products-context";
 import { Link } from "gatsby";
 
-const SlidesMini = ({ from }) => {
+const SlidesMini = ({ from = "any" }:SlidesMini_Interface) => {
 
     const [products] = React.useState(React.useContext(ProductsContext).products);
 
@@ -40,12 +40,8 @@ const SlidesMini = ({ from }) => {
     );
 };
 
-SlidesMini.propTypes = {
-    from: PropTypes.string.isRequired,
-};
-
-SlidesMini.defaultProps = {
-    from: 'any'
+interface SlidesMini_Interface {
+    from: string;
 };
 
 export default SlidesMini;

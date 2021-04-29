@@ -1,5 +1,5 @@
 function _document():boolean {
-    return typeof document != undefined;
+    return typeof document == "undefined" ? false : true;
 }
 
 export const oneBySelector = (selector:string, callback?:Function):Element | null => {
