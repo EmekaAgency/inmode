@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clinic_finders",
+  "info": {
+    "name": "ClinicFinder",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "doctor": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "mail": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "url_label": {
+      "type": "string"
+    },
+    "treatments": {
+      "collection": "addon"
+    }
+  }
+}

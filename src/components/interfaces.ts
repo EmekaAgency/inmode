@@ -1,6 +1,20 @@
 // Strapi interfaces
 // Collections
 
+export interface InmodePanel_Clinic_Interface {
+    city: string;
+    doctor: string;
+    mail: string;
+    number: string;
+    street: string;
+    url: string;
+    url_label: string;
+    zip_code: string;
+    treatments?: {
+        MenuParams: InmodePanel_Generic_MenuParams_Interface
+    }[];
+};
+
 export interface InmodePanel_Addon_Interface {
     Name?: string;
     Banner? : InmodePanel_Base_Banner_Interface;

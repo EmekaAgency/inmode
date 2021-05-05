@@ -76,7 +76,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         // apiURL: `${process.env.STRAPI_URL}`,
-        apiURL: `https://inmode-content.emeka.fr`,
+        apiURL: `https://inmodeuk-content.emeka.fr`,
         contentTypes: [ // List of the Collection Types you want to be able to request from Gatsby.
           `addon`,
           `product`,
@@ -85,6 +85,7 @@ module.exports = {
           `treatment`,
           `menu`,
           `shop`,
+          `clinic-finders`,
           // `event`
         ],
         singleTypes: [
@@ -104,8 +105,8 @@ module.exports = {
     {
       resolve: `gatsby-source-instagram`,
       options: {
-        username: `1317505554`,
-        usernameId: `1317505554`,
+        username: `3114668836`,
+        usernameId: `3114668836`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,0 +1,202 @@
+.clinic-finder {
+    padding: 50px 0;
+}
+
+.clinic-finder .title,
+.clinic-finder .subtitle {
+    text-align: center;
+}
+
+.clinic-finder .title {
+    color: #59b7b6;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.clinic-finder .subtitle {
+    color: #f2f2f2;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.clinic-finder .clinic-item {
+    min-height: auto;
+    margin: 35px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, .5) 2px 2px 5px;
+    background-color: #0a1727;
+    padding: 15px 20px 0 20px;
+    position: relative;
+    max-width: 850px;
+    overflow: hidden;
+}
+
+.clinic-finder .clinic-item .left-part ,
+.clinic-finder .clinic-item .right-part {
+    width: 50%;
+    box-sizing: border-box;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 20px;
+}
+
+.clinic-finder .clinic-item .left-part .clinic-street,
+.clinic-finder .clinic-item .left-part .clinic-address,
+.clinic-finder .clinic-item .left-part .clinic-doctor,
+.clinic-finder .clinic-item .right-part .clinic-url,
+.clinic-finder .clinic-item .right-part .clinic-mail,
+.clinic-finder .clinic-item .right-part .clinic-phone,
+.clinic-finder .clinic-item .right-part .clinic-switch-treatments {
+    min-height: 20px;
+    padding: 8px 0;
+    word-break: break-word;
+}
+
+.clinic-finder .clinic-item .left-part .clinic-street,
+.clinic-finder .clinic-item .left-part .clinic-address,
+.clinic-finder .clinic-item .left-part .clinic-doctor,
+.clinic-finder .clinic-item .right-part .clinic-url a,
+.clinic-finder .clinic-item .right-part .clinic-mail a,
+.clinic-finder .clinic-item .right-part .clinic-phone a,
+.clinic-finder .clinic-item .right-part .clinic-switch-treatments {
+    font-size: 18px;
+    font-weight: 500;
+    color: #f2f2f2;
+    word-break: break-word;
+}
+
+.clinic-finder .clinic-item .left-part {
+    padding-right: 10px;
+    text-align: left;
+}
+
+.clinic-finder .clinic-item .right-part {
+    padding-left: 10px;
+    text-align: right;
+}
+
+.clinic-finder .clinic-item .left-part .clinic-street {
+    
+}
+
+.clinic-finder .clinic-item .left-part .clinic-address {
+
+}
+
+.clinic-finder .clinic-item .left-part .clinic-doctor {
+    margin-top: 20px;
+}
+
+.clinic-finder .clinic-item .right-part .clinic-url {
+
+}
+
+.clinic-finder .clinic-item .right-part .clinic-mail {
+
+}
+
+.clinic-finder .clinic-item .right-part .clinic-phone {
+    margin-bottom: 30px;
+}
+
+.clinic-finder .clinic-item .right-part .clinic-switch-treatments {
+    border-radius: 3px;
+    background-color: #59b7b6;
+    width: fit-content;
+    padding: 5px 12px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    /* position: absolute; */
+    right: 20px;
+    bottom: 15px;
+}
+
+.clinic-finder .clinic-item .clinic-treatments {
+    position: relative;
+    width: 100%;
+    background-color: #59b7b6;
+    left: -20px;
+    transition: top 0.3s ease-in-out 0s;
+    padding: 0 20px;
+    font-size: 0px;
+    transition: padding 0.3s ease-in-out 0s;
+}
+
+.clinic-finder .clinic-item.treatments .clinic-treatments {
+    padding: 15px 20px;
+}
+
+.clinic-finder .clinic-item .clinic-treatments span {
+    border-radius: 11px;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f2f2f2;
+    display: inline-block;
+    font-size: 0;
+    padding: 0px;
+    overflow: hidden;
+    transition: font-size 0.15s linear 0s, padding 0.3s ease-in-out 0s, background 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
+    cursor: pointer;
+}
+
+.clinic-finder .clinic-item .clinic-treatments span {
+    margin: 0 5px;
+}
+
+.clinic-finder .clinic-item .clinic-treatments span:first-child {
+    margin-left: 0;
+}
+
+.clinic-finder .clinic-item .clinic-treatments span:last-child {
+    margin-right: 0;
+}
+
+.clinic-finder .clinic-item.treatments .clinic-treatments span {
+    font-size: 15px;
+    padding: 3px 10px;
+}
+
+.clinic-finder .clinic-item .clinic-treatments span:hover {
+    background: #f2f2f2;
+    padding: 3px 10px;
+    color: #59b7b6;
+}
+
+@media (max-width: 999px) {
+    .clinic-finder .clinic-item .left-part ,
+    .clinic-finder .clinic-item .right-part {
+        width: 100%;
+        box-sizing: border-box;
+        height: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .clinic-finder .clinic-item .left-part .clinic-street {
+        display: none;
+    }
+
+    .clinic-finder .clinic-item .left-part .clinic-doctor {
+        margin-top: 0;
+    }
+
+    .clinic-finder .clinic-item .right-part .clinic-phone {
+        margin-bottom: 0;
+    }
+
+    .clinic-finder .clinic-item .left-part .no-data,
+    .clinic-finder .clinic-item .right-part .no-data {
+        display: none;
+    }
+
+    .clinic-finder .clinic-item .right-part .clinic-switch-treatments {
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}

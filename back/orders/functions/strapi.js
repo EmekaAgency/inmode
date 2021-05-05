@@ -2,10 +2,10 @@ const { _request } = require('./fetch.js');
 
 const _create_object = async function(datas = {}, token, ObjectName, fieldName) {
     console.log(`_create_object ${ObjectName}`);
-    const id = await object_id(datas[fieldName], token, ObjectName, fieldName);
-    if(id) {
-        return false;
-    }
+    // const id = await object_id(datas[fieldName], token, ObjectName, fieldName);
+    // if(id) {
+    //     return false;
+    // }
     return await _request(
         "POST",
         token,

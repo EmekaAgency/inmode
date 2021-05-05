@@ -27,6 +27,11 @@ const {
     is_secured
 } = require('./functions/order_object.js');
 
+const { 
+    create_clinic_object
+} = require('./functions/clinic_object.js');
+const { clinics } = require('./datas.js');
+
 const {
     MailSEPAPayment,
     MailSOGEPayment,
@@ -661,6 +666,53 @@ app.post('/back/orders/order-signature'/*, auth*/, async (req, res) => {
         console.log('catch');
         console.log(`signature : `);
         res.status(400).send(JSON.stringify({'signature': ''}));
+    }
+})
+
+app.get('/fill/clinics', async (req, res) => {
+    console.log('/fill/clinics');
+    try {
+        //const token = process.env.BEARER;
+        const token = await get_strapi_jwt();
+        try {
+            let error = false;
+            clinics.forEach(async (clinic) => {
+                // console.log(clinic.Clinic);
+                const _post = await create_clinic_object(clinic.Clinic, token);
+                // if(!_post && error == false) {
+                    // error = true;
+                // }
+            })
+            if(error == false) {
+                res.status(400).send('create did not work');
+                return false;
+            }
+            else {
+                res.status(200).send({
+                    status: 'success',
+                    order: _post.data,
+                });
+            }
+            return false;
+        }
+        catch(error) {
+            console.log('/fill/clinics');
+            // console.log(error);
+            res.status(500).send(JSON.stringify({
+                status: 'error',
+                message: 'Error during clinic create',
+                error: error,
+            }));
+        }
+    }
+    catch(error) {
+        console.log('/fill/clinics jwt token error');
+        // console.log(error);
+        res.status(500).send(JSON.stringify({
+            status: 'error',
+            message: 'Error during jwt fetch',
+            error: error,
+        }));
     }
 })
 
