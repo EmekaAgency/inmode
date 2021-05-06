@@ -1,0 +1,57 @@
+.shop-login {
+    padding: 50px 0;
+    position: relative;
+}
+
+.shop-close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+.shop-close img {
+    width: 25px;
+    height: 25px;
+}
+
+.shop-close span {
+    font-size: 25px;
+    line-height: 25px;
+    width: 25px;
+    color: #f2f2f2;
+}
+
+.shop-form-log {
+    padding-top: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.shop-form-log .shop-login-title {
+    color: #59b7b6;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.shop-form-log .shop-login-subtext {
+    color: #f2f2f2;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.shop-form-log input.shop-login-input,
+.shop-form-log button.shop-login-submit {
+    display: block;
+    margin: 25px auto;
+    max-width: 400px;
+}
+
+.shop-form-log .shop-login-input {
+
+}
+
+.shop-form-log .shop-login-submit {
+    background-color: #59b7b6;
+    color: #f2f2f2;
+}

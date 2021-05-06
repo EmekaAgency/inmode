@@ -44,8 +44,8 @@
       "max": 100,
       "private": false
     },
-    "picture": {
-      "model": "file",
+    "pictures": {
+      "collection": "file",
       "via": "related",
       "allowedTypes": [
         "files",
@@ -64,6 +64,9 @@
         "votiva",
         "evolve"
       ]
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

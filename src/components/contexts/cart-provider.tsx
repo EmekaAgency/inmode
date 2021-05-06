@@ -54,13 +54,20 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
                             pack_type
                             price
                             discount
-                            picture {
-                                childImageSharp {
-                                    fluid {
-                                        srcWebp
-                                        srcSetWebp
+                            description
+                            pictures {
+                                formats {
+                                    thumbnail {
+                                        childImageSharp {
+                                            fluid {
+                                                srcWebp
+                                                srcSetWebp
+                                            }
+                                        }
+                                        publicURL
                                     }
                                 }
+                                url
                             }
                         }
                     }

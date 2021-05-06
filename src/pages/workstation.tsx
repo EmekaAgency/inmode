@@ -1,10 +1,11 @@
 import React from "react"
+import { InmodePanel_Addon_Interface, InmodePanel_Product_Interface, InmodePanel_TagFamily_Interface } from "../components/interfaces";
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
 import Shop from "../components/shop/shop";
 import { edges_to_array } from "../functions/edges_to_array";
 
-const WorkstationPage = ({ data }) => {
+const WorkstationPage = ({ data }:WorkstationPage_Interface) => {
     
     return (
         <Layout>
@@ -17,7 +18,21 @@ const WorkstationPage = ({ data }) => {
           />
         </Layout>
     )
-}
+};
+
+interface WorkstationPage_Interface {
+    data: {
+        allStrapiProduct: {
+            edges: InmodePanel_Product_Interface[]
+        }
+        allStrapiTagFamily: {
+            edges: InmodePanel_Addon_Interface[];
+        };
+        allStrapiAddon: {
+            edges: InmodePanel_TagFamily_Interface[];
+        };
+    };
+};
 
 export default WorkstationPage;
 

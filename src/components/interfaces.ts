@@ -119,7 +119,13 @@ export interface InmodePanel_Shop_Interface {
     pack_type?: string;
     price?: number;
     discount?: number;
-    picture?: GatsbyImage_Interface;
+    description?: string;
+    pictures?: {
+        formats: {
+            thumbnail :GatsbyImage_Interface;
+        };
+        url?: string;
+    }[];
     relative?: string;
 };
 export interface InmodePanel_TagFamily_Interface {

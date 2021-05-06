@@ -190,6 +190,18 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 </div>
                 <div className={`cart-content custom-scrollbar${formOpened ? ' purchase' : ''}`}>
                     {cart.cart.map((article, key) => {
+                        let _image = undefined;
+                        if(cart.articles[article.reference].pictures) {
+                            _image = cart.articles[article.reference].pictures[0];
+                            console.log(_image);
+                            if(_image.formats && _image.formats.thumbnail) {
+                                _image = _image.formats.thumbnail;
+                            }
+                            else {
+                                _image = _image.url || undefined;
+                            }
+                        }
+                        console.log(_image);
                         return (
                             <div key={key} className="cart-article transition">
                                 <div
@@ -202,11 +214,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                                     <img className="blue" src={images.getOne('rmvHover').publicURL} alt="X"/>
                                 </div>
                                 <div className="addon">
-                                    {cart.articles[article.reference].picture && (<img
-                                        src={cart.articles[article.reference].picture.childImageSharp.fluid.srcWebp}
-                                        srcSet={cart.articles[article.reference].picture.childImageSharp.fluid.srcSetWebp}
-                                        alt=""
-                                    />)}
+                                    
                                 </div>
                                 <div className="details">
                                     <div className="reference">{article.reference}</div>

@@ -1,11 +1,12 @@
 import React from "react";
 import WorkstationProduct from "./workstation-product";
-import ShopProduct2 from "./shop-product";
+import ShopProduct from "./shop-product";
 import WorkstationMenu from "./workstation-menu";
 import ShopMenu from "./shop-menu";
 import { allByClass } from "../../functions/selectors";
+import { InmodePanel_Addon_Interface, InmodePanel_Product_Interface, InmodePanel_Shop_Interface, InmodePanel_TagFamily_Interface } from "../interfaces";
 
-const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
+const Shop = ({ products, tag_families, technologies, special, shop_card }:Shop_Interface) => {
 
   const [tags, setTags] = React.useState([]);
   const [memoryTags, setMemoryTags] = React.useState([]);
@@ -158,7 +159,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
                   <div className="addon-name">{group.fieldValue}</div>
                   {group.nodes.map((product, key) => {
                     return (
-                        <ShopProduct2 key={`${group_key}-${key}`} reference={product.reference} special={special}/>
+                        <ShopProduct key={`${group_key}-${key}`} reference={product.reference} special={special}/>
                     );
                   })}
                 </div>
@@ -169,14 +170,14 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
       </div>
     </div>
   );
-}
-
-Shop.propTypes = {
-
 };
 
-Shop.defaultProps = {
-
-}
+interface Shop_Interface {
+    products: InmodePanel_Product_Interface[] | InmodePanel_Shop_Interface[];
+    tag_families: InmodePanel_Addon_Interface[];
+    technologies: InmodePanel_TagFamily_Interface[];
+    special: any;
+    shop_card: string;
+};
 
 export default Shop;

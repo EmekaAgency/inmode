@@ -1,5 +1,6 @@
 import React from 'react';
 
+import FuzzySet from 'FuzzySet';
 import { graphql, useStaticQuery } from 'gatsby';
 import { InmodePanel_Clinic_Interface } from '../interfaces';
 
@@ -7,6 +8,8 @@ import './index.css';
 import { allByClass, oneById } from '../../functions/selectors';
 
 const ClinicalFinder = ({}:ClinicalFinder_Interface) => {
+
+    const _rate = 0.4;
 
     const _base_url = typeof window == 'undefined' ? '' : window.location.origin;
 
@@ -55,6 +58,24 @@ const ClinicalFinder = ({}:ClinicalFinder_Interface) => {
         if(search == undefined) {
             return true;
         }
+        let _test = FuzzySet();
+        if(_retour == false && clinic.street) {
+            _test.add(clinic.street.toLowerCase());
+        }
+        if(_retour == false && clinic.doctor) {
+            _test.add(clinic.doctor.toLowerCase());
+        }
+        if(_retour == false && clinic.city) {
+            _test.add(clinic.city.toLowerCase());
+        }
+        if(_retour == false && clinic.treatments && clinic.treatments.length > 0) {
+            _test.add(clinic.treatments.map(treatment => treatment.MenuParams.title).join('').toLowerCase());
+        }
+        _test = _test.length() > 0 ? _test.get(search, null, _rate) : null;
+        if(_test != _rate && _test != null) {
+            console.log(_test);
+            _retour = true;
+        }
         if(_retour == false && clinic.street) {
             _retour = clinic.street.toLowerCase().includes(search) ? true : false;
         }
@@ -71,7 +92,12 @@ const ClinicalFinder = ({}:ClinicalFinder_Interface) => {
     }
 
     React.useEffect(() => {
-        oneById("search-clinic-indicator").innerText = `${typeof document != "undefined" ? document.querySelectorAll('.clinic-item').length : 0}/${clinics ? clinics.length : 0}`;
+        try {
+            oneById("search-clinic-indicator").innerText = `${typeof document != "undefined" ? document.querySelectorAll('.clinic-item').length : 0}/${clinics ? clinics.length : 0}`;
+        }
+        catch(err) {
+
+        }
     }, [search]);
 
     return (
@@ -80,7 +106,7 @@ const ClinicalFinder = ({}:ClinicalFinder_Interface) => {
                 <h2 className="title">Inmode Clinic Finder</h2>
                 <h3 className="subtitle">Authorised practioner list</h3>
                 {/* <div id="search-clinic-indicator"><span>{rest}</span>/{clinics ? clinics.length : 0}</div> */}
-                <div id="search-clinic-indicator"></div>
+                <div id="search-clinic-indicator">{clinics && clinics.length}/{clinics && clinics.length}</div>
                 {/* <div id="search-clinic-indicator">{allByClass('clinic-item') ? allByClass('clinic-item').length : 0}/{clinics ? clinics.length : 0}</div> */}
                 <input id="clinic-finder-search" type="search" placeholder="Search..." onChange={(e) => updateSearch(e)}/>
                 <div className="bottom-border"></div>

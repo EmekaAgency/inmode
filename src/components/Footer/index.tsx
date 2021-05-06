@@ -65,7 +65,7 @@ const Footer = ({}:Footer) => {
                                     </a>
                                     :
                                     <div className="footer-infos-text">
-                                        {footer["mail"]}
+                                        {footer[menu]}
                                     </div>
                                 }
                             </div>

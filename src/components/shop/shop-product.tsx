@@ -3,7 +3,7 @@ import { useCart } from "../contexts/cart-provider";
 
 import './shop-product.css';
 
-const ShopProduct2 = ({ reference, special }) => {
+const ShopProduct = ({ reference, special }:ShopProduct_Interface) => {
 
     const cart = useCart();
     const article = cart.articles[reference];
@@ -50,14 +50,10 @@ const ShopProduct2 = ({ reference, special }) => {
             </div>
         </div>
     );
-}
+};
 
-ShopProduct2.propTypes = {
+interface ShopProduct_Interface {
 
 };
 
-ShopProduct2.defaultProps = {
-
-}
-
-export default ShopProduct2;
+export default ShopProduct;

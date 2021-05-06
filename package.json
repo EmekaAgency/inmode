@@ -12,6 +12,8 @@
     "express": "^4.17.1",
     "flickity": "^2.2.2",
     "flickity-as-nav-for": "^2.0.1",
+    "fuzzyset": "^1.0.6",
+    "fuzzyset.js": "^1.0.6",
     "gatsby": "^2.32.12",
     "gatsby-cli": "^2.19.2",
     "gatsby-image": "^2.11.0",

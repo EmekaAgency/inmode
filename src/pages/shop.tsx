@@ -1,61 +1,90 @@
+import { graphql } from "gatsby";
 import React from "react"
-import CartProvider from "../components/contexts/cart-provider";
+import { InmodePanel_Shop_Interface, InmodePanel_TagFamily_Interface } from "../components/interfaces";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Shop from "../components/shop/shop";
+import ShopLogin from "../components/shop/shop-login";
 import { edges_to_array } from "../functions/edges_to_array";
 
-const ShopPage = ({ data }) => {
+const ShopPage = ({ data }:ShopPage_Interface) => {
     
-  return (
-    <Layout>
-      <SEO title="Shop"/>
-        {/* <CartProvider> */}
-          <Shop
-            products={data.allStrapiShop.group}
-            tag_families={edges_to_array(data.allStrapiTagFamily.edges)}
-            shop_card="shop"
-          />
-      {/* </CartProvider> */}
-    </Layout>
-  )
-}
+    const [logged, setLogged]:[boolean, React.Dispatch<boolean>] = React.useState(Boolean(false));
+
+    const isLogged = (_logged:boolean) => {
+        setLogged(_logged);
+    }
+
+    return (
+        <Layout>
+            <SEO title="Shop"/>
+            {
+                logged ? 
+                    <Shop
+                        products={data.allStrapiShop.group}
+                        tag_families={edges_to_array(data.allStrapiTagFamily.edges)}
+                        shop_card="shop"
+                    />
+                    :
+                    <ShopLogin updateLogged={isLogged}/>
+            }
+        </Layout>
+    )
+};
+
+interface ShopPage_Interface {
+    data: {
+        allStrapiTagFamily :{
+            edges: InmodePanel_TagFamily_Interface[];
+        };
+        allStrapiShop :{
+            group: InmodePanel_Shop_Interface[];
+        };
+    };
+};
 
 export default ShopPage;
 
 export const query = graphql`
-  {
-    allStrapiTagFamily {
-      edges {
-        node {
-          FamilyName
-          tags {
-            tag
-          }
-        }
-      }
-    }
-    allStrapiShop {
-      group(field: relative) {
-        fieldValue
-        nodes {
-          relative
-          reference
-          Name
-          pack_size
-          pack_type
-          price
-          discount
-          picture {
-            childImageSharp {
-              fluid {
-                srcWebp
-                srcSetWebp
-              }
+    {
+        allStrapiTagFamily {
+            edges {
+                node {
+                    FamilyName
+                    tags {
+                        tag
+                    }
+                }
             }
-          }
         }
-      }
+        allStrapiShop {
+            group(field: relative) {
+                fieldValue
+                    nodes {
+                        relative
+                        reference
+                        Name
+                        pack_size
+                        pack_type
+                        price
+                        discount
+                        description
+                        pictures {
+                            formats {
+                                thumbnail {
+                                    childImageSharp {
+                                        fluid {
+                                            srcWebp
+                                            srcSetWebp
+                                        }
+                                    }
+                                    publicURL
+                                }
+                            }
+                            url
+                        }
+                    }
+                }
+            }
     }
-  }
 `;

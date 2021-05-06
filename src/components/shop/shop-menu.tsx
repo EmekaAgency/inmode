@@ -38,7 +38,8 @@ const ShopMenu = ({ products, filter, tags }:ShopMenu_Interface) => {
                 className="accordion transition"
                 style={{
                     maxHeight: size.width < accordion_width ? openedAccordion ? maxHeight : 0 : 'unset',
-                    width: '100%'
+                    width: '100%',
+                    textAlign: 'center'
                 }}
             >
                 {products.map((product, key) => {
