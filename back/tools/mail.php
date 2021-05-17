@@ -39,6 +39,8 @@
         'order' => ['Commande', 'submit-order@inmodemd.fr'],
         'error' => ['Security', 'security@inmodemd.fr']
     ];
+    
+    const SAVE_MAIL = './save_mail';
 
     $RIB = "FR76 3000 3015 7800 0200 1741 805";
     $BIC = "SOGEFRPP";
@@ -53,11 +55,11 @@
     {
         logEvent('headerPart');
         $header = '';
-        $header .= '<table style="width: 100%; display: block; margin: 30px 0; text-align: center;">';
-        $header .= '    <tbody style="display: block;">';
-        $header .= '        <tr style="display: block;">';
-        $header .= '            <td style="display: block;">';
-        $header .= '                <img src="https://inmodemd.fr/back/assets/images/header-logo.png" width="300px" height="47.5px" alt="Logo InmodeMD" style="display: inline-block; width: 80%; max-width: 300px;" />';
+        $header .= '<table style="width:100%;display:block;padding:30px 0;text-align:center;">';
+        $header .= '    <tbody style="display:block;">';
+        $header .= '        <tr style="display:block;">';
+        $header .= '            <td style="display:block;word-break:break-word;">';
+        $header .= '                <img src="https://inmodemd.fr/back/assets/images/header-logo.png" alt="Logo InmodeMD" style="display:inline-block;width:80%;width:300px;max-width:300px;height:47.5px;" />';
         $header .= '            </td>';
         $header .= '        </tr>';
         $header .= '    </tbody>';
@@ -75,29 +77,33 @@
     {
         logEvent('footerPart');
         $footer = '';
-        $footer .= '<table style="padding-top: 30px; width: 100%; text-align: center;">';
-        $footer .= '    <tbody style="width: 100%; text-align: center;">';
-        $footer .= '        <tr style="width: 100%; text-align: center;">';
-        $footer .= '            <td valign="top" style="width: 100%; text-align: center;">';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/facebook.webp" width="25" height="25" alt="facebook" style="padding-top: 5px;" />';
-        $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">Facebook</span>';
+        $footer .= '<table style="padding-top:30px;width:100%;text-align:center;">';
+        $footer .= '    <tbody style="width:100%;text-align:center;">';
+        $footer .= '        <tr style="width:100%;text-align:center;">';
+        $footer .= '            <td valign="top" style="width:100%;text-align:center;word-break:break-word;">';
+        $footer .= '                <span style="padding-top:5px;"></span>';
+        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/facebook.webp" style="width:25px;height:25px" alt="facebook"/>';
+        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">Facebook</span>';
         $footer .= '                <br />';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/instagram.webp" width="25" height="25" alt="instagram" style="padding-top: 5px;" />';
-        $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">Instagram</span>';
+        $footer .= '                <span style="padding-top:5px;"></span>';
+        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/instagram.webp" style="width:25px;height:25px" alt="instagram"/>';
+        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">Instagram</span>';
         $footer .= '                <br />';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/youtube.webp" width="25" height="25" alt="youtube" style="padding-top: 5px;" />';
-        $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">YouTube</span>';
+        $footer .= '                <span style="padding-top:5px;"></span>';
+        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/youtube.webp" style="width:25px;height:25px" alt="youtube"/>';
+        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">YouTube</span>';
         $footer .= '                <br />';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/linkedin.webp" width="25" height="25" alt="linkedin" style="padding-top: 5px;" />';
-        $footer .= '                <span style="padding-left: 10px; color: #f2f2f2; font-size: 20px; position: relative; bottom: 5px;">Linkedin</span>';
+        $footer .= '                <span style="padding-top:5px;"></span>';
+        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/linkedin.webp" style="width:25px;height:25px" alt="linkedin"/>';
+        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">Linkedin</span>';
         $footer .= '            </td>';
         $footer .= '        </tr>';
         $footer .= '    </tbody>';
         $footer .= '</table>';
-        $footer .= '<table style="padding-top: 30px; width: 100%; display: block;">';
-        $footer .= '    <tbody style="width: 100%; display: block;">';
-        $footer .= '        <tr style="display: block;">';
-        $footer .= '            <td valign="top" style="color: #f2f2f2; font-size: 20px; text-align: center; display: block;">';
+        $footer .= '<table style="padding-top:30px;width:100%;display:block;">';
+        $footer .= '    <tbody style="width:100%;display:block;">';
+        $footer .= '        <tr style="display:block;">';
+        $footer .= '            <td valign="top" style="color:#f2f2f2;font-size:20px;text-align:center;display:block;word-break:break-word;">';
         $footer .= '                InmodeMD<br />';
         $footer .= '                RCS de Paris - 12 place Dauphine,<br />';
         $footer .= '                75001 PARIS<br />';
@@ -121,27 +127,27 @@
     {
         logEvent('failMail');
         $retour = '';
-        $retour .= '<html style="font-size: 0;font-family: Raleway, Roboto, sans-serif;">';
-        $retour .= '   <body style="background: #0e0e0e;margin: 0;padding: 15px;border: 2px solid #59b7b3;">';
-        $retour .= '       <table cellspacing="0" cellpadding="10" border="0" style="background: #0e0e0e; font-family: Roboto; width: 100%;">';
+        $retour .= '<html style="font-size:0;font-family:Raleway, Roboto, sans-serif;width:100%;">';
+        $retour .= '   <body style="background:#0e0e0e;padding:15px;border:2px solid #59b7b3;">';
+        $retour .= '       <table cellspacing="0" cellpadding="10" border="0" style="background:#0e0e0e;font-family:Roboto;width:100%;">';
         $retour .= '           <tr>';
-        $retour .= '               <td>';
+        $retour .= '               <td style="word-break:break-word;">';
         $retour .=                     headerPart();
         if($type == 'order' && isset($_POST['reference'], $_POST['for']))
         {
-            $retour .= '                <table style="padding-top: 30px; width: 100%; display: block;">';
+            $retour .= '                <table style="padding-top:30px;width:100%;display:block;">';
             $retour .= '                    <tr>';
-            $retour .= '                        <td style="color: #ff6868; font-size: 22px; font-weight: 600;">';
-            $retour .= '                            Le mail de la commande <span style="font-size: 20px; font-weight: 600;">'.$_POST['reference'].'</span> à destination '.($_POST['for'] == 'client' ? 'du client' : 'd\'InmodeMD France').' n\'a pas pu être envoyé';
+            $retour .= '                        <td style="color:#ff6868;font-size:22px;font-weight:600;word-break:break-word;">';
+            $retour .= '                            Le mail de la commande <span style="font-size:20px;font-weight:600;">'.$_POST['reference'].'</span> à destination '.($_POST['for'] == 'client' ? 'du client' : 'd\'InmodeMD France').' n\'a pas pu être envoyé';
             $retour .= '                        </td>';
             $retour .= '                    </tr>';
             $retour .= '                </table>';
         }
         else if($type == 'order')
         {
-            $retour .= '                <table style="padding-top: 30px; width: 100%; display: block;">';
+            $retour .= '                <table style="padding-top:30px;width:100%;display:block;">';
             $retour .= '                    <tr>';
-            $retour .= '                        <td style="color: #ff6868; font-size: 22px; font-weight: 600;">';
+            $retour .= '                        <td style="color:#ff6868;font-size:22px;font-weight:600;word-break:break-word;">';
             $retour .= '                            Un mail d\'une commande non identifiée du '.date('l d F Y à H:i:s', time()).' n\'a pu être envoyé en raison d\'un problème technique. Veuillez contacter un technicien';
             $retour .= '                        </td>';
             $retour .= '                    </tr>';
@@ -172,11 +178,11 @@
             logEvent('Facturation');
             logEvent(json_encode($order['Facturation']));
             $message = '';
-            $message .= '<html style="font-size: 0;font-family: Raleway, Roboto, sans-serif;">';
-            $message .= '   <body style="background: #0e0e0e;margin: 0;padding: 15px;border: 2px solid #59b7b3;">';
-            $message .= '       <table cellspacing="0" cellpadding="10" border="0" style="background: #0e0e0e; font-family: Roboto; width: 100%;">';
+            $message .= '<html style="font-size:0;font-family:Raleway, Roboto, sans-serif;width:100%;">';
+            $message .= '   <body style="background:#0e0e0e;padding:15px;border:2px solid #59b7b3;">';
+            $message .= '       <table cellspacing="0" cellpadding="10" border="0" style="background:#0e0e0e;font-family:Roboto;width:100%;">';
             $message .= '           <tr>';
-            $message .= '               <td>';
+            $message .= '               <td style="word-break:break-word;">';
             $message .=                     headerPart();
             $message .=                     orderReceived($order['Reference'], $order['Date'], $_POST['for'], $_POST['type'], $order['Statut']);
             $message .=                     orderDetails($order['Article'], $order['Total'], $order['FraisLivraison'], $order['Pays']);
@@ -267,17 +273,17 @@
         logEvent('type : '.$type);
         logEvent('statut : '.$statut);
         $retour = '';
-        $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
+        $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tr>';
-        $retour .= '        <td style="color: #f2f2f2; font-size: 18px; font-weight: 400;">';
+        $retour .= '        <td style="color:#f2f2f2;font-size:18px;font-weight:400;word-break:break-word;">';
         if($for == 'client')
         {
-            $retour .= 'Nous avons bien reçu votre commande <span style="font-size: 20px; font-weight: 600;">'.$reference.'</span> effectuée le <span';
-            $retour .= 'style="font-size: 20px; font-weight: 600;">'.buildDate($date, 'full').'</span>. ';
+            $retour .= 'Nous avons bien reçu votre commande <span style="font-size:20px;font-weight:600;">'.$reference.'</span> effectuée le <span';
+            $retour .= 'style="font-size:20px;font-weight:600;">'.buildDate($date, 'full').'</span>. ';
         }
         if($for == 'pro')
         {
-            $retour .= 'Une nouvelle commande <span style="font-size: 20px; font-weight: 600;">'.$reference.'</span> est arrivée.';
+            $retour .= 'Une nouvelle commande <span style="font-size:20px;font-weight:600;">'.$reference.'</span> est arrivée.';
         }
         if($for == 'client' && $type == 'sepa')
         {
@@ -299,15 +305,15 @@
         $retour .= '    </tr>';
         $retour .= '</table>';
         if($for == 'client' && $type == 'sepa') {
-            $retour .= '<table style="max-width: 400px; border: 2px solid #f2f2f2; width: 100%; display: block;">';
+            $retour .= '<table style="width:400px;max-width:400px;border:2px solid #f2f2f2;width:100%;display:block;">';
             $retour .= '    <tbody class="SEPA">';
-            $retour .= '        <tr style="color: #f2f2f2; font-size: 18px; font-weight: 400;" class="RIB">';
-            $retour .= '            <td style="width: 80px;">RIB</td>';
-            $retour .= '            <td style="width: 350px;">'.$GLOBALS['RIB'].'</td>';
+            $retour .= '        <tr style="color:#f2f2f2;font-size:18px;font-weight:400;" class="RIB">';
+            $retour .= '            <td style="width:80px;word-break:break-word;">RIB</td>';
+            $retour .= '            <td style="width:350px;word-break:break-word;">'.$GLOBALS['RIB'].'</td>';
             $retour .= '        </tr>';
-            $retour .= '        <tr style="color: #f2f2f2; font-size: 18px; font-weight: 400;" class="BIC">';
-            $retour .= '            <td style="width: 80px;">BIC</td>';
-            $retour .= '            <td style="width: 350px;">'.$GLOBALS['BIC'].'</td>';
+            $retour .= '        <tr style="color:#f2f2f2;font-size:18px;font-weight:400;" class="BIC">';
+            $retour .= '            <td style="width:80px;word-break:break-word;">BIC</td>';
+            $retour .= '            <td style="width:350px;word-break:break-word;">'.$GLOBALS['BIC'].'</td>';
             $retour .= '        </tr>';
             $retour .= '    </tbody>';
             $retour .= '</table>';
@@ -333,22 +339,22 @@
             logEvent('delivery_tax : '.$delivery_tax);
             logEvent('pays : '.$pays);
             $retour = '';
-            $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
+            $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
             $retour .= '    <tr>';
-            $retour .= '        <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
+            $retour .= '        <td style="color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;">';
             $retour .= '            Détails de la commande';
             $retour .= '        </td>';
             $retour .= '    </tr>';
             $retour .= '</table>';
-            $retour .= '<table style="max-width: 550px; border: 2px solid #f2f2f2; width: 100%; display: block; color: #f2f2f2; font-size: 16px; font-weight: 400;">';
+            $retour .= '<table style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
             $retour .= '    <thead>';
             $retour .= '        <tr>';
-            $retour .= '            <td style="width: 250px;">Article</td>';
-            $retour .= '            <td style="width: 150px; text-align: center;">Quantité</td>';
-            $retour .= '            <td style="width: 150px; text-align: center;">Total</td>';
+            $retour .= '            <td style="width:250px;word-break:break-word;">Article</td>';
+            $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">Quantité</td>';
+            $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">Total</td>';
             $retour .= '        </tr>';
             $retour .= '    </thead>';
-            $retour .= '    <tbody style="width: 100%; text-align: center;">';
+            $retour .= '    <tbody style="width:100%;text-align:center;">';
             $tva = 0;
             foreach($articles as $article)
             {
@@ -361,39 +367,39 @@
                     logError(print_r($e));
                     logEvent(print_r($e));
                 }
-                $retour .= '        <tr style="width: 100%; text-align: center;">';
-                $retour .= '            <td style="width: 250px;">'.$article['Article']['Name'].'</td>';
-                $retour .= '            <td style="width: 150px; text-align: center;">'.$article['Quantite'].'</td>';
-                $retour .= '            <td style="width: 150px; text-align: center;">'.($article['Quantite'] * $article['Article']['price']).'€</td>';
+                $retour .= '        <tr style="width:100%;text-align:center;">';
+                $retour .= '            <td style="width:250px;word-break:break-word;">'.$article['Article']['Name'].'</td>';
+                $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">'.$article['Quantite'].'</td>';
+                $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">'.($article['Quantite'] * $article['Article']['price']).'€</td>';
                 $retour .= '        </tr>';
                 $tva += $article['Quantite'] * $article['Article']['price'];
             }
             $retour .= '    </tbody>';
             $retour .= '</table>';
-            $retour .= '<table style="max-width: 550px; width: 100%; display: block; color: #f2f2f2; font-size: 16px; font-weight: 400;">';
-            $retour .= '    <tbody style="width: 100%; text-align: center;">';
+            $retour .= '<table style="width:550px;max-width:550px;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
+            $retour .= '    <tbody style="width:100%;text-align:center;">';
             if($delivery_tax != null && is_numeric($delivery_tax))
             {        	
-                $retour .= '      <tr style="width: 100%; text-align: center;">';
-                $retour .= '          <td style="width: 250px;"></td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">Livraison</td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">'.$delivery_tax.'€</td>';
+                $retour .= '      <tr style="width:100%;text-align:center;">';
+                $retour .= '          <td style="width:250px;word-break:break-word;"></td>';
+                $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">Livraison</td>';
+                $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">'.$delivery_tax.'€</td>';
                 $retour .= '      </tr>';
             }
             if($total != null && is_numeric($total))
             {
                 if(!tva_intra($pays))
                 {
-                    $retour .= '      <tr style="width: 100%; text-align: center;">';
-                    $retour .= '          <td style="width: 250px;"></td>';
-                    $retour .= '          <td style="width: 150px; text-align: center;">TVA</td>';
-                    $retour .= '          <td style="width: 150px; text-align: center;">'.($tva * 0.2).'€</td>';
+                    $retour .= '      <tr style="width:100%;text-align:center;">';
+                    $retour .= '          <td style="width:250px;word-break:break-word;"></td>';
+                    $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">TVA</td>';
+                    $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">'.($tva * 0.2).'€</td>';
                     $retour .= '      </tr>';
                 }
-                $retour .= '      <tr style="width: 100%; text-align: center;">';
-                $retour .= '          <td style="width: 250px;"></td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">TOTAL</td>';
-                $retour .= '          <td style="width: 150px; text-align: center;">'.$total.'€</td>';
+                $retour .= '      <tr style="width:100%;text-align:center;">';
+                $retour .= '          <td style="width:250px;word-break:break-word;"></td>';
+                $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">TOTAL</td>';
+                $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">'.$total.'€</td>';
                 $retour .= '      </tr>';
             }
             $retour .= '    </tbody>';
@@ -416,13 +422,13 @@
     {
         logEvent('orderTVAIntra');
         $retour = '';
-        $retour .= '<table style="color: #f2f2f2; font-weight: 500; font-size: 15px; padding-top: 30px; width: 100%; display: block;">';
-        $retour .= '    <tbody style="padding-top: 30px; width: 100%; display: block;">';
-        $retour .= '        <tr style="padding-top: 30px; width: 100%; display: block;">';
+        $retour .= '<table style="color:#f2f2f2;font-weight:500;font-size:15px;padding-top:30px;width:100%;display:block;">';
+        $retour .= '    <tbody style="padding-top:30px;width:100%;display:block;">';
+        $retour .= '        <tr style="padding-top:30px;width:100%;display:block;color:#f2f2f2;">';
         if(tva_intra($pays))
         {
             $retour .= '            Exonération TVA, article 262 ter I du Code général des impôts<br/>';
-            $retour .= '            TVA intracommunautaire : '.$tva_intra;
+            $retour .= '            TVA intracommunautaire :'.$tva_intra;
         }
         else
         {
@@ -446,39 +452,39 @@
         logEvent('orderBilling');
         logEvent(json_encode($facturation));
         $retour = '';
-        $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
+        $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
-        $retour .= '            <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
+        $retour .= '            <td style="color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;">';
         $retour .= '                Détails de facturation';
         $retour .= '            </td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
         $retour .= '</table>';
-        $retour .= '<table style="max-width: 550px; border: 2px solid #f2f2f2; width: 100%; display: block; color: #f2f2f2; font-size: 16px; font-weight: 400;">';
+        $retour .= '<table style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Facturé à</td>';
-        $retour .= '            <td>'.$facturation['Prenom'].' '.$facturation['Nom'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Facturé à</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$facturation['Prenom'].' '.$facturation['Nom'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Au</td>';
-        $retour .= '            <td>'.$facturation['Adresse'].', '.($facturation['Adresse'] != null ? $facturation['Adresse'].', ' : '').$facturation['CodePostal'].' '.$facturation['Ville'].', '.$facturation['Pays'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Au</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$facturation['Adresse'].', '.($facturation['Adresse2'] != null ? $facturation['Adresse2'].', ' : '').$facturation['CodePostal'].' '.$facturation['Ville'].', '.$facturation['Pays'].'</td>';
         $retour .= '        </tr>';
         if($facturation['Societe'] != null)
         {
             $retour .= '        <tr>';
-            $retour .= '            <td>Pour la société</td>';
-            $retour .= '            <td>'.$facturation['Societe'].'</td>';
+            $retour .= '            <td style="word-break:break-word;">Pour la société</td>';
+            $retour .= '            <td style="word-break:break-word;">'.$facturation['Societe'].'</td>';
             $retour .= '        </tr>';
         }
         $retour .= '        <tr>';
-        $retour .= '            <td>Mail</td>';
-        $retour .= '            <td>'.$facturation['Mail'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Mail</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$facturation['Mail'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Téléphone</td>';
-        $retour .= '            <td>'.$facturation['Telephone'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Téléphone</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$facturation['Telephone'].'</td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
         $retour .= '</table>';
@@ -496,40 +502,40 @@
         logEvent('orderShipping');
         logEvent(json_encode($livraison));
         $retour = '';
-        $retour .= '<table style="padding-top: 30px; width: 100%; display: block;">';
+        $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tr>';
-        $retour .= '        <td style="color: #f2f2f2; font-size: 22px; font-weight: 500;">';
+        $retour .= '        <td style="color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;">';
         $retour .= '            Détails de facturation';
         $retour .= '        </td>';
         $retour .= '    </tr>';
         $retour .= '</table>';
-        $retour .= '<table style="max-width: 550px; border: 2px solid #f2f2f2; width: 100%; display: block; color: #f2f2f2; font-size: 16px; font-weight: 400;">';
+        $retour .= '<table style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Facturé à</td>';
-        $retour .= '            <td>'.$livraison['Prenom'].' '.$livraison['Nom'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Facturé à</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$livraison['Prenom'].' '.$livraison['Nom'].'</td>';
         $retour .= '        </tr>';
         $retour .= '        <tr>';
-        $retour .= '            <td>Au</td>';
-        $retour .= '            <td>'.$livraison['Adresse'].', '.($livraison['Adresse'] != null ? $livraison['Adresse'].', ' : '').$livraison['CodePostal'].' '.$livraison['Ville'].', '.$livraison['Pays'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Au</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$livraison['Adresse'].', '.($livraison['Adresse'] != null ? $livraison['Adresse'].', ' : '').$livraison['CodePostal'].' '.$livraison['Ville'].', '.$livraison['Pays'].'</td>';
         $retour .= '        </tr>';
         if($livraison['Societe'] != null)
         {
             $retour .= '        <tr>';
-            $retour .= '            <td>Pour la société</td>';
-            $retour .= '            <td>'.$livraison['Societe'].'</td>';
+            $retour .= '            <td style="word-break:break-word;">Pour la société</td>';
+            $retour .= '            <td style="word-break:break-word;">'.$livraison['Societe'].'</td>';
             $retour .= '        </tr>';
         }
         if($livraison['Mail'] != null)
         {
             $retour .= '        <tr>';
-            $retour .= '            <td>Pour la société</td>';
-            $retour .= '            <td>'.$livraison['Mail'].'</td>';
+            $retour .= '            <td style="word-break:break-word;">Pour la société</td>';
+            $retour .= '            <td style="word-break:break-word;">'.$livraison['Mail'].'</td>';
             $retour .= '        </tr>';
         }
         $retour .= '        <tr>';
-        $retour .= '            <td>Téléphone</td>';
-        $retour .= '            <td>'.$livraison['Telephone'].'</td>';
+        $retour .= '            <td style="word-break:break-word;">Téléphone</td>';
+        $retour .= '            <td style="word-break:break-word;">'.$livraison['Telephone'].'</td>';
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
         $retour .= '</table>';
@@ -545,66 +551,66 @@
     function fullContactMail():string
     {
         $message = '';
-        $message = $message.'<html>';
+        $message = $message.'<html style="width:100%;">';
         $message = $message.'   <body>';
         $message = $message.'       <table cellspacing="0" cellpadding="10" border="0">';
         $message = $message.'           <tr>';
-        $message = $message.'               <td>';
+        $message = $message.'               <td style="word-break:break-word;">';
         $message = $message.'                   <table>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Prénom</td>';
-        $message = $message.'                           <td>'.$_POST['firstname'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Prénom</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['firstname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Nom</td>';
-        $message = $message.'                           <td>'.$_POST['lastname'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Nom</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['lastname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Entreprise</td>';
-        $message = $message.'                           <td>'.$_POST['company'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Entreprise</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['company'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Spécialité</td>';
-        $message = $message.'                           <td>'.SPECIALITY[$_POST['speciality']].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Spécialité</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.SPECIALITY[$_POST['speciality']].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Adresse</td>';
-        $message = $message.'                           <td>'.$_POST['address'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Adresse</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['address'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Téléphone</td>';
-        $message = $message.'                           <td>'.$_POST['phone_number'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Téléphone</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['phone_number'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>E-Mail</td>';
-        $message = $message.'                           <td>'.$_POST['mail'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">E-Mail</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['mail'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Code Postal</td>';
-        $message = $message.'                           <td>'.$_POST['zip'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Code Postal</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['zip'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Ville</td>';
-        $message = $message.'                           <td>'.$_POST['city'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Ville</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['city'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Pays</td>';
-        $message = $message.'                           <td>'.$_POST['country'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Pays</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['country'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Message</td>';
-        $message = $message.'                           <td>'.$_POST['message'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Message</td>';
+        $message = $message.'                           <td style="word-break:break-word;">'.$_POST['message'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Interessé par :</td>';
-        $message = $message.'                           <td></td>';
+        $message = $message.'                           <td style="word-break:break-word;">Interessé par :</td>';
+        $message = $message.'                           <td style="word-break:break-word;"></td>';
         $message = $message.'                       </tr>';
         foreach(MACHINES as $key => $value)
         {
             if(gettype($_POST[$key]) == 'boolean' && $_POST[$key] == 1)
             {
                 $message = $message.'                       <tr>';
-                $message = $message.'                           <td>'.$key.'</td>';
+                $message = $message.'                           <td style="word-break:break-word;">'.$key.'</td>';
                 $message = $message.'                       </tr>';
             }
         }
@@ -626,35 +632,35 @@
     function contactUsMail():string
     {
         $message = '';
-        $message = $message.'<html>';
+        $message = $message.'<html style="width:100%;">';
         $message = $message.'   <body>';
         $message = $message.'       <table cellspacing="0" cellpadding="10" border="0">';
         $message = $message.'           <tr>';
-        $message = $message.'               <td>';
+        $message = $message.'               <td style="word-break:break-word;">';
         $message = $message.'                   <table>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Prénom</td><td>'.$_POST['firstname'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Prénom</td><td style="word-break:break-word;">'.$_POST['firstname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Nom</td><td>'.$_POST['lastname'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Nom</td><td style="word-break:break-word;">'.$_POST['lastname'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Spécialité</td><td>'.SPECIALITY[$_POST['subject']].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Spécialité</td><td style="word-break:break-word;">'.SPECIALITY[$_POST['subject']].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>E-Mail</td><td>'.$_POST['mail'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">E-Mail</td><td style="word-break:break-word;">'.$_POST['mail'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Téléphone</td><td>'.$_POST['phone'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Téléphone</td><td style="word-break:break-word;">'.$_POST['phone'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Code postal</td><td>'.$_POST['zip'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Code postal</td><td style="word-break:break-word;">'.$_POST['zip'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Ville</td><td>'.$_POST['city'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Ville</td><td style="word-break:break-word;">'.$_POST['city'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                       <tr>';
-        $message = $message.'                           <td>Message</td><td>'.$_POST['message'].'</td>';
+        $message = $message.'                           <td style="word-break:break-word;">Message</td><td style="word-break:break-word;">'.$_POST['message'].'</td>';
         $message = $message.'                       </tr>';
         $message = $message.'                   </table>';
         $message = $message.'               </td>';
@@ -733,36 +739,42 @@
      * Detailed - 
      * 
      */
-    function tryMail(string $mail, string $subject, string $action, string $type):bool
+    function tryMail(string $mail, string $subject, string $action, string $type, $return = true):bool
     {
         
         try {
             if(sendMail($mail, $subject, buildMail($action), from($action)))
             {
-                echo json_encode([
-                    'type' => 'client',
-                    'status' => 'success',
-                    'message' => 'Mail envoyé'
-                ]);
+                if($return == true) {
+                    echo json_encode([
+                        'type' => 'client',
+                        'status' => 'success',
+                        'message' => 'Mail envoyé'
+                    ]);
+                }
             }
             else
             {
-                echo json_encode([
-                    'type' => 'client',
-                    'status' => 'fail',
-                    'message' => 'Erreur d\'envoi du mail'
-                ]);
+                if($return == true) {
+                    echo json_encode([
+                        'type' => 'client',
+                        'status' => 'fail',
+                        'message' => 'Erreur d\'envoi du mail'
+                    ]);
+                }
             }
             return true;
         }
         catch(\Exception $e) {
             logError('Error during sending mail '.$action);
             logError(json_encode($e));
-            echo json_encode([
-                'type' => 'client',
-                'status' => 'fail',
-                'message' => 'Erreur serveur'
-            ]);
+            if($return == true) {
+                echo json_encode([
+                    'type' => 'client',
+                    'status' => 'fail',
+                    'message' => 'Erreur serveur'
+                ]);
+            }
             return false;
         }
     }
@@ -784,15 +796,23 @@
             logEvent('Subject : '.SPECIALITY[$subject]);
             logEvent('Init mail headers');
             
+            try {
+                logEvent('Save mail at '.saveMail($content, $to));
+            }
+            catch (\Exception $e) {
+                logError('Can\'t save mail');
+            }
+            
             $headers = "From: InmodeMD-FR ".MAIL_CONST[$from][0]." <".MAIL_CONST[$from][1].">\n";
             $headers .= "MIME-version: 1.0\nDate: ".date('r')."\n";
-            $headers .= "Content-Type: text/html; charset=UTF-8\nX-Mailer: PHP/" . phpversion();
+            $headers .= "Content-Transfer-Encoding: 8bit\r\n";
+            $headers .= "Content-Type: text/html;charset=ISO-8859-1\nX-Mailer: PHP/" . phpversion();
             
             logEvent('Headers : '.PHP_EOL.$headers);
             
             logEvent('Try to send mail');
             
-            if(mail($to, SPECIALITY[$subject], $content, $headers))
+            if(mail($to, SPECIALITY[$subject], trim($content), $headers))
             {
                 logEvent('Mail sended');
                 return true;
@@ -809,5 +829,24 @@
             logError(json_encode($e));
             echo json_encode($e);
             return false;
+        }
+    }
+    
+    /**
+     * Short - 
+     * 
+     * Detailed -
+     * 
+     */
+    function saveMail(string $content, string $to):string {
+        try {
+            emmitDir(SAVE_MAIL);
+            $name = SAVE_MAIL.'/'.date('Y-m-d_H:i:s', time()).'-'.$GLOBALS['request_time'].'-'.$_POST['action'].'-'.$to.'.html';
+            file_put_contents($name, trim($content));
+            return $name;
+        }
+        catch(\Exception $e) {
+            logError(json_encode($e));
+            return '';
         }
     }

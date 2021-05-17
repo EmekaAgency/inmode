@@ -23,7 +23,7 @@ const PaymentCancelPage = () => {
     `).site.siteMetadata.url_order_load);
     
     const [params, setParams] = React.useState({});
-    const [order, setOrder] = React.useState(null);
+    const [order, setOrder] = React.useState(undefined);
 
     const cart = useCart();
 

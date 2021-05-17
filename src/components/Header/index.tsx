@@ -47,7 +47,8 @@ const Header = ({}:Header) => {
           {size.width < 1200 && <HeaderMini/>}
           {/* SWITCH CART */}
 
-          { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null }
+          {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null } */}
+          <CartBasket/>
 
           {/* SWITCH CART END */}
           <button

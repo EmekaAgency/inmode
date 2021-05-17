@@ -19,7 +19,7 @@ export const wrapPageElement = ({ element, props }) => (
 // {/* SWITCH CART END */}
 
 export function onClientEntry () {
-  window.addEventListener('load', () => {
-    document.body.className = document.body.className.replace(/\bno-js\b/, '');
-  });
+    window.addEventListener('load', () => {
+        document.body.className = document.body.className.replace(/\bno-js\b/, '');
+    });
 }

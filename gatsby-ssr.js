@@ -19,7 +19,7 @@ export const wrapPageElement = ({ element, props }) => (
 // {/* SWITCH CART END */}
 
 export function onRenderBody ({ setBodyAttributes }) {
-  setBodyAttributes({
-      className: 'no-js'
+    setBodyAttributes({
+        className: 'no-js'
     });
 };

@@ -17,52 +17,68 @@ import ImagesProvider from "../contexts/images-provider";
 
 import CartPurchase from "../Cart";
 import PayParams from "../Cart/pay_params";
+import { useCart } from "../contexts/cart-provider";
 
 // {/* SWITCH CART END */}
 
 const Layout = ({ children }) => {
 
-  // TODO régler isMobile pour ouverture cookies
-  // const [isMobile, setIsMobile] = React.useState()
+    // TODO régler isMobile pour ouverture cookies
+    // const [isMobile, setIsMobile] = React.useState()
 
-  // React.useEffect(() => {
-  //   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-  //     // true for mobile device
-  //     document.write("mobile device");
-  //   }else{
-  //     // false for not mobile device
-  //     document.write("not mobile device");
-  //   }
-  // });
+    // React.useEffect(() => {
+    //   if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    //     // true for mobile device
+    //     document.write("mobile device");
+    //   }else{
+    //     // false for not mobile device
+    //     document.write("not mobile device");
+    //   }
+    // });
 
-  return (
-    <ImagesProvider>
-      <MenusProvider>
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
-        <Header/>
-        <ProductsProvider>
-          <main id="main">
-            {children}
-          </main>
-        </ProductsProvider>
-        <FixedMenu/>
-        {/* SWITCH CART */}
+    if(typeof window != "undefined") {
+        console.log('C\'est bon');
+        // window.onbeforeunload = function(event) {
+        //     // console.log('new pathname', location.pathname)
+        //     console.log(event);
+        //     useCart().close_cart();
+        // }
+        window.addEventListener('unload', function(event) {
+            console.log('test');
+            // console.log('new pathname', location.pathname)
+            console.log(event);
+            useCart().close_cart();
+        });
+    }
 
-        <CartPurchase/>
-        <PayParams/>
+    return (
+        <ImagesProvider>
+            <MenusProvider>
+                <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
+                <Header/>
+                <ProductsProvider>
+                <main id="main">
+                    {children}
+                </main>
+                </ProductsProvider>
+                <FixedMenu/>
+                {/* SWITCH CART */}
 
-        {/* SWITCH CART END */}
-        <PrivacyPolicy />
-        <ContactUs/>
-        <Footer/>
-        <Modale/>
-      </MenusProvider>
-    </ImagesProvider>
-  )
+                <CartPurchase/>
+                <PayParams/>
+
+                {/* SWITCH CART END */}
+                <PrivacyPolicy />
+                <ContactUs/>
+                <Footer/>
+                <Modale/>
+            </MenusProvider>
+        </ImagesProvider>
+    )
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
 }
 
 export default Layout
