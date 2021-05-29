@@ -49,6 +49,12 @@
      * Short - 
      * 
      * Detailed - 
+     */
+
+    /**
+     * Short - 
+     * 
+     * Detailed - 
      * 
      */
     function headerPart()
@@ -77,42 +83,46 @@
     {
         logEvent('footerPart');
         $footer = '';
-        $footer .= '<table style="padding-top:30px;width:100%;text-align:center;">';
-        $footer .= '    <tbody style="width:100%;text-align:center;">';
-        $footer .= '        <tr style="width:100%;text-align:center;">';
-        $footer .= '            <td valign="top" style="width:100%;text-align:center;word-break:break-word;">';
-        $footer .= '                <span style="padding-top:5px;"></span>';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/facebook.webp" style="width:25px;height:25px" alt="facebook"/>';
-        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">Facebook</span>';
-        $footer .= '                <br />';
-        $footer .= '                <span style="padding-top:5px;"></span>';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/instagram.webp" style="width:25px;height:25px" alt="instagram"/>';
-        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">Instagram</span>';
-        $footer .= '                <br />';
-        $footer .= '                <span style="padding-top:5px;"></span>';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/youtube.webp" style="width:25px;height:25px" alt="youtube"/>';
-        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">YouTube</span>';
-        $footer .= '                <br />';
-        $footer .= '                <span style="padding-top:5px;"></span>';
-        $footer .= '                <img src="https://inmodemd.fr/back/assets/icons/linkedin.webp" style="width:25px;height:25px" alt="linkedin"/>';
-        $footer .= '                <span style="padding-left:10px;color:#f2f2f2;font-size:20px;position:relative;bottom:5px;">Linkedin</span>';
-        $footer .= '            </td>';
-        $footer .= '        </tr>';
-        $footer .= '    </tbody>';
-        $footer .= '</table>';
-        $footer .= '<table style="padding-top:30px;width:100%;display:block;">';
-        $footer .= '    <tbody style="width:100%;display:block;">';
-        $footer .= '        <tr style="display:block;">';
-        $footer .= '            <td valign="top" style="color:#f2f2f2;font-size:20px;text-align:center;display:block;word-break:break-word;">';
-        $footer .= '                InmodeMD<br />';
-        $footer .= '                RCS de Paris - 12 place Dauphine,<br />';
-        $footer .= '                75001 PARIS<br />';
-        $footer .= '                884 502 980 00011<br />';
-        $footer .= '                contact.fr@inmodemd.fr';
-        $footer .= '            </td>';
-        $footer .= '        </tr>';
-        $footer .= '    </tbody>';
-        $footer .= '</table>';
+        $footer = '<table style="padding-top:30px;width:100%;text-align:center;">';
+        $footer = '    <tbody style="width:100%;text-align:center;">';
+        $footer = '        <tr style="width:100%;text-align:center;">';
+        $footer = '            <td valign="top" style="width:100%;text-align:center;word-break:break-word;">';
+        $footer = '                <span style="position: relative; width: 25px; height: 25px; display: inline-block;">';
+        $footer = '                    <a href="" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></a>';
+        $footer = '                    <img src="https://inmodemd.fr/back/assets/icons/facebook.webp" style="width:25px;height:25px" alt="facebook"/>';
+        $footer = '                </span>';
+        $footer = '                <br />';
+        $footer = '                <span style="position: relative; width: 25px; height: 25px; display: inline-block;">';
+        $footer = '                    <a href="" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></a>';
+        $footer = '                    <img src="https://inmodemd.fr/back/assets/icons/instagram.webp" style="width:25px;height:25px" alt="instagram"/>';
+        $footer = '                </span>';
+        $footer = '                <br />';
+        $footer = '                <span style="position: relative; width: 25px; height: 25px; display: inline-block;">';
+        $footer = '                    <a href="" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></a>';
+        $footer = '                    <img src="https://inmodemd.fr/back/assets/icons/youtube.webp" style="width:25px;height:25px" alt="youtube"/>';
+        $footer = '                </span>';
+        $footer = '                <br />';
+        $footer = '                <span style="position: relative; width: 25px; height: 25px; display: inline-block;">';
+        $footer = '                    <a href="" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></a>';
+        $footer = '                    <img src="https://inmodemd.fr/back/assets/icons/linkedin.webp" style="width:25px;height:25px" alt="linkedin"/>';
+        $footer = '                </span>';
+        $footer = '            </td>';
+        $footer = '        </tr>';
+        $footer = '    </tbody>';
+        $footer = '</table>';
+        $footer = '<table style="padding-top:30px;width:100%;display:block;text-align: center;">';
+        $footer = '    <tbody style="width:100%;display:block;text-align: center;">';
+        $footer = '        <tr style="display:block;text-align: center;">';
+        $footer = '            <td valign="top" style="color:#f2f2f2;font-size:20px;text-align:center;display:block;word-break:break-word;">';
+        $footer = '                InmodeMD<br />';
+        $footer = '                RCS de Paris - 12 place Dauphine,<br />';
+        $footer = '                75001 PARIS<br />';
+        $footer = '                884 502 980 00011<br />';
+        $footer = '                contact.fr@inmodemd.fr';
+        $footer = '            </td>';
+        $footer = '        </tr>';
+        $footer = '    </tbody>';
+        $footer = '</table>';
         return $footer;
     }
     
@@ -127,7 +137,17 @@
     {
         logEvent('failMail');
         $retour = '';
+        $retour .= '<!DOCTYPE html>';
         $retour .= '<html style="font-size:0;font-family:Raleway, Roboto, sans-serif;width:100%;">';
+        $retour .= '   <head>';
+        $retour .= '      <title></title>';
+        $retour .= '      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+        $retour .= '      <meta name="viewport" content="width=device-width, initial-scale=1">';
+        $retour .= '      <meta http-equiv="X-UA-Compatible" content="IE=edge" />';
+        $retour .= '      <style type="text/css">';
+        $retour .= '          ';
+        $retour .= '      </style>';
+        $retour .= '   </head>';
         $retour .= '   <body style="background:#0e0e0e;padding:15px;border:2px solid #59b7b3;">';
         $retour .= '       <table cellspacing="0" cellpadding="10" border="0" style="background:#0e0e0e;font-family:Roboto;width:100%;">';
         $retour .= '           <tr>';
@@ -178,9 +198,62 @@
             logEvent('Facturation');
             logEvent(json_encode($order['Facturation']));
             $message = '';
+            $message .= '<!DOCTYPE html>';
             $message .= '<html style="font-size:0;font-family:Raleway, Roboto, sans-serif;width:100%;">';
+            $message .= '   <!--[if mso]>';
+            $message .= '       <head>';
+            $message .= '           <title></title>';
+            $message .= '           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+            $message .= '           <meta name="viewport" content="width=device-width, initial-scale=1">';
+            $message .= '           <meta http-equiv="X-UA-Compatible" content="IE=edge" />';
+            $message .= '           <style type="text/css">';
+            $message .= '               body{background:#0e0e0e;padding:15px;border:2px solid #59b7b3;}';
+            $message .= '               td{word-break:break-word;}';
+            $message .= '               table.main-container{background:#0e0e0e;font-family:Roboto;width:100%;}';
+            $message .= '               table.order-received{padding-top:30px;width:100%;display:block;}';
+            $message .= '               table.order-received td{color:#f2f2f2;font-size:18px;font-weight:400;word-break:break-word;}';
+            $message .= '               table.received-sepa{width:400px;max-width:400px;border:2px solid #f2f2f2;width:100%;display:block;}';
+            $message .= '               tr.RIB{color:#f2f2f2;font-size:18px;font-weight:400;}';
+            $message .= '               tr.BIC{color:#f2f2f2;font-size:18px;font-weight:400;}';
+            $message .= '               tr.RIB td{width:80px;word-break:break-word;}';
+            $message .= '               tr.BIC td{width:80px;word-break:break-word;}';
+            $message .= '               table.order-details-title{padding-top:30px;width:100%;display:block;}';
+            $message .= '               table.order-details-title td{color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;}';
+            $message .= '               table.order-details{width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;}';
+            $message .= '               table.order-details td.head-article{width:250px;word-break:break-word;}';
+            $message .= '               table.order-details td.head-quantity{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               table.order-details td.head-total{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               table.order-details td.tbody-article{width:250px;word-break:break-word;}';
+            $message .= '               table.order-details td.tbody-quantity{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               table.order-details td.tbody-total{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               table.order-delivery{width:550px;max-width:550px;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;}';
+            $message .= '               table.order-delivery tbody{width:100%;text-align:center;}';
+            $message .= '               tr.tbody-delivery{width:100%;text-align:center;}';
+            $message .= '               td.tbody-delivery-1{width:250px;word-break:break-word;}';
+            $message .= '               td.tbody-delivery-2{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               td.tbody-delivery-3{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               tr.tbody-tva{width:100%;text-align:center;}';
+            $message .= '               td.tbody-tva-1{width:250px;word-break:break-word;}';
+            $message .= '               td.tbody-tva-2{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               td.tbody-tva-3{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               tr.tbody-total{width:100%;text-align:center;}';
+            $message .= '               td.tbody-total-1{width:250px;word-break:break-word;}';
+            $message .= '               td.tbody-total-2{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               td.tbody-total-3{width:150px;text-align:center;word-break:break-word;}';
+            $message .= '               table.tva-intra{color:#f2f2f2;font-weight:500;font-size:15px;padding-top:30px;width:100%;display:block;}';
+            $message .= '               table.tva-intra tbody{padding-top:30px;width:100%;display:block;}';
+            $message .= '               table.tva-intra tbody tr{padding-top:30px;width:100%;display:block;color:#f2f2f2;}';
+            $message .= '               table.order-billing-title{padding-top:30px;width:100%;display:block;}';
+            $message .= '               table.order-billing-title td{color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;}';
+            $message .= '               table.order-billing{width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;}';
+            $message .= '               table.order-shipping-title{padding-top:30px;width:100%;display:block;}';
+            $message .= '               table.order-shipping-title td{color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;}';
+            $message .= '               table.order-shipping{width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;}';
+            $message .= '           </style>';
+            $message .= '       </head>';
+            $message .= '   <![endif]-->';
             $message .= '   <body style="background:#0e0e0e;padding:15px;border:2px solid #59b7b3;">';
-            $message .= '       <table cellspacing="0" cellpadding="10" border="0" style="background:#0e0e0e;font-family:Roboto;width:100%;">';
+            $message .= '       <table class="main-container" cellspacing="0" cellpadding="10" border="0" style="background:#0e0e0e;font-family:Roboto;width:100%;">';
             $message .= '           <tr>';
             $message .= '               <td style="word-break:break-word;">';
             $message .=                     headerPart();
@@ -273,7 +346,7 @@
         logEvent('type : '.$type);
         logEvent('statut : '.$statut);
         $retour = '';
-        $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
+        $retour .= '<table class="order-received" style="padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tr>';
         $retour .= '        <td style="color:#f2f2f2;font-size:18px;font-weight:400;word-break:break-word;">';
         if($for == 'client')
@@ -305,7 +378,7 @@
         $retour .= '    </tr>';
         $retour .= '</table>';
         if($for == 'client' && $type == 'sepa') {
-            $retour .= '<table style="width:400px;max-width:400px;border:2px solid #f2f2f2;width:100%;display:block;">';
+            $retour .= '<table class="received-sepa" style="width:400px;max-width:400px;border:2px solid #f2f2f2;width:100%;display:block;">';
             $retour .= '    <tbody class="SEPA">';
             $retour .= '        <tr style="color:#f2f2f2;font-size:18px;font-weight:400;" class="RIB">';
             $retour .= '            <td style="width:80px;word-break:break-word;">RIB</td>';
@@ -339,19 +412,19 @@
             logEvent('delivery_tax : '.$delivery_tax);
             logEvent('pays : '.$pays);
             $retour = '';
-            $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
+            $retour .= '<table class="order-details-title" style="padding-top:30px;width:100%;display:block;">';
             $retour .= '    <tr>';
             $retour .= '        <td style="color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;">';
             $retour .= '            Détails de la commande';
             $retour .= '        </td>';
             $retour .= '    </tr>';
             $retour .= '</table>';
-            $retour .= '<table style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
+            $retour .= '<table class="order-details" style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
             $retour .= '    <thead>';
             $retour .= '        <tr>';
-            $retour .= '            <td style="width:250px;word-break:break-word;">Article</td>';
-            $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">Quantité</td>';
-            $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">Total</td>';
+            $retour .= '            <td class="thead-article" style="width:250px;word-break:break-word;">Article</td>';
+            $retour .= '            <td class="thead-quantity" style="width:150px;text-align:center;word-break:break-word;">Quantité</td>';
+            $retour .= '            <td class="thead-total" style="width:150px;text-align:center;word-break:break-word;">Total</td>';
             $retour .= '        </tr>';
             $retour .= '    </thead>';
             $retour .= '    <tbody style="width:100%;text-align:center;">';
@@ -368,22 +441,22 @@
                     logEvent(print_r($e));
                 }
                 $retour .= '        <tr style="width:100%;text-align:center;">';
-                $retour .= '            <td style="width:250px;word-break:break-word;">'.$article['Article']['Name'].'</td>';
-                $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">'.$article['Quantite'].'</td>';
-                $retour .= '            <td style="width:150px;text-align:center;word-break:break-word;">'.($article['Quantite'] * $article['Article']['price']).'€</td>';
+                $retour .= '            <td class="tbody-article" style="width:250px;word-break:break-word;">'.$article['Article']['Name'].'</td>';
+                $retour .= '            <td class="tbody-quantity" style="width:150px;text-align:center;word-break:break-word;">'.$article['Quantite'].'</td>';
+                $retour .= '            <td class="tbody-total" style="width:150px;text-align:center;word-break:break-word;">'.($article['Quantite'] * $article['Article']['price']).'€</td>';
                 $retour .= '        </tr>';
                 $tva += $article['Quantite'] * $article['Article']['price'];
             }
             $retour .= '    </tbody>';
             $retour .= '</table>';
-            $retour .= '<table style="width:550px;max-width:550px;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
+            $retour .= '<table class="order-delivery" style="width:550px;max-width:550px;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
             $retour .= '    <tbody style="width:100%;text-align:center;">';
             if($delivery_tax != null && is_numeric($delivery_tax))
             {        	
                 $retour .= '      <tr style="width:100%;text-align:center;">';
-                $retour .= '          <td style="width:250px;word-break:break-word;"></td>';
-                $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">Livraison</td>';
-                $retour .= '          <td style="width:150px;text-align:center;word-break:break-word;">'.$delivery_tax.'€</td>';
+                $retour .= '          <td class="tbody-delivery-1" style="width:250px;word-break:break-word;"></td>';
+                $retour .= '          <td class="tbody-delivery-2" style="width:150px;text-align:center;word-break:break-word;">Livraison</td>';
+                $retour .= '          <td class="tbody-delivery-3" style="width:150px;text-align:center;word-break:break-word;">'.$delivery_tax.'€</td>';
                 $retour .= '      </tr>';
             }
             if($total != null && is_numeric($total))
@@ -422,7 +495,7 @@
     {
         logEvent('orderTVAIntra');
         $retour = '';
-        $retour .= '<table style="color:#f2f2f2;font-weight:500;font-size:15px;padding-top:30px;width:100%;display:block;">';
+        $retour .= '<table class="tva-intra" style="color:#f2f2f2;font-weight:500;font-size:15px;padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tbody style="padding-top:30px;width:100%;display:block;">';
         $retour .= '        <tr style="padding-top:30px;width:100%;display:block;color:#f2f2f2;">';
         if(tva_intra($pays))
@@ -452,7 +525,7 @@
         logEvent('orderBilling');
         logEvent(json_encode($facturation));
         $retour = '';
-        $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
+        $retour .= '<table class="order-billing-title" style="padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
         $retour .= '            <td style="color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;">';
@@ -461,7 +534,7 @@
         $retour .= '        </tr>';
         $retour .= '    </tbody>';
         $retour .= '</table>';
-        $retour .= '<table style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
+        $retour .= '<table class="order-billing" style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
         $retour .= '            <td style="word-break:break-word;">Facturé à</td>';
@@ -502,14 +575,14 @@
         logEvent('orderShipping');
         logEvent(json_encode($livraison));
         $retour = '';
-        $retour .= '<table style="padding-top:30px;width:100%;display:block;">';
+        $retour .= '<table class="order-shipping-title" style="padding-top:30px;width:100%;display:block;">';
         $retour .= '    <tr>';
         $retour .= '        <td style="color:#f2f2f2;font-size:22px;font-weight:500;word-break:break-word;">';
         $retour .= '            Détails de facturation';
         $retour .= '        </td>';
         $retour .= '    </tr>';
         $retour .= '</table>';
-        $retour .= '<table style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
+        $retour .= '<table class="order-shipping" style="width:550px;max-width:550px;border:2px solid #f2f2f2;width:100%;display:block;color:#f2f2f2;font-size:16px;font-weight:400;">';
         $retour .= '    <tbody>';
         $retour .= '        <tr>';
         $retour .= '            <td style="word-break:break-word;">Facturé à</td>';
@@ -551,7 +624,17 @@
     function fullContactMail():string
     {
         $message = '';
+        $message = $message.'<!DOCTYPE html>';
         $message = $message.'<html style="width:100%;">';
+        $message = $message.'   <head>';
+        $message = $message.'      <title></title>';
+        $message = $message.'      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+        $message = $message.'      <meta name="viewport" content="width=device-width, initial-scale=1">';
+        $message = $message.'      <meta http-equiv="X-UA-Compatible" content="IE=edge" />';
+        $message = $message.'      <style type="text/css">';
+        $message = $message.'          ';
+        $message = $message.'      </style>';
+        $message = $message.'   </head>';
         $message = $message.'   <body>';
         $message = $message.'       <table cellspacing="0" cellpadding="10" border="0">';
         $message = $message.'           <tr>';
@@ -632,7 +715,17 @@
     function contactUsMail():string
     {
         $message = '';
+        $message = $message.'<!DOCTYPE html>';
         $message = $message.'<html style="width:100%;">';
+        $message = $message.'   <head>';
+        $message = $message.'      <title></title>';
+        $message = $message.'      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+        $message = $message.'      <meta name="viewport" content="width=device-width, initial-scale=1">';
+        $message = $message.'      <meta http-equiv="X-UA-Compatible" content="IE=edge" />';
+        $message = $message.'      <style type="text/css">';
+        $message = $message.'          ';
+        $message = $message.'      </style>';
+        $message = $message.'   </head>';
         $message = $message.'   <body>';
         $message = $message.'       <table cellspacing="0" cellpadding="10" border="0">';
         $message = $message.'           <tr>';
