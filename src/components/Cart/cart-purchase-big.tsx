@@ -383,7 +383,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     required
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                    J'accepte les CGV
                 </label>
             </div>
             {/* VALIDATE */}

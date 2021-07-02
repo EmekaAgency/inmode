@@ -88,7 +88,9 @@ const ContactUs = () => {
             body: JSON.stringify(body)
         };
         fetch(
+            // SWITCH LOCALHOST
             `https://inmodemd.fr/back/app.php`,
+            // `http://localhost/inmode/back/app.php`,
             _request_init
         )
         .then((promise) => {

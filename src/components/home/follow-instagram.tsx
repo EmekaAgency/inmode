@@ -7,27 +7,27 @@ import { InstaPost } from "../../functions/instagram";
 
 const FollowInstagram = ({insta_id}:FollowInstagram) => {
 
-    // const [datas] = React.useState(useStaticQuery(graphql`
-    //     {
-    //         allInstaNode(sort: {fields: timestamp, order: DESC}, limit: 4, filter: {username: {eq: "1317505554"}}) {
-    //             edges {
-    //                 node {
-    //                     comments
-    //                     likes
-    //                     caption
-    //                     localFile {
-    //                         childImageSharp {
-    //                             fluid {
-    //                                 srcWebp
-    //                                 srcSetWebp
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // `).allInstaNode.edges);
+    const [datas] = React.useState(useStaticQuery(graphql`
+        {
+            allInstaNode(sort: {fields: timestamp, order: DESC}, limit: 4, filter: {username: {eq: "1317505554"}}) {
+                edges {
+                    node {
+                        comments
+                        likes
+                        caption
+                        localFile {
+                            childImageSharp {
+                                fluid {
+                                    srcWebp
+                                    srcSetWebp
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `).allInstaNode.edges);
 
     // console.log(scrapingInstagramPosts(insta_id));
     // console.log(InstagramPosts(insta_id));
@@ -129,7 +129,7 @@ const FollowInstagram = ({insta_id}:FollowInstagram) => {
                     </a>
                 </h2>
                 <div className="wrapper">
-                    {/* {datas && datas.map((post, key) => {
+                    {datas && datas.map((post, key) => {
                         return(
                             <div key={key} className="elem">
                                 <img
@@ -141,7 +141,7 @@ const FollowInstagram = ({insta_id}:FollowInstagram) => {
                                 <a href="https://www.instagram.com/inmodeaesthetics/" className="zone-link" target="_blank" rel="noreferrer" title="Suivez Inmode sur Instagram"></a>
                             </div>
                         );
-                    })} */}
+                    })}
                 </div>
             {/* </div> */}
         </div>

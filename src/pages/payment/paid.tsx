@@ -37,6 +37,7 @@ const PaymentPaidPage = () => {
     }, []);
 
     const order_load = async(reference:string) => {
+        console.log('order_load with reference : ', reference);
         if(!reference) {return false;}
         if(typeof reference != 'string') {return false;}
         let { status, order } = await (await fetch(load_url, {

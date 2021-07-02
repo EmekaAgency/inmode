@@ -96,6 +96,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
 app.use(express.json());
+app.use((req, res, next) => {
+    console.log(`${req.headers.host}${req.url}`);
+    next();
+});
 
 //////////////////////////////
 
@@ -348,6 +352,7 @@ app.get('/back/orders/test/order-delete'/*, auth*/, async (req, res) => {
 //////////////////////////////////////////////////////////////////////
 
 app.post('/back/orders/order-create'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-create');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
@@ -414,6 +419,7 @@ app.post('/back/orders/order-create'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-payment-update');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
@@ -484,6 +490,7 @@ app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-update');
     if(!req.body || req.body.length == 0) {
         console.log('Form empty. Error 400');
@@ -542,6 +549,7 @@ app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-load'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-load');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
@@ -594,6 +602,7 @@ app.post('/back/orders/order-load'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-delete');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
@@ -646,10 +655,11 @@ app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-signature'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-signature');
     // console.log(JSON.stringify(req.body));
-    console.log('req.body', req.body);
-    console.log('req.body.string', req.body.string);
+    // console.log('req.body', req.body);
+    // console.log('req.body.string', req.body.string);
     try {
         console.log('try');
         console.log(`BO_KEY : ${process.env.BO_KEY}`);
@@ -670,7 +680,7 @@ http.listen(3000, () => {
     console.log('listening on *:3000');
     console.log(`Environment : ${process.env.NODE_ENV}`);
     // console.log(`BO_KEY : ${process.env.BO_KEY}`);
-    // console.log(`STRAPI_URL : ${process.env.STRAPI_URL}`);
+    console.log(`BACK_URL : ${process.env.STRAPI_URL}`);
     // console.log(`STRAPI_ID : ${process.env.STRAPI_ID}`);
     // console.log(`STRAPI_PASS : ${process.env.STRAPI_PASS}`);
     // console.log(`BEARER : ${process.env.BEARER}`);

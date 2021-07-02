@@ -86,8 +86,8 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     const [pay_params, setPayParams] = React.useState({
         signature: "",
         actionMode: "INTERACTIVE",
-        // vads_ctx_mode: "TEST",
-        vads_ctx_mode: "PRODUCTION",
+        vads_ctx_mode: "TEST",
+        // vads_ctx_mode: "PRODUCTION",
         currency: currencies.EUR,
         pageAction: "PAYMENT",
         siteId: "",
@@ -256,7 +256,7 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
         }, 0);
     };
 
-    const total_DELIVER = ():string => {return count_total() === 0 ? (0).toFixed(2) : (10).toFixed(2);}
+    const total_DELIVER = ():string => {return count_total() === 0 ? (0).toFixed(2) : (50).toFixed(2);}
     const total_HT = ():string => {return count_total().toFixed(2);}
     const hasTVAIntra = ():boolean => {
         let i = 0;
@@ -276,10 +276,10 @@ const CartProvider = ({ requested = "", children }:{requested:string, children:R
     }
     /*PAS DE FRAIS DE LIVRAISON*/
     // const total_TVA = ():string => {return (count_total() * 0.2 * 0).toFixed(2);}
-    // const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() && false ? 10 : 0)).toFixed(2);}
+    // const total_TTC = ():string => {return ((count_total() * (hasTVA() ? 1.2 : 1)) + (pay_delivery() && false ? 50 : 0)).toFixed(2);}
     // /*FRAIS DE LIVRAISON*/
     const total_TVA = ():string => {return hasTVAIntra() ? (0).toFixed(2) : (count_total() * 0.2).toFixed(2);}
-    const total_TTC = ():string => {return ((count_total() * (hasTVAIntra() ? 1 : 1.2)) + (pay_delivery() ? 10 : 0)).toFixed(2);}
+    const total_TTC = ():string => {return ((count_total() * (hasTVAIntra() ? 1 : 1.2)) + (pay_delivery() ? 50 : 0)).toFixed(2);}
     
     /*PAS DE FRAIS DE LIVRAISON*/
     // const pay_delivery = ():boolean => {return count_total() * 1.2 < 500 && false ? true : false;}

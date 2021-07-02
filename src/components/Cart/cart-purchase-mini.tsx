@@ -429,7 +429,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     form={formOpened ? otherAddress ? "step-3-part" : "step-2-part" : ''}
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                    J'accepte les CGV
                 </label>
             </div>
             {/* VALIDATE */}

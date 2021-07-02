@@ -85,6 +85,8 @@ function filter(datas:InmodePanel_Order_Interface):InmodePanel_Order_Interface {
 
 export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Interface[], total:number, sepa:boolean = false, country:string):InmodePanel_Order_Interface {
 
+    console.log(_datas);
+
     let _temp:InmodePanel_Order_Interface = {
         Reference: _datas.vads_order_id,
         Date: date_from_transdate(_datas.vads_trans_date),
@@ -122,7 +124,7 @@ export function create_strapi_order(_datas:SogecommerceOrder, cart:Article_Inter
         Firstname: _datas.vads_cust_first_name,
         Lastname: _datas.vads_cust_last_name,
         Society: _datas.vads_cust_legal_name,
-        DeliveryTax: _datas.vads_product_qty9999 && _datas.vads_product_qty9999 == 1 ? 10 : 0,
+        DeliveryTax: _datas.vads_product_qty0 && _datas.vads_product_qty0 == 1 ? 50 : 0,
         Paid: false,
         Status: 'UNDER_VERIFICATION',
         Total: ((_datas.vads_amount ? typeof _datas.vads_amount == 'string' ? parseInt(_datas.vads_amount, 10) : _datas.vads_amount : 0)/100).toFixed(2) || total,

@@ -435,6 +435,7 @@ export interface SogecommerceOrder {
     vads_url_cancel?: string;// "https://www.inmodemd.fr/payment/cancel"
     vads_url_refused?: string;// "https://www.inmodemd.fr/payment/refused"
     vads_url_success?: string;// "https://www.inmodemd.fr/payment/paid"
+    vads_product_qty0?: number;// Frais de livraison
     vads_product_qty9999?: number;
     vads_version: string;// "V2"
 };

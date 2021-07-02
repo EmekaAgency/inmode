@@ -76,7 +76,9 @@ const ContactForm = ({ from }:ContactForm) => {
             body: JSON.stringify(body),
         };
         fetch(
+            // SWITCH LOCALHOST
             `https://inmodemd.fr/back/app.php`,
+            // `http://localhost/inmode/back/app.php`,
             request_init,
         )
         .then((promise) => {

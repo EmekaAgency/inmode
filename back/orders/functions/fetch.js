@@ -43,13 +43,13 @@ function _headers(token, _bearer = true, _options = {}) {
     console.log('_request');
     console.log(`method : ${method}`);
     console.log(`url : ${url}`);
-    console.log(JSON.stringify(body));
+    // console.log(JSON.stringify(body));
     let promise;
     switch(method) {
         case "POST":
         case "PUT":
             if(_bearer == true) {
-                console.log({method: method,url: url,headers: _headers(token),data: body,});
+                // console.log({method: method,url: url,headers: _headers(token),data: body,});
                 promise = axios({
                     method: method,
                     url: url,
@@ -69,7 +69,7 @@ function _headers(token, _bearer = true, _options = {}) {
         case "DELETE":
         case "GET":
             if(_bearer == true) {
-                console.log({method: method,url: url,headers: bearer(token),});
+                // console.log({method: method,url: url,headers: bearer(token),});
                 promise = axios({
                     method: method,
                     url: url,
