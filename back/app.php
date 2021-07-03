@@ -89,7 +89,10 @@
                 logEvent('$_POST action = \'full-contact\'');
                 if(isset($_POST['speciality'], $_POST['action']))
                 {
-                    tryMail('mael.fallet@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact');
+                    tryMail('mael.fallet@hotmail.fr', $_POST['speciality'], $_POST['action'], 'full-contact', false);
+                    tryMail('mael.fallet@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact', false);
+                    tryMail('lesieutre.kevin@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact', false);
+                    // tryMail('contactinmode@gmail.com', $_POST['speciality'], $_POST['action'], 'full-contact', false);
                     // tryMail('contact.fr@inmodemd.com', $_POST['speciality'], $_POST['action'], 'full-contact');
                 }
                 else
@@ -103,7 +106,10 @@
                 logEvent('$_POST action = \'contact-us\'');
                 if(isset($_POST['subject'], $_POST['action']))
                 {
-                    tryMail('mael.fallet@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us');
+                    tryMail('mael.fallet@hotmail.fr', $_POST['subject'], $_POST['action'], 'contact-us', false);
+                    tryMail('mael.fallet@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us', false);
+                    tryMail('lesieutre.kevin@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us', false);
+                    // tryMail('contactinmode@gmail.com', $_POST['subject'], $_POST['action'], 'contact-us', false);
                     // tryMail('contact.fr@inmodemd.com', $_POST['subject'], $_POST['action'], 'contact-us');
                 }
                 else {
@@ -116,8 +122,31 @@
                 logEvent('$_POST action = \'order-mail\'');
                 if(isset($_POST['order'], $_POST['email'], $_POST['for'], $_POST['action'], $_POST['type']))
                 {
-                        tryMail('mael.fallet@gmail.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
-                        // tryMail($_POST['email'] , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    if(isset($_POST['order']['Livraison']) && $_POST['for'] == 'client') {
+                        tryMail('mael.fallet@hotmail.fr', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        tryMail('lesieutre.kevin@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        // tryMail('contactinmode@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        // tryMail($_POST['order']['Livraison']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    }
+                    if(isset($_POST['order']['Facturation']) && $_POST['for'] == 'client') {
+                        tryMail('mael.fallet@hotmail.fr', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        tryMail('lesieutre.kevin@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        // tryMail('contactinmode@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        // tryMail($_POST['order']['Facturation']['Mail'], 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    }
+                    if($_POST['for'] == 'pro') {
+                        tryMail('mael.fallet@hotmail.fr', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        tryMail('mael.fallet@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        tryMail('lesieutre.kevin@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        // tryMail('contactinmode@gmail.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail', false);
+                        // tryMail('contact.fr@inmodemd.com', 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    }
+                    tryMail('mael.fallet@hotmail.fr' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    tryMail('mael.fallet@gmail.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    tryMail('lesieutre.kevin@gmail.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
+                    // tryMail('contact.fr@inmodemd.com' , 'Commande '.$_POST['order']['Reference'], $_POST['action'], 'order-mail');
                 }
                 else
                 {
@@ -129,7 +158,10 @@
             {
                 logEvent('$_POST action = \'fail-mail\'');
                 if(isset($_POST['type'], $_POST['for'], $_POST['action'])) {
-                    tryMail('mael.fallet@gmail.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
+                    tryMail('mael.fallet@hotmail.fr' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail', false);
+                    tryMail('mael.fallet@gmail.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail', false);
+                    tryMail('lesieutre.kevin@gmail.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail', false);
+                    // tryMail('contactinmode@gmail.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail', false);
                     // tryMail('contact.fr@inmodemd.com' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
                     // tryMail('inmode@emeka.fr' , 'Erreur envoi de mail '.$_POST['for'], $_POST['action'], 'fail-mail');
                 }

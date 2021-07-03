@@ -27,12 +27,16 @@ import {
 import LoadingGIF from '../LoadingGIF';
 
 import './mini.css';
+import { oneById } from "../../functions/selectors";
+import { useWindowSize } from "../../functions/window-size";
 
 const CartPurchaseMini = ({  }:CartPurchaseMini) => {
 
     const images = useImages();
 
     const cart = useCart();
+
+    const size = useWindowSize();
 
     const [formOpened, setFormOpened] = React.useState(false);
     const [otherAddress, setOtherAddress] = React.useState(false);
@@ -52,9 +56,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
         if(document != undefined) {
             let current:HTMLInputElement = e.currentTarget;
-            console.log(`current : ${current.id}`);
-            let other:HTMLInputElement = document.getElementById(current.id == 'sepa' ? 'soge' : 'sepa');
-            console.log(`other : ${other.id}`);
+            let other:any = oneById(current.id == 'sepa' ? 'soge' : 'sepa');
             other.checked = !current.checked;
             return true;
         }
@@ -64,24 +66,19 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     const sendForm = async(e:React.FormEvent<HTMLFormElement>, same_address:boolean = true) => {
         e.preventDefault();
         if(!isSubmit) {
-            let _mini1 = document.getElementById('mini-submit-1');if(_mini1) _mini1.disabled = true;
-            let _mini2 = document.getElementById('mini-submit-2');if(_mini2) _mini2.disabled = true;
-            let _mini3 = document.getElementById('mini-submit-3');if(_mini3) _mini3.disabled = true;
-            let _sepa:HTMLInputElement | any = document.getElementById('sepa');
+            let _mini1:any = oneById('mini-submit-1');if(_mini1) _mini1.disabled = true;
+            let _mini2:any = oneById('mini-submit-2');if(_mini2) _mini2.disabled = true;
+            let _mini3:any = oneById('mini-submit-3');if(_mini3) _mini3.disabled = true;
+            let _sepa:any = oneById('sepa');
             let fields:HTMLElement[] | any[] = []; 
-            // fields.push([...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_'))]);
-            // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && e.value));
             if(same_address) {
-                console.log(Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_')));
-                // console.log(Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
-                fields = [...Array.from(document.forms['step-2-part'].elements).filter((e:HTMLElement | Element | any) => e.id.includes('vads_'))];
-                // fields.push(...Array.from(document.forms['step-2-part'].elements).filter(e => e.id.includes('vads_') && e.value));
+                let _form2 = document.forms.namedItem('step-2-part');
+                fields = [...Array.from(_form2 ? _form2.elements : []).filter((e:HTMLElement | Element | any) => e.id.includes('vads_'))];
             }
             else {
-                console.log([...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))]);
-                // console.log(Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
-                fields = [...fields, ...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_'))];
-                // fields.push(...Array.from([...document.forms['step-2-part'].elements, ...document.forms['step-3-part'].elements]).filter(e => e.id.includes('vads_') && e.value));
+                let _form2 = document.forms.namedItem('step-2-part');
+                let _form3 = document.forms.namedItem('step-3-part');
+                fields = [...fields, ...Array.from([...Array.from(_form2 ? _form2.elements : []), ...Array.from(_form3 ? _form3.elements : [])]).filter(e => e.id.includes('vads_'))];
             }
             setIsSubmit(true);
             setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
@@ -113,11 +110,6 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
     React.useEffect(() => {
         if(isSubmit === true) {
             if(isCreated === true) {
-                // setIsSubmit(false);
-                // setIsCreated(false);
-                // setFormOpened(false);
-                // setOtherAddress(false);
-                // cart.hasDifferentShipping(false);
                 setIsSubmit(false);
                 setIsCreated(false);
                 setFormOpened(false);
@@ -125,21 +117,23 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 cart.hasDifferentShipping(false);
                 setOtherAddressOpened(false);
                 if(typeof document !== "undefined") {
-                    document.forms["step-2-part"] && document.forms["step-2-part"].reset();
-                    document.forms["step-3-part"] && document.forms["step-3-part"].reset();
-                    let _sepa = document.getElementById('sepa')
+                    let _temp2 = document.forms.namedItem("step-2-part");
+                    _temp2 && _temp2.reset();
+                    let _temp3 = document.forms.namedItem("step-3-part");
+                    _temp3 && _temp3.reset();
+                    let _sepa:any = oneById('sepa');
                     if(_sepa) {
                         _sepa.checked = _sepa.checked ? true : false;
-                    } // removeAttribute('checked');
-                    let _soge = document.getElementById('soge')
+                    }
+                    let _soge:any = oneById('soge');
                     if(_soge) {
                         _soge.checked = _soge.checked ? true : false;
-                    } // setAttribute('checked', 'true');
-                    let _facture = document.getElementById('facture');
+                    }
+                    let _facture:any = oneById('facture');
                     if(_facture) {
                         _facture.checked = false;
                     }
-                    let _terms = document.getElementById('terms');
+                    let _terms:any = oneById('terms');
                     if(_terms) {
                         _terms.checked = false;
                     }
@@ -150,10 +144,6 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
             }
         }
     }, [isCreated]);
-
-    // console.log(`isSubmit : ${isSubmit}, typeof isSubmit : ${typeof isSubmit}`);
-    // console.log(`isCreated : ${isCreated}, typeof isCreated : ${typeof isCreated}`);
-    // console.log(`formOpened : ${formOpened}, typeof formOpened : ${typeof formOpened}`);
 
     return (
         <div
@@ -252,14 +242,14 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         {/*PAS DE FRAIS DE LIVRAISON*/}
-                        <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div>
+                        {/* <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div> */}
                         {/*FRAIS DE LIVRAISON*/}
-                        {/* <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div> */}
+                        <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div>
                         {cart.pay_delivery() ? <div className="price">
                             {/*PAS DE FRAIS DE LIVRAISON*/}
-                            {(cart.delivery_tax() && false) || 0}
+                            {/* {(cart.delivery_tax() && false) || 0} */}
                             {/*FRAIS DE LIVRAISON*/}
-                            {/* {cart.delivery_tax()} */}
+                            {cart.delivery_tax()}
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
@@ -321,26 +311,18 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     className={`neumorphic ${otherAddress && (' other-address' || '')}`}
                 >
                     <div id="step-1-part" className="unmorphic custom-scrollbar">
-                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
-                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
-                        {/* <input className="required form-field step-1" name="name" type="text" required placeholder="Nom"/> */}
+                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: `10px 0 20px ${size.width <1200 ? '5%' : '20px'}`, display: 'inline-block'}} required={true}/>
+                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                         <SocietyField classes="form-field step-1" />
-                        {/* <input className="form-field step-1" name="society" type="text" placeholder="Société"/> */}
                         <AddressLine1Field classes="required form-field step-1" required={true}/>
-                        {/* <AddressLine2Field classes="required form-field step-1"/> */}
                         <CountryField classes="required form-field step-1"/>
                         {
                             cart.differentAddress == false && cart.getTVAIntra() && otherAddress == false && <IntraTVAField classes="required form-field step-1" required={true}/>
                         }
-                        {/* <textarea className="required form-field step-1" name="adresse1" type="text" required placeholder="Adresse" rows="3"></textarea> */}
                         <ZipField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="zip" type="text" required placeholder="Code postal"/> */}
                         <CityField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="city" type="text" required placeholder="Ville"/> */}
                         <MobilePhoneField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="phone" type="tel" required placeholder="Téléphone"/> */}
                         <MailField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="mail" type="email" required placeholder="Mail"/> */}
                     </div>
                 </div>
                 {(formOpened && (!otherAddress || (otherAddress && !otherAddressOpened))) && <button
@@ -376,27 +358,18 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     <hr className="unmorphic"/>
                 </div>
                 <div className="form custom-scrollbar">
-                    <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
-                    <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
-                    {/* <input className="required form-field step-2" name="other-name" type="text" required placeholder="Nom"/> */}
+                    <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: `10px 0 20px ${size.width <1200 ? '5%' : '20px'}`, display: 'inline-block'}} required={true}/>
+                    <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                     <DeliverySocietyField classes="form-field step-2" />
-                    {/* <input className="form-field step-2" name="other-society" type="text" placeholder="Société"/> */}
                     <DeliveryAddressLine1Field classes="required form-field step-2" required={true}/>
-                    {/* <DeliveryAddressLine2Field classes="required form-field step-2"/> */}
                     <DeliveryCountryField classes="required form-field step-2"/>
                     {
                         cart.differentAddress == true && cart.getTVAIntra() && otherAddress == true && <IntraTVAField classes="required form-field step-1" required={true}/>
                     }
-                    {/* <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Adresse" rows="3"></textarea> */}
                     <DeliveryZipField classes="required form-field step-2" required={true}/>
-                    {/* <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Code postal"/> */}
                     <DeliveryCityField classes="required form-field step-2" required={true}/>
-                    {/* <input className="required form-field step-2" name="other-city" type="text" required placeholder="Ville"/> */}
                     <DeliveryPhoneField classes="required form-field step-2" required={true}/>
-                    {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/> */}
-                    {/* <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/> */}
                     <DeliveryMailField classes="form-field step-2" required={false}/>
-                    {/* <input className="form-field step-2" name="mail" type="email" placeholder="Mail"/> */}
                 </div>
                 {(formOpened && otherAddress && otherAddressOpened) && <button
                     type="submit"
@@ -456,7 +429,7 @@ const CartPurchaseMini = ({  }:CartPurchaseMini) => {
                     form={formOpened ? otherAddress ? "step-3-part" : "step-2-part" : ''}
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                    J'accepte les CGV
                 </label>
             </div>
             {/* VALIDATE */}

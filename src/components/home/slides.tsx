@@ -5,6 +5,7 @@ import { Link } from "gatsby";
 import Carousel from "../Carousel";
 import { useImages } from '../contexts/images-provider';
 import { InmodePanel_Product_Interface, FlickityOptions_Interface } from "../interfaces";
+import { oneById } from "../../functions/selectors";
 
 const Slides = ({from}:Slides) => {
 
@@ -31,7 +32,7 @@ const Slides = ({from}:Slides) => {
     }
 
     const view_product = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, pos:number) => {
-        let _main = document.getElementById('main');
+        let _main:any = oneById('main');
         e.preventDefault();
         if(_main == null) {
             return false;
@@ -54,8 +55,7 @@ const Slides = ({from}:Slides) => {
     
     const close_view = (e:React.MouseEvent<HTMLDivElement, MouseEvent>, elem:any) => {
         e.preventDefault();
-        console.log(elem);
-        let _main = document.getElementById('main');
+        let _main:any = oneById('main');
         if(_main == null) {
             return false;
         }

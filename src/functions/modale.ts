@@ -1,48 +1,58 @@
 import { disableMainScroll, enableMainScroll } from './disable-scroll';
 
-function modale():HTMLElement {
+function modale():HTMLElement | null {
     return document.getElementById('modale');
 }
 
-function modaleContainer():HTMLElement {
+function modaleContainer():HTMLElement | null {
     return document.getElementById('modale-container');
 }
 
-function modaleContent():HTMLElement {
+function modaleContent():HTMLElement | null {
     return document.getElementById('modale-content');
 }
 
-function modaleClose():HTMLElement {
+function modaleClose():HTMLElement | null {
     return document.getElementById('modale-close');
 }
 
 export function openModale(params:params) {
     disableMainScroll();
-    modale().classList.add('opened');
-    params.modaleClass != undefined && modale().classList.add(params.modaleClass);
-    params.contentClass != undefined && modaleContainer().classList.add(params.contentClass);
-    modaleContent().innerHTML = closePart() + params.content;
+    let _temp = modale();
+    _temp && _temp.classList.add('opened');
+    _temp = modale();
+    params.modaleClass != undefined && _temp && _temp.classList.add(params.modaleClass);
+    _temp = modaleContainer();
+    params.contentClass != undefined && _temp && _temp.classList.add(params.contentClass);
+    _temp = modaleContent();
+    if(_temp) _temp.innerHTML = closePart() + params.content;
     params.onOpen && params.onOpen();
-    modale().addEventListener('click', function(e:MouseEvent) {
-        if(e.target.id == 'modale') {
+    _temp = modale();
+    _temp && _temp.addEventListener('click', function(e:Event | MouseEvent) {
+        if(e.target && e.target.id == 'modale') {
             closeModale(params.onClose);
         }
     });
-    modale().addEventListener('keyup', function(e:KeyboardEvent) {
+    _temp = modale();
+    _temp && _temp.addEventListener('keyup', function(e:KeyboardEvent) {
         if(e.keyCode === 27) {
             closeModale(params.onClose);
         }
     });
-        modaleClose().addEventListener('click', function(e:MouseEvent) {
+        _temp = modaleClose();
+        _temp && _temp.addEventListener('click', function(e:MouseEvent) {
         closeModale(params.onClose);
     });
 }
 
-export function closeModale(onClose:Function = null) {
-    modale().classList.remove('opened');
-    modaleContainer().classList.remove(...modaleContainer().classList);
-    modaleContent().innerHTML = "";
-    onClose != null && onClose();
+export function closeModale(onClose?:Function) {
+    let _temp = modale();
+    _temp && _temp.classList.remove('opened');
+    _temp = modaleContainer();
+    _temp && _temp.classList.remove(..._temp.classList);
+    _temp = modaleContent();
+    if(_temp) _temp.innerHTML = "";
+    onClose != undefined && onClose();
     enableMainScroll();
 }
 
@@ -52,8 +62,14 @@ function closePart() {
 
 // Payment SEPA Modale
 
-export function paymentSEPA(datas:paymentSEPA) {
-    console.log('paymentSEPA');
+export function paymentSEPA(datas:paymentSEPA = {
+    total: "NaN€",
+    RIB: "NaNNaN NaNNaN NaNNaN NaNNaN",
+    BIC: "NaNNaNNaNNaN",
+    reference: "NaNNaN",
+    onOpen: undefined,
+    onClose: undefined,
+}) {
     return {
         onOpen: datas.onOpen,
         onClose: datas.onClose,

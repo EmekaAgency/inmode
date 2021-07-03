@@ -16,13 +16,13 @@ module.exports = {
     og_description: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     og_image: ``,
     og_url: `https://inmodemd.fr/`,
-    og_site_name: `InModeMD France`,
+    og_site_name: `InModeMD FR`,
     twitter_card: `summary_large_image`,
     twitter_title: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
     twitter_description: `InMode offers cutting edge medical devices for minimally-invasive & non-invasive procedures that provide amazing results for the patient and the practice.`,
-    twitter_site: `@InModeMDFrance`,
+    twitter_site: `@InModeMD_FR`,
     twitter_image: ``,
-    twitter_creator: `@InModeMDFrance`,
+    twitter_creator: `@InModeMD_FR`,
     msapplication_TileImage: ``,
     shop_id: `${process.env.SHOP_ID}`,
     url_success: `${process.env.URL_SUCCESS}`,
@@ -33,10 +33,17 @@ module.exports = {
     url_order_load: `${process.env.URL_ORDER_LOAD}`,
     url_order_signature: `${process.env.URL_ORDER_SIGNATURE}`,
     instagram_id: `${process.env.INSTA_ID}`,
+    siteUrl: `https://inmodemd.fr`,
   },
   plugins: [
     // '@typescript-eslint/eslint-plugin',
     // 'react',
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+      }
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: "gatsby-plugin-anchor-links",

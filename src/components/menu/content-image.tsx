@@ -11,8 +11,8 @@ const MenuContentImage = ({menu, prop_key}:MenuContentImage) => {
     const content = (_menu:InmodePanel_Menu_Interface) => {
         return (
             <>
-                {format_string(_menu.title)}
-                {_menu.menus.length > 0 && _menu.menus.map((sub, key_sub) => {
+                {format_string(_menu.title || '')}
+                {_menu.menus && _menu.menus.length > 0 && _menu.menus.map((sub, key_sub) => {
                         return (<Menu key={key_sub} prop_key={key_sub} menu={sub}/>);
                     })
                 }
@@ -24,11 +24,11 @@ const MenuContentImage = ({menu, prop_key}:MenuContentImage) => {
         <>
             {menu.url ?
                 menu.internal_link ?
-                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" to={menu.url || "#"} title={format_string(menu.title)}>
+                    <Link onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" to={menu.url || "#"} title={format_string(menu.title || '')}>
                         {content(menu)}
                     </Link>
                     :
-                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" href={menu.url || "#"} target="_blank" rel="noreferrer" title={format_string(menu.title)}>
+                    <a onClick={(e) => {enableMainScroll();}} key={prop_key} className="menu-content menu-image" href={menu.url || "#"} target="_blank" rel="noreferrer" title={format_string(menu.title || '')}>
                         {content(menu)}
                     </a>
                 :

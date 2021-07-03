@@ -7,7 +7,7 @@
     'Prenom' => 'Maël',
     'Nom' => 'FALLET',
     'Societe' => null,
-    'FraisLivraison' => '10',
+    'FraisLivraison' => '50',
     'Total' => '1296',
     'published_at' => '2021-03-23T22:21:18.122Z',
     'created_at' => '2021-03-23T22:21:18.152Z',
@@ -331,5 +331,5 @@
         }
     }
     
-    echo orderMail($order);
+    // echo orderMail($order);
     // echo print_r($order);

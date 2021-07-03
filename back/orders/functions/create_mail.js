@@ -3,7 +3,9 @@ const {
 } = require('./order_object.js');
 const { _request } = require('./fetch.js');
 
-const PHP_back = 'https://inmode.emeka.fr/back/app.php';
+// SWITCH LOCALHOST
+const PHP_back = 'https://inmodemd.fr/back/app.php';
+// const PHP_back = 'http://localhost/inmode/back/app.php';
 
 const usedValues = [
     'Reference',
@@ -26,7 +28,7 @@ const usedValues = [
 function mailBody(_datas = null, _receiver = null, _type = null) {
     console.log('//////////////////');
     console.log('mailBody');
-    console.log(_datas);
+    // console.log(_datas);
     console.log(_receiver);
     console.log(_type);
     console.log('//////////////////');
@@ -61,17 +63,17 @@ function mailBody(_datas = null, _receiver = null, _type = null) {
     _body.action = 'order-mail';
     _body.for = _receiver;
     _body.type = _type;
-    console.log('$$$$$//////////////////$$$$$');
-    console.log('mailBody body');
-    console.log(_body);
-    console.log('$$$$$//////////////////$$$$$');
+    // console.log('$$$$$//////////////////$$$$$');
+    // console.log('mailBody body');
+    // console.log(_body);
+    // console.log('$$$$$//////////////////$$$$$');
     return _body;
 }
 
 async function MailPayment(order = null, _payment = null) {
     console.log('//////////////////');
     console.log('MailPayment');
-    console.log(order);
+    // console.log(order);
     console.log(_payment);
     console.log('//////////////////');
     if (order == null || typeof order != "object" || Array.isArray(order)) {

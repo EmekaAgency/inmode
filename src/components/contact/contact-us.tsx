@@ -3,6 +3,7 @@ import { useWindowSize } from "../../functions/window-size";
 import { disableMainScroll, enableMainScroll } from "../../functions/disable-scroll";
 import { useImages } from '../contexts/images-provider';
 import LoadingGIF from "../LoadingGIF";
+import { allByClass, oneById, oneBySelector } from "../../functions/selectors";
 
 const ContactUs = () => {
 
@@ -17,36 +18,43 @@ const ContactUs = () => {
 
     const close_form = () => {
         setFormOpen(false);
-        [].forEach.call(document.getElementsByClassName('contact-choice'), function(elem) {
+        let _choices = allByClass('contact-choice');
+        _choices && [].forEach.call(_choices, function(elem:HTMLElement) {
             elem.style.width = '250px';
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0.4s';
         });
-        document.getElementById('contact-form').classList.remove('custom-scrollbar');
-        document.querySelector('#contact-form .req-return.success').innerHTML = "";
-        document.querySelector('#contact-form .req-return.error').innerHTML = "";
+        let _temp:any = oneById('contact-form');
+        _temp && _temp.classList.remove('custom-scrollbar');
+        _temp = oneBySelector('#contact-form .req-return.success');
+        if(_temp) {_temp.innerHTML = "";}
+        _temp = oneBySelector('#contact-form .req-return.error');
+        if(_temp) {_temp.innerHTML = "";}
     }
 
-    const resolve_click = (e) => {
+    const resolve_click = (e:React.MouseEvent<HTMLDivElement, MouseEvent> | React.MouseEvent<HTMLImageElement, MouseEvent>) => {
         e.preventDefault();
         // WILL OPEN
-        !formOpen && resolve_contact();
+        !formOpen && resolve_contact(e);
         !formOpen && size.width <= 480 && disableMainScroll();
         // WILL CLOSE
         formOpen && close_form();
         formOpen && size.width <= 480 && enableMainScroll();
         setOpen(!open);
-        document.getElementById('contact-us').classList.toggle('opened');
+        let _temp:any = oneById('contact-us');
+        _temp && _temp.classList.toggle('opened');
         setFormOpen(!formOpen);
     }
 
     const resolve_contact = (e) => {
-        [].forEach.call(document.getElementsByClassName('contact-choice'), function(elem) {
+        let _choices = allByClass('contact-choice');
+        _choices && [].forEach.call(_choices, function(elem:HTMLElement) {
             elem.style.setProperty('width', '0px', 'important');
             elem.style.margin = '0px auto';
             elem.style.transitionDelay = '0s';
         });
-        document.getElementById('contact-form').classList.add('custom-scrollbar');
+        let _temp:any = oneById('contact-form');
+        _temp && _temp.classList.add('custom-scrollbar');
         setFormOpen(true);
     }
 
@@ -54,10 +62,13 @@ const ContactUs = () => {
 
     function send_form ( e ) {
         e.preventDefault();
-        document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
-        document.querySelector('#mini-contact-gif').style.display = 'inline-block';
+        let _temp:any = oneBySelector('#contact-mini .submit');
+        _temp && _temp.setAttribute('disabled', true);
+        _temp = oneBySelector('#mini-contact-gif');
+        if(_temp) {_temp.style.display = 'inline-block';}
         let body = new Object({});
-        Array.from(document.forms['contact-mini'].elements).map((elem) => {
+        let _form = document.forms.namedItem('contact-mini');
+        Array.from(_form ? _form.elements : []).forEach((elem) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "contact-us";
@@ -68,39 +79,51 @@ const ContactUs = () => {
             mode: 'cors',
             cache: 'default'
         };
-        document.querySelector("#contact-mini .req-return.success").innerHTML = "";
-        document.querySelector("#contact-mini .req-return.error").innerHTML = "";
+        _temp = oneBySelector("#contact-mini .req-return.success");
+        if(_temp) {_temp.innerHTML = "";}
+        _temp = oneBySelector("#contact-mini .req-return.error");
+        if(_temp) {_temp.innerHTML = "";}
+        let _request_init:RequestInit = {
+            ...fetch_post,
+            body: JSON.stringify(body)
+        };
         fetch(
+            // SWITCH LOCALHOST
             `https://inmodemd.fr/back/app.php`,
-            {
-                ...fetch_post,
-                body: JSON.stringify(body)
-            }
+            // `http://localhost/inmode/back/app.php`,
+            _request_init
         )
         .then((promise) => {
             return promise.json();
-            }
-        )
+        })
         .then((response) => {
-            document.querySelector('#mini-contact-gif').style.display = 'none';
+            let _temp:any = oneBySelector('#mini-contact-gif');
+            if(_temp) {_temp.style.display = 'none';}
             if(response.status === 'success' && response.type === 'client') {
-                document.querySelector('#contact-mini .submit').removeAttribute('disabled');
-                document.querySelector('#contact-mini .req-return.success').innerHTML = response.message;
-                document.forms['contact-mini'].reset();
+                _temp = oneBySelector('#contact-mini .submit');
+                _temp.removeAttribute('disabled');
+                _temp = oneBySelector('#contact-mini .req-return.success');
+                if(_temp) {_temp.innerHTML = response.message;}
+                let _form = document.forms.namedItem('contact-mini');
+                _form && _form.reset();
             }
             if(response.status === 'fail' && response.type === 'client') {
                 setSubmitText(response.message);
-                document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
-                document.querySelector('#contact-mini .req-return.success').innerHTML = "Une erreur d'envoi du message est survenu. Essayez de raffraîchir la page ou de contacter un administrateur.";
+                _temp = oneBySelector('#contact-mini .submit');
+                _temp.setAttribute('disabled', true);
+                _temp = oneBySelector('#contact-mini .req-return.success');
+                if(_temp) {_temp.innerHTML = "An error sending the message has occurred. Try refreshing the page or contacting an administrator.";}
             }
             if(response.status === 'fail' && response.type === 'server') {
-                document.querySelector('#contact-mini .submit').setAttribute('disabled', true);
-                document.querySelector('#contact-mini .req-return.error').innerHTML = response.message;
+                _temp = oneBySelector('#contact-mini .submit');
+                _temp.setAttribute('disabled', true);
+                _temp = oneBySelector('#contact-mini .req-return.error');
+                if(_temp) {_temp.innerHTML = response.message;}
             }
         })
         .catch(function(error) {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-          });;
+            
+        });
     }
 
     return (
@@ -124,10 +147,10 @@ const ContactUs = () => {
                     </div>
                     <div id="contact-form" className="transition neumorphic custom-scrollbar" hidden={!formOpen}>
                         <form id="contact-mini" onSubmit={(e) => {send_form(e)}} className="custom-scrollbar">
-                            <input type="text" placeholder="Nom" name="lastname" required={true}/>
-                            <input type="text" placeholder="Prénom" name="firstname" required={true}/>
+                            <input type="text" placeholder="Nom*" name="lastname" required={true}/>
+                            <input type="text" placeholder="Prénom*" name="firstname" required={true}/>
                             <select name="subject" required={true}>
-                                <option value="" selected disabled>Choisir une spécialité</option>
+                                <option value="" selected disabled style={{display: 'none'}}>Choisir une spécialité*</option>
                                 <option value="plastic-surgeon">Chirurgien plasticien</option>
                                 <option value="facial-surgeon">Chirurgien maxillo-facial</option>
                                 <option value="dermatologist">Dermatologue</option>
@@ -135,14 +158,13 @@ const ContactUs = () => {
                                 <option value="gynecologist">Gynécologue</option>
                                 <option value="others">Autres</option>
                             </select>
-                            <input type="email" placeholder="Adresse mail" name="mail" spellCheck={false} required={true}/>
-                            <input type="phone" placeholder="Téléphone" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
-                            <input type="text" placeholder="Code postal" name="zip" spellCheck={false} required={true}/>
-                            <input type="number" placeholder="Ville" name="city" spellCheck={false} required={true}/>
+                            <input type="email" placeholder="Adresse mail*" name="mail" spellCheck={false} required={true}/>
+                            <input type="phone" placeholder="Téléphone*" name="phone" spellCheck={false} required={true} pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
+                            <input type="number" placeholder="Code postal*" name="zip" spellCheck={false} required={true}/>
+                            <input type="text" placeholder="Ville*" name="city" spellCheck={false} required={true}/>
                             <textarea
                                 id="contact-message-mini"
-                                type="textarea"
-                                placeholder="Entrez votre message ici"
+                                placeholder="Entrez votre message ici*"
                                 name="message"
                                 maxLength={max_length}
                                 rows={5}
@@ -153,8 +175,8 @@ const ContactUs = () => {
                                 className="custom-scrollbar"
                             ></textarea>
                             <div className="current-length" style={{color: msgLength === max_length ? '#f00' : '#59b7b3'}}>{`${msgLength} / ${max_length}`}</div>
-                            <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWidth: 400}}></div>
-                            <div className="req-return error" style={{color: 'red', fontSize: 15, fontWidth: 400}}></div>
+                            <div className="req-return success" style={{color: '#59b7b3', fontSize: 15, fontWeight: 400}}></div>
+                            <div className="req-return error" style={{color: 'red', fontSize: 15, fontWeight: 400}}></div>
                             {/* Mettre LoadingGIF en attendant le retour du serveur */}
                             <button type="submit" className="submit">
                                 {submitText}

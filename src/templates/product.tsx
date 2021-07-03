@@ -22,7 +22,7 @@ const ProductTemplates = ({ data }:ProductTemplates) => {
                 <SEO title="Product"/>
                 <ProductBanner datas={datas.Banner}/>
                 <ProductNavigation
-                    name={datas.name}
+                    name={datas.Name}
                     exist={{
                         'before-after': datas.BeforesAfters !== [] && datas.BeforesAfters.length > 0,
                         'studies': datas.ClinicalStudies !== [] && datas.ClinicalStudies.length > 0
@@ -113,6 +113,10 @@ export const query = graphql`
             texte
           }
           Addons {
+            MenuParams {
+              url
+              internal_link
+            }
             ProductPresentation {
               left_image {
                 childImageSharp {

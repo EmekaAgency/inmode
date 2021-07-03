@@ -14,10 +14,10 @@ const FixedMenu = ({ customClass }:{ customClass?:string }) => {
 
     const [menus] = React.useState(React.useContext(MenusContext).header_bottom);
 
-    const [ isVisible, setIsVisible ] = React.useState();
+    const [ isVisible, setIsVisible ]:[boolean, React.Dispatch<boolean>] = React.useState(Boolean(false));
 
     React.useEffect(() => {
-        const handleScroll = _ => { 
+        const handleScroll = (e:Event) => { 
             if (window.pageYOffset > 150 && window.innerWidth > 999) {
                 setIsVisible(true)
             } else {
@@ -40,7 +40,7 @@ const FixedMenu = ({ customClass }:{ customClass?:string }) => {
     const images = useImages();
 
     return (
-        <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible ? 0 : -55, boxShadow: isVisible ? 'none' : 'unset'}}>
+        <div id="fixed-menu" className={`transition${' ' + customClass || ''}`} style={{top: isVisible == true ? 0 : -55, boxShadow: isVisible == true ? 'none' : 'unset'}}>
             <div className="fixed-menu-container">
                 <div className="fixed-menu-logo">
                     <img
@@ -58,7 +58,8 @@ const FixedMenu = ({ customClass }:{ customClass?:string }) => {
                     })}
                     {/* SWITCH CART */}
 
-                    { cart.cart.length > 0 || cart.appeared ? <CartBasket/> : null }
+                    {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/> : null } */}
+                    <CartBasket/>
 
                     {/* SWITCH CART END */}
                 </div>

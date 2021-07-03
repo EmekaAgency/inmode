@@ -13,14 +13,17 @@ import CartBasket from "../CartBasket";
 
 // {/* SWITCH CART END */}
 
+import { oneById } from "../../functions/selectors";
+
 const Header = ({}:Header) => {
 
   const images = useImages();
 
   const openMenu = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    document.getElementById('header-mini').classList.add('opened');
-    size.width < 1000 && disableMainScroll();
+    let _temp:any = oneById('header-mini');
+    _temp && _temp.classList.add('opened');
+    size.width < 1200 && disableMainScroll();
   }
 
   // {/* SWITCH CART */}
@@ -44,7 +47,8 @@ const Header = ({}:Header) => {
           {size.width < 1200 && <HeaderMini/>}
           {/* SWITCH CART */}
 
-          { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null }
+          {/* { cart.cart.length > 0 || cart.appeared ? <CartBasket/>: null } */}
+          <CartBasket/>
 
           {/* SWITCH CART END */}
           <button

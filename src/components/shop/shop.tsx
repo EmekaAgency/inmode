@@ -3,6 +3,7 @@ import WorkstationProduct from "./workstation-product";
 import ShopProduct2 from "./shop-product";
 import WorkstationMenu from "./workstation-menu";
 import ShopMenu from "./shop-menu";
+import { allByClass } from "../../functions/selectors";
 
 const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
 
@@ -14,7 +15,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
   const checkbox_resolve_checked_selector = "shopping-menu-filter-checkbox";
 
   const resolve_checked = (value, remove = true, classname = checkbox_resolve_checked_selector) => {
-    let list = document.getElementsByClassName(classname);
+    let list:any = allByClass(classname);
     Object.keys(list).map(elem => {
       if(remove) {
         if(list[elem].value === value && list[elem].checked === true) {
@@ -29,8 +30,8 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     })
   }
 
-  const resolveClick = (e) => {
-    let temp = new Array(...tags);
+  const resolveClick = (e:React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    let temp:string[] = new Array(...tags);
     if(e.currentTarget.checked) {
       resolve_checked('cure-choice', true, 'cure-choice-all');
       resolve_checked(e.currentTarget.value, false);
@@ -52,16 +53,15 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
     setMemoryTags(temp);
   }
 
-  const allResolve = (e) => {
+  const allResolve = (e:React.MouseEvent<HTMLInputElement, MouseEvent>) => {
     if(e.currentTarget.checked) {
       setMemoryTags([...tags]);
       resolve_checked('cure-choice', false, 'cure-choice-all');
-      let elems = document.getElementsByClassName(e.currentTarget.value);
+      let elems:any = allByClass(e.currentTarget.value);
       Object.keys(elems).forEach(index => {
         elems[index].checked = false;
         resolve_checked(elems[index].value);
       });
-      // document.getElementsByClassName(e.currentTarget.value).map(elem => elem.checked = false);
       setTags([]);
     }
     else {
@@ -71,7 +71,7 @@ const Shop = ({ products, tag_families, technologies, special, shop_card }) => {
         memoryTags.map(tag => resolve_checked(tag, false));
       }
       else {
-        let elems = document.getElementsByClassName('cure-choice');
+        let elems = allByClass('cure-choice');
         let temp = [];
         Object.keys(elems).forEach(index => {
           elems[index].checked = true;

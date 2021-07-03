@@ -50,8 +50,8 @@ const Learn = ({ from = "" }:Learn) => {
                 </div>
                 <div className="goals">
                     <img
-                        src={datas.learn_icon.childImageSharp.fluid.srcWebp}
-                        srcSet={datas.learn_icon.childImageSharp.fluid.srcSetWebp}
+                        src={datas.learn_icon && datas.learn_icon.childImageSharp.fluid.srcWebp}
+                        srcSet={datas.learn_icon && datas.learn_icon.childImageSharp.fluid.srcSetWebp}
                         alt='about-us-learn'
                     />
                     <div className="texts">

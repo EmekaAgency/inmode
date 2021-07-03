@@ -23,7 +23,7 @@ const PaymentPaidPage = () => {
     `).site.siteMetadata.url_order_load);
     
     const [params, setParams] = React.useState({});
-    const [order, setOrder] = React.useState(null);
+    const [order, setOrder] = React.useState(undefined);
 
     const cart = useCart();
 
@@ -32,14 +32,12 @@ const PaymentPaidPage = () => {
     React.useEffect(() => {
         let _test:any = get_url_params();
         setParams(new Object({..._test}));
-        // delete _test.signature;
-        // verify_signature();
-        console.log(_test);
         order_load(_test.vads_trans_id != undefined ? _test.vads_trans_id : _test.vads_order_id!= undefined ? _test.vads_order_id : null);
         window.history.pushState('', page_title, '/payment/paid/');
     }, []);
 
     const order_load = async(reference:string) => {
+        console.log('order_load with reference : ', reference);
         if(!reference) {return false;}
         if(typeof reference != 'string') {return false;}
         let { status, order } = await (await fetch(load_url, {

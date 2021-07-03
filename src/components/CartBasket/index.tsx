@@ -1,4 +1,6 @@
+import { navigate } from "gatsby-link";
 import React from "react";
+import { openModale, paymentSEPA } from "../../functions/modale";
 import { useCart } from "../contexts/cart-provider";
 import { useImages } from "../contexts/images-provider";
 
@@ -15,7 +17,14 @@ const CartBasket = ({  }:CartBasket) => {
             <img
                 className="cart-basket"
                 src={images.getOne('cartBasketIcon').publicURL}
-                onClick={(e) => {cart.toggle_open_cart()}}
+                onClick={(e) => {
+                    if(cart.total_articles()) {
+                        cart.toggle_open_cart();
+                    }
+                    else {
+                        navigate('/shop');
+                    }
+                }}
             />
             <div hidden={cart.total_articles() ? false : true} className="cart-basket-nbr">
                 <span>{cart.total_articles()}</span>

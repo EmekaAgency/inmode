@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import { useWindowSize } from "../../functions/window-size";
 import SelectCountry from "../select-country";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { oneById } from "../../functions/selectors";
 
 const tech_list = [
     "MORPHEUS8 | FACIAL AND BODY FRACTIONAL REMODELING",
@@ -26,7 +27,7 @@ const ContactForm = ({ from }:ContactForm) => {
     const size = useWindowSize();
 
     const resize_panel = (panel:Element | null, close:HTMLElement | null) => {
-        let closed:boolean = close != null ? close.classList.contains("opened") : false;
+        let closed:boolean = close != null ? false : close.classList.contains("opened");
         panel && panel.classList.contains('opened') && closed && panel.classList.remove('opened');
         panel && !panel.classList.contains('opened') && !closed && panel.classList.add('opened');
         if (maxHeight && close) {
@@ -39,8 +40,8 @@ const ContactForm = ({ from }:ContactForm) => {
 
     React.useEffect(() => {
         resize_panel(
-            document.getElementById("accordion"),
-            document.getElementById("title-accordion")
+            oneById("accordion"),
+            oneById("title-accordion")
         );
     }, [size.width]);
 
@@ -51,14 +52,18 @@ const ContactForm = ({ from }:ContactForm) => {
 
     function send_form (e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        document.querySelector('#full-contact-form .req-return.success').innerHTML = "";
-        document.querySelector('#full-contact-form .req-return.error').innerHTML = "";
-        document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
+        let _temp1:HTMLElement | null = document.querySelector('#full-contact-form .req-return.success');
+        if(_temp1) _temp1.innerHTML = "";
+        let _temp2:HTMLElement | null = document.querySelector('#full-contact-form .req-return.error');
+        if(_temp2) _temp2.innerHTML = "";
+        let _temp3:HTMLInputElement | null = document.querySelector('#full-contact-form .submit');
+        if(_temp3) _temp3.disabled = true;
         let body:any = new Object({});
-        if(document.forms["full-contact-form"] == null) {
+        if(document.forms.namedItem("full-contact-form") == null) {
             return false;
         }
-        Array.from(document.forms["full-contact-form"].elements).map((elem:HTMLInputElement | any) => {
+        let _form:HTMLFormElement | null = document.forms.namedItem("full-contact-form")
+        Array.from(_form ? _form.elements : []).map((elem:HTMLInputElement | any) => {
             body[elem.name] = elem.checked || elem.value;
         });
         body.action = "full-contact";
@@ -71,7 +76,9 @@ const ContactForm = ({ from }:ContactForm) => {
             body: JSON.stringify(body),
         };
         fetch(
+            // SWITCH LOCALHOST
             `https://inmodemd.fr/back/app.php`,
+            // `http://localhost/inmode/back/app.php`,
             request_init,
         )
         .then((promise) => {
@@ -80,23 +87,30 @@ const ContactForm = ({ from }:ContactForm) => {
         )
         .then((response) => {
             if(response.status === 'success' && response.type === 'client') {
-                document.querySelector('#full-contact-form .submit').removeAttribute('disabled');
-                document.querySelector('#full-contact-form .req-return.success').innerHTML = response.message;
-                document.forms['full-contact-form'].reset();
+                let _temp = document.querySelector('#full-contact-form .submit');
+                _temp && _temp.removeAttribute('disabled');
+                _temp = document.querySelector('#full-contact-form .req-return.success');
+                if(_temp) _temp.innerHTML = response.message;
+                let _form:HTMLFormElement | null = document.forms.namedItem('full-contact-form')
+                _form && _form.reset();
             }
             if(response.status === 'fail' && response.type === 'client') {
                 setSubmitText(response.message);
-                document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
-                document.querySelector('#full-contact-form .req-return.success').innerHTML = "Une erreur d'envoi du message est survenu. Essayez de raffraîchir la page ou de contacter un administrateur.";
+                let _temp1:HTMLInputElement | null = document.querySelector('#full-contact-form .submit');
+                if(_temp1) _temp1.disabled = true;
+                let _temp2:HTMLElement | null = document.querySelector('#full-contact-form .req-return.success');
+                if(_temp2) _temp2.innerHTML = "Une erreur d'envoi du message est survenu. Essayez de raffraîchir la page ou de contacter un administrateur.";
             }
             if(response.status === 'fail' && response.type === 'server') {
-                document.querySelector('#full-contact-form .submit').setAttribute('disabled', true);
-                document.querySelector('#full-contact-form .req-return.error').innerHTML = response.message;
+                let _temp1:HTMLInputElement | null = document.querySelector('#full-contact-form .submit');
+                if(_temp1) _temp1.disabled = true;
+                let _temp2 = document.querySelector('#full-contact-form .req-return.error');
+                if(_temp2) _temp2.innerHTML = response.message;
             }
         })
         .catch(function(error) {
-            console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
-          });;
+            
+          });
     }
 
     const resolveClick = (e:React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
@@ -111,11 +125,11 @@ const ContactForm = ({ from }:ContactForm) => {
         <form id="full-contact-form" name="contact" onSubmit={(e) => {send_form(e);}} className={`contact-form main-container ${from}`}>
             <div className="mailer-datas">
                 <div className="field">
-                    <label htmlFor="lastname">Nom</label>
+                    <label htmlFor="lastname">Nom*</label>
                     <input type="text" name="lastname" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="firstname">Prénom</label>
+                    <label htmlFor="firstname">Prénom*</label>
                     <input type="text" name="firstname" required/>
                 </div>
                 <div className="field">
@@ -123,9 +137,10 @@ const ContactForm = ({ from }:ContactForm) => {
                     <input type="text" name="company"/>
                 </div>
                 <div className="field">
-                    <label htmlFor="speciality">Choisir une spécialité</label>
+                    <label htmlFor="speciality">Choisir une spécialité*</label>
                     <select name="speciality" required={true}>
-                        <option value="plastic-surgeon" selected>Chirurgien plasticien</option>
+                        <option value="" disabled selected style={{display: 'none'}}>Spécialité</option>
+                        <option value="plastic-surgeon">Chirurgien plasticien</option>
                         <option value="facial-surgeon">Chirurgien maxillo-facial</option>
                         <option value="dermatologist">Dermatologue</option>
                         <option value="cosmetic-doctor">Médecin esthétique</option>
@@ -134,23 +149,23 @@ const ContactForm = ({ from }:ContactForm) => {
                     </select>
                 </div>
                 <div className="field">
-                    <label htmlFor="mail">Email</label>
+                    <label htmlFor="mail">Email*</label>
                     <input spellCheck={false} type="email" name="mail" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="phone_number">Téléphone</label>
+                    <label htmlFor="phone_number">Téléphone*</label>
                     <input spellCheck={false} type="tel" name="phone_number" required pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"/>
                 </div>
                 <div className="field">
-                    <label htmlFor="address">Adresse</label>
+                    <label htmlFor="address">Adresse*</label>
                     <input spellCheck={false} type="text" name="address" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="zip">Code postal</label>
-                    <input spellCheck={false} type="text" name="zip" required/>
+                    <label htmlFor="zip">Code postal*</label>
+                    <input spellCheck={false} type="number" name="zip" required/>
                 </div>
                 <div className="field">
-                    <label htmlFor="city">Ville</label>
+                    <label htmlFor="city">Ville*</label>
                     <input spellCheck={false} type="text" name="city" required/>
                 </div>
                 <div className="field">
@@ -161,7 +176,7 @@ const ContactForm = ({ from }:ContactForm) => {
             <div className="message-zone">
                 <textarea
                     id="contact-message"
-                    placeholder="Entrez votre message ici"
+                    placeholder="Entrez votre message ici*"
                     name="message"
                     className="custom-scrollbar"
                     maxLength={max_length}
@@ -205,10 +220,6 @@ const ContactForm = ({ from }:ContactForm) => {
                     <hr/>
                 </div>
             </div>
-            {/* <div className="newsletter">
-                <input type="checkbox" id="mail_list" name="mail_list" value="mail_list"/>
-                <label htmlFor={"mail_list"}>S'abonner à la newsletter</label>
-            </div> */}
             <div className="policy">
                 <input type="checkbox" id="policy" name="policy" value="policy" required/>
                 <label htmlFor={"policy"}>J'accepte les <a href="/mentions-legales#cgu" target="_blank" title="Conditions générales d'utilisation">conditions générales d'utilisation</a></label>

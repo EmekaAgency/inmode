@@ -33,9 +33,9 @@ const MenuSideMenuText = ({menu, prop_key = undefined, openOnClick = false}:Menu
                             resolveOnClick(e, true);
                             enableMainScroll();
                         }}
-                        title={format_string(menu.title)}
+                        title={format_string(menu.title || '')}
                     >
-                        {format_string(menu.title)}
+                        {format_string(menu.title || '')}
                     </Link>
                     :
                     <a
@@ -47,16 +47,16 @@ const MenuSideMenuText = ({menu, prop_key = undefined, openOnClick = false}:Menu
                         }}
                         target="_blank"
                         rel="noreferrer"
-                        title={format_string(menu.title)}
+                        title={format_string(menu.title || '')}
                     >
-                        {format_string(menu.title)}
+                        {format_string(menu.title || '')}
                     </a>
                 :
                 <div
                     className="menu-side-menu menu-text"
                     onClick={(e) => {resolveOnClick(e, false);}}
                 >
-                    {format_string(menu.title)}
+                    {format_string(menu.title || '')}
                 </div>
             }
             <ul className="dropside-menu">

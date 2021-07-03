@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 import { useImages } from '../contexts/images-provider';
 
 import './index.css';
+import { GatsbyImage_Interface } from '../interfaces';
 
 const Footer = ({}:Footer) => {
 
@@ -11,10 +12,24 @@ const Footer = ({}:Footer) => {
 
     const [footer] = React.useState(React.useContext(MenusContext).footer);
 
-    const icons = {
-        address: images.getOne('addressIcon'),
-        phone: images.getOne('phoneIcon'),
-        mail: images.getOne('mailIcon'),
+    const icons = (_selector:string | undefined | null):string => {
+        if(_selector == undefined || _selector == null) {
+            return '';
+        }
+        let _temp:GatsbyImage_Interface;
+        switch(_selector) {
+            case 'address':
+                _temp = images.getOne('addressIcon');
+                return _temp && _temp.publicURL ? _temp.publicURL : '';
+            case 'phone':
+                _temp = images.getOne('phoneIcon');
+                return _temp && _temp.publicURL ? _temp.publicURL : '';
+            case 'mail':
+                _temp = images.getOne('mailIcon');
+                return _temp && _temp.publicURL ? _temp.publicURL : '';
+            default:
+                return '';
+        }
     };
 
     const menus = ['address', 'phone', 'mail'];;
@@ -35,18 +50,18 @@ const Footer = ({}:Footer) => {
                             alt="footer-logo"
                         />
                     </div>
-                    {menus.map((menu, key) => {
+                    {menus.map((menu:string, key:number) => {
                         return (
                             <div key={key} className={`footer-infos ${menu}`}>
                                 <img
                                     className={`footer-${menu}-ico background-image`}
-                                    src={icons[menu].publicURL}
-                                    srcSet={icons[menu].publicURL}
+                                    src={icons(menu)}
+                                    srcSet={icons(menu)}
                                     alt={menu}
                                 />
                                 {menu === "mail" ? 
-                                    <a href={`mailto:${footer[menu]}`} className="footer-infos-text" title="Nous contacter par mail">
-                                        {footer[menu]}
+                                    <a href={`mailto:${footer["mail"]}`} className="footer-infos-text" title="Nous contacter par mail">
+                                        {footer["mail"]}
                                     </a>
                                     :
                                     <div className="footer-infos-text">
@@ -63,7 +78,7 @@ const Footer = ({}:Footer) => {
                             <div
                                 key={key}
                                 className="footer-social-ico background-image"
-                                style={{backgroundImage: 'url('+ menu.icon.publicURL +')'}}
+                                style={{backgroundImage: 'url('+ (menu.icon ? menu.icon.publicURL : '') +')'}}
                             >
                                 <a className="zone-link" href={menu.url || '#'} title={menu.name} target="_blank"></a>
                             </div>

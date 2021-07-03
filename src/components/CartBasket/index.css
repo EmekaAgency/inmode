@@ -4,6 +4,10 @@ div.fixed-menus > div.cart {
     display: inline-block;
 }
 
+img.cart-basket {
+    cursor: pointer;
+}
+
 div.cart img.cart-basket + div.cart-basket-nbr {
     background-color: #fff;
     color: #59b7b3;
@@ -16,6 +20,7 @@ div.cart img.cart-basket + div.cart-basket-nbr {
 
 .header-parts > .header-bottom + div.cart,
 .header-parts > .header-bottom + div.cart img.cart-basket {
+    margin-top: -2px;
     width: 22px;
     height: 22px;
 }

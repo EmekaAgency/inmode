@@ -1,5 +1,10 @@
 // npm install express --save && npm install body-parser --save && npm install strapi --save && npm install axios --save && npm install cors --save
 
+require("dotenv").config({
+    path: `.env.${process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"}`,
+    // path: `.env`,
+});
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -91,10 +96,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
 app.use(express.json());
-
-require("dotenv").config({
-    path: `.env.${process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "dev"}`,
-    // path: `.env`,
+app.use((req, res, next) => {
+    console.log(`${req.headers.host}${req.url}`);
+    next();
 });
 
 //////////////////////////////
@@ -348,6 +352,8 @@ app.get('/back/orders/test/order-delete'/*, auth*/, async (req, res) => {
 //////////////////////////////////////////////////////////////////////
 
 app.post('/back/orders/order-create'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
+    console.log('/back/orders/order-create');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
     }
@@ -413,6 +419,8 @@ app.post('/back/orders/order-create'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
+    console.log('/back/orders/order-payment-update');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
     }
@@ -482,6 +490,7 @@ app.post('/back/orders/order-payment-update'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
     console.log('/back/orders/order-update');
     if(!req.body || req.body.length == 0) {
         console.log('Form empty. Error 400');
@@ -540,6 +549,8 @@ app.post('/back/orders/order-update'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-load'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
+    console.log('/back/orders/order-load');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
     }
@@ -591,6 +602,8 @@ app.post('/back/orders/order-load'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
+    console.log('/////////////////////////');
+    console.log('/back/orders/order-delete');
     if(!req.body || req.body.length == 0) {
         res.sendStatus(400).send('Form empty');
     }
@@ -642,16 +655,35 @@ app.post('/back/orders/order-delete'/*, auth*/, async (req, res) => {
     }
 });
 app.post('/back/orders/order-signature'/*, auth*/, async (req, res) => {
-    console.log('/order-signature');
-    console.log(req.body);
-    const signature = Base64.stringify(hmacSHA256(req.body.string + `+${process.env.BO_KEY}`, process.env.BO_KEY));
-    // console.log(`signature : ${signature}`);
-    res.status(200).send(JSON.stringify({signature: signature}));
+    console.log('/////////////////////////');
+    console.log('/back/orders/order-signature');
+    // console.log(JSON.stringify(req.body));
+    // console.log('req.body', req.body);
+    // console.log('req.body.string', req.body.string);
+    try {
+        console.log('try');
+        console.log(`BO_KEY : ${process.env.BO_KEY}`);
+        const signature = Base64.stringify(hmacSHA256(req.body.string + `+${process.env.BO_KEY}`, process.env.BO_KEY));
+        console.log(`signature : ${signature}`);
+        res.status(200).send(JSON.stringify({'signature': signature}));
+    }
+    catch(error) {
+        console.log('catch');
+        console.log(`signature : `);
+        res.status(400).send(JSON.stringify({'signature': ''}));
+    }
 })
 
 //////////////////////////////
 
 http.listen(3000, () => {
-  console.log('listening on *:3000');
-  console.log(`Environment : ${process.env.NODE_ENV}`);
+    console.log('listening on *:3000');
+    console.log(`Environment : ${process.env.NODE_ENV}`);
+    // console.log(`BO_KEY : ${process.env.BO_KEY}`);
+    console.log(`BACK_URL : ${process.env.STRAPI_URL}`);
+    // console.log(`STRAPI_ID : ${process.env.STRAPI_ID}`);
+    // console.log(`STRAPI_PASS : ${process.env.STRAPI_PASS}`);
+    // console.log(`BEARER : ${process.env.BEARER}`);
+    // console.log(`MAILER_USER : ${process.env.MAILER_USER}`);
+    // console.log(`MAILER_PASS : ${process.env.MAILER_PASS}`);
 });

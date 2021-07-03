@@ -1,7 +1,7 @@
 import React from "react";
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
-const ProductNavigation = ({ name, exist }) => {
+const ProductNavigation = ({ name, exist }:ProductNavigation_Interface) => {
 
     let temp = [
         {'name': 'what is it', 'url': '#what-is'},
@@ -34,12 +34,12 @@ const ProductNavigation = ({ name, exist }) => {
     );
 }
 
-ProductNavigation.defaultProps = {
-
-}
-
-ProductNavigation.propTypes = {
-
+interface ProductNavigation_Interface {
+    name: string;
+    exist: {
+        'before-after': string;
+        'studies': string;
+    };
 }
 
 export default ProductNavigation;

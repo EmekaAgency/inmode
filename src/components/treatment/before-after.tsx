@@ -7,10 +7,6 @@ import RequestInformation from "../RequestInformation";
 
 const TreatmentBeforeAfter = ({ datas, sensible = false}:TreatmentBeforeAfter) => {
 
-    console.log(datas);
-    console.log(datas.length);
-    console.log(sensible);
-
     const [flickityOptions] = React.useState({
         initialIndex: 0,
         cellAlign: 'left',
@@ -19,18 +15,12 @@ const TreatmentBeforeAfter = ({ datas, sensible = false}:TreatmentBeforeAfter) =
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        // autoPlay: 5000,
-       // wrapAround: true,
     });
-
-    // if(datas.length === 0) {
-    //     return <></>;
-    // }
 
     return (
         <div id="before-after" className="before-after">
             <div className="title">
-                before and after
+                Avant / Après
             </div>
             <div className={`container-ba${datas.length < 3 ? ' few' : ''}`}>
                 {datas.length == 0 ?
@@ -58,7 +48,6 @@ const TreatmentBeforeAfter = ({ datas, sensible = false}:TreatmentBeforeAfter) =
                             options={flickityOptions}
                             classList={'slides-before-after transition'}
                         >
-                            {/* {[...datas, ...datas].map((ba, key) => { */}
                             {datas.map((ba, key) => {
                                     return (
                                         <div key={key} className="ba-slide">

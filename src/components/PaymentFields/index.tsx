@@ -333,16 +333,16 @@ export const CountryField = ({ value, placeholder, name, id, required, classes, 
             required={required ||false}
         >
             {
-                countries != undefined && Array.isArray(countries) && countries.length > 0 ? countries.map((country) => {
+                countries != undefined && Array.isArray(countries) && countries.length > 0 ? countries.map((country, key) => {
                     if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
-                        return <option value={country.code}>{country.label}</option>
+                        return <option key={key} value={country.code}>{country.label}</option>
                     }
                     return <></>;
                 })
                 :
-                Array.isArray(defaultParams.Country.countries) && defaultParams.Country.countries.length > 0 ? defaultParams.Country.countries.map((country) => {
+                Array.isArray(defaultParams.Country.countries) && defaultParams.Country.countries.length > 0 ? defaultParams.Country.countries.map((country, key) => {
                     if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
-                        return <option value={country.code}>{country.label}</option>
+                        return <option key={key} value={country.code}>{country.label}</option>
                     }
                     return <></>;
                 })
@@ -475,16 +475,16 @@ export const DeliveryCountryField = ({ value, placeholder, name, id, required, c
             required={required ||false}
         >
             {
-                countries != undefined && Array.isArray(countries) && countries.length > 0 ? countries.map((country) => {
+                countries != undefined && Array.isArray(countries) && countries.length > 0 ? countries.map((country, key) => {
                     if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
-                        return <option value={country.code}>{country.label}</option>
+                        return <option key={key} value={country.code}>{country.label}</option>
                     }
                     return <></>;
                 })
                 :
-                Array.isArray(defaultParams.DeliveryCountry.countries) && defaultParams.DeliveryCountry.countries.length > 0 ? defaultParams.DeliveryCountry.countries.map((country) => {
+                Array.isArray(defaultParams.DeliveryCountry.countries) && defaultParams.DeliveryCountry.countries.length > 0 ? defaultParams.DeliveryCountry.countries.map((country, key) => {
                     if(!Array.isArray(country) && typeof country == 'object' && isCountry(country)) {
-                        return <option value={country.code}>{country.label}</option>
+                        return <option key={key} value={country.code}>{country.label}</option>
                     }
                     return <></>;
                 })

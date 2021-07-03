@@ -365,7 +365,7 @@ function is_paid(status) {
     Nom: 'FALLET',
     // Societe: '',
     // Livraison: {},
-    FraisLivraison: 10,
+    FraisLivraison: 50,
     Paye: false,
     Statut: 'AUTHORISED',
 };

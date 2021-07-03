@@ -1,8 +1,9 @@
 import React from "react";
 import Carousel from "../Carousel";
+import { InmodePanel_Generic_BeforeAfter_Interface } from "../interfaces";
 import RequestInformation from "../RequestInformation";
 
-const ProductBeforeAfter = ({ datas }) => {
+const ProductBeforeAfter = ({ datas }:ProductBeforeAfter_Interface) => {
 
     const [flickityOptions] = React.useState({
         initialIndex: 0,
@@ -12,8 +13,6 @@ const ProductBeforeAfter = ({ datas }) => {
         selectedAttraction: 0.01,
         friction: 0.15,
         percentPosition: false,
-        // autoPlay: 5000,
-       // wrapAround: true,
     });
 
     if(datas.length === 0) {
@@ -31,8 +30,8 @@ const ProductBeforeAfter = ({ datas }) => {
                         return (
                             <div key={key} className="few-ba">
                                 <img
-                                    src={ba.image.childImageSharp.fluid.srcWebp}
-                                    srcSet={ba.image.childImageSharp.fluid.srcSetWebp}
+                                    src={ba.image && ba.image.childImageSharp.fluid.srcWebp}
+                                    srcSet={ba.image && ba.image.childImageSharp.fluid.srcSetWebp}
                                     alt="product-before-after"
                                 />
                                 <div className="ba-doctor">{ba.doctor}</div>
@@ -51,8 +50,8 @@ const ProductBeforeAfter = ({ datas }) => {
                                 return (
                                     <div key={key} className="ba-slide">
                                         <img
-                                            src={ba.image.childImageSharp.fluid.srcWebp}
-                                            srcSet={ba.image.childImageSharp.fluid.srcSetWebp}
+                                            src={ba.image && ba.image.childImageSharp.fluid.srcWebp}
+                                            srcSet={ba.image && ba.image.childImageSharp.fluid.srcSetWebp}
                                             alt={`product-before-after-${key}`}
                                         />
                                         <div className="ba-doctor">{ba.doctor}</div>
@@ -69,12 +68,8 @@ const ProductBeforeAfter = ({ datas }) => {
     );
 }
 
-ProductBeforeAfter.defaultProps = {
-
-}
-
-ProductBeforeAfter.propTypes = {
-
+interface ProductBeforeAfter_Interface {
+    datas: InmodePanel_Generic_BeforeAfter_Interface[];
 }
 
 export default ProductBeforeAfter;

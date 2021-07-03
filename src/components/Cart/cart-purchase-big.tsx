@@ -3,11 +3,9 @@ import { useCart } from "../contexts/cart-provider";
 import { useImages } from '../contexts/images-provider';
 import {
     AddressLine1Field,
-    // AddressLine2Field,
     CityField,
     CountryField,
     DeliveryAddressLine1Field,
-    // DeliveryAddressLine2Field,
     DeliveryCityField,
     DeliveryCountryField,
     DeliveryFirstNameField,
@@ -27,12 +25,16 @@ import {
 import LoadingGIF from '../LoadingGIF';
 
 import './big.css';
+import { oneById } from "../../functions/selectors";
+import { useWindowSize } from "../../functions/window-size";
 
 const CartPurchaseBig = ({  }:CartPurchaseBig) => {
 
     const images = useImages();
 
     const cart = useCart();
+
+    const size = useWindowSize();
 
     const [formOpened, setFormOpened] = React.useState(false);
     const [otherAddress, setOtherAddress] = React.useState(false);
@@ -41,9 +43,6 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     const [isCreated, setIsCreated]:[Boolean, React.Dispatch<Boolean>] = React.useState(new Boolean(false));
 
     const manageChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-        console.log('manageChange');
-        console.log(`otherAddress : ${otherAddress}`);
-        console.log(`e.currentTarget.checked : ${e.currentTarget.checked}`);
         otherAddress && setOtherAddressOpened(false);
         !otherAddress && setOtherAddressOpened(true);
         setOtherAddress(e.currentTarget.checked);
@@ -51,34 +50,25 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
     }
 
     const manageCheckboxPayment = (e:React.ChangeEvent<HTMLInputElement>) => {
-        console.log('manageCheckboxPayment');
         if(document != undefined) {
             let current:HTMLInputElement = e.currentTarget;
-            console.log(`current : ${current.id}`);
-            let other:HTMLInputElement = document.getElementById(current.id == 'sepa' ? 'soge' : 'sepa');
-            console.log(`other : ${other.id}`);
+            let other:any = oneById(current.id == 'sepa' ? 'soge' : 'sepa');
             other.checked = !current.checked;
             return true;
         }
-        console.log('document undefined');
         return false;
     }
 
     const sendForm = async (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        document.getElementById('big-submit').disabled = true;
-        let _sepa:HTMLInputElement | any = document.getElementById('sepa');
-        let fields = [...Array.from(document.forms["purchase"]).filter((field:any) => {return field.id.includes('vads_')})];
-        // fields.push(...Array.from(document.forms['purchase']).filter(field => field.id.includes('vads_') && field.value));
+        let _temp:any = oneById('big-submit');
+        if(_temp){ _temp.disabled= true; }
+        let _sepa:HTMLInputElement | any = oneById('sepa');
+        let fields = [...Array.from(document.forms.namedItem("purchase") || []).filter((field:any) => {return field.id.includes('vads_')})];
         setIsSubmit(true);
         setIsCreated(await cart.redirectPay(fields, _sepa == null ? false : _sepa.checked) === true ? true : false);
-        document.getElementById('big-submit').disabled = false;
-        // console.log('sendForm()');
-        // console.log(`isSubmit : ${isSubmit}`);
-        // console.log(`isCreated : ${isCreated}`);
-        // console.log(`formOpened : ${formOpened}`);
-        // console.log(`otherAddress : ${otherAddress}`);
-        // console.log(`otherAddressOpened : ${otherAddressOpened}`);
+        _temp = oneById('big-submit');
+        if(_temp) { _temp.disabled= false; }
     }
 
     const submitClasses = ():string => {
@@ -109,33 +99,10 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
         }
         return "Continuer";
     }
-    
-    // isSubmit : null
-    // isCreated : false
-    // formOpened : false
-    // otherAddress : false
-    // otherAddressOpened : false
-    
-    // isSubmit : false
-    // isCreated : false
-    // formOpened : false
-    // otherAddress : false
-    // otherAddressOpened : true
 
     React.useEffect(() => {
-        // console.log('React.useEffect(function)');
-        // console.log(`isSubmit : ${isSubmit}`);
-        // console.log(`isCreated : ${isCreated}`);
-        // console.log(`formOpened : ${formOpened}`);
-        // console.log(`otherAddress : ${otherAddress}`);
-        // console.log(`otherAddressOpened : ${otherAddressOpened}`);
         if(isSubmit === true) {
             if(isCreated === true) {
-                // setIsSubmit(false);
-                // setIsCreated(false);
-                // setFormOpened(false);
-                // setOtherAddress(false);
-                // cart.hasDifferentShipping(false);
                 setIsSubmit(false);
                 setIsCreated(false);
                 setFormOpened(false);
@@ -143,20 +110,21 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 cart.hasDifferentShipping(false);
                 setOtherAddressOpened(false);
                 if(typeof document != "undefined") {
-                    document.forms['purchase'] && document.forms['purchase'].reset();
-                    let _sepa = document.getElementById('sepa')
+                    let _temp = document.forms.namedItem('purchase');
+                    _temp && _temp.reset();
+                    let _sepa:any = oneById('sepa');
                     if(_sepa) {
                         _sepa.checked = _sepa.checked ? true : false;
-                    } // removeAttribute('checked');
-                    let _soge = document.getElementById('soge')
+                    }
+                    let _soge:any = oneById('soge');
                     if(_soge) {
                         _soge.checked = _soge.checked ? true : false;
-                    } // setAttribute('checked', 'true');
-                    let _facture = document.getElementById('facture');
+                    }
+                    let _facture:any = oneById('facture');
                     if(_facture) {
                         _facture.checked = false;
                     }
-                    let _terms = document.getElementById('terms');
+                    let _terms:any = oneById('terms');
                     if(_terms) {
                         _terms.checked = false;
                     }
@@ -256,14 +224,14 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 <div className={`cart-final${formOpened ? ' purchase' : ''}`}>
                     <div className="cart-discount">
                         {/*PAS DE FRAIS DE LIVRAISON*/}
-                        <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div>
+                        {/* <div className="text">Livraison{cart.pay_delivery() && false ? '' : ' gratuite'}</div> */}
                         {/*FRAIS DE LIVRAISON*/}
-                        {/* <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div> */}
+                        <div className="text">Livraison{cart.pay_delivery() ? '' : ' gratuite'}</div>
                         {cart.pay_delivery() ? <div className="price">
                             {/*PAS DE FRAIS DE LIVRAISON*/}
-                            {(cart.delivery_tax() && false) || 0}
+                            {/* {(cart.delivery_tax() && false) || 0} */}
                             {/*FRAIS DE LIVRAISON*/}
-                            {/* {cart.delivery_tax()} */}
+                            {cart.delivery_tax()}
                         </div>: null }
                     </div>
                     <div className="cart-sub-total">
@@ -284,23 +252,6 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             {cart.total_all_included()}
                         </div>
                     </div>
-                    {/* <div
-                        className={`cart-validate${formOpened && otherAddress && otherAddressOpened ? ' other-address-transition' : formOpened ? ' form-transition' : ''}`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if(!formOpened){
-                                setFormOpened(true);
-                            }
-                            else if(formOpened && otherAddress && !otherAddressOpened){
-                                setOtherAddressOpened(true);
-                            }
-                            else {
-                                return;
-                            }
-                        }}
-                    >
-                        {!formOpened ? "Acheter" : !otherAddress || otherAddressOpened ? "Commander" : "Continuer"}
-                    </div> */}
                 </div>
             </div>
             {/* SECOND PART */}
@@ -328,26 +279,18 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     className={`neumorphic ${otherAddress && (' other-address' || '')}`}
                 >
                     <div id="step-1-part" className="unmorphic custom-scrollbar">
-                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
-                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
-                        {/* <input className="required form-field step-1" name="name" type="text" required placeholder="Nom"/> */}
+                        <LastNameField classes="required form-field step-1" style={{width: '43%', margin: `10px 0 20px ${size.width <1200 ? '5%' : '20px'}`, display: 'inline-block'}} required={true}/>
+                        <FirstNameField classes="required form-field step-1" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                         <SocietyField classes="form-field step-1"/>
-                        {/* <input className="form-field step-1" name="society" type="text" placeholder="Société"/> */}
                         <AddressLine1Field classes="required form-field step-1" required={true}/>
-                        {/* <AddressLine2Field classes="required form-field step-1"/> */}
                         <CountryField classes="required form-field step-1" required={true}/>
                         {
                             cart.differentAddress == false && cart.getTVAIntra() == true && otherAddress == false && <IntraTVAField classes="required form-field step-1" required={true}/>
                         }
-                        {/* <textarea className="required form-field step-1" name="adresse1" type="text" required placeholder="Adresse" rows="3"></textarea> */}
                         <ZipField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="zip" type="text" required placeholder="Code postal"/> */}
                         <CityField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="city" type="text" required placeholder="Ville"/> */}
                         <MobilePhoneField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="phone" type="tel" required placeholder="Téléphone"/> */}
                         <MailField classes="required form-field step-1" required={true}/>
-                        {/* <input className="required form-field step-1" name="mail" type="email" required placeholder="Mail"/> */}
                     </div>
                 </div>
             </div>
@@ -361,7 +304,8 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                             setOtherAddressOpened(false);
                             setOtherAddress(false);
                             cart.hasDifferentShipping(false);
-                            document.getElementById('facture').checked = false;
+                            let _temp:any = oneById('facture');
+                            if(_temp) { _temp.checked = false; }
                         }}
                     >
                         <img
@@ -376,27 +320,18 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                 </div>
                 {otherAddress &&
                     <div className="form custom-scrollbar">
-                        <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 20px 20px', display: 'inline-block'}} required={true}/>
-                        <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
-                        {/* <input className="required form-field step-2" name="other-name" type="text" required placeholder="Nom"/> */}
+                        <DeliveryLastNameField classes="required form-field step-2" style={{width: '43%', margin: `10px 0 20px ${size.width <1200 ? '5%' : '20px'}`, display: 'inline-block'}} required={true}/>
+                        <DeliveryFirstNameField classes="required form-field step-2" style={{width: '43%', margin: '10px 0 24px 4%', display: 'inline-block'}} required={true}/>
                         <DeliverySocietyField classes="form-field step-2"/>
-                        {/* <input className="form-field step-2" name="other-society" type="text" placeholder="Société"/> */}
                         <DeliveryAddressLine1Field classes="required form-field step-2" required={true}/>
-                        {/* <DeliveryAddressLine2Field classes="required form-field step-2"/> */}
                         <DeliveryCountryField classes="required form-field step-2" required={true}/>
                         {
                             cart.differentAddress == true && cart.getTVAIntra() == true && otherAddress == true && <IntraTVAField classes="required form-field step-1" required={true}/>
                         }
-                        {/* <textarea className="required form-field step-2" name="other-adresse1" type="text" required placeholder="Adresse" rows="3"></textarea> */}
                         <DeliveryZipField classes="required form-field step-2" required={true}/>
-                        {/* <input className="required form-field step-2" name="other-zip" type="text" required placeholder="Code postal"/> */}
                         <DeliveryCityField classes="required form-field step-2" required={true}/>
-                        {/* <input className="required form-field step-2" name="other-city" type="text" required placeholder="Ville"/> */}
                         <DeliveryPhoneField classes="required form-field step-2" required={true}/>
-                        {/* <input className="required form-field step-2" name="other-phone" type="tel" required placeholder="Téléphone"/> */}
-                        {/* <input className="required form-field step-2" name="other-mail" type="email" required placeholder="Mail"/> */}
                         <DeliveryMailField classes="form-field step-2" required={false}/>
-                        {/* <input className="form-field step-2" name="mail" type="email" placeholder="Mail"/> */}
                     </div>
                 }
             </div>
@@ -448,7 +383,7 @@ const CartPurchaseBig = ({  }:CartPurchaseBig) => {
                     required
                 />
                 <label htmlFor="terms">
-                    J'accepte les CGV et les CGU
+                    J'accepte les CGV
                 </label>
             </div>
             {/* VALIDATE */}
